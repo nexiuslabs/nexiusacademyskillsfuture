@@ -8,7 +8,7 @@ Your Google API key was previously exposed in the client-side code. This has bee
 
 ### 1. Rotate Your Google API Key (CRITICAL)
 
-Since your API key `AIzaSyAAcjaRwevSWP0GNwweSmZejkvxhyMDA1s` was exposed in client-side code, you must create a new one:
+Since your previous API key was exposed in client-side code, you must create a new one:
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Navigate to APIs & Services > Credentials
@@ -38,7 +38,7 @@ In your Netlify dashboard:
 
 1. Go to Site Settings > Environment Variables
 2. Add the following variables:
-   - `VITE_SUPABASE_URL`: `https://vujhfgsjvqamuszljxic.supabase.co`
+   - `VITE_SUPABASE_URL`: Your Supabase project URL (from .env file)
    - `VITE_SUPABASE_ANON_KEY`: Your Supabase anonymous key (from .env file)
 
 **Note**: Do NOT add `GOOGLE_API_KEY` to Netlify. It's only needed in Supabase Edge Functions.
@@ -49,7 +49,7 @@ Remove the `VITE_API_KEY` line from your `.env` file. It's no longer needed sinc
 
 Your `.env` should only contain:
 ```
-VITE_SUPABASE_URL=https://vujhfgsjvqamuszljxic.supabase.co
+VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
