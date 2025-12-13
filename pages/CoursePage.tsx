@@ -8,7 +8,6 @@ import Schedule from '../components/courses/Schedule';
 import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import FAQ from '../components/courses/FAQ';
-import CourseFooter from '../components/courses/CourseFooter';
 import AIAdvisor from '../components/courses/AIAdvisor';
 
 const CoursePage: React.FC = () => {
@@ -25,7 +24,6 @@ const CoursePage: React.FC = () => {
         <CourseTestimonials />
         <FAQ />
       </main>
-      <CourseFooter />
       <AIAdvisor />
     </div>
   );

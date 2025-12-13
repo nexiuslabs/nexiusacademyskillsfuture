@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail } from 'lucide-react';
 import Navbar from '../components/home/Navbar';
-import Footer from '../components/home/Footer';
 import { fetchBucketImages, getRandomImages } from '../services/imageService';
 
 type TabType = 'mission' | 'values' | 'story';
@@ -342,8 +341,6 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 };

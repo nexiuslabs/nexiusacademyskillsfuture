@@ -10,7 +10,6 @@ import CourseList from '../components/home/CourseList';
 import InstructorCTA from '../components/home/InstructorCTA';
 import Testimonials from '../components/home/Testimonials';
 import BottomSection from '../components/home/BottomSection';
-import Footer from '../components/home/Footer';
 import AIAdvisor from '../components/courses/AIAdvisor';
 
 const HomePage: React.FC = () => {
@@ -54,7 +53,6 @@ const HomePage: React.FC = () => {
         <Testimonials />
         <BottomSection />
       </main>
-      <Footer />
       <AIAdvisor />
     </div>
   );
