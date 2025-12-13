@@ -222,7 +222,7 @@ const AboutPage: React.FC = () => {
 
                     <div className="bg-neutral p-8 rounded-xl my-8">
                       <p className="text-primary text-xl font-semibold italic leading-relaxed">
-                        "We set out to change that by creating a learning platform that makes Agentic AI accessible, practical, and immediately applicable for non-technical professionals."
+                        "But we didn't learn this from reading headlines. We are builders first, trainers second."
                       </p>
                     </div>
 
