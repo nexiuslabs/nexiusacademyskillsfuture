@@ -246,14 +246,14 @@ const AboutPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
               <div>
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">500+</div>
-                <p className="text-gray-300 font-medium">Professionals Trained</p>
+                <p className="text-gray-300 font-medium">Students Trained</p>
               </div>
               <div>
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">95%</div>
                 <p className="text-gray-300 font-medium">Satisfaction Rate</p>
               </div>
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">50+</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">20+</div>
                 <p className="text-gray-300 font-medium">Corporate Partners</p>
               </div>
               <div>
