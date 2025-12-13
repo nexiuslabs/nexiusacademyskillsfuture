@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { ChatMessage } from '../../types';
-import { generateAIResponse, saveUserMessage } from '../../services/geminiService';
-import { sendNewChatNotification } from '../../services/telegramService';
-import { supabase } from '../../lib/supabase';
+import { generateAIResponse } from '../../services/geminiService';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +10,6 @@ const AIAdvisor: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId, setSessionId] = useState<string>('');
-  const [isFirstMessage, setIsFirstMessage] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -24,89 +20,15 @@ const AIAdvisor: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  useEffect(() => {
-    const initializeSession = async () => {
-      const storedSessionId = localStorage.getItem('chat_session_id');
-
-      if (storedSessionId) {
-        const { data, error } = await supabase
-          .from('chat_sessions')
-          .select('session_id, is_active, telegram_notified')
-          .eq('session_id', storedSessionId)
-          .maybeSingle();
-
-        if (!error && data && data.is_active) {
-          setSessionId(storedSessionId);
-          setIsFirstMessage(!data.telegram_notified);
-          await loadConversationHistory(storedSessionId);
-          return;
-        }
-      }
-
-      const newSessionId = crypto.randomUUID();
-      setSessionId(newSessionId);
-      setIsFirstMessage(true);
-      localStorage.setItem('chat_session_id', newSessionId);
-
-      await supabase.from('chat_sessions').insert({
-        session_id: newSessionId,
-        started_at: new Date().toISOString(),
-        last_activity_at: new Date().toISOString(),
-        is_active: true,
-        telegram_notified: false,
-        status: 'active',
-      });
-    };
-
-    initializeSession();
-  }, []);
-
-  const loadConversationHistory = async (sessionId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('chat_messages')
-        .select('role, message_text, timestamp')
-        .eq('session_id', sessionId)
-        .order('timestamp', { ascending: true });
-
-      if (error) throw error;
-
-      if (data && data.length > 0) {
-        const loadedMessages: ChatMessage[] = data.map(msg => ({
-          role: msg.role as 'user' | 'model',
-          text: msg.message_text,
-        }));
-
-        setMessages([
-          { role: 'model', text: "Hi there! I'm the GenAI Course Advisor. Ask me anything about subsidies, curriculum, or schedules!" },
-          ...loadedMessages,
-        ]);
-      }
-    } catch (error) {
-      console.error('Error loading conversation history:', error);
-    }
-  };
-
   const handleSend = async () => {
-    if (!inputValue.trim() || !sessionId) return;
+    if (!inputValue.trim()) return;
 
     const userMsg = inputValue;
     setInputValue('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
-    await saveUserMessage(sessionId, userMsg);
-
-    if (isFirstMessage) {
-      await sendNewChatNotification(sessionId, userMsg);
-      await supabase
-        .from('chat_sessions')
-        .update({ telegram_notified: true })
-        .eq('session_id', sessionId);
-      setIsFirstMessage(false);
-    }
-
-    const responseText = await generateAIResponse(userMsg, sessionId);
+    const responseText = await generateAIResponse(userMsg);
 
     setMessages(prev => [...prev, { role: 'model', text: responseText }]);
     setIsLoading(false);

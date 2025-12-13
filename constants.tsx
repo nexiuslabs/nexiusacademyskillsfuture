@@ -95,36 +95,20 @@ export const SCHEDULES: ScheduleItem[] = [
 
 export const FAQS: FaqItem[] = [
   {
-    question: "Do I need any coding experience to join?",
-    answer: "No. This course is specifically designed for non-coders and business professionals. We teach you how to use AI tools and natural language to build software and automations without writing complex code from scratch."
+    question: "What is Generative AI and how does it work?",
+    answer: "Generative AI refers to algorithms (like ChatGPT or Midjourney) that can be used to create new content, including audio, code, images, text, simulations, and videos."
   },
   {
-    question: "Is this course just theory, or will I build something?",
-    answer: "We hate fluff as much as you do. This is a hands-on, builder-focused course. You will finish the program having built at least one functional prototype or workflow that you can use immediately."
+    question: "What are the prerequisites for this course?",
+    answer: "There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques."
   },
   {
-    question: "What tools will we be using?",
-    answer: "We focus on accessible, high-impact tools. You will likely use platforms like Bolt.new for building apps, n8n for automation, and leading LLMs (like ChatGPT, Claude, or Gemini) for reasoning and content generation (subject to changes)."
-  },
-  {
-    question: "Is this an online course?",
-    answer: "No, it is 100% in-person. We prioritize physical classes because hands-on guidance is the most effective way to master these tools quickly."
-  },
-{
-    question: "Can I apply these skills to my current job?",
-    answer: "Absolutely. We focus on real-world business use cases—like automating CRM data entry, generating lead reports, or building internal tools—so you can start saving time at work immediately."
-  },
-  {
-    question: "What is the time commitment required?",
-    answer: "This is an intensive, 2-day workshop. Sessions run from 9:00 AM to 5:00 PM on consecutive days (e.g., Tuesday and Wednesday) to ensure deep immersion and focus."
-  },
-{
     question: "Are there course fee subsidies available?",
     answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
   },
   {
     question: "What certification will I receive?",
-    answer: "Upon completion, you will receive a Certificate of Completion jointly issued by Nexius Academy & SkillsFuture."
+    answer: "Upon completion, you will receive a Certificate of Completion recognized by industry employers."
   }
 ];
 
@@ -186,9 +170,9 @@ export const WEBSITE_IMAGES = {
 };
 
 export const SYSTEM_INSTRUCTION = `
-You are an expert AI Advisor for the 'Nexius Academy Certificate in Agentic AI for non-technical professionals'.
+You are an expert AI Advisor for the 'Nexius Academy Certificate in Applied Generative AI'.
 Your goal is to help potential students understand the course and encourage them to apply.
-Use ONLY information on thsi website and the following course details to answer questions:
+Use the following course details to answer questions:
 
 - Course Name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
 - Course Ref: TGS-2025059915
