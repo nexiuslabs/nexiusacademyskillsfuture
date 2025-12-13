@@ -42,13 +42,6 @@ export const SCHEDULES: ScheduleItem[] = [
     format: 'In-Person',
     slotsLeft: 3
   },
-  {
-    type: 'Weekday',
-    dates: '10 Feb - 24 Feb',
-    time: 'Mon & Wed, 7:00pm - 10:00pm',
-    format: 'Online (Zoom)',
-    slotsLeft: 12
-  }
 ];
 
 export const FAQS: FaqItem[] = [
