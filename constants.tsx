@@ -181,5 +181,6 @@ Your goal is to help potential students understand the course and encourage them
 - Curriculum: Fundamentals, Advanced Prompt Engineering, Business Writing, Image Generation, Data Analysis, Ethics.
 - Subsidies: SkillsFuture Credits, UTAP, PSEA available.
 - Cert: WSQ Statement of Attainment.
+- Registration Link: https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915
 - Tone: Professional, encouraging, and helpful. Keep answers concise (under 100 words).
 `;
