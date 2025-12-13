@@ -1,27 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Sparkles, Loader2, UserCircle } from 'lucide-react';
+import { X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { ChatMessage } from '../../types';
 import { generateAIResponse } from '../../services/geminiService';
-import {
-  createChatSession,
-  saveChatMessage,
-  escalateToHuman
-} from '../../services/chatService';
-import { supabase } from '../../lib/supabase';
-
-interface ExtendedChatMessage extends ChatMessage {
-  isAgent?: boolean;
-}
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ExtendedChatMessage[]>([
+  const [messages, setMessages] = useState<ChatMessage[]>([
     { role: 'model', text: "Hi there! I'm the GenAI Course Advisor. Ask me anything about subsidies, curriculum, or schedules!" }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId, setSessionId] = useState<string | null>(null);
-  const [isEscalated, setIsEscalated] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -32,97 +20,18 @@ const AIAdvisor: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  useEffect(() => {
-    const initSession = async () => {
-      if (isOpen && !sessionId) {
-        try {
-          const newSessionId = await createChatSession();
-          setSessionId(newSessionId);
-        } catch (error) {
-          console.error('Failed to create session:', error);
-        }
-      }
-    };
-    initSession();
-  }, [isOpen, sessionId]);
-
-  useEffect(() => {
-    if (!sessionId) return;
-
-    const channel = supabase
-      .channel(`chat:${sessionId}`)
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'chat_messages',
-          filter: `session_id=eq.${sessionId}`
-        },
-        (payload) => {
-          const newMessage = payload.new as any;
-          if (newMessage.role === 'agent') {
-            setMessages(prev => [...prev, {
-              role: 'model',
-              text: newMessage.message_text,
-              isAgent: true
-            }]);
-            setIsLoading(false);
-          }
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [sessionId]);
-
   const handleSend = async () => {
-    if (!inputValue.trim() || !sessionId) return;
+    if (!inputValue.trim()) return;
 
     const userMsg = inputValue;
     setInputValue('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
-    try {
-      await saveChatMessage(sessionId, 'user', userMsg);
+    const responseText = await generateAIResponse(userMsg);
 
-      const aiResponse = await generateAIResponse(userMsg);
-
-      await saveChatMessage(
-        sessionId,
-        'model',
-        aiResponse.text,
-        aiResponse.needsHumanHelp,
-        aiResponse.confidenceScore
-      );
-
-      if (aiResponse.needsHumanHelp && !isEscalated) {
-        setIsEscalated(true);
-        await escalateToHuman(sessionId);
-        setMessages(prev => [
-          ...prev,
-          { role: 'model', text: aiResponse.text },
-          {
-            role: 'model',
-            text: "I've notified our team about your question. A human advisor will respond shortly via this chat.",
-            isAgent: false
-          }
-        ]);
-      } else {
-        setMessages(prev => [...prev, { role: 'model', text: aiResponse.text }]);
-      }
-    } catch (error) {
-      console.error('Error handling message:', error);
-      setMessages(prev => [...prev, {
-        role: 'model',
-        text: "Sorry, I encountered an error. Please try again."
-      }]);
-    } finally {
-      setIsLoading(false);
-    }
+    setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    setIsLoading(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -169,22 +78,12 @@ const AIAdvisor: React.FC = () => {
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className="flex flex-col max-w-[85%]">
-                  {msg.isAgent && (
-                    <div className="flex items-center gap-1 mb-1 ml-2">
-                      <UserCircle size={14} className="text-accent" />
-                      <span className="text-xs text-accent font-semibold">Human Advisor</span>
-                    </div>
-                  )}
-                  <div className={`rounded-2xl p-3 text-sm ${
-                    msg.role === 'user'
-                      ? 'bg-primary text-white rounded-br-none'
-                      : msg.isAgent
-                        ? 'bg-accent/10 text-gray-800 shadow-sm border-2 border-accent rounded-bl-none'
-                        : 'bg-white text-gray-700 shadow-sm border border-gray-100 rounded-bl-none'
-                  }`}>
-                    {msg.text}
-                  </div>
+                <div className={`max-w-[85%] rounded-2xl p-3 text-sm ${
+                  msg.role === 'user' 
+                    ? 'bg-primary text-white rounded-br-none' 
+                    : 'bg-white text-gray-700 shadow-sm border border-gray-100 rounded-bl-none'
+                }`}>
+                  {msg.text}
                 </div>
               </div>
             ))}
