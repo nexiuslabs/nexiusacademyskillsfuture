@@ -37,17 +37,10 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '22 Dec - 5 Jan',
-    time: 'Mon - Wed, 9:00am - 12:00pm',
+    dates: '29 Dec - 30 Dec',
+    time: 'Mon - Tue, 9:00am - 6:00pm',
     format: 'In-Person',
-    slotsLeft: 1
-  },
-  {
-    type: 'Weekend',
-    dates: '27 Dec - 17 Jan',
-    time: 'Sat & Sun, 9:00am - 12:00pm',
-    format: 'Online (Zoom)',
-    slotsLeft: 4
+    slotsLeft: 3
   },
   {
     type: 'Weekday',
