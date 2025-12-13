@@ -29,7 +29,13 @@ const Hero: React.FC = () => {
               <button className="bg-primary hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 transition-all transform hover:-translate-y-1">
                 Download Brochure
               </button>
-              <button className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all">
+              <button
+                onClick={() => {
+                  const scheduleSection = document.getElementById('schedule');
+                  scheduleSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all"
+              >
                 View Schedule
               </button>
             </div>
