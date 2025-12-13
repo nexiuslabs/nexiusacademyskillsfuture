@@ -95,14 +95,30 @@ export const SCHEDULES: ScheduleItem[] = [
 
 export const FAQS: FaqItem[] = [
   {
-    question: "What is Generative AI and how does it work?",
-    answer: "Generative AI refers to algorithms (like ChatGPT or Midjourney) that can be used to create new content, including audio, code, images, text, simulations, and videos."
+    question: "Do I need any coding experience to join?",
+    answer: "No. This course is specifically designed for non-coders and business professionals. We teach you how to use AI tools and natural language to build software and automations without writing complex code from scratch."
   },
   {
-    question: "What are the prerequisites for this course?",
-    answer: "There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques."
+    question: "Is this course just theory, or will I build something?",
+    answer: "We hate fluff as much as you do. This is a hands-on, builder-focused course. You will finish the program having built at least one functional prototype or workflow that you can use immediately."
   },
   {
+    question: "What tools will we be using?",
+    answer: "We focus on accessible, high-impact tools. You will likely use platforms like Bolt.new for building apps, n8n for automation, and leading LLMs (like ChatGPT, Claude, or Gemini) for reasoning and content generation (subject to changes)."
+  },
+  {
+    question: "Is this an online course?",
+    answer: "No, it is 100% in-person. We prioritize physical classes because hands-on guidance is the most effective way to master these tools quickly."
+  },
+{
+    question: "Are there course fee subsidies available?",
+    answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
+  },
+  {
+    question: "What certification will I receive?",
+    answer: "Upon completion, you will receive a Certificate of Completion recognized by industry employers."
+  },
+{
     question: "Are there course fee subsidies available?",
     answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
   },
