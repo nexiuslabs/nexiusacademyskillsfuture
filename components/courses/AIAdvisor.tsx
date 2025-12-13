@@ -46,7 +46,7 @@ const AIAdvisor: React.FC = () => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-40 bg-accent hover:bg-teal-400 text-white rounded-full p-4 shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center ${isOpen ? 'hidden' : 'block'}`}
+        className={`fixed bottom-8 right-8 z-[9999] bg-accent hover:bg-teal-400 text-white rounded-full p-4 shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center ${isOpen ? 'hidden' : 'block'}`}
       >
         <Sparkles size={28} className="animate-pulse" />
         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">1</span>
@@ -54,7 +54,7 @@ const AIAdvisor: React.FC = () => {
 
       {/* Chat Interface */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-full max-w-sm h-[500px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
+        <div className="fixed bottom-8 right-8 w-full max-w-sm h-[500px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
           
           {/* Header */}
           <div className="bg-primary p-4 flex justify-between items-center text-white">
