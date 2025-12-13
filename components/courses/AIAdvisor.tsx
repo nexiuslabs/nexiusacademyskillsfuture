@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { ChatMessage } from '../../types';
 import { generateAIResponse } from '../../services/geminiService';
+import { chatService } from '../../services/chatService';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,8 @@ const AIAdvisor: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -20,17 +23,44 @@ const AIAdvisor: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
+  useEffect(() => {
+    const initSession = async () => {
+      if (isOpen && !isInitialized) {
+        const id = await chatService.initializeSession();
+        if (id) {
+          setSessionId(id);
+          const previousMessages = await chatService.loadMessages(id);
+
+          if (previousMessages.length > 0) {
+            setMessages(previousMessages);
+          } else {
+            const welcomeMsg = { role: 'model' as const, text: "Hi there! I'm the GenAI Course Advisor. Ask me anything about subsidies, curriculum, or schedules!" };
+            setMessages([welcomeMsg]);
+            await chatService.saveMessage(id, 'model', welcomeMsg.text);
+          }
+        }
+        setIsInitialized(true);
+      }
+    };
+
+    initSession();
+  }, [isOpen, isInitialized]);
+
   const handleSend = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || !sessionId) return;
 
     const userMsg = inputValue;
     setInputValue('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
+    await chatService.saveMessage(sessionId, 'user', userMsg);
+
     const responseText = await generateAIResponse(userMsg);
 
     setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    await chatService.saveMessage(sessionId, 'model', responseText);
+
     setIsLoading(false);
   };
 
