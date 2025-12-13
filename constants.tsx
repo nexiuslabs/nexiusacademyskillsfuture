@@ -111,12 +111,12 @@ export const FAQS: FaqItem[] = [
     answer: "No, it is 100% in-person. We prioritize physical classes because hands-on guidance is the most effective way to master these tools quickly."
   },
 {
-    question: "Are there course fee subsidies available?",
-    answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
+    question: "Can I apply these skills to my current job?",
+    answer: "Absolutely. We focus on real-world business use cases—like automating CRM data entry, generating lead reports, or building internal tools—so you can start saving time at work immediately."
   },
   {
-    question: "What certification will I receive?",
-    answer: "Upon completion, you will receive a Certificate of Completion recognized by industry employers."
+    question: "What is the time commitment required?",
+    answer: "This is an intensive, 2-day workshop. Sessions run from 9:00 AM to 5:00 PM on consecutive days (e.g., Tuesday and Wednesday) to ensure deep immersion and focus."
   },
 {
     question: "Are there course fee subsidies available?",
@@ -124,7 +124,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "What certification will I receive?",
-    answer: "Upon completion, you will receive a Certificate of Completion recognized by industry employers."
+    answer: "Upon completion, you will receive a Certificate of Completion jointly issued by Nexius Academy & SkillsFuture."
   }
 ];
 
