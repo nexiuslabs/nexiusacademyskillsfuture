@@ -22,6 +22,7 @@ export interface ScheduleItem {
   time: string;
   format: 'Online (Zoom)' | 'In-Person';
   slotsLeft: number;
+  month: string;
 }
 
 export interface FaqItem {

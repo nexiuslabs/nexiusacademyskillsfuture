@@ -40,7 +40,56 @@ export const SCHEDULES: ScheduleItem[] = [
     dates: '29 Dec - 30 Dec',
     time: 'Mon - Tue, 9:00am - 6:00pm',
     format: 'In-Person',
-    slotsLeft: 3
+    slotsLeft: 3,
+    month: 'Dec 2025'
+  },
+  {
+    type: 'Weekend',
+    dates: '11 Jan - 12 Jan',
+    time: 'Sat - Sun, 9:00am - 6:00pm',
+    format: 'In-Person',
+    slotsLeft: 8,
+    month: 'Jan 2026'
+  },
+  {
+    type: 'Weekday',
+    dates: '20 Jan - 21 Jan',
+    time: 'Mon - Tue, 9:00am - 6:00pm',
+    format: 'Online (Zoom)',
+    slotsLeft: 12,
+    month: 'Jan 2026'
+  },
+  {
+    type: 'Weekend',
+    dates: '25 Jan - 26 Jan',
+    time: 'Sat - Sun, 9:00am - 6:00pm',
+    format: 'In-Person',
+    slotsLeft: 6,
+    month: 'Jan 2026'
+  },
+  {
+    type: 'Weekend',
+    dates: '8 Feb - 9 Feb',
+    time: 'Sat - Sun, 9:00am - 6:00pm',
+    format: 'In-Person',
+    slotsLeft: 10,
+    month: 'Feb 2026'
+  },
+  {
+    type: 'Weekday',
+    dates: '16 Feb - 17 Feb',
+    time: 'Mon - Tue, 6:30pm - 9:30pm',
+    format: 'Online (Zoom)',
+    slotsLeft: 15,
+    month: 'Feb 2026'
+  },
+  {
+    type: 'Weekend',
+    dates: '22 Feb - 23 Feb',
+    time: 'Sat - Sun, 9:00am - 6:00pm',
+    format: 'In-Person',
+    slotsLeft: 4,
+    month: 'Feb 2026'
   },
 ];
 
