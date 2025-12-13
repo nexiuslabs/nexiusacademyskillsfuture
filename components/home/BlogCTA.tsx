@@ -18,7 +18,7 @@ const BlogCTA: React.FC = () => {
             Master Agentic AI to eliminate manual work, automate your entire business processes, and achieve instant, measurable productivity gains.
           </p>
           <Link
-            to="/courses/agentic-ai"
+            to="/#courses"
             className="inline-block bg-secondary text-white px-10 py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-opacity-90 transition-all hover:shadow-xl"
           >
             Register Today
