@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import ScrollToTop from '../components/ScrollToTop';
+import BlogCTA from '../components/home/BlogCTA';
 
 const EnterpriseAIInsightsPage: React.FC = () => {
   return (
@@ -159,6 +160,7 @@ const EnterpriseAIInsightsPage: React.FC = () => {
             The initial wave of AI adoption is over, and the data reveals a clear gap between the early leaders and the rest of the pack. The real work of training, integration, and process redesign is just beginning. The data shows a clear divide between casual users and frontier organizations—which side of that gap will you and your company be on?
           </p>
         </div>
+        <BlogCTA />
       </div>
     </>
   );

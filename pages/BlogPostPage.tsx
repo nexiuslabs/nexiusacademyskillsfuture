@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import ScrollToTop from '../components/ScrollToTop';
+import BlogCTA from '../components/home/BlogCTA';
 
 const BlogPostPage: React.FC = () => {
   return (
@@ -119,6 +120,7 @@ const BlogPostPage: React.FC = () => {
             As you plan for the future, the most critical question to ask is not "Which AI tool should we buy?" but rather: "Is my company currently structured to manage people, or to manage intelligence?"
           </p>
         </div>
+        <BlogCTA />
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import ScrollToTop from '../components/ScrollToTop';
+import BlogCTA from '../components/home/BlogCTA';
 
 const AnthropicAISkillsPage: React.FC = () => {
   return (
@@ -120,6 +121,7 @@ const AnthropicAISkillsPage: React.FC = () => {
             As we move from simply using AI to actively teaching it through shareable skills, what is the first piece of your own unique expertise you would want your AI teammate to learn?
           </p>
         </div>
+        <BlogCTA />
       </div>
     </>
   );
