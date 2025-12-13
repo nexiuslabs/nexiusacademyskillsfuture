@@ -217,7 +217,7 @@ const AboutPage: React.FC = () => {
                     </p>
 
                     <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                      We recognized that the future of business automation would be defined by Agentic AI systems capable of autonomous decision-making and workflow execution. However, these powerful tools were only accessible to those with extensive technical backgrounds.
+                      At our core, we are actively engineering the future of work by building a proprietary Agentic ERP for SMEs. We live in the code, designing workflows where AI agents think, decide, and act. This hands-on experience sparked an obsession with the concept of the 'Frontier Firm'—a vision coined by Microsoft where companies operate with a fluid human-agent arrangement, having intelligence 'on-tap' to solve problems instantly..
                     </p>
 
                     <div className="bg-neutral p-8 rounded-xl my-8">
@@ -227,11 +227,11 @@ const AboutPage: React.FC = () => {
                     </div>
 
                     <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                      Today, Nexius Academy serves professionals across industries, helping them harness the power of autonomous AI to transform their operations. Our courses have empowered managers, executives, and business leaders to implement AI solutions that deliver measurable results.
+                      We realized that for SMEs to reach this frontier, they didn't just need software; they needed the capability to wield it. We set out to bridge this gap by creating a learning platform that makes Agentic AI accessible, practical, and immediately applicable.
                     </p>
 
                     <p className="text-gray-600 leading-relaxed text-lg">
-                      As AI continues to evolve, we remain committed to our founding mission: making cutting-edge technology accessible and actionable for everyone ready to embrace the future of work.
+                      Today, Nexius Academy helps professionals harness the power of autonomous AI. We don't just teach theory; we empower managers and executives to build the 'Frontier Firm' of tomorrow, today."
                     </p>
                   </div>
                 </div>
