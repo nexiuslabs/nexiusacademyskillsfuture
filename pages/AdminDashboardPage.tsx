@@ -17,34 +17,56 @@ const DashboardHome: React.FC = () => {
     knowledgeEntries: 0,
     uploadedFiles: 0,
   });
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchStats();
   }, []);
 
   const fetchStats = async () => {
-    const [chatsRes, activeChatsRes, knowledgeRes, filesRes] = await Promise.all([
-      supabase.from('chat_sessions').select('id', { count: 'exact', head: true }),
-      supabase
-        .from('chat_sessions')
-        .select('id', { count: 'exact', head: true })
-        .eq('is_active', true),
-      supabase
-        .from('knowledge_base')
-        .select('id', { count: 'exact', head: true })
-        .eq('is_active', true),
-      supabase
-        .from('knowledge_files')
-        .select('id', { count: 'exact', head: true })
-        .eq('is_active', true),
-    ]);
+    try {
+      setError(null);
 
-    setStats({
-      totalChats: chatsRes.count || 0,
-      activeChats: activeChatsRes.count || 0,
-      knowledgeEntries: knowledgeRes.count || 0,
-      uploadedFiles: filesRes.count || 0,
-    });
+      const { data: session } = await supabase.auth.getSession();
+      console.log('Current session:', session);
+
+      if (!session?.session) {
+        setError('No active session found');
+        return;
+      }
+
+      const [chatsRes, activeChatsRes, knowledgeRes, filesRes] = await Promise.all([
+        supabase.from('chat_sessions').select('id', { count: 'exact', head: true }),
+        supabase
+          .from('chat_sessions')
+          .select('id', { count: 'exact', head: true })
+          .eq('is_active', true),
+        supabase
+          .from('knowledge_base')
+          .select('id', { count: 'exact', head: true })
+          .eq('is_active', true),
+        supabase
+          .from('knowledge_files')
+          .select('id', { count: 'exact', head: true })
+          .eq('is_active', true),
+      ]);
+
+      if (chatsRes.error) {
+        console.error('Error fetching chats:', chatsRes.error);
+        setError(`Error: ${chatsRes.error.message}`);
+        return;
+      }
+
+      setStats({
+        totalChats: chatsRes.count || 0,
+        activeChats: activeChatsRes.count || 0,
+        knowledgeEntries: knowledgeRes.count || 0,
+        uploadedFiles: filesRes.count || 0,
+      });
+    } catch (err) {
+      console.error('Exception in fetchStats:', err);
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    }
   };
 
   const statCards = [
@@ -83,6 +105,13 @@ const DashboardHome: React.FC = () => {
         </p>
       </div>
 
+      {error && (
+        <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          <p className="font-semibold">Error loading dashboard data:</p>
+          <p className="text-sm mt-1">{error}</p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {statCards.map((stat) => {
           const Icon = stat.icon;
@@ -108,21 +137,21 @@ const DashboardHome: React.FC = () => {
           <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Actions</h2>
           <div className="space-y-3">
             <a
-              href="/admin/knowledge-base"
+              href="/admin/dashboard/knowledge-base"
               className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <h3 className="font-semibold text-gray-800">Add Knowledge Entry</h3>
               <p className="text-sm text-gray-600">Create new knowledge base entry</p>
             </a>
             <a
-              href="/admin/files"
+              href="/admin/dashboard/files"
               className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <h3 className="font-semibold text-gray-800">Upload Document</h3>
               <p className="text-sm text-gray-600">Upload PDF or Word files</p>
             </a>
             <a
-              href="/admin/chat-history"
+              href="/admin/dashboard/chat-history"
               className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <h3 className="font-semibold text-gray-800">View Chat History</h3>

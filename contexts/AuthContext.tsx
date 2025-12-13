@@ -65,19 +65,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
 
       if (error) {
+        console.error('Login error:', error);
         return { error: error.message };
       }
 
       if (data.user) {
+        console.log('User data:', data.user);
+        console.log('User metadata:', data.user.user_metadata);
+        console.log('App metadata:', data.user.app_metadata);
+
         const role = data.user.user_metadata?.role || data.user.app_metadata?.role;
+        console.log('Detected role:', role);
+
         if (role !== 'admin') {
           await supabase.auth.signOut();
           return { error: 'Access denied. Admin privileges required.' };
         }
+
+        setUser(data.user);
+        setIsAdmin(true);
       }
 
       return { error: null };
     } catch (error) {
+      console.error('Login exception:', error);
       return { error: 'An unexpected error occurred' };
     }
   };
