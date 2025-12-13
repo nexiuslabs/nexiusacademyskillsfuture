@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/subscribe-newsletter`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ type: 'success', text: data.message || 'Successfully subscribed!' });
+        e.currentTarget.reset();
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Failed to subscribe' });
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'An error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-primary text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Brand */}
             <div className="space-y-6">
@@ -44,14 +83,32 @@ const Footer: React.FC = () => {
                 </ul>
             </div>
 
-            {/* App CTA */}
+            {/* Subscribe */}
             <div>
-                 <h4 className="font-bold text-lg mb-6 text-accent">Contact</h4>
-                 <p className="text-sm text-gray-300 mb-2">admissions@nexiusacademy.com</p>
-                 <p className="text-sm text-gray-300 mb-6">+65 1234 5678</p>
-                 <button className="bg-white/10 border border-white/20 hover:bg-white hover:text-primary text-white w-full py-2 rounded mb-2 transition-all">
-                    Sign Up for Newsletter
-                 </button>
+                 <h4 className="font-bold text-lg mb-6 text-accent">Subscribe</h4>
+                 <p className="text-sm text-gray-300 mb-4">Subscribe to receive latest AI trends.</p>
+                 <form onSubmit={handleSubscribe} className="space-y-3">
+                   <input
+                     type="email"
+                     name="email"
+                     placeholder="Email Address"
+                     required
+                     disabled={isSubmitting}
+                     className="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded text-white placeholder-gray-400 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+                   />
+                   <button
+                     type="submit"
+                     disabled={isSubmitting}
+                     className="w-full bg-accent text-white font-bold py-2.5 rounded hover:bg-accent/90 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                   >
+                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                   </button>
+                   {message && (
+                     <div className={`p-2.5 rounded text-xs ${message.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
+                       {message.text}
+                     </div>
+                   )}
+                 </form>
             </div>
         </div>
 
