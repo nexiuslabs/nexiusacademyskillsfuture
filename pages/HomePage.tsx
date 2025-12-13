@@ -11,6 +11,7 @@ import InstructorCTA from '../components/home/InstructorCTA';
 import Testimonials from '../components/home/Testimonials';
 import BottomSection from '../components/home/BottomSection';
 import Footer from '../components/home/Footer';
+import AIAdvisor from '../components/courses/AIAdvisor';
 
 const HomePage: React.FC = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const HomePage: React.FC = () => {
         <BottomSection />
       </main>
       <Footer />
+      <AIAdvisor />
     </div>
   );
 };
