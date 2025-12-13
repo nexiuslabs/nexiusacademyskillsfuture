@@ -213,7 +213,7 @@ const AboutPage: React.FC = () => {
                 <div className="max-w-4xl mx-auto">
                   <div className="prose prose-lg max-w-none">
                     <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                      Nexius Academy was founded on a simple observation: while AI technology was advancing at an unprecedented pace, most business professionals were being left behind. The tools and knowledge needed to leverage autonomous AI systems were locked away in technical jargon and complex frameworks.
+                      Nexius Academy was founded on a simple observation: while AI technology was advancing at an unprecedented pace, most business professionals were being left behind. The tools needed to leverage autonomous systems were locked away in technical jargon and complex frameworks.
                     </p>
 
                     <p className="text-gray-600 leading-relaxed text-lg mb-6">
