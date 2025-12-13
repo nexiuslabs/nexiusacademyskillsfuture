@@ -257,8 +257,8 @@ const AboutPage: React.FC = () => {
                 <p className="text-gray-300 font-medium">Corporate Partners</p>
               </div>
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">24/7</div>
-                <p className="text-gray-300 font-medium">Learning Support</p>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">40+</div>
+                <p className="text-gray-300 font-medium">Years of Experience</p>
               </div>
             </div>
           </div>
