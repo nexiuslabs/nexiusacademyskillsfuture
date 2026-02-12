@@ -37,8 +37,8 @@ const BlogPostPage: React.FC = () => {
 
           <div className="relative pb-[56.25%] h-0 overflow-hidden my-8 rounded-lg shadow-md">
             <iframe
-              src="https://www.youtube.com/embed/MT3TOOfksBI"
-              title="Building Human AI Team to Scale Your Business using the Frontier Firm Concept"
+              src="https://www.youtube.com/embed/CuiTZA_uR0g"
+              title="How Generative AI Is Transforming Business, Beyond ChatGPT"
               className="absolute top-0 left-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

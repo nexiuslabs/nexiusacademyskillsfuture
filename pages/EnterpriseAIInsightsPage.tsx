@@ -40,8 +40,8 @@ const EnterpriseAIInsightsPage: React.FC = () => {
 
           <div className="relative pb-[56.25%] h-0 overflow-hidden my-8 rounded-lg shadow-md">
             <iframe
-              src="https://www.youtube.com/embed/wKoMHnQ4EBc"
-              title="The State of Enterprise AI"
+              src="https://www.youtube.com/embed/reDaWMZPjJo"
+              title="AI Enterprise Architecture: AI for Business Transformation"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
