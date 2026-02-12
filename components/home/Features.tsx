@@ -12,8 +12,8 @@ const Features: React.FC = () => {
               <BookOpen size={32} />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">Future-Proof Skills</h3>
-              <p className="text-gray-300 text-sm">Acquire the essential skills needed to thrive in an AI-driven economy.</p>
+              <h3 className="text-xl font-bold mb-2">Future-Proof AI Skills</h3>
+              <p className="text-gray-300 text-sm">Our AI training in Singapore equips you with the essential skills needed to thrive in an AI-driven economy.</p>
             </div>
           </div>
 
@@ -23,7 +23,7 @@ const Features: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Increase Efficiency</h3>
-              <p className="text-gray-300 text-sm">Leverage autonomous agents to eliminate manual tasks and accelerate outcomes.</p>
+              <p className="text-gray-300 text-sm">Through our agentic AI course, leverage autonomous agents to eliminate manual tasks and accelerate outcomes.</p>
             </div>
           </div>
 
@@ -33,7 +33,7 @@ const Features: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Business Scalability</h3>
-              <p className="text-gray-300 text-sm">Build adaptive, automated systems to support rapid business growth.</p>
+              <p className="text-gray-300 text-sm">With no-code AI automation training, build adaptive, automated systems to support rapid business growth.</p>
             </div>
           </div>
 

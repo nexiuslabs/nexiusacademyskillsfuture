@@ -64,7 +64,7 @@ const EnterpriseAIInsightsPage: React.FC = () => {
             This trend is democratizing technical skills across organizations. The report highlights a surprising increase in non-technical roles engaging in technical work. Over the past six months, coding-related messages have grown by an average of <strong className="font-semibold text-[#1a1a1a]">36% outside of traditional engineering, IT, and research functions.</strong>
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            This "<strong className="font-semibold text-[#1a1a1a]">equalizing effect</strong>" suggests AI's true power lies in broadening individual capabilities. This democratizing effect is consistent with several external studies, which find that AI disproportionately aids lower-performing workers, leveling the playing field across the organization. It's creating a new class of semi-technical worker, empowering employees in every department to solve problems that were once the exclusive domain of specialists.
+            This "<strong className="font-semibold text-[#1a1a1a]">equalizing effect</strong>" suggests AI's true power lies in broadening individual capabilities. This democratizing effect is consistent with several external studies, which find that AI disproportionately aids lower-performing workers, leveling the playing field across the organization. It's creating a new class of semi-technical worker — precisely the kind of professional that an AI workshop for business professionals is designed to upskill — empowering employees in every department to solve problems that were once the exclusive domain of specialists.
           </p>
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
@@ -101,7 +101,7 @@ const EnterpriseAIInsightsPage: React.FC = () => {
             <li>12% have never used search.</li>
           </ul>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            This reveals a massive amount of untapped potential. The primary bottleneck for enterprise AI is no longer the performance of the models themselves. Instead, the report suggests the main constraint has shifted to "<strong className="font-semibold text-[#1a1a1a]">organizational readiness</strong>"—the ability of a company to train its workforce and adapt its processes.
+            This reveals a massive amount of untapped potential. The primary bottleneck for enterprise AI is no longer the performance of the models themselves. Instead, the report suggests the main constraint has shifted to "<strong className="font-semibold text-[#1a1a1a]">organizational readiness</strong>"—the ability of a company to train its workforce and adapt its processes. This is exactly why structured AI training Singapore companies need — including SkillsFuture AI courses — has become essential for closing the readiness gap.
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             So how are leading firms closing this readiness gap? The report highlights several consistent practices:
@@ -163,7 +163,7 @@ const EnterpriseAIInsightsPage: React.FC = () => {
           </div>
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            The initial wave of AI adoption is over, and the data reveals a clear gap between the early leaders and the rest of the pack. The real work of training, integration, and process redesign is just beginning. The data shows a clear divide between casual users and frontier organizations—which side of that gap will you and your company be on?
+            The initial wave of AI adoption is over, and the data reveals a clear gap between the early leaders and the rest of the pack. The real work of AI skills training for SMEs — including hands-on agentic AI courses and no-code AI automation training — is just beginning. The data shows a clear divide between casual users and frontier organizations. Which side of that gap will you and your company be on?
           </p>
         </div>
       </div>

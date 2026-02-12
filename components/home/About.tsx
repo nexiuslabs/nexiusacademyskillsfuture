@@ -49,7 +49,7 @@ const About: React.FC = () => {
             Learn How to Build Your First Agentic AI System for Instant Business Automation
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
-            You will learn how to design, configure, and launch autonomous agent workflows using no-code platforms. We will focus on practical deployment, applying these intelligent systems to automate critical functions in sales, finance, and operations.
+            In this SkillsFuture AI course, you will learn how to design, configure, and launch autonomous agent workflows using no-code platforms. Our AI workshop for business professionals focuses on practical deployment, applying these intelligent systems to automate critical functions in sales, finance, and operations.
           </p>
 
           <ul className="space-y-4 mb-10">

@@ -30,7 +30,7 @@ const Testimonials: React.FC = () => {
     <section id="reviews" className="py-24 bg-neutral scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-primary">Hear How Our Leaners Have<br/> Benefitted From Our Courses</h2>
+          <h2 className="text-3xl font-bold text-primary">Hear How Our Learners Have<br/> Benefitted From Our AI Certification Courses</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

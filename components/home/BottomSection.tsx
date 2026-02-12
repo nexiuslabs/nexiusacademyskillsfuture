@@ -28,7 +28,7 @@ const BottomSection: React.FC = () => {
       <section className="py-12 bg-white border-b border-gray-100">
         <div className="container mx-auto px-6">
           <h4 className="text-lg font-bold text-primary mb-2">100+ Trusted Companies</h4>
-          <p className="text-xs text-gray-500 mb-8 max-w-md">Upskilling your workforce for the Agentic AI era. Our hands-on courses enable rapid product development and process automation across your enterprise.</p>
+          <p className="text-xs text-gray-500 mb-8 max-w-md">Upskilling your workforce with AI training Singapore companies trust. Our hands-on agentic AI courses enable rapid product development and no-code AI automation across your enterprise.</p>
 
           <div className="relative overflow-hidden">
             <style>{`
@@ -72,7 +72,7 @@ const BottomSection: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary">Latest AI Trends</h2>
+            <h2 className="text-3xl font-bold text-primary">Latest AI Training Insights</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -99,7 +99,7 @@ const BottomSection: React.FC = () => {
               </div>
               <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                 <span className="flex items-center gap-1"><Calendar size={12}/> 02 Jun 2025</span>
-                <span className="flex items-center gap-1"><MessageCircle size={12}/> 87 Viewss</span>
+                <span className="flex items-center gap-1"><MessageCircle size={12}/> 87 Views</span>
               </div>
               <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
                 Beyond the Hype: 5 Things We Just Learned About How Enterprises Really Use AI

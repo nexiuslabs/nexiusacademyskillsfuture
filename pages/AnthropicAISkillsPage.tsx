@@ -95,7 +95,7 @@ const AnthropicAISkillsPage: React.FC = () => {
             This ecosystem of skills doesn't exist in a vacuum; it complements existing standards for agent connectivity. Developers are building skills that orchestrate workflows using multiple external tools connected via protocols like MCP (Machine-Readable Capability Pointers). In this architecture, skills provide the procedural knowledge and expertise ("the how"), while MCP servers provide the connection to external data and APIs ("the what").
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            The most exciting trend to emerge, however, is that <strong className="font-semibold text-[#1a1a1a]">non-technical users are actively building skills.</strong> People in finance, recruiting, and legal are packaging their own procedural knowledge into these simple folders. This is early validation of the core idea: skills empower domain experts—not just developers—to teach agents how to perform their specific, day-to-day work more effectively.
+            The most exciting trend to emerge, however, is that <strong className="font-semibold text-[#1a1a1a]">non-technical users are actively building skills.</strong> People in finance, recruiting, and legal are packaging their own procedural knowledge into these simple folders — the kind of no-code AI automation training that empowers anyone to contribute. This is early validation of the core idea: skills empower domain experts—not just developers—to teach agents how to perform their specific, day-to-day work more effectively.
           </p>
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
@@ -121,7 +121,7 @@ const AnthropicAISkillsPage: React.FC = () => {
             Conclusion: From Static Tools to Dynamic Teammates
           </h2>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            The shift from building monolithic, all-knowing agents to curating a library of composable, shareable skills represents a major evolution in AI development. It moves us away from treating AI as a static tool and toward collaborating with it as a dynamic teammate—one that can be taught, can remember, and can grow more effective over time. By democratizing the ability to impart expertise, this approach promises to make agents not just more intelligent, but truly useful.
+            The shift from building monolithic, all-knowing agents to curating a library of composable, shareable skills represents a major evolution in AI development — and understanding what is agentic AI at this level is what separates casual users from true practitioners. It moves us away from treating AI as a static tool and toward collaborating with it as a dynamic teammate—one that can be taught, can remember, and can grow more effective over time. This is the frontier that the best AI courses Singapore can offer in 2026 are preparing professionals for. By democratizing the ability to impart expertise, this approach promises to make agents not just more intelligent, but truly useful.
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             As we move from simply using AI to actively teaching it through shareable skills, what is the first piece of your own unique expertise you would want your AI teammate to learn?

@@ -21,8 +21,8 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-              Learn Agentic AI hands-on to automate entire business workflows, 
-              boost productivity, and simplify operations, specifically designed for non-technical professionals.
+              This SkillsFuture AI course teaches you agentic AI hands-on to automate entire business workflows, 
+              boost productivity, and simplify operations — an AI certification course Singapore professionals trust, specifically designed for non-technical business leaders.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

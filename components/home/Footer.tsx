@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             <span className="text-2xl font-bold font-sans">NexiusAcademy</span>
           </div>
           <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-            Nexius Academy offers hands-on AI training in Singapore for business professionals. Master agentic AI courses, no-code AI workshops, and generative AI masterclasses designed for non-technical teams.
+            Nexius Academy offers hands-on AI training Singapore business professionals trust. Master our agentic AI course, no-code AI automation training, and generative AI masterclass Singapore programmes — SkillsFuture AI course eligible, designed for non-technical teams and SMEs.
           </p>
           <div className="flex space-x-3">
              <a href="#" className="w-8 h-8 bg-[#2A3B66] flex items-center justify-center rounded hover:bg-secondary transition-colors"><Facebook size={16} /></a>

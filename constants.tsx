@@ -79,8 +79,8 @@ export const SCHEDULES: ScheduleItem[] = [
 
 export const FAQS: FaqItem[] = [
   {
-    question: "What is Generative AI and how does it work?",
-    answer: "Generative AI refers to algorithms (like ChatGPT or Midjourney) that can be used to create new content, including audio, code, images, text, simulations, and videos."
+    question: "What is agentic AI and how does it differ from generative AI?",
+    answer: "Generative AI creates content (text, images, code), while agentic AI takes it further — autonomous AI agents can plan, execute multi-step workflows, and take actions on your behalf. Our agentic AI course teaches you to build these systems for real business automation, no coding required."
   },
   {
     question: "What are the prerequisites for this course?",
@@ -91,8 +91,8 @@ export const FAQS: FaqItem[] = [
     answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
   },
   {
-    question: "What certification will I receive?",
-    answer: "Upon completion, you will receive a Certificate of Completion recognized by industry employers."
+    question: "What AI certification course will I receive in Singapore?",
+    answer: "Upon completion of this AI certification course Singapore professionals trust, you will receive a WSQ Statement of Attainment — a nationally recognized credential that validates your AI skills training."
   }
 ];
 
