@@ -71,9 +71,10 @@ export interface Category {
 
 export interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   date: string;
-  comments: number;
-  image: string;
+  views: number;
   excerpt: string;
+  featured?: boolean;
 }

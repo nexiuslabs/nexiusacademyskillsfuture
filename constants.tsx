@@ -1,4 +1,4 @@
-import { Instructor, Review, ScheduleItem, FaqItem, CurriculumModule } from './types';
+import { Instructor, Review, ScheduleItem, FaqItem, CurriculumModule, BlogPost } from './types';
 
 export const INSTRUCTORS: Instructor[] = [
   {
@@ -152,6 +152,36 @@ export const WEBSITE_IMAGES = {
     cta: "https://tunidbyclygzipvbfzee.supabase.co/storage/v1/object/public/website-images/subscription-cta.jpg"
   }
 };
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 1,
+    slug: 'beyond-chatgpt-ai-powered-company',
+    title: 'Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company',
+    date: '10 Dec 2025',
+    views: 15,
+    excerpt: 'Discover why AI adoption isn\'t enough. Learn the four fundamental shifts in leadership, structure, and strategy needed to transform your business into a Frontier Firm with Agentic Architecture.',
+    featured: true,
+  },
+  {
+    id: 2,
+    slug: 'enterprise-ai-insights',
+    title: 'Beyond the Hype: 5 Things We Just Learned About How Enterprises Really Use AI',
+    date: '02 Jun 2025',
+    views: 87,
+    excerpt: 'OpenAI\'s new report reveals surprising insights from 1 million business customers—from the emergence of a new coder class to a widening gap between AI leaders and laggards.',
+    featured: true,
+  },
+  {
+    id: 3,
+    slug: 'anthropic-ai-skills',
+    title: '4 Counter-Intuitive Ideas From Anthropic on Building AI That Actually Works',
+    date: '12 Dec 2025',
+    views: 21,
+    excerpt: 'Stop building monolithic agents. Discover Anthropic\'s revolutionary approach to AI using composable "Skills"—simple folders that bridge the expertise gap and democratize AI development.',
+    featured: true,
+  },
+];
 
 export const SYSTEM_INSTRUCTION = `
 You are an expert AI Advisor for the 'Nexius Academy Certificate in Applied Generative AI'.

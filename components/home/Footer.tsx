@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -77,10 +78,10 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="font-bold text-lg mb-6">QUICK LINKS</h4>
           <ul className="space-y-3 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-secondary">About</a></li>
-            <li><a href="#" className="hover:text-secondary flex items-center gap-2">Browse Courses <span className="text-secondary">→</span></a></li>
-            <li><a href="#" className="hover:text-secondary">Contact</a></li>
-            <li><a href="#" className="hover:text-secondary">Career</a></li>
+            <li><Link to="/about" className="hover:text-secondary">About</Link></li>
+            <li><Link to="/courses/agentic-ai" className="hover:text-secondary flex items-center gap-2">Browse Courses <span className="text-secondary">→</span></Link></li>
+            <li><Link to="/blog" className="hover:text-secondary">Blog</Link></li>
+            <li><a href="mailto:hello@nexiuslabs.com" className="hover:text-secondary">Contact</a></li>
           </ul>
         </div>
 

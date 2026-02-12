@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CoursePage from './pages/CoursePage';
+import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import EnterpriseAIInsightsPage from './pages/EnterpriseAIInsightsPage';
 import AnthropicAISkillsPage from './pages/AnthropicAISkillsPage';
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/beyond-chatgpt-ai-powered-company" element={<BlogPostPage />} />
         <Route path="/blog/enterprise-ai-insights" element={<EnterpriseAIInsightsPage />} />
         <Route path="/blog/anthropic-ai-skills" element={<AnthropicAISkillsPage />} />

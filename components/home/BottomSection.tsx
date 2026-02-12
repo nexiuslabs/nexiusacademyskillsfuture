@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MessageCircle, ArrowRight } from 'lucide-react';
+import { Calendar, Eye, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { fetchBucketImages, getRandomImages } from '../../services/imageService';
+import { BLOG_POSTS } from '../../constants';
 
 const BottomSection: React.FC = () => {
   const [images, setImages] = useState<string[]>([
@@ -68,7 +69,7 @@ const BottomSection: React.FC = () => {
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* Latest News — pulls from BLOG_POSTS, shows 3 most recent featured */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -76,55 +77,37 @@ const BottomSection: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link to="/blog/beyond-chatgpt-ai-powered-company" className="group cursor-pointer">
-              <div className="overflow-hidden rounded-xl mb-4 h-56">
-                <img src={images[0]} alt="Beyond ChatGPT" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                <span className="flex items-center gap-1"><Calendar size={12}/> 10 Dec 2025</span>
-                <span className="flex items-center gap-1"><MessageCircle size={12}/> 15 Views</span>
-              </div>
-              <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
-                Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company
-              </h3>
-              <p className="text-sm text-gray-500 mb-3 line-clamp-2">
-                Discover why AI adoption isn't enough. Learn the four fundamental shifts in leadership, structure, and strategy needed to transform your business into a Frontier Firm with Agentic Architecture.
-              </p>
-              <span className="text-secondary text-xs font-bold uppercase tracking-wide flex items-center gap-1">Read More <ArrowRight size={12}/></span>
-            </Link>
+            {BLOG_POSTS
+              .filter(p => p.featured)
+              .sort((a, b) => b.id - a.id)
+              .slice(0, 3)
+              .map((post, idx) => (
+                <Link key={post.id} to={`/blog/${post.slug}`} className="group cursor-pointer">
+                  <div className="overflow-hidden rounded-xl mb-4 h-56">
+                    <img src={images[idx] || images[0]} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                    <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
+                    <span className="flex items-center gap-1"><Eye size={12}/> {post.views} Views</span>
+                  </div>
+                  <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-3 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                  <span className="text-secondary text-xs font-bold uppercase tracking-wide flex items-center gap-1">Read More <ArrowRight size={12}/></span>
+                </Link>
+              ))}
+          </div>
 
-            <Link to="/blog/enterprise-ai-insights" className="group cursor-pointer">
-              <div className="overflow-hidden rounded-xl mb-4 h-56">
-                <img src={images[1]} alt="Enterprise AI" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                <span className="flex items-center gap-1"><Calendar size={12}/> 02 Jun 2025</span>
-                <span className="flex items-center gap-1"><MessageCircle size={12}/> 87 Views</span>
-              </div>
-              <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
-                Beyond the Hype: 5 Things We Just Learned About How Enterprises Really Use AI
-              </h3>
-              <p className="text-sm text-gray-500 mb-3 line-clamp-2">
-                OpenAI's new report reveals surprising insights from 1 million business customers—from the emergence of a new coder class to a widening gap between AI leaders and laggards.
-              </p>
-              <span className="text-secondary text-xs font-bold uppercase tracking-wide flex items-center gap-1">Read More <ArrowRight size={12}/></span>
-            </Link>
-
-            <Link to="/blog/anthropic-ai-skills" className="group cursor-pointer">
-              <div className="overflow-hidden rounded-xl mb-4 h-56">
-                <img src={images[2]} alt="Anthropic AI Skills" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                <span className="flex items-center gap-1"><Calendar size={12}/> 12 Dec 2025</span>
-                <span className="flex items-center gap-1"><MessageCircle size={12}/> 21 Views</span>
-              </div>
-              <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
-                4 Counter-Intuitive Ideas From Anthropic on Building AI That Actually Works
-              </h3>
-              <p className="text-sm text-gray-500 mb-3 line-clamp-2">
-                Stop building monolithic agents. Discover Anthropic's revolutionary approach to AI using composable "Skills"—simple folders that bridge the expertise gap and democratize AI development.
-              </p>
-              <span className="text-secondary text-xs font-bold uppercase tracking-wide flex items-center gap-1">Read More <ArrowRight size={12}/></span>
+          <div className="text-center mt-12">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-bold transition-all"
+            >
+              View All Articles
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>

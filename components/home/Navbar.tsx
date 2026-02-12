@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
   const sections = [
     { id: 'courses', label: 'Courses', isHomeLink: true },
     { id: 'reviews', label: 'Reviews', isHomeLink: true },
+    { id: 'blog', label: 'Blog', isLink: true },
     { id: 'about', label: 'About', isLink: true },
   ];
 
