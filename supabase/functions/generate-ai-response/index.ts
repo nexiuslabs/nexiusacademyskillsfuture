@@ -47,31 +47,32 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // Store user message
+    // Store user message and manage sessions
+    let history: { role: string; content: string }[] = [];
     if (sessionId) {
       // Ensure session exists
-      await supabase.from("chat_sessions").upsert({
+      const { error: sessErr } = await supabase.from("chat_sessions").upsert({
         session_id: sessionId,
         last_activity_at: new Date().toISOString(),
         is_active: true,
-      }, { onConflict: "session_id" });
+      }, { onConflict: "session_id", ignoreDuplicates: false });
+      if (sessErr) console.error("Session upsert error:", sessErr);
 
-      await supabase.from("chat_messages").insert({
+      const { error: msgErr } = await supabase.from("chat_messages").insert({
         session_id: sessionId,
         role: "user",
         message_text: message,
       });
-    }
+      if (msgErr) console.error("Message insert error:", msgErr);
 
-    // Get conversation history for context
-    let history: { role: string; content: string }[] = [];
-    if (sessionId) {
-      const { data: msgs } = await supabase
+      // Get conversation history for context
+      const { data: msgs, error: histErr } = await supabase
         .from("chat_messages")
         .select("role, message_text")
         .eq("session_id", sessionId)
         .order("timestamp", { ascending: true })
         .limit(20);
+      if (histErr) console.error("History fetch error:", histErr);
 
       if (msgs) {
         history = msgs.map((m: any) => ({
@@ -81,36 +82,13 @@ Deno.serve(async (req: Request) => {
       }
     }
 
-    // Call OpenAI-compatible API (using OpenClaw's configured provider or direct)
-    const apiKey = Deno.env.get("OPENAI_API_KEY") || Deno.env.get("ANTHROPIC_API_KEY");
-    const apiBase = Deno.env.get("OPENAI_API_BASE") || "https://api.openai.com/v1";
+    // Call OpenAI API (GPT-4o-mini for cost-effective chatbot responses)
+    const apiKey = Deno.env.get("OPENAI_API_KEY");
 
     let responseText: string;
 
-    if (Deno.env.get("ANTHROPIC_API_KEY")) {
-      // Use Anthropic Claude directly
-      const anthropicRes = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "x-api-key": Deno.env.get("ANTHROPIC_API_KEY")!,
-          "anthropic-version": "2023-06-01",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 500,
-          system: SYSTEM_INSTRUCTION,
-          messages: history.length > 0
-            ? history
-            : [{ role: "user", content: message }],
-        }),
-      });
-
-      const anthropicData = await anthropicRes.json();
-      responseText = anthropicData.content?.[0]?.text || "I'm sorry, I didn't get that.";
-    } else if (apiKey) {
-      // Use OpenAI-compatible API
-      const openaiRes = await fetch(`${apiBase}/chat/completions`, {
+    if (apiKey) {
+      const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${apiKey}`,
