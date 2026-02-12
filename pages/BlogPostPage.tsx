@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 
 const BlogPostPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company | Nexius Academy"
+        description="Most companies hit an AI plateau after adopting ChatGPT. Discover the 4 fundamental shifts in leadership, structure, and strategy needed to build a true AI-powered company."
+        canonical="/blog/beyond-chatgpt-ai-powered-company"
+        ogType="article"
+      />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
         <div className="max-w-[760px] mx-auto bg-white px-8 py-10 shadow-lg my-10 rounded-lg">

@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 
 const AnthropicAISkillsPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Anthropic AI Skills: Essential Capabilities for Business Professionals | Nexius Academy"
+        description="Explore the essential AI skills from Anthropic's ecosystem that business professionals need in 2026. From Claude to enterprise AI deployment strategies."
+        canonical="/blog/anthropic-ai-skills"
+        ogType="article"
+      />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
         <div className="max-w-[760px] mx-auto bg-white px-8 py-10 shadow-lg my-10 rounded-lg">

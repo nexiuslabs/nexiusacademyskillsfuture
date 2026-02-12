@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 
 const EnterpriseAIInsightsPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Enterprise AI Insights: How Businesses Are Scaling AI in 2026 | Nexius Academy"
+        description="Real-world insights on how enterprises are deploying AI at scale. Learn the strategies, frameworks, and lessons from companies successfully implementing agentic AI."
+        canonical="/blog/enterprise-ai-insights"
+        ogType="article"
+      />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
         <div className="max-w-[760px] mx-auto bg-white px-8 py-10 shadow-lg my-10 rounded-lg">

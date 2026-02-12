@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import { fetchBucketImages, getRandomImages } from '../services/imageService';
@@ -34,6 +35,11 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
+      <SEO
+        title="About Nexius Academy | AI Training Experts in Singapore"
+        description="Nexius Academy empowers business professionals with hands-on agentic AI skills. Founded by builders of Agentic ERP systems, we bridge the gap between AI technology and practical business application."
+        canonical="/about"
+      />
       <Navbar />
 
       <main className="flex-grow">

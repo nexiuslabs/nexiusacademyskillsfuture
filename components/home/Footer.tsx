@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        <p>© 2025 - Nexius Academy. All rights reserved</p>
+        <p>© 2026 - Nexius Academy. All rights reserved</p>
         <div className="mt-4 md:mt-0">
           <select className="bg-transparent border border-gray-700 text-gray-400 rounded px-2 py-1 outline-none">
             <option>English</option>

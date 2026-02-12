@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
                  <CheckCircle size={16} className="text-accent" /> 16 Hours
                </div>
                <div className="flex items-center gap-1">
-                 <CheckCircle size={16} className="text-accent" /> Up to 90 Subsidy
+                 <CheckCircle size={16} className="text-accent" /> Up to 90% Subsidy
                </div>
             </div>
           </div>

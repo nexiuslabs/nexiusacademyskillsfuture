@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Hero from '../components/home/Hero';
 import Features from '../components/home/Features';
@@ -31,6 +32,11 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
+      <SEO
+        title="Nexius Academy | AI Training and Workshops Singapore for Business Professionals"
+        description="Nexius Academy offers hands-on AI training in Singapore for business professionals. Master agentic AI, no-code automation, and generative AI through expert-led workshops and certification courses."
+        canonical="/"
+      />
       <Navbar />
       <main className="flex-grow">
         <Hero />
