@@ -1,5 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { GoogleGenerativeAI } from "npm:@google/generative-ai@0.21.0";
+import { createClient } from "npm:@supabase/supabase-js@2.87.1";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,93 +7,152 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const SYSTEM_INSTRUCTION = `
-You are an expert AI Advisor for the 'Nexius Academy Certificate in Applied Generative AI'.
-Your goal is to help potential students understand the course and encourage them to apply. From the user's questions, determine the level of interest and try to get their contact details like email or phone number. Use the information in this website and the following course details to answer questions:
+const SYSTEM_INSTRUCTION = `You are Melkizac ⚡, the AI Course Advisor for Nexius Academy.
+Your goal is to help potential students understand the course and encourage them to apply.
+From the user's questions, determine their level of interest and try to get their contact details like email or phone number.
 
+Use these course details to answer questions:
 - Course Name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
 - Course Ref: TGS-2025059915
-- Price: $890 (Full), $111.03 (After Subsidy for SG Citizens 40 & above).
-- Duration: 16 Hours Total (2 full days + 1 Assessment).
-- Format: In-Person.
-- Curriculum: Fundamentals, Advanced Prompt Engineering, Business Writing, Image Generation, Data Analysis, Ethics.
-- Subsidies: SkillsFuture Credits, UTAP, PSEA available.
-- Cert: WSQ Statement of Attainment.
-- Tone: Professional, encouraging, and helpful. Keep answers concise (under 100 words).
-`;
+- Price: $890 (Full), $111.03 (After Subsidy for SG Citizens 40 & above)
+- Duration: 16 Hours Total (2 full days + 1 Assessment)
+- Format: In-Person
+- Curriculum: Fundamentals, Advanced Prompt Engineering, Business Writing, Image Generation, Data Analysis, Ethics
+- Subsidies: SkillsFuture Credits, UTAP, PSEA available. Up to 90% subsidy.
+- Cert: WSQ Statement of Attainment
+- Instructors: Melverick Ng (30+ years business experience, Master Trainer) and Darryl Wong (CPA, 20+ years experience)
+- Parent company: Nexius Labs (builds Agentic ERP & CRM for SMEs)
+- Website: https://academy.nexiuslabs.com
+- Booking: https://outlook.office.com/bookwithme/user/1a3b3c1b65044d24b6cddcc6b42c8ecb%40nexiuslabs.com
+
+Tone: Sharp, friendly, professional. Keep answers concise (under 100 words). No fluff.
+If someone asks something outside your scope, redirect them to the course or suggest contacting the team.`;
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, {
-      status: 200,
-      headers: corsHeaders,
-    });
+    return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    const apiKey = Deno.env.get("GOOGLE_API_KEY");
-    
-    if (!apiKey) {
-      return new Response(
-        JSON.stringify({ error: "API key not configured" }),
-        {
-          status: 500,
-          headers: {
-            ...corsHeaders,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    }
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const { message } = await req.json();
+    const { message, sessionId } = await req.json();
 
     if (!message || typeof message !== "string") {
       return new Response(
         JSON.stringify({ error: "Invalid message" }),
-        {
-          status: 400,
-          headers: {
-            ...corsHeaders,
-            "Content-Type": "application/json",
-          },
-        }
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash-exp",
-      systemInstruction: SYSTEM_INSTRUCTION,
-    });
+    // Store user message
+    if (sessionId) {
+      // Ensure session exists
+      await supabase.from("chat_sessions").upsert({
+        session_id: sessionId,
+        last_activity_at: new Date().toISOString(),
+        is_active: true,
+      }, { onConflict: "session_id" });
 
-    const result = await model.generateContent(message);
-    const response = await result.response;
-    const text = response.text() || "I'm sorry, I didn't get that.";
+      await supabase.from("chat_messages").insert({
+        session_id: sessionId,
+        role: "user",
+        message_text: message,
+      });
+    }
 
-    return new Response(
-      JSON.stringify({ response: text }),
-      {
-        status: 200,
+    // Get conversation history for context
+    let history: { role: string; content: string }[] = [];
+    if (sessionId) {
+      const { data: msgs } = await supabase
+        .from("chat_messages")
+        .select("role, message_text")
+        .eq("session_id", sessionId)
+        .order("timestamp", { ascending: true })
+        .limit(20);
+
+      if (msgs) {
+        history = msgs.map((m: any) => ({
+          role: m.role === "user" ? "user" : "assistant",
+          content: m.message_text,
+        }));
+      }
+    }
+
+    // Call OpenAI-compatible API (using OpenClaw's configured provider or direct)
+    const apiKey = Deno.env.get("OPENAI_API_KEY") || Deno.env.get("ANTHROPIC_API_KEY");
+    const apiBase = Deno.env.get("OPENAI_API_BASE") || "https://api.openai.com/v1";
+
+    let responseText: string;
+
+    if (Deno.env.get("ANTHROPIC_API_KEY")) {
+      // Use Anthropic Claude directly
+      const anthropicRes = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
         headers: {
-          ...corsHeaders,
+          "x-api-key": Deno.env.get("ANTHROPIC_API_KEY")!,
+          "anthropic-version": "2023-06-01",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 500,
+          system: SYSTEM_INSTRUCTION,
+          messages: history.length > 0
+            ? history
+            : [{ role: "user", content: message }],
+        }),
+      });
+
+      const anthropicData = await anthropicRes.json();
+      responseText = anthropicData.content?.[0]?.text || "I'm sorry, I didn't get that.";
+    } else if (apiKey) {
+      // Use OpenAI-compatible API
+      const openaiRes = await fetch(`${apiBase}/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
-      }
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: SYSTEM_INSTRUCTION },
+            ...(history.length > 0
+              ? history
+              : [{ role: "user", content: message }]),
+          ],
+          max_tokens: 500,
+          temperature: 0.7,
+        }),
+      });
+
+      const openaiData = await openaiRes.json();
+      responseText = openaiData.choices?.[0]?.message?.content || "I'm sorry, I didn't get that.";
+    } else {
+      responseText = "Chat is temporarily unavailable. Please contact us directly at the academy.";
+    }
+
+    // Store bot response
+    if (sessionId) {
+      await supabase.from("chat_messages").insert({
+        session_id: sessionId,
+        role: "model",
+        message_text: responseText,
+      });
+    }
+
+    return new Response(
+      JSON.stringify({ response: responseText }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("Chat API Error:", error);
     return new Response(
-      JSON.stringify({ 
-        error: "I am currently experiencing high traffic. Please try again later." 
-      }),
-      {
-        status: 500,
-        headers: {
-          ...corsHeaders,
-          "Content-Type": "application/json",
-        },
-      }
+      JSON.stringify({ error: "I'm experiencing issues right now. Please try again shortly." }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
 });

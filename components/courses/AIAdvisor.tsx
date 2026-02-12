@@ -6,7 +6,7 @@ import { generateAIResponse } from '../../services/geminiService';
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hi there! I'm the GenAI Course Advisor. Ask me anything about subsidies, curriculum, or schedules!" }
+    { role: 'model', text: "Hey! I'm Melkizac ⚡, your AI Course Advisor. Ask me anything about subsidies, curriculum, schedules, or how agentic AI can transform your business!" }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +63,7 @@ const AIAdvisor: React.FC = () => {
                 <Sparkles size={16} />
               </div>
               <div>
-                <h3 className="font-bold text-sm">Course AI Advisor</h3>
+                <h3 className="font-bold text-sm">Melkizac ⚡</h3>
                 <p className="text-xs text-gray-300 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-400 rounded-full"></span> Online
                 </p>
@@ -117,7 +117,7 @@ const AIAdvisor: React.FC = () => {
               </button>
             </div>
             <div className="text-center mt-2">
-                 <span className="text-[10px] text-gray-400">Powered by Google Gemini</span>
+                 <span className="text-[10px] text-gray-400">Powered by Nexius Labs AI</span>
             </div>
           </div>
 
