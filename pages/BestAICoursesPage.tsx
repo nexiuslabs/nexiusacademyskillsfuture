@@ -42,8 +42,8 @@ const BestAICoursesPage: React.FC = () => {
 
           <div className="relative pb-[56.25%] h-0 overflow-hidden my-8 rounded-lg shadow-md">
             <iframe
-              src="https://www.youtube.com/embed/RIwPU_aFm9Y"
-              title="5 Best AI Courses To Take Online"
+              src="https://www.youtube.com/embed/-fGo4_0JiaA"
+              title="11 Best AI Certifications You Need To Take in 2026"
               className="absolute top-0 left-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -42,8 +42,8 @@ const WhatIsAgenticAIPage: React.FC = () => {
 
           <div className="relative pb-[56.25%] h-0 overflow-hidden my-8 rounded-lg shadow-md">
             <iframe
-              src="https://www.youtube.com/embed/-pqzyvRp3Tc"
-              title="What is Agentic AI? An Easy Explanation For Everyone"
+              src="https://www.youtube.com/embed/NS8PneKC9XQ"
+              title="Agentic AI Explained: How Jobs Will Change in 2026"
               className="absolute top-0 left-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

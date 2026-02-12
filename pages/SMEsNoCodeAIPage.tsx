@@ -42,8 +42,8 @@ const SMEsNoCodeAIPage: React.FC = () => {
 
           <div className="relative pb-[56.25%] h-0 overflow-hidden my-8 rounded-lg shadow-md">
             <iframe
-              src="https://www.youtube.com/embed/jQb5K2bCDzI"
-              title="AI-Powered Automation for Small Businesses"
+              src="https://www.youtube.com/embed/CO8EU32b-Y0"
+              title="The Unpopular AI Business Model That Wins in 2026"
               className="absolute top-0 left-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
