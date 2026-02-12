@@ -51,9 +51,11 @@ const BlogPage: React.FC = () => {
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group hover:-translate-y-1 duration-300"
                 >
                   <div className="overflow-hidden h-52">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center">
-                      <span className="text-6xl opacity-30">📰</span>
-                    </div>
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
 
                   <div className="p-6">

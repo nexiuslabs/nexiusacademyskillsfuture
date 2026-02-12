@@ -75,6 +75,7 @@ export interface BlogPost {
   title: string;
   date: string;
   views: number;
+  image: string;
   excerpt: string;
   featured?: boolean;
 }

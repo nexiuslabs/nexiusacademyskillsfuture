@@ -84,7 +84,7 @@ const BottomSection: React.FC = () => {
               .map((post, idx) => (
                 <Link key={post.id} to={`/blog/${post.slug}`} className="group cursor-pointer">
                   <div className="overflow-hidden rounded-xl mb-4 h-56">
-                    <img src={images[idx] || images[0]} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                     <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
