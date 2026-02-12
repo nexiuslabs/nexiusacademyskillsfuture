@@ -40,10 +40,10 @@ const HomePage: React.FC = () => {
 
         <section id="audience" className="bg-white py-12 md:py-16 text-center scroll-mt-32">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">The People We've Empowered</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">AI Training Singapore: The People We've Empowered</h2>
             <div className="w-20 h-1.5 bg-secondary mx-auto rounded-full mb-8"></div>
             <p className="text-gray-500 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
-              Designed for non-technical professionals, managers, and business leaders ready to harness the power of Agentic AI to automate workflows and drive efficiency.
+              Our AI workshops for business professionals are designed for non-coders, managers, and SME leaders ready to harness agentic AI to automate workflows and drive efficiency — no coding required.
             </p>
           </div>
         </section>

@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
             
             <img
               src={currentImage}
-              alt="Happy Student"
+              alt="AI training Singapore — business professionals learning agentic AI at Nexius Academy"
               className="relative rounded-3xl shadow-2xl z-10 w-full max-w-md object-cover h-[500px] lg:h-[600px] transition-opacity duration-1000"
               key={currentImage}
             />
