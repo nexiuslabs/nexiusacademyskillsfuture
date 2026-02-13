@@ -5,7 +5,7 @@ import { fetchBucketImages, getRandomImages } from '../../services/imageService'
 import { BLOG_POSTS } from '../../constants';
 
 const BottomSection: React.FC = () => {
-  const [images, setImages] = useState<string[]>([
+  const [_images, setImages] = useState<string[]>([
     'https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800',
     'https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800',
     'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -81,7 +81,7 @@ const BottomSection: React.FC = () => {
               .filter(p => p.featured)
               .sort((a, b) => b.id - a.id)
               .slice(0, 3)
-              .map((post, idx) => (
+              .map((post, _idx) => (
                 <Link key={post.id} to={`/blog/${post.slug}`} className="group cursor-pointer">
                   <div className="overflow-hidden rounded-xl mb-4 h-56">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
