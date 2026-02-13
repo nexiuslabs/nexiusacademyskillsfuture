@@ -100,16 +100,10 @@ Deno.serve(async (req: Request) => {
         .single();
 
       if (sessionData?.handoff_active) {
-        // Forward to Telegram, don't call AI
+        // Silently forward to Telegram — no repeat message to customer
         await sendTelegramNotification(sessionId, message);
-        const waitText = "Your message has been forwarded to our team. They'll respond shortly — please stay on this chat.";
-        await supabase.from("chat_messages").insert({
-          session_id: sessionId,
-          role: "model",
-          message_text: waitText,
-        });
         return new Response(
-          JSON.stringify({ response: waitText }),
+          JSON.stringify({ response: '' }),
           { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
