@@ -2,7 +2,7 @@
 
 let _sessionId: string | null = null;
 
-function getSessionId(): string {
+export function getSessionId(): string {
   if (!_sessionId) {
     _sessionId = crypto.randomUUID();
   }

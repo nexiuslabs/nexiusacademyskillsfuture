@@ -1,7 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { ChatMessage } from '../../types';
-import { generateAIResponse } from '../../services/geminiService';
+import { generateAIResponse, getSessionId } from '../../services/geminiService';
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +13,10 @@ const AIAdvisor: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isHandoff, setIsHandoff] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const lastMsgCountRef = useRef(0);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -19,6 +25,49 @@ const AIAdvisor: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isOpen]);
+
+  // Poll for new messages when in handoff mode
+  const pollMessages = useCallback(async () => {
+    if (!isHandoff) return;
+    try {
+      const sessionId = getSessionId();
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/chat_messages?session_id=eq.${sessionId}&order=timestamp.asc&select=role,message_text`,
+        {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          },
+        }
+      );
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.length > lastMsgCountRef.current) {
+        // New messages arrived — rebuild message list from DB
+        const dbMessages: ChatMessage[] = data.map((m: any) => ({
+          role: m.role === 'user' ? 'user' : 'model',
+          text: m.message_text,
+        }));
+        // Keep the welcome message + DB messages
+        setMessages([
+          { role: 'model', text: "Hello! I'm Nexius Agent, your AI Course Advisor. I'm here to help you with any questions about our courses, subsidies, curriculum, or how agentic AI can benefit your business. How can I assist you today?" },
+          ...dbMessages,
+        ]);
+        lastMsgCountRef.current = data.length;
+      }
+    } catch (e) {
+      console.error('Poll error:', e);
+    }
+  }, [isHandoff]);
+
+  useEffect(() => {
+    if (isHandoff) {
+      pollRef.current = setInterval(pollMessages, 3000);
+      return () => {
+        if (pollRef.current) clearInterval(pollRef.current);
+      };
+    }
+  }, [isHandoff, pollMessages]);
 
   const handleSend = async () => {
     if (!inputValue.trim()) return;
@@ -32,6 +81,28 @@ const AIAdvisor: React.FC = () => {
 
     setMessages(prev => [...prev, { role: 'model', text: responseText }]);
     setIsLoading(false);
+
+    // Detect handoff
+    if (responseText.includes('connecting you with a team member') || responseText.includes('forwarded to our team')) {
+      setIsHandoff(true);
+      // Sync message count from DB
+      try {
+        const sessionId = getSessionId();
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/chat_messages?session_id=eq.${sessionId}&select=id`,
+          {
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            },
+          }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          lastMsgCountRef.current = data.length;
+        }
+      } catch (_e) { /* ignore */ }
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -65,7 +136,8 @@ const AIAdvisor: React.FC = () => {
               <div>
                 <h3 className="font-bold text-sm">Nexius Agent</h3>
                 <p className="text-xs text-gray-300 flex items-center gap-1">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span> Online
+                  <span className={`w-2 h-2 rounded-full ${isHandoff ? 'bg-yellow-400' : 'bg-green-400'}`}></span> 
+                  {isHandoff ? 'Team member joining...' : 'Online'}
                 </p>
               </div>
             </div>
@@ -105,7 +177,7 @@ const AIAdvisor: React.FC = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyPress}
-                placeholder="Ask about subsidies..." 
+                placeholder={isHandoff ? "Type your message..." : "Ask about subsidies..."} 
                 className="flex-1 bg-transparent focus:outline-none text-sm text-gray-700"
               />
               <button 
