@@ -12,12 +12,13 @@ const TELEGRAM_CHAT_ID = '1037337205';
 
 async function sendTelegramNotification(sessionId: string, customerMessage: string) {
   if (!TELEGRAM_BOT_TOKEN) return;
-  const text = `🔔 *Customer needs help* (academy)\n\nSession: \`${sessionId}\`\nMessage: ${customerMessage.substring(0, 500)}\n\nReply with:\n\`/reply academy:${sessionId} Your message here\``;
+  const safeMsg = customerMessage.substring(0, 500).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const text = `🔔 <b>Customer needs help</b> (academy)\n\nSession: <code>${sessionId}</code>\nMessage: ${safeMsg}\n\nReply with:\n<code>/reply academy:${sessionId} Your message here</code>`;
   try {
     await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'Markdown' }),
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' }),
     });
   } catch (e) {
     console.error('Telegram notification error:', e);
