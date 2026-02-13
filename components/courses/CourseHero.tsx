@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           <div className="relative">
              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white min-h-[400px]">
                 <img 
-                  src="https://tunidbyclygzipvbfzee.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png" 
+                  src="https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png" 
                   alt="Professionals working with futuristic AI technology" 
                   className="w-full h-full object-cover"
                 />

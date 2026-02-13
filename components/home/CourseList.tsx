@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import { Course } from '../../types';
 
-const COURSE_HERO_IMAGE = 'https://tunidbyclygzipvbfzee.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png';
+const COURSE_HERO_IMAGE = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png';
 
 const MOCK_COURSES: Course[] = [
   { id: 1, title: 'Agentic AI Foundations for Non-Technical Professionals', category: 'AI', price: 67, rating: 5.0, students: 223, image: COURSE_HERO_IMAGE, author: 'Melverick Ng', authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg' },
