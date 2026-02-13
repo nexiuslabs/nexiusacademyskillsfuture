@@ -79,11 +79,14 @@ const AIAdvisor: React.FC = () => {
 
     const responseText = await generateAIResponse(userMsg);
 
-    setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    // Don't add empty responses (silent handoff mode)
+    if (responseText && responseText.trim()) {
+      setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    }
     setIsLoading(false);
 
-    // Detect handoff
-    if (responseText.includes('connecting you with a team member') || responseText.includes('forwarded to our team')) {
+    // Detect handoff - check for common handoff phrases or empty response (silent handoff)
+    if (responseText === '' || responseText.includes('connecting you with a team member') || responseText.includes('forwarded to our team') || responseText.includes('connect you with') || responseText.includes('team member') || responseText.includes('hold on')) {
       setIsHandoff(true);
       // Sync message count from DB
       try {
