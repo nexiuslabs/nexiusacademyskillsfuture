@@ -161,8 +161,6 @@ Deno.serve(async (req: Request) => {
     responseText = responseText.replace(/\s*\[ESCALATE\]\s*/g, '').trim();
 
     if (shouldEscalate) {
-      responseText += '\n\nI\'m connecting you with a team member who can help you further. Please hold on — they\'ll join this chat shortly.';
-
       // Set handoff mode
       if (sessionId) {
         await supabase
