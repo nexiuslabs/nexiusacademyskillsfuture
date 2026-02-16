@@ -9,7 +9,7 @@ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hello! I'm Nexius Agent, your AI Course Advisor. I'm here to help you with any questions about our courses, subsidies, curriculum, or how agentic AI can benefit your business. How can I assist you today?" }
+    { role: 'model', text: "Hi! I’m Wendy 👋 Ask me anything about Nexius Academy workshops, schedules, or enrollment." }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +50,7 @@ const AIAdvisor: React.FC = () => {
         }));
         // Keep the welcome message + DB messages
         setMessages([
-          { role: 'model', text: "Hello! I'm Nexius Agent, your AI Course Advisor. I'm here to help you with any questions about our courses, subsidies, curriculum, or how agentic AI can benefit your business. How can I assist you today?" },
+          { role: 'model', text: "Hi! I’m Wendy 👋 Ask me anything about Nexius Academy workshops, schedules, or enrollment." },
           ...dbMessages,
         ]);
         lastMsgCountRef.current = data.length;
@@ -137,7 +137,7 @@ const AIAdvisor: React.FC = () => {
                 <Sparkles size={16} />
               </div>
               <div>
-                <h3 className="font-bold text-sm">Nexius Agent</h3>
+                <h3 className="font-bold text-sm">Wendy</h3>
                 <p className="text-xs text-gray-300 flex items-center gap-1">
                   <span className={`w-2 h-2 rounded-full ${isHandoff ? 'bg-yellow-400' : 'bg-green-400'}`}></span> 
                   {isHandoff ? 'Team member joining...' : 'Online'}
@@ -180,7 +180,7 @@ const AIAdvisor: React.FC = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyPress}
-                placeholder={isHandoff ? "Type your message..." : "Ask about subsidies..."} 
+                placeholder={isHandoff ? "Type your message..." : "Ask Wendy about workshops..."} 
                 className="flex-1 bg-transparent focus:outline-none text-sm text-gray-700"
               />
               <button 
