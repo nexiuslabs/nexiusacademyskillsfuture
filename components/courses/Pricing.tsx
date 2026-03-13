@@ -3,7 +3,7 @@ import { Check } from 'lucide-react';
 
 const Pricing: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<'individual' | 'corporate'>('individual');
-  const APPLY_LINK = "https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01";
+  const APPLY_LINK = "#schedule";
 
   const individualPricing = {
     tier1: {

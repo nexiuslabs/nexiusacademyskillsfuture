@@ -68,9 +68,7 @@ const About: React.FC = () => {
           </ul>
 
           <a 
-            href="https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#schedule"
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-opacity-90 transition-all"
           >
             Register Now

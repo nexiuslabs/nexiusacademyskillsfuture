@@ -20,9 +20,7 @@ const InstructorCTA: React.FC = () => {
             Master Agentic AI to eliminate manual work, automate your entire business processes, and achieve instant, measurable productivity gains.
           </p>
           <a
-            href="https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#schedule"
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-white hover:text-secondary transition-colors"
           >
             Register Today

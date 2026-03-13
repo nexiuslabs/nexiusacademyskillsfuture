@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const StickyNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const APPLY_LINK = "https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01";
+  const APPLY_LINK = "#schedule";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100">

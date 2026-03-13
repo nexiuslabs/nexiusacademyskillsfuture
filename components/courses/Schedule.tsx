@@ -3,7 +3,7 @@ import { SCHEDULES } from '../../constants';
 import { MapPin, Monitor, Clock } from 'lucide-react';
 
 const Schedule: React.FC = () => {
-  const APPLY_LINK = "https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01";
+  const APPLY_LINK = "#join";
   const [selectedMonth, setSelectedMonth] = useState('Dec 2025');
 
   const months = ['Dec 2025', 'Jan 2026', 'Feb 2026'];
