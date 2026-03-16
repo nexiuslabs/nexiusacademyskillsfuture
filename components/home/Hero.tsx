@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
             Agentic AI Courses <br />
-            <span className="text-secondary">for Every Non-Technical Professionals</span>
+            <span className="text-secondary">for Non-Technical Professionals</span>
           </h1>
           <p className="text-charcoal text-lg md:text-xl max-w-lg leading-relaxed">
             Learn Agentic AI hands-on to automate entire business workflows, boost productivity, and simplify operations, specifically designed for non-technical professionals.
