@@ -77,7 +77,7 @@ const AIAdvisor: React.FC = () => {
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
-    const responseText = await generateAIResponse(userMsg);
+    const responseText = await generateAIResponse(userMsg, 'academy');
 
     // Don't add empty responses (silent handoff mode)
     if (responseText && responseText.trim()) {

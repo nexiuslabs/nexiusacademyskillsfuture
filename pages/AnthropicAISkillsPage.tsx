@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const AnthropicAISkillsPage: React.FC = () => {
   return (
@@ -63,6 +64,8 @@ const AnthropicAISkillsPage: React.FC = () => {
             </p>
           </div>
 
+          <ArticleCTA articleSlug="anthropic-ai-skills" ctaType="workflow_checklist" position="30_percent" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
             The Solution is Simple: "Skills" Are Just Folders
@@ -117,6 +120,9 @@ const AnthropicAISkillsPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Skills are like Applications:</strong> This is the layer where "millions of developers... encoded domain expertise and our unique points of view" to "solve concrete problem[s]" for themselves and for the world.</li>
           </ul>
 
+          <ArticleCTA articleSlug="anthropic-ai-skills" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="anthropic-ai-skills" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: From Static Tools to Dynamic Teammates
           </h2>
@@ -126,6 +132,8 @@ const AnthropicAISkillsPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             As we move from simply using AI to actively teaching it through shareable skills, what is the first piece of your own unique expertise you would want your AI teammate to learn?
           </p>
+          <ArticleCTA articleSlug="anthropic-ai-skills" ctaType="join_next_cohort" position="article_end" />
+          <AuthorCredibilityBox articleSlug="anthropic-ai-skills" />
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const SMEsNoCodeAIPage: React.FC = () => {
   return (
@@ -94,6 +95,8 @@ const SMEsNoCodeAIPage: React.FC = () => {
             A growing professional services firm was onboarding 3-5 new hires monthly, each requiring coordination across IT, HR, and department heads. An agentic workflow now triggers on hire confirmation: IT accounts are provisioned, welcome emails are sent, orientation schedules are generated, compliance documents are distributed for e-signature, and the hiring manager receives a checklist update — all without a single email being manually sent.
           </p>
 
+          <ArticleCTA articleSlug="smes-no-code-ai-automation-singapore" ctaType="workflow_checklist" position="30_percent" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
             Why No-Code Changes Everything for SMEs
@@ -150,6 +153,9 @@ const SMEsNoCodeAIPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Step 5 — Measure and Expand:</strong> Track the hours saved, errors eliminated, and money recouped. Use this data to build the case for automating your next 2-3 workflows.</li>
           </ul>
 
+          <ArticleCTA articleSlug="smes-no-code-ai-automation-singapore" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="smes-no-code-ai-automation-singapore" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: The Democratisation of Automation Is Here
           </h2>
@@ -165,6 +171,8 @@ const SMEsNoCodeAIPage: React.FC = () => {
               Join our next AI training cohort →
             </Link>
           </p>
+          <ArticleCTA articleSlug="smes-no-code-ai-automation-singapore" ctaType="join_next_cohort" position="article_end" />
+          <AuthorCredibilityBox articleSlug="smes-no-code-ai-automation-singapore" />
         </div>
       </div>
     </>

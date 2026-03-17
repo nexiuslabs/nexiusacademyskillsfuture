@@ -43,28 +43,39 @@ const Curriculum: React.FC = () => {
               </div>
             </div>
             
-            <div className="mt-auto bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div className="mt-auto space-y-6">
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h4 className="text-primary font-bold mb-3">You will leave with:</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 automation blueprint tailored to your business workflow.</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 deployable workflow you can pilot immediately after class.</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 prompt + system template pack for recurring business tasks.</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 mb-2">
-                    <div className="w-2 h-2 rounded-full bg-accent"></div>
-                    <span className="font-bold text-primary">Duration:</span>
-                    <span className="text-gray-600">16 Hours (Including Assessment)</span>
+                  <div className="w-2 h-2 rounded-full bg-accent"></div>
+                  <span className="font-bold text-primary">Duration:</span>
+                  <span className="text-gray-600">16 Hours (Including Assessment)</span>
                 </div>
                 <div className="flex items-center gap-3 mb-2">
-                    <div className="w-2 h-2 rounded-full bg-accent"></div>
-                    <span className="font-bold text-primary">Prerequisites:</span>
-                    <span className="text-gray-600">No technical knowledge required.</span>
+                  <div className="w-2 h-2 rounded-full bg-accent"></div>
+                  <span className="font-bold text-primary">Prerequisites:</span>
+                  <span className="text-gray-600">No technical knowledge required.</span>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-accent"></div>
-                    <span className="font-bold text-primary">Certification:</span>
-                    <span className="text-gray-600">Certificate of Attainment</span>
+                  <div className="w-2 h-2 rounded-full bg-accent"></div>
+                  <span className="font-bold text-primary">Certification:</span>
+                  <span className="text-gray-600">Certificate of Attainment</span>
                 </div>
-            </div>
+              </div>
 
-            <div className="mt-8">
-                 <button className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-lg transition-colors">
-                    Download Full Syllabus PDF
-                 </button>
+              <div>
+                <button className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                  Download Full Syllabus PDF
+                </button>
+              </div>
             </div>
           </div>
 

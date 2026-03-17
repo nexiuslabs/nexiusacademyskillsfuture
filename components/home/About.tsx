@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { fetchBucketImages, getRandomImages } from '../../services/imageService';
+import { trackOutboundClick } from '../../services/analytics';
 
 const About: React.FC = () => {
   const [images, setImages] = useState<string[]>([
@@ -68,7 +69,16 @@ const About: React.FC = () => {
           </ul>
 
           <a 
-            href="#schedule"
+            href="https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              trackOutboundClick({
+                channel: 'skillsfuture',
+                pagePath: '/',
+                position: 'home_about_register_now',
+              })
+            }
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-opacity-90 transition-all"
           >
             Register Now

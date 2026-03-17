@@ -1,0 +1,199 @@
+import React, { useEffect, useMemo, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { X, ArrowRight } from 'lucide-react';
+import { estimateNetFee, LeadCapturePayload, LeadSourceTag, submitLeadCapture } from '../../services/leadCaptureService';
+import { trackLeadFormSubmit, trackLeadModalOpen, trackOutboundClick } from '../../services/analytics';
+
+declare global {
+  interface WindowEventMap {
+    'open-lead-modal': CustomEvent<{
+      sourceTag?: LeadSourceTag;
+      intent?: LeadCapturePayload['intent'];
+    }>;
+  }
+}
+
+const DEFAULT_STATE: Omit<LeadCapturePayload, 'sourceTag' | 'pagePath'> = {
+  fullName: '',
+  email: '',
+  phone: '',
+  role: '',
+  ageBand: 'below_40',
+  preferredIntake: '',
+  intent: 'subsidy_fit',
+};
+
+const LeadCaptureModal: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
+  const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
+  const [formState, setFormState] = useState(DEFAULT_STATE);
+
+  const estimate = useMemo(() => estimateNetFee(formState.ageBand), [formState.ageBand]);
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setIsSubmitting(false);
+  };
+
+  useEffect(() => {
+    const search = new URLSearchParams(location.search);
+    const lead = search.get('lead');
+    const source = (search.get('lead_source') as LeadSourceTag | null) || 'unknown';
+
+    if (lead) {
+      setSourceTag(source);
+      setOpenMethod('query_auto_open');
+      setFormState((prev) => ({
+        ...prev,
+        intent: lead === 'join-next-cohort' ? 'reserve_seat' : 'subsidy_fit',
+      }));
+      setIsSubmitted(false);
+      setIsOpen(true);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    const handler = (event: WindowEventMap['open-lead-modal']) => {
+      setSourceTag(event.detail?.sourceTag || 'unknown');
+      setOpenMethod('cta_click');
+      setFormState((prev) => ({ ...prev, intent: event.detail?.intent || 'subsidy_fit' }));
+      setIsSubmitted(false);
+      setIsOpen(true);
+    };
+
+    window.addEventListener('open-lead-modal', handler);
+    return () => window.removeEventListener('open-lead-modal', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    trackLeadModalOpen({
+      sourceTag,
+      intent: formState.intent,
+      pagePath: location.pathname,
+      openMethod,
+    });
+  }, [formState.intent, isOpen, location.pathname, openMethod, sourceTag]);
+
+  const onSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await submitLeadCapture({
+        ...formState,
+        sourceTag,
+        pagePath: location.pathname,
+      });
+      trackLeadFormSubmit({
+        sourceTag,
+        intent: formState.intent,
+        pagePath: location.pathname,
+        status: 'success',
+      });
+      setIsSubmitted(true);
+
+      const params = new URLSearchParams(location.search);
+      if (params.has('lead') || params.has('lead_source')) {
+        params.delete('lead');
+        params.delete('lead_source');
+        navigate({ pathname: location.pathname, search: params.toString() ? `?${params.toString()}` : '' }, { replace: true });
+      }
+    } catch (_error) {
+      trackLeadFormSubmit({
+        sourceTag,
+        intent: formState.intent,
+        pagePath: location.pathname,
+        status: 'failed',
+      });
+      alert('Could not submit right now. Please try again, or message Wendy on WhatsApp.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[10000] bg-black/45 flex items-center justify-center px-4">
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h3 className="text-xl font-bold text-primary">Check Subsidy & Fit</h3>
+          <button onClick={closeModal} className="text-gray-500 hover:text-primary" aria-label="Close lead form">
+            <X size={20} />
+          </button>
+        </div>
+
+        {!isSubmitted ? (
+          <form className="p-6 space-y-4" onSubmit={onSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input required placeholder="Full name" className="border rounded-lg px-4 py-3" value={formState.fullName} onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))} />
+              <input required type="email" placeholder="Email" className="border rounded-lg px-4 py-3" value={formState.email} onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))} />
+              <input required placeholder="Phone" className="border rounded-lg px-4 py-3" value={formState.phone} onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))} />
+              <input required placeholder="Role" className="border rounded-lg px-4 py-3" value={formState.role} onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))} />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <select className="border rounded-lg px-4 py-3" value={formState.ageBand} onChange={(e) => setFormState((s) => ({ ...s, ageBand: e.target.value as LeadCapturePayload['ageBand'] }))}>
+                <option value="below_40">Age below 40</option>
+                <option value="40_and_above">Age 40 and above</option>
+              </select>
+
+              <input
+                required
+                placeholder="Preferred intake (e.g. Apr 2026)"
+                className="border rounded-lg px-4 py-3"
+                value={formState.preferredIntake}
+                onChange={(e) => setFormState((s) => ({ ...s, preferredIntake: e.target.value }))}
+              />
+            </div>
+
+            <div className="text-sm bg-[#f6faff] border border-[#d8e8ff] rounded-lg px-4 py-3 text-primary">
+              <p className="font-semibold">Estimated net payable: {estimate.amount}</p>
+              <p className="text-gray-600">{estimate.note}</p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
+            >
+              {isSubmitting ? 'Submitting...' : 'Get My Estimate & Next Step'}
+            </button>
+          </form>
+        ) : (
+          <div className="p-6">
+            <h4 className="text-xl font-bold text-primary mb-2">You’re all set 🎉</h4>
+            <p className="text-gray-700 mb-4">
+              Your estimated net fee is <strong>{estimate.amount}</strong>. Our team will contact you with the best intake and eligibility guidance.
+            </p>
+            <p className="text-sm text-gray-600 mb-5">Next best action: message Wendy directly for immediate advice.</p>
+            <a
+              href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackOutboundClick({
+                  channel: 'whatsapp',
+                  pagePath: location.pathname,
+                  position: 'lead_modal_thank_you',
+                })
+              }
+              className="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-lg font-semibold"
+            >
+              Continue on WhatsApp <ArrowRight size={16} />
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default LeadCaptureModal;

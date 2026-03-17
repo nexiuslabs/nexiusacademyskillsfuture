@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const EnterpriseAIInsightsPage: React.FC = () => {
   return (
@@ -66,6 +67,8 @@ const EnterpriseAIInsightsPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             This "<strong className="font-semibold text-[#1a1a1a]">equalizing effect</strong>" suggests AI's true power lies in broadening individual capabilities. This democratizing effect is consistent with several external studies, which find that AI disproportionately aids lower-performing workers, leveling the playing field across the organization. It's creating a new class of semi-technical worker — precisely the kind of professional that an AI workshop for business professionals is designed to upskill — empowering employees in every department to solve problems that were once the exclusive domain of specialists.
           </p>
+
+          <ArticleCTA articleSlug="enterprise-ai-insights" ctaType="workflow_checklist" position="30_percent" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
@@ -146,6 +149,9 @@ const EnterpriseAIInsightsPage: React.FC = () => {
             To illustrate how deeply embedded these workflows can become, the report cites the example of the financial institution BBVA, which regularly uses more than 4,000 GPTs in its daily operations. This trend of building repeatable, custom AI solutions marks a critical evolution in how companies view and use the technology.
           </p>
 
+          <ArticleCTA articleSlug="enterprise-ai-insights" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="enterprise-ai-insights" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: The Real Work Begins Now
           </h2>
@@ -165,6 +171,8 @@ const EnterpriseAIInsightsPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             The initial wave of AI adoption is over, and the data reveals a clear gap between the early leaders and the rest of the pack. The real work of AI skills training for SMEs — including hands-on agentic AI courses and no-code AI automation training — is just beginning. The data shows a clear divide between casual users and frontier organizations. Which side of that gap will you and your company be on?
           </p>
+          <ArticleCTA articleSlug="enterprise-ai-insights" ctaType="join_next_cohort" position="article_end" />
+          <AuthorCredibilityBox articleSlug="enterprise-ai-insights" />
         </div>
       </div>
     </>

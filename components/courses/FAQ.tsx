@@ -37,10 +37,13 @@ const FAQ: React.FC = () => {
         <div className="mt-12 bg-blue-50 rounded-xl p-8 text-center">
             <h4 className="text-xl font-bold text-primary mb-2">Still have questions?</h4>
             <p className="text-gray-600 mb-6">Our course consultants are here to help you.</p>
-            <button className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-bold transition-all">
+            <a
+                href="mailto:hello@nexiuslabs.com?subject=Nexius%20Academy%20Course%20Enquiry"
+                className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-bold transition-all"
+            >
                 <MessageCircle size={20} />
                 Contact Us
-            </button>
+            </a>
         </div>
 
       </div>

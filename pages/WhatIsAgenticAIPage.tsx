@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const WhatIsAgenticAIPage: React.FC = () => {
   return (
@@ -68,6 +69,8 @@ const WhatIsAgenticAIPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Reasoning:</strong> While generative AI can reason within a single prompt, agentic AI performs multi-step reasoning — breaking complex tasks into subtasks, evaluating intermediate results, and adjusting its approach based on outcomes.</li>
           </ul>
 
+          <ArticleCTA articleSlug="what-is-agentic-ai-guide" ctaType="workflow_checklist" position="30_percent" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
             Real-World Examples: What Agentic AI Looks Like in Practice
@@ -103,6 +106,9 @@ const WhatIsAgenticAIPage: React.FC = () => {
               "The question isn't whether your business will use agentic AI. The question is whether you'll be the one building those agents — or competing against someone who already has."
             </p>
           </div>
+
+          <ArticleCTA articleSlug="what-is-agentic-ai-guide" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="what-is-agentic-ai-guide" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">4.</span>
@@ -141,12 +147,16 @@ const WhatIsAgenticAIPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             The best AI courses in Singapore for 2026 are already teaching these skills — combining generative AI fundamentals with agentic AI workflows, no-code automation tools, and practical business application. Whether you're a founder, a department head, or a team lead, the time to build your agentic AI fluency is now.
           </p>
+          <ArticleCTA articleSlug="what-is-agentic-ai-guide" ctaType="join_next_cohort" position="article_end" />
+
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to go from AI user to AI architect?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
               Explore our SkillsFuture-eligible Agentic AI Course →
             </Link>
           </p>
+
+          <AuthorCredibilityBox articleSlug="what-is-agentic-ai-guide" />
         </div>
       </div>
     </>

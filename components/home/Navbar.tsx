@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { openLeadModal } from '../../services/leadModal';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -90,9 +91,19 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link to="/courses/agentic-ai" className="hidden md:inline-block bg-primary text-white px-6 py-2.5 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md">
-              Get Started
-            </Link>
+            <button
+              type="button"
+              onClick={() =>
+                openLeadModal('navbar_check_subsidy', 'subsidy_fit', {
+                  page: location.pathname,
+                  position: 'navbar_desktop',
+                  ctaLabel: 'check_subsidy',
+                })
+              }
+              className="hidden md:inline-block bg-accent text-white px-6 py-2.5 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md"
+            >
+              Check Subsidy
+            </button>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -131,13 +142,20 @@ const Navbar: React.FC = () => {
                   </button>
                 )
               ))}
-              <Link
-                to="/courses/agentic-ai"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md text-center mt-2"
+              <button
+                type="button"
+                onClick={() => {
+                  openLeadModal('navbar_check_subsidy', 'subsidy_fit', {
+                    page: location.pathname,
+                    position: 'navbar_mobile',
+                    ctaLabel: 'check_subsidy',
+                  });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="bg-accent text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md text-center mt-2"
               >
-                Get Started
-              </Link>
+                Check Subsidy
+              </button>
             </div>
           </div>
         )}

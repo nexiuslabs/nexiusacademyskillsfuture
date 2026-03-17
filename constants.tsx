@@ -37,63 +37,54 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '16 Feb - 17 Feb',
-    time: 'Mon - Tue, 6:30pm - 9:30pm',
-    format: 'Online (Zoom)',
-    slotsLeft: 15,
-    month: 'Feb 2026'
-  },
-  {
-    type: 'Weekend',
-    dates: '22 Feb - 23 Feb',
-    time: 'Sat - Sun, 9:00am - 6:00pm',
+    dates: '29 Apr - 30 Apr',
+    time: 'Wed - Thu, 9:00am - 6:00pm',
     format: 'In-Person',
     slotsLeft: 4,
-    month: 'Feb 2026'
-  },
-  {
-    type: 'Weekend',
-    dates: '8 Mar - 9 Mar',
-    time: 'Sat - Sun, 9:00am - 6:00pm',
-    format: 'In-Person',
-    slotsLeft: 12,
-    month: 'Mar 2026'
+    month: 'Apr 2026',
+    registrationCloses: '22 Apr 2026',
   },
   {
     type: 'Weekday',
-    dates: '17 Mar - 18 Mar',
+    dates: '11 May - 12 May',
     time: 'Mon - Tue, 9:00am - 6:00pm',
     format: 'In-Person',
-    slotsLeft: 15,
-    month: 'Mar 2026'
-  },
-  {
-    type: 'Weekend',
-    dates: '22 Mar - 23 Mar',
-    time: 'Sat - Sun, 9:00am - 6:00pm',
-    format: 'Online (Zoom)',
-    slotsLeft: 15,
-    month: 'Mar 2026'
+    slotsLeft: 0,
+    month: 'May 2026',
+    registrationCloses: '04 May 2026',
   },
 ];
 
 export const FAQS: FaqItem[] = [
   {
-    question: "What is agentic AI and how does it differ from generative AI?",
-    answer: "Generative AI creates content (text, images, code), while agentic AI takes it further — autonomous AI agents can plan, execute multi-step workflows, and take actions on your behalf. Our agentic AI course teaches you to build these systems for real business automation, no coding required."
+    question: 'Can I use SkillsFuture credits fully?',
+    answer:
+      'Many eligible learners can offset most or all out-of-pocket fees using a mix of SkillsFuture subsidy + available SkillsFuture Credits. Final payable depends on your eligibility profile and current funding rules at application time.',
   },
   {
-    question: "What are the prerequisites for this course?",
-    answer: "There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques."
+    question: 'Will I get hands-on help for my own workflow?',
+    answer:
+      'Yes. This course is workshop-first. You will apply concepts to your own use cases during guided activities, with trainer support to shape one practical workflow blueprint you can deploy after class.',
   },
   {
-    question: "Are there course fee subsidies available?",
-    answer: "Yes! Singapore Citizens and PRs aged 21 and above can enjoy up to 90% subsidies. You can also use your SkillsFuture credits."
+    question: 'What happens after class (support/community)?',
+    answer:
+      'You will receive implementation templates and can continue with advisor follow-up for next steps. For teams, we also provide options for post-course implementation support and corporate enablement.',
   },
   {
-    question: "What AI certification course will I receive in Singapore?",
-    answer: "Upon completion of this AI certification course Singapore professionals trust, you will receive a WSQ Statement of Attainment — a nationally recognized credential that validates your AI skills training."
-  }
+    question: 'What is agentic AI and how does it differ from generative AI?',
+    answer:
+      'Generative AI creates content (text, images, code), while agentic AI takes it further — autonomous AI agents can plan, execute multi-step workflows, and take actions on your behalf. Our course teaches practical business automation with this approach, no coding required.',
+  },
+  {
+    question: 'What are the prerequisites for this course?',
+    answer: 'There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques.',
+  },
+  {
+    question: 'What AI certification will I receive in Singapore?',
+    answer:
+      'Upon completion, you will receive a WSQ Statement of Attainment — a nationally recognized credential validating your AI upskilling outcomes.',
+  },
 ];
 
 export const MODULES: CurriculumModule[] = [
@@ -162,6 +153,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 15,
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Discover why AI adoption isn\'t enough. Learn the four fundamental shifts in leadership, structure, and strategy needed to transform your business into a Frontier Firm with Agentic Architecture.',
+    category: 'Case Studies',
+    bestFor: 'SME owners, transformation leaders',
     featured: false,
   },
   {
@@ -172,6 +165,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 87,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     excerpt: 'OpenAI\'s new report reveals surprising insights from 1 million business customers—from the emergence of a new coder class to a widening gap between AI leaders and laggards.',
+    category: 'Case Studies',
+    bestFor: 'Business managers, strategy teams',
     featured: false,
   },
   {
@@ -182,6 +177,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 21,
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Stop building monolithic agents. Discover Anthropic\'s revolutionary approach to AI using composable "Skills"—simple folders that bridge the expertise gap and democratize AI development.',
+    category: 'Beginner Guides',
+    bestFor: 'Non-technical teams, ops managers',
     featured: false,
   },
   {
@@ -192,6 +189,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 42,
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Agentic AI isn\'t just a buzzword — it\'s the most significant shift in business technology since the internet. Learn how autonomous AI agents plan, decide, and act, and why every business professional needs to understand this now.',
+    category: 'Beginner Guides',
+    bestFor: 'SME owners, first-time AI learners',
     featured: true,
   },
   {
@@ -202,6 +201,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 63,
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
     excerpt: 'With hundreds of AI courses now available in Singapore, how do you pick the right one? We break down the five types, seven questions to ask, and the SkillsFuture advantage that can cut costs by 90%.',
+    category: 'SkillsFuture',
+    bestFor: 'Working adults, HR and L&D teams',
     featured: true,
   },
   {
@@ -212,6 +213,8 @@ export const BLOG_POSTS: BlogPost[] = [
     views: 38,
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Real examples of Singapore SMEs automating invoicing, lead qualification, customer support, and reporting with no-code AI tools. The ROI math is staggering: a $111 course saving $50,000+ per year.',
+    category: 'SME Automation',
+    bestFor: 'SME owners, operations teams',
     featured: true,
   },
 ];

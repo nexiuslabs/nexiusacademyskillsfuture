@@ -11,6 +11,8 @@ import BestAICoursesPage from './pages/BestAICoursesPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/ScrollToTop';
+import AIAdvisor from './components/courses/AIAdvisor';
+import LeadCaptureModal from './components/leads/LeadCaptureModal';
 
 const App: React.FC = () => {
   return (
@@ -28,6 +30,8 @@ const App: React.FC = () => {
         <Route path="/blog/best-ai-courses-singapore-2026" element={<BestAICoursesPage />} />
         <Route path="/blog/smes-no-code-ai-automation-singapore" element={<SMEsNoCodeAIPage />} />
       </Routes>
+      <AIAdvisor />
+      <LeadCaptureModal />
     </Router>
   );
 };

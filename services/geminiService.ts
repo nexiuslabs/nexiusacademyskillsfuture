@@ -9,13 +9,16 @@ export function getSessionId(): string {
   return _sessionId;
 }
 
-export const generateAIResponse = async (userMessage: string): Promise<string> => {
+export const generateAIResponse = async (userMessage: string, site: 'academy' | 'labs' | 'os' = 'academy'): Promise<string> => {
   try {
     const base = String(import.meta.env.VITE_SUPABASE_URL || '').replace(/\/$/, '');
     const anon = String(import.meta.env.VITE_SUPABASE_ANON_KEY || '');
     const agentId = String(import.meta.env.VITE_OPENCLAW_WEBCHAT_AGENT_ID || 'whatsapp-frontdesk');
 
     const apiUrl = `${base}/functions/v1/openclaw-chat`;
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -24,13 +27,16 @@ export const generateAIResponse = async (userMessage: string): Promise<string> =
         apikey: anon,
         'Content-Type': 'application/json',
       },
+      signal: controller.signal,
       body: JSON.stringify({
         sessionKey: getSessionId(),
         agentId,
+        site,
         messages: [{ role: 'user', content: userMessage }],
       }),
     });
 
+    clearTimeout(timeout);
     if (!response.ok) {
       throw new Error(`OpenClaw chat failed (${response.status})`);
     }

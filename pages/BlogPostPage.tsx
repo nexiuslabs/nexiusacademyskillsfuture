@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const BlogPostPage: React.FC = () => {
   return (
@@ -56,6 +57,8 @@ const BlogPostPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             To close this gap, we must shift our methodology from random chatting to algorithmic problem-solving. This is achieved through the <strong className="font-semibold text-[#1a1a1a]">DUO Methodology (Discover → Understand → Output)</strong>, a structured loop for turning business challenges into automated solutions. A typical AI course promises an individual might save 30 minutes a day. The goal of a Frontier Firm leader is entirely different: "<strong className="font-semibold text-[#1a1a1a]">I built a new business capability.</strong>" This outcome is impossible without rethinking the very structure of work. True scale doesn't come from making individuals slightly faster; it comes from redesigning teams and workflows around an intelligent, automated core.
           </p>
+
+          <ArticleCTA articleSlug="beyond-chatgpt-ai-powered-company" ctaType="workflow_checklist" position="30_percent" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
@@ -116,6 +119,9 @@ const BlogPostPage: React.FC = () => {
             Without this internal data hygiene and governance, any attempt to scale with AI will fail.
           </p>
 
+          <ArticleCTA articleSlug="beyond-chatgpt-ai-powered-company" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="beyond-chatgpt-ai-powered-company" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: Are You Building a Company That Manages People, or Intelligence?
           </h2>
@@ -125,6 +131,9 @@ const BlogPostPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             As you plan for the future, the most critical question to ask is not "Which AI tool should we buy?" but rather: "Is my company currently structured to manage people, or to manage intelligence?"
           </p>
+
+          <ArticleCTA articleSlug="beyond-chatgpt-ai-powered-company" ctaType="join_next_cohort" position="article_end" />
+          <AuthorCredibilityBox articleSlug="beyond-chatgpt-ai-powered-company" />
         </div>
       </div>
     </>

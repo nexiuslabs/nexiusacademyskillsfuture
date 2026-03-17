@@ -23,6 +23,7 @@ export interface ScheduleItem {
   format: 'Online (Zoom)' | 'In-Person';
   slotsLeft: number;
   month: string;
+  registrationCloses?: string;
 }
 
 export interface FaqItem {
@@ -77,5 +78,7 @@ export interface BlogPost {
   views: number;
   image: string;
   excerpt: string;
+  category: 'SME Automation' | 'SkillsFuture' | 'Beginner Guides' | 'Case Studies';
+  bestFor: string;
   featured?: boolean;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail } from 'lucide-react';
+import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail, MessageCircle, Quote } from 'lucide-react';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
@@ -31,6 +31,67 @@ const AboutPage: React.FC = () => {
     { id: 'mission' as TabType, label: 'Our Mission' },
     { id: 'values' as TabType, label: 'Our Values' },
     { id: 'story' as TabType, label: 'Our Story' },
+  ];
+
+  const whyLearnersChooseUs = [
+    {
+      title: 'Business-first teaching',
+      description: 'We translate AI into practical business decisions, KPIs, and workflows—not just tools or theory.'
+    },
+    {
+      title: 'Non-technical friendly',
+      description: 'Designed for managers and operators with zero coding background, with step-by-step guidance throughout.'
+    },
+    {
+      title: 'Outcome-driven workshops',
+      description: 'Every cohort builds real, deployable workflow outputs you can bring back to your team immediately.'
+    },
+  ];
+
+  const partners = [
+    {
+      name: 'NTU',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/ntu_logo.png',
+      href: 'https://www.ntu.edu.sg/'
+    },
+    {
+      name: 'NIE',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/nie_logo.jpeg',
+      href: 'https://www.ntu.edu.sg/nie'
+    },
+    {
+      name: 'SIM',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/SIM-GE-Pri-logo-4C-1024x754.webp',
+      href: 'https://www.sim.edu.sg/'
+    },
+    {
+      name: 'Forte Law',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/forte_law_llc_logo.jpeg',
+      href: 'https://www.fortelawllc.com/'
+    },
+    {
+      name: 'Automa8e',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/autom8e_logo.png',
+      href: 'https://automa8e.com/'
+    },
+    {
+      name: 'Jetdata',
+      logo: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/jetdata_logo.jpeg',
+      href: 'https://jetdata.io/'
+    },
+  ];
+
+  const learnerTestimonials = [
+    {
+      quote: 'Very practical and actionable. I left with an automation blueprint we implemented the same week.',
+      name: 'Kenji Chia',
+      role: 'Founder, Digify Team'
+    },
+    {
+      quote: 'As a non-technical manager, I finally understood how to use AI in day-to-day ops without coding.',
+      name: 'SME Operations Lead',
+      role: 'Course Participant'
+    },
   ];
 
   return (
@@ -270,49 +331,137 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Why Learners Choose Us */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Why Learners Choose Us</h2>
+              <div className="w-20 h-1.5 bg-accent mx-auto rounded-full mb-6"></div>
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                We design every cohort around business outcomes, not theory slides.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {whyLearnersChooseUs.map((item) => (
+                <div key={item.title} className="bg-neutral rounded-xl p-8 shadow-card hover:shadow-xl transition-all">
+                  <h3 className="text-xl font-bold text-primary mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Post-stats Conversion CTA */}
+        <section className="py-16 bg-neutral border-y border-gray-100">
+          <div className="container mx-auto px-6">
+            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-card p-8 md:p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div>
+                <p className="text-sm font-bold tracking-wider text-accent uppercase mb-2">Ready for the next step?</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2">Find the right cohort for your role and goals</h3>
+                <p className="text-gray-600">Get your intake options fast, or speak with an advisor to confirm fit.</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/courses/agentic-ai?lead=join-next-cohort&lead_source=about_cta"
+                  className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all"
+                >
+                  See Upcoming Cohorts
+                  <ArrowRight size={18} />
+                </Link>
+                <a
+                  href="https://wa.me/6596615284?text=Hi%20Nexius%20Academy%2C%20I%20want%20to%20check%20which%20cohort%20fits%20me."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-primary border border-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all"
+                >
+                  <MessageCircle size={18} />
+                  Talk to Advisor
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Partners + Testimonials */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Trusted by Learners and Partner Organizations</h2>
+              <div className="w-20 h-1.5 bg-accent mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center mb-14">
+              {partners.map((partner) => (
+                <a
+                  key={partner.name}
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-neutral rounded-xl p-4 h-24 flex items-center justify-center hover:shadow-card transition-all"
+                  aria-label={`Visit ${partner.name}`}
+                >
+                  <img src={partner.logo} alt={`${partner.name} logo`} className="max-h-12 w-full object-contain" />
+                </a>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {learnerTestimonials.map((item) => (
+                <div key={item.name} className="bg-neutral rounded-xl p-8 shadow-card">
+                  <Quote className="text-accent mb-4" size={28} />
+                  <p className="text-gray-700 leading-relaxed mb-5">“{item.quote}”</p>
+                  <div>
+                    <p className="font-bold text-primary">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Expertise Section */}
         <section className="py-24 bg-neutral">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Meet Our Experts</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Core Expertise</h2>
               <div className="w-20 h-1.5 bg-accent mx-auto rounded-full mb-6"></div>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                Our team of industry veterans and AI specialists brings decades of combined experience
+                We help organizations move from AI curiosity to real execution with practical, business-first capabilities.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white rounded-xl shadow-card overflow-hidden hover:shadow-xl transition-all">
-                <div className="h-64 bg-gradient-to-br from-accent/20 to-primary/20"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-1">Expert Instructors</h3>
-                  <p className="text-accent font-semibold mb-3">Industry Leaders</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Our instructors are seasoned professionals with proven track records in AI implementation and business transformation.
-                  </p>
+              <div className="bg-white rounded-xl shadow-card p-8 hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                  <Brain className="text-accent" size={28} />
                 </div>
+                <h3 className="text-xl font-bold text-primary mb-3">Agentic AI Strategy</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Build a clear roadmap for adopting agentic AI across teams, with use-case prioritization tied to measurable business outcomes.
+                </p>
               </div>
 
-              <div className="bg-white rounded-xl shadow-card overflow-hidden hover:shadow-xl transition-all">
-                <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-1">Curriculum Designers</h3>
-                  <p className="text-accent font-semibold mb-3">Education Specialists</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Our design team crafts learning experiences that are engaging, practical, and tailored to adult learners.
-                  </p>
+              <div className="bg-white rounded-xl shadow-card p-8 hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                  <TrendingUp className="text-accent" size={28} />
                 </div>
+                <h3 className="text-xl font-bold text-primary mb-3">Workflow Automation</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Design and implement no-code and low-code automation workflows that reduce manual effort, increase speed, and improve consistency.
+                </p>
               </div>
 
-              <div className="bg-white rounded-xl shadow-card overflow-hidden hover:shadow-xl transition-all">
-                <div className="h-64 bg-gradient-to-br from-accent/20 to-primary/30"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-1">Support Team</h3>
-                  <p className="text-accent font-semibold mb-3">Student Success</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Dedicated support professionals ensuring every student achieves their learning goals and maximizes course value.
-                  </p>
+              <div className="bg-white rounded-xl shadow-card p-8 hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                  <Target className="text-accent" size={28} />
                 </div>
+                <h3 className="text-xl font-bold text-primary mb-3">Capability Building</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Equip managers and teams with hands-on skills, governance practices, and implementation playbooks to sustain long-term AI adoption.
+                </p>
               </div>
             </div>
           </div>

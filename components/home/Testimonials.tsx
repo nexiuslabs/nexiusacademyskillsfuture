@@ -20,7 +20,7 @@ const testimonials = [
     id: 3,
     name: "Kenji",
     title: "Senior Member, Hokkien Association",
-    image: "https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/kenji.png",
+    image: "/images/testimonials/kenji.jpg",
     quote: "The custom AI workshop by Nexius Academy was really good. Our clan, youths, seniors really enjoyed it. Very, very relevant and practical. I would definitely recommend everyone to take it."
   }
 ];

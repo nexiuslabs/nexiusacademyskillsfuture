@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { trackOutboundClick } from '../../services/analytics';
 
 const StickyNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const APPLY_LINK = "#schedule";
+  const location = useLocation();
+  const APPLY_LINK = "https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100">
@@ -30,6 +32,13 @@ const StickyNavbar: React.FC = () => {
               href={APPLY_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackOutboundClick({
+                  channel: 'skillsfuture',
+                  pagePath: location.pathname,
+                  position: 'course_navbar_desktop_apply',
+                })
+              }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
               Apply Now
@@ -58,6 +67,13 @@ const StickyNavbar: React.FC = () => {
                 href={APPLY_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackOutboundClick({
+                    channel: 'skillsfuture',
+                    pagePath: location.pathname,
+                    position: 'course_navbar_mobile_apply',
+                  })
+                }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
                 Apply Now

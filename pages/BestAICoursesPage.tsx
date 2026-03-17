@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const BestAICoursesPage: React.FC = () => {
   return (
@@ -66,6 +67,8 @@ const BestAICoursesPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Industry-Specific AI Training:</strong> Vertical programmes tailored to healthcare, finance, legal, or manufacturing. Best when you need domain-specific AI applications. Availability varies.</li>
           </ul>
 
+          <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="workflow_checklist" position="30_percent" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-12 mb-6 leading-snug">
             <span className="text-[#007bff] font-extrabold mr-3">2.</span>
             Seven Questions to Ask Before Enrolling
@@ -121,6 +124,9 @@ const BestAICoursesPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Business Case Development:</strong> How to quantify the ROI of AI automation and present it to stakeholders.</li>
           </ul>
 
+          <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="subsidy_check" position="70_percent" />
+          <RelatedCourseModuleCard articleSlug="best-ai-courses-singapore-2026" />
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: The Right Course Depends on Where You're Going
           </h2>
@@ -136,6 +142,8 @@ const BestAICoursesPage: React.FC = () => {
               Agentic AI Foundations for Non-Technical Professionals →
             </Link>
           </p>
+          <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="join_next_cohort" position="article_end" />
+          <AuthorCredibilityBox articleSlug="best-ai-courses-singapore-2026" />
         </div>
       </div>
     </>
