@@ -20,6 +20,8 @@ const AVAILABLE_COURSES: Course[] = [
 ];
 
 const CourseList: React.FC = () => {
+  const fullStars = Math.floor(4.5);
+  const hasHalfStar = 4.5 % 1 !== 0;
 
   return (
     <section id="courses" className="py-24 bg-white scroll-mt-32">
@@ -58,9 +60,34 @@ const CourseList: React.FC = () => {
                 </h3>
 
                 <div className="flex items-center justify-between border-t pt-4">
-                  <div className="flex items-center text-yellow-500 text-xs font-bold gap-1">
-                    <Star size={14} fill="currentColor" />
-                    {course.rating}
+                  <div className="flex items-center gap-2 text-xs font-bold">
+                    <div className="flex items-center gap-0.5 text-yellow-500">
+                      {Array.from({ length: 5 }).map((_, index) => {
+                        const isFullStar = index < fullStars;
+                        const isHalfStar = index === fullStars && hasHalfStar;
+
+                        if (isHalfStar) {
+                          return (
+                            <span key={index} className="relative inline-flex h-[14px] w-[14px]">
+                              <Star size={14} className="absolute inset-0 text-gray-300" fill="currentColor" />
+                              <span className="absolute inset-0 overflow-hidden" style={{ width: '50%' }}>
+                                <Star size={14} className="text-yellow-500" fill="currentColor" />
+                              </span>
+                            </span>
+                          );
+                        }
+
+                        return (
+                          <Star
+                            key={index}
+                            size={14}
+                            className={isFullStar ? 'text-yellow-500' : 'text-gray-300'}
+                            fill="currentColor"
+                          />
+                        );
+                      })}
+                    </div>
+                    <span className="text-primary">4.5</span>
                   </div>
                 </div>
               </div>
