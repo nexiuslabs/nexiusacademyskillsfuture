@@ -44,15 +44,6 @@ export const SCHEDULES: ScheduleItem[] = [
     month: 'Apr 2026',
     registrationCloses: '22 Apr 2026',
   },
-  {
-    type: 'Weekday',
-    dates: '11 May - 12 May',
-    time: 'Mon - Tue, 9:00am - 6:00pm',
-    format: 'In-Person',
-    slotsLeft: 0,
-    month: 'May 2026',
-    registrationCloses: '04 May 2026',
-  },
 ];
 
 export const FAQS: FaqItem[] = [
