@@ -9,6 +9,7 @@ import AnthropicAISkillsPage from './pages/AnthropicAISkillsPage';
 import WhatIsAgenticAIPage from './pages/WhatIsAgenticAIPage';
 import BestAICoursesPage from './pages/BestAICoursesPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
+import AICRMAutomation24hPage from './pages/AICRMAutomation24hPage';
 import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
         <Route path="/blog/what-is-agentic-ai-guide" element={<WhatIsAgenticAIPage />} />
         <Route path="/blog/best-ai-courses-singapore-2026" element={<BestAICoursesPage />} />
         <Route path="/blog/smes-no-code-ai-automation-singapore" element={<SMEsNoCodeAIPage />} />
+        <Route path="/blog/ai-crm-automation-smes-24-hours" element={<AICRMAutomation24hPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />

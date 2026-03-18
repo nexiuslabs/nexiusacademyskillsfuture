@@ -208,6 +208,18 @@ export const BLOG_POSTS: BlogPost[] = [
     bestFor: 'SME owners, operations teams',
     featured: true,
   },
+  {
+    id: 7,
+    slug: 'ai-crm-automation-smes-24-hours',
+    title: 'AI CRM Automation for SMEs: From Lead to Meeting in 24 Hours',
+    date: '18 Mar 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'Learn how SMEs can use AI CRM automation to turn inbound and outbound leads into booked meetings within 24 hours using routing, SLAs, nurture workflows, and touchpoint logging.',
+    category: 'SME Automation',
+    bestFor: 'SME owners, sales ops teams',
+    featured: true,
+  },
 ];
 
 export const SYSTEM_INSTRUCTION = `
