@@ -45,6 +45,7 @@ const CoursePage: React.FC = () => {
         description="Learn agentic AI hands-on in our 16-hour SkillsFuture-eligible course. No-code AI automation training designed for non-technical business professionals. Up to 90% subsidy."
         canonical="/courses/agentic-ai"
         ogType="course"
+        ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
       />
       <StickyNavbar />
       <main>
