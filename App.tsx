@@ -10,6 +10,7 @@ import WhatIsAgenticAIPage from './pages/WhatIsAgenticAIPage';
 import BestAICoursesPage from './pages/BestAICoursesPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import AboutPage from './pages/AboutPage';
+import FrontierFirmCoursePage from './pages/FrontierFirmCoursePage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
+        <Route path="/courses/frontier-firm-agent-boss" element={<FrontierFirmCoursePage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/beyond-chatgpt-ai-powered-company" element={<BlogPostPage />} />
         <Route path="/blog/enterprise-ai-insights" element={<EnterpriseAIInsightsPage />} />
