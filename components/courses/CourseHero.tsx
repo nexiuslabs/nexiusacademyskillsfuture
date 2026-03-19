@@ -1,12 +1,8 @@
 import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
-import { trackOutboundClick } from '../../services/analytics';
 
 const Hero: React.FC = () => {
-  const APPLY_LINK =
-    'https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01';
-
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
       <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent opacity-60"></div>
@@ -77,22 +73,6 @@ const Hero: React.FC = () => {
                 Reserve a Seat
               </button>
             </div>
-
-            <a
-              href={APPLY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                trackOutboundClick({
-                  channel: 'skillsfuture',
-                  pagePath: '/courses/agentic-ai',
-                  position: 'course_hero_tertiary_apply',
-                })
-              }
-              className="inline-flex w-fit items-center text-sm font-semibold text-primary hover:text-accent underline underline-offset-4"
-            >
-              Apply on SkillsFuture (external)
-            </a>
 
             <div className="flex flex-wrap gap-4 pt-2 text-sm font-medium text-gray-500">
               <div className="flex items-center gap-1">
