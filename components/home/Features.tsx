@@ -12,7 +12,7 @@ const Features: React.FC = () => {
               <BookOpen size={32} />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">Future-Proof AI Skills</h3>
+              <h3 className="text-xl font-bold mb-2">Learn AI Skills</h3>
               <p className="text-gray-300 text-sm">Our AI training in Singapore equips you with the essential skills needed to thrive in an AI-driven economy.</p>
             </div>
           </div>
