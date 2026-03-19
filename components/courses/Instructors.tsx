@@ -18,7 +18,7 @@ const Instructors: React.FC = () => {
                         <img
                             src={instructor.image}
                             alt={instructor.name}
-                            className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-48 object-contain sm:object-cover object-top bg-gray-100 group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                             <p className="text-white text-sm">{instructor.bio}</p>
