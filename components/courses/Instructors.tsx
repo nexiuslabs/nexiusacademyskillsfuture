@@ -11,15 +11,14 @@ const Instructors: React.FC = () => {
             <div className="w-24 h-1.5 bg-accent mx-auto rounded-full"></div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-6">
             {INSTRUCTORS.map((instructor, index) => (
-                <div key={index} className="group w-full sm:w-80 md:w-72 lg:w-80">
+                <div key={index} className="group w-full sm:w-40 md:w-36 lg:w-40">
                     <div className="relative overflow-hidden rounded-xl mb-4 bg-gray-100">
-                         {/* Placeholder fix for demo */}
                         <img
                             src={instructor.image}
                             alt={instructor.name}
-                            className="w-full h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                             <p className="text-white text-sm">{instructor.bio}</p>
