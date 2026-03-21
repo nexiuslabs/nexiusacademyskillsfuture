@@ -37,12 +37,12 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '29 Apr - 30 Apr',
+    dates: '06 May - 07 May',
     time: 'Wed - Thu, 9:00am - 6:00pm',
     format: 'In-Person',
     slotsLeft: 4,
-    month: 'Apr 2026',
-    registrationCloses: '22 Apr 2026',
+    month: 'May 2026',
+    registrationCloses: '29 Apr 2026',
   },
 ];
 
