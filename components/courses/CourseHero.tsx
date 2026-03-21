@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <CalendarDays size={16} className="text-accent" />
-                Next Cohort: 29–30 Apr 2026
+                Next Cohort: 06–07 May 2026
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <Presentation size={16} className="text-accent" />
