@@ -17,6 +17,7 @@ import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
 import { openLeadModal } from '../services/leadModal';
+import { trackOutboundClick } from '../services/analytics';
 
 const proofChips = [
   'No coding required',
@@ -228,19 +229,21 @@ const AccountantCspLandingPage: React.FC = () => {
                   >
                     Check Eligibility / Reserve a Seat <ArrowRight size={18} />
                   </button>
-                  <button
-                    type="button"
+                  <a
+                    href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() =>
-                      openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/courses/agentic-ai-accountants',
+                      trackOutboundClick({
+                        channel: 'whatsapp',
+                        pagePath: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_team_training',
-                        ctaLabel: 'enquire_team_training',
                       })
                     }
                     className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
                   >
                     Enquire for Team Training
-                  </button>
+                  </a>
                 </div>
                 <div className="flex flex-wrap gap-3 text-sm">
                   {proofChips.map((chip) => (
@@ -482,19 +485,21 @@ const AccountantCspLandingPage: React.FC = () => {
                   >
                     Check Subsidy & Fit
                   </button>
-                  <button
-                    type="button"
+                  <a
+                    href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() =>
-                      openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/courses/agentic-ai-accountants',
+                      trackOutboundClick({
+                        channel: 'whatsapp',
+                        pagePath: '/courses/agentic-ai-accountants',
                         position: 'accountants_offer_team_training',
-                        ctaLabel: 'team_training',
                       })
                     }
-                    className="w-full border border-primary text-primary px-6 py-4 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors"
+                    className="w-full border border-primary text-primary px-6 py-4 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors text-center"
                   >
                     Enquire for Team Training
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
