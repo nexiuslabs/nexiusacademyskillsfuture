@@ -162,10 +162,10 @@ const AccountantCspLandingPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="AI Workshop for Accountants & Corporate Service Providers | Nexius Academy"
-        description="A practical, no-code AI workshop for accountants, corporate service providers, and firm owners who want safer, more useful AI workflows for drafting, reporting, compliance, and client-service work."
-        canonical="/ai-workshop-for-accountants"
-        ogType="website"
+        title="Agentic AI for Accountants & CSPs | Nexius Academy"
+        description="A practical, no-code course page for accountants, corporate service providers, and firm owners who want safer, more useful AI workflows for drafting, reporting, compliance, and client-service work."
+        canonical="/courses/agentic-ai-accountants"
+        ogType="course"
       />
 
       <div className="min-h-screen bg-white">
@@ -187,7 +187,7 @@ const AccountantCspLandingPage: React.FC = () => {
               type="button"
               onClick={() =>
                 openLeadModal('course_page_cta', 'reserve_seat', {
-                  page: '/ai-workshop-for-accountants',
+                  page: '/courses/agentic-ai-accountants',
                   position: 'accountants_nav_reserve_seat',
                   ctaLabel: 'reserve_a_seat',
                 })
@@ -206,10 +206,10 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
                   <Sparkles size={16} className="text-accent" />
-                  Separate Landing Page · Accounting & CSP Segment
+                  Course Variant · Accounting & CSP Segment
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                  AI Workshop for Accountants and Corporate Service Providers
+                  Agentic AI for Accountants & Corporate Service Providers
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
                   Learn practical, no-code AI workflows to speed up reporting, drafting, compliance, and client communication — while keeping human judgement and control firmly in place.
@@ -219,7 +219,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/ai-workshop-for-accountants',
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_reserve_seat',
                         ctaLabel: 'reserve_a_seat',
                       })
@@ -232,7 +232,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/ai-workshop-for-accountants',
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_team_training',
                         ctaLabel: 'enquire_team_training',
                       })
@@ -267,7 +267,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/ai-workshop-for-accountants',
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_card_reserve',
                         ctaLabel: 'reserve_a_seat',
                       })
@@ -287,7 +287,7 @@ const AccountantCspLandingPage: React.FC = () => {
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">Who this is for</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                This page is designed for firms and professionals who care about workflow usefulness, safer adoption, and commercial justification.
+                This course variant is designed for firms and professionals who care about workflow usefulness, safer adoption, and commercial justification.
               </p>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -316,7 +316,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/ai-workshop-for-accountants',
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_outcomes_cta',
                       ctaLabel: 'check_subsidy_fit',
                     })
@@ -416,7 +416,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/ai-workshop-for-accountants',
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_midpage_reserve_seat',
                       ctaLabel: 'reserve_a_seat',
                     })
@@ -429,7 +429,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'advisory_call', {
-                      page: '/ai-workshop-for-accountants',
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_midpage_private_cohort',
                       ctaLabel: 'private_cohort',
                     })
@@ -473,7 +473,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/ai-workshop-for-accountants',
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_offer_check_fit',
                         ctaLabel: 'check_subsidy_fit',
                       })
@@ -486,7 +486,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/ai-workshop-for-accountants',
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_offer_team_training',
                         ctaLabel: 'team_training',
                       })
@@ -532,7 +532,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/ai-workshop-for-accountants',
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_final_cta_reserve',
                       ctaLabel: 'reserve_a_seat',
                     })
@@ -545,7 +545,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'advisory_call', {
-                      page: '/ai-workshop-for-accountants',
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_final_cta_outline',
                       ctaLabel: 'get_course_outline',
                     })
