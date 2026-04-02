@@ -15,7 +15,20 @@ const AVAILABLE_COURSES: Course[] = [
     students: 223,
     image: COURSE_HERO_IMAGE,
     author: 'Melverick Ng',
-    authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg'
+    authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg',
+    path: '/courses/agentic-ai',
+  },
+  {
+    id: 2,
+    title: 'Agentic AI for Accountants & Corporate Service Providers',
+    category: 'AI for Professional Services',
+    price: 67,
+    rating: 5.0,
+    students: 0,
+    image: COURSE_HERO_IMAGE,
+    author: 'Melverick Ng',
+    authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg',
+    path: '/courses/agentic-ai-accountants',
   }
 ];
 
@@ -29,15 +42,15 @@ const CourseList: React.FC = () => {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-primary mb-3">Our Current Course</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We currently offer one flagship programme. New courses are launching in <span className="font-semibold text-primary">Q2 2026</span>.
+            We currently offer segment-specific variants of our flagship programme for different audiences, with more courses launching in <span className="font-semibold text-primary">Q2 2026</span>.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 max-w-sm mx-auto gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8">
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
-              to="/courses/agentic-ai"
+              to={course.path}
               className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
             >
               <div className="relative h-48 overflow-hidden">

@@ -52,6 +52,7 @@ export interface Course {
   image: string;
   author: string;
   authorImage: string;
+  path: string;
 }
 
 export interface Testimonial {
