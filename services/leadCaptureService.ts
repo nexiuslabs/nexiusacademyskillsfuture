@@ -14,6 +14,8 @@ export interface LeadCapturePayload {
   role: string;
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
+  cohortCode: string;
+  courseSlug: string;
   intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call';
   sourceTag: LeadSourceTag;
   pagePath: string;
@@ -30,6 +32,8 @@ const toFormFields = (payload: LeadCapturePayload) => {
     { name: 'jobtitle', value: payload.role },
     { name: 'age_band', value: payload.ageBand },
     { name: 'preferred_intake', value: payload.preferredIntake },
+    { name: 'cohort_code', value: payload.cohortCode },
+    { name: 'course_slug', value: payload.courseSlug },
     { name: 'lead_intent', value: payload.intent },
     { name: 'lead_source_tag', value: payload.sourceTag },
     { name: 'page_path', value: payload.pagePath },

@@ -13,32 +13,72 @@ declare global {
   }
 }
 
-const DEFAULT_STATE: Omit<LeadCapturePayload, 'sourceTag' | 'pagePath'> = {
-  fullName: '',
-  email: '',
-  phone: '',
-  role: '',
-  ageBand: 'below_40',
-  preferredIntake: '',
-  intent: 'subsidy_fit',
+type CohortOption = { label: string; code: string };
+
+const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
+  'agentic-ai': [{ label: '06–07 May 2026', code: '2026-05-06' }],
+  'agentic-ai-accountants': [{ label: '06–07 May 2026', code: '2026-05-06' }],
+};
+
+const getCourseSlugFromPath = (path: string) => {
+  if (path.includes('/courses/agentic-ai-accountants')) return 'agentic-ai-accountants';
+  if (path.includes('/courses/agentic-ai')) return 'agentic-ai';
+  return 'general';
+};
+
+const defaultCohortForPath = (path: string): CohortOption => {
+  const slug = getCourseSlugFromPath(path);
+  const cohorts = COHORTS_BY_COURSE[slug] || [];
+  return cohorts[0] || { label: 'TBD', code: 'tbd' };
 };
 
 const LeadCaptureModal: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const initialCohort = defaultCohortForPath(location.pathname);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
   const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
-  const [formState, setFormState] = useState(DEFAULT_STATE);
+  const [formState, setFormState] = useState<Omit<LeadCapturePayload, 'sourceTag' | 'pagePath'>>({
+    fullName: '',
+    email: '',
+    phone: '',
+    role: '',
+    ageBand: 'below_40',
+    preferredIntake: initialCohort.label,
+    cohortCode: initialCohort.code,
+    courseSlug: getCourseSlugFromPath(location.pathname),
+    intent: 'subsidy_fit',
+  });
 
   const estimate = useMemo(() => estimateNetFee(formState.ageBand), [formState.ageBand]);
+
+  const cohortOptions = useMemo(() => {
+    const options = COHORTS_BY_COURSE[getCourseSlugFromPath(location.pathname)] || [];
+    return options.length > 0 ? options : [{ label: 'TBD', code: 'tbd' }];
+  }, [location.pathname]);
 
   const closeModal = () => {
     setIsOpen(false);
     setIsSubmitting(false);
   };
+
+  const resetCourseFields = () => {
+    const first = defaultCohortForPath(location.pathname);
+    setFormState((prev) => ({
+      ...prev,
+      courseSlug: getCourseSlugFromPath(location.pathname),
+      preferredIntake: first.label,
+      cohortCode: first.code,
+    }));
+  };
+
+  useEffect(() => {
+    resetCourseFields();
+  }, [location.pathname]);
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);
@@ -52,6 +92,7 @@ const LeadCaptureModal: React.FC = () => {
         ...prev,
         intent: lead === 'join-next-cohort' ? 'reserve_seat' : 'subsidy_fit',
       }));
+      resetCourseFields();
       setIsSubmitted(false);
       setIsOpen(true);
     }
@@ -62,13 +103,14 @@ const LeadCaptureModal: React.FC = () => {
       setSourceTag(event.detail?.sourceTag || 'unknown');
       setOpenMethod('cta_click');
       setFormState((prev) => ({ ...prev, intent: event.detail?.intent || 'subsidy_fit' }));
+      resetCourseFields();
       setIsSubmitted(false);
       setIsOpen(true);
     };
 
     window.addEventListener('open-lead-modal', handler);
     return () => window.removeEventListener('open-lead-modal', handler);
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -145,13 +187,25 @@ const LeadCaptureModal: React.FC = () => {
                 <option value="40_and_above">Age 40 and above</option>
               </select>
 
-              <input
+              <select
                 required
-                placeholder="Preferred intake (e.g. Apr 2026)"
                 className="border rounded-lg px-4 py-3"
-                value={formState.preferredIntake}
-                onChange={(e) => setFormState((s) => ({ ...s, preferredIntake: e.target.value }))}
-              />
+                value={formState.cohortCode}
+                onChange={(e) => {
+                  const selected = cohortOptions.find((c) => c.code === e.target.value) || cohortOptions[0];
+                  setFormState((s) => ({
+                    ...s,
+                    cohortCode: selected.code,
+                    preferredIntake: selected.label,
+                  }));
+                }}
+              >
+                {cohortOptions.map((cohort) => (
+                  <option key={cohort.code} value={cohort.code}>
+                    {cohort.label}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="text-sm bg-[#f6faff] border border-[#d8e8ff] rounded-lg px-4 py-3 text-primary">
