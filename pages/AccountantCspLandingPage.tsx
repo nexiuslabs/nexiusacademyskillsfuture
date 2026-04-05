@@ -140,7 +140,7 @@ const faqs = [
   {
     question: 'Can I send multiple team members or request a private cohort?',
     answer:
-      'Yes. Team training, private cohort, and firm capability uplift conversations should be part of the offer path for this segment.',
+      'Yes. Private cohorts are available for companies with at least 10 SkillsFuture-eligible students, alongside team training and firm capability uplift conversations.',
   },
   {
     question: 'How is confidentiality handled?',
@@ -205,16 +205,16 @@ const AccountantCspLandingPage: React.FC = () => {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
-                  <Sparkles size={16} className="text-accent" />
-                  Course Variant · Accounting & CSP Segment
-                </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
                   Agentic AI for Accountants & Corporate Service Providers
                 </h1>
-                <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
+                <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
                   Learn practical, no-code AI workflows to speed up reporting, drafting, compliance, and client communication — while keeping human judgement and control firmly in place.
                 </p>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold mb-8">
+                  <CheckCircle size={16} className="text-accent" />
+                  Next Class: 06–07 May 2026
+                </div>
                 <div className="flex flex-wrap gap-4 mb-8">
                   <button
                     type="button"
@@ -439,7 +439,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   }
                   className="border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
                 >
-                  Talk to Us About a Private Cohort
+                  Talk to Us About a Private Cohort (Min. 10 SkillsFuture-Eligible Students)
                 </button>
               </div>
             </div>
@@ -461,7 +461,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   </div>
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                     <h3 className="font-bold text-primary mb-2">Team / private cohort path</h3>
-                    <p className="text-gray-600 text-sm">Request a private cohort, in-house run, or team capability uplift discussion for your firm.</p>
+                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 10 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
                   </div>
                 </div>
               </div>
