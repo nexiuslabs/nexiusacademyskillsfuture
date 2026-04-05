@@ -205,10 +205,6 @@ const AccountantCspLandingPage: React.FC = () => {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
-                  <Sparkles size={16} className="text-accent" />
-                  Course Variant · Accounting & CSP Segment
-                </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
                   Agentic AI for Accountants & Corporate Service Providers
                 </h1>
