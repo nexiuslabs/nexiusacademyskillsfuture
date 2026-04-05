@@ -157,6 +157,11 @@ const faqs = [
     answer:
       'That is the point of the landing page. It should emphasise immediate workplace usefulness, repeatable workflows, and implementation-ready thinking over theory.',
   },
+  {
+    question: 'Is this workshop a Verifiable CPE activity?',
+    answer:
+      'Verifiable learning generally requires relevance to your work, clear learning outcomes, professional competency development, and evidence of participation. Typical supporting documents include certificate of attendance, course invoice/receipt, attendance list, meeting minutes (where applicable), or employer endorsement. Refer to ISCA guidance: https://isca.org.sg/membership/member-obligations/verifiable-and-non-verifiable-learning',
+  },
 ];
 
 const AccountantCspLandingPage: React.FC = () => {
