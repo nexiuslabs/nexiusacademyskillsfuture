@@ -212,9 +212,13 @@ const AccountantCspLandingPage: React.FC = () => {
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
                   Agentic AI for Accountants & Corporate Service Providers
                 </h1>
-                <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
+                <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
                   Learn practical, no-code AI workflows to speed up reporting, drafting, compliance, and client communication — while keeping human judgement and control firmly in place.
                 </p>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold mb-8">
+                  <CheckCircle size={16} className="text-accent" />
+                  Next Class: 06–07 May 2026
+                </div>
                 <div className="flex flex-wrap gap-4 mb-8">
                   <button
                     type="button"
