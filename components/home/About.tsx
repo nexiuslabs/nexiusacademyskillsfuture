@@ -69,7 +69,7 @@ const About: React.FC = () => {
           </ul>
 
           <a 
-            href="https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915"
+            href="https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
