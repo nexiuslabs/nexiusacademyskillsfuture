@@ -6,7 +6,7 @@ import { openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
   const APPLY_LINK =
-    'https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01';
+    'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
   const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Apr 2026');
 

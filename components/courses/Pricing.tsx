@@ -8,7 +8,7 @@ const Pricing: React.FC = () => {
   const [ageBand, setAgeBand] = useState<'40_and_above' | '39_and_below'>('40_and_above');
 
   const APPLY_LINK =
-    'https://www.myskillsfuture.gov.sg/content/portal/en/training-exchange/course-directory/course-detail.html?courseReferenceNumber=TGS-2025059915#courseDetailsSection01';
+    'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
 
   const individualPricing = {
     tier1: {

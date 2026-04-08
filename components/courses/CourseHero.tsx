@@ -1,6 +1,9 @@
 import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
+import { trackOutboundClick } from '../../services/analytics';
+
+const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
 
 const Hero: React.FC = () => {
   return (
@@ -59,19 +62,21 @@ const Hero: React.FC = () => {
               >
                 Check Subsidy &amp; Eligibility
               </button>
-              <button
-                type="button"
+              <a
+                href={APPLY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() =>
-                  openLeadModal('course_page_cta', 'reserve_seat', {
-                    page: '/courses/agentic-ai',
-                    position: 'course_hero_secondary',
-                    ctaLabel: 'reserve_a_seat',
+                  trackOutboundClick({
+                    channel: 'skillsfuture',
+                    pagePath: '/courses/agentic-ai',
+                    position: 'course_hero_secondary_apply_now',
                   })
                 }
-                className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all"
+                className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
               >
-                Reserve a Seat
-              </button>
+                Apply Now
+              </a>
             </div>
 
             <div className="flex flex-wrap gap-4 pt-2 text-sm font-medium text-gray-500">
