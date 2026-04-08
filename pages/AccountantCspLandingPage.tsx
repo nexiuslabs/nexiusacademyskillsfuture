@@ -19,6 +19,8 @@ import Instructors from '../components/courses/Instructors';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
+const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
+
 const proofChips = [
   'No coding required',
   'Built for non-technical professionals',
@@ -189,19 +191,21 @@ const AccountantCspLandingPage: React.FC = () => {
               <a href="#governance" className="hover:text-accent">Governance</a>
               <a href="#faq" className="hover:text-accent">FAQ</a>
             </nav>
-            <button
-              type="button"
+            <a
+              href={APPLY_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() =>
-                openLeadModal('course_page_cta', 'reserve_seat', {
-                  page: '/courses/agentic-ai-accountants',
-                  position: 'accountants_nav_reserve_seat',
-                  ctaLabel: 'reserve_a_seat',
+                trackOutboundClick({
+                  channel: 'skillsfuture',
+                  pagePath: '/courses/agentic-ai-accountants',
+                  position: 'accountants_nav_apply_now',
                 })
               }
               className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
             >
-              Reserve a Seat
-            </button>
+              Apply Now
+            </a>
           </div>
         </header>
 
@@ -221,19 +225,21 @@ const AccountantCspLandingPage: React.FC = () => {
                   Next Class: 06–07 May 2026
                 </div>
                 <div className="flex flex-wrap gap-4 mb-8">
-                  <button
-                    type="button"
+                  <a
+                    href={APPLY_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/agentic-ai-accountants',
-                        position: 'accountants_hero_reserve_seat',
-                        ctaLabel: 'reserve_a_seat',
+                      trackOutboundClick({
+                        channel: 'skillsfuture',
+                        pagePath: '/courses/agentic-ai-accountants',
+                        position: 'accountants_hero_apply_now',
                       })
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
-                    Check Eligibility / Reserve a Seat <ArrowRight size={18} />
-                  </button>
+                    Apply Now <ArrowRight size={18} />
+                  </a>
                   <a
                     href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
                     target="_blank"
@@ -271,19 +277,21 @@ const AccountantCspLandingPage: React.FC = () => {
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Governance-first framing for confidential, regulated work</li>
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Commercially meaningful for owners, managers, and team leads</li>
                   </ul>
-                  <button
-                    type="button"
+                  <a
+                    href={APPLY_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/agentic-ai-accountants',
-                        position: 'accountants_hero_card_reserve',
-                        ctaLabel: 'reserve_a_seat',
+                      trackOutboundClick({
+                        channel: 'skillsfuture',
+                        pagePath: '/courses/agentic-ai-accountants',
+                        position: 'accountants_hero_card_apply_now',
                       })
                     }
-                    className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors"
+                    className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors text-center"
                   >
-                    Reserve a Seat
-                  </button>
+                    Apply Now
+                  </a>
                 </div>
               </div>
             </div>
@@ -420,19 +428,21 @@ const AccountantCspLandingPage: React.FC = () => {
                 ))}
               </div>
               <div className="flex flex-wrap justify-center gap-4">
-                <button
-                  type="button"
+                <a
+                  href={APPLY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() =>
-                    openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/courses/agentic-ai-accountants',
-                      position: 'accountants_midpage_reserve_seat',
-                      ctaLabel: 'reserve_a_seat',
+                    trackOutboundClick({
+                      channel: 'skillsfuture',
+                      pagePath: '/courses/agentic-ai-accountants',
+                      position: 'accountants_midpage_apply_now',
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
-                  Reserve a Seat
-                </button>
+                  Apply Now
+                </a>
                 <button
                   type="button"
                   onClick={() =>
@@ -538,19 +548,21 @@ const AccountantCspLandingPage: React.FC = () => {
                 The sharper commercial angle is not “AI for everyone.” It’s practical, governed AI workflows that help accounting and compliance teams save time, improve consistency, and modernise safely.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <button
-                  type="button"
+                <a
+                  href={APPLY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() =>
-                    openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/courses/agentic-ai-accountants',
-                      position: 'accountants_final_cta_reserve',
-                      ctaLabel: 'reserve_a_seat',
+                    trackOutboundClick({
+                      channel: 'skillsfuture',
+                      pagePath: '/courses/agentic-ai-accountants',
+                      position: 'accountants_final_cta_apply_now',
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
-                  Reserve a Seat
-                </button>
+                  Apply Now
+                </a>
                 <button
                   type="button"
                   onClick={() =>
