@@ -152,7 +152,7 @@ const faqs = [
   {
     question: 'Is there a subsidy or support pathway?',
     answer:
-      'Yes — the page should support a Check Subsidy & Fit path as well as Reserve a Seat and team-enquiry actions.',
+      'Yes — the page should support a Check Subsidy & Fit path as well as Apply Now and team-enquiry actions.',
   },
   {
     question: 'Will the workshop be practical enough to use immediately?',
@@ -472,7 +472,7 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                     <h3 className="font-bold text-primary mb-2">Individual path</h3>
-                    <p className="text-gray-600 text-sm">Reserve a seat, check subsidy or fit, and confirm the next suitable intake.</p>
+                    <p className="text-gray-600 text-sm">Apply now, check subsidy or fit, and confirm the next suitable intake.</p>
                   </div>
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                     <h3 className="font-bold text-primary mb-2">Team / private cohort path</h3>
