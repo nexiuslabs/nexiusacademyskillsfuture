@@ -2,6 +2,8 @@ import React from 'react';
 import { openLeadModal } from '../../services/leadModal';
 import { trackOutboundClick } from '../../services/analytics';
 
+const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
+
 const StickyConversionRail: React.FC = () => {
   return (
     <>
@@ -37,19 +39,21 @@ const StickyConversionRail: React.FC = () => {
             WhatsApp Advisor
           </a>
 
-          <button
-            type="button"
+          <a
+            href={APPLY_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() =>
-              openLeadModal('course_sticky', 'reserve_seat', {
-                page: '/courses/agentic-ai',
+              trackOutboundClick({
+                channel: 'skillsfuture',
+                pagePath: '/courses/agentic-ai',
                 position: 'course_sticky_desktop_apply_now',
-                ctaLabel: 'apply_now',
               })
             }
             className="block text-center w-full border border-primary text-primary px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-primary hover:text-white"
           >
             Apply Now
-          </button>
+          </a>
         </div>
       </aside>
 
@@ -83,19 +87,21 @@ const StickyConversionRail: React.FC = () => {
           >
             WhatsApp
           </a>
-          <button
-            type="button"
+          <a
+            href={APPLY_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() =>
-              openLeadModal('course_sticky', 'reserve_seat', {
-                page: '/courses/agentic-ai',
+              trackOutboundClick({
+                channel: 'skillsfuture',
+                pagePath: '/courses/agentic-ai',
                 position: 'course_sticky_mobile_apply_now',
-                ctaLabel: 'apply_now',
               })
             }
             className="border border-primary text-primary py-2 rounded-md text-xs font-bold text-center"
           >
             Apply Now
-          </button>
+          </a>
         </div>
       </div>
     </>
