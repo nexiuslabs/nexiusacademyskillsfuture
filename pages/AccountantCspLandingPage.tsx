@@ -22,10 +22,10 @@ import { trackOutboundClick } from '../services/analytics';
 const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
 
 const proofChips = [
-  'Built for accountants & CSP teams',
+  'Built for accountants, CSPs, and firm owners',
   'No coding required',
-  'Human-review workflow focused',
-  'Practical use cases for drafting, reporting, and compliance',
+  'Human review and governance built in',
+  'Use cases across drafting, reporting, and compliance',
   'SkillsFuture-supported',
 ];
 
@@ -64,32 +64,32 @@ const outcomes = [
 const workflows = [
   {
     title: 'Month-end commentary and management summaries',
-    description: 'Turn long financial inputs into clearer first drafts, internal notes, and structured commentary faster.',
+    description: 'Use AI to produce faster first drafts from financial inputs while managers and partners keep final review and sign-off.',
     icon: FileText,
   },
   {
     title: 'Client update emails and follow-ups',
-    description: 'Generate cleaner client communications while keeping judgement, review, and context with the team.',
+    description: 'Draft clearer client communications faster while keeping context, judgement, and relationship management with the team.',
     icon: MessageSquare,
   },
   {
     title: 'SOPs, checklists, and internal documentation',
-    description: 'Standardise recurring process documentation so teams spend less time reinventing the same materials.',
+    description: 'Standardise recurring internal documents so teams spend less time rewriting the same materials from scratch.',
     icon: ClipboardList,
   },
   {
     title: 'Recurring admin and compliance support work',
-    description: 'Identify repetitive internal workflows that can be improved with structured prompting and no-code AI usage.',
+    description: 'Spot repetitive internal tasks that can be handled more consistently with structured prompting and workflow discipline.',
     icon: CheckCircle,
   },
   {
     title: 'Research and information synthesis',
-    description: 'Summarise policy material, source documents, and internal notes into more usable knowledge for delivery teams.',
+    description: 'Turn policy material, source documents, and internal notes into more usable summaries for delivery teams and client preparation.',
     icon: Sparkles,
   },
   {
     title: 'Reusable prompt workflows',
-    description: 'Build repeatable prompt patterns for common firm tasks instead of relying on ad hoc experimentation.',
+    description: 'Build repeatable prompting patterns for common firm tasks instead of relying on ad hoc experimentation.',
     icon: Wallet,
   },
 ];
@@ -214,15 +214,39 @@ const AccountantCspLandingPage: React.FC = () => {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
-                <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                  Agentic AI for Accountants & Corporate Service Providers
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-5">
+                  <CheckCircle size={16} className="text-accent" />
+                  Built for accountants, CSPs, and firm owners who want practical AI — not generic hype
+                </div>
+                <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
+                  Practical AI workflows for accountants and CSP teams that need speed, consistency, and control
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
-                  Help your team draft faster, work more consistently, and adopt AI safely in confidential, review-heavy workflows — without needing technical staff.
+                  Help your team draft faster, work more consistently, and use AI safely in confidential, review-heavy workflows — without relying on technical staff or reckless automation.
                 </p>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold mb-8">
-                  <CheckCircle size={16} className="text-accent" />
-                  Next Class: 06–07 May 2026
+                <div className="flex flex-wrap gap-3 mb-8">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
+                    <CheckCircle size={16} className="text-accent" />
+                    Next Class: 06–07 May 2026
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
+                    <CheckCircle size={16} className="text-accent" />
+                    SkillsFuture-supported
+                  </span>
+                </div>
+                <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-4xl"> 
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <div className="text-sm text-blue-100/80 mb-1">Best for</div>
+                    <div className="font-semibold">Accounting, CSP, and compliance-heavy teams</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <div className="text-sm text-blue-100/80 mb-1">Outcome</div>
+                    <div className="font-semibold">Stronger drafts, faster internal output, safer adoption</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <div className="text-sm text-blue-100/80 mb-1">Approach</div>
+                    <div className="font-semibold">No-code, practical, human-reviewed workflows</div>
+                  </div>
                 </div>
                 <div className="flex flex-wrap gap-4 mb-8">
                   <a
@@ -268,9 +292,9 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-5">
                 <div className="bg-white text-gray-900 rounded-3xl shadow-2xl p-8">
                   <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Why firms choose this workshop</div>
-                  <h2 className="text-2xl font-bold text-primary mb-4">Practical AI for teams that care about quality, control, and real workflow value</h2>
+                  <h2 className="text-2xl font-bold text-primary mb-4">Useful AI adoption for drafting, reporting, compliance, and client-service work</h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    Designed for accountants, CSPs, and firm owners who want useful AI adoption in drafting, reporting, compliance, and client-service work — without reckless automation or vague productivity promises.
+                    Built for firms that want practical workflow value, safer usage boundaries, and clearer commercial relevance — not another generic AI talk.
                   </p>
                   <ul className="space-y-3 text-sm text-gray-700 mb-8">
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Directly relevant to reporting, compliance, documentation, and client-service workflows</li>
@@ -359,7 +383,7 @@ const AccountantCspLandingPage: React.FC = () => {
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">Example workflows for accounting and CSP teams</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                These examples show where AI can genuinely help accounting and CSP teams — while keeping review, judgement, and client responsibility with humans.
+                Each example focuses on a real workflow where AI can help with preparation, first drafts, or synthesis — while human professionals keep review, judgement, and client responsibility.
               </p>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -533,9 +557,9 @@ const AccountantCspLandingPage: React.FC = () => {
             </div>
             <div className="space-y-4">
               {faqs.map((faq) => (
-                <div key={faq.question} className="border border-gray-200 rounded-xl p-6 bg-neutral">
-                  <h3 className="font-bold text-primary text-lg mb-2">{faq.question}</h3>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <div key={faq.question} className="border border-gray-200 rounded-xl p-6 bg-neutral hover:border-primary/20 transition-colors">
+                  <h3 className="font-bold text-primary text-lg mb-3">{faq.question}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">{faq.answer}</p>
                 </div>
               ))}
             </div>
