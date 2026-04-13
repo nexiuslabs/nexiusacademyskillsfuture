@@ -456,7 +456,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   }
                   className="border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors text-center"
                 >
-                  Talk to Us About a Private Cohort (Min. 10 SkillsFuture-Eligible Students)
+                  Talk to Us About a Private Cohort (Min. 12 SkillsFuture-Eligible Students)
                 </a>
               </div>
             </div>
