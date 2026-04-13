@@ -40,24 +40,24 @@ const Hero: React.FC = () => {
             SkillsFuture-supported practical AI training
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight max-w-3xl">
-            Agentic AI training for professionals who want practical workflows, not generic AI hype
+            Practical agentic AI training for non-technical teams
           </h1>
           <p className="text-charcoal text-lg md:text-xl max-w-2xl leading-relaxed">
-            Learn how to use AI to draft faster, automate repetitive work, and improve operational consistency with no-code workflows designed for non-technical teams.
+            Learn no-code AI workflows to draft faster, automate repetitive work, and improve team productivity.
           </p>
           
           <div className="grid sm:grid-cols-3 gap-3 pt-2 max-w-3xl">
             <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
               <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Best for</div>
-              <div className="font-semibold text-primary">Operations, finance, sales, and admin teams</div>
+              <div className="font-semibold text-primary">Ops, finance, sales, admin</div>
             </div>
             <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
               <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Outcome</div>
-              <div className="font-semibold text-primary">Faster drafts, fewer repetitive tasks, stronger workflows</div>
+              <div className="font-semibold text-primary">Faster drafts, fewer repetitive tasks</div>
             </div>
             <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
               <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Approach</div>
-              <div className="font-semibold text-primary">No-code, hands-on, immediately usable</div>
+              <div className="font-semibold text-primary">No-code, hands-on</div>
             </div>
           </div>
 

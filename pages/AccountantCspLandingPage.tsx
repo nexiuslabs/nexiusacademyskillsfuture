@@ -122,22 +122,22 @@ const faqs = [
   {
     question: 'Is this really relevant to accountants and CSPs?',
     answer:
-      'Yes. The workshop is built around real accounting, compliance, drafting, reporting, documentation, and client-service workflows — not generic SME productivity examples.',
+      'Yes. Yes. It is built around real accounting, compliance, drafting, reporting, and client-service workflows.',
   },
   {
     question: 'Is this just generic AI theory?',
     answer:
-      'No. The workshop focuses on practical workflow application, repeatable prompting habits, and examples teams can use back at work immediately.',
+      'No. It focuses on practical workflows, repeatable prompting habits, and examples teams can use immediately.',
   },
   {
     question: 'Do I need coding or technical knowledge?',
     answer:
-      'No. It is designed for non-technical professionals and uses accessible no-code tools and workflow thinking rather than programming-heavy delivery.',
+      'No. It is designed for non-technical professionals and uses accessible no-code tools.',
   },
   {
     question: 'Is this suitable for firm owners as well as staff?',
     answer:
-      'Yes. Firm owners, managers, and practitioners each benefit differently — from stronger first drafts and more consistent output to better team capacity and less repetitive manual work.',
+      'Yes. Owners, managers, and practitioners all benefit — from stronger drafts to better team capacity.',
   },
   {
     question: 'Can I send multiple team members or request a private cohort?',
@@ -147,22 +147,22 @@ const faqs = [
   {
     question: 'How is confidentiality handled?',
     answer:
-      'The workshop teaches governed, human-reviewed usage. It covers appropriate boundaries, review controls, and safer ways to use AI in confidential and professional-service environments.',
+      'It teaches governed, human-reviewed usage with clear boundaries and review controls.',
   },
   {
     question: 'Is there a subsidy or support pathway?',
     answer:
-      'Yes. Individual participants can apply directly, and firms can still use the Check Subsidy & Fit or team-enquiry paths where appropriate.',
+      'Yes. Individuals can apply directly, and firms can use the subsidy-fit or team-enquiry path.',
   },
   {
     question: 'Will the workshop be practical enough to use immediately?',
     answer:
-      'Yes. The focus is immediate workplace usefulness: reusable workflows, stronger first drafts, and implementation-ready habits rather than abstract theory.',
+      'Yes. The focus is immediate workplace usefulness: reusable workflows and stronger first drafts.',
   },
   {
     question: 'Is this workshop a Verifiable CPE activity?',
     answer:
-      'Verifiable learning generally requires relevance to your work, clear learning outcomes, professional competency development, and evidence of participation. Typical supporting documents include certificate of attendance, course invoice or receipt, attendance list, meeting minutes where applicable, or employer endorsement. Refer to ISCA guidance: https://isca.org.sg/membership/member-obligations/verifiable-and-non-verifiable-learning',
+      'Verifiable learning generally requires relevance to your work, clear learning outcomes, professional competency development, and evidence of participation. Typical supporting documents include a certificate of attendance, invoice or receipt, attendance list, meeting minutes where applicable, or employer endorsement. Refer to ISCA guidance: https://isca.org.sg/membership/member-obligations/verifiable-and-non-verifiable-learning',
   },
 ];
 
@@ -216,13 +216,13 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-5">
                   <CheckCircle size={16} className="text-accent" />
-                  Built for accountants, CSPs, and firm owners who want practical AI — not generic hype
+                  Built for accountants, CSPs, and firm owners
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
-                  Practical AI workflows for accountants and CSP teams that need speed, consistency, and control
+                  Practical AI workflows for accountants and CSP teams
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
-                  Help your team draft faster, work more consistently, and use AI safely in confidential, review-heavy workflows — without relying on technical staff or reckless automation.
+                  Help your team draft faster, work more consistently, and use AI safely in review-heavy workflows.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
@@ -237,15 +237,15 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-4xl"> 
                   <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
                     <div className="text-sm text-blue-100/80 mb-1">Best for</div>
-                    <div className="font-semibold">Accounting, CSP, and compliance-heavy teams</div>
+                    <div className="font-semibold">Accounting and CSP teams</div>
                   </div>
                   <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
                     <div className="text-sm text-blue-100/80 mb-1">Outcome</div>
-                    <div className="font-semibold">Stronger drafts, faster internal output, safer adoption</div>
+                    <div className="font-semibold">Faster drafts, safer adoption</div>
                   </div>
                   <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
                     <div className="text-sm text-blue-100/80 mb-1">Approach</div>
-                    <div className="font-semibold">No-code, practical, human-reviewed workflows</div>
+                    <div className="font-semibold">No-code, human-reviewed</div>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -292,9 +292,9 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-5">
                 <div className="bg-white text-gray-900 rounded-3xl shadow-2xl p-8">
                   <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Why firms choose this workshop</div>
-                  <h2 className="text-2xl font-bold text-primary mb-4">Useful AI adoption for drafting, reporting, compliance, and client-service work</h2>
+                  <h2 className="text-2xl font-bold text-primary mb-4">Useful AI adoption for drafting, reporting, and compliance</h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    Built for firms that want practical workflow value, safer usage boundaries, and clearer commercial relevance — not another generic AI talk.
+                    Built for firms that want practical value, safer usage boundaries, and clearer commercial relevance.
                   </p>
                   <ul className="space-y-3 text-sm text-gray-700 mb-8">
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Directly relevant to reporting, compliance, documentation, and client-service workflows</li>
@@ -327,7 +327,7 @@ const AccountantCspLandingPage: React.FC = () => {
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">Who this is for</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                For firms and professionals who want more useful workflows, safer adoption, and clearer commercial value from AI training.
+                For firms and professionals who want useful workflows and safer AI adoption.
               </p>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -350,7 +350,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-5">
                 <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">What you’ll be able to do after the workshop</h2>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                  After the workshop, participants should be able to bring practical AI workflows back into the workplace quickly — without needing technical staff or relying on trial-and-error experimentation.
+                  Bring practical AI workflows back to work quickly, without relying on technical staff.
                 </p>
                 <button
                   type="button"
@@ -383,7 +383,7 @@ const AccountantCspLandingPage: React.FC = () => {
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">Example workflows for accounting and CSP teams</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                Each example focuses on a real workflow where AI can help with preparation, first drafts, or synthesis — while human professionals keep review, judgement, and client responsibility.
+                Examples where AI helps with first drafts and synthesis while humans keep review and judgement.
               </p>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -406,7 +406,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-6">
                 <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">Why firm owners send teams</h2>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                  Firm owners care about capacity, consistency, turnaround time, and margin protection — not just whether AI feels interesting in a demo.
+                  Firm owners care about capacity, consistency, turnaround time, and margin protection.
                 </p>
                 <ul className="space-y-4">
                   {ownerReasons.map((reason) => (
@@ -421,7 +421,7 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Governance & confidentiality</div>
                 <h3 className="text-2xl font-bold text-primary mb-4">Safe, governed usage for professional-services environments</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  AI should support drafting, research, and preparation — while human professionals retain judgement, accountability, and final review. That trust boundary matters for this audience.
+                  AI should support drafting and research while professionals retain judgement and final review.
                 </p>
                 <ul className="space-y-4">
                   {governancePoints.map((point) => (
@@ -441,7 +441,7 @@ const AccountantCspLandingPage: React.FC = () => {
             <div className="bg-primary rounded-3xl p-8 lg:p-12 text-white text-center shadow-2xl">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">What the workshop covers</h2>
               <p className="text-blue-50/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-                The workshop covers practical AI habits, workflow design, and review discipline for accounting and compliance-heavy environments — no coding, no fluff, and no exaggerated automation claims.
+                The workshop covers practical AI habits and review discipline for accounting and compliance-heavy environments.
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-left mb-8">
                 {curriculumThemes.map((theme) => (
@@ -493,7 +493,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-6">
                 <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">Pricing, funding, and team options</h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Choose the path that fits your situation: direct individual enrolment, or a team conversation around private cohorts and capability uplift.
+                  Choose direct enrolment or a team conversation around private cohorts.
                 </p>
                 <div className="space-y-4">
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
@@ -508,9 +508,9 @@ const AccountantCspLandingPage: React.FC = () => {
               </div>
               <div className="lg:col-span-6 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
                 <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Next steps</div>
-                <h3 className="text-2xl font-bold text-primary mb-4">Choose the right path for individual enrolment or team training</h3>
+                <h3 className="text-2xl font-bold text-primary mb-4">Choose your next step</h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  If you are enrolling as an individual, check your subsidy and fit. If you are evaluating a team option, move directly to WhatsApp for a faster conversation.
+                  Individuals can check subsidy and fit. Teams can move directly to WhatsApp.
                 </p>
                 <div className="flex flex-col gap-4">
                   <button
@@ -553,7 +553,7 @@ const AccountantCspLandingPage: React.FC = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-heading font-bold text-primary mb-4">FAQ</h2>
-              <p className="text-gray-500">Clear answers for the most likely accountant and CSP objections.</p>
+              <p className="text-gray-500">Clear answers to common questions.</p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq) => (
@@ -569,9 +569,9 @@ const AccountantCspLandingPage: React.FC = () => {
         <section className="py-20 bg-neutral">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-primary rounded-3xl p-8 lg:p-12 text-white text-center shadow-2xl">
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Train your team to use AI more practically, safely, and consistently</h2>
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Train your team to use AI safely and practically</h2>
               <p className="text-blue-50/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-                If your team needs stronger first drafts, more consistent internal output, and safer AI usage in review-heavy workflows, this workshop gives them a practical place to start.
+                For teams that want stronger first drafts, more consistent output, and safer AI usage.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a

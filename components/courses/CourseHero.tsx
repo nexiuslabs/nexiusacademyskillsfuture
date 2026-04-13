@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Practical agentic AI training for non-technical professionals who want better workflows, faster drafts, and real business use cases
+              Practical agentic AI training for non-technical professionals
             </h1>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
@@ -42,21 +42,21 @@ const Hero: React.FC = () => {
             </div>
 
             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-              Learn how to apply AI to repetitive work, internal drafting, and process-heavy tasks with a no-code approach designed for business professionals, operators, and team leads.
+              Learn how to apply AI to repetitive work and internal drafting with a no-code approach for business teams.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-3 bg-white border border-blue-100 rounded-2xl p-4">
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Best for</div>
-                <div className="font-semibold text-primary text-sm">Non-technical professionals, managers, and SMEs</div>
+                <div className="font-semibold text-primary text-sm">Non-technical teams, managers, SMEs</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Primary path</div>
-                <div className="font-semibold text-primary text-sm">Apply Now for direct registration</div>
+                <div className="font-semibold text-primary text-sm">Apply Now to register</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Need help first?</div>
-                <div className="font-semibold text-primary text-sm">Check subsidy and eligibility before applying</div>
+                <div className="font-semibold text-primary text-sm">Check subsidy before applying</div>
               </div>
             </div>
 
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
                 }
                 className="bg-primary hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 transition-all transform hover:-translate-y-1"
               >
-                Check Subsidy &amp; Eligibility
+                Check Subsidy
               </button>
               <a
                 href={APPLY_LINK}
