@@ -142,7 +142,7 @@ const faqs = [
   {
     question: 'Can I send multiple team members or request a private cohort?',
     answer:
-      'Yes. Private cohorts are available for companies with at least 10 SkillsFuture-eligible students, alongside team training and firm capability uplift conversations.',
+      'Yes. Private cohorts are available for companies with at least 12 SkillsFuture-eligible students, alongside team training and firm capability uplift conversations.',
   },
   {
     question: 'How is confidentiality handled?',
@@ -443,19 +443,21 @@ const AccountantCspLandingPage: React.FC = () => {
                 >
                   Apply Now
                 </a>
-                <button
-                  type="button"
+                <a
+                  href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20a%20private%20cohort."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() =>
-                    openLeadModal('course_page_cta', 'advisory_call', {
-                      page: '/courses/agentic-ai-accountants',
+                    trackOutboundClick({
+                      channel: 'whatsapp',
+                      pagePath: '/courses/agentic-ai-accountants',
                       position: 'accountants_midpage_private_cohort',
-                      ctaLabel: 'private_cohort',
                     })
                   }
-                  className="border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
+                  className="border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors text-center"
                 >
-                  Talk to Us About a Private Cohort (Min. 10 SkillsFuture-Eligible Students)
-                </button>
+                  Talk to Us About a Private Cohort (Min. 12 SkillsFuture-Eligible Students)
+                </a>
               </div>
             </div>
           </div>
@@ -476,7 +478,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   </div>
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                     <h3 className="font-bold text-primary mb-2">Team / private cohort path</h3>
-                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 10 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
+                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 12 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
                   </div>
                 </div>
               </div>
