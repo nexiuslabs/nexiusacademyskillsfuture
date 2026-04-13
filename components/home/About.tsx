@@ -46,11 +46,12 @@ const About: React.FC = () => {
 
         {/* Right Content */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Learn How to Build Your First Agentic AI System for Instant Business Automation
+          <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Why people sign up</div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 max-w-2xl">
+            Learn practical AI workflows you can use back at work immediately
           </h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
-            In this SkillsFuture AI course, you will learn how to design, configure, and launch autonomous agent workflows using no-code platforms. Our AI workshop for business professionals focuses on practical deployment, applying these intelligent systems to automate critical functions in sales, finance, and operations.
+          <p className="text-gray-600 mb-8 leading-relaxed max-w-2xl">
+            This course focuses on hands-on no-code workflow design for business professionals who want faster drafts, better internal processes, and more useful automation across operations, finance, and customer-facing work.
           </p>
 
           <ul className="space-y-4 mb-10">

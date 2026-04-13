@@ -9,6 +9,7 @@ const StickyConversionRail: React.FC = () => {
     <>
       <aside className="hidden lg:block fixed right-4 top-1/2 -translate-y-1/2 z-40">
         <div className="bg-white border border-gray-200 shadow-xl rounded-xl p-3 w-56 space-y-2">
+          <div className="px-1 pb-1 text-[11px] uppercase tracking-wide text-gray-500 font-semibold">Choose your next step</div>
           <button
             type="button"
             onClick={() =>
@@ -20,7 +21,7 @@ const StickyConversionRail: React.FC = () => {
             }
             className="w-full bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-900"
           >
-            Check Subsidy
+            Check Subsidy & Fit
           </button>
 
           <a
