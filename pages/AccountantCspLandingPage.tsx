@@ -142,7 +142,7 @@ const faqs = [
   {
     question: 'Can I send multiple team members or request a private cohort?',
     answer:
-      'Yes. Private cohorts are available for companies with at least 10 SkillsFuture-eligible students, alongside team training and firm capability uplift conversations.',
+      'Yes. Private cohorts are available for companies with at least 12 SkillsFuture-eligible students, alongside team training and firm capability uplift conversations.',
   },
   {
     question: 'How is confidentiality handled?',
@@ -478,7 +478,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   </div>
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                     <h3 className="font-bold text-primary mb-2">Team / private cohort path</h3>
-                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 10 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
+                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 12 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
                   </div>
                 </div>
               </div>
