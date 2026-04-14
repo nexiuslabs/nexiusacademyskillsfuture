@@ -4,7 +4,7 @@ let _sessionId: string | null = null;
 
 export function getSessionId(): string {
   if (!_sessionId) {
-    _sessionId = `academy-${crypto.randomUUID()}`;
+    _sessionId = crypto.randomUUID();
   }
   return _sessionId;
 }
