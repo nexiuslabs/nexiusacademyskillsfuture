@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
@@ -32,10 +32,30 @@ const testimonials = [
   },
 ];
 
+const TESTIMONIALS_PER_PAGE = 3;
+
 const Testimonials: React.FC = () => {
+  const pages = useMemo(() => {
+    const result = [] as typeof testimonials[];
+    for (let i = 0; i < testimonials.length; i += TESTIMONIALS_PER_PAGE) {
+      const chunk = testimonials.slice(i, i + TESTIMONIALS_PER_PAGE);
+      while (chunk.length < TESTIMONIALS_PER_PAGE) {
+        chunk.push(testimonials[chunk.length % testimonials.length]);
+      }
+      result.push(chunk);
+    }
+    return result;
+  }, []);
+
   const [activePage, setActivePage] = useState(0);
 
-  const pages = useMemo(() => [testimonials.slice(0, 2), testimonials.slice(2, 4)], []);
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActivePage((current) => (current + 1) % pages.length);
+    }, 7000);
+
+    return () => window.clearInterval(interval);
+  }, [pages.length]);
 
   return (
     <section id="reviews" className="py-24 bg-neutral scroll-mt-32">
@@ -47,10 +67,10 @@ const Testimonials: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {pages[activePage].map((testimonial) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pages[activePage].map((testimonial, index) => (
             <div
-              key={testimonial.id}
+              key={`${testimonial.id}-${index}`}
               className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative group hover:-translate-y-2 transition-transform duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
