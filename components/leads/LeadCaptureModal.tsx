@@ -9,6 +9,7 @@ declare global {
     'open-lead-modal': CustomEvent<{
       sourceTag?: LeadSourceTag;
       intent?: LeadCapturePayload['intent'];
+      redirectUrl?: string;
     }>;
   }
 }
@@ -42,11 +43,15 @@ const LeadCaptureModal: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
   const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
+  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const [formState, setFormState] = useState<Omit<LeadCapturePayload, 'sourceTag' | 'pagePath'>>({
     fullName: '',
     email: '',
     phone: '',
     role: '',
+    companyName: '',
+    departmentOrDesignation: '',
+    leadFlow: 'subsidy_fit',
     ageBand: 'below_40',
     preferredIntake: initialCohort.label,
     cohortCode: initialCohort.code,
@@ -88,9 +93,11 @@ const LeadCaptureModal: React.FC = () => {
     if (lead) {
       setSourceTag(source);
       setOpenMethod('query_auto_open');
+      setRedirectUrl(search.get('redirect_url'));
       setFormState((prev) => ({
         ...prev,
         intent: lead === 'join-next-cohort' ? 'reserve_seat' : 'subsidy_fit',
+        leadFlow: lead === 'join-next-cohort' ? 'apply_now' : 'subsidy_fit',
       }));
       resetCourseFields();
       setIsSubmitted(false);
@@ -102,7 +109,12 @@ const LeadCaptureModal: React.FC = () => {
     const handler = (event: WindowEventMap['open-lead-modal']) => {
       setSourceTag(event.detail?.sourceTag || 'unknown');
       setOpenMethod('cta_click');
-      setFormState((prev) => ({ ...prev, intent: event.detail?.intent || 'subsidy_fit' }));
+      setRedirectUrl(event.detail?.redirectUrl || null);
+      setFormState((prev) => ({
+        ...prev,
+        intent: event.detail?.intent || 'subsidy_fit',
+        leadFlow: event.detail?.intent === 'reserve_seat' ? 'apply_now' : event.detail?.intent === 'advisory_call' ? 'advisory_call' : 'subsidy_fit',
+      }));
       resetCourseFields();
       setIsSubmitted(false);
       setIsOpen(true);
@@ -139,6 +151,11 @@ const LeadCaptureModal: React.FC = () => {
         pagePath: location.pathname,
         status: 'success',
       });
+      if (formState.intent === 'reserve_seat' && redirectUrl) {
+        window.location.href = redirectUrl;
+        return;
+      }
+
       setIsSubmitted(true);
 
       const params = new URLSearchParams(location.search);
@@ -166,7 +183,7 @@ const LeadCaptureModal: React.FC = () => {
     <div className="fixed inset-0 z-[10000] bg-black/45 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h3 className="text-xl font-bold text-primary">Check Subsidy & Fit</h3>
+          <h3 className="text-xl font-bold text-primary">{formState.intent === 'reserve_seat' ? 'Before You Register' : 'Check Subsidy & Fit'}</h3>
           <button onClick={closeModal} className="text-gray-500 hover:text-primary" aria-label="Close lead form">
             <X size={20} />
           </button>
@@ -174,52 +191,76 @@ const LeadCaptureModal: React.FC = () => {
 
         {!isSubmitted ? (
           <form className="p-6 space-y-4" onSubmit={onSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input required placeholder="Full name" className="border rounded-lg px-4 py-3" value={formState.fullName} onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))} />
-              <input required type="email" placeholder="Email" className="border rounded-lg px-4 py-3" value={formState.email} onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))} />
-              <input required placeholder="Phone" className="border rounded-lg px-4 py-3" value={formState.phone} onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))} />
-              <input required placeholder="Role" className="border rounded-lg px-4 py-3" value={formState.role} onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))} />
-            </div>
+            {formState.intent === 'reserve_seat' ? (
+              <>
+                <p className="text-sm text-gray-600">
+                  Leave your details first and we’ll take you straight to the official registration page.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input required placeholder="Full name" className="border rounded-lg px-4 py-3" value={formState.fullName} onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))} />
+                  <input required type="email" placeholder="Email" className="border rounded-lg px-4 py-3" value={formState.email} onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))} />
+                  <input required placeholder="Company name" className="border rounded-lg px-4 py-3" value={formState.companyName} onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))} />
+                  <input required placeholder="Department or designation" className="border rounded-lg px-4 py-3" value={formState.departmentOrDesignation} onChange={(e) => setFormState((s) => ({ ...s, departmentOrDesignation: e.target.value, role: e.target.value }))} />
+                  <input placeholder="Mobile number (optional)" className="border rounded-lg px-4 py-3 md:col-span-2" value={formState.phone} onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))} />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Continue to Registration'}
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input required placeholder="Full name" className="border rounded-lg px-4 py-3" value={formState.fullName} onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))} />
+                  <input required type="email" placeholder="Email" className="border rounded-lg px-4 py-3" value={formState.email} onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))} />
+                  <input required placeholder="Phone" className="border rounded-lg px-4 py-3" value={formState.phone} onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))} />
+                  <input required placeholder="Role" className="border rounded-lg px-4 py-3" value={formState.role} onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))} />
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <select className="border rounded-lg px-4 py-3" value={formState.ageBand} onChange={(e) => setFormState((s) => ({ ...s, ageBand: e.target.value as LeadCapturePayload['ageBand'] }))}>
-                <option value="below_40">Age below 40</option>
-                <option value="40_and_above">Age 40 and above</option>
-              </select>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <select className="border rounded-lg px-4 py-3" value={formState.ageBand} onChange={(e) => setFormState((s) => ({ ...s, ageBand: e.target.value as LeadCapturePayload['ageBand'] }))}>
+                    <option value="below_40">Age below 40</option>
+                    <option value="40_and_above">Age 40 and above</option>
+                  </select>
 
-              <select
-                required
-                className="border rounded-lg px-4 py-3"
-                value={formState.cohortCode}
-                onChange={(e) => {
-                  const selected = cohortOptions.find((c) => c.code === e.target.value) || cohortOptions[0];
-                  setFormState((s) => ({
-                    ...s,
-                    cohortCode: selected.code,
-                    preferredIntake: selected.label,
-                  }));
-                }}
-              >
-                {cohortOptions.map((cohort) => (
-                  <option key={cohort.code} value={cohort.code}>
-                    {cohort.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+                  <select
+                    required
+                    className="border rounded-lg px-4 py-3"
+                    value={formState.cohortCode}
+                    onChange={(e) => {
+                      const selected = cohortOptions.find((c) => c.code === e.target.value) || cohortOptions[0];
+                      setFormState((s) => ({
+                        ...s,
+                        cohortCode: selected.code,
+                        preferredIntake: selected.label,
+                      }));
+                    }}
+                  >
+                    {cohortOptions.map((cohort) => (
+                      <option key={cohort.code} value={cohort.code}>
+                        {cohort.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-            <div className="text-sm bg-[#f6faff] border border-[#d8e8ff] rounded-lg px-4 py-3 text-primary">
-              <p className="font-semibold">Estimated net payable: {estimate.amount}</p>
-              <p className="text-gray-600">{estimate.note}</p>
-            </div>
+                <div className="text-sm bg-[#f6faff] border border-[#d8e8ff] rounded-lg px-4 py-3 text-primary">
+                  <p className="font-semibold">Estimated net payable: {estimate.amount}</p>
+                  <p className="text-gray-600">{estimate.note}</p>
+                </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
-            >
-              {isSubmitting ? 'Submitting...' : 'Get My Estimate & Next Step'}
-            </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Get My Estimate & Next Step'}
+                </button>
+              </>
+            )}
           </form>
         ) : (
           <div className="p-6">

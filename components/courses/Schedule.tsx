@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SCHEDULES } from '../../constants';
 import { MapPin, Monitor, Clock, CalendarClock, Users } from 'lucide-react';
-import { trackOutboundClick } from '../../services/analytics';
 import { openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
@@ -98,21 +97,20 @@ const Schedule: React.FC = () => {
                       Join Waitlist
                     </button>
                   ) : (
-                    <a
-                      href={APPLY_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
                       onClick={() =>
-                        trackOutboundClick({
-                          channel: 'skillsfuture',
-                          pagePath: '/courses/agentic-ai',
+                        openLeadModal('course_page_cta', 'reserve_seat', {
+                          page: '/courses/agentic-ai',
                           position: 'schedule_apply_button',
+                          ctaLabel: 'apply_now',
+                          redirectUrl: APPLY_LINK,
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
                       Apply Now
-                    </a>
+                    </button>
                   )}
                 </div>
               </div>

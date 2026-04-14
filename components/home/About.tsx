@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { fetchBucketImages, getRandomImages } from '../../services/imageService';
-import { trackOutboundClick } from '../../services/analytics';
+import { openLeadModal } from '../../services/leadModal';
 
 const About: React.FC = () => {
   const [images, setImages] = useState<string[]>([
@@ -69,21 +69,20 @@ const About: React.FC = () => {
             </li>
           </ul>
 
-          <a 
-            href="https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            type="button"
             onClick={() =>
-              trackOutboundClick({
-                channel: 'skillsfuture',
-                pagePath: '/',
+              openLeadModal('home_cta', 'reserve_seat', {
+                page: '/',
                 position: 'home_about_register_now',
+                ctaLabel: 'register_now',
+                redirectUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu',
               })
             }
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-opacity-90 transition-all"
           >
             Register Now
-          </a>
+          </button>
         </div>
 
       </div>

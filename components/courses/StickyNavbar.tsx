@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { trackOutboundClick } from '../../services/analytics';
+import { openLeadModal } from '../../services/leadModal';
 
 const StickyNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,21 +28,20 @@ const StickyNavbar: React.FC = () => {
             <a href="#pricing" className="text-textDark hover:text-accent font-medium transition-colors">Fees</a>
             <a href="#instructors" className="text-textDark hover:text-accent font-medium transition-colors">Instructors</a>
             <a href="#schedule" className="text-textDark hover:text-accent font-medium transition-colors">Schedule</a>
-            <a 
-              href={APPLY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              type="button"
               onClick={() =>
-                trackOutboundClick({
-                  channel: 'skillsfuture',
-                  pagePath: location.pathname,
+                openLeadModal('course_page_cta', 'reserve_seat', {
+                  page: location.pathname,
                   position: 'course_navbar_desktop_apply',
+                  ctaLabel: 'apply_now',
+                  redirectUrl: APPLY_LINK,
                 })
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
               Apply Now
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -63,21 +62,20 @@ const StickyNavbar: React.FC = () => {
             <a href="#pricing" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Fees</a>
             <a href="#schedule" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Schedule</a>
             <div className="pt-4 pb-2">
-               <a 
-                href={APPLY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+               <button 
+                type="button"
                 onClick={() =>
-                  trackOutboundClick({
-                    channel: 'skillsfuture',
-                    pagePath: location.pathname,
+                  openLeadModal('course_page_cta', 'reserve_seat', {
+                    page: location.pathname,
                     position: 'course_navbar_mobile_apply',
+                    ctaLabel: 'apply_now',
+                    redirectUrl: APPLY_LINK,
                   })
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
                 Apply Now
-              </a>
+              </button>
             </div>
           </div>
         </div>

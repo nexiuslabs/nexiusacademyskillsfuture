@@ -8,6 +8,7 @@ export const openLeadModal = (
     page?: string;
     position?: string;
     ctaLabel?: string;
+    redirectUrl?: string;
   }
 ) => {
   trackCtaClick({
@@ -20,7 +21,7 @@ export const openLeadModal = (
 
   window.dispatchEvent(
     new CustomEvent('open-lead-modal', {
-      detail: { sourceTag, intent },
+      detail: { sourceTag, intent, redirectUrl: ctaMeta?.redirectUrl },
     })
   );
 };

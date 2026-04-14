@@ -249,21 +249,20 @@ const AccountantCspLandingPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-4 mb-8">
-                  <a
-                    href={APPLY_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
                     onClick={() =>
-                      trackOutboundClick({
-                        channel: 'skillsfuture',
-                        pagePath: '/courses/agentic-ai-accountants',
+                      openLeadModal('course_page_cta', 'reserve_seat', {
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_apply_now',
+                        ctaLabel: 'apply_now',
+                        redirectUrl: APPLY_LINK,
                       })
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
                     Apply Now <ArrowRight size={18} />
-                  </a>
+                  </button>
                   <a
                     href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
                     target="_blank"
@@ -301,21 +300,20 @@ const AccountantCspLandingPage: React.FC = () => {
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Governance-first framing for confidential, regulated work</li>
                     <li className="flex items-start gap-3"><CheckCircle size={18} className="text-accent mt-0.5" />Commercially meaningful for owners, managers, and team leads</li>
                   </ul>
-                  <a
-                    href={APPLY_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
                     onClick={() =>
-                      trackOutboundClick({
-                        channel: 'skillsfuture',
-                        pagePath: '/courses/agentic-ai-accountants',
+                      openLeadModal('course_page_cta', 'reserve_seat', {
+                        page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_card_apply_now',
+                        ctaLabel: 'apply_now',
+                        redirectUrl: APPLY_LINK,
                       })
                     }
                     className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors text-center"
                   >
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -452,21 +450,20 @@ const AccountantCspLandingPage: React.FC = () => {
                 ))}
               </div>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href={APPLY_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
                   onClick={() =>
-                    trackOutboundClick({
-                      channel: 'skillsfuture',
-                      pagePath: '/courses/agentic-ai-accountants',
+                    openLeadModal('course_page_cta', 'reserve_seat', {
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_midpage_apply_now',
+                      ctaLabel: 'apply_now',
+                      redirectUrl: APPLY_LINK,
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
                   Apply Now
-                </a>
+                </button>
                 <a
                   href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20a%20private%20cohort."
                   target="_blank"
@@ -574,21 +571,20 @@ const AccountantCspLandingPage: React.FC = () => {
                 For teams that want stronger first drafts, more consistent output, and safer AI usage.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href={APPLY_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
                   onClick={() =>
-                    trackOutboundClick({
-                      channel: 'skillsfuture',
-                      pagePath: '/courses/agentic-ai-accountants',
+                    openLeadModal('course_page_cta', 'reserve_seat', {
+                      page: '/courses/agentic-ai-accountants',
                       position: 'accountants_final_cta_apply_now',
+                      ctaLabel: 'apply_now',
+                      redirectUrl: APPLY_LINK,
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
                   Apply Now
-                </a>
+                </button>
                 <button
                   type="button"
                   onClick={() =>
