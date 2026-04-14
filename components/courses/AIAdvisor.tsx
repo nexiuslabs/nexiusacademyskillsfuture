@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, MessageCircle, Sparkles } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

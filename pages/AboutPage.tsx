@@ -360,7 +360,7 @@ const AboutPage: React.FC = () => {
                   <ArrowRight size={18} />
                 </Link>
                 <a
-                  href="https://wa.me/6596615284?text=Hi%20Nexius%20Academy%2C%20I%20want%20to%20check%20which%20cohort%20fits%20me."
+                  href="https://wa.me/6589002130?text=Hi%20Nexius%20Academy%2C%20I%20want%20to%20check%20which%20cohort%20fits%20me."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-white text-primary border border-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all"

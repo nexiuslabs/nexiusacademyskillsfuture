@@ -7,7 +7,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
 };
 
-const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
 const SYSTEM_INSTRUCTION = `You are Wendy, the AI Course Advisor for Nexius Academy in Singapore.
 
