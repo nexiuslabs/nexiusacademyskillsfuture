@@ -37,16 +37,30 @@ const Hero: React.FC = () => {
         {/* Left Content */}
         <div className="space-y-6 z-10">
           <div className="inline-block px-3 py-1 bg-white rounded-full shadow-sm text-xs font-bold text-secondary tracking-wide uppercase mb-2">
-            🚀 Build Your AI Advantage
+            SkillsFuture-supported practical AI training
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-            Agentic AI Courses <br />
-            <span className="text-secondary">for Non-Technical Professionals</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight max-w-3xl">
+            Practical agentic AI training for non-technical teams
           </h1>
-          <p className="text-charcoal text-lg md:text-xl max-w-lg leading-relaxed">
-            Learn Agentic AI hands-on to automate entire business workflows, boost productivity, and simplify operations, specifically designed for non-technical professionals.
+          <p className="text-charcoal text-lg md:text-xl max-w-2xl leading-relaxed">
+            Learn no-code AI workflows to draft faster, automate repetitive work, and improve team productivity.
           </p>
           
+          <div className="grid sm:grid-cols-3 gap-3 pt-2 max-w-3xl">
+            <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
+              <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Best for</div>
+              <div className="font-semibold text-primary">Ops, finance, sales, admin</div>
+            </div>
+            <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
+              <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Outcome</div>
+              <div className="font-semibold text-primary">Faster drafts, fewer repetitive tasks</div>
+            </div>
+            <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
+              <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Approach</div>
+              <div className="font-semibold text-primary">No-code, hands-on</div>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
             
             {/* Subsidy Badge (SVG Implementation for scaling) */}

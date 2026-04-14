@@ -46,25 +46,26 @@ const About: React.FC = () => {
 
         {/* Right Content */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Learn How to Build Your First Agentic AI System for Instant Business Automation
+          <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Why people sign up</div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 max-w-2xl">
+            Learn practical AI workflows you can use immediately
           </h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
-            In this SkillsFuture AI course, you will learn how to design, configure, and launch autonomous agent workflows using no-code platforms. Our AI workshop for business professionals focuses on practical deployment, applying these intelligent systems to automate critical functions in sales, finance, and operations.
+          <p className="text-gray-600 mb-8 leading-relaxed max-w-2xl">
+            A hands-on no-code course for business professionals who want faster drafts, better processes, and useful automation.
           </p>
 
           <ul className="space-y-4 mb-10">
             <li className="flex items-center gap-3 text-charcoal font-medium">
               <CheckCircle size={20} className="text-secondary" />
-              Learn to map, build, and deploy agents to automate full business processes
+              Map and deploy workflows that automate repetitive business tasks
             </li>
             <li className="flex items-center gap-3 text-charcoal font-medium">
               <CheckCircle size={20} className="text-secondary" />
-              Configure and manage agent systems using accessible platforms without writing code
+              Use accessible no-code tools without writing code
             </li>
             <li className="flex items-center gap-3 text-charcoal font-medium">
               <CheckCircle size={20} className="text-secondary" />
-              Apply Agentic AI to real-world tasks in finance, HR, and customer service
+              Apply AI to finance, HR, and customer service work
             </li>
           </ul>
 
