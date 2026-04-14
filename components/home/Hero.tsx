@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
                       </div>
                       <div
                         className={[
-                          'font-semibold text-[13px] md:text-[14px] leading-[1.28] max-w-[14ch]',
+                          'font-semibold text-[11px] md:text-[12px] leading-[1.22] max-w-[16ch]',
                           item.featured ? 'text-white' : 'text-[#172033]',
                         ].join(' ')}
                       >
