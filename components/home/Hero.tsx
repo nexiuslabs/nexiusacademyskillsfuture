@@ -19,7 +19,7 @@ const heroHighlights = [
     label: 'APPROACH',
     value: 'No-code, hands-on',
     icon: Laptop,
-    featured: true,
+    featured: false,
   },
 ];
 
