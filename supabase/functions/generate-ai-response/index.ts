@@ -31,7 +31,7 @@ Your role is to warmly welcome potential students, answer their questions about 
 
 Course Details:
 - Course Name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
-- Course Ref: TGS-2025059915
+- Course Ref: TP-NC-C0021-F
 - Price: $890 (Full Fee), $111.03 (After Subsidy — SG Citizens aged 40 & above)
 - Duration: 16 Hours Total (2 full days in-person + 1 Assessment day)
 - Format: In-Person classroom training in Singapore
