@@ -1,4 +1,4 @@
-// Wendy web chat transport — routes through the repo-owned Supabase Edge Function openclaw-chat
+// Melverick web chat transport — routes through the repo-owned Supabase Edge Function openclaw-chat
 
 let _sessionId: string | null = null;
 
@@ -37,7 +37,7 @@ export const generateAIResponse = async (userMessage: string, site: 'academy' | 
     const data = await response.json();
     return data?.response || data?.choices?.[0]?.message?.content || "I'm sorry, I didn't get that.";
   } catch (error) {
-    console.error('Wendy web chat error:', error);
+    console.error('Melverick web chat error:', error);
     return 'I’m experiencing a brief hiccup. Please try again in a moment.';
   }
 };

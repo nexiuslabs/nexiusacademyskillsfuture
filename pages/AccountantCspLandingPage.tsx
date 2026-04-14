@@ -264,7 +264,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     Apply Now <ArrowRight size={18} />
                   </button>
                   <a
-                    href="https://wa.me/6589002130?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
+                    href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() =>
@@ -465,7 +465,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   Apply Now
                 </button>
                 <a
-                  href="https://wa.me/6589002130?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20a%20private%20cohort."
+                  href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20a%20private%20cohort."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
@@ -524,7 +524,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     Check Subsidy & Fit
                   </button>
                   <a
-                    href="https://wa.me/6589002130?text=Hi%20Wendy%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
+                    href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() =>
