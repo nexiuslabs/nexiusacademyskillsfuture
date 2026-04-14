@@ -22,6 +22,13 @@ const testimonials = [
     title: "Senior Member, Hokkien Association",
     image: "/images/testimonials/kenji.jpg",
     quote: "The custom AI workshop by Nexius Academy was really good. Our clan, youths, seniors really enjoyed it. Very, very relevant and practical. I would definitely recommend everyone to take it."
+  },
+  {
+    id: 4,
+    name: "Thomas Lee",
+    title: "Program Lead, Temasek Poly",
+    image: "/images/testimonials/thomas-lee.jpg",
+    quote: "Nexius Labs taught our startups how to build AI agents that help us grow and operate our business more effectively."
   }
 ];
 
@@ -33,7 +40,7 @@ const Testimonials: React.FC = () => {
           <h2 className="text-3xl font-bold text-primary">Hear How Our Learners Have<br/> Benefitted From Our AI Certification Courses</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative group hover:-translate-y-2 transition-transform duration-300">
               <div className="flex items-center gap-4 mb-6">
@@ -58,6 +65,7 @@ const Testimonials: React.FC = () => {
         {/* Navigation Dots */}
         <div className="flex justify-center mt-10 gap-2">
            <div className="w-3 h-3 rounded-full bg-secondary cursor-pointer"></div>
+           <div className="w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></div>
            <div className="w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></div>
            <div className="w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></div>
         </div>
