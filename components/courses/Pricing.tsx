@@ -67,7 +67,7 @@ const Pricing: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fee & Government Subsidies</h2>
           <p className="text-gray-500 mb-2">Pay even less or $0 cash with government subsidies.</p>
-          <p className="text-xs text-gray-400 font-mono">Course Ref No: TGS-2025059915</p>
+          <p className="text-xs text-gray-400 font-mono">Course Ref No: TP-NC-C0021-F</p>
         </div>
 
         <div className="max-w-4xl mx-auto mb-10 bg-neutral border border-gray-200 rounded-2xl p-6">
