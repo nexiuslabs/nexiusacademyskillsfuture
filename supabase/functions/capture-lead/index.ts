@@ -12,6 +12,7 @@ type LeadPayload = {
   role: string;
   companyName: string;
   departmentOrDesignation: string;
+  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call';
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
   cohortCode: string;
@@ -33,6 +34,7 @@ Deno.serve(async (req) => {
       'fullName',
       'email',
       'role',
+      'leadFlow',
       'ageBand',
       'preferredIntake',
       'cohortCode',
@@ -67,6 +69,7 @@ Deno.serve(async (req) => {
       role: payload.role,
       company_name: payload.companyName,
       department_or_designation: payload.departmentOrDesignation,
+      lead_flow: payload.leadFlow,
       age_band: payload.ageBand,
       preferred_intake: payload.preferredIntake,
       cohort_code: payload.cohortCode,

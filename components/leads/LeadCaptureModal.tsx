@@ -51,6 +51,7 @@ const LeadCaptureModal: React.FC = () => {
     role: '',
     companyName: '',
     departmentOrDesignation: '',
+    leadFlow: 'subsidy_fit',
     ageBand: 'below_40',
     preferredIntake: initialCohort.label,
     cohortCode: initialCohort.code,
@@ -96,6 +97,7 @@ const LeadCaptureModal: React.FC = () => {
       setFormState((prev) => ({
         ...prev,
         intent: lead === 'join-next-cohort' ? 'reserve_seat' : 'subsidy_fit',
+        leadFlow: lead === 'join-next-cohort' ? 'apply_now' : 'subsidy_fit',
       }));
       resetCourseFields();
       setIsSubmitted(false);
@@ -108,7 +110,11 @@ const LeadCaptureModal: React.FC = () => {
       setSourceTag(event.detail?.sourceTag || 'unknown');
       setOpenMethod('cta_click');
       setRedirectUrl(event.detail?.redirectUrl || null);
-      setFormState((prev) => ({ ...prev, intent: event.detail?.intent || 'subsidy_fit' }));
+      setFormState((prev) => ({
+        ...prev,
+        intent: event.detail?.intent || 'subsidy_fit',
+        leadFlow: event.detail?.intent === 'reserve_seat' ? 'apply_now' : event.detail?.intent === 'advisory_call' ? 'advisory_call' : 'subsidy_fit',
+      }));
       resetCourseFields();
       setIsSubmitted(false);
       setIsOpen(true);
