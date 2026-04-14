@@ -7,9 +7,9 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
 };
 
-const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
-const SYSTEM_INSTRUCTION = `You are Wendy, the AI Course Advisor for Nexius Academy in Singapore.
+const SYSTEM_INSTRUCTION = `You are Melverick, the AI Course Advisor for Nexius Academy in Singapore.
 
 Your job is to help visitors understand Nexius Academy workshops, schedules, funding-related questions, suitability, and enrolment paths.
 
@@ -55,7 +55,7 @@ const needsHumanHelp = (message: string) => {
 const simpleGreetingReply = (message: string) => {
   const text = message.trim().toLowerCase();
   if (['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'].includes(text)) {
-    return 'Hi! I’m Wendy 👋 I can help with course details, fees, subsidy questions, suitability, and next steps. What would you like to know?';
+    return 'Hi! I’m Melverick 👋 I can help with course details, fees, subsidy questions, suitability, and next steps. What would you like to know?';
   }
   return null;
 };
@@ -168,10 +168,10 @@ Deno.serve(async (req: Request) => {
       content: row.message_text,
     }));
 
-    let responseText = simpleGreetingReply(latestUserMessage) || `I’m having trouble answering right now. Please try again, or message Wendy directly on WhatsApp for help: ${WHATSAPP_URL}`;
+    let responseText = simpleGreetingReply(latestUserMessage) || `I’m having trouble answering right now. Please try again, or message Melverick directly on WhatsApp for help: ${WHATSAPP_URL}`;
 
     if (needsHumanHelp(latestUserMessage)) {
-      responseText = `For this, the fastest next step is to message Wendy directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
+      responseText = `For this, the fastest next step is to message Melverick directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
     } else if (!simpleGreetingReply(latestUserMessage)) {
       const openaiKey = Deno.env.get('OPENAI_API_KEY');
       const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY');
@@ -223,7 +223,7 @@ Deno.serve(async (req: Request) => {
   } catch (error) {
     console.error('openclaw-chat error:', error);
     return new Response(
-      JSON.stringify({ error: 'Wendy is temporarily unavailable. Please try again shortly.' }),
+      JSON.stringify({ error: 'Melverick is temporarily unavailable. Please try again shortly.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

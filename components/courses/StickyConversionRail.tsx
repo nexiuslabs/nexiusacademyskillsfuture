@@ -25,7 +25,7 @@ const StickyConversionRail: React.FC = () => {
           </button>
 
           <a
-            href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20want%20to%20check%20my%20subsidy%20and%20course%20fit."
+            href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20want%20to%20check%20my%20subsidy%20and%20course%20fit."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
@@ -73,7 +73,7 @@ const StickyConversionRail: React.FC = () => {
             Check Subsidy
           </button>
           <a
-            href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20want%20to%20check%20my%20subsidy%20and%20course%20fit."
+            href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20want%20to%20check%20my%20subsidy%20and%20course%20fit."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>

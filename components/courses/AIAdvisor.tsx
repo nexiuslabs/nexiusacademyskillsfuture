@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, MessageCircle, Sparkles } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const AIAdvisor: React.FC = () => {
                 <MessageCircle size={16} />
               </div>
               <div>
-                <h3 className="font-bold text-sm">Wendy</h3>
+                <h3 className="font-bold text-sm">Melverick</h3>
                 <p className="text-xs text-gray-300 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-green-400"></span>
                   Human support on WhatsApp
@@ -38,7 +38,7 @@ const AIAdvisor: React.FC = () => {
 
           <div className="p-6 bg-white space-y-4">
             <p className="text-sm text-gray-600 leading-relaxed">
-              Need help with course details, subsidy questions, or the right next step? Message Wendy directly on WhatsApp for human support.
+              Need help with course details, subsidy questions, or the right next step? Message Melverick directly on WhatsApp for human support.
             </p>
 
             <a
@@ -47,11 +47,11 @@ const AIAdvisor: React.FC = () => {
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-full hover:bg-green-600 transition-colors"
             >
-              <MessageCircle size={16} /> Ask Wendy on WhatsApp
+              <MessageCircle size={16} /> Ask Melverick on WhatsApp
             </a>
 
             <p className="text-[11px] text-center text-gray-400">
-              You’ll be taken to WhatsApp to continue with Wendy directly.
+              You’ll be taken to WhatsApp to continue with Melverick directly.
             </p>
           </div>
         </div>

@@ -171,7 +171,7 @@ const LeadCaptureModal: React.FC = () => {
         pagePath: location.pathname,
         status: 'failed',
       });
-      alert('Could not submit right now. Please try again, or message Wendy on WhatsApp.');
+      alert('Could not submit right now. Please try again, or message Melverick on WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
@@ -268,9 +268,9 @@ const LeadCaptureModal: React.FC = () => {
             <p className="text-gray-700 mb-4">
               Your estimated net fee is <strong>{estimate.amount}</strong>. Our team will contact you with the best intake and eligibility guidance.
             </p>
-            <p className="text-sm text-gray-600 mb-5">Next best action: message Wendy directly for immediate advice.</p>
+            <p className="text-sm text-gray-600 mb-5">Next best action: message Melverick directly for immediate advice.</p>
             <a
-              href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake."
+              href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>

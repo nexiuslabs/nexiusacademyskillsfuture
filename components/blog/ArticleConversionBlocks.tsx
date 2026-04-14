@@ -115,7 +115,7 @@ export const AuthorCredibilityBox: React.FC<AuthorCredibilityBoxProps> = ({ arti
       and non-technical professionals to design practical AI workflows for sales, operations, and customer support.
     </p>
     <a
-      href="https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20read%20the%20article%20and%20want%20to%20speak%20to%20a%20course%20advisor."
+      href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20read%20the%20article%20and%20want%20to%20speak%20to%20a%20course%20advisor."
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

@@ -110,7 +110,7 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
                   View Official Funding Page <ArrowRight size={18} />
                 </a>
                 <a
-                  href="https://wa.me/6596615284?text=Hi%20Nexius%20Academy%2C%20I%20want%20help%20understanding%20SkillsFuture%20funding%20for%20employer-sponsored%20training."
+                  href="https://wa.me/6589002130?text=Hi%20Nexius%20Academy%2C%20I%20want%20help%20understanding%20SkillsFuture%20funding%20for%20employer-sponsored%20training."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all"
