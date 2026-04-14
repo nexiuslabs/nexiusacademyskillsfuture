@@ -34,6 +34,8 @@ Guidelines:
 
 type IncomingMessage = { role: 'user' | 'assistant' | 'system'; content: string };
 
+type LlmMessage = { role: 'user' | 'assistant' | 'system'; content: string };
+
 const needsHumanHelp = (message: string) => {
   const text = message.toLowerCase();
   return [
@@ -58,6 +60,61 @@ const simpleGreetingReply = (message: string) => {
   }
   return null;
 };
+
+async function callOpenAI(apiKey: string, history: LlmMessage[]) {
+  const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'system', content: SYSTEM_INSTRUCTION }, ...history],
+      max_tokens: 350,
+      temperature: 0.5,
+    }),
+  });
+
+  if (!openaiRes.ok) {
+    const errorText = await openaiRes.text();
+    throw new Error(`OpenAI ${openaiRes.status}: ${errorText}`);
+  }
+
+  const openaiData = await openaiRes.json();
+  return openaiData?.choices?.[0]?.message?.content?.trim() || null;
+}
+
+async function callAnthropic(apiKey: string, history: LlmMessage[]) {
+  const system = SYSTEM_INSTRUCTION;
+  const messages = history.filter((m) => m.role !== 'system').map((m) => ({
+    role: m.role === 'assistant' ? 'assistant' : 'user',
+    content: m.content,
+  }));
+
+  const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-3-5-haiku-latest',
+      max_tokens: 350,
+      system,
+      messages,
+    }),
+  });
+
+  if (!anthropicRes.ok) {
+    const errorText = await anthropicRes.text();
+    throw new Error(`Anthropic ${anthropicRes.status}: ${errorText}`);
+  }
+
+  const anthropicData = await anthropicRes.json();
+  return anthropicData?.content?.find((item: any) => item?.type === 'text')?.text?.trim() || null;
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
@@ -104,7 +161,7 @@ Deno.serve(async (req: Request) => {
       .order('timestamp', { ascending: true })
       .limit(20);
 
-    const history = (historyRows || []).map((row: any) => ({
+    const history: LlmMessage[] = (historyRows || []).map((row: any) => ({
       role: row.role === 'user' ? 'user' : 'assistant',
       content: row.message_text,
     }));
@@ -114,31 +171,35 @@ Deno.serve(async (req: Request) => {
     if (needsHumanHelp(latestUserMessage)) {
       responseText = `For this, the fastest next step is to message Wendy directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
     } else if (!simpleGreetingReply(latestUserMessage)) {
-      const apiKey = Deno.env.get('OPENAI_API_KEY');
-      if (apiKey) {
-        const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: 'gpt-4o-mini',
-            messages: [{ role: 'system', content: SYSTEM_INSTRUCTION }, ...history],
-            max_tokens: 350,
-            temperature: 0.5,
-          }),
-        });
+      const openaiKey = Deno.env.get('OPENAI_API_KEY');
+      const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY');
 
-        if (openaiRes.ok) {
-          const openaiData = await openaiRes.json();
-          responseText = openaiData?.choices?.[0]?.message?.content?.trim() || responseText;
-        } else {
-          const errorText = await openaiRes.text();
-          console.error('OpenAI chat error:', openaiRes.status, errorText);
+      let modelErrors: string[] = [];
+
+      if (openaiKey) {
+        try {
+          const openAiText = await callOpenAI(openaiKey, history);
+          if (openAiText) responseText = openAiText;
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.error('OpenAI chat error:', message);
+          modelErrors.push(message);
         }
-      } else {
-        console.error('OPENAI_API_KEY missing for openclaw-chat');
+      }
+
+      if ((!responseText || responseText.includes('I’m having trouble answering right now')) && anthropicKey) {
+        try {
+          const anthropicText = await callAnthropic(anthropicKey, history);
+          if (anthropicText) responseText = anthropicText;
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.error('Anthropic chat error:', message);
+          modelErrors.push(message);
+        }
+      }
+
+      if ((!responseText || responseText.includes('I’m having trouble answering right now')) && modelErrors.length > 0) {
+        console.error('Wendy model fallback errors:', modelErrors.join(' | '));
       }
     }
 
