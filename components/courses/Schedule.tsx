@@ -45,13 +45,6 @@ const Schedule: React.FC = () => {
                 <div className="space-y-3">
                   <div className="font-bold text-primary text-lg flex flex-wrap items-center gap-2">
                     {schedule.dates}
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded font-bold uppercase ${
-                        isFull ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-800'
-                      }`}
-                    >
-                      {isFull ? 'Cohort Full' : `Seats left: ${schedule.slotsLeft}`}
-                    </span>
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-gray-600">
@@ -109,7 +102,7 @@ const Schedule: React.FC = () => {
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Apply Now
+                      Reserve a Seat
                     </button>
                   )}
                 </div>

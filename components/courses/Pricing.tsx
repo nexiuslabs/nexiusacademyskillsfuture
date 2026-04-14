@@ -197,7 +197,7 @@ const Pricing: React.FC = () => {
             }
             className="inline-block text-center bg-primary hover:bg-blue-900 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 w-full sm:w-auto"
           >
-            Apply Now to Secure Funding
+            Reserve a Seat
           </button>
         </div>
       </div>

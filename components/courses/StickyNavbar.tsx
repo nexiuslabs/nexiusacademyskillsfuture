@@ -40,7 +40,7 @@ const StickyNavbar: React.FC = () => {
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
-              Apply Now
+              Reserve a Seat
             </button>
           </div>
 
@@ -74,7 +74,7 @@ const StickyNavbar: React.FC = () => {
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
-                Apply Now
+                Reserve a Seat
               </button>
             </div>
           </div>
