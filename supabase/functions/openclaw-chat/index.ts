@@ -33,7 +33,6 @@ Guidelines:
 - Focus on helping users understand the right next step.`;
 
 type IncomingMessage = { role: 'user' | 'assistant' | 'system'; content: string };
-
 type LlmMessage = { role: 'user' | 'assistant' | 'system'; content: string };
 
 const needsHumanHelp = (message: string) => {
@@ -62,7 +61,7 @@ const simpleGreetingReply = (message: string) => {
 };
 
 async function callOpenAI(apiKey: string, history: LlmMessage[]) {
-  const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -76,23 +75,24 @@ async function callOpenAI(apiKey: string, history: LlmMessage[]) {
     }),
   });
 
-  if (!openaiRes.ok) {
-    const errorText = await openaiRes.text();
-    throw new Error(`OpenAI ${openaiRes.status}: ${errorText}`);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`OPENAI_${res.status}: ${text}`);
   }
 
-  const openaiData = await openaiRes.json();
-  return openaiData?.choices?.[0]?.message?.content?.trim() || null;
+  const data = await res.json();
+  const content = data?.choices?.[0]?.message?.content?.trim();
+  if (!content) throw new Error('OPENAI_EMPTY_RESPONSE');
+  return content;
 }
 
 async function callAnthropic(apiKey: string, history: LlmMessage[]) {
-  const system = SYSTEM_INSTRUCTION;
   const messages = history.filter((m) => m.role !== 'system').map((m) => ({
     role: m.role === 'assistant' ? 'assistant' : 'user',
     content: m.content,
   }));
 
-  const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'x-api-key': apiKey,
@@ -102,18 +102,20 @@ async function callAnthropic(apiKey: string, history: LlmMessage[]) {
     body: JSON.stringify({
       model: 'claude-3-5-haiku-latest',
       max_tokens: 350,
-      system,
+      system: SYSTEM_INSTRUCTION,
       messages,
     }),
   });
 
-  if (!anthropicRes.ok) {
-    const errorText = await anthropicRes.text();
-    throw new Error(`Anthropic ${anthropicRes.status}: ${errorText}`);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`ANTHROPIC_${res.status}: ${text}`);
   }
 
-  const anthropicData = await anthropicRes.json();
-  return anthropicData?.content?.find((item: any) => item?.type === 'text')?.text?.trim() || null;
+  const data = await res.json();
+  const content = data?.content?.find((item: any) => item?.type === 'text')?.text?.trim();
+  if (!content) throw new Error('ANTHROPIC_EMPTY_RESPONSE');
+  return content;
 }
 
 Deno.serve(async (req: Request) => {
@@ -173,33 +175,34 @@ Deno.serve(async (req: Request) => {
     } else if (!simpleGreetingReply(latestUserMessage)) {
       const openaiKey = Deno.env.get('OPENAI_API_KEY');
       const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY');
-
-      let modelErrors: string[] = [];
+      const diagnostics: string[] = [];
 
       if (openaiKey) {
         try {
-          const openAiText = await callOpenAI(openaiKey, history);
-          if (openAiText) responseText = openAiText;
+          responseText = await callOpenAI(openaiKey, history);
         } catch (error) {
-          const message = error instanceof Error ? error.message : String(error);
-          console.error('OpenAI chat error:', message);
-          modelErrors.push(message);
+          const msg = error instanceof Error ? error.message : String(error);
+          console.error(msg);
+          diagnostics.push(msg);
         }
+      } else {
+        diagnostics.push('OPENAI_KEY_MISSING');
       }
 
-      if ((!responseText || responseText.includes('I’m having trouble answering right now')) && anthropicKey) {
+      if (responseText.includes('I’m having trouble answering right now') && anthropicKey) {
         try {
-          const anthropicText = await callAnthropic(anthropicKey, history);
-          if (anthropicText) responseText = anthropicText;
+          responseText = await callAnthropic(anthropicKey, history);
         } catch (error) {
-          const message = error instanceof Error ? error.message : String(error);
-          console.error('Anthropic chat error:', message);
-          modelErrors.push(message);
+          const msg = error instanceof Error ? error.message : String(error);
+          console.error(msg);
+          diagnostics.push(msg);
         }
+      } else if (responseText.includes('I’m having trouble answering right now') && !anthropicKey) {
+        diagnostics.push('ANTHROPIC_KEY_MISSING');
       }
 
-      if ((!responseText || responseText.includes('I’m having trouble answering right now')) && modelErrors.length > 0) {
-        console.error('Wendy model fallback errors:', modelErrors.join(' | '));
+      if (responseText.includes('I’m having trouble answering right now') && diagnostics.length > 0) {
+        responseText = `WENDY_DEBUG: ${diagnostics.join(' | ')}`;
       }
     }
 
@@ -220,9 +223,7 @@ Deno.serve(async (req: Request) => {
   } catch (error) {
     console.error('openclaw-chat error:', error);
     return new Response(
-      JSON.stringify({
-        error: 'Wendy is temporarily unavailable. Please try again shortly.',
-      }),
+      JSON.stringify({ error: 'Wendy is temporarily unavailable. Please try again shortly.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
