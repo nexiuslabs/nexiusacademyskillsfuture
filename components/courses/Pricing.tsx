@@ -7,8 +7,6 @@ const Pricing: React.FC = () => {
   const [citizenship, setCitizenship] = useState<'sg_citizen' | 'pr_ltvp'>('sg_citizen');
   const [ageBand, setAgeBand] = useState<'40_and_above' | '39_and_below'>('40_and_above');
 
-  const APPLY_LINK =
-    'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
 
   const individualPricing = {
     tier1: {
@@ -191,8 +189,7 @@ const Pricing: React.FC = () => {
               openLeadModal('course_page_cta', 'reserve_seat', {
                 page: '/courses/agentic-ai',
                 position: 'pricing_apply_button',
-                ctaLabel: 'apply_now_to_secure_funding',
-                redirectUrl: APPLY_LINK,
+                ctaLabel: 'reserve_a_seat',
               })
             }
             className="inline-block text-center bg-primary hover:bg-blue-900 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 w-full sm:w-auto"

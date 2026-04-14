@@ -2,8 +2,6 @@ import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
-const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
-
 const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
@@ -79,8 +77,7 @@ const Hero: React.FC = () => {
                   openLeadModal('course_page_cta', 'reserve_seat', {
                     page: '/courses/agentic-ai',
                     position: 'course_hero_secondary_apply_now',
-                    ctaLabel: 'apply_now',
-                    redirectUrl: APPLY_LINK,
+                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
