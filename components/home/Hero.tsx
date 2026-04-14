@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
                       <div className="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2 transition-colors duration-300 group-hover:text-white/80">
                         {item.label}
                       </div>
-                      <div className="font-semibold text-primary text-[28px] leading-[1.15] max-w-[12ch] transition-colors duration-300 group-hover:text-white">
+                      <div className="font-semibold text-primary text-[22px] md:text-[24px] leading-[1.18] max-w-[12ch] transition-colors duration-300 group-hover:text-white">
                         {item.value}
                       </div>
                     </div>
