@@ -51,6 +51,14 @@ const needsHumanHelp = (message: string) => {
   ].some((term) => text.includes(term));
 };
 
+const simpleGreetingReply = (message: string) => {
+  const text = message.trim().toLowerCase();
+  if (['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'].includes(text)) {
+    return 'Hi! I’m Wendy 👋 I can help with course details, fees, subsidy questions, suitability, and next steps. What would you like to know?';
+  }
+  return null;
+};
+
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -101,11 +109,11 @@ Deno.serve(async (req: Request) => {
       content: row.message_text,
     }));
 
-    let responseText = `I’m having trouble answering right now. Please try again, or message Wendy directly on WhatsApp for help: ${WHATSAPP_URL}`;
+    let responseText = simpleGreetingReply(latestUserMessage) || `I’m having trouble answering right now. Please try again, or message Wendy directly on WhatsApp for help: ${WHATSAPP_URL}`;
 
     if (needsHumanHelp(latestUserMessage)) {
       responseText = `For this, the fastest next step is to message Wendy directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
-    } else {
+    } else if (!simpleGreetingReply(latestUserMessage)) {
       const apiKey = Deno.env.get('OPENAI_API_KEY');
       if (apiKey) {
         const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -122,8 +130,15 @@ Deno.serve(async (req: Request) => {
           }),
         });
 
-        const openaiData = await openaiRes.json();
-        responseText = openaiData?.choices?.[0]?.message?.content?.trim() || responseText;
+        if (openaiRes.ok) {
+          const openaiData = await openaiRes.json();
+          responseText = openaiData?.choices?.[0]?.message?.content?.trim() || responseText;
+        } else {
+          const errorText = await openaiRes.text();
+          console.error('OpenAI chat error:', openaiRes.status, errorText);
+        }
+      } else {
+        console.error('OPENAI_API_KEY missing for openclaw-chat');
       }
     }
 
