@@ -10,6 +10,8 @@ type LeadPayload = {
   email: string;
   phone: string;
   role: string;
+  companyName: string;
+  departmentOrDesignation: string;
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
   cohortCode: string;
@@ -30,7 +32,6 @@ Deno.serve(async (req) => {
     const requiredFields: Array<keyof LeadPayload> = [
       'fullName',
       'email',
-      'phone',
       'role',
       'ageBand',
       'preferredIntake',
@@ -40,6 +41,10 @@ Deno.serve(async (req) => {
       'sourceTag',
       'pagePath',
     ];
+
+    if (payload.intent === 'reserve_seat') {
+      requiredFields.push('companyName', 'departmentOrDesignation');
+    }
 
     for (const field of requiredFields) {
       if (!payload[field] || `${payload[field]}`.trim() === '') {
@@ -60,6 +65,8 @@ Deno.serve(async (req) => {
       email: payload.email,
       phone: payload.phone,
       role: payload.role,
+      company_name: payload.companyName,
+      department_or_designation: payload.departmentOrDesignation,
       age_band: payload.ageBand,
       preferred_intake: payload.preferredIntake,
       cohort_code: payload.cohortCode,

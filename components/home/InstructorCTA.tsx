@@ -1,5 +1,5 @@
 import React from 'react';
-import { trackOutboundClick } from '../../services/analytics';
+import { openLeadModal } from '../../services/leadModal';
 
 const InstructorCTA: React.FC = () => {
   return (
@@ -21,21 +21,20 @@ const InstructorCTA: React.FC = () => {
           <p className="text-gray-300 mb-8 leading-relaxed max-w-xl">
             Join a hands-on workshop built to help non-technical professionals automate repetitive work and improve draft quality.
           </p>
-          <a
-            href="https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             onClick={() =>
-              trackOutboundClick({
-                channel: 'skillsfuture',
-                pagePath: '/',
+              openLeadModal('home_cta', 'reserve_seat', {
+                page: '/',
                 position: 'home_instructor_cta',
+                ctaLabel: 'register_today',
+                redirectUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu',
               })
             }
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-white hover:text-secondary transition-colors"
           >
             Register Today
-          </a>
+          </button>
         </div>
         
       </div>
