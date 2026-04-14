@@ -211,7 +211,7 @@ const LeadCaptureModal: React.FC = () => {
                   disabled={isSubmitting}
                   className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Continue to Registration'}
+                  {isSubmitting ? 'Submitting...' : 'Continue'}
                 </button>
               </>
             ) : (
