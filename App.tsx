@@ -10,6 +10,7 @@ import WhatIsAgenticAIPage from './pages/WhatIsAgenticAIPage';
 import BestAICoursesPage from './pages/BestAICoursesPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import AboutPage from './pages/AboutPage';
+import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
 import FrontierFirmCoursePage from './pages/FrontierFirmCoursePage';
 import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
         <Route path="/courses/frontier-firm-agent-boss" element={<FrontierFirmCoursePage />} />
         <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
