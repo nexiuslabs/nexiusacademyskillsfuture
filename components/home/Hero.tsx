@@ -4,19 +4,22 @@ import { fetchBucketImages, getRandomImage, StorageImage } from '../../services/
 
 const heroHighlights = [
   {
-    label: 'Best for',
+    label: 'BEST FOR',
     value: 'Ops, finance, sales, admin',
     icon: Briefcase,
+    featured: false,
   },
   {
-    label: 'Outcome',
+    label: 'OUTCOME',
     value: 'Faster drafts, fewer repetitive tasks',
     icon: Rocket,
+    featured: false,
   },
   {
-    label: 'Approach',
+    label: 'APPROACH',
     value: 'No-code, hands-on',
     icon: Laptop,
+    featured: true,
   },
 ];
 
@@ -68,17 +71,32 @@ const Hero: React.FC = () => {
               return (
                 <div
                   key={item.label}
-                  className="group rounded-[24px] border border-[#DDE8F6] bg-white px-5 py-5 shadow-[0_8px_20px_rgba(20,42,74,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#69C2FF] hover:bg-[linear-gradient(135deg,#67C7FF_0%,#48B4F5_100%)] hover:shadow-[0_16px_30px_rgba(72,180,245,0.28)]"
+                  className={[
+                    'rounded-[18px] px-5 py-5 border shadow-[0_6px_16px_rgba(20,42,74,0.12)] transition-all duration-300 hover:-translate-y-1',
+                    item.featured
+                      ? 'border-[#6EC8F8] bg-[linear-gradient(135deg,#78D2FF_0%,#58BEF4_100%)] hover:shadow-[0_14px_28px_rgba(88,190,244,0.30)]'
+                      : 'border-[#E1E8F2] bg-white hover:border-[#BFDDF5] hover:bg-[#F8FBFE]',
+                  ].join(' ')}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 text-[#8CCFF6] transition-colors duration-300 group-hover:text-white/90">
-                      <Icon size={22} strokeWidth={1.8} />
+                    <div className={item.featured ? 'text-white/90 mt-0.5' : 'text-[#A7CFE7] mt-0.5'}>
+                      <Icon size={18} strokeWidth={1.9} />
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2 transition-colors duration-300 group-hover:text-white/80">
+                      <div
+                        className={[
+                          'text-[11px] font-medium tracking-[0.12em] mb-2',
+                          item.featured ? 'text-white/80' : 'text-[#8C98A8]',
+                        ].join(' ')}
+                      >
                         {item.label}
                       </div>
-                      <div className="font-semibold text-primary text-[22px] md:text-[24px] leading-[1.18] max-w-[12ch] transition-colors duration-300 group-hover:text-white">
+                      <div
+                        className={[
+                          'font-semibold text-[18px] md:text-[19px] leading-[1.28] max-w-[12ch]',
+                          item.featured ? 'text-white' : 'text-[#172033]',
+                        ].join(' ')}
+                      >
                         {item.value}
                       </div>
                     </div>
