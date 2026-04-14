@@ -22,6 +22,13 @@ const testimonials = [
     title: "Senior Member, Hokkien Association",
     image: "https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/kenji.png",
     quote: "The custom AI workshop by Nexius Academy was really good. Our clan, youths, seniors really enjoyed it. Very, very relevant and practical. I would definitely recommend everyone to take it."
+  },
+  {
+    id: 4,
+    name: "Thomas Lee",
+    title: "Program Lead, Temasek Poly",
+    image: "/images/testimonials/thomas-lee.jpg",
+    quote: "Nexius Labs taught our startups how to build AI agents that help us grow and operate our business more effectively."
   }
 ];
 
