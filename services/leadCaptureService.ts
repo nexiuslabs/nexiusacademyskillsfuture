@@ -54,23 +54,25 @@ export const submitLeadCapture = async (payload: LeadCapturePayload) => {
   if (portalId && formId) {
     const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
 
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fields: toFormFields(payload),
-        context: {
-          pageUri: typeof window !== 'undefined' ? window.location.href : payload.pagePath,
-          pageName: 'Nexius Academy Lead Capture',
-        },
-      }),
-    });
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: toFormFields(payload),
+          context: {
+            pageUri: typeof window !== 'undefined' ? window.location.href : payload.pagePath,
+            pageName: 'Nexius Academy Lead Capture',
+          },
+        }),
+      });
 
-    if (!response.ok) {
-      throw new Error('HubSpot form submission failed');
+      if (response.ok) {
+        return;
+      }
+    } catch (_error) {
+      // Fall through to Supabase capture if HubSpot is unavailable or rejects the payload.
     }
-
-    return;
   }
 
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
