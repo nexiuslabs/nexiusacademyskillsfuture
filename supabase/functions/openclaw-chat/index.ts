@@ -7,6 +7,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
 };
 
+const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+
 const SYSTEM_INSTRUCTION = `You are Wendy, the AI Course Advisor for Nexius Academy in Singapore.
 
 Your job is to help visitors understand Nexius Academy workshops, schedules, funding-related questions, suitability, and enrolment paths.
@@ -19,7 +21,7 @@ Key facts:
 - Indicative subsidised fee shown on site for eligible SG Citizens aged 40+: $111.03
 - Website: https://academy.nexiuslabs.com
 - Primary registration path is through the official external registration flow on the website.
-- For direct human help, visitors can contact Wendy on WhatsApp: https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.
+- For direct human help, visitors can contact Wendy on WhatsApp: ${WHATSAPP_URL}
 
 Guidelines:
 - Be warm, concise, and clear.
@@ -27,9 +29,27 @@ Guidelines:
 - Do not invent dates, subsidies, or guarantees.
 - If unsure, say so plainly.
 - For human support, direct the visitor to WhatsApp rather than pretending a live handoff is happening.
+- If a question clearly needs a human, explicitly suggest WhatsApp in the answer.
 - Focus on helping users understand the right next step.`;
 
 type IncomingMessage = { role: 'user' | 'assistant' | 'system'; content: string };
+
+const needsHumanHelp = (message: string) => {
+  const text = message.toLowerCase();
+  return [
+    'speak to someone',
+    'human',
+    'whatsapp',
+    'call me',
+    'contact me',
+    'partnership',
+    'refund',
+    'complaint',
+    'corporate training',
+    'private cohort',
+    'team training',
+  ].some((term) => text.includes(term));
+};
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
@@ -81,26 +101,30 @@ Deno.serve(async (req: Request) => {
       content: row.message_text,
     }));
 
-    const apiKey = Deno.env.get('OPENAI_API_KEY');
-    let responseText = 'I’m having trouble answering right now. Please try again, or contact Wendy on WhatsApp for help: https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+    let responseText = `I’m having trouble answering right now. Please try again, or message Wendy directly on WhatsApp for help: ${WHATSAPP_URL}`;
 
-    if (apiKey) {
-      const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [{ role: 'system', content: SYSTEM_INSTRUCTION }, ...history],
-          max_tokens: 350,
-          temperature: 0.5,
-        }),
-      });
+    if (needsHumanHelp(latestUserMessage)) {
+      responseText = `For this, the fastest next step is to message Wendy directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
+    } else {
+      const apiKey = Deno.env.get('OPENAI_API_KEY');
+      if (apiKey) {
+        const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [{ role: 'system', content: SYSTEM_INSTRUCTION }, ...history],
+            max_tokens: 350,
+            temperature: 0.5,
+          }),
+        });
 
-      const openaiData = await openaiRes.json();
-      responseText = openaiData?.choices?.[0]?.message?.content?.trim() || responseText;
+        const openaiData = await openaiRes.json();
+        responseText = openaiData?.choices?.[0]?.message?.content?.trim() || responseText;
+      }
     }
 
     await supabase.from('chat_messages').insert({

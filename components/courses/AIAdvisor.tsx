@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Sparkles, Loader2 } from 'lucide-react';
+import { X, Send, Sparkles, Loader2, MessageCircle } from 'lucide-react';
 import { ChatMessage } from '../../types';
 import { generateAIResponse } from '../../services/geminiService';
 
 const WELCOME_MESSAGE = "Hi! I’m Wendy 👋 Ask me anything about Nexius Academy workshops, schedules, or enrollment.";
+const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,7 @@ const AIAdvisor: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-8 right-8 w-full max-w-sm h-[500px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
+        <div className="fixed bottom-8 right-8 w-full max-w-sm h-[560px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
           <div className="bg-primary p-4 flex justify-between items-center text-white">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -66,11 +67,15 @@ const AIAdvisor: React.FC = () => {
             </button>
           </div>
 
+          <div className="px-4 py-3 bg-blue-50 border-b border-blue-100 text-xs text-gray-600">
+            Need a human? You can message Wendy directly on WhatsApp anytime.
+          </div>
+
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div
-                  className={`max-w-[85%] rounded-2xl p-3 text-sm ${
+                  className={`max-w-[85%] rounded-2xl p-3 text-sm whitespace-pre-wrap ${
                     msg.role === 'user'
                       ? 'bg-primary text-white rounded-br-none'
                       : 'bg-white text-gray-700 shadow-sm border border-gray-100 rounded-bl-none'
@@ -90,7 +95,16 @@ const AIAdvisor: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-4 bg-white border-t border-gray-100">
+          <div className="p-4 bg-white border-t border-gray-100 space-y-3">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-full hover:bg-green-600 transition-colors"
+            >
+              <MessageCircle size={16} /> Ask Wendy on WhatsApp
+            </a>
+
             <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2 border border-gray-200 focus-within:border-accent transition-colors">
               <input
                 type="text"
@@ -108,7 +122,7 @@ const AIAdvisor: React.FC = () => {
                 <Send size={18} />
               </button>
             </div>
-            <div className="text-center mt-2">
+            <div className="text-center">
               <span className="text-[10px] text-gray-400">Powered by Nexius Labs AI</span>
             </div>
           </div>
