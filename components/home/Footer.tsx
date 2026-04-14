@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-gray-300">
               <li><Link to="/courses/agentic-ai" className="hover:text-accent">Agentic AI Foundations</Link></li>
               <li><Link to="/skillsfuture-funding-guide" className="hover:text-accent">SkillsFuture Funding Guide</Link></li>
-              <li><Link to="/courses/agentic-ai" className="hover:text-accent">Upcoming Cohorts</Link></li>
+              <li><Link to="/courses/agentic-ai" className="hover:text-accent">Upcoming Cohort</Link></li>
             </ul>
           </div>
 
