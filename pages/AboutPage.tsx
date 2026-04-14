@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail, MessageCircle, Quote } from 'lucide-react';
+import { sharedTestimonials } from '../components/sharedTestimonials';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
@@ -81,18 +82,6 @@ const AboutPage: React.FC = () => {
     },
   ];
 
-  const learnerTestimonials = [
-    {
-      quote: 'Very practical and actionable. I left with an automation blueprint we implemented the same week.',
-      name: 'Kenji Chia',
-      role: 'Founder, Digify Team'
-    },
-    {
-      quote: 'As a non-technical manager, I finally understood how to use AI in day-to-day ops without coding.',
-      name: 'SME Operations Lead',
-      role: 'Course Participant'
-    },
-  ];
 
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
@@ -407,15 +396,18 @@ const AboutPage: React.FC = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {learnerTestimonials.map((item) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              {sharedTestimonials.map((item) => (
                 <div key={item.name} className="bg-neutral rounded-xl p-8 shadow-card">
                   <Quote className="text-accent mb-4" size={28} />
-                  <p className="text-gray-700 leading-relaxed mb-5">“{item.quote}”</p>
-                  <div>
-                    <p className="font-bold text-primary">{item.name}</p>
-                    <p className="text-sm text-gray-500">{item.role}</p>
+                  <div className="flex items-center gap-4 mb-5">
+                    <img src={item.image} alt={item.name} className="w-14 h-14 rounded-full object-cover" />
+                    <div>
+                      <p className="font-bold text-primary">{item.name}</p>
+                      <p className="text-sm text-gray-500">{item.title}</p>
+                    </div>
                   </div>
+                  <p className="text-gray-700 leading-relaxed">“{item.quote}”</p>
                 </div>
               ))}
             </div>
