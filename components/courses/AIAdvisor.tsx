@@ -1,41 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Sparkles, Loader2, MessageCircle } from 'lucide-react';
-import { ChatMessage } from '../../types';
-import { generateAIResponse } from '../../services/geminiService';
+import React, { useState } from 'react';
+import { X, MessageCircle, Sparkles } from 'lucide-react';
 
-const WELCOME_MESSAGE = "Hi! I’m Wendy 👋 Ask me anything about Nexius Academy workshops, schedules, or enrollment.";
 const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Wendy%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([{ role: 'model', text: WELCOME_MESSAGE }]);
-  const [inputValue, setInputValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isOpen]);
-
-  const handleSend = async () => {
-    if (!inputValue.trim() || isLoading) return;
-
-    const userMsg = inputValue.trim();
-    setInputValue('');
-    setMessages((prev) => [...prev, { role: 'user', text: userMsg }]);
-    setIsLoading(true);
-
-    const responseText = await generateAIResponse(userMsg, 'academy');
-    setMessages((prev) => [...prev, { role: 'model', text: responseText || 'I’m sorry, I didn’t catch that.' }]);
-    setIsLoading(false);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
 
   return (
     <>
@@ -48,17 +17,17 @@ const AIAdvisor: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-8 right-8 w-full max-w-sm h-[560px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
+        <div className="fixed bottom-8 right-8 w-full max-w-sm bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-100 animate-in slide-in-from-bottom-10 fade-in duration-300">
           <div className="bg-primary p-4 flex justify-between items-center text-white">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Sparkles size={16} />
+                <MessageCircle size={16} />
               </div>
               <div>
                 <h3 className="font-bold text-sm">Wendy</h3>
                 <p className="text-xs text-gray-300 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-green-400"></span>
-                  Online
+                  Human support on WhatsApp
                 </p>
               </div>
             </div>
@@ -67,35 +36,11 @@ const AIAdvisor: React.FC = () => {
             </button>
           </div>
 
-          <div className="px-4 py-3 bg-blue-50 border-b border-blue-100 text-xs text-gray-600">
-            Need a human? You can message Wendy directly on WhatsApp anytime.
-          </div>
+          <div className="p-6 bg-white space-y-4">
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Need help with course details, subsidy questions, or the right next step? Message Wendy directly on WhatsApp for human support.
+            </p>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
-            {messages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div
-                  className={`max-w-[85%] rounded-2xl p-3 text-sm whitespace-pre-wrap ${
-                    msg.role === 'user'
-                      ? 'bg-primary text-white rounded-br-none'
-                      : 'bg-white text-gray-700 shadow-sm border border-gray-100 rounded-bl-none'
-                  }`}
-                >
-                  {msg.text}
-                </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white rounded-2xl rounded-bl-none p-3 shadow-sm border border-gray-100">
-                  <Loader2 size={16} className="animate-spin text-accent" />
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          <div className="p-4 bg-white border-t border-gray-100 space-y-3">
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -105,26 +50,9 @@ const AIAdvisor: React.FC = () => {
               <MessageCircle size={16} /> Ask Wendy on WhatsApp
             </a>
 
-            <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2 border border-gray-200 focus-within:border-accent transition-colors">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-                placeholder="Ask Wendy about workshops..."
-                className="flex-1 bg-transparent focus:outline-none text-sm text-gray-700"
-              />
-              <button
-                onClick={handleSend}
-                disabled={isLoading || !inputValue.trim()}
-                className="text-primary hover:text-accent disabled:opacity-50 transition-colors"
-              >
-                <Send size={18} />
-              </button>
-            </div>
-            <div className="text-center">
-              <span className="text-[10px] text-gray-400">Powered by Nexius Labs AI</span>
-            </div>
+            <p className="text-[11px] text-center text-gray-400">
+              You’ll be taken to WhatsApp to continue with Wendy directly.
+            </p>
           </div>
         </div>
       )}
