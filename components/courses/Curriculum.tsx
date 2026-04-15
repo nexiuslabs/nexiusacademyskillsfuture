@@ -71,11 +71,6 @@ const Curriculum: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <button className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-lg transition-colors">
-                  Download Full Syllabus PDF
-                </button>
-              </div>
             </div>
           </div>
 
