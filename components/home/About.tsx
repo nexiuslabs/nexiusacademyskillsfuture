@@ -1,24 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CheckCircle } from 'lucide-react';
-import { fetchBucketImages, getRandomImages } from '../../services/imageService';
 import { openLeadModal } from '../../services/leadModal';
 
 const About: React.FC = () => {
-  const [images, setImages] = useState<string[]>([
-    'https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800'
-  ]);
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const bucketImages = await fetchBucketImages();
-      if (bucketImages.length > 0) {
-        setImages(getRandomImages(bucketImages, 2));
-      }
-    };
-
-    loadImages();
-  }, []);
+  const images = ['/images/home/about-collage-1.jpg', '/images/home/about-collage-2.jpg'];
 
   return (
     <section className="py-24 bg-white">
@@ -28,12 +13,12 @@ const About: React.FC = () => {
         <div className="relative h-[500px] hidden md:block">
            <img
             src={images[0]}
-            alt="Student working"
+            alt="Workshop participants at Nexius Academy"
             className="absolute top-0 left-0 w-64 h-80 object-cover rounded-lg shadow-xl z-10"
            />
            <img
             src={images[1]}
-            alt="Student smiling"
+            alt="Classroom group at Nexius Academy"
             className="absolute bottom-0 right-10 w-72 h-64 object-cover rounded-lg shadow-xl z-20 border-8 border-white"
            />
            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
@@ -41,7 +26,7 @@ const About: React.FC = () => {
 
         {/* Mobile View Image */}
         <div className="md:hidden w-full h-64 overflow-hidden rounded-xl shadow-lg">
-             <img src={images[0]} className="w-full h-full object-cover" alt="Student" />
+             <img src={images[0]} className="w-full h-full object-cover" alt="Workshop participants at Nexius Academy" />
         </div>
 
         {/* Right Content */}
