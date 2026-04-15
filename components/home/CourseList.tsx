@@ -4,6 +4,7 @@ import { Star } from 'lucide-react';
 import { Course } from '../../types';
 
 const COURSE_HERO_IMAGE = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png';
+const MELVERICK_COURSE_IMAGE = '/images/courses/agentic-ai-foundations-card.jpg';
 
 const AVAILABLE_COURSES: Course[] = [
   {
@@ -13,7 +14,7 @@ const AVAILABLE_COURSES: Course[] = [
     price: 67,
     rating: 5.0,
     students: 223,
-    image: COURSE_HERO_IMAGE,
+    image: MELVERICK_COURSE_IMAGE,
     author: 'Melverick Ng',
     authorImage: '/images/authors/melverick-ng.jpg',
     path: '/courses/agentic-ai',
