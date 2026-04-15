@@ -26,7 +26,7 @@ const AVAILABLE_COURSES: Course[] = [
     rating: 5.0,
     students: 0,
     image: COURSE_HERO_IMAGE,
-    author: 'Melverick Ng',
+    author: 'Darryl Wong',
     authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg',
     path: '/courses/agentic-ai-accountants',
   }
