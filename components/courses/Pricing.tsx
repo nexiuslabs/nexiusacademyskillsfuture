@@ -2,7 +2,17 @@ import React, { useMemo, useState } from 'react';
 import { Check } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
-const Pricing: React.FC = () => {
+type PricingProps = {
+  pagePath?: string;
+  reserveLabel?: string;
+  sectionClassName?: string;
+};
+
+const Pricing: React.FC<PricingProps> = ({
+  pagePath = '/courses/agentic-ai',
+  reserveLabel = 'reserve_a_seat',
+  sectionClassName = 'py-20 bg-white',
+}) => {
   const [selectedTab, setSelectedTab] = useState<'individual' | 'corporate'>('individual');
   const [citizenship, setCitizenship] = useState<'sg_citizen' | 'pr_ltvp'>('sg_citizen');
   const [ageBand, setAgeBand] = useState<'40_and_above' | '39_and_below'>('40_and_above');
@@ -60,7 +70,7 @@ const Pricing: React.FC = () => {
   }, [citizenship, ageBand]);
 
   return (
-    <section id="pricing" className="py-20 bg-white">
+    <section id="pricing" className={sectionClassName}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fee & Government Subsidies</h2>
@@ -187,9 +197,9 @@ const Pricing: React.FC = () => {
             type="button"
             onClick={() =>
               openLeadModal('course_page_cta', 'reserve_seat', {
-                page: '/courses/agentic-ai',
+                page: pagePath,
                 position: 'pricing_apply_button',
-                ctaLabel: 'reserve_a_seat',
+                ctaLabel: reserveLabel,
               })
             }
             className="inline-block text-center bg-primary hover:bg-blue-900 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 w-full sm:w-auto"

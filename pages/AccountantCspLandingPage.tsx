@@ -16,6 +16,7 @@ import {
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
+import Pricing from '../components/courses/Pricing';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
@@ -376,6 +377,12 @@ const AccountantCspLandingPage: React.FC = () => {
           </div>
         </section>
 
+        <Pricing
+          pagePath="/courses/agentic-ai-accountants"
+          reserveLabel="apply_now"
+          sectionClassName="py-20 bg-white"
+        />
+
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
@@ -479,66 +486,6 @@ const AccountantCspLandingPage: React.FC = () => {
                 >
                   Talk to Us About a Private Cohort (Min. 12 SkillsFuture-Eligible Students)
                 </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-neutral">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 items-start">
-              <div className="lg:col-span-6">
-                <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">Pricing, funding, and team options</h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Choose direct enrolment or a team conversation around private cohorts.
-                </p>
-                <div className="space-y-4">
-                  <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                    <h3 className="font-bold text-primary mb-2">Individual path</h3>
-                    <p className="text-gray-600 text-sm">Apply now, check subsidy or fit, and confirm the next suitable intake.</p>
-                  </div>
-                  <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                    <h3 className="font-bold text-primary mb-2">Team / private cohort path</h3>
-                    <p className="text-gray-600 text-sm">Request a private cohort (minimum 12 SkillsFuture-eligible students), in-house run, or team capability uplift discussion for your firm.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="lg:col-span-6 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Next steps</div>
-                <h3 className="text-2xl font-bold text-primary mb-4">Choose your next step</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Individuals can check subsidy and fit. Teams can move directly to WhatsApp.
-                </p>
-                <div className="flex flex-col gap-4">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/agentic-ai-accountants',
-                        position: 'accountants_offer_check_fit',
-                        ctaLabel: 'check_subsidy_fit',
-                      })
-                    }
-                    className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors"
-                  >
-                    Check Subsidy & Fit
-                  </button>
-                  <a
-                    href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      trackOutboundClick({
-                        channel: 'whatsapp',
-                        pagePath: '/courses/agentic-ai-accountants',
-                        position: 'accountants_offer_team_training',
-                      })
-                    }
-                    className="w-full border border-primary text-primary px-6 py-4 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors text-center"
-                  >
-                    Enquire for Team Training
-                  </a>
-                </div>
               </div>
             </div>
           </div>
