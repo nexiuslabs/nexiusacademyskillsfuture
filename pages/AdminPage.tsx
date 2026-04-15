@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ExternalLink, LockKeyhole, LogOut, ShieldCheck } from 'lucide-react';
+import { Brain, Calculator, Database, ExternalLink, LockKeyhole, LogOut, Rocket, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
@@ -44,10 +44,30 @@ const AdminPage: React.FC = () => {
 
   const shortcuts = useMemo(
     () => [
-      { label: 'Agentic AI Course', href: '/courses/agentic-ai' },
-      { label: 'Accountants Course', href: '/courses/agentic-ai-accountants' },
-      { label: 'Supabase Dashboard', href: 'https://supabase.com/dashboard/project/mjqucyoobkwvzcrordfg' },
-      { label: 'Netlify Deploys', href: 'https://app.netlify.com/projects/nexiusacademysfc/deploys' },
+      {
+        label: 'Agentic AI Course',
+        description: 'Core AI course page',
+        href: '/courses/agentic-ai',
+        icon: Brain,
+      },
+      {
+        label: 'Accountants Course',
+        description: 'Accounting course page',
+        href: '/courses/agentic-ai-accountants',
+        icon: Calculator,
+      },
+      {
+        label: 'Supabase Dashboard',
+        description: 'Database and lead records',
+        href: 'https://supabase.com/dashboard/project/mjqucyoobkwvzcrordfg',
+        icon: Database,
+      },
+      {
+        label: 'Netlify Deploys',
+        description: 'Production deploy history',
+        href: 'https://app.netlify.com/projects/nexiusacademysfc/deploys',
+        icon: Rocket,
+      },
     ],
     []
   );
@@ -169,60 +189,58 @@ const AdminPage: React.FC = () => {
             )}
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[420px,1fr]">
-            <section className="rounded-[2rem] border border-white/70 bg-white p-8 shadow-[0_18px_48px_rgba(15,23,42,0.08)]">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-2 text-sm font-bold text-accent">
-                <ShieldCheck size={16} />
-                Admin Access
-              </div>
-              <h1 className="mb-3 text-4xl font-heading font-bold text-primary">Academy Admin</h1>
-              <p className="mb-8 text-gray-600">
-                Secure access for internal operations, deployment shortcuts, and course administration.
-              </p>
-
-              {session.status === 'loading' ? (
-                <div className="rounded-2xl border border-gray-100 bg-neutral p-5 text-sm text-gray-600">
-                  Checking active session...
+          <div className={`grid gap-8 ${session.status === 'authenticated' ? 'grid-cols-1' : 'lg:grid-cols-[420px,1fr]'}`}>
+            {session.status !== 'authenticated' && (
+              <section className="rounded-[2rem] border border-white/70 bg-white p-8 shadow-[0_18px_48px_rgba(15,23,42,0.08)]">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-2 text-sm font-bold text-accent">
+                  <ShieldCheck size={16} />
+                  Admin Access
                 </div>
-              ) : session.status === 'authenticated' ? (
-                <div className="rounded-2xl border border-teal-100 bg-teal-50 p-5 text-sm text-primary">
-                  Signed in as <strong>{session.username}</strong>.
-                </div>
-              ) : (
-                <form onSubmit={onSubmit} className="space-y-4">
-                  <label className="block text-sm font-semibold text-primary">
-                    User ID
-                    <input
-                      value={username}
-                      onChange={(event) => setUsername(event.target.value)}
-                      className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-base text-gray-900 outline-none transition-colors focus:border-primary"
-                      autoComplete="username"
-                    />
-                  </label>
-                  <label className="block text-sm font-semibold text-primary">
-                    Password
-                    <input
-                      type="password"
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                      className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-base text-gray-900 outline-none transition-colors focus:border-primary"
-                      autoComplete="current-password"
-                    />
-                  </label>
+                <h1 className="mb-3 text-4xl font-heading font-bold text-primary">Academy Admin</h1>
+                <p className="mb-8 text-gray-600">
+                  Secure access for internal operations, deployment shortcuts, and course administration.
+                </p>
 
-                  {error && <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>}
+                {session.status === 'loading' ? (
+                  <div className="rounded-2xl border border-gray-100 bg-neutral p-5 text-sm text-gray-600">
+                    Checking active session...
+                  </div>
+                ) : (
+                  <form onSubmit={onSubmit} className="space-y-4">
+                    <label className="block text-sm font-semibold text-primary">
+                      User ID
+                      <input
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
+                        className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-base text-gray-900 outline-none transition-colors focus:border-primary"
+                        autoComplete="username"
+                      />
+                    </label>
+                    <label className="block text-sm font-semibold text-primary">
+                      Password
+                      <input
+                        type="password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-base text-gray-900 outline-none transition-colors focus:border-primary"
+                        autoComplete="current-password"
+                      />
+                    </label>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    <LockKeyhole size={18} />
-                    {isSubmitting ? 'Signing In...' : 'Sign In'}
-                  </button>
-                </form>
-              )}
-            </section>
+                    {error && <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <LockKeyhole size={18} />
+                      {isSubmitting ? 'Signing In...' : 'Sign In'}
+                    </button>
+                  </form>
+                )}
+              </section>
+            )}
 
             <section className="rounded-[2rem] border border-white/70 bg-white p-8 shadow-[0_18px_48px_rgba(15,23,42,0.08)]">
               <div className="mb-8">
@@ -233,13 +251,23 @@ const AdminPage: React.FC = () => {
                 </p>
               </div>
 
+              {session.status === 'authenticated' && (
+                <div className="mb-8 rounded-2xl border border-teal-100 bg-teal-50 p-5 text-sm text-primary">
+                  Signed in as <strong>{session.username}</strong>.
+                </div>
+              )}
+
               <div className="grid gap-4 md:grid-cols-2">
                 {shortcuts.map((shortcut) => {
                   const isExternal = shortcut.href.startsWith('http');
+                  const Icon = shortcut.icon;
                   const body = (
                     <>
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
+                        <Icon size={22} />
+                      </div>
                       <span className="font-bold text-primary">{shortcut.label}</span>
-                      <span className="text-sm text-gray-500">{shortcut.href.replace('https://', '')}</span>
+                      <span className="text-sm text-gray-500">{shortcut.description}</span>
                     </>
                   );
 
@@ -301,7 +329,10 @@ const AdminPage: React.FC = () => {
                               <th className="px-4 py-3 font-semibold">Created</th>
                               <th className="px-4 py-3 font-semibold">Name</th>
                               <th className="px-4 py-3 font-semibold">Email</th>
+                              <th className="px-4 py-3 font-semibold">Phone</th>
+                              <th className="px-4 py-3 font-semibold">Role</th>
                               <th className="px-4 py-3 font-semibold">Company</th>
+                              <th className="px-4 py-3 font-semibold">Department</th>
                               <th className="px-4 py-3 font-semibold">Flow</th>
                               <th className="px-4 py-3 font-semibold">Course</th>
                               <th className="px-4 py-3 font-semibold">Intake</th>
@@ -313,15 +344,12 @@ const AdminPage: React.FC = () => {
                                 <td className="px-4 py-3 text-gray-600">
                                   {lead.created_at ? new Date(lead.created_at).toLocaleString() : '-'}
                                 </td>
-                                <td className="px-4 py-3">
-                                  <div className="font-semibold text-primary">{lead.full_name || '-'}</div>
-                                  <div className="text-xs text-gray-500">{lead.role || lead.department_or_designation || '-'}</div>
-                                </td>
-                                <td className="px-4 py-3 text-gray-700">
-                                  <div>{lead.email || '-'}</div>
-                                  <div className="text-xs text-gray-500">{lead.phone || '-'}</div>
-                                </td>
+                                <td className="px-4 py-3 font-semibold text-primary">{lead.full_name || '-'}</td>
+                                <td className="px-4 py-3 text-gray-700">{lead.email || '-'}</td>
+                                <td className="px-4 py-3 text-gray-700">{lead.phone || '-'}</td>
+                                <td className="px-4 py-3 text-gray-700">{lead.role || '-'}</td>
                                 <td className="px-4 py-3 text-gray-700">{lead.company_name || '-'}</td>
+                                <td className="px-4 py-3 text-gray-700">{lead.department_or_designation || '-'}</td>
                                 <td className="px-4 py-3">
                                   <div className="font-medium text-primary">{lead.lead_flow || '-'}</div>
                                   <div className="text-xs text-gray-500">{lead.intent || '-'}</div>
