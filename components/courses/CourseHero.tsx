@@ -106,8 +106,8 @@ const Hero: React.FC = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white min-h-[400px]">
               <img
-                src="https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexiushomehero.png"
-                alt="Professionals working with futuristic AI technology"
+                src="/images/courses/agentic-ai-hero.jpg"
+                alt="Classroom participants at a Nexius Academy AI workshop"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg">
