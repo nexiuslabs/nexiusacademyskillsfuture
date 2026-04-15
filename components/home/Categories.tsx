@@ -6,7 +6,7 @@ const categories = [
   { icon: <Briefcase />, name: 'AI Tool Proficiency', courses: 'Quickly adopt and integrate best AI platforms.', color: 'bg-green-100 text-green-600' },
   { icon: <DollarSign />, name: 'Prompt Engineering', courses: 'Communicate precisely; get reliable AI results.', color: 'bg-orange-100 text-orange-600' },
   { icon: <Monitor />, name: 'Agentic Workflow Design', courses: 'Build autonomous systems that manage your processes.', color: 'bg-red-100 text-red-600' },
-  { icon: <User />, name: 'Business Process Automation (BPA)', courses: 'Automate core tasks: finance, sales, and HR.', color: 'bg-teal-100 text-teal-600' },
+  { icon: <User />, name: 'Build AI Agents', courses: 'Construct a dedicated AI agent tailored to your workflow. From custom schemas to API integrations, build a single agent that executes complex tasks with precision.', color: 'bg-teal-100 text-teal-600' },
   { icon: <FileText />, name: 'AI Project Management', courses: 'Plan, deploy, and scale AI initiatives successfully.', color: 'bg-gray-100 text-gray-600' },
   { icon: <Megaphone />, name: 'Agentic AI Principles', courses: 'Grasp how autonomous agents think and act.', color: 'bg-blue-100 text-blue-600' },
   { icon: <Camera />, name: 'Ethical Use of AI', courses: 'Manage risks; deploy AI systems confidently.', color: 'bg-pink-100 text-pink-600' },
