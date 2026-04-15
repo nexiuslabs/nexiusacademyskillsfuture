@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
+import AccountantStickyConversionRail from '../components/courses/AccountantStickyConversionRail';
 import Instructors from '../components/courses/Instructors';
 import Pricing from '../components/courses/Pricing';
 import { openLeadModal } from '../services/leadModal';
@@ -177,7 +178,7 @@ const AccountantCspLandingPage: React.FC = () => {
         ogType="course"
       />
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-20 lg:pb-0">
         <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center gap-2">
@@ -551,6 +552,7 @@ const AccountantCspLandingPage: React.FC = () => {
         </section>
 
         <Footer />
+        <AccountantStickyConversionRail />
       </div>
     </>
   );
