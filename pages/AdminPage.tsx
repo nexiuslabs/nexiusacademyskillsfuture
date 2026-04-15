@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ExternalLink, LockKeyhole, LogOut, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { supabase } from '../lib/supabase';
 
 type SessionState =
   | { status: 'loading' }
@@ -31,6 +30,7 @@ type LeadCaptureRow = {
 const sessionEndpoint = '/.netlify/functions/admin-session';
 const loginEndpoint = '/.netlify/functions/admin-login';
 const logoutEndpoint = '/.netlify/functions/admin-logout';
+const leadsEndpoint = '/.netlify/functions/admin-leads';
 
 const AdminPage: React.FC = () => {
   const [session, setSession] = useState<SessionState>({ status: 'loading' });
@@ -82,21 +82,20 @@ const AdminPage: React.FC = () => {
       setLeadsLoading(true);
       setLeadsError(null);
 
-      const { data, error } = await supabase
-        .from('lead_captures')
-        .select(
-          'id, created_at, full_name, email, phone, role, company_name, department_or_designation, lead_flow, age_band, preferred_intake, cohort_code, course_slug, intent, source_tag, page_path'
-        )
-        .order('created_at', { ascending: false })
-        .limit(100);
+      const response = await fetch(leadsEndpoint, {
+        credentials: 'include',
+        cache: 'no-store',
+      });
 
-      if (error) {
-        setLeadsError(error.message);
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        setLeadsError(payload.error || 'Could not load lead captures.');
         setLeadsLoading(false);
         return;
       }
 
-      setLeads((data || []) as LeadCaptureRow[]);
+      const payload = await response.json();
+      setLeads((payload.leads || []) as LeadCaptureRow[]);
       setLeadsLoading(false);
     };
 
