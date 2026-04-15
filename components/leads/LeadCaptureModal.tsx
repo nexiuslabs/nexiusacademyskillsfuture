@@ -17,7 +17,10 @@ declare global {
 type CohortOption = { label: string; code: string };
 
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
-  'agentic-ai': [{ label: '06–07 May 2026', code: '2026-05-06' }],
+  'agentic-ai': [
+    { label: '18–19 May 2026 (9am–6pm)', code: '2026-05-18' },
+    { label: '08–09 Jun 2026 (9am–6pm)', code: '2026-06-08' },
+  ],
   'agentic-ai-accountants': [{ label: '06–07 May 2026', code: '2026-05-06' }],
 };
 
@@ -183,7 +186,7 @@ const LeadCaptureModal: React.FC = () => {
     <div className="fixed inset-0 z-[10000] bg-black/45 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h3 className="text-xl font-bold text-primary">{formState.intent === 'reserve_seat' ? 'Before You Register' : 'Check Subsidy & Fit'}</h3>
+          <h3 className="text-xl font-bold text-primary">{formState.intent === 'reserve_seat' ? 'Registration' : 'Check Subsidy & Fit'}</h3>
           <button onClick={closeModal} className="text-gray-500 hover:text-primary" aria-label="Close lead form">
             <X size={20} />
           </button>
@@ -193,9 +196,6 @@ const LeadCaptureModal: React.FC = () => {
           <form className="p-6 space-y-4" onSubmit={onSubmit}>
             {formState.intent === 'reserve_seat' ? (
               <>
-                <p className="text-sm text-gray-600">
-                  Leave your details first and we’ll take you straight to the official registration page.
-                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input required placeholder="Full name" className="border rounded-lg px-4 py-3" value={formState.fullName} onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))} />
                   <input required type="email" placeholder="Email" className="border rounded-lg px-4 py-3" value={formState.email} onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))} />
@@ -208,7 +208,7 @@ const LeadCaptureModal: React.FC = () => {
                   disabled={isSubmitting}
                   className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-opacity-90 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Continue to Registration'}
+                  {isSubmitting ? 'Submitting...' : 'Continue'}
                 </button>
               </>
             ) : (

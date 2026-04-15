@@ -2,8 +2,6 @@ import React from 'react';
 import { openLeadModal } from '../../services/leadModal';
 import { trackOutboundClick } from '../../services/analytics';
 
-const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
-
 const StickyConversionRail: React.FC = () => {
   return (
     <>
@@ -46,13 +44,12 @@ const StickyConversionRail: React.FC = () => {
               openLeadModal('course_sticky', 'reserve_seat', {
                 page: '/courses/agentic-ai',
                 position: 'course_sticky_desktop_apply_now',
-                ctaLabel: 'apply_now',
-                redirectUrl: APPLY_LINK,
+                ctaLabel: 'reserve_a_seat',
               })
             }
             className="block text-center w-full border border-primary text-primary px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-primary hover:text-white"
           >
-            Apply Now
+            Reserve a Seat
           </button>
         </div>
       </aside>
@@ -93,13 +90,12 @@ const StickyConversionRail: React.FC = () => {
               openLeadModal('course_sticky', 'reserve_seat', {
                 page: '/courses/agentic-ai',
                 position: 'course_sticky_mobile_apply_now',
-                ctaLabel: 'apply_now',
-                redirectUrl: APPLY_LINK,
+                ctaLabel: 'reserve_a_seat',
               })
             }
             className="border border-primary text-primary py-2 rounded-md text-xs font-bold text-center"
           >
-            Apply Now
+            Reserve a Seat
           </button>
         </div>
       </div>

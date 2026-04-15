@@ -2,8 +2,6 @@ import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
-const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
-
 const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
@@ -22,9 +20,13 @@ const Hero: React.FC = () => {
             </h1>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <CalendarDays size={16} className="text-accent" />
-                Next Cohort: 06–07 May 2026
+              <div className="flex items-start gap-2 text-sm text-gray-700">
+                <CalendarDays size={16} className="text-accent mt-0.5" />
+                <div>
+                  <div>Next Cohorts:</div>
+                  <div>• 18–19 May 2026</div>
+                  <div>• 08–09 Jun 2026</div>
+                </div>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <Presentation size={16} className="text-accent" />
@@ -51,7 +53,7 @@ const Hero: React.FC = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Primary path</div>
-                <div className="font-semibold text-primary text-sm">Apply Now to register</div>
+                <div className="font-semibold text-primary text-sm">Reserve a Seat</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Need help first?</div>
@@ -79,13 +81,12 @@ const Hero: React.FC = () => {
                   openLeadModal('course_page_cta', 'reserve_seat', {
                     page: '/courses/agentic-ai',
                     position: 'course_hero_secondary_apply_now',
-                    ctaLabel: 'apply_now',
-                    redirectUrl: APPLY_LINK,
+                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
               >
-                Apply Now
+                Reserve a Seat
               </button>
             </div>
 

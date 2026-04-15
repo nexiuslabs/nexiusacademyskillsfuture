@@ -6,7 +6,6 @@ import { openLeadModal } from '../../services/leadModal';
 const StickyNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const APPLY_LINK = "https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100">
@@ -34,13 +33,12 @@ const StickyNavbar: React.FC = () => {
                 openLeadModal('course_page_cta', 'reserve_seat', {
                   page: location.pathname,
                   position: 'course_navbar_desktop_apply',
-                  ctaLabel: 'apply_now',
-                  redirectUrl: APPLY_LINK,
+                  ctaLabel: 'reserve_a_seat',
                 })
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
-              Apply Now
+              Reserve a Seat
             </button>
           </div>
 
@@ -68,13 +66,12 @@ const StickyNavbar: React.FC = () => {
                   openLeadModal('course_page_cta', 'reserve_seat', {
                     page: location.pathname,
                     position: 'course_navbar_mobile_apply',
-                    ctaLabel: 'apply_now',
-                    redirectUrl: APPLY_LINK,
+                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
-                Apply Now
+                Reserve a Seat
               </button>
             </div>
           </div>

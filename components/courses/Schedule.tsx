@@ -4,8 +4,6 @@ import { MapPin, Monitor, Clock, CalendarClock, Users } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
-  const APPLY_LINK =
-    'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
   const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Apr 2026');
 
@@ -45,13 +43,6 @@ const Schedule: React.FC = () => {
                 <div className="space-y-3">
                   <div className="font-bold text-primary text-lg flex flex-wrap items-center gap-2">
                     {schedule.dates}
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded font-bold uppercase ${
-                        isFull ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-800'
-                      }`}
-                    >
-                      {isFull ? 'Cohort Full' : `Seats left: ${schedule.slotsLeft}`}
-                    </span>
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-gray-600">
@@ -103,13 +94,12 @@ const Schedule: React.FC = () => {
                         openLeadModal('course_page_cta', 'reserve_seat', {
                           page: '/courses/agentic-ai',
                           position: 'schedule_apply_button',
-                          ctaLabel: 'apply_now',
-                          redirectUrl: APPLY_LINK,
+                          ctaLabel: 'reserve_a_seat',
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Apply Now
+                      Reserve a Seat
                     </button>
                   )}
                 </div>
