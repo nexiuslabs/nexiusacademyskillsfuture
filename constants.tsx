@@ -99,14 +99,14 @@ export const MODULES: CurriculumModule[] = [
     iconName: "MessageSquare"
   },
   {
-    title: "Business Writing & Automation",
-    description: "Automate reports, emails, marketing copy, and proposals while maintaining corporate brand voice.",
-    iconName: "Briefcase"
+    title: "Build Apps with AI",
+    description: "Learn how to build with AI to turn your business ideas into working software, with no programming experience required.",
+    iconName: "Code"
   },
   {
-    title: "Visual Content Creation",
-    description: "Generate professional assets, edit graphics, and create presentations using Midjourney and DALL-E 3.",
-    iconName: "Image"
+    title: "Build AI Agents",
+    description: "Build a dedicated AI agent tailored to your workflow that executes complex tasks with precision.",
+    iconName: "Bot"
   },
   {
     title: "Data Analysis & Insights",
