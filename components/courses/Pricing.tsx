@@ -5,12 +5,16 @@ import { openLeadModal } from '../../services/leadModal';
 type PricingProps = {
   pagePath?: string;
   reserveLabel?: string;
+  reserveButtonText?: string;
+  reserveRedirectUrl?: string;
   sectionClassName?: string;
 };
 
 const Pricing: React.FC<PricingProps> = ({
   pagePath = '/courses/agentic-ai',
   reserveLabel = 'reserve_a_seat',
+  reserveButtonText = 'Reserve a Seat',
+  reserveRedirectUrl,
   sectionClassName = 'py-20 bg-white',
 }) => {
   const [selectedTab, setSelectedTab] = useState<'individual' | 'corporate'>('individual');
@@ -200,11 +204,12 @@ const Pricing: React.FC<PricingProps> = ({
                 page: pagePath,
                 position: 'pricing_apply_button',
                 ctaLabel: reserveLabel,
+                redirectUrl: reserveRedirectUrl,
               })
             }
             className="inline-block text-center bg-primary hover:bg-blue-900 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 w-full sm:w-auto"
           >
-            Reserve a Seat
+            {reserveButtonText}
           </button>
         </div>
       </div>

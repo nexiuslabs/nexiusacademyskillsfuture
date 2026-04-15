@@ -193,21 +193,20 @@ const AccountantCspLandingPage: React.FC = () => {
               <a href="#governance" className="hover:text-accent">Governance</a>
               <a href="#faq" className="hover:text-accent">FAQ</a>
             </nav>
-            <a
-              href={APPLY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               onClick={() =>
-                trackOutboundClick({
-                  channel: 'skillsfuture',
-                  pagePath: '/courses/agentic-ai-accountants',
+                openLeadModal('course_page_cta', 'reserve_seat', {
+                  page: '/courses/agentic-ai-accountants',
                   position: 'accountants_nav_apply_now',
+                  ctaLabel: 'apply_now',
+                  redirectUrl: APPLY_LINK,
                 })
               }
               className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
             >
               Apply Now
-            </a>
+            </button>
           </div>
         </header>
 
@@ -381,6 +380,8 @@ const AccountantCspLandingPage: React.FC = () => {
         <Pricing
           pagePath="/courses/agentic-ai-accountants"
           reserveLabel="apply_now"
+          reserveButtonText="Apply Now"
+          reserveRedirectUrl={APPLY_LINK}
           sectionClassName="py-20 bg-white"
         />
 
