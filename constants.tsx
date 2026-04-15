@@ -111,7 +111,7 @@ export const MODULES: CurriculumModule[] = [
   {
     title: "Data Analysis & Insights",
     description: "Leverage AI interpreters to analyze spreadsheets, visualize trends, and extract actionable insights.",
-    iconName: "Code"
+    iconName: "BarChart3"
   },
   {
     title: "Ethics, Safety & Governance",

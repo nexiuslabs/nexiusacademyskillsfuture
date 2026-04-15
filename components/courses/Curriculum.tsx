@@ -1,6 +1,6 @@
 import React from 'react';
 import { MODULES, LEARNING_OUTCOMES } from '../../constants';
-import { Brain, MessageSquare, Image, Code, Shield, Briefcase, CheckCircle, Bot } from 'lucide-react';
+import { Brain, MessageSquare, Image, Code, Shield, Briefcase, CheckCircle, Bot, BarChart3 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
   Brain: <Brain size={24} />,
@@ -8,6 +8,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Image: <Image size={24} />,
   Code: <Code size={24} />,
   Bot: <Bot size={24} />,
+  BarChart3: <BarChart3 size={24} />,
   Shield: <Shield size={24} />,
   Briefcase: <Briefcase size={24} />,
 };
