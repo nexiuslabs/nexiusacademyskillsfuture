@@ -15,7 +15,7 @@ const AVAILABLE_COURSES: Course[] = [
     students: 223,
     image: COURSE_HERO_IMAGE,
     author: 'Melverick Ng',
-    authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg',
+    authorImage: '/images/authors/melverick-ng.jpg',
     path: '/courses/agentic-ai',
   },
   {
@@ -27,7 +27,7 @@ const AVAILABLE_COURSES: Course[] = [
     students: 0,
     image: COURSE_HERO_IMAGE,
     author: 'Darryl Wong',
-    authorImage: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/melverick%20studio.jpg',
+    authorImage: '/images/authors/darryl-wong.jpg',
     path: '/courses/agentic-ai-accountants',
   }
 ];
