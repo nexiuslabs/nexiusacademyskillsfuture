@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <Wallet size={16} className="text-accent" />
-                Net Fee: from S$111.03*
+                Net Fee: from S$113.03*
               </div>
             </div>
 

@@ -51,7 +51,7 @@ export const submitLeadCapture = async (payload: LeadCapturePayload) => {
 export const estimateNetFee = (ageBand: LeadCapturePayload['ageBand']) => {
   return ageBand === '40_and_above'
     ? {
-        amount: '$111.03',
+        amount: '$113.03',
         note: 'Estimated with up to 90% subsidy for eligible SG Citizens aged 40+.',
       }
     : {
