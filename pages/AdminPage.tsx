@@ -263,10 +263,10 @@ const AdminPage: React.FC = () => {
                   const Icon = shortcut.icon;
                   const body = (
                     <>
-                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-white text-primary shadow-sm">
-                        <Icon size={28} />
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-[1.1rem] bg-white text-primary shadow-sm">
+                        <Icon size={22} />
                       </div>
-                      <span className="text-[1.75rem] font-heading font-bold leading-tight text-primary">
+                      <span className="text-xl font-heading font-bold leading-tight text-primary">
                         {shortcut.label}
                       </span>
                     </>
@@ -278,7 +278,7 @@ const AdminPage: React.FC = () => {
                       href={shortcut.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-[240px] flex-col rounded-[2rem] border border-gray-200 bg-neutral p-6 transition-colors hover:border-primary/30 hover:bg-white"
+                      className="flex min-h-[150px] flex-col rounded-[1.5rem] border border-gray-200 bg-neutral p-5 transition-colors hover:border-primary/30 hover:bg-white"
                     >
                       {body}
                       <span className="sr-only">
@@ -289,7 +289,7 @@ const AdminPage: React.FC = () => {
                     <Link
                       key={shortcut.label}
                       to={shortcut.href}
-                      className="flex min-h-[240px] flex-col rounded-[2rem] border border-gray-200 bg-neutral p-6 transition-colors hover:border-primary/30 hover:bg-white"
+                      className="flex min-h-[150px] flex-col rounded-[1.5rem] border border-gray-200 bg-neutral p-5 transition-colors hover:border-primary/30 hover:bg-white"
                     >
                       {body}
                       <span className="sr-only">Open {shortcut.label}</span>
