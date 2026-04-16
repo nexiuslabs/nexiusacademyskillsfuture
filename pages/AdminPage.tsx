@@ -257,17 +257,18 @@ const AdminPage: React.FC = () => {
                 </div>
               )}
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 {shortcuts.map((shortcut) => {
                   const isExternal = shortcut.href.startsWith('http');
                   const Icon = shortcut.icon;
                   const body = (
                     <>
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
-                        <Icon size={22} />
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-white text-primary shadow-sm">
+                        <Icon size={28} />
                       </div>
-                      <span className="font-bold text-primary">{shortcut.label}</span>
-                      <span className="text-sm text-gray-500">{shortcut.description}</span>
+                      <span className="text-[1.75rem] font-heading font-bold leading-tight text-primary">
+                        {shortcut.label}
+                      </span>
                     </>
                   );
 
@@ -277,22 +278,21 @@ const AdminPage: React.FC = () => {
                       href={shortcut.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-[116px] flex-col justify-between rounded-2xl border border-gray-200 bg-neutral p-5 transition-colors hover:border-primary/30 hover:bg-white"
+                      className="flex min-h-[240px] flex-col rounded-[2rem] border border-gray-200 bg-neutral p-6 transition-colors hover:border-primary/30 hover:bg-white"
                     >
                       {body}
-                      <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
-                        Open
-                        <ExternalLink size={15} />
+                      <span className="sr-only">
+                        Open {shortcut.label} <ExternalLink size={15} />
                       </span>
                     </a>
                   ) : (
                     <Link
                       key={shortcut.label}
                       to={shortcut.href}
-                      className="flex min-h-[116px] flex-col justify-between rounded-2xl border border-gray-200 bg-neutral p-5 transition-colors hover:border-primary/30 hover:bg-white"
+                      className="flex min-h-[240px] flex-col rounded-[2rem] border border-gray-200 bg-neutral p-6 transition-colors hover:border-primary/30 hover:bg-white"
                     >
                       {body}
-                      <span className="mt-4 text-sm font-semibold text-accent">Open</span>
+                      <span className="sr-only">Open {shortcut.label}</span>
                     </Link>
                   );
                 })}
