@@ -33,7 +33,7 @@ const InstructorCTA: React.FC = () => {
             }
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-white hover:text-secondary transition-colors"
           >
-            Register Today
+            Register Now
           </button>
         </div>
         
