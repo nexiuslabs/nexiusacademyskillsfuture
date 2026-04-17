@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Practical agentic AI training for non-technical professionals
+              Agentic AI Foundations for Non-technocal Professionals
             </h1>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
