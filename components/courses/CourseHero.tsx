@@ -20,12 +20,14 @@ const Hero: React.FC = () => {
             </h1>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
-              <div className="flex items-start gap-2 text-sm text-gray-700">
+              <div className="flex items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
                 <CalendarDays size={16} className="text-accent mt-0.5" />
                 <div>
-                  <div>Next Cohorts:</div>
-                  <div>• 18–19 May 2026</div>
-                  <div>• 08–09 Jun 2026</div>
+                  <div className="font-semibold text-primary mb-1">Next Cohort</div>
+                  <div className="text-gray-600">18–19 May 2026</div>
+                  <a href="#schedule" className="inline-flex items-center mt-2 text-sm font-semibold text-accent hover:underline">
+                    More
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
