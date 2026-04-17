@@ -8,6 +8,7 @@ type PricingProps = {
   reserveButtonText?: string;
   reserveRedirectUrl?: string;
   sectionClassName?: string;
+  variant?: 'public' | 'private_company';
 };
 
 type LearnerType = 'sg_citizen' | 'pr' | 'ltvp' | 'full_fee';
@@ -59,6 +60,42 @@ const fullBreakdownRows = [
 
 const acceptedPayments = ['SkillsFuture Credits (SFC)', 'Credit card', 'Debit card', 'PayNow'];
 
+const privateSummary = [
+  {
+    title: '12 pax',
+    subtitle: 'Minimum class size',
+    note: 'Private runs are designed for a single company cohort with at least 12 participants.',
+    accent: 'bg-primary',
+  },
+  {
+    title: 'Custom quote',
+    subtitle: 'Pricing approach',
+    note: 'Pricing depends on learner profile, venue, schedule preference, and delivery scope.',
+    accent: 'bg-accent',
+  },
+  {
+    title: 'Onsite or venue',
+    subtitle: 'Delivery format',
+    note: 'Choose your office, an external venue, or discuss the most suitable setup with us.',
+    accent: 'bg-slate-400',
+  },
+];
+
+const privatePricingFactors = [
+  'Number of participants and whether you plan a single cohort or multiple runs',
+  'Eligible learner profile and funding pathway discussion where applicable',
+  'Preferred venue, room setup, and delivery logistics',
+  'Schedule preference for weekdays, split sessions, or concentrated runs',
+  'Whether you want stronger tailoring around specific internal workflows',
+];
+
+const privateProposalChecklist = [
+  'Approximate team size and which functions are attending',
+  'Your preferred timing window or internal scheduling constraints',
+  'Whether you want delivery at your office or another venue',
+  'Any important workflows, pain points, or governance concerns to keep in view',
+];
+
 const formatCurrency = (amount: number) => `S$${amount.toFixed(2)}`;
 
 const Pricing: React.FC<PricingProps> = ({
@@ -67,6 +104,7 @@ const Pricing: React.FC<PricingProps> = ({
   reserveButtonText = 'Reserve a Seat',
   reserveRedirectUrl,
   sectionClassName = 'py-20 bg-white',
+  variant = 'public',
 }) => {
   const [learnerType, setLearnerType] = useState<LearnerType>('sg_citizen');
   const [ageBand, setAgeBand] = useState<AgeBand>('40_and_above');
@@ -112,6 +150,151 @@ const Pricing: React.FC<PricingProps> = ({
       lines,
     };
   }, [ageBand, isSmeSponsored, learnerType]);
+
+  if (variant === 'private_company') {
+    return (
+      <section id="pricing" className={sectionClassName}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-heading font-bold text-primary mb-4">Pricing for Dedicated Company Classes</h2>
+            <p className="text-gray-600 mb-2">
+              Private-run pricing is quoted based on your actual team setup and delivery requirements.
+            </p>
+            <p className="text-xs text-gray-400 font-mono">Dedicated company class for teams of 12 pax and above</p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3 mb-10">
+            {privateSummary.map((card) => (
+              <div key={card.title} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+                <div className={`h-2 ${card.accent}`} />
+                <div className="p-7">
+                  <div className="text-4xl font-heading font-extrabold text-primary mb-3">{card.title}</div>
+                  <h3 className="text-lg font-bold text-primary mb-2">{card.subtitle}</h3>
+                  <p className="text-sm text-gray-600">{card.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] mb-10">
+            <div className="rounded-3xl border border-gray-200 bg-neutral p-7">
+              <h3 className="text-2xl font-bold text-primary mb-2">What affects your quotation</h3>
+              <p className="text-sm text-gray-600 mb-6">
+                The final proposal is shaped around what your company actually needs.
+              </p>
+              <div className="space-y-4">
+                {privatePricingFactors.map((factor) => (
+                  <div key={factor} className="flex items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-4">
+                    <Check size={16} className="mt-1 flex-shrink-0 text-accent" />
+                    <span className="text-sm text-gray-700">{factor}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-primary/10 bg-white p-7 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-2">Before you enquire</p>
+              <div className="text-4xl font-heading font-extrabold text-primary mb-3">Prepare these details</div>
+              <h3 className="text-xl font-bold text-primary mb-2">Useful information for a faster proposal</h3>
+              <p className="text-sm text-gray-600 mb-5">
+                Share these details and we can recommend the most suitable setup for your company run.
+              </p>
+
+              <div className="space-y-3 rounded-2xl border border-gray-100 bg-neutral p-5">
+                {privateProposalChecklist.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm">
+                    <Check size={16} className="mt-0.5 flex-shrink-0 text-accent" />
+                    <span className="text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4 mb-12">
+            <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+              <summary className="cursor-pointer list-none text-lg font-bold text-primary">Pricing approach</summary>
+              <div className="mt-5 rounded-2xl border border-gray-100 bg-neutral p-5">
+                <ul className="space-y-3 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>Private company classes are quoted based on cohort size, schedule, venue, and delivery scope.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>We can discuss onsite delivery, external venue options, or the most suitable setup for your team.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>Where relevant, we can also advise on learner profile and funding-pathway considerations.</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+              <summary className="cursor-pointer list-none text-lg font-bold text-primary">What to prepare before contacting us</summary>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                    <Wallet size={18} />
+                  </div>
+                  <h4 className="font-bold text-primary mb-2">Team profile</h4>
+                  <p className="text-sm text-gray-600">Approximate class size, functions attending, and whether you plan one cohort or multiple runs.</p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                    <CreditCard size={18} />
+                  </div>
+                  <h4 className="font-bold text-primary mb-2">Delivery preferences</h4>
+                  <p className="text-sm text-gray-600">Timing window, venue preference, and any important workflow or governance concerns to keep in view.</p>
+                </div>
+              </div>
+            </details>
+
+            <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+              <summary className="cursor-pointer list-none text-lg font-bold text-primary">Proposal and scheduling notes</summary>
+              <div className="mt-5 rounded-2xl border border-gray-100 bg-neutral p-5">
+                <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                  <Receipt size={18} />
+                </div>
+                <ul className="space-y-3 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>Private runs are planned around your team availability and operational constraints.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>A proposal can be scoped more quickly when you share team size, preferred timing, and delivery location upfront.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-1 text-accent" />
+                    <span>If you have fewer than 12 pax, contact us and we can advise whether a later internal run or public intake is a better fit.</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() =>
+                openLeadModal('course_page_cta', 'advisory_call', {
+                  page: pagePath,
+                  position: 'pricing_apply_button',
+                  ctaLabel: reserveLabel,
+                })
+              }
+              className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
+            >
+              {reserveButtonText}
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="pricing" className={sectionClassName}>

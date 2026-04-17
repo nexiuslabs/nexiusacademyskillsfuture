@@ -443,6 +443,28 @@ const AccountantCspLandingPage: React.FC = () => {
           </div>
         </section>
 
+        <section className="bg-white pb-20 mt-6 md:mt-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:px-10">
+              <div className="grid gap-6 md:grid-cols-[1fr,auto] md:items-center">
+                <div>
+                  <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">For Company Teams</div>
+                  <h2 className="text-3xl font-bold tracking-tight text-primary">Need a private class for your team instead?</h2>
+                  <p className="mt-3 max-w-3xl text-base leading-relaxed text-gray-600">
+                    If you are planning an internal company cohort, view the dedicated private-class page for the team-focused format.
+                  </p>
+                </div>
+                <Link
+                  to="/private-class"
+                  className="inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900"
+                >
+                  View Private Class
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-primary rounded-3xl p-8 lg:p-12 text-white text-center shadow-2xl">

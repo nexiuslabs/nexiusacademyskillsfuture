@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import StickyNavbar from '../components/courses/StickyNavbar';
 import CourseHero from '../components/courses/CourseHero';
@@ -53,6 +54,27 @@ const CoursePage: React.FC = () => {
         <Overview />
         <Curriculum />
         <Pricing />
+        <section className="bg-white pb-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:px-8">
+              <div className="grid gap-5 md:grid-cols-[1fr,auto] md:items-center">
+                <div>
+                  <div className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">For Company Teams</div>
+                  <h2 className="text-2xl font-bold text-primary">Need a private class for your team instead?</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    If you are planning an internal company cohort, view the dedicated private-class page for the team-focused format.
+                  </p>
+                </div>
+                <Link
+                  to="/private-class"
+                  className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-900"
+                >
+                  View Private Class
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
         <Schedule />
         <Instructors />
         <CourseTestimonials />

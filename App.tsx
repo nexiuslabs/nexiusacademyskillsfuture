@@ -14,6 +14,8 @@ import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
 import FrontierFirmCoursePage from './pages/FrontierFirmCoursePage';
 import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
+import CorporateClassLandingPage from './pages/CorporateClassLandingPage';
+import PrivateClassPage from './pages/PrivateClassPage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
@@ -28,6 +30,8 @@ const App: React.FC = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
+        <Route path="/private-class" element={<PrivateClassPage />} />
+        <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />
         <Route path="/courses/frontier-firm-agent-boss" element={<FrontierFirmCoursePage />} />
         <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />

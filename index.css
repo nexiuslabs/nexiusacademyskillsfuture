@@ -10,6 +10,24 @@ body {
   @apply text-gray-800 antialiased;
 }
 
+.container-page {
+  @apply mx-auto max-w-[1200px] px-6 md:px-8;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.grid-dots {
+  background-image: radial-gradient(circle, rgba(108, 63, 209, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -23,4 +41,17 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rot, 0deg));
+  }
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
 }

@@ -16,6 +16,19 @@ export default {
         neutral: '#F5F7FA',
         textDark: '#3A3A3A',
         charcoal: '#3A3A3A',
+        brand: {
+          orange: '#FF6B2C',
+          orangeLight: '#FF8A4C',
+          orangeSoft: '#FFE7DB',
+          purple: '#6C3FD1',
+          purpleDark: '#4E2BA4',
+          purpleSoft: '#EFE7FF',
+          cream: '#FFF7F0',
+          ink: '#141B2D',
+          graphite: '#4D5568',
+          muted: '#7B8498',
+          beige: '#E8DACC',
+        },
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
@@ -24,6 +37,7 @@ export default {
       },
       boxShadow: {
         'card': '0 4px 20px -2px rgba(29, 42, 77, 0.1)',
+        'soft': '0 14px 40px -18px rgba(20, 27, 45, 0.28)',
       }
     },
   },
