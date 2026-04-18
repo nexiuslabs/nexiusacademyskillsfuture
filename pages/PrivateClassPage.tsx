@@ -21,7 +21,7 @@ import { trackOutboundClick } from '../services/analytics';
 const PAGE_PATH = '/private-class';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/' },
   { label: 'Benefits', href: '#formats' },
   { label: 'Teams', href: '#teams' },
   { label: 'Delivery', href: '#delivery' },
@@ -260,7 +260,7 @@ const PrivateClassNavbar: React.FC = () => {
       }`}
     >
       <nav className="container-page flex items-center justify-between py-5">
-        <a href="#home" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-lg font-bold text-accent shadow-sm">
             N
           </span>
@@ -338,8 +338,8 @@ const PrivateClassNavbar: React.FC = () => {
 
 const PrivateClassHero: React.FC = () => {
   const avatars = [
-    '/images/authors/melverick-ng.jpg',
-    '/images/authors/darryl-wong.jpg',
+    'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jacky_wong.jpeg',
+    'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jean_foo.jpeg',
     '/images/testimonials/kenji.jpg',
     '/images/testimonials/thomas-lee.jpg',
   ];
@@ -396,13 +396,19 @@ const PrivateClassHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="mt-8 flex flex-col items-center gap-6"
+              className="mt-8 flex flex-col items-center gap-5"
             >
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-center text-lg text-gray-600 sm:text-xl">
+                <span className="font-semibold text-primary">12 pax</span>
+                <span className="text-gray-300">|</span>
+                <span>Dedicated company class and above</span>
+              </div>
+
+              <div className="flex w-full max-w-2xl flex-col items-stretch justify-center gap-4 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => openProposalModal('private_class_hero_request_proposal')}
-                  className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+                  className="group inline-flex min-h-[4.25rem] flex-1 items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-lg font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
                 >
                   <Play size={16} className="fill-white" />
                   Request Proposal
@@ -418,28 +424,33 @@ const PrivateClassHero: React.FC = () => {
                       position: 'private_class_hero_whatsapp',
                     })
                   }
-                  className="inline-flex items-center rounded-full border border-primary/10 bg-white px-7 py-3.5 font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                  className="inline-flex min-h-[4.25rem] flex-1 items-center justify-center rounded-full border border-primary/10 bg-white px-8 py-4 text-lg font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                 >
                   Talk on WhatsApp
                 </a>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {avatars.map((avatar, index) => (
-                    <img
-                      key={avatar}
-                      src={avatar}
-                      alt=""
-                      className="h-8 w-8 rounded-full border-2 border-white object-cover"
-                      style={{ objectPosition: index === 0 || index === 1 ? 'top' : 'center' }}
-                    />
-                  ))}
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <div className="flex items-center rounded-full bg-white/95 px-4 py-2 shadow-soft ring-1 ring-primary/5">
+                  <div className="flex -space-x-2">
+                    {avatars.map((avatar) => (
+                      <img
+                        key={avatar}
+                        src={avatar}
+                        alt=""
+                        className="h-9 w-9 rounded-full border-2 border-white object-cover"
+                        style={{ objectPosition: 'center' }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-sm text-gray-700">
-                  <Star size={14} className="fill-accent text-accent" />
-                  <span className="font-semibold">12 pax</span>
-                  <span className="text-gray-500">| Dedicated company class and above</span>
+                <div className="flex items-center gap-2 text-base font-semibold text-primary">
+                  <div className="flex items-center gap-1 text-accent">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} size={16} className="fill-current" />
+                    ))}
+                  </div>
+                  <span>4.5</span>
                 </div>
               </div>
 
