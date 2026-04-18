@@ -28,8 +28,14 @@ const BottomSection: React.FC = () => {
       {/* Partners */}
       <section className="py-12 bg-white border-b border-gray-100">
         <div className="container mx-auto px-6">
-          <h4 className="text-lg font-bold text-primary mb-2">100+ Trusted Companies</h4>
-          <p className="text-xs text-gray-500 mb-8 max-w-md">Upskilling your workforce with AI training Singapore companies trust. Our hands-on agentic AI courses enable rapid product development and no-code AI automation across your enterprise.</p>
+          <div className="mb-8 grid gap-3 md:grid-cols-[minmax(0,220px),minmax(0,1fr)] md:items-start md:gap-8">
+            <h4 className="text-lg font-bold leading-tight text-primary md:text-xl">
+              100+ Trusted Companies
+            </h4>
+            <p className="max-w-none text-sm leading-relaxed text-gray-500 sm:text-base">
+              Upskilling your workforce with AI training Singapore companies trust. Our hands-on agentic AI courses enable rapid product development and no-code AI automation across your enterprise.
+            </p>
+          </div>
 
           <div className="relative overflow-hidden">
             <style>{`
