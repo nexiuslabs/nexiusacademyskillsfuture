@@ -823,6 +823,12 @@ const PrivateClassFaq: React.FC = () => (
 );
 
 const PrivateClassPage: React.FC = () => {
+  useEffect(() => {
+    if (window.location.hash === '#home') {
+      window.location.replace('/');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
       <SEO
