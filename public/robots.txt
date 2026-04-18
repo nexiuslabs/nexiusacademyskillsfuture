@@ -1,5 +1,6 @@
 # Nexius Academy - Robots.txt
 User-agent: *
 Allow: /
+Disallow: /admin
 
 Sitemap: https://academy.nexiuslabs.com/sitemap.xml

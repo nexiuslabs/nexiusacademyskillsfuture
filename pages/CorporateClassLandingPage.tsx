@@ -220,7 +220,8 @@ const CorporateClassLandingPage: React.FC = () => {
       <SEO
         title="Dedicated Company AI Class | Nexius Academy"
         description="Private company-run Agentic AI training for teams of 12 pax or more. Tailor the workshop to real workflows, train in a private setting, and align teams on practical AI adoption."
-        canonical={PAGE_PATH}
+        canonical="/private-class"
+        robots="noindex,follow"
         ogType="course"
       />
 

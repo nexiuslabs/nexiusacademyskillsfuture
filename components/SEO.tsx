@@ -5,6 +5,7 @@ interface SEOProps {
   title: string;
   description: string;
   canonical?: string;
+  robots?: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
@@ -21,6 +22,7 @@ const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
+  robots = 'index,follow',
   ogTitle,
   ogDescription,
   ogImage,
@@ -35,6 +37,7 @@ const SEO: React.FC<SEOProps> = ({
   return (
     <Helmet>
       <title>{title}</title>
+      <meta name="robots" content={robots} />
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonical} />
 

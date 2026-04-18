@@ -166,6 +166,7 @@ const AdminPage: React.FC = () => {
         title="Admin | Nexius Academy"
         description="Secure admin access for Nexius Academy operations."
         canonical="/admin"
+        robots="noindex,nofollow"
       />
 
       <div className="min-h-screen bg-[linear-gradient(180deg,#f7fafc_0%,#eef3fb_100%)] px-4 py-10 sm:px-6 lg:px-8">
