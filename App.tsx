@@ -22,6 +22,7 @@ import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
 import { initializeVisitorSession } from './services/visitorSession';
 import { trackPageExit, trackPageView, trackSessionStarted } from './services/analytics';
+import { recordBlogArticleView } from './services/blogViews';
 
 const AppShell: React.FC = () => {
   const location = useLocation();
@@ -56,6 +57,11 @@ const AppShell: React.FC = () => {
       pagePath: currentPath,
       referrer: document.referrer || undefined,
     });
+
+    const articleMatch = location.pathname.match(/^\/blog\/([^/]+)$/);
+    if (articleMatch) {
+      void recordBlogArticleView(articleMatch[1]).catch(() => undefined);
+    }
 
     previousPathRef.current = currentPath;
     pageStartTimeRef.current = now;

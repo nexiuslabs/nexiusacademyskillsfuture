@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { openLeadModal } from '../services/leadModal';
 import { Calendar, Eye, ArrowRight, Filter } from 'lucide-react';
@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import { BLOG_POSTS } from '../constants';
+import { fetchBlogViewCounts, mergeBlogPostsWithViews } from '../services/blogViews';
 
 type BlogFilter = 'All' | 'SME Automation' | 'SkillsFuture' | 'Beginner Guides' | 'Case Studies';
 
@@ -14,8 +15,16 @@ const FILTERS: BlogFilter[] = ['All', 'SME Automation', 'SkillsFuture', 'Beginne
 
 const BlogPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<BlogFilter>('All');
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
 
-  const sortedPosts = [...BLOG_POSTS].sort((a, b) => b.id - a.id);
+  useEffect(() => {
+    void fetchBlogViewCounts(BLOG_POSTS.map((post) => post.slug))
+      .then(setViewCounts)
+      .catch(() => undefined);
+  }, []);
+
+  const postsWithViews = useMemo(() => mergeBlogPostsWithViews(BLOG_POSTS, viewCounts), [viewCounts]);
+  const sortedPosts = [...postsWithViews].sort((a, b) => b.id - a.id);
 
   const filteredPosts = useMemo(() => {
     if (activeFilter === 'All') {

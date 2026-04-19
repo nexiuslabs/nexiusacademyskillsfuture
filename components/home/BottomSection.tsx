@@ -3,6 +3,7 @@ import { Calendar, Eye, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { fetchBucketImages, getRandomImages } from '../../services/imageService';
 import { BLOG_POSTS } from '../../constants';
+import { fetchBlogViewCounts, mergeBlogPostsWithViews } from '../../services/blogViews';
 
 const BottomSection: React.FC = () => {
   const [_images, setImages] = useState<string[]>([
@@ -11,6 +12,7 @@ const BottomSection: React.FC = () => {
     'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
     'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800'
   ]);
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
 
   useEffect(() => {
     const loadImages = async () => {
@@ -22,6 +24,17 @@ const BottomSection: React.FC = () => {
 
     loadImages();
   }, []);
+
+  useEffect(() => {
+    void fetchBlogViewCounts(BLOG_POSTS.map((post) => post.slug))
+      .then(setViewCounts)
+      .catch(() => undefined);
+  }, []);
+
+  const featuredPosts = mergeBlogPostsWithViews(BLOG_POSTS, viewCounts)
+    .filter(p => p.featured)
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3);
 
   return (
     <>
@@ -83,10 +96,7 @@ const BottomSection: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {BLOG_POSTS
-              .filter(p => p.featured)
-              .sort((a, b) => b.id - a.id)
-              .slice(0, 3)
+            {featuredPosts
               .map((post, _idx) => (
                 <Link key={post.id} to={`/blog/${post.slug}`} className="group cursor-pointer">
                   <div className="overflow-hidden rounded-xl mb-4 h-56">
