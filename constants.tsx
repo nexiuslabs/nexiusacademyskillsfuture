@@ -235,6 +235,18 @@ export const BLOG_POSTS: BlogPost[] = [
     bestFor: 'SME owners, operations teams',
     featured: true,
   },
+  {
+    id: 7,
+    slug: 'ai-literacy-corporate-learning-2026',
+    title: 'AI Literacy for Corporate Learning in 2026: How L&D Teams Should Prepare for Agentic AI',
+    date: '19 Apr 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'AI literacy is no longer enough on its own. Learn how corporate learning teams can build practical AI fluency, role-based training, and agentic AI readiness across the organisation.',
+    category: 'SkillsFuture',
+    bestFor: 'L&D teams, HR leaders, corporate managers',
+    featured: true,
+  },
 ];
 
 export const SYSTEM_INSTRUCTION = `

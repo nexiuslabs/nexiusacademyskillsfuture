@@ -12,14 +12,16 @@ type LeadPayload = {
   role: string;
   companyName: string;
   departmentOrDesignation: string;
-  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call';
+  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call' | 'checklist_download';
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
   cohortCode: string;
   courseSlug: string;
-  intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call';
+  intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call' | 'download_checklist';
   sourceTag: string;
   pagePath: string;
+  visitorId?: string;
+  sessionId?: string;
 };
 
 Deno.serve(async (req) => {
@@ -30,19 +32,11 @@ Deno.serve(async (req) => {
   try {
     const payload = (await req.json()) as LeadPayload;
 
-    const requiredFields: Array<keyof LeadPayload> = [
-      'fullName',
-      'email',
-      'role',
-      'leadFlow',
-      'ageBand',
-      'preferredIntake',
-      'cohortCode',
-      'courseSlug',
-      'intent',
-      'sourceTag',
-      'pagePath',
-    ];
+    const requiredFields: Array<keyof LeadPayload> = ['fullName', 'email', 'leadFlow', 'intent', 'sourceTag', 'pagePath'];
+
+    if (payload.intent !== 'download_checklist') {
+      requiredFields.push('role', 'ageBand', 'preferredIntake', 'cohortCode', 'courseSlug');
+    }
 
     if (payload.intent === 'reserve_seat') {
       requiredFields.push('companyName', 'departmentOrDesignation');
@@ -77,6 +71,8 @@ Deno.serve(async (req) => {
       intent: payload.intent,
       source_tag: payload.sourceTag,
       page_path: payload.pagePath,
+      visitor_id: payload.visitorId ?? null,
+      session_id: payload.sessionId ?? null,
     });
 
     if (error) {

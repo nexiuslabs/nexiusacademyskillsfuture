@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { trackBlogToCourseClick, trackOutboundClick } from '../../services/analytics';
+import { openLeadModal } from '../../services/leadModal';
 
 declare global {
   interface Window {
@@ -51,26 +52,45 @@ interface ArticleCTAProps {
 
 export const ArticleCTA: React.FC<ArticleCTAProps> = ({ articleSlug, ctaType, position }) => {
   const content = CTA_CONTENT[ctaType];
+  const isChecklist = ctaType === 'workflow_checklist';
 
   return (
     <div className="rounded-xl border border-[#d8e8ff] bg-[#f6faff] p-6 my-8 shadow-sm">
       <p className="text-xs font-semibold tracking-[0.12em] text-[#007bff] uppercase mb-2">Next Step</p>
       <h3 className="text-2xl font-bold text-[#1a1a1a] mb-2">{content.title}</h3>
       <p className="text-[#3a4a5e] mb-4 leading-relaxed">{content.description}</p>
-      <Link
-        to={content.href}
-        onClick={() => {
-          trackArticleEvent(articleSlug, ctaType, position);
-          trackBlogToCourseClick({
-            sourceArea: `article_${position}_${ctaType}`,
-            pagePath: `/blog/${articleSlug}`,
-            targetPath: '/courses/agentic-ai',
-          });
-        }}
-        className="inline-flex items-center justify-center rounded-md bg-[#007bff] px-5 py-3 font-semibold text-white hover:bg-[#0062cc] transition-colors"
-      >
-        {content.cta}
-      </Link>
+      {isChecklist ? (
+        <button
+          type="button"
+          onClick={() => {
+            trackArticleEvent(articleSlug, ctaType, position);
+            openLeadModal('blog_inline', 'download_checklist', {
+              page: `/blog/${articleSlug}`,
+              position: `article_${position}_${ctaType}`,
+              ctaLabel: content.cta,
+              redirectUrl: '/downloads/sme-ai-workflow-checklist.pdf',
+            });
+          }}
+          className="inline-flex items-center justify-center rounded-md bg-[#007bff] px-5 py-3 font-semibold text-white hover:bg-[#0062cc] transition-colors"
+        >
+          {content.cta}
+        </button>
+      ) : (
+        <Link
+          to={content.href}
+          onClick={() => {
+            trackArticleEvent(articleSlug, ctaType, position);
+            trackBlogToCourseClick({
+              sourceArea: `article_${position}_${ctaType}`,
+              pagePath: `/blog/${articleSlug}`,
+              targetPath: '/courses/agentic-ai',
+            });
+          }}
+          className="inline-flex items-center justify-center rounded-md bg-[#007bff] px-5 py-3 font-semibold text-white hover:bg-[#0062cc] transition-colors"
+        >
+          {content.cta}
+        </Link>
+      )}
     </div>
   );
 };

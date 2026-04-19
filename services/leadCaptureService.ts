@@ -14,14 +14,16 @@ export interface LeadCapturePayload {
   role: string;
   companyName: string;
   departmentOrDesignation: string;
-  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call';
+  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call' | 'checklist_download';
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
   cohortCode: string;
   courseSlug: string;
-  intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call';
+  intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call' | 'download_checklist';
   sourceTag: LeadSourceTag;
   pagePath: string;
+  visitorId?: string;
+  sessionId?: string;
 }
 
 export const submitLeadCapture = async (payload: LeadCapturePayload) => {

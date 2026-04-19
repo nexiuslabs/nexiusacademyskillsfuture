@@ -8,10 +8,14 @@ import {
   submitLeadCapture,
 } from '../../services/leadCaptureService';
 import {
+  trackLeadFormFieldCompleted,
+  trackLeadFormStarted,
   trackLeadFormSubmit,
+  trackLeadModalClose,
   trackLeadModalOpen,
   trackOutboundClick,
 } from '../../services/analytics';
+import { getVisitorContext } from '../../services/visitorSession';
 
 declare global {
   interface WindowEventMap {
@@ -24,6 +28,7 @@ declare global {
 }
 
 type CohortOption = { label: string; code: string };
+type LeadIntent = LeadCapturePayload['intent'];
 
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [
@@ -58,6 +63,7 @@ const LeadCaptureModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
   const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
   const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
@@ -84,8 +90,23 @@ const LeadCaptureModal: React.FC = () => {
 
   const isReserveFlow = formState.intent === 'reserve_seat';
   const isAdvisoryFlow = formState.intent === 'advisory_call';
+  const isChecklistFlow = formState.intent === 'download_checklist';
+
+  const triggerDownload = (url: string) => {
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = '';
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  };
 
   const closeModal = () => {
+    trackLeadModalClose({
+      sourceTag,
+      intent: formState.intent,
+      pagePath: location.pathname,
+    });
     setIsOpen(false);
     setIsSubmitting(false);
   };
@@ -110,16 +131,28 @@ const LeadCaptureModal: React.FC = () => {
     const source = (search.get('lead_source') as LeadSourceTag | null) || 'unknown';
 
     if (lead) {
+      const nextIntent: LeadIntent =
+        lead === 'join-next-cohort'
+          ? 'reserve_seat'
+          : lead === 'workflow-checklist'
+            ? 'download_checklist'
+            : 'subsidy_fit';
       setSourceTag(source);
       setOpenMethod('query_auto_open');
       setRedirectUrl(search.get('redirect_url'));
       setFormState((prev) => ({
         ...prev,
-        intent: lead === 'join-next-cohort' ? 'reserve_seat' : 'subsidy_fit',
-        leadFlow: lead === 'join-next-cohort' ? 'apply_now' : 'subsidy_fit',
+        intent: nextIntent,
+        leadFlow:
+          nextIntent === 'reserve_seat'
+            ? 'apply_now'
+            : nextIntent === 'download_checklist'
+              ? 'checklist_download'
+              : 'subsidy_fit',
       }));
       resetCourseFields();
       setIsSubmitted(false);
+      setHasStartedForm(false);
       setIsOpen(true);
     }
   }, [location.search]);
@@ -139,10 +172,13 @@ const LeadCaptureModal: React.FC = () => {
             ? 'apply_now'
             : nextIntent === 'advisory_call'
               ? 'advisory_call'
+              : nextIntent === 'download_checklist'
+                ? 'checklist_download'
               : 'subsidy_fit',
       }));
       resetCourseFields();
       setIsSubmitted(false);
+      setHasStartedForm(false);
       setIsOpen(true);
     };
 
@@ -164,12 +200,25 @@ const LeadCaptureModal: React.FC = () => {
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsSubmitting(true);
+    const visitorContext = getVisitorContext();
 
     try {
       await submitLeadCapture({
         ...formState,
+        phone: isChecklistFlow ? '' : formState.phone,
+        role: isChecklistFlow ? 'Checklist download lead' : formState.role,
+        companyName: isChecklistFlow ? '' : formState.companyName,
+        departmentOrDesignation: isChecklistFlow ? '' : formState.departmentOrDesignation,
+        leadFlow: isChecklistFlow ? 'subsidy_fit' : formState.leadFlow,
+        ageBand: isChecklistFlow ? 'below_40' : formState.ageBand,
+        preferredIntake: isChecklistFlow ? 'Checklist download' : formState.preferredIntake,
+        cohortCode: isChecklistFlow ? 'checklist-download' : formState.cohortCode,
+        courseSlug: isChecklistFlow ? 'agentic-ai' : formState.courseSlug,
+        intent: isChecklistFlow ? 'subsidy_fit' : formState.intent,
         sourceTag,
         pagePath: location.pathname,
+        visitorId: visitorContext?.visitorId,
+        sessionId: visitorContext?.sessionId,
       });
 
       trackLeadFormSubmit({
@@ -182,6 +231,10 @@ const LeadCaptureModal: React.FC = () => {
       if (isReserveFlow && redirectUrl) {
         window.location.href = redirectUrl;
         return;
+      }
+
+      if (isChecklistFlow && redirectUrl) {
+        triggerDownload(redirectUrl);
       }
 
       setIsSubmitted(true);
@@ -210,17 +263,42 @@ const LeadCaptureModal: React.FC = () => {
 
   if (!isOpen) return null;
 
+  const onFieldFocus = () => {
+    if (hasStartedForm) return;
+
+    setHasStartedForm(true);
+    trackLeadFormStarted({
+      sourceTag,
+      intent: formState.intent,
+      pagePath: location.pathname,
+    });
+  };
+
+  const onFieldCompleted = (fieldName: string, value: string) => {
+    if (!value.trim()) return;
+
+    trackLeadFormFieldCompleted({
+      pagePath: location.pathname,
+      fieldName,
+      intent: formState.intent,
+    });
+  };
+
   const modalTitle = isReserveFlow
     ? 'Registration'
     : isAdvisoryFlow
       ? 'Team Training Enquiry'
-      : 'Check Subsidy & Fit';
+      : isChecklistFlow
+        ? 'Get the Checklist'
+        : 'Check Subsidy & Fit';
 
   const submitLabel = isReserveFlow
     ? 'Continue'
     : isAdvisoryFlow
       ? 'Request Proposal'
-      : 'Get My Estimate & Next Step';
+      : isChecklistFlow
+        ? 'Send My Checklist'
+        : 'Get My Estimate & Next Step';
 
   const whatsappHref = isAdvisoryFlow
     ? 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20a%20team%20training%20enquiry%20and%20want%20to%20discuss%20a%20dedicated%20company%20class.'
@@ -251,6 +329,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.fullName}
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -259,6 +338,8 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.email}
                     onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
                   <input
                     required
@@ -266,6 +347,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
                     onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -277,14 +359,17 @@ const LeadCaptureModal: React.FC = () => {
                         ...s,
                         departmentOrDesignation: e.target.value,
                         role: e.target.value,
-                      }))
+                        }))
                     }
+                    onFocus={onFieldFocus}
                   />
                   <input
                     placeholder="Mobile number (optional)"
                     className="rounded-lg border px-4 py-3 md:col-span-2"
                     value={formState.phone}
                     onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                 </div>
               </>
@@ -300,6 +385,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.fullName}
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -308,6 +394,8 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.email}
                     onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
                   <input
                     required
@@ -315,6 +403,8 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.phone}
                     onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                   <input
                     required
@@ -322,6 +412,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
                     onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -329,6 +420,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.role}
                     onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -338,10 +430,41 @@ const LeadCaptureModal: React.FC = () => {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, departmentOrDesignation: e.target.value }))
                     }
+                    onFocus={onFieldFocus}
                   />
                 </div>
                 <div className="rounded-lg border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
                   We will use this enquiry to advise on schedule options, venue setup, and the best next step for your company cohort.
+                </div>
+              </>
+            ) : isChecklistFlow ? (
+              <>
+                <p className="text-sm text-gray-600">
+                  Enter your name and email to download the SME AI workflow checklist.
+                </p>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <input
+                    required
+                    placeholder="Full name"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.fullName}
+                    onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
+                    onFocus={onFieldFocus}
+                  />
+                  <input
+                    required
+                    type="email"
+                    placeholder="Email"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.email}
+                    onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('email', e.target.value)}
+                  />
+                </div>
+
+                <div className="rounded-lg border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
+                  You will get the checklist PDF immediately after submitting. We will also save your details in our lead table for follow-up.
                 </div>
               </>
             ) : (
@@ -353,6 +476,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.fullName}
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                   <input
                     required
@@ -361,6 +485,8 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.email}
                     onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
                   <input
                     required
@@ -368,6 +494,8 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.phone}
                     onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                   <input
                     required
@@ -375,6 +503,7 @@ const LeadCaptureModal: React.FC = () => {
                     className="rounded-lg border px-4 py-3"
                     value={formState.role}
                     onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))}
+                    onFocus={onFieldFocus}
                   />
                 </div>
 
@@ -388,6 +517,7 @@ const LeadCaptureModal: React.FC = () => {
                         ageBand: e.target.value as LeadCapturePayload['ageBand'],
                       }))
                     }
+                    onFocus={onFieldFocus}
                   >
                     <option value="below_40">Age below 40</option>
                     <option value="40_and_above">Age 40 and above</option>
@@ -405,6 +535,7 @@ const LeadCaptureModal: React.FC = () => {
                         preferredIntake: selected.label,
                       }));
                     }}
+                    onFocus={onFieldFocus}
                   >
                     {cohortOptions.map((cohort) => (
                       <option key={cohort.code} value={cohort.code}>
@@ -441,6 +572,24 @@ const LeadCaptureModal: React.FC = () => {
                   If you want to move faster, message Melverick directly on WhatsApp.
                 </p>
               </>
+            ) : isChecklistFlow ? (
+              <>
+                <p className="mb-4 text-gray-700">
+                  Your checklist is ready. The download should start automatically.
+                </p>
+                <p className="mb-5 text-sm text-gray-600">
+                  If it did not start, use the button below to download it manually.
+                </p>
+                {redirectUrl ? (
+                  <a
+                    href={redirectUrl}
+                    download
+                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
+                  >
+                    Download the Checklist <ArrowRight size={16} />
+                  </a>
+                ) : null}
+              </>
             ) : (
               <>
                 <p className="mb-4 text-gray-700">
@@ -452,21 +601,23 @@ const LeadCaptureModal: React.FC = () => {
               </>
             )}
 
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                trackOutboundClick({
-                  channel: 'whatsapp',
-                  pagePath: location.pathname,
-                  position: 'lead_modal_thank_you',
-                })
-              }
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
-            >
-              Continue on WhatsApp <ArrowRight size={16} />
-            </a>
+            {!isChecklistFlow ? (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  trackOutboundClick({
+                    channel: 'whatsapp',
+                    pagePath: location.pathname,
+                    position: 'lead_modal_thank_you',
+                  })
+                }
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
+              >
+                Continue on WhatsApp <ArrowRight size={16} />
+              </a>
+            ) : null}
           </div>
         )}
       </div>
