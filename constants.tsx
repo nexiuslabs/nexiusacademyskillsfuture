@@ -37,24 +37,6 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '18-19 May 2026',
-    time: '9:00am - 6:00pm',
-    format: 'In-Person',
-    slotsLeft: 4,
-    month: 'May 2026',
-    registrationCloses: 'TBC',
-  },
-  {
-    type: 'Weekday',
-    dates: '08-09 Jun 2026',
-    time: '9:00am - 6:00pm',
-    format: 'In-Person',
-    slotsLeft: 4,
-    month: 'Jun 2026',
-    registrationCloses: 'TBC',
-  },
-  {
-    type: 'Weekday',
     dates: '26 Jun 2026 & 03 Jul 2026',
     time: '9:00am - 6:00pm',
     format: 'In-Person',

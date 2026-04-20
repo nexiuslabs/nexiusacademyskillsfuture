@@ -31,11 +31,7 @@ type CohortOption = { label: string; code: string };
 type LeadIntent = LeadCapturePayload['intent'];
 
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
-  'agentic-ai': [
-    { label: '18–19 May 2026 (9am–6pm)', code: '2026-05-18' },
-    { label: '08–09 Jun 2026 (9am–6pm)', code: '2026-06-08' },
-    { label: '26 Jun 2026 & 03 Jul 2026 (9am–6pm)', code: '2026-06-26' },
-  ],
+  'agentic-ai': [{ label: '26 Jun 2026 & 03 Jul 2026 (9am–6pm)', code: '2026-06-26' }],
   'agentic-ai-accountants': [{ label: '06–07 May 2026', code: '2026-05-06' }],
   'agentic-ai-company-class': [
     { label: 'Private class schedule by arrangement', code: 'corporate-custom' },
@@ -626,3 +622,4 @@ const LeadCaptureModal: React.FC = () => {
 };
 
 export default LeadCaptureModal;
+
