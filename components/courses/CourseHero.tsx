@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
                 <CalendarDays size={16} className="text-accent mt-0.5" />
                 <div>
                   <div className="font-semibold text-primary mb-1">Next Cohort</div>
-                  <div className="text-gray-600">18–19 May 2026</div>
+                  <div className="text-gray-600">26 Jun &amp; 03 Jul 2026</div>
                   <a href="#schedule" className="inline-flex items-center mt-2 text-sm font-semibold text-accent hover:underline">
                     More
                   </a>
@@ -128,3 +128,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
