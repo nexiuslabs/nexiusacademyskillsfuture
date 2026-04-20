@@ -217,13 +217,13 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-5">
                   <CheckCircle size={16} className="text-accent" />
-                  Built for accountants, CSPs, and firm owners
+                  TP-NC-C0021-F
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
-                  Practical AI workflows for accountants and CSP teams
+                  Agentic AI Foundations for Non-Techincal Professionals
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
-                  Help your team draft faster, work more consistently, and use AI safely in review-heavy workflows.
+                  While this class is applicable to a wide range of professionals, this cohort is currently focused on accountants, CSPs, and firm owners.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
