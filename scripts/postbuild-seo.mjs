@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const SITE_URL = 'https://academy.nexiuslabs.com';
 const DIST_DIR = path.resolve('dist');
-const DEFAULT_IMAGE = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexius_logo_no_text_transparent_bg.png';
+const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-courses.jpg';
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
