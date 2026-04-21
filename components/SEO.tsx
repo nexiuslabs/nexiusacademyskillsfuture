@@ -15,7 +15,7 @@ interface SEOProps {
   jsonLd?: object | object[];
 }
 
-const DEFAULT_IMAGE = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexius_logo_no_text_transparent_bg.png';
+const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-courses.jpg';
 const BASE_URL = 'https://academy.nexiuslabs.com';
 
 const SEO: React.FC<SEOProps> = ({
