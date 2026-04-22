@@ -59,22 +59,52 @@ export async function handler(event) {
     return json(500, { error: 'Supabase server credentials are not configured.' });
   }
 
-  const query = new URLSearchParams({
-    select:
-      'id,created_at,full_name,email,phone,role,company_name,department_or_designation,lead_flow,age_band,preferred_intake,cohort_code,course_slug,intent,payer_type,sponsor_contact_name,sponsor_contact_email,sponsor_status,source_tag,page_path',
-    order: 'created_at.desc',
-    limit: '100',
-  });
+  const headers = {
+    apikey: SUPABASE_SERVICE_ROLE_KEY,
+    Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+  };
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/lead_captures?${query.toString()}`, {
-    headers: {
-      apikey: SUPABASE_SERVICE_ROLE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-    },
-  });
+  const leadSelectWithSponsorship =
+    'id,created_at,full_name,email,phone,role,company_name,department_or_designation,lead_flow,age_band,preferred_intake,cohort_code,course_slug,intent,payer_type,sponsor_contact_name,sponsor_contact_email,sponsor_status,source_tag,page_path';
+
+  const leadSelectLegacy =
+    'id,created_at,full_name,email,phone,role,company_name,department_or_designation,lead_flow,age_band,preferred_intake,cohort_code,course_slug,intent,source_tag,page_path';
+
+  const loadLeads = async (select) => {
+    const query = new URLSearchParams({
+      select,
+      order: 'created_at.desc',
+      limit: '100',
+    });
+
+    return fetch(`${SUPABASE_URL}/rest/v1/lead_captures?${query.toString()}`, { headers });
+  };
+
+  let response = await loadLeads(leadSelectWithSponsorship);
 
   if (!response.ok) {
     const body = await response.text();
+
+    if (body.includes('payer_type') || body.includes('sponsor_contact_name') || body.includes('sponsor_status')) {
+      response = await loadLeads(leadSelectLegacy);
+
+      if (!response.ok) {
+        const legacyBody = await response.text();
+        return json(response.status, { error: legacyBody || 'Could not load lead captures.' });
+      }
+
+      const data = await response.json();
+      const normalized = data.map((lead) => ({
+        ...lead,
+        payer_type: null,
+        sponsor_contact_name: null,
+        sponsor_contact_email: null,
+        sponsor_status: null,
+      }));
+
+      return json(200, { leads: normalized });
+    }
+
     return json(response.status, { error: body || 'Could not load lead captures.' });
   }
 

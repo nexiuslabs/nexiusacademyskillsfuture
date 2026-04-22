@@ -46,6 +46,8 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai-accountants': [{ label: '06-07 May 2026', code: '2026-05-06' }],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
 };
+const ACCOUNTANTS_SELF_REGISTRATION_URL =
+  'https://stms.polite.edu.sg/identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DStudent%26redirect_uri%3Dhttps%253A%252F%252Fstms.polite.edu.sg%252Fsignin-student%26response_type%3Dcode%26scope%3Dopenid%2520profile%26code_challenge%3DE_QgKHQVqjJlxFGerdkqw-CVtB-r2B4RdhgYFtBulIg%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639124957031034808.NDQzYmQwOTYtOWY5Ni00OTM5LTkwMDgtYTBiMzk1NjVjOGQzZjFmMWM5YWYtYmRjYS00NWM1LTkxNmItOThkOTA5MGVhNTQx%26state%3DE6QlwbfBI3OA11ZwIH4Ce3Hy1zQSg-TlR9ATT08PgcDZpzYcK6Hlnu7JhAzoSqzcviv-hCEO-K0WzQqqJ6BMKJRFlmWyH-xHA3nc04SezmEcoiwp6IinEGRjRL8p1l3t6DTM32RcTGSLk4Ic9tuN3uQzK30xsOv5ofLW5nXy3Rsq5FJ_pwLHx680-VeNfDmEw6kTwtTFgvIkkxc8HHa80_hXIT_s9ce9z_9X_NbHJ935xIUquP9iuh_uIKmQNfupYVgc32kCr6I9EsBzyuC3APFjPcoOCuIX84yq8-rGRqHnKXcOzVCND5n_Ssn5rH-JaNOgNuFppkA1c8LVzOvdaJ5pJI-mkj3rW2nFKpt3v8g9EG4uHe8tPjV04bncLHH8o8ydsxcgOQy9sBUPIYTVxcpyAbw8ywMmo_yJMRuvr2T4ZbH0_q3ZoMsK-cA-qhuZrtpMA-nMLcIVV7Vx7MAfQLBb-C3hh9Wp2ICoTnmKJKk8ahBCRZdFmtyO3XWJEWOAVlJz07Uv33KeKJZqIHlZxQ%26x-client-SKU%3DID_NET8_0%26x-client-ver%3D7.1.2.0';
 
 const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/courses/agentic-ai-company-class')) return 'agentic-ai-company-class';
@@ -64,12 +66,14 @@ const LeadCaptureModal: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const initialCohort = defaultCohortForPath(location.pathname);
+  const isAccountantsRegistration = location.pathname.includes('/courses/agentic-ai-accountants');
 
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasStartedForm, setHasStartedForm] = useState(false);
   const [registrationStep, setRegistrationStep] = useState<1 | 2>(1);
+  const [isPayerTypeLocked, setIsPayerTypeLocked] = useState(false);
   const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
   const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
@@ -101,7 +105,18 @@ const LeadCaptureModal: React.FC = () => {
   const isReserveFlow = formState.intent === 'reserve_seat';
   const isAdvisoryFlow = formState.intent === 'advisory_call';
   const isChecklistFlow = formState.intent === 'download_checklist';
-  const isCompanySponsored = isReserveFlow && formState.payerType === 'company_sponsored';
+  const isCompanySponsored = isReserveFlow && isAccountantsRegistration && formState.payerType === 'company_sponsored';
+  const effectiveRedirectUrl =
+    redirectUrl ||
+    (isReserveFlow && isAccountantsRegistration && formState.payerType === 'self'
+      ? ACCOUNTANTS_SELF_REGISTRATION_URL
+      : null);
+  const shouldSkipPayerStep =
+    isReserveFlow &&
+    isAccountantsRegistration &&
+    isPayerTypeLocked &&
+    formState.payerType === 'self' &&
+    Boolean(effectiveRedirectUrl);
 
   const canContinueToPayerStep =
     formState.fullName.trim() &&
@@ -181,6 +196,7 @@ const LeadCaptureModal: React.FC = () => {
       setSourceTag(source);
       setOpenMethod('query_auto_open');
       setRedirectUrl(search.get('redirect_url'));
+      setIsPayerTypeLocked(false);
       setFormState((prev) => ({
         ...prev,
         intent: nextIntent,
@@ -211,6 +227,7 @@ const LeadCaptureModal: React.FC = () => {
       setSourceTag(event.detail?.sourceTag || 'unknown');
       setOpenMethod('cta_click');
       setRedirectUrl(event.detail?.redirectUrl || null);
+      setIsPayerTypeLocked(Boolean(event.detail?.payerType));
       setFormState((prev) => ({
         ...prev,
         intent: nextIntent,
@@ -254,7 +271,7 @@ const LeadCaptureModal: React.FC = () => {
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isReserveFlow && registrationStep === 1) {
+    if (isReserveFlow && isAccountantsRegistration && registrationStep === 1 && !shouldSkipPayerStep) {
       if (canContinueToPayerStep) {
         setRegistrationStep(2);
       }
@@ -296,8 +313,8 @@ const LeadCaptureModal: React.FC = () => {
         status: 'success',
       });
 
-      if (isReserveFlow && redirectUrl && formState.payerType !== 'company_sponsored') {
-        window.location.href = redirectUrl;
+      if (isReserveFlow && effectiveRedirectUrl && formState.payerType !== 'company_sponsored') {
+        window.location.href = effectiveRedirectUrl;
         return;
       }
 
@@ -357,9 +374,11 @@ const LeadCaptureModal: React.FC = () => {
   };
 
   const modalTitle = isReserveFlow
-    ? registrationStep === 1
+    ? isAccountantsRegistration && registrationStep === 1
       ? 'Registration Details'
-      : 'Who Is Paying?'
+      : isAccountantsRegistration
+        ? 'Who Is Paying?'
+        : 'Registration'
     : isAdvisoryFlow
       ? 'Team Training Enquiry'
       : isChecklistFlow
@@ -375,6 +394,12 @@ const LeadCaptureModal: React.FC = () => {
       : isChecklistFlow
         ? 'Send My Checklist'
         : 'Get My Estimate & Next Step';
+
+  const stepOneButtonLabel = shouldSkipPayerStep
+    ? 'Continue with Registration'
+    : isPayerTypeLocked && formState.payerType === 'company_sponsored'
+      ? 'Continue to Sponsor Details'
+      : 'Continue to Payer Mode';
 
   const whatsappHref = isAdvisoryFlow
     ? 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20a%20team%20training%20enquiry%20and%20want%20to%20discuss%20a%20dedicated%20company%20class.'
@@ -392,7 +417,7 @@ const LeadCaptureModal: React.FC = () => {
 
         {!isSubmitted ? (
           <form className="space-y-4 p-6" onSubmit={onSubmit}>
-            {isReserveFlow ? (
+            {isReserveFlow && isAccountantsRegistration ? (
               <>
                 <div className="rounded-2xl border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_58%,#f1f7ff_100%)] p-5">
                   <div className="flex items-center gap-3">
@@ -514,56 +539,64 @@ const LeadCaptureModal: React.FC = () => {
                   <>
                     <div className="rounded-2xl border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_58%,#f1f7ff_100%)] p-5">
                       <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">Step 2</p>
-                      <h4 className="mb-2 text-2xl font-bold text-primary">Who is paying?</h4>
+                      <h4 className="mb-2 text-2xl font-bold text-primary">
+                        {isPayerTypeLocked
+                          ? formState.payerType === 'company_sponsored'
+                            ? 'Company-sponsored registration'
+                            : 'Self-sponsored registration'
+                          : 'Who is paying?'}
+                      </h4>
                       <p className="text-sm leading-relaxed text-gray-600">
-                        Choose the path that matches your situation so you do not end up stuck mid-registration.
+                        {isPayerTypeLocked
+                          ? formState.payerType === 'company_sponsored'
+                            ? 'You already chose the company-sponsored path. Add the sponsor details below to continue.'
+                            : 'You already chose the self-sponsored path. Review the next step below and continue.'
+                          : 'Choose the path that matches your situation so you do not end up stuck mid-registration.'}
                       </p>
 
-                      <div className="mt-5 grid gap-3 md:grid-cols-2">
-                        <button
-                          type="button"
-                          onClick={() => selectRegistrationPath('self')}
-                          className={`rounded-2xl border px-4 py-4 text-left transition-colors ${
-                            formState.payerType === 'self'
-                              ? 'border-primary bg-white shadow-sm'
-                              : 'border-gray-200 bg-white/70 hover:border-primary/40'
-                          }`}
-                        >
-                          <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                            <CreditCard size={18} />
-                          </div>
-                          <div className="font-bold text-primary">I'm paying myself</div>
-                          <div className="mt-1 text-sm text-gray-600">
-                            Complete registration directly and confirm your intake.
-                          </div>
-                        </button>
+                      {!isPayerTypeLocked ? (
+                        <div className="mt-5 grid gap-3 md:grid-cols-2">
+                          <button
+                            type="button"
+                            onClick={() => selectRegistrationPath('self')}
+                            className={`rounded-2xl border px-4 py-4 text-left transition-colors ${
+                              formState.payerType === 'self'
+                                ? 'border-primary bg-white shadow-sm'
+                                : 'border-gray-200 bg-white/70 hover:border-primary/40'
+                            }`}
+                          >
+                            <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                              <CreditCard size={18} />
+                            </div>
+                            <div className="font-bold text-primary">I'm paying myself</div>
+                            <div className="mt-1 text-sm text-gray-600">
+                              Complete registration directly and confirm your intake.
+                            </div>
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => selectRegistrationPath('company_sponsored')}
-                          className={`rounded-2xl border px-4 py-4 text-left transition-colors ${
-                            formState.payerType === 'company_sponsored'
-                              ? 'border-primary bg-white shadow-sm'
-                              : 'border-gray-200 bg-white/70 hover:border-primary/40'
-                          }`}
-                        >
-                          <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                            <Building2 size={18} />
-                          </div>
-                          <div className="font-bold text-primary">My company is sponsoring me</div>
-                          <div className="mt-1 text-sm text-gray-600">
-                            Start a guided sponsorship request with your HR, finance, or admin contact.
-                          </div>
-                        </button>
-                      </div>
+                          <button
+                            type="button"
+                            onClick={() => selectRegistrationPath('company_sponsored')}
+                            className={`rounded-2xl border px-4 py-4 text-left transition-colors ${
+                              formState.payerType === 'company_sponsored'
+                                ? 'border-primary bg-white shadow-sm'
+                                : 'border-gray-200 bg-white/70 hover:border-primary/40'
+                            }`}
+                          >
+                            <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                              <Building2 size={18} />
+                            </div>
+                            <div className="font-bold text-primary">My company is sponsoring me</div>
+                            <div className="mt-1 text-sm text-gray-600">
+                              Start a guided sponsorship request with your HR, finance, or admin contact.
+                            </div>
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
 
                     {isCompanySponsored ? (
                       <>
-                        <div className="rounded-xl border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
-                          We will treat this as a guided sponsorship request. Add your company and sponsor contact so the company-side step is captured clearly from the start.
-                        </div>
-
                         <div className="grid gap-3 rounded-2xl border border-gray-200 bg-neutral p-4 md:grid-cols-3">
                           <div className="rounded-xl bg-white px-4 py-3">
                             <div className="text-xs font-bold uppercase tracking-[0.14em] text-accent">Step 1</div>
@@ -627,6 +660,59 @@ const LeadCaptureModal: React.FC = () => {
                     )}
                   </>
                 )}
+              </>
+            ) : isReserveFlow ? (
+              <>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <input
+                    required
+                    placeholder="Full name"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.fullName}
+                    onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
+                    onFocus={onFieldFocus}
+                  />
+                  <input
+                    required
+                    type="email"
+                    placeholder="Email"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.email}
+                    onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('email', e.target.value)}
+                  />
+                  <input
+                    required
+                    placeholder="Company name"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.companyName}
+                    onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
+                    onFocus={onFieldFocus}
+                  />
+                  <input
+                    required
+                    placeholder="Department or designation"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.departmentOrDesignation}
+                    onChange={(e) =>
+                      setFormState((s) => ({
+                        ...s,
+                        departmentOrDesignation: e.target.value,
+                        role: e.target.value,
+                      }))
+                    }
+                    onFocus={onFieldFocus}
+                  />
+                  <input
+                    placeholder="Mobile number (optional)"
+                    className="rounded-lg border px-4 py-3 md:col-span-2"
+                    value={formState.phone}
+                    onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
+                  />
+                </div>
               </>
             ) : isAdvisoryFlow ? (
               <>
@@ -805,20 +891,24 @@ const LeadCaptureModal: React.FC = () => {
               </>
             )}
 
-            {isReserveFlow && registrationStep === 1 ? (
+            {isReserveFlow && isAccountantsRegistration && registrationStep === 1 ? (
               <button
-                type="button"
-                onClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  setRegistrationStep(2);
-                }}
-                disabled={!canContinueToPayerStep}
+                type={shouldSkipPayerStep ? 'submit' : 'button'}
+                onClick={
+                  shouldSkipPayerStep
+                    ? undefined
+                    : (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setRegistrationStep(2);
+                      }
+                }
+                disabled={!canContinueToPayerStep || isSubmitting}
                 className="w-full rounded-lg bg-accent py-3 font-bold text-white hover:bg-opacity-90 disabled:opacity-50"
               >
-                Continue to Payer Mode
+                {isSubmitting && shouldSkipPayerStep ? 'Submitting...' : stepOneButtonLabel}
               </button>
-            ) : isReserveFlow && isCompanySponsored ? (
+            ) : isReserveFlow && isAccountantsRegistration && isCompanySponsored ? (
               <div className="flex items-center justify-between gap-3">
                 <button
                   type="button"

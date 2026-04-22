@@ -95,12 +95,12 @@ const Schedule: React.FC = () => {
                         openLeadModal('course_page_cta', 'reserve_seat', {
                           page: '/courses/agentic-ai',
                           position: 'schedule_apply_button',
-                          ctaLabel: 'start_registration',
+                          ctaLabel: 'reserve_a_seat',
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Start Registration
+                      Reserve a Seat
                     </button>
                   )}
                 </div>

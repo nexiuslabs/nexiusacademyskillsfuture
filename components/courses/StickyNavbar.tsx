@@ -33,12 +33,12 @@ const StickyNavbar: React.FC = () => {
                 openLeadModal('course_page_cta', 'reserve_seat', {
                   page: location.pathname,
                   position: 'course_navbar_desktop_apply',
-                  ctaLabel: 'start_registration',
+                  ctaLabel: 'reserve_a_seat',
                 })
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
-              Start Registration
+              Reserve a Seat
             </button>
           </div>
 
@@ -66,12 +66,12 @@ const StickyNavbar: React.FC = () => {
                   openLeadModal('course_page_cta', 'reserve_seat', {
                     page: location.pathname,
                     position: 'course_navbar_mobile_apply',
-                    ctaLabel: 'start_registration',
+                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
-                Start Registration
+                Reserve a Seat
               </button>
             </div>
           </div>
