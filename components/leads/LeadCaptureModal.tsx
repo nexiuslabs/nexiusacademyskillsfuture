@@ -374,11 +374,13 @@ const LeadCaptureModal: React.FC = () => {
   };
 
   const modalTitle = isReserveFlow
-    ? isAccountantsRegistration && registrationStep === 1
-      ? 'Registration Details'
-      : isAccountantsRegistration
-        ? 'Who Is Paying?'
-        : 'Registration'
+    ? isSubmitted && isCompanySponsored
+      ? "You're all set"
+      : isAccountantsRegistration && registrationStep === 1
+        ? 'Registration Details'
+        : isAccountantsRegistration
+          ? 'Who Is Paying?'
+          : 'Registration'
     : isAdvisoryFlow
       ? 'Team Training Enquiry'
       : isChecklistFlow
@@ -406,8 +408,8 @@ const LeadCaptureModal: React.FC = () => {
     : 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake.';
 
   return (
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/45 px-4">
-      <div className="w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+    <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/45 px-4 py-6">
+      <div className="mx-auto flex max-h-[calc(100vh-3rem)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <h3 className="text-xl font-bold text-primary">{modalTitle}</h3>
           <button onClick={closeModal} className="text-gray-500 hover:text-primary" aria-label="Close lead form">
@@ -416,7 +418,8 @@ const LeadCaptureModal: React.FC = () => {
         </div>
 
         {!isSubmitted ? (
-          <form className="space-y-4 p-6" onSubmit={onSubmit}>
+          <form className="min-h-0 flex-1 overflow-y-auto p-6" onSubmit={onSubmit}>
+            <div className="space-y-4">
             {isReserveFlow && isAccountantsRegistration ? (
               <>
                 <div className="rounded-2xl border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_58%,#f1f7ff_100%)] p-5">
@@ -935,12 +938,13 @@ const LeadCaptureModal: React.FC = () => {
                 {isSubmitting ? 'Submitting...' : submitLabel}
               </button>
             )}
+            </div>
           </form>
         ) : (
-          <div className="p-6">
-            <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
+          <div className="min-h-0 flex-1 overflow-y-auto p-6">
             {isAdvisoryFlow ? (
               <>
+                <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
                 <p className="mb-4 text-gray-700">
                   Your enquiry has been submitted. Our team will contact you to discuss the most suitable dedicated-company class setup.
                 </p>
@@ -950,6 +954,7 @@ const LeadCaptureModal: React.FC = () => {
               </>
             ) : isChecklistFlow ? (
               <>
+                <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
                 <p className="mb-4 text-gray-700">
                   Your checklist is ready. The download should start automatically.
                 </p>
@@ -1019,6 +1024,7 @@ const LeadCaptureModal: React.FC = () => {
               </>
             ) : (
               <>
+                <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
                 <p className="mb-4 text-gray-700">
                   Your registration request is in. Your estimated net fee is <strong>{estimate.amount}</strong>, and our team will contact you with the best intake and eligibility guidance.
                 </p>

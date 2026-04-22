@@ -53,6 +53,20 @@ const sendSponsorRequestEmail = async (payload: LeadPayload) => {
   const learnerPhone = payload.phone || 'Not provided';
   const companyName = payload.companyName || 'Company not provided';
   const employeeRoleOrDepartment = payload.role || payload.departmentOrDesignation || 'Not provided';
+  const sponsorEmail = payload.sponsorContactEmail.trim().toLowerCase();
+  const learnerEmail = payload.email.trim().toLowerCase();
+  const personalization: {
+    to: Array<{ email: string; name: string }>;
+    cc?: Array<{ email: string; name: string }>;
+    subject: string;
+  } = {
+    to: [{ email: payload.sponsorContactEmail, name: payload.sponsorContactName }],
+    subject,
+  };
+
+  if (sponsorEmail !== learnerEmail) {
+    personalization.cc = [{ email: payload.email, name: payload.fullName }];
+  }
 
   const text = `Hello ${payload.sponsorContactName},
 
@@ -110,13 +124,7 @@ If you need more context on funding or claim mechanics, reply to this email and 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      personalizations: [
-        {
-          to: [{ email: payload.sponsorContactEmail, name: payload.sponsorContactName }],
-          cc: [{ email: payload.email, name: payload.fullName }],
-          subject,
-        },
-      ],
+      personalizations: [personalization],
       from: { email: fromEmail, name: fromName },
       reply_to: { email: payload.email, name: payload.fullName },
       content: [
