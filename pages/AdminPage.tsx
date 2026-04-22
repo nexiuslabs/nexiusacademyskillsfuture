@@ -32,6 +32,10 @@ const loginEndpoint = '/.netlify/functions/admin-login';
 const logoutEndpoint = '/.netlify/functions/admin-logout';
 const leadsEndpoint = '/.netlify/functions/admin-leads';
 
+const normalizeEmail = (value: string | null) => (value || '').trim().toLowerCase();
+
+const normalizePhone = (value: string | null) => (value || '').replace(/\D/g, '');
+
 const AdminPage: React.FC = () => {
   const [session, setSession] = useState<SessionState>({ status: 'loading' });
   const [username, setUsername] = useState('hello@nexiuslabs.com');
@@ -71,6 +75,24 @@ const AdminPage: React.FC = () => {
     ],
     []
   );
+
+  const uniqueParticipantCount = useMemo(() => {
+    const participants = new Set<string>();
+
+    leads.forEach((lead) => {
+      const email = normalizeEmail(lead.email);
+      const phone = normalizePhone(lead.phone);
+
+      if (!email || !phone) {
+        participants.add(`row:${lead.id}`);
+        return;
+      }
+
+      participants.add(`${email}::${phone}`);
+    });
+
+    return participants.size;
+  }, [leads]);
 
   const loadSession = async () => {
     try {
@@ -306,8 +328,13 @@ const AdminPage: React.FC = () => {
                       <div className="mb-2 text-sm font-bold uppercase tracking-[0.25em] text-accent">Lead Capture</div>
                       <h3 className="text-2xl font-heading font-bold text-primary">lead_captures</h3>
                     </div>
-                    <div className="rounded-full bg-neutral px-4 py-2 text-sm font-semibold text-gray-600">
-                      {leads.length} rows
+                    <div className="flex flex-wrap items-center justify-end gap-2">
+                      <div className="rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-primary">
+                        {uniqueParticipantCount} participants
+                      </div>
+                      <div className="rounded-full bg-neutral px-4 py-2 text-sm font-semibold text-gray-600">
+                        {leads.length} rows
+                      </div>
                     </div>
                   </div>
 
