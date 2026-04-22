@@ -34,7 +34,7 @@ const testimonials = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 bg-neutral">
+    <section id="testimonials" className="py-20 bg-neutral">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          <h2 className="text-3xl font-heading font-bold text-primary mb-12 text-center">
           Recommended By Many Working Professionals

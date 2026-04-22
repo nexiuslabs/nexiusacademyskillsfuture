@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, MessageCircle, Sparkles } from 'lucide-react';
+import { trackAdvisorInteraction, trackOutboundClick } from '../../services/analytics';
 
 const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
@@ -9,7 +10,13 @@ const AIAdvisor: React.FC = () => {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          trackAdvisorInteraction({
+            action: 'open',
+            pagePath: window.location.pathname,
+          });
+        }}
         className={`fixed bottom-8 right-8 z-[9999] bg-accent hover:bg-teal-400 text-white rounded-full p-4 shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center ${isOpen ? 'hidden' : 'block'}`}
       >
         <Sparkles size={28} className="animate-pulse" />
@@ -31,7 +38,16 @@ const AIAdvisor: React.FC = () => {
                 </p>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                trackAdvisorInteraction({
+                  action: 'close',
+                  pagePath: window.location.pathname,
+                });
+              }}
+              className="text-white/80 hover:text-white"
+            >
               <X size={20} />
             </button>
           </div>
@@ -45,6 +61,17 @@ const AIAdvisor: React.FC = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackAdvisorInteraction({
+                  action: 'whatsapp_click',
+                  pagePath: window.location.pathname,
+                });
+                trackOutboundClick({
+                  channel: 'whatsapp',
+                  pagePath: window.location.pathname,
+                  position: 'advisor_widget_whatsapp',
+                });
+              }}
               className="w-full inline-flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-full hover:bg-green-600 transition-colors"
             >
               <MessageCircle size={16} /> Ask Melverick on WhatsApp

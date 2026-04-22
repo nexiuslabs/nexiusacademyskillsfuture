@@ -12,7 +12,7 @@ import FAQ from '../components/courses/FAQ';
 import CourseFooter from '../components/courses/CourseFooter';
 import AIAdvisor from '../components/courses/AIAdvisor';
 import StickyConversionRail from '../components/courses/StickyConversionRail';
-import { trackCourseScrollDepth } from '../services/analytics';
+import { trackCourseScrollDepth, trackSectionView, trackTimeOnPage } from '../services/analytics';
 
 const CoursePage: React.FC = () => {
   useEffect(() => {
@@ -36,6 +36,62 @@ const CoursePage: React.FC = () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const timers = [15, 30, 60, 120].map((seconds) =>
+      window.setTimeout(() => {
+        trackTimeOnPage({
+          pagePath: '/courses/agentic-ai',
+          seconds,
+        });
+      }, seconds * 1000)
+    );
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionEventMap = [
+      { id: 'pricing', eventName: 'pricing_section_viewed' },
+      { id: 'schedule', eventName: 'schedule_section_viewed' },
+      { id: 'testimonials', eventName: 'testimonials_section_viewed' },
+      { id: 'faq', eventName: 'faq_section_viewed' },
+    ];
+
+    const seenSections = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const sectionId = entry.target.id;
+          if (!sectionId || seenSections.has(sectionId)) return;
+
+          seenSections.add(sectionId);
+          const eventConfig = sectionEventMap.find((section) => section.id === sectionId);
+          if (!eventConfig) return;
+
+          trackSectionView({
+            eventName: eventConfig.eventName,
+            pagePath: '/courses/agentic-ai',
+            sectionId,
+          });
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    sectionEventMap.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (

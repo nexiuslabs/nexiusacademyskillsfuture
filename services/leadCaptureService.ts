@@ -57,7 +57,7 @@ export const estimateNetFee = (ageBand: LeadCapturePayload['ageBand']) => {
         note: 'Estimated with up to 90% subsidy for eligible SG Citizens aged 40+.',
       }
     : {
-        amount: '$210.93',
+        amount: '$291.03',
         note: 'Estimated with up to 70% subsidy for eligible Singapore learners.',
       };
 };
