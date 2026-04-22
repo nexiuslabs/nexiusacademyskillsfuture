@@ -61,7 +61,7 @@ export async function handler(event) {
 
   const query = new URLSearchParams({
     select:
-      'id,created_at,full_name,email,phone,role,company_name,department_or_designation,lead_flow,age_band,preferred_intake,cohort_code,course_slug,intent,source_tag,page_path',
+      'id,created_at,full_name,email,phone,role,company_name,department_or_designation,lead_flow,age_band,preferred_intake,cohort_code,course_slug,intent,payer_type,sponsor_contact_name,sponsor_contact_email,sponsor_status,source_tag,page_path',
     order: 'created_at.desc',
     limit: '100',
   });

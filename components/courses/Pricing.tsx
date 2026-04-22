@@ -60,6 +60,21 @@ const fullBreakdownRows = [
 
 const acceptedPayments = ['SkillsFuture Credits (SFC)', 'Credit card', 'Debit card', 'PayNow'];
 
+const registrationPaths = [
+  {
+    title: "I'm paying myself",
+    description: 'Best for individual learners who can complete registration directly after checking funding eligibility.',
+    ctaLabel: 'Start self-sponsored registration',
+    payerType: 'self' as const,
+  },
+  {
+    title: 'My company is sponsoring me',
+    description: 'Best for employees who need HR, finance, or an admin lead with Corppass access to support the claim step.',
+    ctaLabel: 'Start company-sponsored registration',
+    payerType: 'company_sponsored' as const,
+  },
+];
+
 const privateSummary = [
   {
     title: '12 pax',
@@ -101,7 +116,7 @@ const formatCurrency = (amount: number) => `S$${amount.toFixed(2)}`;
 const Pricing: React.FC<PricingProps> = ({
   pagePath = '/courses/agentic-ai',
   reserveLabel = 'reserve_a_seat',
-  reserveButtonText = 'Reserve a Seat',
+  reserveButtonText = 'Start Registration',
   reserveRedirectUrl,
   sectionClassName = 'py-20 bg-white',
   variant = 'public',
@@ -306,6 +321,45 @@ const Pricing: React.FC<PricingProps> = ({
             <span className="font-bold text-primary">S$291.03</span>, inclusive of GST.
           </p>
           <p className="text-xs text-gray-400 font-mono">Course Ref No: TP-NC-C0021-F</p>
+        </div>
+
+        <div className="mb-10 rounded-[2rem] border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_52%,#f2f7fd_100%)] p-7 shadow-sm lg:p-9">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr,1.1fr] lg:items-start">
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Start Here</p>
+              <h3 className="mb-3 text-3xl font-heading font-bold text-primary">Choose your registration path first</h3>
+              <p className="text-sm leading-relaxed text-gray-600">
+                Self-sponsored learners can move straight into registration. Company-sponsored learners should start a guided sponsorship request so the company-side approval step does not get lost mid-process.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {registrationPaths.map((path) => (
+                <div key={path.title} className="rounded-[1.75rem] border border-gray-200 bg-white p-6 shadow-[0_18px_38px_rgba(15,23,42,0.06)]">
+                  <h4 className="mb-2 text-xl font-bold text-primary">{path.title}</h4>
+                  <p className="mb-5 text-sm leading-relaxed text-gray-600">{path.description}</p>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLeadModal('course_page_cta', 'reserve_seat', {
+                        page: pagePath,
+                        position: `pricing_path_${path.payerType}`,
+                        ctaLabel: path.ctaLabel,
+                        payerType: path.payerType,
+                      })
+                    }
+                    className={`w-full rounded-xl px-5 py-3 text-sm font-bold transition-colors ${
+                      path.payerType === 'self'
+                        ? 'bg-primary text-white hover:bg-blue-900'
+                        : 'border border-primary text-primary hover:bg-primary hover:text-white'
+                    }`}
+                  >
+                    {path.ctaLabel}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 mb-10">

@@ -23,6 +23,10 @@ type LeadCaptureRow = {
   cohort_code: string | null;
   course_slug: string | null;
   intent: string | null;
+  payer_type: string | null;
+  sponsor_contact_name: string | null;
+  sponsor_contact_email: string | null;
+  sponsor_status: string | null;
   source_tag: string | null;
   page_path: string | null;
 };
@@ -361,6 +365,7 @@ const AdminPage: React.FC = () => {
                               <th className="px-4 py-3 font-semibold">Role</th>
                               <th className="px-4 py-3 font-semibold">Company</th>
                               <th className="px-4 py-3 font-semibold">Department</th>
+                              <th className="px-4 py-3 font-semibold">Payer Path</th>
                               <th className="px-4 py-3 font-semibold">Flow</th>
                               <th className="px-4 py-3 font-semibold">Course</th>
                               <th className="px-4 py-3 font-semibold">Intake</th>
@@ -378,6 +383,14 @@ const AdminPage: React.FC = () => {
                                 <td className="px-4 py-3 text-gray-700">{lead.role || '-'}</td>
                                 <td className="px-4 py-3 text-gray-700">{lead.company_name || '-'}</td>
                                 <td className="px-4 py-3 text-gray-700">{lead.department_or_designation || '-'}</td>
+                                <td className="px-4 py-3">
+                                  <div className="font-medium text-gray-800">{lead.payer_type || '-'}</div>
+                                  <div className="text-xs text-gray-500">
+                                    {lead.sponsor_contact_name || lead.sponsor_contact_email
+                                      ? `${lead.sponsor_contact_name || '-'} · ${lead.sponsor_contact_email || '-'}`
+                                      : lead.sponsor_status || '-'}
+                                  </div>
+                                </td>
                                 <td className="px-4 py-3">
                                   <div className="font-medium text-primary">{lead.lead_flow || '-'}</div>
                                   <div className="text-xs text-gray-500">{lead.intent || '-'}</div>

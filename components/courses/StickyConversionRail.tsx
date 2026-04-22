@@ -57,12 +57,12 @@ const StickyConversionRail: React.FC = () => {
                 openLeadModal('course_sticky', 'reserve_seat', {
                   page: '/courses/agentic-ai',
                   position: 'course_sticky_desktop_apply_now',
-                  ctaLabel: 'reserve_a_seat',
+                  ctaLabel: 'start_registration',
                 })
               }
               className="block text-center w-full border border-primary text-primary px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-primary hover:text-white"
             >
-              Reserve a Seat
+              Start Registration
             </button>
           </div>
         </aside>
@@ -104,12 +104,12 @@ const StickyConversionRail: React.FC = () => {
               openLeadModal('course_sticky', 'reserve_seat', {
                 page: '/courses/agentic-ai',
                 position: 'course_sticky_mobile_apply_now',
-                ctaLabel: 'reserve_a_seat',
+                ctaLabel: 'start_registration',
               })
             }
             className="border border-primary text-primary py-2 rounded-md text-xs font-bold text-center"
           >
-            Reserve a Seat
+            Register
           </button>
         </div>
       </div>

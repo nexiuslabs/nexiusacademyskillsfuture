@@ -9,6 +9,7 @@ export const openLeadModal = (
     position?: string;
     ctaLabel?: string;
     redirectUrl?: string;
+    payerType?: LeadCapturePayload['payerType'];
   }
 ) => {
   trackCtaClick({
@@ -21,7 +22,12 @@ export const openLeadModal = (
 
   window.dispatchEvent(
     new CustomEvent('open-lead-modal', {
-      detail: { sourceTag, intent, redirectUrl: ctaMeta?.redirectUrl },
+      detail: {
+        sourceTag,
+        intent,
+        redirectUrl: ctaMeta?.redirectUrl,
+        payerType: ctaMeta?.payerType,
+      },
     })
   );
 };

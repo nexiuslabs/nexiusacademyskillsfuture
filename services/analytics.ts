@@ -354,6 +354,29 @@ export const trackLeadModalClose = (params: {
   );
 };
 
+export const trackRegistrationPathSelected = (params: {
+  pagePath: string;
+  payerType: 'self' | 'company_sponsored';
+  sourceTag: string;
+}) => {
+  trackEvent(
+    'registration_path_selected',
+    {
+      page_path: params.pagePath,
+      payer_type: params.payerType,
+      source_tag: params.sourceTag,
+    },
+    {
+      pagePath: params.pagePath,
+      elementId: 'registration_path_selector',
+      metadata: {
+        payer_type: params.payerType,
+        source_tag: params.sourceTag,
+      },
+    }
+  );
+};
+
 export const trackAdvisorInteraction = (params: {
   action: 'open' | 'close' | 'whatsapp_click';
   pagePath: string;

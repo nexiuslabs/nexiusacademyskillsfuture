@@ -14,12 +14,16 @@ export interface LeadCapturePayload {
   role: string;
   companyName: string;
   departmentOrDesignation: string;
-  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call' | 'checklist_download';
+  leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call' | 'checklist_download' | 'company_sponsorship';
   ageBand: 'below_40' | '40_and_above';
   preferredIntake: string;
   cohortCode: string;
   courseSlug: string;
   intent: 'subsidy_fit' | 'reserve_seat' | 'advisory_call' | 'download_checklist';
+  payerType: 'self' | 'company_sponsored';
+  sponsorContactName: string;
+  sponsorContactEmail: string;
+  sponsorStatus: 'not_applicable' | 'pending_hr_approval';
   sourceTag: LeadSourceTag;
   pagePath: string;
   visitorId?: string;
@@ -41,7 +45,18 @@ export const submitLeadCapture = async (payload: LeadCapturePayload) => {
     });
 
     if (!response.ok) {
-      throw new Error('Lead capture edge function failed');
+      let message = 'Lead capture edge function failed';
+
+      try {
+        const payload = await response.json();
+        if (payload?.error) {
+          message = payload.error;
+        }
+      } catch {
+        // Fall back to the default message when the response is not JSON.
+      }
+
+      throw new Error(message);
     }
 
     return;
