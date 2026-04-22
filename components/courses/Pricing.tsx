@@ -71,7 +71,7 @@ const registrationPaths = [
     redirectUrl: ACCOUNTANTS_SELF_REGISTRATION_URL,
   },
   {
-    title: 'My company is sponsoring me',
+    title: 'Company-sponsor',
     description: 'Best for employees who need HR, finance, or an admin lead with Corppass access to support the claim step.',
     ctaLabel: 'Start company-sponsored registration',
     payerType: 'company_sponsored' as const,

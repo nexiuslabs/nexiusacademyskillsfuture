@@ -39,6 +39,12 @@ const escapeHtml = (value: string) =>
 const COMPANY_SPONSOR_APPROVAL_URL =
   'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=Ea7UNfnYJIA4WoawOIysyb%2fRszBZpQj6bwqOfYb6huvtQY6INb9OlRTc1WGKNDge';
 
+const isMissingSponsorshipColumnError = (message: string) =>
+  message.includes('payer_type') ||
+  message.includes('sponsor_contact_name') ||
+  message.includes('sponsor_contact_email') ||
+  message.includes('sponsor_status');
+
 const sendSponsorRequestEmail = async (payload: LeadPayload) => {
   const sendGridApiKey = Deno.env.get('SENDGRID_API_KEY');
   const fromEmail = Deno.env.get('SENDGRID_FROM_EMAIL') ?? 'hello@nexiuslabs.com';
@@ -176,7 +182,7 @@ Deno.serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    const { error } = await supabase.from('lead_captures').insert({
+    const insertPayload = {
       full_name: payload.fullName,
       email: payload.email,
       phone: payload.phone,
@@ -191,7 +197,34 @@ Deno.serve(async (req) => {
       intent: payload.intent,
       source_tag: payload.sourceTag,
       page_path: payload.pagePath,
-    });
+      payer_type: payload.payerType,
+      sponsor_contact_name: payload.sponsorContactName || null,
+      sponsor_contact_email: payload.sponsorContactEmail || null,
+      sponsor_status: payload.sponsorStatus,
+    };
+
+    let { error } = await supabase.from('lead_captures').insert(insertPayload);
+
+    if (error && isMissingSponsorshipColumnError(error.message || '')) {
+      const legacyPayload = {
+        full_name: payload.fullName,
+        email: payload.email,
+        phone: payload.phone,
+        role: payload.role,
+        company_name: payload.companyName,
+        department_or_designation: payload.departmentOrDesignation,
+        lead_flow: payload.leadFlow,
+        age_band: payload.ageBand,
+        preferred_intake: payload.preferredIntake,
+        cohort_code: payload.cohortCode,
+        course_slug: payload.courseSlug,
+        intent: payload.intent,
+        source_tag: payload.sourceTag,
+        page_path: payload.pagePath,
+      };
+
+      ({ error } = await supabase.from('lead_captures').insert(legacyPayload));
+    }
 
     if (error) {
       throw new Error(error.message || 'Lead capture insert failed');

@@ -45,6 +45,18 @@ const readSession = (cookieHeader) => {
   return decoded;
 };
 
+const derivePayerType = (lead) => {
+  if (lead.payer_type) return lead.payer_type;
+  if (lead.lead_flow === 'company_sponsorship') return 'company_sponsored';
+  if (lead.intent === 'reserve_seat') return 'self';
+  return null;
+};
+
+const deriveSponsorStatus = (lead) => {
+  if (lead.sponsor_status) return lead.sponsor_status;
+  return lead.lead_flow === 'company_sponsorship' ? 'pending_hr_approval' : null;
+};
+
 export async function handler(event) {
   if (event.httpMethod !== 'GET') {
     return json(405, { error: 'Method not allowed' });
@@ -96,10 +108,10 @@ export async function handler(event) {
       const data = await response.json();
       const normalized = data.map((lead) => ({
         ...lead,
-        payer_type: null,
+        payer_type: derivePayerType(lead),
         sponsor_contact_name: null,
         sponsor_contact_email: null,
-        sponsor_status: null,
+        sponsor_status: deriveSponsorStatus(lead),
       }));
 
       return json(200, { leads: normalized });
@@ -109,5 +121,11 @@ export async function handler(event) {
   }
 
   const data = await response.json();
-  return json(200, { leads: data });
+  const normalized = data.map((lead) => ({
+    ...lead,
+    payer_type: derivePayerType(lead),
+    sponsor_status: deriveSponsorStatus(lead),
+  }));
+
+  return json(200, { leads: normalized });
 }

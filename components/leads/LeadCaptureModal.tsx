@@ -589,7 +589,7 @@ const LeadCaptureModal: React.FC = () => {
                             <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                               <Building2 size={18} />
                             </div>
-                            <div className="font-bold text-primary">My company is sponsoring me</div>
+                            <div className="font-bold text-primary">Company-sponsor</div>
                             <div className="mt-1 text-sm text-gray-600">
                               Start a guided sponsorship request with your HR, finance, or admin contact.
                             </div>
