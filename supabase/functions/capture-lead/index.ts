@@ -61,6 +61,8 @@ const sendSponsorRequestEmail = async (payload: LeadPayload) => {
   const employeeRoleOrDepartment = payload.role || payload.departmentOrDesignation || 'Not provided';
   const sponsorEmail = payload.sponsorContactEmail.trim().toLowerCase();
   const learnerEmail = payload.email.trim().toLowerCase();
+  const internalCcEmail = 'hello@nexiuslabs.com';
+  const ccRecipients: Array<{ email: string; name: string }> = [];
   const personalization: {
     to: Array<{ email: string; name: string }>;
     cc?: Array<{ email: string; name: string }>;
@@ -71,7 +73,15 @@ const sendSponsorRequestEmail = async (payload: LeadPayload) => {
   };
 
   if (sponsorEmail !== learnerEmail) {
-    personalization.cc = [{ email: payload.email, name: payload.fullName }];
+    ccRecipients.push({ email: payload.email, name: payload.fullName });
+  }
+
+  if (sponsorEmail !== internalCcEmail && learnerEmail !== internalCcEmail) {
+    ccRecipients.push({ email: internalCcEmail, name: 'Nexius Academy' });
+  }
+
+  if (ccRecipients.length > 0) {
+    personalization.cc = ccRecipients;
   }
 
   const text = `Hello ${payload.sponsorContactName},

@@ -366,6 +366,8 @@ const AdminPage: React.FC = () => {
                               <th className="px-4 py-3 font-semibold">Company</th>
                               <th className="px-4 py-3 font-semibold">Department</th>
                               <th className="px-4 py-3 font-semibold">Payer Path</th>
+                              <th className="px-4 py-3 font-semibold">Sponsor Name</th>
+                              <th className="px-4 py-3 font-semibold">Sponsor Email</th>
                               <th className="px-4 py-3 font-semibold">Flow</th>
                               <th className="px-4 py-3 font-semibold">Course</th>
                               <th className="px-4 py-3 font-semibold">Intake</th>
@@ -391,6 +393,8 @@ const AdminPage: React.FC = () => {
                                       : lead.sponsor_status || '-'}
                                   </div>
                                 </td>
+                                <td className="px-4 py-3 text-gray-700">{lead.sponsor_contact_name || '-'}</td>
+                                <td className="px-4 py-3 text-gray-700">{lead.sponsor_contact_email || '-'}</td>
                                 <td className="px-4 py-3">
                                   <div className="font-medium text-primary">{lead.lead_flow || '-'}</div>
                                   <div className="text-xs text-gray-500">{lead.intent || '-'}</div>
