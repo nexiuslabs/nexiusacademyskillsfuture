@@ -66,14 +66,14 @@ const registrationPaths = [
   {
     title: "I'm paying myself",
     description: 'Best for individual learners who can complete registration directly after checking funding eligibility.',
-    ctaLabel: 'Start self-sponsored registration',
+    ctaLabel: 'Start',
     payerType: 'self' as const,
     redirectUrl: ACCOUNTANTS_SELF_REGISTRATION_URL,
   },
   {
     title: 'Company-sponsor',
     description: 'Best for employees who need HR, finance, or an admin lead with Corppass access to support the claim step.',
-    ctaLabel: 'Start company-sponsored registration',
+    ctaLabel: 'Start',
     payerType: 'company_sponsored' as const,
   },
 ];
