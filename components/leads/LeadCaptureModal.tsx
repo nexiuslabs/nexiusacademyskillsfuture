@@ -34,6 +34,7 @@ declare global {
       intent?: LeadCapturePayload['intent'];
       redirectUrl?: string;
       payerType?: LeadCapturePayload['payerType'];
+      skipPayerStep?: boolean;
     }>;
   }
 }
@@ -74,6 +75,7 @@ const LeadCaptureModal: React.FC = () => {
   const [hasStartedForm, setHasStartedForm] = useState(false);
   const [registrationStep, setRegistrationStep] = useState<1 | 2>(1);
   const [isPayerTypeLocked, setIsPayerTypeLocked] = useState(false);
+  const [skipPayerStep, setSkipPayerStep] = useState(false);
   const [sourceTag, setSourceTag] = useState<LeadSourceTag>('unknown');
   const [openMethod, setOpenMethod] = useState<'cta_click' | 'query_auto_open'>('cta_click');
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
@@ -113,10 +115,10 @@ const LeadCaptureModal: React.FC = () => {
       : null);
   const shouldSkipPayerStep =
     isReserveFlow &&
-    isAccountantsRegistration &&
-    isPayerTypeLocked &&
-    formState.payerType === 'self' &&
-    Boolean(effectiveRedirectUrl);
+    Boolean(effectiveRedirectUrl) &&
+    (skipPayerStep || (isAccountantsRegistration && isPayerTypeLocked && formState.payerType === 'self'));
+  const usesStructuredReserveFlow = isReserveFlow && (isAccountantsRegistration || shouldSkipPayerStep);
+  const showsPayerStep = isReserveFlow && isAccountantsRegistration && !shouldSkipPayerStep;
 
   const canContinueToPayerStep =
     formState.fullName.trim() &&
@@ -197,6 +199,7 @@ const LeadCaptureModal: React.FC = () => {
       setOpenMethod('query_auto_open');
       setRedirectUrl(search.get('redirect_url'));
       setIsPayerTypeLocked(false);
+      setSkipPayerStep(false);
       setFormState((prev) => ({
         ...prev,
         intent: nextIntent,
@@ -228,6 +231,7 @@ const LeadCaptureModal: React.FC = () => {
       setOpenMethod('cta_click');
       setRedirectUrl(event.detail?.redirectUrl || null);
       setIsPayerTypeLocked(Boolean(event.detail?.payerType));
+      setSkipPayerStep(Boolean(event.detail?.skipPayerStep));
       setFormState((prev) => ({
         ...prev,
         intent: nextIntent,
@@ -271,7 +275,7 @@ const LeadCaptureModal: React.FC = () => {
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isReserveFlow && isAccountantsRegistration && registrationStep === 1 && !shouldSkipPayerStep) {
+    if (showsPayerStep && registrationStep === 1) {
       if (canContinueToPayerStep) {
         setRegistrationStep(2);
       }
@@ -376,9 +380,9 @@ const LeadCaptureModal: React.FC = () => {
   const modalTitle = isReserveFlow
     ? isSubmitted && isCompanySponsored
       ? "You're all set"
-      : isAccountantsRegistration && registrationStep === 1
+      : usesStructuredReserveFlow && (registrationStep === 1 || shouldSkipPayerStep)
         ? 'Registration Details'
-        : isAccountantsRegistration
+      : isAccountantsRegistration
           ? 'Who Is Paying?'
           : 'Registration'
     : isAdvisoryFlow
@@ -398,7 +402,7 @@ const LeadCaptureModal: React.FC = () => {
         : 'Get My Estimate & Next Step';
 
   const stepOneButtonLabel = shouldSkipPayerStep
-    ? 'Continue with Registration'
+    ? 'Next'
     : isPayerTypeLocked && formState.payerType === 'company_sponsored'
       ? 'Continue to Sponsor Details'
       : 'Continue to Payer Mode';
@@ -420,37 +424,41 @@ const LeadCaptureModal: React.FC = () => {
         {!isSubmitted ? (
           <form className="min-h-0 flex-1 overflow-y-auto p-6" onSubmit={onSubmit}>
             <div className="space-y-4">
-            {isReserveFlow && isAccountantsRegistration ? (
+            {usesStructuredReserveFlow ? (
               <>
-                <div className="rounded-2xl border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_58%,#f1f7ff_100%)] p-5">
-                  <div className="flex items-center gap-3">
-                    <div className="flex flex-1 items-center gap-3">
-                      <div className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${registrationStep === 1 ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
-                        1
+                {showsPayerStep ? (
+                  <div className="rounded-2xl border border-primary/10 bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_58%,#f1f7ff_100%)] p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="flex flex-1 items-center gap-3">
+                        <div className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${registrationStep === 1 ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+                          1
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-primary">Your details</div>
+                          <div className="text-xs text-gray-500">Common registration information</div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="text-sm font-semibold text-primary">Your details</div>
-                        <div className="text-xs text-gray-500">Common registration information</div>
-                      </div>
-                    </div>
-                    <div className="h-px flex-1 bg-primary/15" />
-                    <div className="flex flex-1 items-center gap-3 justify-end">
-                      <div>
-                        <div className="text-right text-sm font-semibold text-primary">Payer mode</div>
-                        <div className="text-right text-xs text-gray-500">Choose the right path</div>
-                      </div>
-                      <div className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${registrationStep === 2 ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
-                        2
+                      <div className="h-px flex-1 bg-primary/15" />
+                      <div className="flex flex-1 items-center gap-3 justify-end">
+                        <div>
+                          <div className="text-right text-sm font-semibold text-primary">Payer mode</div>
+                          <div className="text-right text-xs text-gray-500">Choose the right path</div>
+                        </div>
+                        <div className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${registrationStep === 2 ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+                          2
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
 
                 {registrationStep === 1 ? (
                   <>
-                    <div className="rounded-xl border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
-                      Start with your registration details first. In the next step, choose whether you are paying yourself or submitting a company-sponsored request.
-                    </div>
+                    {showsPayerStep ? (
+                      <div className="rounded-xl border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
+                        Start with your registration details first. In the next step, choose whether you are paying yourself or submitting a company-sponsored request.
+                      </div>
+                    ) : null}
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                       <input
@@ -894,23 +902,30 @@ const LeadCaptureModal: React.FC = () => {
               </>
             )}
 
-            {isReserveFlow && isAccountantsRegistration && registrationStep === 1 ? (
-              <button
-                type={shouldSkipPayerStep ? 'submit' : 'button'}
-                onClick={
-                  shouldSkipPayerStep
-                    ? undefined
-                    : (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        setRegistrationStep(2);
-                      }
-                }
-                disabled={!canContinueToPayerStep || isSubmitting}
-                className="w-full rounded-lg bg-accent py-3 font-bold text-white hover:bg-opacity-90 disabled:opacity-50"
-              >
-                {isSubmitting && shouldSkipPayerStep ? 'Submitting...' : stepOneButtonLabel}
-              </button>
+            {usesStructuredReserveFlow && registrationStep === 1 ? (
+              <>
+                <button
+                  type={shouldSkipPayerStep ? 'submit' : 'button'}
+                  onClick={
+                    shouldSkipPayerStep
+                      ? undefined
+                      : (event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setRegistrationStep(2);
+                        }
+                  }
+                  disabled={!canContinueToPayerStep || isSubmitting}
+                  className="w-full rounded-lg bg-accent py-3 font-bold text-white hover:bg-opacity-90 disabled:opacity-50"
+                >
+                  {isSubmitting && shouldSkipPayerStep ? 'Submitting...' : stepOneButtonLabel}
+                </button>
+                {shouldSkipPayerStep ? (
+                  <div className="rounded-xl border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
+                    Our team provides 1:1 onboarding support to streamline your registration.
+                  </div>
+                ) : null}
+              </>
             ) : isReserveFlow && isAccountantsRegistration && isCompanySponsored ? (
               <div className="flex items-center justify-between gap-3">
                 <button

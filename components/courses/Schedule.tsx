@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SCHEDULES } from '../../constants';
 import { MapPin, Monitor, Clock, CalendarClock, Users } from 'lucide-react';
-import { openLeadModal } from '../../services/leadModal';
+import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
@@ -92,15 +92,14 @@ const Schedule: React.FC = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        openLeadModal('course_page_cta', 'reserve_seat', {
+                        openApplyNowModal('course_page_cta', {
                           page: '/courses/agentic-ai',
                           position: 'schedule_apply_button',
-                          ctaLabel: 'reserve_a_seat',
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Reserve a Seat
+                      Apply Now
                     </button>
                   )}
                 </div>

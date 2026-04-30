@@ -18,10 +18,8 @@ import Footer from '../components/home/Footer';
 import AccountantStickyConversionRail from '../components/courses/AccountantStickyConversionRail';
 import Instructors from '../components/courses/Instructors';
 import Pricing from '../components/courses/Pricing';
-import { openLeadModal } from '../services/leadModal';
+import { APPLY_NOW_BOOKING_URL, openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
-
-const APPLY_LINK = 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu';
 
 const proofChips = [
   'Built for accountants, CSPs, and firm owners',
@@ -200,7 +198,8 @@ const AccountantCspLandingPage: React.FC = () => {
                   page: '/courses/agentic-ai-accountants',
                   position: 'accountants_nav_apply_now',
                   ctaLabel: 'apply_now',
-                  redirectUrl: APPLY_LINK,
+                  redirectUrl: APPLY_NOW_BOOKING_URL,
+                  skipPayerStep: true,
                 })
               }
               className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
@@ -218,6 +217,12 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-5">
                   <CheckCircle size={16} className="text-accent" />
                   TP-NC-C0021-F
+                </div>
+                <div className="mb-5">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-400/15 px-4 py-2 text-sm font-bold text-amber-100 shadow-[0_0_0_1px_rgba(251,191,36,0.12)]">
+                    <CheckCircle size={16} className="text-amber-300" />
+                    Registration closes: 29th May 2026
+                  </span>
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
                   Agentic AI Foundations for Non-Techincal Professionals
@@ -257,7 +262,8 @@ const AccountantCspLandingPage: React.FC = () => {
                         page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_apply_now',
                         ctaLabel: 'apply_now',
-                        redirectUrl: APPLY_LINK,
+                        redirectUrl: APPLY_NOW_BOOKING_URL,
+                        skipPayerStep: true,
                       })
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
@@ -308,7 +314,8 @@ const AccountantCspLandingPage: React.FC = () => {
                         page: '/courses/agentic-ai-accountants',
                         position: 'accountants_hero_card_apply_now',
                         ctaLabel: 'apply_now',
-                        redirectUrl: APPLY_LINK,
+                        redirectUrl: APPLY_NOW_BOOKING_URL,
+                        skipPayerStep: true,
                       })
                     }
                     className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors text-center"
@@ -354,7 +361,7 @@ const AccountantCspLandingPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    openLeadModal('course_page_cta', 'reserve_seat', {
+                    openLeadModal('course_page_cta', 'subsidy_fit', {
                       page: '/courses/agentic-ai-accountants',
                       position: 'accountants_outcomes_cta',
                       ctaLabel: 'check_subsidy_fit',
@@ -381,7 +388,8 @@ const AccountantCspLandingPage: React.FC = () => {
           pagePath="/courses/agentic-ai-accountants"
           reserveLabel="apply_now"
           reserveButtonText="Apply Now"
-          reserveRedirectUrl={APPLY_LINK}
+          reserveRedirectUrl={APPLY_NOW_BOOKING_URL}
+          reserveSkipPayerStep={true}
           sectionClassName="py-20 bg-white"
         />
 
@@ -488,7 +496,8 @@ const AccountantCspLandingPage: React.FC = () => {
                       page: '/courses/agentic-ai-accountants',
                       position: 'accountants_midpage_apply_now',
                       ctaLabel: 'apply_now',
-                      redirectUrl: APPLY_LINK,
+                      redirectUrl: APPLY_NOW_BOOKING_URL,
+                      skipPayerStep: true,
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
@@ -549,7 +558,8 @@ const AccountantCspLandingPage: React.FC = () => {
                       page: '/courses/agentic-ai-accountants',
                       position: 'accountants_final_cta_apply_now',
                       ctaLabel: 'apply_now',
-                      redirectUrl: APPLY_LINK,
+                      redirectUrl: APPLY_NOW_BOOKING_URL,
+                      skipPayerStep: true,
                     })
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
@@ -582,3 +592,4 @@ const AccountantCspLandingPage: React.FC = () => {
 };
 
 export default AccountantCspLandingPage;
+

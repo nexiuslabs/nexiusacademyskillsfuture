@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { openLeadModal } from '../../services/leadModal';
+import { openApplyNowModal } from '../../services/leadModal';
 
 const StickyNavbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,15 +30,14 @@ const StickyNavbar: React.FC = () => {
             <button 
               type="button"
               onClick={() =>
-                openLeadModal('course_page_cta', 'reserve_seat', {
+                openApplyNowModal('course_page_cta', {
                   page: location.pathname,
                   position: 'course_navbar_desktop_apply',
-                  ctaLabel: 'reserve_a_seat',
                 })
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
-              Reserve a Seat
+              Apply Now
             </button>
           </div>
 
@@ -63,15 +62,14 @@ const StickyNavbar: React.FC = () => {
                <button 
                 type="button"
                 onClick={() =>
-                  openLeadModal('course_page_cta', 'reserve_seat', {
+                  openApplyNowModal('course_page_cta', {
                     page: location.pathname,
                     position: 'course_navbar_mobile_apply',
-                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
-                Reserve a Seat
+                Apply Now
               </button>
             </div>
           </div>

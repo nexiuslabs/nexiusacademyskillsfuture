@@ -27,7 +27,7 @@ const AccountantStickyConversionRail: React.FC = () => {
             <button
               type="button"
               onClick={() =>
-                openLeadModal('course_sticky', 'reserve_seat', {
+                openLeadModal('course_sticky', 'subsidy_fit', {
                   page: '/courses/agentic-ai-accountants',
                   position: 'accountants_sticky_desktop_check_fit',
                   ctaLabel: 'check_subsidy_fit',
@@ -62,7 +62,7 @@ const AccountantStickyConversionRail: React.FC = () => {
           <button
             type="button"
             onClick={() =>
-              openLeadModal('course_sticky', 'reserve_seat', {
+              openLeadModal('course_sticky', 'subsidy_fit', {
                 page: '/courses/agentic-ai-accountants',
                 position: 'accountants_sticky_mobile_check_fit',
                 ctaLabel: 'check_subsidy_fit',

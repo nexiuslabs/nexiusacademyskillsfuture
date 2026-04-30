@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
-import { openLeadModal } from '../../services/leadModal';
+import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 
 const Hero: React.FC = () => {
   return (
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Primary path</div>
-                <div className="font-semibold text-primary text-sm">Reserve a Seat</div>
+                <div className="font-semibold text-primary text-sm">Apply Now</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Need help first?</div>
@@ -80,15 +80,14 @@ const Hero: React.FC = () => {
               <button
                 type="button"
                 onClick={() =>
-                  openLeadModal('course_page_cta', 'reserve_seat', {
+                  openApplyNowModal('course_page_cta', {
                     page: '/courses/agentic-ai',
                     position: 'course_hero_secondary_apply_now',
-                    ctaLabel: 'reserve_a_seat',
                   })
                 }
                 className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
               >
-                Reserve a Seat
+                Apply Now
               </button>
             </div>
 
