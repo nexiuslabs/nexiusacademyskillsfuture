@@ -218,12 +218,6 @@ const AccountantCspLandingPage: React.FC = () => {
                   <CheckCircle size={16} className="text-accent" />
                   TP-NC-C0021-F
                 </div>
-                <div className="mb-5">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-400/15 px-4 py-2 text-sm font-bold text-amber-100 shadow-[0_0_0_1px_rgba(251,191,36,0.12)]">
-                    <CheckCircle size={16} className="text-amber-300" />
-                    Registration closes: 29th May 2026
-                  </span>
-                </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
                   Agentic AI Foundations for Non-Techincal Professionals
                 </h1>
