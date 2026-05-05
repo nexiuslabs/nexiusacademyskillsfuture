@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SCHEDULES } from '../../constants';
-import { MapPin, Monitor, Clock, CalendarClock, Users } from 'lucide-react';
+import { MapPin, Clock, Users } from 'lucide-react';
 import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
@@ -46,26 +46,20 @@ const Schedule: React.FC = () => {
                     {schedule.dates}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-gray-600">
+                  <div className="space-y-2 text-sm text-gray-600">
                     <div className="flex items-center gap-1.5">
                       <Clock size={16} className="text-accent" />
                       <span>{schedule.time}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      {schedule.format.includes('Online') ? (
-                        <Monitor size={16} className="text-accent" />
-                      ) : (
-                        <MapPin size={16} className="text-accent" />
-                      )}
-                      <span>{schedule.format}</span>
-                    </div>
+                    {schedule.venue ? (
+                      <div className="flex items-start gap-1.5">
+                        <MapPin size={16} className="mt-0.5 text-accent" />
+                        <span>{schedule.venue}</span>
+                      </div>
+                    ) : null}
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
-                    <div className="inline-flex items-center gap-1.5 text-gray-700">
-                      <CalendarClock size={16} className="text-accent" />
-                      {schedule.registrationCloses ?? 'TBC'}
-                    </div>
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
                       {isFull ? 'Join waitlist to secure next intake' : 'Apply early to lock your seat'}
