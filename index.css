@@ -55,3 +55,18 @@ body {
 .floaty {
   animation: floaty 6s ease-in-out infinite;
 }
+
+.partner-preview-page .ai-advisor-trigger {
+  bottom: 7.75rem;
+}
+
+.partner-preview-page .ai-advisor-panel {
+  bottom: 7.75rem;
+}
+
+@media (min-width: 640px) {
+  .partner-preview-page .ai-advisor-trigger,
+  .partner-preview-page .ai-advisor-panel {
+    bottom: 8.75rem;
+  }
+}

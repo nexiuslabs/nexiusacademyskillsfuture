@@ -35,6 +35,8 @@ declare global {
       redirectUrl?: string;
       payerType?: LeadCapturePayload['payerType'];
       skipPayerStep?: boolean;
+      preferredIntake?: string;
+      cohortCode?: string;
     }>;
   }
 }
@@ -46,6 +48,12 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [{ label: '26 Jun 2026 & 03 Jul 2026 (9am-6pm)', code: '2026-06-26' }],
   'agentic-ai-accountants': [{ label: '06-07 May 2026', code: '2026-05-06' }],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
+  'agentic-ai-preview-session': [{ label: '26 Jun 2026 preview session (2pm-6pm)', code: 'e2i-preview-2026-06-26' }],
+  'agentic-ai-sim-preview-session': [
+    { label: '04 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-04' },
+    { label: '11 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-11' },
+    { label: '18 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-18' },
+  ],
 };
 const ACCOUNTANTS_SELF_REGISTRATION_URL =
   'https://stms.polite.edu.sg/identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DStudent%26redirect_uri%3Dhttps%253A%252F%252Fstms.polite.edu.sg%252Fsignin-student%26response_type%3Dcode%26scope%3Dopenid%2520profile%26code_challenge%3DE_QgKHQVqjJlxFGerdkqw-CVtB-r2B4RdhgYFtBulIg%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639124957031034808.NDQzYmQwOTYtOWY5Ni00OTM5LTkwMDgtYTBiMzk1NjVjOGQzZjFmMWM5YWYtYmRjYS00NWM1LTkxNmItOThkOTA5MGVhNTQx%26state%3DE6QlwbfBI3OA11ZwIH4Ce3Hy1zQSg-TlR9ATT08PgcDZpzYcK6Hlnu7JhAzoSqzcviv-hCEO-K0WzQqqJ6BMKJRFlmWyH-xHA3nc04SezmEcoiwp6IinEGRjRL8p1l3t6DTM32RcTGSLk4Ic9tuN3uQzK30xsOv5ofLW5nXy3Rsq5FJ_pwLHx680-VeNfDmEw6kTwtTFgvIkkxc8HHa80_hXIT_s9ce9z_9X_NbHJ935xIUquP9iuh_uIKmQNfupYVgc32kCr6I9EsBzyuC3APFjPcoOCuIX84yq8-rGRqHnKXcOzVCND5n_Ssn5rH-JaNOgNuFppkA1c8LVzOvdaJ5pJI-mkj3rW2nFKpt3v8g9EG4uHe8tPjV04bncLHH8o8ydsxcgOQy9sBUPIYTVxcpyAbw8ywMmo_yJMRuvr2T4ZbH0_q3ZoMsK-cA-qhuZrtpMA-nMLcIVV7Vx7MAfQLBb-C3hh9Wp2ICoTnmKJKk8ahBCRZdFmtyO3XWJEWOAVlJz07Uv33KeKJZqIHlZxQ%26x-client-SKU%3DID_NET8_0%26x-client-ver%3D7.1.2.0';
@@ -53,6 +61,8 @@ const ACCOUNTANTS_SELF_REGISTRATION_URL =
 const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/courses/agentic-ai-company-class')) return 'agentic-ai-company-class';
   if (path.includes('/courses/agentic-ai-accountants')) return 'agentic-ai-accountants';
+  if (path.includes('/sim-preview')) return 'agentic-ai-sim-preview-session';
+  if (path.includes('/e2i-preview')) return 'agentic-ai-preview-session';
   if (path.includes('/courses/agentic-ai')) return 'agentic-ai';
   return 'general';
 };
@@ -232,6 +242,14 @@ const LeadCaptureModal: React.FC = () => {
       setRedirectUrl(event.detail?.redirectUrl || null);
       setIsPayerTypeLocked(Boolean(event.detail?.payerType));
       setSkipPayerStep(Boolean(event.detail?.skipPayerStep));
+      const defaultCohort = defaultCohortForPath(location.pathname);
+      const requestedCohort =
+        event.detail?.preferredIntake && event.detail?.cohortCode
+          ? {
+              label: event.detail.preferredIntake,
+              code: event.detail.cohortCode,
+            }
+          : defaultCohort;
       setFormState((prev) => ({
         ...prev,
         intent: nextIntent,
@@ -249,8 +267,10 @@ const LeadCaptureModal: React.FC = () => {
         sponsorContactName: '',
         sponsorContactEmail: '',
         sponsorStatus: nextPayerType === 'company_sponsored' ? 'pending_hr_approval' : 'not_applicable',
+        courseSlug: getCourseSlugFromPath(location.pathname),
+        preferredIntake: requestedCohort.label,
+        cohortCode: requestedCohort.code,
       }));
-      resetCourseFields();
       setIsSubmitted(false);
       setHasStartedForm(false);
       setRegistrationStep(1);
@@ -717,12 +737,32 @@ const LeadCaptureModal: React.FC = () => {
                   />
                   <input
                     placeholder="Mobile number (optional)"
-                    className="rounded-lg border px-4 py-3 md:col-span-2"
+                    className="rounded-lg border px-4 py-3"
                     value={formState.phone}
                     onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
+                  <select
+                    required
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.cohortCode}
+                    onChange={(e) => {
+                      const selected = cohortOptions.find((c) => c.code === e.target.value) || cohortOptions[0];
+                      setFormState((s) => ({
+                        ...s,
+                        cohortCode: selected.code,
+                        preferredIntake: selected.label,
+                      }));
+                    }}
+                    onFocus={onFieldFocus}
+                  >
+                    {cohortOptions.map((cohort) => (
+                      <option key={cohort.code} value={cohort.code}>
+                        {cohort.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </>
             ) : isAdvisoryFlow ? (

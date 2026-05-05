@@ -14,6 +14,8 @@ export const openLeadModal = (
     redirectUrl?: string;
     payerType?: LeadCapturePayload['payerType'];
     skipPayerStep?: boolean;
+    preferredIntake?: string;
+    cohortCode?: string;
   }
 ) => {
   trackCtaClick({
@@ -32,6 +34,8 @@ export const openLeadModal = (
         redirectUrl: ctaMeta?.redirectUrl,
         payerType: ctaMeta?.payerType,
         skipPayerStep: ctaMeta?.skipPayerStep,
+        preferredIntake: ctaMeta?.preferredIntake,
+        cohortCode: ctaMeta?.cohortCode,
       },
     })
   );

@@ -294,6 +294,48 @@ const routes = [
     ],
   },
   {
+    path: '/e2i-preview',
+    priority: '0.8',
+    changefreq: 'weekly',
+    includeInSitemap: true,
+    title: '4-Hour Agentic AI Preview Session | Nexius Academy',
+    description:
+      'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.',
+    ogType: 'course',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      courseSchema({
+        name: 'Agentic AI Foundations for Non-Technical Professionals Preview Session',
+        description:
+          'A 4-hour hands-on preview workshop introducing non-technical professionals to Agentic AI, better prompting, reusable AI instructions, workplace use cases, and safe review habits.',
+        url: `${SITE_URL}/e2i-preview`,
+        image: COURSE_IMAGE,
+        audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+      }),
+    ],
+  },
+  {
+    path: '/sim-preview',
+    priority: '0.8',
+    changefreq: 'weekly',
+    includeInSitemap: true,
+    title: '4-Hour Agentic AI Preview Session | Nexius Academy',
+    description:
+      'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.',
+    ogType: 'course',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      courseSchema({
+        name: 'Agentic AI Foundations for Non-Technical Professionals Preview Session',
+        description:
+          'A 4-hour hands-on preview workshop introducing non-technical professionals to Agentic AI, better prompting, reusable AI instructions, workplace use cases, and safe review habits.',
+        url: `${SITE_URL}/sim-preview`,
+        image: COURSE_IMAGE,
+        audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+      }),
+    ],
+  },
+  {
     path: '/courses/agentic-ai-company-class',
     priority: '0.3',
     changefreq: 'monthly',
