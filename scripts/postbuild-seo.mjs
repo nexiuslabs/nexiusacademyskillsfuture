@@ -250,28 +250,6 @@ const routes = [
     ],
   },
   {
-    path: '/courses/agentic-ai-accountants',
-    priority: '0.8',
-    changefreq: 'weekly',
-    includeInSitemap: true,
-    title: 'Agentic AI for Accountants & CSPs | Nexius Academy',
-    description:
-      'A practical, no-code course page for accountants, corporate service providers, and firm owners who want safer, more useful AI workflows for drafting, reporting, compliance, and client-service work.',
-    ogType: 'course',
-    ogImage: COURSE_IMAGE,
-    schemas: [
-      courseSchema({
-        name: 'Agentic AI for Accountants and Corporate Service Providers',
-        description:
-          'A practical AI course for accountants and CSP teams focused on drafting, reporting, compliance, client-service workflows, and safer internal adoption.',
-        url: `${SITE_URL}/courses/agentic-ai-accountants`,
-        image: COURSE_IMAGE,
-        audienceType: 'Accountants, corporate service providers, and firm owners',
-      }),
-      faqSchema(accountantsFaqs),
-    ],
-  },
-  {
     path: '/private-class',
     priority: '0.8',
     changefreq: 'weekly',
