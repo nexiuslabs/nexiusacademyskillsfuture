@@ -34,7 +34,7 @@ const CourseList: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max-w-6xl mx-auto gap-8">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[minmax(0,360px),minmax(0,1fr)] max-w-6xl mx-auto">
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
@@ -95,14 +95,11 @@ const CourseList: React.FC = () => {
             </Link>
           ))}
 
-        </div>
-
-        <div className="mx-auto mt-10 max-w-6xl">
-          <div className="rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:px-10">
-            <div className="grid gap-6 md:grid-cols-[1fr,auto] md:items-center">
+          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:px-10">
+            <div className="grid w-full gap-6 md:grid-cols-[1fr,auto] md:items-center">
               <div>
                 <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">For Company Teams</div>
-                <h3 className="text-3xl font-bold tracking-tight text-primary">Need a private class for your team instead?</h3>
+                <h3 className="text-2xl font-bold tracking-tight text-primary md:text-3xl">Need a private class for your team instead?</h3>
                 <p className="mt-3 max-w-3xl text-base leading-relaxed text-gray-600">
                   If you are planning an internal company cohort, view the dedicated private-class page for the team-focused format.
                 </p>
