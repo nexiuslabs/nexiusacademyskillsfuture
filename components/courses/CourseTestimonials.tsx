@@ -1,76 +1,79 @@
-import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Quote } from 'lucide-react';
+import { sharedTestimonials } from '../sharedTestimonials';
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Jacky Wong",
-    title: "Chief Librarian, NIE",
-    image: "https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jacky_wong.jpeg",
-    quote: "We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools."
-  },
-  {
-    id: 2,
-    name: "Jean Foo",
-    title: "CEO, Forte Law",
-    image: "https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jean_foo.jpeg",
-    quote: "We never knew ChatGPT can do all these before the course. It was indeed an eye-opener."
-  },
-  {
-    id: 3,
-    name: "Kenji",
-    title: "Senior Member, Hokkien Association",
-    image: "https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/kenji.png",
-    quote: "The custom AI workshop by Nexius Academy was really good. Our clan, youths, seniors really enjoyed it. Very, very relevant and practical. I would definitely recommend everyone to take it."
-  },
-  {
-    id: 4,
-    name: "Thomas Lee",
-    title: "Program Lead, Temasek Poly",
-    image: "/images/testimonials/thomas-lee.jpg",
-    quote: "Nexius Labs taught our startups how to build AI agents that help us grow and operate our business more effectively."
-  }
-];
+const TESTIMONIALS_PER_PAGE = 3;
 
-const Testimonials: React.FC = () => {
+const CourseTestimonials: React.FC = () => {
+  const pages = useMemo(() => {
+    const result = [] as typeof sharedTestimonials[];
+    for (let i = 0; i < sharedTestimonials.length; i += TESTIMONIALS_PER_PAGE) {
+      const chunk = [...sharedTestimonials.slice(i, i + TESTIMONIALS_PER_PAGE)];
+      while (chunk.length < TESTIMONIALS_PER_PAGE) {
+        chunk.push(sharedTestimonials[chunk.length % sharedTestimonials.length]);
+      }
+      result.push(chunk);
+    }
+    return result;
+  }, []);
+
+  const [activePage, setActivePage] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActivePage((current) => (current + 1) % pages.length);
+    }, 7000);
+
+    return () => window.clearInterval(interval);
+  }, [pages.length]);
+
   return (
-    <section id="testimonials" className="py-20 bg-neutral">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <h2 className="text-3xl font-heading font-bold text-primary mb-12 text-center">
-          Recommended By Many Working Professionals
-        </h2>
+    <section id="testimonials" className="py-24 bg-neutral scroll-mt-32">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-primary">
+            Recommended By Many
+            <br /> Working Professionals
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-20 h-20 rounded-full object-cover border-2 border-accent"
-                        />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-2 mb-2">
-                             <h4 className="font-bold text-primary text-lg">{testimonial.name}</h4>
-                             <div className="flex text-yellow-400">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} size={14} fill="currentColor" />
-                                ))}
-                             </div>
-                        </div>
-                        <p className="text-xs text-gray-500 mb-4">{testimonial.title}</p>
-                        <p className="text-gray-700 italic text-sm leading-relaxed relative">
-                            <Quote size={20} className="text-gray-200 absolute -top-2 -left-2 transform -scale-x-100" />
-                            {testimonial.quote}
-                        </p>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pages[activePage].map((testimonial, index) => (
+            <div
+              key={`${testimonial.id}-${index}`}
+              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative group hover:-translate-y-2 transition-transform duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-bold text-primary">{testimonial.name}</h4>
+                  <p className="text-xs text-gray-500">{testimonial.title}</p>
                 </div>
-            ))}
+              </div>
+
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">"{testimonial.quote}"</p>
+
+              <div className="absolute bottom-6 right-6 opacity-10 group-hover:opacity-100 transition-opacity text-secondary">
+                <Quote size={40} fill="currentColor" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-10 gap-2">
+          {pages.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Go to testimonial page ${index + 1}`}
+              onClick={() => setActivePage(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${activePage === index ? 'bg-secondary' : 'bg-gray-300'}`}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Testimonials;
+export default CourseTestimonials;
