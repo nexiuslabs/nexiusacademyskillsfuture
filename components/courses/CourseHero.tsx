@@ -111,16 +111,16 @@ const Hero: React.FC = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white min-h-[400px]">
               <img
-                src="/images/courses/agentic-ai-hero.jpg"
+                src="/images/courses/agentic-ai-class-photo.jpg"
                 alt="Classroom participants at a Nexius Academy AI workshop"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-                <p className="font-heading font-bold text-primary text-lg mb-2">
-                  "We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools."
-                </p>
-                <p className="text-sm font-medium text-accent">Jacky Wong, Chief Librarian of NIE</p>
-              </div>
+            </div>
+            <div className="relative z-10 mx-4 -mt-4 rounded-xl bg-white p-6 shadow-lg sm:mx-8">
+              <p className="font-heading font-bold text-primary text-lg mb-2">
+                "We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools."
+              </p>
+              <p className="text-sm font-medium text-accent">Jacky Wong, Chief Librarian of NIE</p>
             </div>
             <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
