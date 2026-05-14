@@ -454,6 +454,32 @@ const routes = [
     articleDate: '2026-02-05',
   },
   {
+    path: '/blog/ai-literacy-corporate-learning-2026',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Literacy for Corporate Learning in 2026: How L&D Teams Should Prepare for Agentic AI | Nexius Academy',
+    description:
+      'AI literacy is no longer enough on its own. Learn how corporate learning teams can build practical AI fluency, role-based training, and agentic AI readiness across the organisation.',
+    ogType: 'article',
+    ogImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    schemas: [],
+    articleDate: '2026-04-19',
+  },
+  {
+    path: '/blog/ai-readiness-singapore-2026-agentic-ai',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Readiness in Singapore 2026: What to Check Before You Build AI Agents | Nexius Academy',
+    description:
+      'A practical AI-readiness checklist for Singapore professionals and SMEs before adopting agentic AI workflows, no-code automation, and workplace AI tools.',
+    ogType: 'article',
+    ogImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
+    schemas: [],
+    articleDate: '2026-05-15',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

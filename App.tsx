@@ -10,6 +10,7 @@ import WhatIsAgenticAIPage from './pages/WhatIsAgenticAIPage';
 import BestAICoursesPage from './pages/BestAICoursesPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import CorporateAILiteracyPage from './pages/CorporateAILiteracyPage';
+import AIReadinessSingaporePage from './pages/AIReadinessSingaporePage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -105,6 +106,7 @@ const AppShell: React.FC = () => {
         <Route path="/blog/best-ai-courses-singapore-2026" element={<BestAICoursesPage />} />
         <Route path="/blog/smes-no-code-ai-automation-singapore" element={<SMEsNoCodeAIPage />} />
         <Route path="/blog/ai-literacy-corporate-learning-2026" element={<CorporateAILiteracyPage />} />
+        <Route path="/blog/ai-readiness-singapore-2026-agentic-ai" element={<AIReadinessSingaporePage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />

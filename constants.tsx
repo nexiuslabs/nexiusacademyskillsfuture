@@ -242,6 +242,18 @@ export const BLOG_POSTS: BlogPost[] = [
     bestFor: 'L&D teams, HR leaders, corporate managers',
     featured: true,
   },
+  {
+    id: 8,
+    slug: 'ai-readiness-singapore-2026-agentic-ai',
+    title: 'AI Readiness in Singapore 2026: What to Check Before You Build AI Agents',
+    date: '15 May 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'AI adoption is accelerating in Singapore, but readiness now matters more than tool access. Use this practical checklist before building agentic AI workflows.',
+    category: 'SkillsFuture',
+    bestFor: 'Working professionals, SME owners, managers',
+    featured: true,
+  },
 ];
 
 export const SYSTEM_INSTRUCTION = `
