@@ -47,15 +47,6 @@ const Curriculum: React.FC = () => {
             
             <div className="mt-auto space-y-6">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h4 className="text-primary font-bold mb-3">You will leave with:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 automation blueprint tailored to your business workflow.</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 deployable workflow you can pilot immediately after class.</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-accent mt-0.5" />1 prompt + system template pack for recurring business tasks.</li>
-                </ul>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-2 h-2 rounded-full bg-accent"></div>
                   <span className="font-bold text-primary">Duration:</span>

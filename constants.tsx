@@ -133,11 +133,12 @@ export const MODULES: CurriculumModule[] = [
 ];
 
 export const LEARNING_OUTCOMES = [
-  'Understand the principles of Agentic AI and how autonomous agents differ from standard LLMs.',
-  'Identify high-value opportunities to deploy AI agents for business process automation.',
-  'Design and configure basic AI agents to handle scheduling, data retrieval, and reporting.',
-  'Apply prompt engineering strategies to control agent behavior and ensure reliability.',
-  'Analyze the ethical and security implications of deploying autonomous AI in corporate environments.',
+  'Discover how Agentic AI can solve real business problems across different workplace functions.',
+  'Understand how Agentic AI differs from traditional automation and ordinary chatbot use.',
+  'Apply context engineering techniques to guide AI agents toward more accurate and relevant outputs.',
+  'Configure no-code and low-code agent workflows for practical workplace processes.',
+  'Build multi-step workflows using clear agent roles, goals, context, outputs, and trusted organisational documents.',
+  'Automate routine activities across workplace tools while assessing risks, limitations, governance, readiness, and practical next steps.',
 ];
 
 export const WEBSITE_IMAGES = {

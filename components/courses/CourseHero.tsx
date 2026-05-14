@@ -19,6 +19,10 @@ const Hero: React.FC = () => {
               Agentic AI Foundations for Non-technical Professionals
             </h1>
 
+            <p className="-mt-5 text-sm font-medium text-gray-500">
+              In collaboration with Temasek Polytechnic.
+            </p>
+
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
               <div className="flex items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
                 <CalendarDays size={16} className="text-accent mt-0.5" />
