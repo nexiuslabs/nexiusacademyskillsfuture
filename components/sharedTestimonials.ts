@@ -51,4 +51,12 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote:
       'Really enjoyed the Nexius AI Agentic course by Daryl and Melverick. Practical, engaging, and easy to follow with hands-on activities and real-world examples. Highly recommended for everyone, regardless of experience level, exploring AI applications at work.',
   },
+  {
+    id: 7,
+    name: 'Melanie Lee',
+    title: 'Director, Corporate Secretariat',
+    image: '/images/testimonials/melanie-lee.jpeg',
+    quote:
+      'Nexius AI Agentic course was practical and engaging. I appreciated the clear explanations, hands-on exercises, and real-world examples, which made AI concepts easier to understand and apply confidently professionally.',
+  },
 ];
