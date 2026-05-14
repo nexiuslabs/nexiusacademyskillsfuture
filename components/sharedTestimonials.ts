@@ -38,7 +38,7 @@ export const sharedTestimonials: SharedTestimonial[] = [
   {
     id: 5,
     name: 'Pheng Soon',
-    title: 'Finance & Operations Leader',
+    title: 'Consultant, Biz Square',
     image: '/images/testimonials/pheng-soon.jpeg',
     quote:
       "Practical two-day workshop with valuable sharing on real-world AI applications for professional firms. Trainers' CSP experience and project sharing made the sessions engaging and relevant. Enjoyed the case-based collaboration and networking with fellow participants.",
