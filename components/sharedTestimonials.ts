@@ -38,7 +38,7 @@ export const sharedTestimonials: SharedTestimonial[] = [
   {
     id: 5,
     name: 'Pheng Soon',
-    title: 'Professional Firm Participant',
+    title: 'Finance & Operations Leader',
     image: '/images/testimonials/pheng-soon.jpeg',
     quote:
       "Practical two-day workshop with valuable sharing on real-world AI applications for professional firms. Trainers' CSP experience and project sharing made the sessions engaging and relevant. Enjoyed the case-based collaboration and networking with fellow participants.",
@@ -46,7 +46,7 @@ export const sharedTestimonials: SharedTestimonial[] = [
   {
     id: 6,
     name: 'Audrey Ng',
-    title: 'Course Participant',
+    title: 'Director, Corporate Secretariat',
     image: '/images/testimonials/audrey-ng.jpeg',
     quote:
       'Really enjoyed the Nexius AI Agentic course by Daryl and Melverick. Practical, engaging, and easy to follow with hands-on activities and real-world examples. Highly recommended for everyone, regardless of experience level, exploring AI applications at work.',
