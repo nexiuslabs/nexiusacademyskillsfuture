@@ -20,7 +20,7 @@ import Footer from '../components/home/Footer';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
-type PartnerKey = 'e2i' | 'sim';
+type PartnerKey = 'e2i' | 'sim' | 'nexius';
 
 const partnerConfigs: Record<
   PartnerKey,
@@ -32,8 +32,34 @@ const partnerConfigs: Record<
     logoSrc: string;
     logoAlt: string;
     logoClassName: string;
+    eventName?: string;
+    venue?: string;
+    nearestMrt?: string;
+    theme?: 'light' | 'dark';
+    showPartnerBadge?: boolean;
   }
 > = {
+  nexius: {
+    pagePath: '/course-preview',
+    bodyClass: 'course-preview-page',
+    schedules: [
+      {
+        date: '17 June 2026',
+        time: 'Wednesday, 2:00pm to 5:00pm',
+        cohortCode: 'course-preview-2026-06-17',
+        cohortLabel: '17 Jun 2026 course preview (2pm-5pm)',
+      },
+    ],
+    partnerName: 'Nexius Labs Pte Ltd',
+    logoSrc: '',
+    logoAlt: 'Nexius Labs',
+    logoClassName: '',
+    eventName: 'Agentic AI Foundations for Non-Technical Professionals',
+    venue: 'Devan Nair Institute for Employment and Employability\n80 Jurong East St 21, #01-01/02/03, Singapore 609607',
+    nearestMrt: 'Jurong East',
+    theme: 'dark',
+    showPartnerBadge: false,
+  },
   e2i: {
     pagePath: '/e2i-preview',
     bodyClass: 'partner-preview-page',
@@ -49,6 +75,7 @@ const partnerConfigs: Record<
     logoSrc: '/images/partners/new-e2i-logo-transparent.png',
     logoAlt: 'e2i partnership logo',
     logoClassName: 'h-10 w-auto object-contain sm:h-12',
+    showPartnerBadge: true,
   },
   sim: {
     pagePath: '/sim-preview',
@@ -77,6 +104,7 @@ const partnerConfigs: Record<
     logoSrc: '/images/partners/sim-ge-alumni-logo-transparent.png',
     logoAlt: 'SIM Global Education and SIM Alumni partnership logo',
     logoClassName: 'h-14 w-auto object-contain sm:h-16',
+    showPartnerBadge: true,
   },
 };
 
@@ -129,6 +157,9 @@ const sessionFlow = [
   },
 ];
 
+const COURSE_PREVIEW_REGISTER_URL =
+  'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals';
+
 const trainers = [
   {
     name: 'Melverick Ng',
@@ -163,6 +194,7 @@ interface PreviewSessionPageProps {
 
 const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i' }) => {
   const config = partnerConfigs[partner];
+  const isDarkPreview = config.theme === 'dark';
 
   useEffect(() => {
     document.body.classList.add(config.bodyClass);
@@ -170,89 +202,99 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
   }, [config.bodyClass]);
 
   return (
-    <div className="min-h-screen bg-white text-textDark">
+    <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
-        title="4-Hour Agentic AI Preview Session | Nexius Academy"
-        description="A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits."
+        title={isDarkPreview ? 'Course Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
+        description={isDarkPreview ? 'A 3-hour course preview for Agentic AI Foundations for Non-Technical Professionals by Nexius Labs. Join the 17 June 2026 session from 2pm to 5pm.' : 'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
       />
 
-      <header className="sticky top-0 z-50 border-b border-primary/10 bg-white/95 backdrop-blur">
+      <header className={`sticky top-0 z-50 border-b backdrop-blur ${isDarkPreview ? 'border-white/10 bg-[#0b1527]/95' : 'border-primary/10 bg-white/95'}`}>
         <div className="container-page flex min-h-20 items-center justify-between gap-4 py-4">
           <Link to="/" className="flex items-center gap-2">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-xl font-bold text-accent">
               N
             </span>
-            <span className="font-heading text-xl font-bold tracking-tight text-primary">
+            <span className={`font-heading text-xl font-bold tracking-tight ${isDarkPreview ? 'text-white' : 'text-primary'}`}>
               Nexius<span className="text-accent">Academy</span>
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-7 text-sm font-semibold text-gray-700 md:flex">
+          <nav className={`hidden items-center gap-7 text-sm font-semibold md:flex ${isDarkPreview ? 'text-white/75' : 'text-gray-700'}`}>
             <a href="#schedule" className="hover:text-accent">Schedule</a>
             <a href="#outcomes" className="hover:text-accent">Outcomes</a>
             <a href="#session-flow" className="hover:text-accent">Session flow</a>
             <a href="#trainers" className="hover:text-accent">Trainers</a>
           </nav>
 
-          <button
-            type="button"
-            onClick={() => openPreviewLeadModal('preview_nav_register', config.pagePath)}
-            className="inline-flex items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-900"
-          >
-            Register Interest
-          </button>
+          {!isDarkPreview && (
+            <button
+              type="button"
+              onClick={() => openPreviewLeadModal('preview_nav_register', config.pagePath)}
+              className="inline-flex items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-900"
+            >
+              Register Interest
+            </button>
+          )}
         </div>
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-neutral">
-          <div className="absolute inset-0 grid-dots opacity-50" />
+        <section className={`relative overflow-hidden ${isDarkPreview ? 'bg-[#0b1527]' : 'bg-neutral'}`}>
+          <div className={isDarkPreview ? 'absolute inset-0 bg-[radial-gradient(circle_at_82%_22%,rgba(255,122,0,0.34),transparent_36%),radial-gradient(circle_at_35%_74%,rgba(0,200,150,0.12),transparent_28%)]' : 'absolute inset-0 grid-dots opacity-50'} />
           <div className="container-page relative grid gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr,0.92fr] lg:items-center">
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-bold text-primary shadow-soft">
+              <div className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold shadow-soft ${isDarkPreview ? 'border-white/10 bg-white/5 text-white' : 'border-primary/10 bg-white text-primary'}`}>
                 <Clock3 size={16} className="text-accent" />
-                4-hour hands-on preview workshop
+                {isDarkPreview ? '3-hour course preview' : '4-hour hands-on preview workshop'}
               </div>
 
-              <h1 className="max-w-4xl text-balance font-heading text-4xl font-extrabold leading-[1.02] text-primary sm:text-5xl lg:text-6xl">
-                Agentic AI Foundations for Non-Technical Professionals
+              <h1 className={`max-w-4xl text-balance font-heading text-4xl font-extrabold leading-[1.02] sm:text-5xl lg:text-6xl ${isDarkPreview ? 'text-white' : 'text-primary'}`}>
+                {config.eventName || 'Agentic AI Foundations for Non-Technical Professionals'}
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-                A practical preview session for professionals who want to use AI more confidently at work before committing to a full paid class. Learn better prompts, reusable AI instructions, and safe workplace use cases.
+              <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${isDarkPreview ? 'text-white/72' : 'text-gray-600'}`}>
+                {isDarkPreview
+                  ? 'A practical course preview for professionals who want to understand how Agentic AI can improve workplace productivity, automate routine work, and support better business execution.'
+                  : 'A practical preview session for professionals who want to use AI more confidently at work before committing to a full paid class. Learn better prompts, reusable AI instructions, and safe workplace use cases.'}
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
-                  className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
-                >
-                  Register Interest <ArrowRight size={18} />
-                </button>
+                {!isDarkPreview && (
+                  <button
+                    type="button"
+                    onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
+                    className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+                  >
+                    Register Interest <ArrowRight size={18} />
+                  </button>
+                )}
                 <a
-                  href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session."
+                  href={
+                    isDarkPreview
+                      ? COURSE_PREVIEW_REGISTER_URL
+                      : 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session.'
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
                     trackOutboundClick({
-                      channel: 'whatsapp',
+                      channel: isDarkPreview ? 'skillsfuture' : 'whatsapp',
                       pagePath: config.pagePath,
-                      position: 'preview_hero_whatsapp',
+                      position: isDarkPreview ? 'preview_hero_register_e2i' : 'preview_hero_whatsapp',
                     })
                   }
                   className="inline-flex min-h-[3.5rem] items-center justify-center rounded-xl border border-primary/10 bg-white px-7 py-3 font-bold text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                 >
-                  Ask on WhatsApp
+                  {isDarkPreview ? 'Register' : 'Ask on WhatsApp'}
                 </a>
               </div>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {['No coding required', 'Beginner-friendly', 'Paid class preview'].map((item) => (
-                  <div key={item} className="rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm font-semibold text-primary shadow-soft">
+                {['No coding required', 'Beginner-friendly', isDarkPreview ? 'Hands-on Workshop' : 'Paid class preview'].map((item) => (
+                  <div key={item} className={`rounded-2xl border px-4 py-3 text-sm font-semibold shadow-soft ${isDarkPreview ? 'border-white/10 bg-white/5 text-white' : 'border-primary/10 bg-white text-primary'}`}>
                     {item}
                   </div>
                 ))}
@@ -260,62 +302,101 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
             </div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] bg-primary shadow-card">
+              <div className={`overflow-hidden rounded-[2rem] shadow-card ${isDarkPreview ? 'bg-[#111f38]' : 'bg-primary'}`}>
                 <img
-                  src="/images/courses/agentic-ai-hero.jpg"
-                  alt="Professionals attending an AI workshop"
-                  className="h-[420px] w-full object-cover opacity-90"
+                  src={isDarkPreview ? '/images/courses/frontier-firm-illustration.jpg' : '/images/courses/agentic-ai-hero.jpg'}
+                  alt={isDarkPreview ? 'Agentic AI business innovation illustration' : 'Professionals attending an AI workshop'}
+                  className={`h-[420px] w-full ${isDarkPreview ? 'object-cover opacity-90' : 'object-cover opacity-90'}`}
                 />
               </div>
-              <div className="absolute -bottom-6 left-6 right-6 rounded-2xl border border-primary/10 bg-white p-5 shadow-card">
-                <div className="flex items-start gap-4">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                    <Sparkles size={22} />
-                  </span>
-                  <div>
-                    <p className="font-bold text-primary">Practical workplace AI, not theory-heavy AI talk.</p>
-                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                      Participants leave with a prompt, an instruction template, and one realistic use-case idea.
-                    </p>
+              {!isDarkPreview && (
+                <div className="absolute -bottom-6 left-6 right-6 rounded-2xl border border-primary/10 bg-white p-5 shadow-card">
+                  <div className="flex items-start gap-4">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                      <Sparkles size={22} />
+                    </span>
+                    <div>
+                      <p className="font-bold text-primary">Practical workplace AI, not theory-heavy AI talk.</p>
+                      <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                        Participants leave with a prompt, an instruction template, and one realistic use-case idea.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
 
-        <section id="schedule" className="bg-white py-14 md:py-16">
+        <section id="schedule" className={isDarkPreview ? 'bg-[#0d1e35] py-14 md:py-16' : 'bg-white py-14 md:py-16'}>
           <div className="container-page">
-            <div className="rounded-3xl border border-primary/10 bg-neutral p-6 shadow-soft md:p-8">
-              <div className="grid gap-6 md:grid-cols-[auto,1fr,auto] md:items-center">
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
-                  <CalendarRange size={28} />
-                </div>
-                <div className="space-y-4">
-                  <div className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Preview session schedule</div>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {config.schedules.map((schedule) => (
-                      <div key={schedule.date} className="rounded-2xl bg-white px-4 py-4 shadow-sm">
-                        <h2 className="text-xl font-bold text-primary md:text-2xl">{schedule.date}</h2>
-                        <p className="mt-1 text-sm font-semibold text-gray-600">{schedule.time}</p>
-                        <button
-                          type="button"
-                          onClick={() => openPreviewLeadModal('preview_schedule_card_register', config.pagePath, schedule)}
-                          className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
-                        >
-                          Select this session
-                        </button>
-                      </div>
-                    ))}
+            <div className={`rounded-3xl border p-6 shadow-soft md:p-8 ${isDarkPreview ? 'border-white/10 bg-[#111f38]' : 'border-primary/10 bg-neutral'}`}>
+              <div className={`grid gap-6 ${isDarkPreview ? '' : 'md:grid-cols-[auto,1fr,auto] md:items-center'}`}>
+                {!isDarkPreview && (
+                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                    <CalendarRange size={28} />
                   </div>
+                )}
+                <div className="space-y-4">
+                  {!isDarkPreview && <div className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Preview session schedule</div>}
+                  {isDarkPreview ? (
+                    <div className="grid gap-5 md:grid-cols-3">
+                      <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:pr-8">
+                        <div className="text-2xl" aria-hidden="true">🗓️</div>
+                        <div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Date</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">17 June 2026</div>
+                          <div className="mt-1 text-base font-semibold text-white/45">Wednesday</div>
+                        </div>
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:px-8">
+                        <div className="text-2xl" aria-hidden="true">⏱️</div>
+                        <div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Time</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">2:00pm - 5:00pm</div>
+                          <div className="mt-1 text-base font-semibold text-white/45">SGT (UTC+8)</div>
+                        </div>
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-[auto,1fr] md:pl-8">
+                        <div className="text-2xl" aria-hidden="true">📍</div>
+                        <div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Venue</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">Devan Nair Institute</div>
+                          <div className="mt-1 text-base font-semibold leading-snug text-white/45">
+                            80 Jurong East St 21,<br />
+                            #01-01/02/03, Singapore 609607
+                          </div>
+                          <div className="mt-2 text-sm font-semibold text-white/45">Nearest MRT: {config.nearestMrt}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {config.schedules.map((schedule) => (
+                        <div key={schedule.date} className="rounded-2xl bg-white px-4 py-4 shadow-sm">
+                          <h2 className="text-xl font-bold text-primary md:text-2xl">{schedule.date}</h2>
+                          <p className="mt-1 text-sm font-semibold text-gray-600">{schedule.time}</p>
+                          <button
+                            type="button"
+                            onClick={() => openPreviewLeadModal('preview_schedule_card_register', config.pagePath, schedule)}
+                            className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
+                          >
+                            Select this session
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath)}
-                  className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
-                >
-                  Register Interest <ArrowRight size={18} />
-                </button>
+                {!isDarkPreview && (
+                  <button
+                    type="button"
+                    onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath)}
+                    className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
+                  >
+                    Register Interest <ArrowRight size={18} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -442,6 +523,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
           </div>
         </section>
 
+        {!isDarkPreview && (
         <section className="bg-primary py-16 text-white md:py-20">
           <div className="container-page grid gap-8 md:grid-cols-[1fr,auto] md:items-center">
             <div>
@@ -456,29 +538,34 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 Register interest and our team will follow up with session details and suitable next steps for the full programme.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={() => openPreviewLeadModal('preview_footer_register', config.pagePath)}
-              className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-teal-500"
-            >
-              Register Interest <ArrowRight size={18} />
-            </button>
+            {!isDarkPreview && (
+              <button
+                type="button"
+                onClick={() => openPreviewLeadModal('preview_footer_register', config.pagePath)}
+                className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+              >
+                Register Interest <ArrowRight size={18} />
+              </button>
+            )}
           </div>
         </section>
+        )}
       </main>
 
       <Footer />
 
-      <div className="fixed bottom-4 right-4 z-40 px-1 py-1 sm:bottom-6 sm:right-6">
-        <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500">
-          In partnership with
+      {config.showPartnerBadge !== false && (
+        <div className="fixed bottom-4 right-4 z-40 px-1 py-1 sm:bottom-6 sm:right-6">
+          <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500">
+            In partnership with
+          </div>
+          <img
+            src={config.logoSrc}
+            alt={config.logoAlt}
+            className={config.logoClassName}
+          />
         </div>
-        <img
-          src={config.logoSrc}
-          alt={config.logoAlt}
-          className={config.logoClassName}
-        />
-      </div>
+      )}
     </div>
   );
 };

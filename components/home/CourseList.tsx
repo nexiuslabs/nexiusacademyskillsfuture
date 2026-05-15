@@ -4,6 +4,7 @@ import { Star } from 'lucide-react';
 import { Course } from '../../types';
 
 const MELVERICK_COURSE_IMAGE = '/images/courses/agentic-ai-foundations-card.jpg';
+const DISPLAY_RATING = 4.8;
 
 const AVAILABLE_COURSES: Course[] = [
   {
@@ -17,12 +18,25 @@ const AVAILABLE_COURSES: Course[] = [
     author: 'Melverick Ng',
     authorImage: '/images/authors/melverick-ng.jpg',
     path: '/courses/agentic-ai',
+  },
+  {
+    id: 2,
+    title: 'Agentic AI-Driven Innovation for Productivity',
+    category: 'Leadership',
+    price: 0,
+    rating: 5.0,
+    students: 0,
+    image: '/images/courses/frontier-firm-card.jpg',
+    author: 'Darryl Wong',
+    authorImage: '/images/authors/darryl-wong.jpg',
+    path: '/courses/frontier-firm-agent-boss',
   }
 ];
 
 const CourseList: React.FC = () => {
-  const fullStars = Math.floor(4.5);
-  const hasHalfStar = 4.5 % 1 !== 0;
+  const fullStars = Math.floor(DISPLAY_RATING);
+  const partialStarWidth = `${Math.round((DISPLAY_RATING % 1) * 100)}%`;
+  const hasPartialStar = DISPLAY_RATING % 1 !== 0;
 
   return (
     <section id="courses" className="py-24 bg-white scroll-mt-32">
@@ -34,20 +48,20 @@ const CourseList: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[minmax(0,360px),minmax(0,1fr)] max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 max-w-6xl mx-auto">
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
               to={course.path}
               className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="relative aspect-[16/9] overflow-hidden bg-primary">
+                <img src={course.image} alt={course.title} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
                 <span className="absolute top-4 left-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
                   {course.category}
                 </span>
                 <span className="absolute top-4 right-4 bg-white/90 text-primary text-sm font-bold px-2 py-1 rounded">
-                  Hot
+                  {course.id === 1 ? 'Hot' : 'New'}
                 </span>
               </div>
 
@@ -65,13 +79,13 @@ const CourseList: React.FC = () => {
                     <div className="flex items-center gap-0.5 text-yellow-500">
                       {Array.from({ length: 5 }).map((_, index) => {
                         const isFullStar = index < fullStars;
-                        const isHalfStar = index === fullStars && hasHalfStar;
+                        const isPartialStar = index === fullStars && hasPartialStar;
 
-                        if (isHalfStar) {
+                        if (isPartialStar) {
                           return (
                             <span key={index} className="relative inline-flex h-[14px] w-[14px]">
                               <Star size={14} className="absolute inset-0 text-gray-300" fill="currentColor" />
-                              <span className="absolute inset-0 overflow-hidden" style={{ width: '50%' }}>
+                              <span className="absolute inset-0 overflow-hidden" style={{ width: partialStarWidth }}>
                                 <Star size={14} className="text-yellow-500" fill="currentColor" />
                               </span>
                             </span>
@@ -88,14 +102,14 @@ const CourseList: React.FC = () => {
                         );
                       })}
                     </div>
-                    <span className="text-primary">4.5</span>
+                    <span className="text-primary">{DISPLAY_RATING.toFixed(1)}</span>
                   </div>
                 </div>
               </div>
             </Link>
           ))}
 
-          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:px-10">
+          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:col-span-2 md:px-10">
             <div className="grid w-full gap-6 md:grid-cols-[1fr,auto] md:items-center">
               <div>
                 <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">For Company Teams</div>

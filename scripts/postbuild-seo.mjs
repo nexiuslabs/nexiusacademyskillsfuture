@@ -179,14 +179,14 @@ const accountantsFaqs = [
 
 const frontierFaqs = [
   {
-    question: 'Is this course already open for registration?',
+    question: 'Who should attend this course?',
     answer:
-      'Not yet. This page is currently set up as a waitlist page so interested leaders and business owners can register interest before launch.',
+      'This programme is intended for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.',
   },
   {
-    question: 'Who is this programme designed for?',
+    question: 'What is the main outcome of the programme?',
     answer:
-      'It is designed for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.',
+      'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable enterprise execution through Frontier Firm and Agent Boss frameworks.',
   },
 ];
 
@@ -272,6 +272,27 @@ const routes = [
     ],
   },
   {
+    path: '/course-preview',
+    priority: '0.8',
+    changefreq: 'weekly',
+    includeInSitemap: true,
+    title: 'Course Preview: Agentic AI Foundations | Nexius Academy',
+    description:
+      'Join the 17 June 2026 course preview for Agentic AI Foundations for Non-Technical Professionals by Nexius Labs. Session runs from 2pm to 5pm in a classroom setting with WiFi.',
+    ogType: 'course',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      courseSchema({
+        name: 'Agentic AI Foundations for Non-Technical Professionals Course Preview',
+        description:
+          'A 3-hour course preview introducing non-technical professionals to Agentic AI, workplace productivity use cases, hands-on AI activity, and safe adoption habits.',
+        url: `${SITE_URL}/course-preview`,
+        image: COURSE_IMAGE,
+        audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
+      }),
+    ],
+  },
+  {
     path: '/e2i-preview',
     priority: '0.8',
     changefreq: 'weekly',
@@ -332,16 +353,16 @@ const routes = [
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Frontier Firm & Agent Boss Programme | Waitlist | Nexius Academy',
+    title: 'Agentic AI-Driven Innovation for Productivity | Nexius Academy',
     description:
-      'Join the waitlist for our upcoming programme on Frontier Firm transformation, Agent Boss leadership, cross-functional agent orchestration, and enterprise governance for agentic AI.',
-    ogType: 'website',
+      'A leadership course for business managers, organisational leaders, and business owners who need to design and lead agentic enterprise transformation, cross-functional agent orchestration, and AI governance.',
+    ogType: 'course',
     ogImage: HOME_IMAGE,
     schemas: [
       courseSchema({
-        name: 'Frontier Firm Transformation and Agent Boss Leadership',
+        name: 'Agentic AI-Driven Innovation for Productivity',
         description:
-          'An executive-level programme on agentic enterprise transformation, cross-functional agent orchestration, and leadership governance.',
+          'A leadership programme on agentic enterprise transformation, cross-functional agent orchestration, Agent Boss operating models, and enterprise AI governance.',
         url: `${SITE_URL}/courses/frontier-firm-agent-boss`,
         image: HOME_IMAGE,
         audienceType: 'Business leaders, transformation sponsors, and firm owners',

@@ -6,9 +6,9 @@ const InstructorCTA: React.FC = () => {
     <section id="join" className="relative py-28 bg-primary overflow-hidden scroll-mt-32">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <img 
-          src="https://picsum.photos/1920/600?grayscale" 
-          alt="Office Background" 
+        <img
+          src="/images/homepage-hero.jpg"
+          alt="Nexius Academy classroom workshop"
           className="w-full h-full object-cover"
         />
       </div>

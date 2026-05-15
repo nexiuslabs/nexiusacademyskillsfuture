@@ -93,6 +93,7 @@ const AppShell: React.FC = () => {
         <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
         <Route path="/private-class" element={<PrivateClassPage />} />
+        <Route path="/course-preview" element={<PreviewSessionPage partner="nexius" />} />
         <Route path="/e2i-preview" element={<PreviewSessionPage partner="e2i" />} />
         <Route path="/sim-preview" element={<PreviewSessionPage partner="sim" />} />
         <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />

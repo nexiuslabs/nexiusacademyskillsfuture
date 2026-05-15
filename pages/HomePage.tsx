@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Hero from '../components/home/Hero';
+import CoursePreviewCTA from '../components/home/CoursePreviewCTA';
 import Features from '../components/home/Features';
 import About from '../components/home/About';
 import Categories from '../components/home/Categories';
 import StatsStrip from '../components/home/StatsStrip';
 import CourseList from '../components/home/CourseList';
-import InstructorCTA from '../components/home/InstructorCTA';
 import Testimonials from '../components/home/Testimonials';
 import BottomSection from '../components/home/BottomSection';
 import Footer from '../components/home/Footer';
@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
         </section>
 
         <StatsStrip />
-        <InstructorCTA />
+        <CoursePreviewCTA />
         <CourseList />
         <Testimonials />
         <BottomSection />
