@@ -506,11 +506,13 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
               {trainers.map((trainer) => (
                 <div key={trainer.name} className="rounded-3xl border border-primary/10 bg-neutral p-6 shadow-soft">
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-                    <img
-                      src={trainer.image}
-                      alt={trainer.name}
-                      className="h-28 w-28 rounded-2xl object-cover shadow-sm"
-                    />
+                    <span className="block h-28 w-28 overflow-hidden rounded-full bg-white shadow-sm">
+                      <img
+                        src={trainer.image}
+                        alt={trainer.name}
+                        className="h-full w-full scale-110 object-cover object-[center_58%]"
+                      />
+                    </span>
                     <div>
                       <h3 className="text-2xl font-bold text-primary">{trainer.name}</h3>
                       <p className="mt-1 text-sm font-bold text-accent">{trainer.role}</p>
