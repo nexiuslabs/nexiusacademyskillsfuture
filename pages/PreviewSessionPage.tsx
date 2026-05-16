@@ -309,6 +309,18 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   className={`h-[420px] w-full ${isDarkPreview ? 'object-cover opacity-90' : 'object-cover opacity-90'}`}
                 />
               </div>
+              {config.showPartnerBadge !== false && (
+                <div className={`mt-4 flex flex-col items-end ${isDarkPreview ? 'text-white/55' : 'text-gray-500'}`}>
+                  <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+                    In collaboration with
+                  </div>
+                  <img
+                    src={config.logoSrc}
+                    alt={config.logoAlt}
+                    className={config.logoClassName}
+                  />
+                </div>
+              )}
               {!isDarkPreview && (
                 <div className="absolute -bottom-6 left-6 right-6 rounded-2xl border border-primary/10 bg-white p-5 shadow-card">
                   <div className="flex items-start gap-4">
@@ -555,19 +567,6 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
       </main>
 
       <Footer />
-
-      {config.showPartnerBadge !== false && (
-        <div className="fixed bottom-4 right-28 z-40 px-1 py-1 sm:bottom-6 sm:right-32">
-          <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500">
-            In collaboration with
-          </div>
-          <img
-            src={config.logoSrc}
-            alt={config.logoAlt}
-            className={config.logoClassName}
-          />
-        </div>
-      )}
     </div>
   );
 };
