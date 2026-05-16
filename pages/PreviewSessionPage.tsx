@@ -50,15 +50,15 @@ const partnerConfigs: Record<
         cohortLabel: '17 Jun 2026 course preview (2pm-5pm)',
       },
     ],
-    partnerName: 'Nexius Labs Pte Ltd',
-    logoSrc: '',
-    logoAlt: 'Nexius Labs',
-    logoClassName: '',
+    partnerName: 'e2i',
+    logoSrc: '/images/partners/new-e2i-logo-transparent.png',
+    logoAlt: 'e2i collaboration logo',
+    logoClassName: 'h-10 w-auto object-contain sm:h-12',
     eventName: 'Agentic AI Foundations for Non-Technical Professionals',
     venue: 'Devan Nair Institute for Employment and Employability\n80 Jurong East St 21, #01-01/02/03, Singapore 609607',
     nearestMrt: 'Jurong East',
     theme: 'dark',
-    showPartnerBadge: false,
+    showPartnerBadge: true,
   },
   e2i: {
     pagePath: '/e2i-preview',
@@ -555,9 +555,9 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
       <Footer />
 
       {config.showPartnerBadge !== false && (
-        <div className="fixed bottom-4 right-4 z-40 px-1 py-1 sm:bottom-6 sm:right-6">
+        <div className="fixed bottom-4 right-28 z-40 px-1 py-1 sm:bottom-6 sm:right-32">
           <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500">
-            In partnership with
+            In collaboration with
           </div>
           <img
             src={config.logoSrc}
