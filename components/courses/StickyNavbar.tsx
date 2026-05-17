@@ -26,6 +26,7 @@ const StickyNavbar: React.FC = () => {
             <a href="#curriculum" className="text-textDark hover:text-accent font-medium transition-colors">Curriculum</a>
             <a href="#pricing" className="text-textDark hover:text-accent font-medium transition-colors">Fees</a>
             <a href="#instructors" className="text-textDark hover:text-accent font-medium transition-colors">Instructors</a>
+            <a href="#workshop-photos" className="text-textDark hover:text-accent font-medium transition-colors">Photos</a>
             <a href="#schedule" className="text-textDark hover:text-accent font-medium transition-colors">Schedule</a>
             <button 
               type="button"
@@ -57,6 +58,7 @@ const StickyNavbar: React.FC = () => {
             <a href="#overview" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Overview</a>
             <a href="#curriculum" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Curriculum</a>
             <a href="#pricing" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Fees</a>
+            <a href="#workshop-photos" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Photos</a>
             <a href="#schedule" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Schedule</a>
             <div className="pt-4 pb-2">
                <button 

@@ -7,6 +7,7 @@ import Curriculum from '../components/courses/Curriculum';
 import Pricing from '../components/courses/Pricing';
 import Schedule from '../components/courses/Schedule';
 import Instructors from '../components/courses/Instructors';
+import WorkshopGallery from '../components/courses/WorkshopGallery';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import FAQ from '../components/courses/FAQ';
 import CourseFooter from '../components/courses/CourseFooter';
@@ -111,6 +112,7 @@ const CoursePage: React.FC = () => {
         <Pricing />
         <Schedule />
         <Instructors />
+        <WorkshopGallery />
         <CourseTestimonials />
         <FAQ />
       </main>
