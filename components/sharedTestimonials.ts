@@ -22,6 +22,14 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote: 'We never knew ChatGPT can do all these before the course. It was indeed an eye-opener.',
   },
   {
+    id: 8,
+    name: 'Priscilla Hoon',
+    title: 'Founder, Provident Corporate Services',
+    image: '/images/testimonials/priscilla-hoon.jpeg',
+    quote:
+      'The recent Agentic AI course I attended was a practical and hands-on session that gave me many useful ideas on how AI tools can be adopted to make our work more efficient and productive.',
+  },
+  {
     id: 3,
     name: 'Kenji',
     title: 'Senior Member, Hokkien Association',
@@ -34,6 +42,14 @@ export const sharedTestimonials: SharedTestimonial[] = [
     title: 'Program Lead, Temasek Poly',
     image: '/images/testimonials/thomas-lee.jpg',
     quote: 'Nexius Labs taught our startups how to build AI agents that help us grow and operate our business more effectively.',
+  },
+  {
+    id: 9,
+    name: 'Priscilla Hoon',
+    title: 'Founder, Provident Corporate Services',
+    image: '/images/testimonials/priscilla-hoon.jpeg',
+    quote:
+      'Melverick and Darryl were experienced and generous in sharing real-life cases and examples, which made the session very relevant and relatable. The class was interactive, engaging, and quite eye-opening for me.',
   },
   {
     id: 5,
@@ -50,6 +66,14 @@ export const sharedTestimonials: SharedTestimonial[] = [
     image: '/images/testimonials/audrey-ng.jpeg',
     quote:
       'Really enjoyed the Nexius AI Agentic course by Daryl and Melverick. Practical, engaging, and easy to follow with hands-on activities and real-world examples. Highly recommended for everyone, regardless of experience level, exploring AI applications at work.',
+  },
+  {
+    id: 10,
+    name: 'Priscilla Hoon',
+    title: 'Founder, Provident Corporate Services',
+    image: '/images/testimonials/priscilla-hoon.jpeg',
+    quote:
+      'I would highly recommend this course to anyone, whether you are new to AI tools or already have some experience, and are looking to better understand how AI can be applied in your day-to-day work.',
   },
   {
     id: 7,

@@ -19,10 +19,6 @@ const Hero: React.FC = () => {
               Agentic AI Foundations for Non-technical Professionals
             </h1>
 
-            <p className="-mt-5 text-sm font-medium text-gray-500">
-              In collaboration with Temasek Polytechnic.
-            </p>
-
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
               <div className="flex items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
                 <CalendarDays size={16} className="text-accent mt-0.5" />
@@ -121,6 +117,16 @@ const Hero: React.FC = () => {
                 "We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools."
               </p>
               <p className="text-sm font-medium text-accent">Jacky Wong, Chief Librarian of NIE</p>
+            </div>
+            <div className="mt-4 flex flex-col items-end text-gray-500">
+              <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+                In collaboration with
+              </div>
+              <img
+                src="/images/partners/temasek-poly-logo-transparent.png"
+                alt="Temasek Polytechnic collaboration logo"
+                className="h-12 w-auto object-contain sm:h-14"
+              />
             </div>
             <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
