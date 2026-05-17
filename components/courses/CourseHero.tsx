@@ -2,6 +2,8 @@ import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 
+const SHOW_TEMASEK_POLY_LOGO = false;
+
 const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
@@ -118,16 +120,18 @@ const Hero: React.FC = () => {
               </p>
               <p className="text-sm font-medium text-accent">Jacky Wong, Chief Librarian of NIE</p>
             </div>
-            <div className="mt-4 flex flex-col items-end text-gray-500">
-              <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
-                In collaboration with
+            {SHOW_TEMASEK_POLY_LOGO && (
+              <div className="mt-4 flex flex-col items-end text-gray-500">
+                <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+                  In collaboration with
+                </div>
+                <img
+                  src="/images/partners/temasek-poly-logo-transparent.png"
+                  alt="Temasek Polytechnic collaboration logo"
+                  className="h-12 w-auto object-contain sm:h-14"
+                />
               </div>
-              <img
-                src="/images/partners/temasek-poly-logo-transparent.png"
-                alt="Temasek Polytechnic collaboration logo"
-                className="h-12 w-auto object-contain sm:h-14"
-              />
-            </div>
+            )}
             <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>

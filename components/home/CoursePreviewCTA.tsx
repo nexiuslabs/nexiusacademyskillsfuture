@@ -10,25 +10,25 @@ const CoursePreviewCTA: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="overflow-hidden rounded-[1.75rem] bg-primary shadow-2xl">
           <div className="grid lg:grid-cols-[minmax(0,1fr),360px]">
-            <Link to="/course-preview" className="group block aspect-square bg-primary md:aspect-auto md:min-h-[360px]">
-              <picture>
+            <Link to="/course-preview" className="group block aspect-square bg-primary md:aspect-auto">
+              <picture className="block h-full">
                 <source media="(max-width: 767px)" srcSet="/images/home/course-preview-cta-mobile.jpg" />
                 <img
                   src="/images/home/course-preview-cta.jpg"
                   alt="Agentic AI Foundations for Non-Technical Professionals 3-hour hands-on workshop"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02] md:object-left"
                 />
               </picture>
             </Link>
 
-            <div className="flex flex-col justify-center bg-[#0d1f3d] px-6 py-8 text-white md:px-8">
-              <div className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-secondary">
+            <div className="flex flex-col justify-center bg-[#0d1f3d] px-6 py-7 text-white md:px-8">
+              <div className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-secondary">
                 Course Preview
               </div>
-              <h2 className="text-2xl font-bold leading-tight md:text-3xl">
+              <h2 className="text-2xl font-bold leading-tight md:text-3xl lg:text-[2rem]">
                 Join the next Agentic AI preview session
               </h2>
-              <div className="mt-6 space-y-4 text-sm text-white/80">
+              <div className="mt-5 space-y-4 text-sm text-white/80">
                 <div className="flex gap-3">
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
@@ -48,7 +48,7 @@ const CoursePreviewCTA: React.FC = () => {
                 href={COURSE_PREVIEW_REGISTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-4 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
                 Register
               </a>

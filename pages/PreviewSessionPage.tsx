@@ -58,7 +58,7 @@ const partnerConfigs: Record<
     venue: 'Devan Nair Institute for Employment and Employability\n80 Jurong East St 21, #01-01/02/03, Singapore 609607',
     nearestMrt: 'Jurong East',
     theme: 'dark',
-    showPartnerBadge: true,
+    showPartnerBadge: false,
   },
   e2i: {
     pagePath: '/e2i-preview',
@@ -75,7 +75,7 @@ const partnerConfigs: Record<
     logoSrc: '/images/partners/new-e2i-logo-transparent.png',
     logoAlt: 'e2i partnership logo',
     logoClassName: 'h-10 w-auto object-contain sm:h-12',
-    showPartnerBadge: true,
+    showPartnerBadge: false,
   },
   sim: {
     pagePath: '/sim-preview',
