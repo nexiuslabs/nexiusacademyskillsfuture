@@ -339,8 +339,6 @@ const PrivateClassNavbar: React.FC = () => {
 const PrivateClassHero: React.FC = () => {
   const avatars = [
     'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jacky_wong.jpeg',
-    'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jean_foo.jpeg',
-    '/images/testimonials/kenji.jpg',
     '/images/testimonials/thomas-lee.jpg',
   ];
 

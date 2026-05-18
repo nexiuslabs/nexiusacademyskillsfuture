@@ -15,26 +15,12 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote: 'We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools.',
   },
   {
-    id: 2,
-    name: 'Jean Foo',
-    title: 'CEO, Forte Law',
-    image: 'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jean_foo.jpeg',
-    quote: 'We never knew ChatGPT can do all these before the course. It was indeed an eye-opener.',
-  },
-  {
     id: 8,
     name: 'Priscilla Hoon',
     title: 'Founder, Provident Corporate Services',
     image: '/images/testimonials/priscilla-hoon.jpeg',
     quote:
       'The recent Agentic AI course I attended was a practical and hands-on session that gave me many useful ideas on how AI tools can be adopted to make our work more efficient and productive.',
-  },
-  {
-    id: 3,
-    name: 'Kenji',
-    title: 'Senior Member, Hokkien Association',
-    image: '/images/testimonials/kenji.jpg',
-    quote: 'The custom AI workshop by Nexius Academy was really good. Our clan, youths, seniors really enjoyed it. Very, very relevant and practical. I would definitely recommend everyone to take it.',
   },
   {
     id: 4,
