@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
             Practical agentic AI training for non-technical teams
           </h1>
           <p className="text-charcoal text-lg md:text-xl max-w-2xl leading-relaxed">
-            Learn no-code AI workflows to draft faster, automate repetitive work, and improve team productivity.
+            Learn no-code AI workflows to draft faster
           </p>
 
           <div className="grid sm:grid-cols-3 gap-3 pt-2 max-w-3xl">
