@@ -69,4 +69,12 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote:
       'Nexius AI Agentic course was practical and engaging. I appreciated the clear explanations, hands-on exercises, and real-world examples, which made AI concepts easier to understand and apply confidently professionally.',
   },
+  {
+    id: 11,
+    name: 'Daniel Tan',
+    title: 'Founder, Food Playground',
+    image: '/images/testimonials/daniel-tan.jpg',
+    quote:
+      'I already feel like my productivity has easily doubled in the past two weeks by using Codex. It is such a no-brainer... everybody needs to learn how to use this.',
+  },
 ];
