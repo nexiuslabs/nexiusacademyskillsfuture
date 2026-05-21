@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CoursePage from './pages/CoursePage';
 import BlogPage from './pages/BlogPage';
@@ -8,6 +8,7 @@ import EnterpriseAIInsightsPage from './pages/EnterpriseAIInsightsPage';
 import AnthropicAISkillsPage from './pages/AnthropicAISkillsPage';
 import WhatIsAgenticAIPage from './pages/WhatIsAgenticAIPage';
 import BestAICoursesPage from './pages/BestAICoursesPage';
+import BestAIForCodingBusinessPage from './pages/BestAIForCodingBusinessPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import CorporateAILiteracyPage from './pages/CorporateAILiteracyPage';
 import AIReadinessSingaporePage from './pages/AIReadinessSingaporePage';
@@ -18,6 +19,7 @@ import FrontierFirmCoursePage from './pages/FrontierFirmCoursePage';
 import CorporateClassLandingPage from './pages/CorporateClassLandingPage';
 import PrivateClassPage from './pages/PrivateClassPage';
 import PreviewSessionPage from './pages/PreviewSessionPage';
+import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
@@ -98,13 +100,14 @@ const AppShell: React.FC = () => {
         <Route path="/sim-preview" element={<PreviewSessionPage partner="sim" />} />
         <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />
         <Route path="/courses/frontier-firm-agent-boss" element={<FrontierFirmCoursePage />} />
-        <Route path="/courses/agentic-ai-accountants" element={<Navigate to="/courses/agentic-ai" replace />} />
+        <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/beyond-chatgpt-ai-powered-company" element={<BlogPostPage />} />
         <Route path="/blog/enterprise-ai-insights" element={<EnterpriseAIInsightsPage />} />
         <Route path="/blog/anthropic-ai-skills" element={<AnthropicAISkillsPage />} />
         <Route path="/blog/what-is-agentic-ai-guide" element={<WhatIsAgenticAIPage />} />
         <Route path="/blog/best-ai-courses-singapore-2026" element={<BestAICoursesPage />} />
+        <Route path="/blog/best-ai-for-coding-business-professionals" element={<BestAIForCodingBusinessPage />} />
         <Route path="/blog/smes-no-code-ai-automation-singapore" element={<SMEsNoCodeAIPage />} />
         <Route path="/blog/ai-literacy-corporate-learning-2026" element={<CorporateAILiteracyPage />} />
         <Route path="/blog/ai-readiness-singapore-2026-agentic-ai" element={<AIReadinessSingaporePage />} />

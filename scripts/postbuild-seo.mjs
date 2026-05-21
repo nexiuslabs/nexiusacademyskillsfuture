@@ -501,6 +501,19 @@ const routes = [
     articleDate: '2026-05-15',
   },
   {
+    path: '/blog/best-ai-for-coding-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Best AI for Coding? What Business Professionals Should Really Learn | Nexius Academy',
+    description:
+      'Search interest around the best AI for coding is a signal that AI is moving from chat to execution. Learn what non-technical professionals should take from the trend.',
+    ogType: 'article',
+    ogImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
+    schemas: [],
+    articleDate: '2026-05-21',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

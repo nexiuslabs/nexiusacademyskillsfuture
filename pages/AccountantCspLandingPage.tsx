@@ -4,9 +4,12 @@ import {
   ArrowRight,
   Briefcase,
   Building2,
+  CalendarDays,
   CheckCircle,
   ClipboardList,
+  Clock,
   FileText,
+  MapPin,
   MessageSquare,
   ShieldCheck,
   Sparkles,
@@ -18,8 +21,16 @@ import Footer from '../components/home/Footer';
 import AccountantStickyConversionRail from '../components/courses/AccountantStickyConversionRail';
 import Instructors from '../components/courses/Instructors';
 import Pricing from '../components/courses/Pricing';
-import { APPLY_NOW_BOOKING_URL, openLeadModal } from '../services/leadModal';
+import { APPLY_NOW_BOOKING_URL, openApplyNowModal, openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
+
+const ACCOUNTANTS_PAGE_PATH = '/courses/agentic-ai-accountants';
+const ACCOUNTANTS_SESSION = {
+  dates: '26 Jun 2026 & 03 Jul 2026',
+  time: '9:00am - 6:00pm',
+  venueName: 'ISCA House',
+  venueAddress: '60 Cecil Street, Singapore 049709',
+};
 
 const proofChips = [
   'Built for accountants, CSPs, and firm owners',
@@ -167,6 +178,14 @@ const faqs = [
 ];
 
 const AccountantCspLandingPage: React.FC = () => {
+  const handleApplyNow = (position: string) => {
+    openApplyNowModal('course_page_cta', {
+      page: ACCOUNTANTS_PAGE_PATH,
+      position,
+      ctaLabel: 'apply_now',
+    });
+  };
+
   return (
     <>
       <SEO
@@ -186,6 +205,7 @@ const AccountantCspLandingPage: React.FC = () => {
               </span>
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+              <a href="#schedule" className="hover:text-accent">Schedule</a>
               <a href="#who-for" className="hover:text-accent">Who It’s For</a>
               <a href="#outcomes" className="hover:text-accent">Outcomes</a>
               <a href="#governance" className="hover:text-accent">Governance</a>
@@ -193,15 +213,7 @@ const AccountantCspLandingPage: React.FC = () => {
             </nav>
             <button
               type="button"
-              onClick={() =>
-                openLeadModal('course_page_cta', 'reserve_seat', {
-                  page: '/courses/agentic-ai-accountants',
-                  position: 'accountants_nav_apply_now',
-                  ctaLabel: 'apply_now',
-                  redirectUrl: APPLY_NOW_BOOKING_URL,
-                  skipPayerStep: true,
-                })
-              }
+              onClick={() => handleApplyNow('accountants_nav_apply_now')}
               className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
             >
               Apply Now
@@ -219,7 +231,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   TP-NC-C0021-F
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
-                  Agentic AI Foundations for Non-Techincal Professionals
+                  Agentic AI Foundations for Non-Technical Professionals
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
                   While this class is applicable to a wide range of professionals, this cohort is currently focused on accountants, CSPs, and firm owners.
@@ -227,7 +239,7 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="flex flex-wrap gap-3 mb-8">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
                     <CheckCircle size={16} className="text-accent" />
-                    Next Class: 06–07 May 2026
+                    Next Class: {ACCOUNTANTS_SESSION.dates}
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
                     <CheckCircle size={16} className="text-accent" />
@@ -251,15 +263,7 @@ const AccountantCspLandingPage: React.FC = () => {
                 <div className="flex flex-wrap gap-4 mb-8">
                   <button
                     type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/agentic-ai-accountants',
-                        position: 'accountants_hero_apply_now',
-                        ctaLabel: 'apply_now',
-                        redirectUrl: APPLY_NOW_BOOKING_URL,
-                        skipPayerStep: true,
-                      })
-                    }
+                    onClick={() => handleApplyNow('accountants_hero_apply_now')}
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
                     Apply Now <ArrowRight size={18} />
@@ -303,19 +307,46 @@ const AccountantCspLandingPage: React.FC = () => {
                   </ul>
                   <button
                     type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/agentic-ai-accountants',
-                        position: 'accountants_hero_card_apply_now',
-                        ctaLabel: 'apply_now',
-                        redirectUrl: APPLY_NOW_BOOKING_URL,
-                        skipPayerStep: true,
-                      })
-                    }
+                    onClick={() => handleApplyNow('accountants_hero_card_apply_now')}
                     className="w-full bg-primary hover:bg-blue-900 text-white px-6 py-4 rounded-xl font-bold transition-colors text-center"
                   >
                     Apply Now
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="schedule" className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-gray-100 bg-neutral p-6 shadow-sm md:p-8">
+              <div className="mb-6">
+                <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-2">Upcoming class</div>
+                <h2 className="text-3xl font-heading font-bold text-primary">Course schedule</h2>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="rounded-2xl bg-white p-5 shadow-sm">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <CalendarDays size={22} />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">Date</div>
+                  <div className="mt-2 text-xl font-bold text-primary">{ACCOUNTANTS_SESSION.dates}</div>
+                </div>
+                <div className="rounded-2xl bg-white p-5 shadow-sm">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <Clock size={22} />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">Time</div>
+                  <div className="mt-2 text-xl font-bold text-primary">{ACCOUNTANTS_SESSION.time}</div>
+                </div>
+                <div className="rounded-2xl bg-white p-5 shadow-sm">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <MapPin size={22} />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">Venue</div>
+                  <div className="mt-2 text-xl font-bold text-primary">{ACCOUNTANTS_SESSION.venueName}</div>
+                  <div className="mt-1 text-sm text-gray-600">{ACCOUNTANTS_SESSION.venueAddress}</div>
                 </div>
               </div>
             </div>
@@ -485,15 +516,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <button
                   type="button"
-                  onClick={() =>
-                    openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/courses/agentic-ai-accountants',
-                      position: 'accountants_midpage_apply_now',
-                      ctaLabel: 'apply_now',
-                      redirectUrl: APPLY_NOW_BOOKING_URL,
-                      skipPayerStep: true,
-                    })
-                  }
+                  onClick={() => handleApplyNow('accountants_midpage_apply_now')}
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
                   Apply Now
@@ -547,15 +570,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <button
                   type="button"
-                  onClick={() =>
-                    openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/courses/agentic-ai-accountants',
-                      position: 'accountants_final_cta_apply_now',
-                      ctaLabel: 'apply_now',
-                      redirectUrl: APPLY_NOW_BOOKING_URL,
-                      skipPayerStep: true,
-                    })
-                  }
+                  onClick={() => handleApplyNow('accountants_final_cta_apply_now')}
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
                   Apply Now

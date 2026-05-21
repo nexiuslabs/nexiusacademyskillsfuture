@@ -18,12 +18,6 @@
   status = 200
   force = true
 
-[[redirects]]
-  from = "/courses/agentic-ai-accountants"
-  to = "/courses/agentic-ai"
-  status = 302
-  force = true
-
 # SPA catch-all (must be last)
 [[redirects]]
   from = "/*"

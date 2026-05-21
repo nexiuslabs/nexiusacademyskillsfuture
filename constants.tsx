@@ -254,6 +254,18 @@ export const BLOG_POSTS: BlogPost[] = [
     bestFor: 'Working professionals, SME owners, managers',
     featured: true,
   },
+  {
+    id: 9,
+    slug: 'best-ai-for-coding-business-professionals',
+    title: 'Best AI for Coding? What Business Professionals Should Really Learn',
+    date: '21 May 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'Search interest around the best AI for coding is a signal that AI is moving from chat to execution. Learn what non-technical professionals should take from the trend.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, managers, SME owners',
+    featured: true,
+  },
 ];
 
 export const SYSTEM_INSTRUCTION = `

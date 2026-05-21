@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import { openLeadModal } from '../../services/leadModal';
+import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 import { trackOutboundClick } from '../../services/analytics';
 
 const TEAM_TRAINING_URL =
@@ -38,6 +38,20 @@ const AccountantStickyConversionRail: React.FC = () => {
               Check Subsidy & Fit
             </button>
 
+            <button
+              type="button"
+              onClick={() =>
+                openApplyNowModal('course_sticky', {
+                  page: '/courses/agentic-ai-accountants',
+                  position: 'accountants_sticky_desktop_apply_now',
+                  ctaLabel: 'apply_now',
+                })
+              }
+              className="w-full bg-accent px-4 py-2.5 rounded-lg text-sm font-bold text-white transition-colors hover:bg-teal-500"
+            >
+              Apply Now
+            </button>
+
             <a
               href={TEAM_TRAINING_URL}
               target="_blank"
@@ -72,6 +86,19 @@ const AccountantStickyConversionRail: React.FC = () => {
           >
             Check Subsidy & Fit
           </button>
+          <button
+            type="button"
+            onClick={() =>
+              openApplyNowModal('course_sticky', {
+                page: '/courses/agentic-ai-accountants',
+                position: 'accountants_sticky_mobile_apply_now',
+                ctaLabel: 'apply_now',
+              })
+            }
+            className="rounded-md bg-accent py-3 text-center text-xs font-bold text-white"
+          >
+            Apply Now
+          </button>
           <a
             href={TEAM_TRAINING_URL}
             target="_blank"
@@ -83,7 +110,7 @@ const AccountantStickyConversionRail: React.FC = () => {
                 position: 'accountants_sticky_mobile_team_training',
               })
             }
-            className="rounded-md border border-primary py-3 text-center text-xs font-bold text-primary"
+            className="col-span-2 rounded-md border border-primary py-3 text-center text-xs font-bold text-primary"
           >
             Team Training
           </a>
