@@ -8,14 +8,12 @@ import CourseTestimonials from '../components/courses/CourseTestimonials';
 import { openLeadModal } from '../services/leadModal';
 
 const learningObjectives = [
-  'Explain the principles and strategic implications of the Frontier Firm concept for enterprise transformation.',
-  'Formulate a three-phase organisational transformation roadmap towards an agentic operating model.',
-  'Design cross-functional agent orchestration models for multi-department business operations.',
-  'Evaluate organisational readiness and leadership requirements for adopting an agentic enterprise model.',
-  'Apply the Agent Boss concept to define human roles, responsibilities, and accountability in hybrid human-agent teams.',
-  'Develop leadership and management approaches for supervising and scaling teams of human Agent Bosses and agentic systems.',
-  'Establish enterprise governance, risk management, and security controls for organisation-wide deployment of agentic AI systems.',
-  'Produce an implementation action plan that supports progressive adoption from pilot initiatives to enterprise-wide transformation.',
+  'Drive organisational transformation using the Frontier Firm concept and a structured 3-phase roadmap toward an Agentic Company.',
+  'Design multi-department agent orchestration across functions such as HR, Finance, Operations, and Customer Support.',
+  'Adopt the Agent Boss mindset shift, where human employees supervise and direct teams of AI assistants.',
+  'Lead and manage hybrid human-agent teams at scale with clear roles, accountability, and performance expectations.',
+  'Establish enterprise-grade governance, compliance, data, and security controls for safe company-wide AI deployment.',
+  'Develop an executable Digital Innovation Transformation Roadmap that can support enterprise-level transformation planning and grant applications.',
 ];
 
 const transformationModules = [
@@ -109,7 +107,7 @@ const FrontierFirmCoursePage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Agentic AI-Driven Innovation for Productivity | Nexius Academy"
+        title="Agentic AI-Driven Business Innovation for Productivity | Nexius Academy"
         description="A leadership course for business managers, organisational leaders, and business owners who need to design and lead agentic enterprise transformation, cross-functional agent orchestration, and AI governance."
         canonical="/courses/frontier-firm-agent-boss"
         ogType="course"
@@ -164,11 +162,14 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
                   <Sparkles size={16} className="text-accent" />
-                  Leadership Programme
+                  TGS-2026063558
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                  Agentic AI-Driven Innovation for Productivity
+                  Agentic AI-Driven Business Innovation for Productivity
                 </h1>
+                <p className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-accent">
+                  Strategies for the Frontier Firm
+                </p>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
                   A practical leadership course for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.
                 </p>
@@ -343,7 +344,9 @@ const FrontierFirmCoursePage: React.FC = () => {
                 This is a <span className="font-bold text-primary">3-day leadership course</span> with a full course fee of{' '}
                 <span className="font-bold text-primary">S$1,500</span>.
               </p>
-              <p className="text-xs text-gray-400 font-mono">Agentic AI-Driven Innovation for Productivity</p>
+              <p className="text-xs text-gray-400 font-mono">
+                Agentic AI-Driven Business Innovation for Productivity · Course Ref: TGS-2026063558
+              </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-3 mb-10">
