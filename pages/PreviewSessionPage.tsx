@@ -165,13 +165,13 @@ const trainers = [
   {
     name: 'Melverick Ng',
     role: 'Master Trainer',
-    image: '/images/authors/melverick-ng.jpg',
+    image: '/images/authors/melverick-ng-selected.jpg',
     bio: 'Non-technical business consultant with over 30 years of professional experience, bringing practical business and training insights to workplace AI adoption.',
   },
   {
     name: 'Darryl Wong',
     role: 'AI Practitioner | CPA (Aust.) | ISCA Associate',
-    image: '/images/authors/darryl-wong.jpg',
+    image: '/images/authors/darryl-wong-selected.jpeg',
     bio: 'AI enthusiast and business practitioner with over 20 years of professional experience, helping SMEs and professionals apply AI to real workplace workflows.',
   },
 ];

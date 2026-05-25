@@ -17,7 +17,7 @@ const AVAILABLE_COURSES: Course[] = [
     students: 223,
     image: MELVERICK_COURSE_IMAGE,
     author: 'Melverick Ng',
-    authorImage: '/images/authors/melverick-ng.jpg',
+    authorImage: '/images/authors/melverick-ng-selected.jpg',
     path: '/courses/agentic-ai',
   },
   {
@@ -29,7 +29,7 @@ const AVAILABLE_COURSES: Course[] = [
     students: 0,
     image: MELVERICK_COURSE_IMAGE,
     author: 'Darryl Wong',
-    authorImage: '/images/authors/darryl-wong.jpg',
+    authorImage: '/images/authors/darryl-wong-selected.jpeg',
     path: '/courses/agentic-ai-accountants',
   },
   {
@@ -41,7 +41,7 @@ const AVAILABLE_COURSES: Course[] = [
     students: 0,
     image: '/images/courses/frontier-firm-card.jpg',
     author: 'Darryl Wong',
-    authorImage: '/images/authors/darryl-wong.jpg',
+    authorImage: '/images/authors/darryl-wong-selected.jpeg',
     path: '/courses/frontier-firm-agent-boss',
   }
 ];
