@@ -408,7 +408,9 @@ const AboutPage: React.FC = () => {
                 <div key={item.name} className="bg-neutral rounded-xl p-8 shadow-card">
                   <Quote className="text-accent mb-4" size={28} />
                   <div className="flex items-center gap-4 mb-5">
-                    <ResponsiveImage src={item.image} alt={item.name} widths={[96, 128]} sizes="56px" fit="cover" className="w-14 h-14 rounded-full object-cover" />
+                    <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                      <ResponsiveImage src={item.image} alt={item.name} widths={[96, 128]} sizes="56px" fit="cover" className="h-full w-full object-cover object-center" />
+                    </span>
                     <div>
                       <p className="font-bold text-primary">{item.name}</p>
                       <p className="text-sm text-gray-500">{item.title}</p>

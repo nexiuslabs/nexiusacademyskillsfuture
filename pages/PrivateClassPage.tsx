@@ -433,16 +433,16 @@ const PrivateClassHero: React.FC = () => {
                 <div className="flex items-center rounded-full bg-white/95 px-4 py-2 shadow-soft ring-1 ring-primary/5">
                   <div className="flex -space-x-2">
                     {avatars.map((avatar) => (
-                      <ResponsiveImage
-                        key={avatar}
-                        src={avatar}
-                        alt=""
-                        widths={[64, 96]}
-                        sizes="36px"
-                        fit="cover"
-                        className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                        style={{ objectPosition: 'center' }}
-                      />
+                      <span key={avatar} className="block h-9 w-9 shrink-0 overflow-hidden rounded-full border-2 border-white bg-gray-100">
+                        <ResponsiveImage
+                          src={avatar}
+                          alt=""
+                          widths={[64, 96]}
+                          sizes="36px"
+                          fit="cover"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </span>
                     ))}
                   </div>
                 </div>

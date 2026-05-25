@@ -39,6 +39,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   loading = 'lazy',
   decoding = 'async',
   srcSet,
+  className,
   ...props
 }) => {
   const generatedSrcSet =
@@ -54,6 +55,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       sizes={generatedSrcSet ? sizes : undefined}
       loading={loading}
       decoding={decoding}
+      className={className ? `block ${className}` : 'block'}
     />
   );
 };
