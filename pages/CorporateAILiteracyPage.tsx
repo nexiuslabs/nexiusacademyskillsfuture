@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const CorporateAILiteracyPage: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const CorporateAILiteracyPage: React.FC = () => {
             AI Literacy for Corporate Learning in 2026: How L&amp;D Teams Should Prepare for Agentic AI
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng | 19 April 2026 | 9 min read</p>
+          <ArticleMeta articleSlug="ai-literacy-corporate-learning-2026" readTime="9 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             Corporate Learning Has Moved Beyond Basic AI Awareness

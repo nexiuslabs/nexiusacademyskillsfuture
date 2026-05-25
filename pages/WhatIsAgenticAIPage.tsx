@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const WhatIsAgenticAIPage: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const WhatIsAgenticAIPage: React.FC = () => {
             What Is Agentic AI? A Complete Guide for Business Professionals
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng · 8 January 2026 · 8 min read</p>
+          <ArticleMeta articleSlug="what-is-agentic-ai-guide" readTime="8 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             The Short Answer: AI That Acts, Not Just Answers

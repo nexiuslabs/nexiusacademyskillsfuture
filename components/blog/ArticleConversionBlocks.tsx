@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BLOG_POSTS } from '../../constants';
 import { trackBlogToCourseClick, trackOutboundClick } from '../../services/analytics';
 import { openLeadModal } from '../../services/leadModal';
 
@@ -11,6 +12,10 @@ declare global {
 }
 
 type CtaType = 'workflow_checklist' | 'subsidy_check' | 'join_next_cohort';
+
+const AUTHOR_NAME = 'Melverick Ng';
+const ARTICLE_LAST_MODIFIED_ISO = '2026-05-25';
+const ARTICLE_LAST_MODIFIED_DISPLAY = '25 May 2026';
 
 const CTA_CONTENT: Record<CtaType, { title: string; description: string; cta: string; href: string }> = {
   workflow_checklist: {
@@ -92,6 +97,28 @@ export const ArticleCTA: React.FC<ArticleCTAProps> = ({ articleSlug, ctaType, po
         </Link>
       )}
     </div>
+  );
+};
+
+interface ArticleMetaProps {
+  articleSlug: string;
+  readTime?: string;
+}
+
+export const ArticleMeta: React.FC<ArticleMetaProps> = ({ articleSlug, readTime = '8 min read' }) => {
+  const post = BLOG_POSTS.find((item) => item.slug === articleSlug);
+  const publishedDate = post?.date ?? '2026';
+
+  return (
+    <p className="text-sm text-gray-500 mb-8" itemScope itemType="https://schema.org/Article">
+      By <span itemProp="author">{AUTHOR_NAME}</span>
+      {' | '}
+      Published <time itemProp="datePublished">{publishedDate}</time>
+      {' | '}
+      Updated <time itemProp="dateModified" dateTime={ARTICLE_LAST_MODIFIED_ISO}>{ARTICLE_LAST_MODIFIED_DISPLAY}</time>
+      {' | '}
+      {readTime}
+    </p>
   );
 };
 

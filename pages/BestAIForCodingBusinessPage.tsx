@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const BestAIForCodingBusinessPage: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const BestAIForCodingBusinessPage: React.FC = () => {
             Best AI for Coding? What Business Professionals Should Really Learn
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng · 21 May 2026 · 8 min read</p>
+          <ArticleMeta articleSlug="best-ai-for-coding-business-professionals" readTime="8 min read" />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             The AI question getting the strongest public search signal right now is not just "what is AI?" It is more practical: <strong className="font-semibold text-[#1a1a1a]">"best AI for coding."</strong> Google's public AI search trends list "best ai for coding" as the top "best AI for..." search, ahead of writing, math, image generation, and essays.

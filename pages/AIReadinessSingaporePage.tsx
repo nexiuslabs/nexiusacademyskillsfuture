@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const ARTICLE_SLUG = 'ai-readiness-singapore-2026-agentic-ai';
 
@@ -28,7 +28,7 @@ const AIReadinessSingaporePage: React.FC = () => {
             AI Readiness in Singapore 2026: What to Check Before You Build AI Agents
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng | 15 May 2026 | 8 min read</p>
+          <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             AI Adoption Is No Longer the Hardest Question

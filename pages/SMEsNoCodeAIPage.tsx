@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const SMEsNoCodeAIPage: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const SMEsNoCodeAIPage: React.FC = () => {
             How SMEs in Singapore Are Using No-Code AI Automation to Scale
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng · 5 February 2026 · 9 min read</p>
+          <ArticleMeta articleSlug="smes-no-code-ai-automation-singapore" readTime="9 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             The SME Automation Gap — And How AI Is Closing It

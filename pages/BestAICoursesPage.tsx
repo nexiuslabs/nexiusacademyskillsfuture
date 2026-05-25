@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const BestAICoursesPage: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const BestAICoursesPage: React.FC = () => {
             Best AI Courses Singapore 2026: How to Choose the Right Programme
           </h1>
 
-          <p className="text-sm text-gray-400 mb-8">By Melverick Ng · 22 January 2026 · 10 min read</p>
+          <ArticleMeta articleSlug="best-ai-courses-singapore-2026" readTime="10 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             The AI Training Landscape Has Changed

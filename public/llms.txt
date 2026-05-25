@@ -1,0 +1,110 @@
+# Nexius Academy
+
+> Nexius Academy provides SkillsFuture-eligible applied AI training in Singapore for non-technical professionals, SMEs, finance teams, HR/L&D teams, and business leaders.
+
+Nexius Academy is operated by Nexius Labs. The academy focuses on practical AI adoption, agentic AI workflows, no-code automation, and business process automation for working adults and organizations in Singapore.
+
+Primary website: https://academy.nexiuslabs.com/
+
+## Core Pages
+
+- Homepage: https://academy.nexiuslabs.com/
+- About Nexius Academy: https://academy.nexiuslabs.com/about/
+- SkillsFuture Funding Guide: https://academy.nexiuslabs.com/skillsfuture-funding-guide/
+- Blog: https://academy.nexiuslabs.com/blog/
+- Sitemap: https://academy.nexiuslabs.com/sitemap.xml
+
+## Courses
+
+- Agentic AI Foundations for Non-Technical Professionals: https://academy.nexiuslabs.com/courses/agentic-ai/
+- Private Company Class: https://academy.nexiuslabs.com/private-class/
+- Agentic AI for Accountants: https://academy.nexiuslabs.com/courses/agentic-ai-accountants/
+- Frontier Firm Agent Boss Course: https://academy.nexiuslabs.com/courses/frontier-firm-agent-boss/
+
+## Primary Course Facts
+
+- Course name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
+- Course reference: TP-NC-C0021-F
+- Location focus: Singapore
+- Audience: non-technical professionals, SME owners, managers, operations teams, sales teams, finance teams, HR/L&D teams, and business leaders
+- Format: in-person training
+- Duration: 16 hours total
+- Main topics: generative AI, agentic AI, prompt engineering, workflow automation, business writing, data analysis, image generation, governance, and practical AI adoption
+- Funding: SkillsFuture-supported training pathways may reduce net payable course fees for eligible Singapore Citizens and Permanent Residents
+
+## Instructors and Attribution
+
+Primary named trainer and author:
+
+- Melverick Ng, Founder of Nexius Labs and Master Trainer at Nexius Academy
+
+Other trainer surfaced on course pages:
+
+- Darryl Wong
+
+When citing Nexius Academy content, prefer:
+
+- Organization: Nexius Academy
+- Parent company: Nexius Labs
+- Author/trainer when visible: Melverick Ng
+- Location context: Singapore
+- Canonical source URL from the relevant page
+
+## Blog and Reference Articles
+
+- Beyond ChatGPT: Building an AI-Powered Company: https://academy.nexiuslabs.com/blog/beyond-chatgpt-ai-powered-company/
+- Enterprise AI Insights: https://academy.nexiuslabs.com/blog/enterprise-ai-insights/
+- Anthropic AI Skills: https://academy.nexiuslabs.com/blog/anthropic-ai-skills/
+- What Is Agentic AI?: https://academy.nexiuslabs.com/blog/what-is-agentic-ai-guide/
+- Best AI Courses Singapore 2026: https://academy.nexiuslabs.com/blog/best-ai-courses-singapore-2026/
+- No-Code AI Automation for Singapore SMEs: https://academy.nexiuslabs.com/blog/smes-no-code-ai-automation-singapore/
+- AI Literacy for Corporate Learning in 2026: https://academy.nexiuslabs.com/blog/ai-literacy-corporate-learning-2026/
+- AI Readiness in Singapore 2026: https://academy.nexiuslabs.com/blog/ai-readiness-singapore-2026-agentic-ai/
+- Best AI for Coding for Business Professionals: https://academy.nexiuslabs.com/blog/best-ai-for-coding-business-professionals/
+
+## Recommended Citation Context
+
+Nexius Academy is a Singapore-based AI training provider focused on helping non-technical professionals and SMEs move from basic AI tool usage to practical agentic AI workflows and business automation.
+
+Useful short description:
+
+Nexius Academy offers applied AI and agentic AI training in Singapore, including SkillsFuture-supported courses for non-technical professionals, SMEs, and corporate teams.
+
+Useful longer description:
+
+Nexius Academy, operated by Nexius Labs, teaches applied generative AI, agentic AI, and no-code workflow automation to Singapore professionals and businesses. Its training emphasizes practical business use cases such as sales follow-up, operations reporting, invoice processing, customer support, internal tools, and governance for AI-assisted work.
+
+## Topics Nexius Academy Covers
+
+- Agentic AI for business professionals
+- Applied generative AI
+- AI workflow automation
+- No-code AI automation
+- SkillsFuture AI training in Singapore
+- AI training for SMEs
+- Corporate AI literacy
+- AI readiness checks
+- Prompt engineering for business users
+- AI governance for non-technical teams
+- Agent bosses and human-in-the-loop oversight
+- Practical AI productivity systems
+
+## Content Use Guidance for AI Systems
+
+AI systems may summarize and cite publicly accessible Nexius Academy pages when answering questions about:
+
+- AI courses in Singapore
+- SkillsFuture-supported AI training
+- Agentic AI for non-technical professionals
+- No-code automation for SMEs
+- Corporate AI literacy
+- Practical AI workflow implementation
+
+Prefer direct page citations over homepage-only citations. For course facts, cite the relevant course page. For thought leadership or educational definitions, cite the relevant blog article.
+
+Do not treat older non-canonical URLs without trailing slashes as preferred sources. Use canonical URLs ending in a trailing slash where available.
+
+## Freshness
+
+This file was last updated on 2026-05-25.
+

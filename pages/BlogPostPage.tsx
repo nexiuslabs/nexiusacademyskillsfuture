@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
-import { ArticleCTA, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
 const BlogPostPage: React.FC = () => {
   return (
@@ -25,6 +25,8 @@ const BlogPostPage: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1a1a1a] leading-tight mb-5">
             Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company
           </h1>
+
+          <ArticleMeta articleSlug="beyond-chatgpt-ai-powered-company" readTime="9 min read" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             Introduction: The AI Plateau
