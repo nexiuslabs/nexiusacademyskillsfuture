@@ -16,24 +16,24 @@ const About: React.FC = () => {
             src={images[0]}
             alt="Workshop participants at Nexius Academy"
             widths={[360, 480, 640]}
-            sizes="256px"
-            fit="cover"
-            className="absolute top-0 left-0 w-64 h-80 object-cover rounded-lg shadow-xl z-10"
+            sizes="360px"
+            fit="contain"
+            className="absolute top-0 left-0 z-10 aspect-[4/3] w-80 rounded-lg bg-white object-contain p-1 shadow-xl"
            />
            <ResponsiveImage
             src={images[1]}
             alt="Classroom group at Nexius Academy"
             widths={[360, 480, 640]}
-            sizes="288px"
-            fit="cover"
-            className="absolute bottom-0 right-10 w-72 h-64 object-cover rounded-lg shadow-xl z-20 border-8 border-white"
+            sizes="384px"
+            fit="contain"
+            className="absolute bottom-0 right-0 z-20 aspect-[4/3] w-96 rounded-lg border-8 border-white bg-white object-contain shadow-xl"
            />
            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
         </div>
 
         {/* Mobile View Image */}
         <div className="md:hidden w-full h-64 overflow-hidden rounded-xl shadow-lg">
-             <ResponsiveImage src={images[0]} className="w-full h-full object-cover" alt="Workshop participants at Nexius Academy" widths={[480, 768]} sizes="100vw" fit="cover" />
+             <ResponsiveImage src={images[0]} className="h-full w-full object-contain" alt="Workshop participants at Nexius Academy" widths={[480, 768]} sizes="100vw" fit="contain" />
         </div>
 
         {/* Right Content */}

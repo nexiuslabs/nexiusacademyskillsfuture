@@ -108,7 +108,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="relative aspect-[4/3] min-h-[400px] overflow-hidden rounded-2xl border-4 border-white shadow-2xl shadow-blue-900/20">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-2xl shadow-blue-900/20">
               <ResponsiveImage
                 src="/images/courses/agentic-ai-class-photo.jpg"
                 alt="Classroom participants at a Nexius Academy AI workshop"
@@ -116,8 +116,8 @@ const Hero: React.FC = () => {
                 fetchPriority="high"
                 widths={[640, 960, 1200]}
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                fit="cover"
-                className="absolute inset-0 h-full w-full object-cover object-center"
+                fit="contain"
+                className="absolute inset-0 h-full w-full object-contain object-center"
               />
             </div>
             <div className="relative z-10 mx-4 -mt-4 rounded-xl bg-white p-6 shadow-lg sm:mx-8">
