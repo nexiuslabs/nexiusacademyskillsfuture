@@ -6,6 +6,7 @@ import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import { openLeadModal } from '../services/leadModal';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 const learningObjectives = [
   'Drive organisational transformation using the Frontier Firm concept and a structured 3-phase roadmap toward an Agentic Company.',
@@ -107,8 +108,8 @@ const FrontierFirmCoursePage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Agentic AI-Driven Business Innovation for Productivity | Nexius Academy"
-        description="A leadership course for business managers, organisational leaders, and business owners who need to design and lead agentic enterprise transformation, cross-functional agent orchestration, and AI governance."
+        title="Agentic AI-Driven Innovation | Nexius Academy"
+        description="A leadership course for managers and owners designing agentic enterprise transformation, orchestration, and AI governance."
         canonical="/courses/frontier-firm-agent-boss"
         ogType="course"
       />
@@ -149,10 +150,14 @@ const FrontierFirmCoursePage: React.FC = () => {
         <section className="relative overflow-hidden bg-gradient-to-br from-primary via-[#12306b] to-[#0c1b3f] text-white">
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_#14b8a6,_transparent_30%),radial-gradient(circle_at_bottom_left,_#60a5fa,_transparent_25%)]" />
           <div className="absolute inset-y-0 right-0 z-0 hidden w-[58%] opacity-80 mix-blend-screen lg:block">
-            <img
+            <ResponsiveImage
               src="/images/courses/frontier-firm-illustration.jpg"
               alt=""
               aria-hidden="true"
+              loading="eager"
+              widths={[768, 1200]}
+              sizes="58vw"
+              fit="cover"
               className="h-full w-full object-cover object-center [mask-image:linear-gradient(to_right,transparent_0%,black_24%,black_100%)]"
             />
           </div>

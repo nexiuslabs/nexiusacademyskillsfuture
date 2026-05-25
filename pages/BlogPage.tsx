@@ -6,6 +6,7 @@ import { trackBlogToCourseClick } from '../services/analytics';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { BLOG_POSTS } from '../constants';
 import { fetchBlogViewCounts, mergeBlogPostsWithViews } from '../services/blogViews';
 
@@ -37,8 +38,8 @@ const BlogPage: React.FC = () => {
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
-        title="AI Training Blog | Agentic AI Insights & Guides | Nexius Academy"
-        description="Explore the latest insights on agentic AI, business automation, AI training Singapore trends, and practical guides for non-technical professionals looking to master AI skills."
+        title="AI Training Blog | Agentic AI Guides | Nexius Academy"
+        description="Explore agentic AI insights, business automation guides, and practical AI training trends for non-technical professionals."
         canonical="/blog"
       />
       <Navbar />
@@ -114,13 +115,16 @@ const BlogPage: React.FC = () => {
                 {filteredPosts.map((post) => (
                   <Link
                     key={post.id}
-                    to={`/blog/${post.slug}`}
+                    to={`/blog/${post.slug}/`}
                     className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group hover:-translate-y-1 duration-300"
                   >
                     <div className="overflow-hidden h-52">
-                      <img
+                      <ResponsiveImage
                         src={post.image}
                         alt={post.title}
+                        widths={[480, 768]}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        fit="cover"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>

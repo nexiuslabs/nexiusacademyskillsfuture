@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Quote } from 'lucide-react';
 import { sharedTestimonials } from '../sharedTestimonials';
+import ResponsiveImage from '../ResponsiveImage';
 
 const TESTIMONIALS_PER_PAGE = 3;
 
@@ -44,7 +45,7 @@ const Testimonials: React.FC = () => {
               className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative group hover:-translate-y-2 transition-transform duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
-                <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover" />
+                <ResponsiveImage src={testimonial.image} alt={testimonial.name} widths={[96, 128]} sizes="56px" fit="cover" className="w-14 h-14 rounded-full object-cover" />
                 <div>
                   <h4 className="font-bold text-primary">{testimonial.name}</h4>
                   <p className="text-xs text-gray-500">{testimonial.title}</p>

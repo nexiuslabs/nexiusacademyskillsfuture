@@ -15,6 +15,7 @@ import {
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Pricing from '../components/courses/Pricing';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
@@ -358,7 +359,7 @@ const PrivateClassHero: React.FC = () => {
               className="floaty absolute left-0 top-0 w-44 overflow-hidden rounded-2xl shadow-card md:w-52"
               style={{ ['--rot' as string]: '-4deg', transform: 'rotate(-4deg)' }}
             >
-              <img src="/images/private-class/session-room.jpeg" alt="Workshop participants" className="h-44 w-full object-cover" />
+              <ResponsiveImage src="/images/private-class/session-room.jpeg" alt="Workshop participants" widths={[360, 480]} sizes="208px" fit="cover" className="h-44 w-full object-cover" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -367,7 +368,7 @@ const PrivateClassHero: React.FC = () => {
               className="floaty absolute bottom-0 left-6 w-40 overflow-hidden rounded-2xl shadow-card md:left-14 md:w-44"
               style={{ ['--rot' as string]: '5deg', animationDelay: '1.5s', transform: 'rotate(5deg)' }}
             >
-              <img src="/images/private-class/speaker-audience.jpg" alt="Lead trainer" className="h-40 w-full object-cover" />
+              <ResponsiveImage src="/images/private-class/speaker-audience.jpg" alt="Lead trainer" widths={[360, 480]} sizes="176px" fit="cover" className="h-40 w-full object-cover" />
             </motion.div>
           </div>
 
@@ -432,10 +433,13 @@ const PrivateClassHero: React.FC = () => {
                 <div className="flex items-center rounded-full bg-white/95 px-4 py-2 shadow-soft ring-1 ring-primary/5">
                   <div className="flex -space-x-2">
                     {avatars.map((avatar) => (
-                      <img
+                      <ResponsiveImage
                         key={avatar}
                         src={avatar}
                         alt=""
+                        widths={[64, 96]}
+                        sizes="36px"
+                        fit="cover"
                         className="h-9 w-9 rounded-full border-2 border-white object-cover"
                         style={{ objectPosition: 'center' }}
                       />
@@ -470,7 +474,7 @@ const PrivateClassHero: React.FC = () => {
               className="floaty absolute right-0 top-10 w-56 overflow-hidden rounded-2xl shadow-card md:w-64"
               style={{ ['--rot' as string]: '3deg', animationDelay: '0.8s', transform: 'rotate(3deg)' }}
             >
-              <img src="/images/private-class/hall-room.jpg" alt="Nexius Academy classroom" className="h-72 w-full object-cover" />
+              <ResponsiveImage src="/images/private-class/hall-room.jpg" alt="Nexius Academy classroom" widths={[480, 768]} sizes="256px" fit="cover" className="h-72 w-full object-cover" />
             </motion.div>
           </div>
         </div>
@@ -503,9 +507,12 @@ const PrivateClassPrograms: React.FC = () => (
             className="group relative rounded-3xl bg-white p-3 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
           >
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
-              <img
+              <ResponsiveImage
                 src={card.image}
                 alt={card.title}
+                widths={[480, 768]}
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                fit="cover"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -831,7 +838,7 @@ const PrivateClassPage: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden bg-white">
       <SEO
         title="Dedicated Company AI Class | Nexius Academy"
-        description="Private company-run Agentic AI training for teams of 12 pax or more. Tailor the workshop to real workflows, train in a private setting, and align teams on practical AI adoption."
+        description="Private agentic AI training for teams of 12 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
         canonical={PAGE_PATH}
         ogType="website"
       />

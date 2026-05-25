@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
@@ -205,7 +206,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
     <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
         title={isDarkPreview ? 'Course Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
-        description={isDarkPreview ? 'A 3-hour course preview for Agentic AI Foundations for Non-Technical Professionals by Nexius Labs. Join the 17 June 2026 session from 2pm to 5pm.' : 'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.'}
+        description={isDarkPreview ? 'Join the 17 June 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 2pm to 5pm.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -303,9 +304,14 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
 
             <div className="relative">
               <div className={`overflow-hidden rounded-[2rem] shadow-card ${isDarkPreview ? 'bg-[#111f38]' : 'bg-primary'}`}>
-                <img
+                <ResponsiveImage
                   src={isDarkPreview ? '/images/courses/frontier-firm-illustration.jpg' : '/images/courses/agentic-ai-hero.jpg'}
                   alt={isDarkPreview ? 'Agentic AI business innovation illustration' : 'Professionals attending an AI workshop'}
+                  loading="eager"
+                  fetchPriority="high"
+                  widths={[640, 960, 1200]}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  fit="cover"
                   className={`h-[420px] w-full ${isDarkPreview ? 'object-cover opacity-90' : 'object-cover opacity-90'}`}
                 />
               </div>
@@ -314,9 +320,12 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
                     In collaboration with
                   </div>
-                  <img
+                  <ResponsiveImage
                     src={config.logoSrc}
                     alt={config.logoAlt}
+                    widths={[128, 256]}
+                    sizes="256px"
+                    fit="contain"
                     className={config.logoClassName}
                   />
                 </div>
@@ -519,9 +528,12 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 <div key={trainer.name} className="rounded-3xl border border-primary/10 bg-neutral p-6 shadow-soft">
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
                     <span className="block h-28 w-28 overflow-hidden rounded-full bg-white shadow-sm">
-                      <img
+                      <ResponsiveImage
                         src={trainer.image}
                         alt={trainer.name}
+                        widths={[160, 240]}
+                        sizes="112px"
+                        fit="cover"
                         className="h-full w-full scale-110 object-cover object-[center_58%]"
                       />
                     </span>

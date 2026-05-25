@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
 import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
+import ResponsiveImage from '../ResponsiveImage';
 
 const SHOW_TEMASEK_POLY_LOGO = false;
 
@@ -108,9 +109,14 @@ const Hero: React.FC = () => {
 
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white min-h-[400px]">
-              <img
+              <ResponsiveImage
                 src="/images/courses/agentic-ai-class-photo.jpg"
                 alt="Classroom participants at a Nexius Academy AI workshop"
+                loading="eager"
+                fetchPriority="high"
+                widths={[640, 960, 1200]}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                fit="cover"
                 className="w-full h-full object-cover object-center"
               />
             </div>
@@ -125,9 +131,12 @@ const Hero: React.FC = () => {
                 <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
                   In collaboration with
                 </div>
-                <img
+                <ResponsiveImage
                   src="/images/partners/temasek-poly-logo-transparent.png"
                   alt="Temasek Polytechnic collaboration logo"
+                  widths={[128, 256]}
+                  sizes="224px"
+                  fit="contain"
                   className="h-12 w-auto object-contain sm:h-14"
                 />
               </div>

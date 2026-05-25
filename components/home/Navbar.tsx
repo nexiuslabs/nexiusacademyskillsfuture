@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
               section.isLink ? (
                 <Link
                   key={section.id}
-                  to={`/${section.id}`}
+                  to={`/${section.id}/`}
                   className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors"
                 >
                   {section.label}
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
                 section.isLink ? (
                   <Link
                     key={section.id}
-                    to={`/${section.id}`}
+                    to={`/${section.id}/`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-left text-base font-semibold text-gray-600 hover:text-primary transition-colors py-2"
                   >

@@ -11,7 +11,7 @@ const AIReadinessSingaporePage: React.FC = () => {
   return (
     <>
       <SEO
-        title="AI Readiness in Singapore 2026: What to Check Before You Build AI Agents | Nexius Academy"
+        title="AI Readiness Singapore 2026: Pre-Build Checklist"
         description="A practical AI-readiness checklist for Singapore professionals and SMEs before adopting agentic AI workflows, no-code automation, and workplace AI tools."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"

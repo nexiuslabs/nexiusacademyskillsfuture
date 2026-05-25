@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen } from 'lucide-react';
+import ResponsiveImage from '../ResponsiveImage';
 
 const Hero: React.FC = () => {
   return (
@@ -77,9 +78,14 @@ const Hero: React.FC = () => {
             <div className="absolute top-10 right-10 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
             <div className="absolute bottom-10 left-10 w-64 h-64 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
 
-            <img
+            <ResponsiveImage
               src="/images/homepage-hero.jpg"
               alt="Large classroom audience at a Nexius Academy workshop"
+              loading="eager"
+              fetchPriority="high"
+              widths={[480, 768, 960]}
+              sizes="(max-width: 1024px) 100vw, 448px"
+              fit="cover"
               className="relative rounded-3xl shadow-2xl z-10 w-full max-w-md object-cover h-[500px] lg:h-[600px]"
             />
 

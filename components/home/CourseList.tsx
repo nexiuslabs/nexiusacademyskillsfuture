@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import { Course } from '../../types';
+import ResponsiveImage from '../ResponsiveImage';
 
 const MELVERICK_COURSE_IMAGE = '/images/courses/agentic-ai-foundations-card.jpg';
 const DISPLAY_RATING = 4.8;
@@ -64,11 +65,11 @@ const CourseList: React.FC = () => {
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
-              to={course.path}
+              to={`${course.path}/`}
               className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-primary">
-                <img src={course.image} alt={course.title} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
+                <ResponsiveImage src={course.image} alt={course.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="contain" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
                 <span className="absolute top-4 left-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
                   {course.category}
                 </span>
@@ -79,7 +80,7 @@ const CourseList: React.FC = () => {
 
               <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
-                   <img src={course.authorImage} alt={course.author} className="w-8 h-8 rounded-full" />
+                   <ResponsiveImage src={course.authorImage} alt={course.author} widths={[64, 96]} sizes="32px" fit="cover" className="w-8 h-8 rounded-full" />
                    <span className="text-xs text-gray-500">{course.author}</span>
                 </div>
                 <h3 className="font-bold text-primary text-base mb-3 line-clamp-2 h-12">
@@ -131,7 +132,7 @@ const CourseList: React.FC = () => {
                 </p>
               </div>
               <Link
-                to="/private-class"
+                to="/private-class/"
                 className="inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900"
               >
                 View Private Class

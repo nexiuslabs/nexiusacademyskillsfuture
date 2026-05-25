@@ -9,8 +9,8 @@ const CorporateAILiteracyPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="AI Literacy for Corporate Learning in 2026: How L&D Teams Should Prepare for Agentic AI | Nexius Academy"
-        description="AI literacy is no longer enough on its own. Learn how corporate learning and development teams can build practical AI fluency, role-based training, and agentic AI readiness in 2026."
+        title="AI Literacy for Corporate Learning in 2026"
+        description="Learn how corporate learning teams can build practical AI fluency, role-based training, and agentic AI readiness in 2026."
         canonical="/blog/ai-literacy-corporate-learning-2026"
         ogType="article"
       />
