@@ -45,7 +45,9 @@ const Testimonials: React.FC = () => {
               className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative group hover:-translate-y-2 transition-transform duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
-                <ResponsiveImage src={testimonial.image} alt={testimonial.name} widths={[96, 128]} sizes="56px" fit="cover" className="w-14 h-14 rounded-full object-cover" />
+                <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                  <ResponsiveImage src={testimonial.image} alt={testimonial.name} widths={[96, 128]} sizes="56px" fit="cover" className="h-full w-full object-cover object-center" />
+                </span>
                 <div>
                   <h4 className="font-bold text-primary">{testimonial.name}</h4>
                   <p className="text-xs text-gray-500">{testimonial.title}</p>
