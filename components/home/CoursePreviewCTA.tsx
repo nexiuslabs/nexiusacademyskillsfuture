@@ -19,8 +19,8 @@ const CoursePreviewCTA: React.FC = () => {
                   alt="Agentic AI Foundations for Non-Technical Professionals 3-hour hands-on workshop"
                   widths={[768, 1200]}
                   sizes="(max-width: 1024px) 100vw, 360px"
-                  fit="cover"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02] md:object-left"
+                  fit="contain"
+                  className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </picture>
             </Link>

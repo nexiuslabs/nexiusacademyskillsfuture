@@ -5,6 +5,7 @@ type ResponsiveImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   sizes?: string;
   fit?: 'contain' | 'cover' | 'fill';
   fetchPriority?: 'high' | 'low' | 'auto';
+  optimize?: boolean;
 };
 
 const DEFAULT_WIDTHS = [480, 768, 1200];
@@ -40,10 +41,11 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   decoding = 'async',
   srcSet,
   className,
+  optimize = true,
   ...props
 }) => {
   const generatedSrcSet =
-    !srcSet && isOptimizable(src) && canUseNetlifyImageCdn()
+    optimize && !srcSet && isOptimizable(src) && canUseNetlifyImageCdn()
       ? widths.map((width) => `${imageCdnUrl(src as string, width, fit)} ${width}w`).join(', ')
       : srcSet;
 

@@ -46,7 +46,7 @@ const CourseTestimonials: React.FC = () => {
             >
               <div className="flex items-center gap-4 mb-6">
                 <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                  <ResponsiveImage src={testimonial.image} alt={testimonial.name} widths={[96, 128]} sizes="56px" fit="cover" className="h-full w-full object-cover object-center" />
+                  <ResponsiveImage src={testimonial.image} alt={testimonial.name} optimize={false} className="h-full w-full object-cover object-center" />
                 </span>
                 <div>
                   <h4 className="font-bold text-primary">{testimonial.name}</h4>

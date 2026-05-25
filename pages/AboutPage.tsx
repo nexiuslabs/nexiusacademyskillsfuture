@@ -409,7 +409,7 @@ const AboutPage: React.FC = () => {
                   <Quote className="text-accent mb-4" size={28} />
                   <div className="flex items-center gap-4 mb-5">
                     <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                      <ResponsiveImage src={item.image} alt={item.name} widths={[96, 128]} sizes="56px" fit="cover" className="h-full w-full object-cover object-center" />
+                      <ResponsiveImage src={item.image} alt={item.name} optimize={false} className="h-full w-full object-cover object-center" />
                     </span>
                     <div>
                       <p className="font-bold text-primary">{item.name}</p>

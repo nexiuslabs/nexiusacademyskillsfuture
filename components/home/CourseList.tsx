@@ -69,7 +69,7 @@ const CourseList: React.FC = () => {
               className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-primary">
-                <ResponsiveImage src={course.image} alt={course.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="cover" className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]" />
+                <ResponsiveImage src={course.image} alt={course.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="contain" className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]" />
                 <span className="absolute top-4 left-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
                   {course.category}
                 </span>
@@ -81,7 +81,7 @@ const CourseList: React.FC = () => {
               <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
                    <span className="block h-8 w-8 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                     <ResponsiveImage src={course.authorImage} alt={course.author} widths={[64, 96]} sizes="32px" fit="cover" className="h-full w-full object-cover object-center" />
+                     <ResponsiveImage src={course.authorImage} alt={course.author} optimize={false} className="h-full w-full object-cover object-center" />
                    </span>
                    <span className="text-xs text-gray-500">{course.author}</span>
                 </div>

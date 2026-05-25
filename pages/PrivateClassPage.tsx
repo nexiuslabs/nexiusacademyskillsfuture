@@ -437,9 +437,7 @@ const PrivateClassHero: React.FC = () => {
                         <ResponsiveImage
                           src={avatar}
                           alt=""
-                          widths={[64, 96]}
-                          sizes="36px"
-                          fit="cover"
+                          optimize={false}
                           className="h-full w-full object-cover object-center"
                         />
                       </span>
