@@ -15,12 +15,12 @@ const Instructors: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-6">
             {INSTRUCTORS.map((instructor, index) => (
                 <div key={index} className="group w-full sm:w-40 md:w-36 lg:w-40">
-                    <div className="relative overflow-hidden rounded-xl mb-4 bg-gray-100">
+                    <div className="relative overflow-hidden rounded-xl mb-4 bg-[#f0f0f0]">
                         <ResponsiveImage
                             src={instructor.image}
                             alt={instructor.name}
                             optimize={false}
-                            className="w-full h-48 object-cover object-top bg-gray-100 group-hover:scale-105 transition-transform duration-500"
+                            className="h-48 w-full scale-110 object-cover object-center bg-[#f0f0f0] transition-transform duration-500 group-hover:scale-[1.14]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                             <p className="text-white text-sm">{instructor.bio}</p>

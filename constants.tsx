@@ -4,13 +4,13 @@ export const INSTRUCTORS: Instructor[] = [
   {
     name: 'Melverick Ng',
     role: 'Master Trainer',
-    image: '/images/authors/melverick-ng.jpg',
+    image: '/images/authors/melverick-ng-solid-bg.jpg',
     bio: 'Non-technical Business Consultant with 30+ years professional experience.',
   },
   {
     name: 'Darryl Wong',
     role: 'Master Sifu',
-    image: '/images/authors/darryl-wong.jpg',
+    image: '/images/authors/darryl-wong-solid-bg.jpg',
     bio: 'AI Enthusiast with CPA, 20+ years professional experience .',
   },
 ];

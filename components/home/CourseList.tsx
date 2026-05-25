@@ -81,7 +81,7 @@ const CourseList: React.FC = () => {
               <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
                    <span className="block h-8 w-8 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                     <ResponsiveImage src={course.authorImage} alt={course.author} optimize={false} className="h-full w-full object-cover object-center" />
+                     <ResponsiveImage src={course.authorImage} alt={course.author} optimize={false} className="h-full w-full object-cover object-top" />
                    </span>
                    <span className="text-xs text-gray-500">{course.author}</span>
                 </div>
