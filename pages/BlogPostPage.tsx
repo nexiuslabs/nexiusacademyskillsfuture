@@ -9,8 +9,8 @@ const BlogPostPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company | Nexius Academy"
-        description="Most companies hit an AI plateau after adopting ChatGPT. Discover the 4 fundamental shifts in leadership, structure, and strategy needed to build a true AI-powered company."
+        title="Beyond ChatGPT: Building an AI-Powered Company"
+        description="Most companies hit an AI plateau after adopting ChatGPT. Learn the leadership, structure, and strategy shifts behind AI-powered companies."
         canonical="/blog/beyond-chatgpt-ai-powered-company"
         ogType="article"
       />

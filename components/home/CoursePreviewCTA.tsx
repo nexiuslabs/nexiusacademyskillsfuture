@@ -1,6 +1,7 @@
 import React from 'react';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ResponsiveImage from '../ResponsiveImage';
 
 const COURSE_PREVIEW_REGISTER_URL = 'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals';
 
@@ -13,9 +14,12 @@ const CoursePreviewCTA: React.FC = () => {
             <Link to="/course-preview" className="group block aspect-square bg-primary md:aspect-auto">
               <picture className="block h-full">
                 <source media="(max-width: 767px)" srcSet="/images/home/course-preview-cta-mobile.jpg" />
-                <img
+                <ResponsiveImage
                   src="/images/home/course-preview-cta.jpg"
                   alt="Agentic AI Foundations for Non-Technical Professionals 3-hour hands-on workshop"
+                  widths={[768, 1200]}
+                  sizes="(max-width: 1024px) 100vw, 360px"
+                  fit="cover"
                   className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02] md:object-left"
                 />
               </picture>

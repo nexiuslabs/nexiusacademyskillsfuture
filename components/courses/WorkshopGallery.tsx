@@ -1,4 +1,5 @@
 import React from 'react';
+import ResponsiveImage from '../ResponsiveImage';
 
 const workshopPhotos = [
   {
@@ -58,10 +59,13 @@ const WorkshopGallery: React.FC = () => {
               key={photo.src}
               className="overflow-hidden rounded-xl border border-primary/10 bg-neutral shadow-sm"
             >
-              <img
+              <ResponsiveImage
                 src={photo.src}
                 alt={photo.alt}
                 loading={index < 3 ? 'eager' : 'lazy'}
+                widths={[480, 768]}
+                sizes="(max-width: 1024px) 50vw, 33vw"
+                fit="cover"
                 className="aspect-[3/2] h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
               />
             </figure>

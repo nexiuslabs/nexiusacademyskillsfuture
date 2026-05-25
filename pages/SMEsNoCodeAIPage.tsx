@@ -9,8 +9,8 @@ const SMEsNoCodeAIPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="How SMEs in Singapore Are Using No-Code AI Automation to Scale | Nexius Academy"
-        description="Real examples of how Singapore SMEs deploy no-code AI automation to cut costs, scale operations, and compete with larger firms. Practical AI skills training for SMEs that delivers immediate ROI."
+        title="No-Code AI Automation for Singapore SMEs"
+        description="See how Singapore SMEs use no-code AI automation to cut costs, scale operations, and compete with larger firms."
         canonical="/blog/smes-no-code-ai-automation-singapore"
         ogType="article"
       />

@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import { fetchBucketImages, getRandomImages } from '../services/imageService';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 type TabType = 'mission' | 'values' | 'story';
 
@@ -86,8 +87,8 @@ const AboutPage: React.FC = () => {
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
-        title="About Nexius Academy | AI Training Experts in Singapore"
-        description="Nexius Academy empowers business professionals with hands-on agentic AI skills. Founded by builders of Agentic ERP systems, we bridge the gap between AI technology and practical business application."
+        title="About Nexius Academy | AI Training Experts Singapore"
+        description="Meet Nexius Academy, a Singapore AI training provider helping business teams apply agentic AI and no-code automation at work."
         canonical="/about"
       />
       <Navbar />
@@ -150,21 +151,27 @@ const AboutPage: React.FC = () => {
               {activeTab === 'mission' && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                   <div className="relative h-[500px] hidden md:block">
-                    <img
+                    <ResponsiveImage
                       src={images[0]}
                       alt="Our mission"
+                      widths={[480, 768]}
+                      sizes="288px"
+                      fit="cover"
                       className="absolute top-0 left-0 w-72 h-80 object-cover rounded-2xl shadow-xl z-10"
                     />
-                    <img
+                    <ResponsiveImage
                       src={images[1]}
                       alt="Team collaboration"
+                      widths={[480, 768]}
+                      sizes="320px"
+                      fit="cover"
                       className="absolute bottom-0 right-0 w-80 h-72 object-cover rounded-2xl shadow-xl z-20 border-8 border-white"
                     />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10"></div>
                   </div>
 
                   <div className="md:hidden w-full h-72 overflow-hidden rounded-2xl shadow-lg mb-8">
-                    <img src={images[0]} className="w-full h-full object-cover" alt="Our mission" />
+                    <ResponsiveImage src={images[0]} className="w-full h-full object-cover" alt="Our mission" widths={[480, 768]} sizes="100vw" fit="cover" />
                   </div>
 
                   <div>
@@ -391,7 +398,7 @@ const AboutPage: React.FC = () => {
                   className="bg-neutral rounded-xl p-4 h-24 flex items-center justify-center hover:shadow-card transition-all"
                   aria-label={`Visit ${partner.name}`}
                 >
-                  <img src={partner.logo} alt={`${partner.name} logo`} className="max-h-12 w-full object-contain" />
+                  <ResponsiveImage src={partner.logo} alt={`${partner.name} logo`} widths={[128, 256]} sizes="128px" fit="contain" className="max-h-12 w-full object-contain" />
                 </a>
               ))}
             </div>
@@ -401,7 +408,7 @@ const AboutPage: React.FC = () => {
                 <div key={item.name} className="bg-neutral rounded-xl p-8 shadow-card">
                   <Quote className="text-accent mb-4" size={28} />
                   <div className="flex items-center gap-4 mb-5">
-                    <img src={item.image} alt={item.name} className="w-14 h-14 rounded-full object-cover" />
+                    <ResponsiveImage src={item.image} alt={item.name} widths={[96, 128]} sizes="56px" fit="cover" className="w-14 h-14 rounded-full object-cover" />
                     <div>
                       <p className="font-bold text-primary">{item.name}</p>
                       <p className="text-sm text-gray-500">{item.title}</p>

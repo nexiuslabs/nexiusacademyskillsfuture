@@ -1,14 +1,18 @@
 import React from 'react';
 import { openLeadModal } from '../../services/leadModal';
+import ResponsiveImage from '../ResponsiveImage';
 
 const InstructorCTA: React.FC = () => {
   return (
     <section id="join" className="relative py-28 bg-primary overflow-hidden scroll-mt-32">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <img
+        <ResponsiveImage
           src="/images/homepage-hero.jpg"
           alt="Nexius Academy classroom workshop"
+          widths={[768, 1200]}
+          sizes="100vw"
+          fit="cover"
           className="w-full h-full object-cover"
         />
       </div>

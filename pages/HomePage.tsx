@@ -32,8 +32,8 @@ const HomePage: React.FC = () => {
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
-        title="Nexius Academy | AI Training and Workshops Singapore for Business Professionals"
-        description="Nexius Academy offers hands-on AI training in Singapore for business professionals. Master agentic AI, no-code automation, and generative AI through expert-led workshops and certification courses."
+        title="Nexius Academy | Practical AI Training in Singapore"
+        description="Practical AI training in Singapore for business teams. Learn agentic AI, no-code automation, and useful workplace workflows."
         canonical="/"
       />
       <Navbar />

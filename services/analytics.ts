@@ -26,10 +26,11 @@ const emitFirstPartyEvent = (
   if (typeof window === 'undefined') return;
 
   const visitorContext = getVisitorContext();
+  const firstPartyAnalyticsEnabled = import.meta.env.VITE_ENABLE_FIRST_PARTY_ANALYTICS === 'true';
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-  if (!visitorContext || !supabaseUrl || !supabaseAnonKey) return;
+  if (!firstPartyAnalyticsEnabled || !visitorContext || !supabaseUrl || !supabaseAnonKey) return;
 
   const pagePath =
     payload.pagePath ||

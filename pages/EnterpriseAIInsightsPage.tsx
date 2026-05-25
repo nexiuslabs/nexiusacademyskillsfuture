@@ -9,8 +9,8 @@ const EnterpriseAIInsightsPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Enterprise AI Insights: How Businesses Are Scaling AI in 2026 | Nexius Academy"
-        description="Real-world insights on how enterprises are deploying AI at scale. Learn the strategies, frameworks, and lessons from companies successfully implementing agentic AI."
+        title="Enterprise AI Insights: Scaling AI in 2026"
+        description="Real-world insights on how enterprises deploy AI at scale, with strategies and lessons from agentic AI implementation."
         canonical="/blog/enterprise-ai-insights"
         ogType="article"
       />

@@ -40,7 +40,42 @@ const websiteSchema = {
   inLanguage: 'en-SG',
 };
 
-const courseSchema = ({ name, description, url, image, audienceType }) => ({
+const toAbsoluteUrl = (routePath) => `${SITE_URL}${routePath === '/' ? '/' : `${routePath}/`}`;
+
+const breadcrumbSchema = (routePath, title) => {
+  if (routePath === '/') return null;
+  const parts = routePath.split('/').filter(Boolean);
+  const itemListElement = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${SITE_URL}/`,
+    },
+  ];
+
+  let currentPath = '';
+  parts.forEach((part, index) => {
+    currentPath += `/${part}`;
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: index + 2,
+      name:
+        index === parts.length - 1
+          ? title.replace(' | Nexius Academy', '')
+          : part.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()),
+      item: toAbsoluteUrl(currentPath),
+    });
+  });
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement,
+  };
+};
+
+const courseSchema = ({ name, description, url, image, audienceType, courseInstance, aggregateRating, offers }) => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name,
@@ -52,6 +87,9 @@ const courseSchema = ({ name, description, url, image, audienceType }) => ({
     name: 'Nexius Academy',
     url: SITE_URL,
   },
+  offers,
+  aggregateRating,
+  hasCourseInstance: courseInstance,
   educationalLevel: 'Professional',
   audience: {
     '@type': 'Audience',
@@ -104,9 +142,9 @@ const articleSchema = ({ headline, description, url, image, datePublished }) => 
   },
 });
 
-const pageSchema = ({ name, description, url, image }) => ({
+const pageSchema = ({ name, description, url, image, type = 'WebPage' }) => ({
   '@context': 'https://schema.org',
-  '@type': 'WebPage',
+  '@type': type,
   name,
   description,
   url,
@@ -196,9 +234,9 @@ const routes = [
     priority: '1.0',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Nexius Academy | AI Training and Workshops Singapore for Business Professionals',
+    title: 'Nexius Academy | Practical AI Training in Singapore',
     description:
-      'Nexius Academy offers hands-on AI training in Singapore for business professionals. Master agentic AI, no-code automation, and generative AI through expert-led workshops and certification courses.',
+      'Practical AI training in Singapore for business teams. Learn agentic AI, no-code automation, and useful workplace workflows.',
     ogType: 'website',
     ogImage: HOME_IMAGE,
     schemas: [organizationSchema, websiteSchema],
@@ -208,9 +246,9 @@ const routes = [
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'About Nexius Academy | AI Training Experts in Singapore',
+    title: 'About Nexius Academy | AI Training Experts Singapore',
     description:
-      'Nexius Academy empowers business professionals with hands-on agentic AI skills. Founded by builders of agentic ERP systems, we bridge the gap between AI technology and practical business application.',
+      'Meet Nexius Academy, a Singapore AI training provider helping business teams apply agentic AI and no-code automation at work.',
     ogType: 'website',
     ogImage: HOME_IMAGE,
     schemas: [],
@@ -222,7 +260,7 @@ const routes = [
     includeInSitemap: true,
     title: 'SkillsFuture Funding Guide for Employers | Nexius Academy',
     description:
-      'A practical SkillsFuture employer funding guide for Nexius Academy visitors, with key considerations for course fee support, employer-sponsored training, and official verification steps.',
+      'A practical SkillsFuture funding guide for employers reviewing course fee support, sponsored training, and official verification steps.',
     ogType: 'article',
     ogImage: COURSE_IMAGE,
     schemas: [],
@@ -232,9 +270,9 @@ const routes = [
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Agentic AI Course Singapore | SkillsFuture Eligible | Nexius Academy',
+    title: 'Agentic AI Course Singapore | Nexius Academy',
     description:
-      'Learn agentic AI hands-on in our 16-hour SkillsFuture-eligible course. No-code AI automation training designed for non-technical business professionals. Up to 90% subsidy.',
+      'Learn agentic AI in a 16-hour SkillsFuture-eligible course for non-technical business professionals. Build no-code AI workflows.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
@@ -245,6 +283,36 @@ const routes = [
         url: `${SITE_URL}/courses/agentic-ai`,
         image: COURSE_IMAGE,
         audienceType: 'Business professionals, SME owners, and non-technical teams',
+        offers: {
+          '@type': 'Offer',
+          url: `${SITE_URL}/courses/agentic-ai/`,
+          priceCurrency: 'SGD',
+          availability: 'https://schema.org/InStock',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '223',
+        },
+        courseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'In-person',
+          courseWorkload: 'PT16H',
+          startDate: '2026-06-26',
+          endDate: '2026-07-03',
+          location: {
+            '@type': 'Place',
+            name: 'Nexius Academy',
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'SG',
+            },
+          },
+          instructor: {
+            '@type': 'Person',
+            name: 'Melverick Ng',
+          },
+        },
       }),
       faqSchema(mainCourseFaqs),
     ],
@@ -256,7 +324,7 @@ const routes = [
     includeInSitemap: true,
     title: 'Dedicated Company AI Class | Nexius Academy',
     description:
-      'Private company-run agentic AI training for teams of 12 pax or more. Tailor the workshop to real workflows, train in a private setting, and align teams on practical AI adoption.',
+      'Private agentic AI training for teams of 12 or more. Tailor the workshop to real workflows and align staff on practical AI adoption.',
     ogType: 'website',
     ogImage: PRIVATE_CLASS_IMAGE,
     schemas: [
@@ -278,17 +346,33 @@ const routes = [
     includeInSitemap: true,
     title: 'Course Preview: Agentic AI Foundations | Nexius Academy',
     description:
-      'Join the 17 June 2026 course preview for Agentic AI Foundations for Non-Technical Professionals by Nexius Labs. Session runs from 2pm to 5pm in a classroom setting with WiFi.',
+      'Join the 17 June 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 2pm to 5pm.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI Foundations for Non-Technical Professionals Course Preview',
         description:
-          'A 3-hour course preview introducing non-technical professionals to Agentic AI, workplace productivity use cases, hands-on AI activity, and safe adoption habits.',
+          'A 3-hour preview introducing non-technical professionals to Agentic AI, workplace use cases, hands-on AI activity, and safe adoption habits.',
         url: `${SITE_URL}/course-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
+        courseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'In-person',
+          courseWorkload: 'PT3H',
+          startDate: '2026-06-17T14:00:00+08:00',
+          endDate: '2026-06-17T17:00:00+08:00',
+          location: {
+            '@type': 'Place',
+            name: 'Devan Nair Institute for Employment and Employability',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '80 Jurong East St 21',
+              addressCountry: 'SG',
+            },
+          },
+        },
       }),
     ],
   },
@@ -299,17 +383,32 @@ const routes = [
     includeInSitemap: true,
     title: '4-Hour Agentic AI Preview Session | Nexius Academy',
     description:
-      'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.',
+      'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI Foundations for Non-Technical Professionals Preview Session',
         description:
-          'A 4-hour hands-on preview workshop introducing non-technical professionals to Agentic AI, better prompting, reusable AI instructions, workplace use cases, and safe review habits.',
+          'A 4-hour preview introducing non-technical professionals to Agentic AI, better prompting, reusable instructions, and safe review habits.',
         url: `${SITE_URL}/e2i-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+        courseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'In-person',
+          courseWorkload: 'PT4H',
+          startDate: '2026-06-26T14:00:00+08:00',
+          endDate: '2026-06-26T18:00:00+08:00',
+          location: {
+            '@type': 'Place',
+            name: 'e2i preview venue',
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'SG',
+            },
+          },
+        },
       }),
     ],
   },
@@ -320,17 +419,32 @@ const routes = [
     includeInSitemap: true,
     title: '4-Hour Agentic AI Preview Session | Nexius Academy',
     description:
-      'A practical, beginner-friendly 4-hour Agentic AI preview workshop for non-technical professionals. Learn prompts, reusable AI instructions, workplace use cases, and safe AI habits.',
+      'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI Foundations for Non-Technical Professionals Preview Session',
         description:
-          'A 4-hour hands-on preview workshop introducing non-technical professionals to Agentic AI, better prompting, reusable AI instructions, workplace use cases, and safe review habits.',
+          'A 4-hour preview introducing non-technical professionals to Agentic AI, better prompting, reusable instructions, and safe review habits.',
         url: `${SITE_URL}/sim-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+        courseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'In-person',
+          courseWorkload: 'PT4H',
+          startDate: '2026-07-04T09:00:00+08:00',
+          endDate: '2026-07-04T13:00:00+08:00',
+          location: {
+            '@type': 'Place',
+            name: 'SIM Global Education',
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'SG',
+            },
+          },
+        },
       }),
     ],
   },
@@ -349,20 +463,47 @@ const routes = [
     schemas: [],
   },
   {
+    path: '/courses/agentic-ai-accountants',
+    priority: '0.7',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agentic AI for Accountants & CSPs | Nexius Academy',
+    description:
+      'A practical no-code AI course for accountants, CSPs, and firm owners improving drafting, reporting, compliance, and client-service work.',
+    ogType: 'course',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      courseSchema({
+        name: 'Agentic AI Foundations for Accounting and CSP Professionals',
+        description:
+          'A practical no-code AI course for accounting and corporate-service professionals handling drafting, reporting, compliance, and client service.',
+        url: `${SITE_URL}/courses/agentic-ai-accountants`,
+        image: COURSE_IMAGE,
+        audienceType: 'Accountants, corporate service providers, firm owners, and non-technical finance teams',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '223',
+        },
+      }),
+      faqSchema(accountantsFaqs),
+    ],
+  },
+  {
     path: '/courses/frontier-firm-agent-boss',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Agentic AI-Driven Innovation for Productivity | Nexius Academy',
+    title: 'Agentic AI-Driven Innovation | Nexius Academy',
     description:
-      'A leadership course for business managers, organisational leaders, and business owners who need to design and lead agentic enterprise transformation, cross-functional agent orchestration, and AI governance.',
+      'A leadership course for managers and owners designing agentic enterprise transformation, orchestration, and AI governance.',
     ogType: 'course',
     ogImage: HOME_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI-Driven Innovation for Productivity',
         description:
-          'A leadership programme on agentic enterprise transformation, cross-functional agent orchestration, Agent Boss operating models, and enterprise AI governance.',
+          'A leadership programme on agentic enterprise transformation, cross-functional orchestration, Agent Boss models, and AI governance.',
         url: `${SITE_URL}/courses/frontier-firm-agent-boss`,
         image: HOME_IMAGE,
         audienceType: 'Business leaders, transformation sponsors, and firm owners',
@@ -375,9 +516,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'AI Training Blog | Agentic AI Insights & Guides | Nexius Academy',
+    title: 'AI Training Blog | Agentic AI Guides | Nexius Academy',
     description:
-      'Explore the latest insights on agentic AI, business automation, AI training Singapore trends, and practical guides for non-technical professionals looking to master AI skills.',
+      'Explore agentic AI insights, business automation guides, and practical AI training trends for non-technical professionals.',
     ogType: 'website',
     ogImage: HOME_IMAGE,
     schemas: [
@@ -401,9 +542,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company | Nexius Academy',
+    title: 'Beyond ChatGPT: Building an AI-Powered Company',
     description:
-      'Most companies hit an AI plateau after adopting ChatGPT. Discover the 4 fundamental shifts in leadership, structure, and strategy needed to build a true AI-powered company.',
+      'Most companies hit an AI plateau after adopting ChatGPT. Learn the leadership, structure, and strategy shifts behind AI-powered companies.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -414,9 +555,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Enterprise AI Insights: How Businesses Are Scaling AI in 2026 | Nexius Academy',
+    title: 'Enterprise AI Insights: Scaling AI in 2026',
     description:
-      'Real-world insights on how enterprises are deploying AI at scale. Learn the strategies, frameworks, and lessons from companies successfully implementing agentic AI.',
+      'Real-world insights on how enterprises deploy AI at scale, with strategies and lessons from agentic AI implementation.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -427,7 +568,7 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Anthropic AI Skills: Essential Capabilities for Business Professionals | Nexius Academy',
+    title: 'Anthropic AI Skills for Business Professionals',
     description:
       "Explore the essential AI skills from Anthropic's ecosystem that business professionals need in 2026. From Claude to enterprise AI deployment strategies.",
     ogType: 'article',
@@ -440,9 +581,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'What Is Agentic AI? A Complete Guide for Business Professionals | Nexius Academy',
+    title: 'What Is Agentic AI? A Business Guide',
     description:
-      'What is agentic AI and how does it differ from generative AI? Learn how autonomous AI agents plan, decide, and act, and why every business professional in Singapore needs to understand this shift.',
+      'Learn what agentic AI is, how it differs from generative AI, and why Singapore business professionals need to understand the shift.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -453,9 +594,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Best AI Courses Singapore 2026: How to Choose the Right Programme | Nexius Academy',
+    title: 'Best AI Courses Singapore 2026: How to Choose',
     description:
-      'Comparing the best AI courses in Singapore for 2026. From SkillsFuture AI courses to agentic AI masterclasses, this is a practical guide to choosing the right AI training programme for business professionals.',
+      'Compare AI courses in Singapore for 2026, from SkillsFuture options to agentic AI training for business professionals.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -466,9 +607,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'How SMEs in Singapore Are Using No-Code AI Automation to Scale | Nexius Academy',
+    title: 'No-Code AI Automation for Singapore SMEs',
     description:
-      'Real examples of how Singapore SMEs deploy no-code AI automation to cut costs, scale operations, and compete with larger firms. Practical AI skills training for SMEs that delivers immediate ROI.',
+      'See how Singapore SMEs use no-code AI automation to cut costs, scale operations, and compete with larger firms.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -479,9 +620,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'AI Literacy for Corporate Learning in 2026: How L&D Teams Should Prepare for Agentic AI | Nexius Academy',
+    title: 'AI Literacy for Corporate Learning in 2026',
     description:
-      'AI literacy is no longer enough on its own. Learn how corporate learning teams can build practical AI fluency, role-based training, and agentic AI readiness across the organisation.',
+      'Learn how corporate learning teams can build practical AI fluency, role-based training, and agentic AI readiness in 2026.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -492,7 +633,7 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'AI Readiness in Singapore 2026: What to Check Before You Build AI Agents | Nexius Academy',
+    title: 'AI Readiness Singapore 2026: Pre-Build Checklist',
     description:
       'A practical AI-readiness checklist for Singapore professionals and SMEs before adopting agentic AI workflows, no-code automation, and workplace AI tools.',
     ogType: 'article',
@@ -505,9 +646,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Best AI for Coding? What Business Professionals Should Really Learn | Nexius Academy',
+    title: 'Best AI for Coding? What Business Teams Should Learn',
     description:
-      'Search interest around the best AI for coding is a signal that AI is moving from chat to execution. Learn what non-technical professionals should take from the trend.',
+      'Search interest in AI coding tools signals a shift from chat to execution. Learn what non-technical professionals should take from it.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
@@ -555,8 +696,8 @@ const stripJsonLd = (html) => html.replace(/\s*<script type="application\/ld\+js
 
 const applyHead = (html, route) => {
   const canonicalPath = route.canonicalPath ?? route.path;
-  const canonicalUrl = `${SITE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
-  const pageUrl = `${SITE_URL}${route.path === '/' ? '' : route.path}`;
+  const canonicalUrl = toAbsoluteUrl(canonicalPath);
+  const pageUrl = toAbsoluteUrl(route.path);
   const ogTitle = route.ogTitle ?? route.title;
   const ogDescription = route.ogDescription ?? route.description;
   const twitterTitle = route.twitterTitle ?? ogTitle;
@@ -572,14 +713,32 @@ const applyHead = (html, route) => {
   output = upsertMeta(output, 'property="og:url"', `<meta property="og:url" content="${pageUrl}" />`);
   output = upsertMeta(output, 'property="og:type"', `<meta property="og:type" content="${route.ogType}" />`);
   output = upsertMeta(output, 'property="og:image"', `<meta property="og:image" content="${route.ogImage}" />`);
+  output = upsertMeta(output, 'property="og:image:width"', '<meta property="og:image:width" content="1200" />');
+  output = upsertMeta(output, 'property="og:image:height"', '<meta property="og:image:height" content="630" />');
+  output = upsertMeta(output, 'property="og:image:alt"', `<meta property="og:image:alt" content="${route.ogImageAlt ?? route.title}" />`);
+  output = upsertMeta(output, 'property="og:site_name"', '<meta property="og:site_name" content="Nexius Academy" />');
   output = upsertMeta(output, 'name="twitter:card"', '<meta name="twitter:card" content="summary_large_image" />');
   output = upsertMeta(output, 'name="twitter:title"', `<meta name="twitter:title" content="${twitterTitle}" />`);
   output = upsertMeta(output, 'name="twitter:description"', `<meta name="twitter:description" content="${twitterDescription}" />`);
   output = upsertMeta(output, 'name="twitter:image"', `<meta name="twitter:image" content="${route.ogImage}" />`);
+  output = upsertMeta(output, 'name="twitter:site"', '<meta name="twitter:site" content="@nexiuslabs" />');
+  output = upsertMeta(output, 'name="twitter:creator"', '<meta name="twitter:creator" content="@melverick" />');
+  if (route.ogType === 'article') {
+    output = upsertMeta(output, 'property="article:published_time"', `<meta property="article:published_time" content="${route.articleDate ?? LASTMOD}" />`);
+    output = upsertMeta(output, 'property="article:modified_time"', `<meta property="article:modified_time" content="${LASTMOD}" />`);
+    output = upsertMeta(output, 'property="article:author"', '<meta property="article:author" content="Melverick Ng" />');
+  }
   output = upsertLink(output, 'rel="canonical"', `<link rel="canonical" href="${canonicalUrl}" />`);
+  output = upsertLink(output, 'rel="alternate" hreflang="en-SG"', `<link rel="alternate" hreflang="en-SG" href="${canonicalUrl}" />`);
+  output = upsertLink(output, 'rel="alternate" hreflang="x-default"', `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
+  output = upsertLink(output, 'rel="manifest"', '<link rel="manifest" href="/manifest.webmanifest" />');
   output = stripJsonLd(output);
 
   const schemas = [...route.schemas];
+  const breadcrumb = breadcrumbSchema(route.path, route.title);
+  if (breadcrumb) {
+    schemas.push(breadcrumb);
+  }
   if (route.ogType === 'article') {
     schemas.push(
       articleSchema({
@@ -597,6 +756,7 @@ const applyHead = (html, route) => {
         description: route.description,
         url: pageUrl,
         image: route.ogImage,
+        type: route.path === '/about' ? 'AboutPage' : 'WebPage',
       }),
     );
   }
@@ -621,7 +781,7 @@ const writeSitemap = () => {
   const entries = routes
     .filter((route) => route.includeInSitemap)
     .map((route) => {
-      const loc = `${SITE_URL}${route.path === '/' ? '/' : route.path}`;
+      const loc = toAbsoluteUrl(route.path);
       return [
         '  <url>',
         `    <loc>${loc}</loc>`,
@@ -650,6 +810,44 @@ const writeRobots = () => {
   fs.writeFileSync(path.join(DIST_DIR, 'robots.txt'), robots);
 };
 
+const writeRedirects = () => {
+  const redirects = [
+    '# Generated by scripts/postbuild-seo.mjs',
+    ...routes
+      .filter((route) => route.path !== '/')
+      .map((route) => `${route.path}  ${toAbsoluteUrl(route.path)}  301!`),
+    '',
+  ].join('\n');
+
+  fs.writeFileSync(path.join(DIST_DIR, '_redirects'), redirects);
+};
+
+const write404 = () => {
+  const html = `<!DOCTYPE html>
+<html lang="en-SG">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Page Not Found | Nexius Academy</title>
+    <meta name="description" content="The requested Nexius Academy page could not be found." />
+    <link rel="canonical" href="${SITE_URL}/404/" />
+  </head>
+  <body>
+    <main style="min-height:100vh;display:grid;place-items:center;font-family:Arial,sans-serif;color:#1D2A4D;padding:2rem;text-align:center">
+      <div>
+        <h1>Page Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+        <p><a href="${SITE_URL}/">Return to Nexius Academy</a></p>
+      </div>
+    </main>
+  </body>
+</html>
+`;
+
+  fs.writeFileSync(path.join(DIST_DIR, '404.html'), html);
+};
+
 const main = () => {
   ensureDistExists();
   const baseHtml = readHtml();
@@ -661,6 +859,8 @@ const main = () => {
 
   writeSitemap();
   writeRobots();
+  writeRedirects();
+  write404();
 };
 
 main();

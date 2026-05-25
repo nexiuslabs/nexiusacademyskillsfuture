@@ -78,7 +78,7 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
         title="SkillsFuture Funding Guide for Employers | Nexius Academy"
-        description="A practical SkillsFuture employer funding guide for Nexius Academy visitors, with key considerations for course fee support, employer-sponsored training, and official verification steps."
+        description="A practical SkillsFuture funding guide for employers reviewing course fee support, sponsored training, and official verification steps."
         canonical="/skillsfuture-funding-guide"
       />
       <Navbar />

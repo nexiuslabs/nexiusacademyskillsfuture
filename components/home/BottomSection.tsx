@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchBucketImages, getRandomImages } from '../../services/imageService';
 import { BLOG_POSTS } from '../../constants';
 import { fetchBlogViewCounts, mergeBlogPostsWithViews } from '../../services/blogViews';
+import ResponsiveImage from '../ResponsiveImage';
 
 const BottomSection: React.FC = () => {
   const [_images, setImages] = useState<string[]>([
@@ -68,19 +69,19 @@ const BottomSection: React.FC = () => {
             <div className="animate-scroll">
               {[...Array(3)].map((_, setIndex) => (
                 <div key={setIndex} className="flex gap-12 items-center shrink-0">
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/ntu_logo.png" alt="NTU" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/nie_logo.jpeg" alt="NIE" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/SIM-GE-Pri-logo-4C-1024x754.webp" alt="SIM" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/HH_grp_logo.jpeg" alt="HH Group" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/forte_law_llc_logo.jpeg" alt="Forte Law" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/autom8e_logo.png" alt="Automa8e" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/cropped-Logo_Final_black_font-e1557929387960-1024x341.png" alt="Peachypixx" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/jetdata_logo.jpeg" alt="Jetdata" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/Lookeesan-creatives-logo.png" alt="Lookeesan" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/ouch-logo.jpg" alt="Ouch" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/tncp_logo.jpeg" alt="TNCP" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/veraops_logo.png" alt="Veraops" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
-                  <img src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/yesccap_logo.webp" alt="Yescapp" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0 mr-12" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/ntu_logo.png" alt="NTU" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/nie_logo.jpeg" alt="NIE" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/SIM-GE-Pri-logo-4C-1024x754.webp" alt="SIM" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/HH_grp_logo.jpeg" alt="HH Group" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/forte_law_llc_logo.jpeg" alt="Forte Law" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/autom8e_logo.png" alt="Automa8e" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/cropped-Logo_Final_black_font-e1557929387960-1024x341.png" alt="Peachypixx" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/jetdata_logo.jpeg" alt="Jetdata" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/Lookeesan-creatives-logo.png" alt="Lookeesan" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/ouch-logo.jpg" alt="Ouch" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/tncp_logo.jpeg" alt="TNCP" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/veraops_logo.png" alt="Veraops" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0" />
+                  <ResponsiveImage src="https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Company%20Logo/yesccap_logo.webp" alt="Yescapp" widths={[128, 256]} sizes="128px" fit="contain" className="h-12 w-32 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all shrink-0 mr-12" />
                 </div>
               ))}
             </div>
@@ -98,9 +99,9 @@ const BottomSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredPosts
               .map((post, _idx) => (
-                <Link key={post.id} to={`/blog/${post.slug}`} className="group cursor-pointer">
+                <Link key={post.id} to={`/blog/${post.slug}/`} className="group cursor-pointer">
                   <div className="overflow-hidden rounded-xl mb-4 h-56">
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <ResponsiveImage src={post.image} alt={post.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="cover" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                     <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>

@@ -159,10 +159,11 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
+    console.error('track-visitor-event failed', error);
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ ok: false }),
       {
-        status: 500,
+        status: 202,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );

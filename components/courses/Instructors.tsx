@@ -1,5 +1,6 @@
 import React from 'react';
 import { INSTRUCTORS } from '../../constants';
+import ResponsiveImage from '../ResponsiveImage';
 
 const Instructors: React.FC = () => {
   return (
@@ -15,9 +16,12 @@ const Instructors: React.FC = () => {
             {INSTRUCTORS.map((instructor, index) => (
                 <div key={index} className="group w-full sm:w-40 md:w-36 lg:w-40">
                     <div className="relative overflow-hidden rounded-xl mb-4 bg-gray-100">
-                        <img
+                        <ResponsiveImage
                             src={instructor.image}
                             alt={instructor.name}
+                            widths={[240, 360]}
+                            sizes="160px"
+                            fit="cover"
                             className="w-full h-48 object-contain sm:object-cover object-top bg-gray-100 group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
+import ResponsiveImage from '../ResponsiveImage';
 
 const About: React.FC = () => {
   const images = ['/images/home/about-collage-1.jpg', '/images/home/about-collage-2.jpg'];
@@ -11,14 +12,20 @@ const About: React.FC = () => {
         
         {/* Left Collage */}
         <div className="relative h-[500px] hidden md:block">
-           <img
+           <ResponsiveImage
             src={images[0]}
             alt="Workshop participants at Nexius Academy"
+            widths={[360, 480, 640]}
+            sizes="256px"
+            fit="cover"
             className="absolute top-0 left-0 w-64 h-80 object-cover rounded-lg shadow-xl z-10"
            />
-           <img
+           <ResponsiveImage
             src={images[1]}
             alt="Classroom group at Nexius Academy"
+            widths={[360, 480, 640]}
+            sizes="288px"
+            fit="cover"
             className="absolute bottom-0 right-10 w-72 h-64 object-cover rounded-lg shadow-xl z-20 border-8 border-white"
            />
            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
@@ -26,7 +33,7 @@ const About: React.FC = () => {
 
         {/* Mobile View Image */}
         <div className="md:hidden w-full h-64 overflow-hidden rounded-xl shadow-lg">
-             <img src={images[0]} className="w-full h-full object-cover" alt="Workshop participants at Nexius Academy" />
+             <ResponsiveImage src={images[0]} className="w-full h-full object-cover" alt="Workshop participants at Nexius Academy" widths={[480, 768]} sizes="100vw" fit="cover" />
         </div>
 
         {/* Right Content */}

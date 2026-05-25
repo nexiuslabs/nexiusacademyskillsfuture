@@ -9,7 +9,7 @@ const AnthropicAISkillsPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Anthropic AI Skills: Essential Capabilities for Business Professionals | Nexius Academy"
+        title="Anthropic AI Skills for Business Professionals"
         description="Explore the essential AI skills from Anthropic's ecosystem that business professionals need in 2026. From Claude to enterprise AI deployment strategies."
         canonical="/blog/anthropic-ai-skills"
         ogType="article"

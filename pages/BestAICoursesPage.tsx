@@ -9,8 +9,8 @@ const BestAICoursesPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Best AI Courses Singapore 2026: How to Choose the Right Programme | Nexius Academy"
-        description="Comparing the best AI courses in Singapore for 2026. From SkillsFuture AI courses to agentic AI masterclasses — a practical guide to choosing the right AI training programme for business professionals."
+        title="Best AI Courses Singapore 2026: How to Choose"
+        description="Compare AI courses in Singapore for 2026, from SkillsFuture options to agentic AI training for business professionals."
         canonical="/blog/best-ai-courses-singapore-2026"
         ogType="article"
       />

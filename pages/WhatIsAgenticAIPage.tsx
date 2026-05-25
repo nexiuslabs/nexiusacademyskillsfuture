@@ -9,8 +9,8 @@ const WhatIsAgenticAIPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="What Is Agentic AI? A Complete Guide for Business Professionals | Nexius Academy"
-        description="What is agentic AI and how does it differ from generative AI? Learn how autonomous AI agents plan, decide, and act — and why every business professional in Singapore needs to understand this shift."
+        title="What Is Agentic AI? A Business Guide"
+        description="Learn what agentic AI is, how it differs from generative AI, and why Singapore business professionals need to understand the shift."
         canonical="/blog/what-is-agentic-ai-guide"
         ogType="article"
       />
