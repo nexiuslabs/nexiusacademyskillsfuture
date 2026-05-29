@@ -13,6 +13,7 @@ Primary website: https://academy.nexiuslabs.com/
 - SkillsFuture Funding Guide: https://academy.nexiuslabs.com/skillsfuture-funding-guide/
 - Blog: https://academy.nexiuslabs.com/blog/
 - Sitemap: https://academy.nexiuslabs.com/sitemap.xml
+- Expanded LLM index: https://academy.nexiuslabs.com/llms-full.txt
 
 ## Courses
 
@@ -106,5 +107,4 @@ Do not treat older non-canonical URLs without trailing slashes as preferred sour
 
 ## Freshness
 
-This file was last updated on 2026-05-25.
-
+This file was last updated on 2026-05-29.

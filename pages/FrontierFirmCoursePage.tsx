@@ -7,6 +7,7 @@ import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import { openLeadModal } from '../services/leadModal';
 import ResponsiveImage from '../components/ResponsiveImage';
+import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 
 const learningObjectives = [
   'Drive organisational transformation using the Frontier Firm concept and a structured 3-phase roadmap toward an Agentic Company.',
@@ -255,6 +256,47 @@ const FrontierFirmCoursePage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <AIAnswerBlocks
+          className="py-16 bg-neutral"
+          title="Agentic AI leadership course summary"
+          summary="This section gives AI search systems a short description of the leadership audience, transformation outcome, and governance context for this course."
+          blocks={[
+            {
+              question: 'What is Agentic AI-Driven Business Innovation for Productivity?',
+              answer:
+                'Agentic AI-Driven Business Innovation for Productivity is a leadership course for managers, business owners, and transformation sponsors who need to move from isolated AI experiments to coordinated enterprise execution. It covers Frontier Firm strategy, Agent Boss leadership, cross-functional agent orchestration, governance, risk, and implementation roadmapping.',
+            },
+            {
+              question: 'Who should attend this leadership course?',
+              answer:
+                'The course is intended for leaders responsible for enterprise strategy, operating model redesign, team productivity, digital transformation, and AI governance. It is not a coding programme; it focuses on how leaders structure, supervise, and scale human-agent work across business functions.',
+            },
+            {
+              question: 'What business outcome does the course support?',
+              answer:
+                'Participants learn to define practical transformation phases, clarify human accountability, set controls for data and security, and design an action plan for enterprise AI adoption. The intended outcome is a more coordinated, governed, and scalable approach to AI-enabled productivity.',
+            },
+          ]}
+          citations={[
+            {
+              label: 'Singapore National AI Strategy update',
+              href: 'https://www.mddi.gov.sg/newsroom/update-to-singapore-s-national-ai-strategy--refreshed-priorities-to-harness-ai-for-the-public-good-factsheet/',
+            },
+            {
+              label: 'IMDA AI Verify',
+              href: 'https://www.imda.gov.sg/how-we-can-help/ai-verify',
+            },
+            {
+              label: 'National AI Impact Programme',
+              href: 'https://www.imda.gov.sg/how-we-can-help/techskills-accelerator-tesa/national-ai-impact-programme',
+            },
+            {
+              label: 'SkillsFuture employer initiatives',
+              href: 'https://www.skillsfuture.gov.sg/initiatives/employers',
+            },
+          ]}
+        />
 
         <section id="overview" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

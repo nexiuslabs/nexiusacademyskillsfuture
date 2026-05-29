@@ -9,6 +9,38 @@ const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
 const LASTMOD = '2026-04-18';
 
+const melverickPerson = {
+  '@type': 'Person',
+  name: 'Melverick Ng',
+  url: 'https://academy.nexiuslabs.com/about/',
+  image: `${SITE_URL}/images/authors/melverick-ng-selected.jpg`,
+  jobTitle: 'Founder of Nexius Labs and Master Trainer at Nexius Academy',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Nexius Labs',
+    url: 'https://nexiuslabs.com',
+  },
+  affiliation: {
+    '@type': 'EducationalOrganization',
+    name: 'Nexius Academy',
+    url: SITE_URL,
+  },
+  sameAs: ['https://www.linkedin.com/in/melverick'],
+};
+
+const darrylPerson = {
+  '@type': 'Person',
+  name: 'Darryl Wong',
+  url: 'https://academy.nexiuslabs.com/about/',
+  image: `${SITE_URL}/images/authors/darryl-wong-selected.jpeg`,
+  jobTitle: 'Master Sifu at Nexius Academy',
+  affiliation: {
+    '@type': 'EducationalOrganization',
+    name: 'Nexius Academy',
+    url: SITE_URL,
+  },
+};
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
@@ -30,6 +62,7 @@ const organizationSchema = {
     'https://www.linkedin.com/company/nexius-labs',
     'https://www.linkedin.com/in/melverick',
   ],
+  employee: [melverickPerson, darrylPerson],
 };
 
 const websiteSchema = {
@@ -75,7 +108,7 @@ const breadcrumbSchema = (routePath, title) => {
   };
 };
 
-const courseSchema = ({ name, description, url, image, audienceType, courseInstance, aggregateRating, offers }) => ({
+const courseSchema = ({ name, description, url, image, audienceType, courseInstance, aggregateRating, offers, instructors }) => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name,
@@ -87,6 +120,7 @@ const courseSchema = ({ name, description, url, image, audienceType, courseInsta
     name: 'Nexius Academy',
     url: SITE_URL,
   },
+  instructor: instructors,
   offers,
   aggregateRating,
   hasCourseInstance: courseInstance,
@@ -129,8 +163,7 @@ const articleSchema = ({ headline, description, url, image, datePublished }) => 
   datePublished,
   dateModified: LASTMOD,
   author: {
-    '@type': 'Person',
-    name: 'Melverick Ng',
+    ...melverickPerson,
   },
   publisher: {
     '@type': 'EducationalOrganization',
@@ -283,6 +316,7 @@ const routes = [
         url: `${SITE_URL}/courses/agentic-ai`,
         image: COURSE_IMAGE,
         audienceType: 'Business professionals, SME owners, and non-technical teams',
+        instructors: [melverickPerson, darrylPerson],
         offers: {
           '@type': 'Offer',
           url: `${SITE_URL}/courses/agentic-ai/`,
@@ -335,6 +369,7 @@ const routes = [
         url: `${SITE_URL}/private-class`,
         image: PRIVATE_CLASS_IMAGE,
         audienceType: 'Company teams, department heads, and business operations leaders',
+        instructors: [melverickPerson, darrylPerson],
       }),
       faqSchema(privateClassFaqs),
     ],
@@ -357,6 +392,7 @@ const routes = [
         url: `${SITE_URL}/course-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
+        instructors: [melverickPerson, darrylPerson],
         courseInstance: {
           '@type': 'CourseInstance',
           courseMode: 'In-person',
@@ -394,6 +430,7 @@ const routes = [
         url: `${SITE_URL}/e2i-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+        instructors: [melverickPerson, darrylPerson],
         courseInstance: {
           '@type': 'CourseInstance',
           courseMode: 'In-person',
@@ -430,6 +467,7 @@ const routes = [
         url: `${SITE_URL}/sim-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, SME owners, managers, and business teams',
+        instructors: [melverickPerson, darrylPerson],
         courseInstance: {
           '@type': 'CourseInstance',
           courseMode: 'In-person',
@@ -480,6 +518,7 @@ const routes = [
         url: `${SITE_URL}/courses/agentic-ai-accountants`,
         image: COURSE_IMAGE,
         audienceType: 'Accountants, corporate service providers, firm owners, and non-technical finance teams',
+        instructors: [melverickPerson, darrylPerson],
         aggregateRating: {
           '@type': 'AggregateRating',
           ratingValue: '4.8',
@@ -507,6 +546,7 @@ const routes = [
         url: `${SITE_URL}/courses/frontier-firm-agent-boss`,
         image: HOME_IMAGE,
         audienceType: 'Business leaders, transformation sponsors, and firm owners',
+        instructors: [melverickPerson, darrylPerson],
       }),
       faqSchema(frontierFaqs),
     ],

@@ -21,6 +21,7 @@ import Footer from '../components/home/Footer';
 import AccountantStickyConversionRail from '../components/courses/AccountantStickyConversionRail';
 import Instructors from '../components/courses/Instructors';
 import Pricing from '../components/courses/Pricing';
+import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 import { APPLY_NOW_BOOKING_URL, openApplyNowModal, openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
 
@@ -352,6 +353,47 @@ const AccountantCspLandingPage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <AIAnswerBlocks
+          className="py-16 bg-neutral"
+          title="Agentic AI for accounting and CSP teams"
+          summary="This concise summary helps AI search systems understand the page's intended audience, business outcome, and official policy context."
+          blocks={[
+            {
+              question: 'What is this accounting and CSP-focused AI course?',
+              answer:
+                'This cohort uses the Agentic AI Foundations curriculum for accountants, corporate service providers, firm owners, and finance teams. It teaches no-code AI workflows for drafting, reporting, documentation, research synthesis, client communication, and recurring internal support work.',
+            },
+            {
+              question: 'Why is it relevant to professional-services firms?',
+              answer:
+                'Accounting and CSP teams handle repetitive drafting, review, compliance, client-service, and documentation tasks. The course focuses on practical first-draft support, structured prompting, human review, confidentiality boundaries, and repeatable workflows that can improve delivery capacity without replacing professional judgement.',
+            },
+            {
+              question: 'What should firm owners expect?',
+              answer:
+                'Firm owners should expect a practical workshop that helps teams identify suitable AI use cases, create reusable instructions, apply safer review habits, and reduce low-value repetitive work. The goal is stronger team productivity and consistency, not uncontrolled automation.',
+            },
+          ]}
+          citations={[
+            {
+              label: 'SkillsFuture for employers',
+              href: 'https://www.skillsfuture.gov.sg/initiatives/employers',
+            },
+            {
+              label: 'Enhanced Training Support for SMEs',
+              href: 'https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes',
+            },
+            {
+              label: 'ISCA verifiable learning guidance',
+              href: 'https://isca.org.sg/membership/member-obligations/verifiable-and-non-verifiable-learning',
+            },
+            {
+              label: 'IMDA AI Verify and AI governance',
+              href: 'https://www.imda.gov.sg/how-we-can-help/ai-verify',
+            },
+          ]}
+        />
 
         <section id="who-for" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

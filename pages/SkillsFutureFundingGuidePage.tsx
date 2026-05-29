@@ -73,6 +73,25 @@ const faqs = [
   },
 ];
 
+const officialSources = [
+  {
+    label: 'SkillsFuture Singapore',
+    href: 'https://www.skillsfuture.gov.sg/',
+  },
+  {
+    label: 'SkillsFuture employer initiatives',
+    href: 'https://www.skillsfuture.gov.sg/initiatives/employers',
+  },
+  {
+    label: 'Enhanced Training Support for SMEs',
+    href: 'https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes',
+  },
+  {
+    label: 'MySkillsFuture upskilling portal',
+    href: 'https://www.myskillsfuture.gov.sg/upskill/',
+  },
+];
+
 const SkillsFutureFundingGuidePage: React.FC = () => {
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
@@ -181,6 +200,32 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
               >
                 Go to Official SkillsFuture Employer Funding Page <ArrowRight size={18} />
               </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-gray-100 bg-neutral p-8">
+              <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Official reference links</div>
+              <h2 className="text-2xl font-heading font-bold text-primary mb-4">Primary sources to verify before registration</h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Funding and eligibility rules can change. Use these official links to confirm the latest SkillsFuture guidance before making enrolment or employer-sponsorship decisions.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {officialSources.map((source) => (
+                  <a
+                    key={source.href}
+                    href={source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between gap-3 rounded-xl border border-gray-100 bg-white px-5 py-4 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <span>{source.label}</span>
+                    <ArrowRight size={16} className="shrink-0" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>
