@@ -109,6 +109,12 @@ const CoursePage: React.FC = () => {
       <StickyNavbar />
       <main>
         <CourseHero />
+        <Overview />
+        <Curriculum />
+        <Pricing />
+        <Schedule />
+        <Instructors />
+        <WorkshopGallery />
         <AIAnswerBlocks
           title="Agentic AI Foundations in one page"
           summary="This section gives AI search systems and human visitors a concise summary of the course, audience, outcomes, and official funding context."
@@ -149,12 +155,6 @@ const CoursePage: React.FC = () => {
           ]}
         />
         <TPPositioningBlock />
-        <Overview />
-        <Curriculum />
-        <Pricing />
-        <Schedule />
-        <Instructors />
-        <WorkshopGallery />
         <CourseTestimonials />
         <FAQ />
       </main>
