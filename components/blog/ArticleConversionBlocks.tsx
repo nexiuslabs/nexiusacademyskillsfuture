@@ -145,8 +145,52 @@ export const RelatedCourseModuleCard: React.FC<RelatedCourseModuleCardProps> = (
       }}
       className="font-semibold text-[#007bff] hover:underline"
     >
-      See module details →
+      See module details
     </Link>
+    <div className="mt-5 border-t border-[#f3d9a1] pt-4">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#9a5b00]">Related AI training paths</p>
+      <div className="grid gap-2 text-sm">
+        <Link
+          to="/courses/agentic-ai/"
+          className="font-semibold text-[#007bff] hover:underline"
+          onClick={() =>
+            trackBlogToCourseClick({
+              sourceArea: 'article_internal_exact_agentic_ai_course',
+              pagePath: `/blog/${articleSlug}`,
+              targetPath: '/courses/agentic-ai',
+            })
+          }
+        >
+          Agentic AI course for non-technical professionals in Singapore
+        </Link>
+        <Link
+          to="/courses/agentic-ai-accountants/"
+          className="font-semibold text-[#007bff] hover:underline"
+          onClick={() =>
+            trackBlogToCourseClick({
+              sourceArea: 'article_internal_exact_accountants_course',
+              pagePath: `/blog/${articleSlug}`,
+              targetPath: '/courses/agentic-ai-accountants',
+            })
+          }
+        >
+          AI course for accountants and CSP firms in Singapore
+        </Link>
+        <Link
+          to="/blog/smes-no-code-ai-automation-singapore/"
+          className="font-semibold text-[#007bff] hover:underline"
+          onClick={() =>
+            trackBlogToCourseClick({
+              sourceArea: 'article_internal_exact_sme_no_code',
+              pagePath: `/blog/${articleSlug}`,
+              targetPath: '/blog/smes-no-code-ai-automation-singapore',
+            })
+          }
+        >
+          No-code AI automation training ideas for Singapore SMEs
+        </Link>
+      </div>
+    </div>
   </div>
 );
 

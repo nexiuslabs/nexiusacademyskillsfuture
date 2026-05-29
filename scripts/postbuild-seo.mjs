@@ -299,6 +299,19 @@ const routes = [
     schemas: [],
   },
   {
+    path: '/reports/singapore-ai-training-readiness-2026',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Singapore AI Training & Readiness Report 2026 | Nexius Academy',
+    description:
+      'A practical Singapore AI training and readiness report for SMEs, non-technical professionals, accountants, CSP firms, and business leaders evaluating agentic AI skills.',
+    ogType: 'article',
+    ogImage: DEFAULT_IMAGE,
+    schemas: [],
+    articleDate: '2026-05-29',
+  },
+  {
     path: '/courses/agentic-ai',
     priority: '0.9',
     changefreq: 'weekly',

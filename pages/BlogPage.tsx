@@ -201,6 +201,21 @@ const BlogPage: React.FC = () => {
                   </button>
                 </div>
 
+                <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+                  <p className="text-xs font-bold tracking-widest uppercase text-accent mb-2">Original Report</p>
+                  <h3 className="text-2xl font-bold text-primary mb-3">Singapore AI Training & Readiness Report 2026</h3>
+                  <p className="text-sm text-gray-600 mb-5">
+                    A practical report for SMEs, accountants, CSP firms, business leaders, and non-technical teams evaluating AI training.
+                  </p>
+                  <Link
+                    to="/reports/singapore-ai-training-readiness-2026/"
+                    className="inline-flex items-center gap-2 text-accent font-bold hover:underline"
+                  >
+                    Read the report
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
+
                 <div className="bg-primary rounded-2xl p-6 text-white">
                   <h4 className="text-lg font-bold mb-2">Want implementation support?</h4>
                   <p className="text-sm text-gray-200 mb-4">

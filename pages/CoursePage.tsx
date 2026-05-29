@@ -14,6 +14,7 @@ import CourseFooter from '../components/courses/CourseFooter';
 import AIAdvisor from '../components/courses/AIAdvisor';
 import StickyConversionRail from '../components/courses/StickyConversionRail';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
+import TPPositioningBlock from '../components/courses/TPPositioningBlock';
 import { trackCourseScrollDepth, trackSectionView, trackTimeOnPage } from '../services/analytics';
 
 const CoursePage: React.FC = () => {
@@ -147,6 +148,7 @@ const CoursePage: React.FC = () => {
             },
           ]}
         />
+        <TPPositioningBlock />
         <Overview />
         <Curriculum />
         <Pricing />

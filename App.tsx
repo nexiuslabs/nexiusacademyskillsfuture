@@ -20,6 +20,7 @@ import CorporateClassLandingPage from './pages/CorporateClassLandingPage';
 import PrivateClassPage from './pages/PrivateClassPage';
 import PreviewSessionPage from './pages/PreviewSessionPage';
 import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
+import SingaporeAITrainingReportPage from './pages/SingaporeAITrainingReportPage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
@@ -93,6 +94,7 @@ export const AppShell: React.FC = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
+        <Route path="/reports/singapore-ai-training-readiness-2026" element={<SingaporeAITrainingReportPage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
         <Route path="/private-class" element={<PrivateClassPage />} />
         <Route path="/course-preview" element={<PreviewSessionPage partner="nexius" />} />

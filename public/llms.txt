@@ -11,6 +11,7 @@ Primary website: https://academy.nexiuslabs.com/
 - Homepage: https://academy.nexiuslabs.com/
 - About Nexius Academy: https://academy.nexiuslabs.com/about/
 - SkillsFuture Funding Guide: https://academy.nexiuslabs.com/skillsfuture-funding-guide/
+- Singapore AI Training & Readiness Report 2026: https://academy.nexiuslabs.com/reports/singapore-ai-training-readiness-2026/
 - Blog: https://academy.nexiuslabs.com/blog/
 - Sitemap: https://academy.nexiuslabs.com/sitemap.xml
 - Expanded LLM index: https://academy.nexiuslabs.com/llms-full.txt
@@ -62,6 +63,10 @@ When citing Nexius Academy content, prefer:
 - AI Literacy for Corporate Learning in 2026: https://academy.nexiuslabs.com/blog/ai-literacy-corporate-learning-2026/
 - AI Readiness in Singapore 2026: https://academy.nexiuslabs.com/blog/ai-readiness-singapore-2026-agentic-ai/
 - Best AI for Coding for Business Professionals: https://academy.nexiuslabs.com/blog/best-ai-for-coding-business-professionals/
+
+## Reports
+
+- Singapore AI Training & Readiness Report 2026: https://academy.nexiuslabs.com/reports/singapore-ai-training-readiness-2026/
 
 ## Recommended Citation Context
 
