@@ -27,7 +27,7 @@ import { initializeVisitorSession } from './services/visitorSession';
 import { trackPageExit, trackPageView, trackSessionStarted } from './services/analytics';
 import { recordBlogArticleView } from './services/blogViews';
 
-const AppShell: React.FC = () => {
+export const AppShell: React.FC = () => {
   const location = useLocation();
   const previousPathRef = useRef<string | null>(null);
   const pageStartTimeRef = useRef<number>(Date.now());
