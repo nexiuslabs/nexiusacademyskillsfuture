@@ -12,6 +12,7 @@ import BestAIForCodingBusinessPage from './pages/BestAIForCodingBusinessPage';
 import SMEsNoCodeAIPage from './pages/SMEsNoCodeAIPage';
 import CorporateAILiteracyPage from './pages/CorporateAILiteracyPage';
 import AIReadinessSingaporePage from './pages/AIReadinessSingaporePage';
+import ComputerUsingAgentsPage from './pages/ComputerUsingAgentsPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -113,6 +114,7 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/smes-no-code-ai-automation-singapore" element={<SMEsNoCodeAIPage />} />
         <Route path="/blog/ai-literacy-corporate-learning-2026" element={<CorporateAILiteracyPage />} />
         <Route path="/blog/ai-readiness-singapore-2026-agentic-ai" element={<AIReadinessSingaporePage />} />
+        <Route path="/blog/computer-using-agents-business-professionals" element={<ComputerUsingAgentsPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />

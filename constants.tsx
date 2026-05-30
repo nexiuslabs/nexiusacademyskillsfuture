@@ -159,6 +159,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 10,
+    slug: 'computer-using-agents-business-professionals',
+    title: 'Computer-Using Agents: What Business Professionals Need to Learn Before They Automate',
+    date: '30 May 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'Computer-using agents show that workplace AI is moving from chat to execution. Learn what non-technical professionals need before supervising agentic workflows safely.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, L&D teams',
+    featured: true,
+  },
+  {
     id: 1,
     slug: 'beyond-chatgpt-ai-powered-company',
     title: 'Beyond ChatGPT: 4 Hard Truths About Building an AI-Powered Company',
