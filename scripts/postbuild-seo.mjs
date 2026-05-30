@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-04-18';
+const LASTMOD = '2026-05-30';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -706,6 +706,19 @@ const routes = [
     ogImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
     articleDate: '2026-05-21',
+  },
+  {
+    path: '/blog/computer-using-agents-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Computer-Using Agents for Business Professionals',
+    description:
+      'Learn what computer-using agents are, why they matter for non-technical teams, and the practical skills needed to supervise AI workflows safely.',
+    ogType: 'article',
+    ogImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    schemas: [],
+    articleDate: '2026-05-30',
   },
   {
     path: '/admin',
