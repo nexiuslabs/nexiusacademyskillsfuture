@@ -3,4 +3,19 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://academy.nexiuslabs.com/sitemap.xml

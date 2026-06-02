@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-05-30';
+const LASTMOD = '2026-06-02';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -33,7 +33,12 @@ const darrylPerson = {
   name: 'Darryl Wong',
   url: 'https://academy.nexiuslabs.com/about/',
   image: `${SITE_URL}/images/authors/darryl-wong-selected.jpeg`,
-  jobTitle: 'Master Sifu at Nexius Academy',
+  jobTitle: 'Master Sifu and AI Trainer at Nexius Academy',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Nexius Labs',
+    url: 'https://nexiuslabs.com',
+  },
   affiliation: {
     '@type': 'EducationalOrganization',
     name: 'Nexius Academy',
@@ -800,6 +805,7 @@ const applyHead = (html, route) => {
   output = upsertLink(output, 'rel="manifest"', '<link rel="manifest" href="/manifest.webmanifest" />');
   output = stripJsonLd(output);
 
+  const hasExplicitSchemas = route.schemas.length > 0;
   const schemas = [...route.schemas];
   const breadcrumb = breadcrumbSchema(route.path, route.title);
   if (breadcrumb) {
@@ -815,8 +821,8 @@ const applyHead = (html, route) => {
         datePublished: route.articleDate ?? LASTMOD,
       }),
     );
-  } else if (schemas.length === 0 && route.path !== '/admin') {
-    schemas.push(
+  } else if (!hasExplicitSchemas && route.path !== '/admin') {
+    schemas.unshift(
       pageSchema({
         name: route.title.replace(' | Nexius Academy', ''),
         description: route.description,
@@ -869,6 +875,21 @@ const writeRobots = () => {
     'User-agent: *',
     'Allow: /',
     'Disallow: /admin',
+    '',
+    'User-agent: GPTBot',
+    'Allow: /',
+    '',
+    'User-agent: OAI-SearchBot',
+    'Allow: /',
+    '',
+    'User-agent: ChatGPT-User',
+    'Allow: /',
+    '',
+    'User-agent: ClaudeBot',
+    'Allow: /',
+    '',
+    'User-agent: PerplexityBot',
+    'Allow: /',
     '',
     `Sitemap: ${SITE_URL}/sitemap.xml`,
     '',

@@ -111,6 +111,12 @@ const BlogPage: React.FC = () => {
         <section className="py-20 bg-neutral">
           <div className="container mx-auto px-6 lg:grid lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-8">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-primary">Latest AI Training Guides</h2>
+                <p className="mt-3 text-gray-600 max-w-2xl">
+                  Practical articles on agentic AI, no-code automation, SkillsFuture AI training, and workplace adoption for Singapore business professionals.
+                </p>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {filteredPosts.map((post) => (
                   <Link
@@ -179,6 +185,7 @@ const BlogPage: React.FC = () => {
 
             <aside className="lg:col-span-4 mt-12 lg:mt-0">
               <div className="lg:sticky lg:top-28 space-y-5">
+                <h2 className="sr-only">Popular AI Training Resources</h2>
                 <div className="bg-white rounded-2xl border border-accent/20 p-6 shadow-sm">
                   <p className="text-xs font-bold tracking-widest uppercase text-accent mb-2">Get Subsidy Estimate</p>
                   <h3 className="text-2xl font-bold text-primary mb-3">Know your net fee before you apply.</h3>

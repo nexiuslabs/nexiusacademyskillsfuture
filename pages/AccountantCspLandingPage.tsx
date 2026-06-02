@@ -232,10 +232,10 @@ const AccountantCspLandingPage: React.FC = () => {
                   TP-NC-C0021-F
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
-                  Agentic AI Foundations for Non-Technical Professionals
+                  Agentic AI for Accountants and CSP Professionals
                 </h1>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-6 max-w-3xl">
-                  While this class is applicable to a wide range of professionals, this cohort is currently focused on accountants, CSPs, and firm owners.
+                  A focused Agentic AI Foundations cohort for accountants, CSPs, and firm owners who want safer AI support for drafting, reporting, compliance, and client-service work.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold">
