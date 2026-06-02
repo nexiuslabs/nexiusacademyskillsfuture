@@ -1,11 +1,4 @@
-export type LeadSourceTag =
-  | 'home_cta'
-  | 'course_sticky'
-  | 'blog_inline'
-  | 'navbar_check_subsidy'
-  | 'course_page_cta'
-  | 'about_cta'
-  | 'unknown';
+export type LeadSourceTag = string;
 
 export interface LeadCapturePayload {
   fullName: string;
@@ -28,6 +21,14 @@ export interface LeadCapturePayload {
   pagePath: string;
   visitorId?: string;
   sessionId?: string;
+  landingPath?: string;
+  referrer?: string;
+  leadSource?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  deviceType?: 'mobile' | 'tablet' | 'desktop';
 }
 
 export const submitLeadCapture = async (payload: LeadCapturePayload) => {

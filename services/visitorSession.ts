@@ -5,6 +5,8 @@ const LANDING_REFERRER_KEY = 'nexius_landing_referrer';
 const UTM_SOURCE_KEY = 'nexius_utm_source';
 const UTM_MEDIUM_KEY = 'nexius_utm_medium';
 const UTM_CAMPAIGN_KEY = 'nexius_utm_campaign';
+const UTM_CONTENT_KEY = 'nexius_utm_content';
+const LEAD_SOURCE_KEY = 'nexius_lead_source';
 
 export type VisitorContext = {
   visitorId: string;
@@ -14,6 +16,8 @@ export type VisitorContext = {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
+  utmContent?: string;
+  leadSource?: string;
   deviceType: 'mobile' | 'tablet' | 'desktop';
 };
 
@@ -70,6 +74,8 @@ export const initializeVisitorSession = (pagePath?: string): VisitorContext | nu
   setIfMissing(UTM_SOURCE_KEY, searchParams.get('utm_source'), 'session');
   setIfMissing(UTM_MEDIUM_KEY, searchParams.get('utm_medium'), 'session');
   setIfMissing(UTM_CAMPAIGN_KEY, searchParams.get('utm_campaign'), 'session');
+  setIfMissing(UTM_CONTENT_KEY, searchParams.get('utm_content'), 'session');
+  setIfMissing(LEAD_SOURCE_KEY, searchParams.get('lead_source'), 'session');
 
   return {
     visitorId,
@@ -79,6 +85,8 @@ export const initializeVisitorSession = (pagePath?: string): VisitorContext | nu
     utmSource: getStoredValue(UTM_SOURCE_KEY, 'session'),
     utmMedium: getStoredValue(UTM_MEDIUM_KEY, 'session'),
     utmCampaign: getStoredValue(UTM_CAMPAIGN_KEY, 'session'),
+    utmContent: getStoredValue(UTM_CONTENT_KEY, 'session'),
+    leadSource: getStoredValue(LEAD_SOURCE_KEY, 'session'),
     deviceType: getDeviceType(),
   };
 };

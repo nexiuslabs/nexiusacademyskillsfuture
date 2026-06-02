@@ -330,6 +330,14 @@ const LeadCaptureModal: React.FC = () => {
         pagePath: location.pathname,
         visitorId: visitorContext?.visitorId,
         sessionId: visitorContext?.sessionId,
+        landingPath: visitorContext?.landingPath,
+        referrer: visitorContext?.referrer,
+        leadSource: visitorContext?.leadSource || sourceTag,
+        utmSource: visitorContext?.utmSource,
+        utmMedium: visitorContext?.utmMedium,
+        utmCampaign: visitorContext?.utmCampaign,
+        utmContent: visitorContext?.utmContent,
+        deviceType: visitorContext?.deviceType,
       });
 
       trackLeadFormSubmit({

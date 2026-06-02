@@ -101,6 +101,14 @@ Deno.serve(async (req) => {
         existingSession?.id
           ? undefined
           : readMetadataValue(metadata, 'utm_campaign'),
+      utm_content:
+        existingSession?.id
+          ? undefined
+          : readMetadataValue(metadata, 'utm_content'),
+      lead_source:
+        existingSession?.id
+          ? undefined
+          : readMetadataValue(metadata, 'lead_source'),
       device_type:
         existingSession?.id
           ? undefined

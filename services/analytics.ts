@@ -60,6 +60,8 @@ const emitFirstPartyEvent = (
         utm_source: visitorContext.utmSource,
         utm_medium: visitorContext.utmMedium,
         utm_campaign: visitorContext.utmCampaign,
+        utm_content: visitorContext.utmContent,
+        lead_source: visitorContext.leadSource,
         device_type: visitorContext.deviceType,
         ...payload.metadata,
       },
