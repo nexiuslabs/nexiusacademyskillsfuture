@@ -169,6 +169,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 11,
+    slug: 'always-on-agents-work-iq-business-professionals',
+    title: 'Always-On AI Agents: What Business Professionals Must Learn Before Work Gets Automated Around Them',
+    date: '08 Jun 2026',
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+    excerpt: 'Microsoft Scout and Work IQ show AI moving into always-on workplace execution. Learn the workflow, context, approval, and governance skills professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, L&D teams',
+    featured: true,
+  },
+  {
     id: 10,
     slug: 'computer-using-agents-business-professionals',
     title: 'Computer-Using Agents: What Business Professionals Need to Learn Before They Automate',

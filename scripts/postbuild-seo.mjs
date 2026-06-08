@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-06-02';
+const LASTMOD = '2026-06-08';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -724,6 +724,19 @@ const routes = [
     ogImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
     articleDate: '2026-05-30',
+  },
+  {
+    path: '/blog/always-on-agents-work-iq-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Always-On AI Agents: What Business Professionals Must Learn',
+    description:
+      'Microsoft Scout and Work IQ show AI moving into always-on workplace execution. Learn the practical skills professionals need before supervising agents.',
+    ogType: 'article',
+    ogImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+    schemas: [],
+    articleDate: '2026-06-08',
   },
   {
     path: '/admin',
