@@ -15,6 +15,8 @@ const ComputerUsingAgentsPage: React.FC = () => {
         description="Learn what computer-using agents are, why they matter for non-technical teams, and the practical skills needed to supervise AI workflows safely."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/computer-using-agents.png"
+        ogImageAlt="Computer-using AI agent operating business software with approval gates and audit trails"
       />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
@@ -29,6 +31,13 @@ const ComputerUsingAgentsPage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
+
+          <img
+            src="/images/blog/computer-using-agents.png"
+            alt="Computer-using AI agent operating business software with approval gates and audit trails"
+            className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
+            loading="eager"
+          />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">The next AI skill is not writing better prompts.</p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">It is learning how to supervise AI that can take action.</p>

@@ -15,6 +15,8 @@ const AlwaysOnAgentsWorkIQPage: React.FC = () => {
         description="Microsoft Scout and Work IQ show AI moving into always-on workplace execution. Learn the practical skills professionals need before supervising agents."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/always-on-agents-work-iq.png"
+        ogImageAlt="Always-on AI workplace agent orchestration with workflow context, approvals, and audit trail"
       />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
@@ -29,6 +31,13 @@ const AlwaysOnAgentsWorkIQPage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
+
+          <img
+            src="/images/blog/always-on-agents-work-iq.png"
+            alt="Always-on AI workplace agent orchestration with workflow context, approvals, and audit trail"
+            className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
+            loading="eager"
+          />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">The next workplace AI shift is not a better chatbot.</p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">It is AI that understands the flow of work and stays active around it.</p>
