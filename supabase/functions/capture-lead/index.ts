@@ -26,6 +26,14 @@ type LeadPayload = {
   pagePath: string;
   visitorId?: string;
   sessionId?: string;
+  landingPath?: string;
+  referrer?: string;
+  leadSource?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  deviceType?: string;
 };
 
 const escapeHtml = (value: string) =>
@@ -44,6 +52,18 @@ const isMissingSponsorshipColumnError = (message: string) =>
   message.includes('sponsor_contact_name') ||
   message.includes('sponsor_contact_email') ||
   message.includes('sponsor_status');
+
+const isMissingAttributionColumnError = (message: string) =>
+  message.includes('visitor_id') ||
+  message.includes('session_id') ||
+  message.includes('landing_path') ||
+  message.includes('entry_referrer') ||
+  message.includes('lead_source') ||
+  message.includes('utm_source') ||
+  message.includes('utm_medium') ||
+  message.includes('utm_campaign') ||
+  message.includes('utm_content') ||
+  message.includes('device_type');
 
 const sendSponsorRequestEmail = async (payload: LeadPayload) => {
   const sendGridApiKey = Deno.env.get('SENDGRID_API_KEY');
@@ -207,13 +227,32 @@ Deno.serve(async (req) => {
       intent: payload.intent,
       source_tag: payload.sourceTag,
       page_path: payload.pagePath,
+      visitor_id: payload.visitorId || null,
+      session_id: payload.sessionId || null,
+      landing_path: payload.landingPath || payload.pagePath,
+      entry_referrer: payload.referrer || null,
+      lead_source: payload.leadSource || payload.sourceTag,
+      utm_source: payload.utmSource || null,
+      utm_medium: payload.utmMedium || null,
+      utm_campaign: payload.utmCampaign || null,
+      utm_content: payload.utmContent || null,
+      device_type: payload.deviceType || null,
       payer_type: payload.payerType,
       sponsor_contact_name: payload.sponsorContactName || null,
       sponsor_contact_email: payload.sponsorContactEmail || null,
       sponsor_status: payload.sponsorStatus,
     };
 
-    let { error } = await supabase.from('lead_captures').insert(insertPayload);
+    let { data: insertedLead, error } = await supabase.from('lead_captures').insert(insertPayload).select('id').single();
+
+    if (error && isMissingAttributionColumnError(error.message || '')) {
+      const { visitor_id, session_id, landing_path, entry_referrer, lead_source, utm_source, utm_medium, utm_campaign, utm_content, device_type, ...payloadWithoutAttribution } = insertPayload;
+      ({ data: insertedLead, error } = await supabase
+        .from('lead_captures')
+        .insert(payloadWithoutAttribution)
+        .select('id')
+        .single());
+    }
 
     if (error && isMissingSponsorshipColumnError(error.message || '')) {
       const legacyPayload = {
@@ -233,11 +272,18 @@ Deno.serve(async (req) => {
         page_path: payload.pagePath,
       };
 
-      ({ error } = await supabase.from('lead_captures').insert(legacyPayload));
+      ({ data: insertedLead, error } = await supabase.from('lead_captures').insert(legacyPayload).select('id').single());
     }
 
     if (error) {
       throw new Error(error.message || 'Lead capture insert failed');
+    }
+
+    if (insertedLead?.id && payload.visitorId && payload.sessionId) {
+      await Promise.all([
+        supabase.from('visitor_sessions').update({ lead_capture_id: insertedLead.id }).eq('session_id', payload.sessionId),
+        supabase.from('visitor_profiles').update({ lead_capture_id: insertedLead.id }).eq('visitor_id', payload.visitorId),
+      ]);
     }
 
     if (payload.intent === 'reserve_seat' && payload.payerType === 'company_sponsored') {

@@ -5,15 +5,19 @@ const LANDING_REFERRER_KEY = 'nexius_landing_referrer';
 const UTM_SOURCE_KEY = 'nexius_utm_source';
 const UTM_MEDIUM_KEY = 'nexius_utm_medium';
 const UTM_CAMPAIGN_KEY = 'nexius_utm_campaign';
+const UTM_CONTENT_KEY = 'nexius_utm_content';
+const LEAD_SOURCE_KEY = 'nexius_lead_source';
 
 export type VisitorContext = {
   visitorId: string;
   sessionId: string;
   landingPath: string;
   referrer?: string;
+  leadSource?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
+  utmContent?: string;
   deviceType: 'mobile' | 'tablet' | 'desktop';
 };
 
@@ -67,18 +71,22 @@ export const initializeVisitorSession = (pagePath?: string): VisitorContext | nu
 
   setIfMissing(LANDING_PATH_KEY, currentPath, 'session');
   setIfMissing(LANDING_REFERRER_KEY, document.referrer || undefined, 'session');
+  setIfMissing(LEAD_SOURCE_KEY, searchParams.get('lead_source'), 'session');
   setIfMissing(UTM_SOURCE_KEY, searchParams.get('utm_source'), 'session');
   setIfMissing(UTM_MEDIUM_KEY, searchParams.get('utm_medium'), 'session');
   setIfMissing(UTM_CAMPAIGN_KEY, searchParams.get('utm_campaign'), 'session');
+  setIfMissing(UTM_CONTENT_KEY, searchParams.get('utm_content'), 'session');
 
   return {
     visitorId,
     sessionId,
     landingPath: getStoredValue(LANDING_PATH_KEY, 'session') || currentPath,
     referrer: getStoredValue(LANDING_REFERRER_KEY, 'session'),
+    leadSource: getStoredValue(LEAD_SOURCE_KEY, 'session'),
     utmSource: getStoredValue(UTM_SOURCE_KEY, 'session'),
     utmMedium: getStoredValue(UTM_MEDIUM_KEY, 'session'),
     utmCampaign: getStoredValue(UTM_CAMPAIGN_KEY, 'session'),
+    utmContent: getStoredValue(UTM_CONTENT_KEY, 'session'),
     deviceType: getDeviceType(),
   };
 };
