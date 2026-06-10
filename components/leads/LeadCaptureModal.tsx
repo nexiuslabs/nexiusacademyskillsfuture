@@ -43,6 +43,35 @@ declare global {
 
 type CohortOption = { label: string; code: string };
 type LeadIntent = LeadCapturePayload['intent'];
+type CampaignLeadAction = 'join-next-cohort' | 'workflow-checklist' | 'download-ai-readiness-report';
+
+const CAMPAIGN_LEAD_ACTION_INTENTS: Record<CampaignLeadAction, LeadIntent> = {
+  'join-next-cohort': 'reserve_seat',
+  'workflow-checklist': 'download_checklist',
+  'download-ai-readiness-report': 'download_checklist',
+};
+
+const CHECKLIST_DOWNLOAD_DEFAULTS: Pick<
+  LeadCapturePayload,
+  'role' | 'companyName' | 'departmentOrDesignation' | 'leadFlow' | 'ageBand' | 'preferredIntake' | 'cohortCode' | 'courseSlug' | 'intent' | 'payerType' | 'sponsorContactName' | 'sponsorContactEmail' | 'sponsorStatus'
+> = {
+  role: 'Readiness report download lead',
+  companyName: '',
+  departmentOrDesignation: '',
+  leadFlow: 'checklist_download',
+  ageBand: 'below_40',
+  preferredIntake: 'AI readiness report download',
+  cohortCode: 'ai-readiness-report-download',
+  courseSlug: 'agentic-ai',
+  intent: 'download_checklist',
+  payerType: 'self',
+  sponsorContactName: '',
+  sponsorContactEmail: '',
+  sponsorStatus: 'not_applicable',
+};
+
+const resolveCampaignLeadIntent = (lead: string): LeadIntent =>
+  CAMPAIGN_LEAD_ACTION_INTENTS[lead as CampaignLeadAction] || 'subsidy_fit';
 
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [
@@ -204,12 +233,7 @@ const LeadCaptureModal: React.FC = () => {
     const source = (search.get('lead_source') as LeadSourceTag | null) || 'unknown';
 
     if (lead) {
-      const nextIntent: LeadIntent =
-        lead === 'join-next-cohort'
-          ? 'reserve_seat'
-          : lead === 'workflow-checklist'
-            ? 'download_checklist'
-            : 'subsidy_fit';
+      const nextIntent = resolveCampaignLeadIntent(lead);
 
       setSourceTag(source);
       setOpenMethod('query_auto_open');
@@ -315,21 +339,23 @@ const LeadCaptureModal: React.FC = () => {
       await submitLeadCapture({
         ...formState,
         phone: isChecklistFlow ? '' : formState.phone,
-        role: isChecklistFlow ? 'Checklist download lead' : formState.role,
-        companyName: isChecklistFlow
-          ? ''
-          : formState.companyName || (formState.intent === 'reserve_seat' ? 'Self-sponsored learner' : ''),
-        departmentOrDesignation: isChecklistFlow ? '' : formState.departmentOrDesignation || formState.role,
-        leadFlow: isChecklistFlow ? 'subsidy_fit' : formState.leadFlow,
-        ageBand: isChecklistFlow ? 'below_40' : formState.ageBand,
-        preferredIntake: isChecklistFlow ? 'Checklist download' : formState.preferredIntake,
-        cohortCode: isChecklistFlow ? 'checklist-download' : formState.cohortCode,
-        courseSlug: isChecklistFlow ? 'agentic-ai' : formState.courseSlug,
-        intent: isChecklistFlow ? 'subsidy_fit' : formState.intent,
-        payerType: isChecklistFlow ? 'self' : formState.payerType,
-        sponsorContactName: isChecklistFlow ? '' : formState.sponsorContactName,
-        sponsorContactEmail: isChecklistFlow ? '' : formState.sponsorContactEmail,
-        sponsorStatus: isChecklistFlow ? 'not_applicable' : formState.sponsorStatus,
+        ...(isChecklistFlow
+          ? CHECKLIST_DOWNLOAD_DEFAULTS
+          : {
+              role: formState.role,
+              companyName: formState.companyName || (formState.intent === 'reserve_seat' ? 'Self-sponsored learner' : ''),
+              departmentOrDesignation: formState.departmentOrDesignation || formState.role,
+              leadFlow: formState.leadFlow,
+              ageBand: formState.ageBand,
+              preferredIntake: formState.preferredIntake,
+              cohortCode: formState.cohortCode,
+              courseSlug: formState.courseSlug,
+              intent: formState.intent,
+              payerType: formState.payerType,
+              sponsorContactName: formState.sponsorContactName,
+              sponsorContactEmail: formState.sponsorContactEmail,
+              sponsorStatus: formState.sponsorStatus,
+            }),
         sourceTag,
         pagePath: location.pathname,
         visitorId: visitorContext?.visitorId,
