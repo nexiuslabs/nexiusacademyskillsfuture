@@ -14,8 +14,8 @@ declare global {
 type CtaType = 'workflow_checklist' | 'subsidy_check' | 'join_next_cohort';
 
 const AUTHOR_NAME = 'Melverick Ng';
-const ARTICLE_LAST_MODIFIED_ISO = '2026-05-25';
-const ARTICLE_LAST_MODIFIED_DISPLAY = '25 May 2026';
+const ARTICLE_LAST_MODIFIED_ISO = '2026-06-15';
+const ARTICLE_LAST_MODIFIED_DISPLAY = '15 Jun 2026';
 
 const CTA_CONTENT: Record<CtaType, { title: string; description: string; cta: string; href: string }> = {
   workflow_checklist: {

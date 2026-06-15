@@ -14,6 +14,7 @@ import CorporateAILiteracyPage from './pages/CorporateAILiteracyPage';
 import AIReadinessSingaporePage from './pages/AIReadinessSingaporePage';
 import ComputerUsingAgentsPage from './pages/ComputerUsingAgentsPage';
 import AlwaysOnAgentsWorkIQPage from './pages/AlwaysOnAgentsWorkIQPage';
+import DashboardAgentsSkillsPage from './pages/DashboardAgentsSkillsPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -117,6 +118,7 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/ai-readiness-singapore-2026-agentic-ai" element={<AIReadinessSingaporePage />} />
         <Route path="/blog/computer-using-agents-business-professionals" element={<ComputerUsingAgentsPage />} />
         <Route path="/blog/always-on-agents-work-iq-business-professionals" element={<AlwaysOnAgentsWorkIQPage />} />
+        <Route path="/blog/dashboard-agents-business-professionals" element={<DashboardAgentsSkillsPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />

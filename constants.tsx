@@ -169,6 +169,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 12,
+    slug: 'dashboard-agents-business-professionals',
+    title: 'Dashboard Agents: What Business Professionals Must Learn Before AI Starts Explaining the Numbers',
+    date: '15 Jun 2026',
+    views: 0,
+    image: '/images/blog/dashboard-agents-decision-workflows.png',
+    excerpt: "Google Cloud's Looker agents show analytics moving from static dashboards to AI-assisted decision workflows. Learn the metric, exception, approval, and governance skills professionals need next.",
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, finance teams, L&D teams',
+    featured: true,
+  },
+  {
     id: 11,
     slug: 'always-on-agents-work-iq-business-professionals',
     title: 'Always-On AI Agents: What Business Professionals Must Learn Before Work Gets Automated Around Them',

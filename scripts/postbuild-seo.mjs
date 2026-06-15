@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-06-08';
+const LASTMOD = '2026-06-15';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -737,6 +737,20 @@ const routes = [
     ogImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
     schemas: [],
     articleDate: '2026-06-08',
+  },
+  {
+    path: '/blog/dashboard-agents-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Dashboard Agents: What Business Professionals Must Learn',
+    description:
+      "Google Cloud's Looker agents show analytics moving from static dashboards to AI-assisted decision workflows. Learn the practical skills professionals need next.",
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/dashboard-agents-decision-workflows.png',
+    ogImageAlt: 'Dashboard agents turning business metrics into governed decision workflows',
+    schemas: [],
+    articleDate: '2026-06-15',
   },
   {
     path: '/admin',
