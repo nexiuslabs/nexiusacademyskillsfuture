@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
-import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
+import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
 import ResponsiveImage from '../ResponsiveImage';
 
 const SHOW_TEMASEK_POLY_LOGO = false;
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Primary path</div>
-                <div className="font-semibold text-primary text-sm">Apply Now</div>
+                <div className="font-semibold text-primary text-sm">Register interest for the next cohort</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Need help first?</div>
@@ -83,14 +83,14 @@ const Hero: React.FC = () => {
               <button
                 type="button"
                 onClick={() =>
-                  openApplyNowModal('course_page_cta', {
+                  openRegisterInterestModal('course_page_cta', {
                     page: '/courses/agentic-ai',
-                    position: 'course_hero_secondary_apply_now',
+                    position: 'course_hero_secondary_register_interest',
                   })
                 }
                 className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
               >
-                Apply Now
+                Register Interest
               </button>
             </div>
 

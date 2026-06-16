@@ -56,3 +56,17 @@ export const openApplyNowModal = (
     redirectUrl: APPLY_NOW_BOOKING_URL,
     skipPayerStep: true,
   });
+
+export const openRegisterInterestModal = (
+  sourceTag: LeadSourceTag,
+  ctaMeta?: {
+    page?: string;
+    position?: string;
+    ctaLabel?: string;
+  }
+) =>
+  openLeadModal(sourceTag, 'reserve_seat', {
+    page: ctaMeta?.page,
+    position: ctaMeta?.position,
+    ctaLabel: ctaMeta?.ctaLabel || 'register_interest_next_cohort',
+  });
