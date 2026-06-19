@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SCHEDULES } from '../../constants';
 import { MapPin, Clock, Users } from 'lucide-react';
-import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
+import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
@@ -62,7 +62,7 @@ const Schedule: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
-                      {isFull ? 'Join waitlist to secure next intake' : 'Apply early to lock your seat'}
+                      {isFull ? 'Join waitlist to secure next intake' : 'Register interest early to lock your seat'}
                     </div>
                   </div>
                 </div>
@@ -86,14 +86,14 @@ const Schedule: React.FC = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        openApplyNowModal('course_page_cta', {
+                        openRegisterInterestModal('course_page_cta', {
                           page: '/courses/agentic-ai',
-                          position: 'schedule_apply_button',
+                          position: 'schedule_register_interest_button',
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Apply Now
+                      Register Interest
                     </button>
                   )}
                 </div>

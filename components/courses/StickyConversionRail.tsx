@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
+import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
 import { trackOutboundClick } from '../../services/analytics';
 
 const StickyConversionRail: React.FC = () => {
@@ -54,14 +54,14 @@ const StickyConversionRail: React.FC = () => {
             <button
               type="button"
               onClick={() =>
-                openApplyNowModal('course_sticky', {
+                openRegisterInterestModal('course_sticky', {
                   page: '/courses/agentic-ai',
-                  position: 'course_sticky_desktop_apply_now',
+                  position: 'course_sticky_desktop_register_interest',
                 })
               }
               className="block text-center w-full border border-primary text-primary px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-primary hover:text-white"
             >
-              Apply Now
+              Register Interest
             </button>
           </div>
         </aside>
@@ -100,14 +100,14 @@ const StickyConversionRail: React.FC = () => {
           <button
             type="button"
             onClick={() =>
-              openApplyNowModal('course_sticky', {
+              openRegisterInterestModal('course_sticky', {
                 page: '/courses/agentic-ai',
-                position: 'course_sticky_mobile_apply_now',
+                position: 'course_sticky_mobile_register_interest',
               })
             }
             className="border border-primary text-primary py-2 rounded-md text-xs font-bold text-center"
           >
-            Apply Now
+            Register
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Check, CreditCard, Receipt, Wallet } from 'lucide-react';
-import { APPLY_NOW_BOOKING_URL, openLeadModal } from '../../services/leadModal';
+import { openLeadModal } from '../../services/leadModal';
 
 type PricingProps = {
   pagePath?: string;
@@ -101,10 +101,10 @@ const formatCurrency = (amount: number) => `S$${amount.toFixed(2)}`;
 
 const Pricing: React.FC<PricingProps> = ({
   pagePath = '/courses/agentic-ai',
-  reserveLabel = 'apply_now',
-  reserveButtonText = 'Apply Now',
-  reserveRedirectUrl = APPLY_NOW_BOOKING_URL,
-  reserveSkipPayerStep = true,
+  reserveLabel = 'register_interest_next_cohort',
+  reserveButtonText = 'Register Interest',
+  reserveRedirectUrl,
+  reserveSkipPayerStep = false,
   sectionClassName = 'py-20 bg-white',
   variant = 'public',
 }) => {
