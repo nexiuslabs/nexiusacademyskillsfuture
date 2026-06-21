@@ -399,7 +399,7 @@ const routes = [
     includeInSitemap: true,
     title: 'Course Preview: Agentic AI Foundations | Nexius Academy',
     description:
-      'Join the 17 June 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 2pm to 5pm.',
+      'Join the 11 July 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 10am to 1pm.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
@@ -415,8 +415,8 @@ const routes = [
           '@type': 'CourseInstance',
           courseMode: 'In-person',
           courseWorkload: 'PT3H',
-          startDate: '2026-06-17T14:00:00+08:00',
-          endDate: '2026-06-17T17:00:00+08:00',
+          startDate: '2026-07-11T10:00:00+08:00',
+          endDate: '2026-07-11T13:00:00+08:00',
           location: {
             '@type': 'Place',
             name: 'Devan Nair Institute for Employment and Employability',

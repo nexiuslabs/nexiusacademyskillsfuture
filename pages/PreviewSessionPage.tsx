@@ -45,10 +45,10 @@ const partnerConfigs: Record<
     bodyClass: 'course-preview-page',
     schedules: [
       {
-        date: '17 June 2026',
-        time: 'Wednesday, 2:00pm to 5:00pm',
-        cohortCode: 'course-preview-2026-06-17',
-        cohortLabel: '17 Jun 2026 course preview (2pm-5pm)',
+        date: '11 July 2026',
+        time: 'Saturday, 10:00am to 1:00pm',
+        cohortCode: 'course-preview-2026-07-11',
+        cohortLabel: '11 Jul 2026 course preview (10am-1pm)',
       },
     ],
     partnerName: 'e2i',
@@ -159,7 +159,7 @@ const sessionFlow = [
 ];
 
 const COURSE_PREVIEW_REGISTER_URL =
-  'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals';
+  'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals-workshop-2';
 
 const trainers = [
   {
@@ -206,7 +206,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
     <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
         title={isDarkPreview ? 'Course Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
-        description={isDarkPreview ? 'Join the 17 June 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 2pm to 5pm.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
+        description={isDarkPreview ? 'Join the 11 July 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 10am to 1pm.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -366,15 +366,15 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         <div className="text-2xl" aria-hidden="true">🗓️</div>
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Date</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">17 June 2026</div>
-                          <div className="mt-1 text-base font-semibold text-white/45">Wednesday</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">11 July 2026</div>
+                          <div className="mt-1 text-base font-semibold text-white/45">Saturday</div>
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:px-8">
                         <div className="text-2xl" aria-hidden="true">⏱️</div>
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Time</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">2:00pm - 5:00pm</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">10:00am - 1:00pm</div>
                           <div className="mt-1 text-base font-semibold text-white/45">SGT (UTC+8)</div>
                         </div>
                       </div>
@@ -483,7 +483,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
         <section id="session-flow" className="bg-neutral py-20 md:py-28">
           <div className="container-page">
             <div className="mb-12 max-w-3xl">
-              <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">4-hour workshop flow</div>
+              <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">3-hour workshop flow</div>
               <h2 className="text-balance text-3xl font-bold leading-tight text-primary sm:text-4xl">
                 Guided demonstrations, short hands-on activities, and practical workplace examples
               </h2>
