@@ -753,6 +753,20 @@ const routes = [
     articleDate: '2026-06-15',
   },
   {
+    path: '/blog/ai-connectors-mcp-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Connectors and MCP: What Business Professionals Must Learn',
+    description:
+      'AI connectors, MCP, and work graph APIs are moving AI from chat into company systems. Learn the workflow, context, approval, testing, and governance skills professionals need next.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/ai-connectors-mcp-business-professionals.png',
+    ogImageAlt: 'Business professionals learning to design governed AI connector workflows',
+    schemas: [],
+    articleDate: '2026-06-22',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

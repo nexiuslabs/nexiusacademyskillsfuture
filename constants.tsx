@@ -169,6 +169,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 13,
+    slug: 'ai-connectors-mcp-business-professionals',
+    title: 'AI Connectors and MCP: What Business Professionals Must Learn Before Agents Touch Company Data',
+    date: '22 Jun 2026',
+    views: 0,
+    image: '/images/blog/ai-connectors-mcp-business-professionals.png',
+    excerpt: 'AI connectors, MCP, and work graph APIs are moving AI from chat into company systems. Learn the workflow, context, approval, testing, and governance skills professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, L&D teams',
+    featured: true,
+  },
+  {
     id: 12,
     slug: 'dashboard-agents-business-professionals',
     title: 'Dashboard Agents: What Business Professionals Must Learn Before AI Starts Explaining the Numbers',
