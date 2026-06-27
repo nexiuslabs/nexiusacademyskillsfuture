@@ -27,7 +27,7 @@ import { trackOutboundClick } from '../services/analytics';
 
 const ACCOUNTANTS_PAGE_PATH = '/courses/agentic-ai-accountants';
 const ACCOUNTANTS_SESSION = {
-  dates: '26 Jun 2026 & 03 Jul 2026',
+  dates: 'TBD',
   time: '9:00am - 6:00pm',
   venueName: 'ISCA House',
   venueAddress: '60 Cecil Street, Singapore 049709',
