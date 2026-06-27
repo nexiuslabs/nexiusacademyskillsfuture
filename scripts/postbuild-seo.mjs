@@ -350,8 +350,8 @@ const routes = [
           '@type': 'CourseInstance',
           courseMode: 'In-person',
           courseWorkload: 'PT16H',
-          startDate: '2026-06-26',
-          endDate: '2026-07-03',
+          startDate: '2026-08-14',
+          endDate: '2026-08-21',
           location: {
             '@type': 'Place',
             name: 'Nexius Academy',

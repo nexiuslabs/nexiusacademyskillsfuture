@@ -37,26 +37,6 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '26 Jun 2026 & 03 Jul 2026',
-    time: '9:00am - 6:00pm',
-    format: 'In-Person',
-    venue: 'ISCA House, 60 Cecil Street, Singapore 049709',
-    slotsLeft: 4,
-    month: 'Jun 2026',
-    registrationCloses: 'TBC',
-  },
-  {
-    type: 'Weekday',
-    dates: '26 Jun 2026 & 03 Jul 2026',
-    time: '9:00am - 6:00pm',
-    format: 'In-Person',
-    venue: 'ISCA House, 60 Cecil Street, Singapore 049709',
-    slotsLeft: 4,
-    month: 'Jul 2026',
-    registrationCloses: 'TBC',
-  },
-  {
-    type: 'Weekday',
     dates: '14 Aug 2026 & 21 Aug 2026',
     time: '9:00am - 6:00pm',
     format: 'In-Person',
