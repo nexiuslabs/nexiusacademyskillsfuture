@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-06-15';
+const LASTMOD = '2026-06-29';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -765,6 +765,20 @@ const routes = [
     ogImageAlt: 'Business professionals learning to design governed AI connector workflows',
     schemas: [],
     articleDate: '2026-06-22',
+  },
+  {
+    path: '/blog/agent-handoffs-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agent Handoffs: What Business Professionals Must Learn',
+    description:
+      'Agent-to-agent protocols show AI moving from isolated assistants to coordinated digital coworkers. Learn the workflow mapping, context, approval, testing, and governance skills professionals need next.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-handoffs-business-professionals.png',
+    ogImageAlt: 'Business professionals mapping governed AI agent handoffs and approval gates',
+    schemas: [],
+    articleDate: '2026-06-29',
   },
   {
     path: '/admin',

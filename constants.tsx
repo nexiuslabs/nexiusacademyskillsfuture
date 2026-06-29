@@ -149,6 +149,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 14,
+    slug: 'agent-handoffs-business-professionals',
+    title: 'Agent Handoffs: What Business Professionals Must Learn Before AI Coworkers Start Passing Work to Each Other',
+    date: '29 Jun 2026',
+    views: 0,
+    image: '/images/blog/agent-handoffs-business-professionals.png',
+    excerpt: 'Agent-to-agent protocols show AI moving from isolated assistants to coordinated digital coworkers. Learn the workflow mapping, context, approval, testing, and governance skills professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, L&D teams',
+    featured: true,
+  },
+  {
     id: 13,
     slug: 'ai-connectors-mcp-business-professionals',
     title: 'AI Connectors and MCP: What Business Professionals Must Learn Before Agents Touch Company Data',

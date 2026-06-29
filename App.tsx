@@ -16,6 +16,7 @@ import ComputerUsingAgentsPage from './pages/ComputerUsingAgentsPage';
 import AlwaysOnAgentsWorkIQPage from './pages/AlwaysOnAgentsWorkIQPage';
 import DashboardAgentsSkillsPage from './pages/DashboardAgentsSkillsPage';
 import AIConnectorsMCPBusinessPage from './pages/AIConnectorsMCPBusinessPage';
+import AgentHandoffsBusinessPage from './pages/AgentHandoffsBusinessPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -121,6 +122,7 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/always-on-agents-work-iq-business-professionals" element={<AlwaysOnAgentsWorkIQPage />} />
         <Route path="/blog/dashboard-agents-business-professionals" element={<DashboardAgentsSkillsPage />} />
         <Route path="/blog/ai-connectors-mcp-business-professionals" element={<AIConnectorsMCPBusinessPage />} />
+        <Route path="/blog/agent-handoffs-business-professionals" element={<AgentHandoffsBusinessPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />
