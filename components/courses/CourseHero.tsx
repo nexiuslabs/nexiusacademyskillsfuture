@@ -23,8 +23,8 @@ const Hero: React.FC = () => {
             </h1>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
-              <div className="flex items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
-                <CalendarDays size={16} className="text-accent mt-0.5" />
+              <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
+                <CalendarDays size={16} className="text-accent mt-0.5 shrink-0" />
                 <div>
                   <div className="font-semibold text-primary mb-1">Next Cohort</div>
                   <div className="text-gray-600">14 Aug &amp; 21 Aug 2026</div>
@@ -33,17 +33,17 @@ const Hero: React.FC = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <Presentation size={16} className="text-accent" />
-                Format: In-Person
+              <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
+                <Presentation size={16} className="text-accent mt-0.5 shrink-0" />
+                <div className="font-medium leading-6 text-gray-700">Format: In-Person</div>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <Clock3 size={16} className="text-accent" />
-                Duration: 16 Hours
+              <div className="flex min-h-[64px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
+                <Clock3 size={16} className="text-accent mt-0.5 shrink-0" />
+                <div className="font-medium leading-6 text-gray-700">Duration: 16 Hours</div>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <Wallet size={16} className="text-accent" />
-                Net Fee: from S$113.03*
+              <div className="flex min-h-[64px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
+                <Wallet size={16} className="text-accent mt-0.5 shrink-0" />
+                <div className="font-medium leading-6 text-gray-700">Net Fee: from S$113.03*</div>
               </div>
             </div>
 
