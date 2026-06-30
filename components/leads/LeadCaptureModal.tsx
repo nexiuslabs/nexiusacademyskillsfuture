@@ -168,8 +168,10 @@ const LeadCaptureModal: React.FC = () => {
     formState.fullName.trim() &&
     formState.email.trim() &&
     formState.phone.trim() &&
-    formState.role.trim() &&
     formState.cohortCode.trim();
+
+  const optionalPositionValue = formState.role.trim() || formState.departmentOrDesignation.trim() || 'Not provided';
+  const optionalCompanyValue = formState.companyName.trim() || 'Company not provided';
 
   const triggerDownload = (url: string) => {
     const anchor = document.createElement('a');
@@ -341,9 +343,9 @@ const LeadCaptureModal: React.FC = () => {
         ...(isChecklistFlow
           ? CHECKLIST_DOWNLOAD_DEFAULTS
           : {
-              role: formState.role,
-              companyName: formState.companyName || (formState.intent === 'reserve_seat' ? 'Self-sponsored learner' : ''),
-              departmentOrDesignation: formState.departmentOrDesignation || formState.role,
+              role: optionalPositionValue,
+              companyName: formState.intent === 'reserve_seat' ? optionalCompanyValue : formState.companyName,
+              departmentOrDesignation: formState.departmentOrDesignation.trim() || optionalPositionValue,
               leadFlow: formState.leadFlow,
               ageBand: formState.ageBand,
               preferredIntake: formState.preferredIntake,
@@ -548,7 +550,6 @@ const LeadCaptureModal: React.FC = () => {
                         onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                       />
                       <input
-                        required
                         placeholder="Your role or designation"
                         className="rounded-lg border px-4 py-3"
                         value={formState.role}
@@ -684,7 +685,6 @@ const LeadCaptureModal: React.FC = () => {
 
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                           <input
-                            required
                             placeholder="Company name"
                             className="rounded-lg border px-4 py-3"
                             value={formState.companyName}
@@ -753,7 +753,6 @@ const LeadCaptureModal: React.FC = () => {
                     onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
                   <input
-                    required
                     placeholder="Company name"
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
@@ -761,7 +760,6 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                   />
                   <input
-                    required
                     placeholder="Department or designation"
                     className="rounded-lg border px-4 py-3"
                     value={formState.departmentOrDesignation}
@@ -838,7 +836,6 @@ const LeadCaptureModal: React.FC = () => {
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                   <input
-                    required
                     placeholder="Company name"
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
@@ -846,7 +843,6 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                   />
                   <input
-                    required
                     placeholder="Role"
                     className="rounded-lg border px-4 py-3"
                     value={formState.role}
@@ -854,7 +850,6 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                   />
                   <input
-                    required
                     placeholder="Department or designation"
                     className="rounded-lg border px-4 py-3"
                     value={formState.departmentOrDesignation}
@@ -927,7 +922,6 @@ const LeadCaptureModal: React.FC = () => {
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                   <input
-                    required
                     placeholder="Role"
                     className="rounded-lg border px-4 py-3"
                     value={formState.role}
