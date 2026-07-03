@@ -276,6 +276,29 @@ const frontierFaqs = [
   },
 ];
 
+const tpAlignedAgenticAIFaqs = [
+  {
+    question: 'Who should attend the TP-aligned Agentic AI course?',
+    answer:
+      'The official TP audience is SME Owners and Founders, Business Managers and C-Suite Executives, and Entrepreneurs and Intrapreneurs.',
+  },
+  {
+    question: 'What does the course teach?',
+    answer:
+      'The course teaches business leaders how to restructure an organization into an Agentic Company using the Frontier Firm concept, a 3-phase roadmap, multi-department agent orchestration, the Agent Boss paradigm, hybrid workforce management, governance, security, and transformation roadmapping.',
+  },
+  {
+    question: 'What are the official TP/STMS fee amounts?',
+    answer:
+      'Official TP/STMS payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
+  },
+  {
+    question: 'Will participants receive a certificate?',
+    answer:
+      'Participants who meet at least 75% of the required course attendance and attempt the assessment will be awarded the Certificate of Completion.',
+  },
+];
+
 const routes = [
   {
     path: '/',
@@ -577,6 +600,52 @@ const routes = [
         instructors: [melverickPerson, darrylPerson],
       }),
       faqSchema(frontierFaqs),
+    ],
+  },
+  {
+    path: '/courses/tp-agentic-ai-driven-business-innovation',
+    priority: '0.6',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'TP-Aligned Agentic AI Course Summary | Nexius Academy',
+    description:
+      'A TP-aligned summary for Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm, covering overview, audience, outcomes, certification, fees, and official application links.',
+    ogType: 'course',
+    ogImage: HOME_IMAGE,
+    schemas: [
+      courseSchema({
+        name: 'Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm',
+        description:
+          'A TP-aligned course summary for an executive Agentic AI programme on the Frontier Firm concept, Agentic Company transformation, multi-department agent orchestration, Agent Boss operating models, governance, security, and transformation roadmapping.',
+        url: `${SITE_URL}/courses/tp-agentic-ai-driven-business-innovation`,
+        image: HOME_IMAGE,
+        audienceType: 'SME Owners and Founders, Business Managers and C-Suite Executives, Entrepreneurs and Intrapreneurs',
+        instructors: [melverickPerson, darrylPerson],
+        offers: {
+          '@type': 'Offer',
+          url: 'https://stms.polite.edu.sg/student/ihlcourse/detail/63b27e4c-e2ec-47f3-baeb-caff5fbaa641',
+          priceCurrency: 'SGD',
+          price: '1635.00',
+          availability: 'https://schema.org/InStock',
+        },
+        courseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'In-person',
+          courseWorkload: 'P3D',
+          location: {
+            '@type': 'Place',
+            name: 'Temasek Polytechnic',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '21 Tampines Ave 1',
+              addressLocality: 'Singapore',
+              postalCode: '529757',
+              addressCountry: 'SG',
+            },
+          },
+        },
+      }),
+      faqSchema(tpAlignedAgenticAIFaqs),
     ],
   },
   {
