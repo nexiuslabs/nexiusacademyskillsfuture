@@ -54,7 +54,7 @@ const courseFitRows = [
   {
     learner: 'Advanced Agentic AI learners',
     need: 'Understand Frontier Firm strategy, governance, and human-agent operating models',
-    page: '/courses/frontier-firm-agent-boss/',
+    page: '/courses/advanced-agentic-ai/',
     anchor: 'Advanced Agentic AI course on Frontier Firm and Agent Boss concepts',
   },
 ];

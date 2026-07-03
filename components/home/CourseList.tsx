@@ -42,7 +42,7 @@ const AVAILABLE_COURSES: Course[] = [
     image: '/images/courses/frontier-firm-card.jpg',
     author: 'Darryl Wong',
     authorImage: '/images/authors/darryl-wong-selected.jpeg',
-    path: '/courses/frontier-firm-agent-boss',
+    path: '/courses/advanced-agentic-ai',
   }
 ];
 
