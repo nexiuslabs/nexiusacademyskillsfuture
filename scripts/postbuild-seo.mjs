@@ -547,7 +547,7 @@ const routes = [
     ],
   },
   {
-    path: '/courses/frontier-firm-agent-boss',
+    path: '/courses/advanced-agentic-ai',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -561,7 +561,7 @@ const routes = [
         name: 'Agentic AI-Driven Innovation for Productivity',
         description:
           'An advanced Agentic AI programme on Frontier Firm strategy, cross-functional orchestration, Agent Boss operating models, and AI governance.',
-        url: `${SITE_URL}/courses/frontier-firm-agent-boss`,
+        url: `${SITE_URL}/courses/advanced-agentic-ai`,
         image: HOME_IMAGE,
         audienceType: 'Professionals, builders, managers, business owners, educators, consultants, and advanced AI learners',
         instructors: [melverickPerson, darrylPerson],

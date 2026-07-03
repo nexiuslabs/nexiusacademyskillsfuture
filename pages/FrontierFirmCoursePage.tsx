@@ -111,7 +111,7 @@ const FrontierFirmCoursePage: React.FC = () => {
       <SEO
         title="Agentic AI-Driven Innovation | Nexius Academy"
         description="An advanced Agentic AI course for learners who want to understand Frontier Firm strategy, agent orchestration, AI governance, and practical implementation."
-        canonical="/courses/frontier-firm-agent-boss"
+        canonical="/courses/advanced-agentic-ai"
         ogType="course"
       />
 
@@ -136,7 +136,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               type="button"
               onClick={() =>
                 openLeadModal('course_page_cta', 'reserve_seat', {
-                  page: '/courses/frontier-firm-agent-boss',
+                  page: '/courses/advanced-agentic-ai',
                   position: 'frontier_firm_nav_register_interest',
                   ctaLabel: 'register_interest',
                 })
@@ -184,7 +184,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/frontier-firm-agent-boss',
+                        page: '/courses/advanced-agentic-ai',
                         position: 'frontier_firm_hero_register_interest',
                         ctaLabel: 'register_interest',
                       })
@@ -197,7 +197,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/courses/frontier-firm-agent-boss',
+                        page: '/courses/advanced-agentic-ai',
                         position: 'frontier_firm_hero_advisory',
                         ctaLabel: 'request_advisory_call',
                       })
@@ -539,7 +539,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                 type="button"
                 onClick={() =>
                   openLeadModal('course_page_cta', 'reserve_seat', {
-                    page: '/courses/frontier-firm-agent-boss',
+                    page: '/courses/advanced-agentic-ai',
                     position: 'frontier_firm_pricing_register_interest',
                     ctaLabel: 'register_interest',
                   })
@@ -567,7 +567,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'reserve_seat', {
-                      page: '/courses/frontier-firm-agent-boss',
+                      page: '/courses/advanced-agentic-ai',
                       position: 'frontier_firm_midpage_register_interest',
                       ctaLabel: 'register_interest',
                     })
@@ -580,7 +580,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'advisory_call', {
-                      page: '/courses/frontier-firm-agent-boss',
+                      page: '/courses/advanced-agentic-ai',
                       position: 'frontier_firm_midpage_advisory',
                       ctaLabel: 'request_advisory_call',
                     })

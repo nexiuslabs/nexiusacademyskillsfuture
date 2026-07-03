@@ -32,6 +32,19 @@
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=3600"
 
+# Course slug redirects
+[[redirects]]
+  from = "/courses/frontier-firm-agent-boss/*"
+  to = "/courses/advanced-agentic-ai/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/frontier-firm-agent-boss"
+  to = "/courses/advanced-agentic-ai"
+  status = 301
+  force = true
+
 # Static assets passthrough
 [[redirects]]
   from = "/robots.txt"

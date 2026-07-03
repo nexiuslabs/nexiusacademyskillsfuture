@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CoursePage from './pages/CoursePage';
 import BlogPage from './pages/BlogPage';
@@ -106,7 +106,8 @@ export const AppShell: React.FC = () => {
         <Route path="/e2i-preview" element={<PreviewSessionPage partner="e2i" />} />
         <Route path="/sim-preview" element={<PreviewSessionPage partner="sim" />} />
         <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />
-        <Route path="/courses/frontier-firm-agent-boss" element={<FrontierFirmCoursePage />} />
+        <Route path="/courses/advanced-agentic-ai" element={<FrontierFirmCoursePage />} />
+        <Route path="/courses/frontier-firm-agent-boss" element={<Navigate to="/courses/advanced-agentic-ai" replace />} />
         <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/beyond-chatgpt-ai-powered-company" element={<BlogPostPage />} />
