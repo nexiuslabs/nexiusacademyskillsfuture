@@ -285,6 +285,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                 'Participants learn to define practical transformation phases, clarify human accountability, set controls for data and security, and design an action plan for Agentic AI adoption. The intended outcome is a more coordinated, governed, and scalable approach to AI-enabled productivity.',
             },
           ]}
+          citationsPlacement="left"
           citations={[
             {
               label: 'Singapore National AI Strategy update',
