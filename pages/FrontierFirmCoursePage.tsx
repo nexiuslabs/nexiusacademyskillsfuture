@@ -10,43 +10,43 @@ import ResponsiveImage from '../components/ResponsiveImage';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 
 const learningObjectives = [
-  'Drive organisational transformation using the Frontier Firm concept and a structured 3-phase roadmap toward an Agentic Company.',
-  'Design multi-department agent orchestration across functions such as HR, Finance, Operations, and Customer Support.',
-  'Adopt the Agent Boss mindset shift, where human employees supervise and direct teams of AI assistants.',
-  'Lead and manage hybrid human-agent teams at scale with clear roles, accountability, and performance expectations.',
-  'Establish enterprise-grade governance, compliance, data, and security controls for safe company-wide AI deployment.',
-  'Develop an executable Digital Innovation Transformation Roadmap that can support enterprise-level transformation planning and grant applications.',
+  'Understand advanced Agentic AI concepts using the Frontier Firm model and a structured 3-phase roadmap toward an Agentic Company.',
+  'Map multi-agent orchestration across functions such as HR, Finance, Operations, Customer Support, and personal productivity workflows.',
+  'Adopt the Agent Boss mindset, where humans supervise, direct, and improve teams of AI assistants for higher-value work.',
+  'Design hybrid human-agent workflows with clear roles, accountability, handoffs, and performance expectations.',
+  'Apply practical governance, compliance, data, and security controls for safe and responsible Agentic AI use.',
+  'Develop an executable Agentic AI action roadmap that can support personal upskilling, team adoption, or enterprise-level transformation planning.',
 ];
 
 const transformationModules = [
   {
-    title: 'Frontier Firm Strategy',
-    description: 'Understand how the Frontier Firm concept changes enterprise structure, decision-making, and operating models.',
+    title: 'Frontier Firm Foundations',
+    description: 'Understand how the Frontier Firm concept changes work design, decision-making, and operating models.',
     icon: Building2,
   },
   {
     title: 'Transformation Roadmapping',
-    description: 'Build a phased roadmap that moves the organisation from isolated AI pilots to coordinated enterprise execution.',
+    description: 'Build a phased roadmap that moves from isolated AI use cases to coordinated agentic execution.',
     icon: GitBranch,
   },
   {
     title: 'Cross-Functional Agent Orchestration',
-    description: 'Design collaboration models across departments where agentic systems operate with clear ownership and workflow boundaries.',
+    description: 'Design collaboration models where people and agentic systems operate with clear ownership and workflow boundaries.',
     icon: Layers,
   },
   {
-    title: 'Agent Boss Leadership Model',
-    description: 'Define how human leaders supervise, direct, and govern AI agents and teams of human Agent Bosses.',
+    title: 'Agent Boss Operating Model',
+    description: 'Define how humans supervise, direct, evaluate, and govern AI agents in real work.',
     icon: Users,
   },
   {
     title: 'Governance, Risk, and Security',
-    description: 'Put the right controls in place for enterprise-wide deployment, accountability, and safe scale-up.',
+    description: 'Put the right controls in place for responsible use, accountability, and safe scale-up.',
     icon: Lock,
   },
   {
     title: 'Implementation Action Planning',
-    description: 'Translate strategy into a practical enterprise action plan for adoption, sequencing, and operating discipline.',
+    description: 'Translate advanced Agentic AI concepts into a practical action plan for adoption, sequencing, and operating discipline.',
     icon: ClipboardList,
   },
 ];
@@ -89,15 +89,15 @@ const frontierAcceptedPayments = ['SkillsFuture Credits (where applicable)', 'Cr
 const faqs = [
   {
     question: 'Who should attend this course?',
-    answer: 'This programme is intended for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.',
+    answer: 'This programme is suitable for anyone who wants to learn advanced Agentic AI knowledge, including professionals, builders, managers, business owners, educators, consultants, and transformation teams.',
   },
   {
     question: 'What is the main outcome of the programme?',
-    answer: 'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable enterprise execution through Frontier Firm and Agent Boss frameworks.',
+    answer: 'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable agentic workflows through Frontier Firm and Agent Boss frameworks.',
   },
   {
     question: 'Is this a technical builder programme?',
-    answer: 'No. The emphasis is on enterprise leadership, operating model redesign, governance, and practical implementation planning rather than coding.',
+    answer: 'No. The emphasis is on advanced Agentic AI concepts, workflow design, governance, orchestration, and practical implementation planning rather than coding.',
   },
   {
     question: 'What is the course duration and fee?',
@@ -110,7 +110,7 @@ const FrontierFirmCoursePage: React.FC = () => {
     <>
       <SEO
         title="Agentic AI-Driven Innovation | Nexius Academy"
-        description="A leadership course for managers and owners designing agentic enterprise transformation, orchestration, and AI governance."
+        description="An advanced Agentic AI course for learners who want to understand Frontier Firm strategy, agent orchestration, AI governance, and practical implementation."
         canonical="/courses/frontier-firm-agent-boss"
         ogType="course"
       />
@@ -177,7 +177,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                   Strategies for the Frontier Firm
                 </p>
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
-                  A practical leadership course for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.
+                  A practical advanced Agentic AI course for anyone who wants to understand Frontier Firm strategy, agent orchestration, governance, and how human-agent work will operate in the future.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-10">
                   <button
@@ -210,11 +210,11 @@ const FrontierFirmCoursePage: React.FC = () => {
                 <div className="grid sm:grid-cols-3 gap-4 text-sm">
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Designed for</div>
-                    <div className="text-blue-50/85">Business leaders & owners</div>
+                    <div className="text-blue-50/85">Advanced AI learners</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Focus</div>
-                    <div className="text-blue-50/85">Agentic enterprise transformation</div>
+                    <div className="text-blue-50/85">Agentic AI orchestration</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Duration</div>
@@ -231,26 +231,26 @@ const FrontierFirmCoursePage: React.FC = () => {
             <div className="grid gap-8 rounded-3xl border border-gray-100 bg-neutral p-8 shadow-sm lg:grid-cols-[0.9fr,1.1fr] lg:items-center">
               <div>
                 <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Course Focus</div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">Lead agentic enterprise transformation</h2>
+                <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">Master advanced Agentic AI transformation</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Build the strategic, operating model, and governance capabilities needed to move from scattered AI pilots to coordinated enterprise execution.
+                  Build the strategy, operating model, orchestration, and governance knowledge needed to move from scattered AI use cases to coordinated agentic execution.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="rounded-2xl bg-white p-5 shadow-sm">
                   <CheckCircle size={20} className="text-accent mb-3" />
                   <h3 className="font-bold text-primary mb-2">Transformation Roadmap</h3>
-                  <p className="text-sm text-gray-600">Define the phases required to shift toward an agentic operating model.</p>
+                  <p className="text-sm text-gray-600">Define the phases required to shift toward agentic ways of working.</p>
                 </div>
                 <div className="rounded-2xl bg-white p-5 shadow-sm">
                   <CheckCircle size={20} className="text-accent mb-3" />
                   <h3 className="font-bold text-primary mb-2">Agent Boss Model</h3>
-                  <p className="text-sm text-gray-600">Clarify human accountability in hybrid human-agent teams.</p>
+                  <p className="text-sm text-gray-600">Clarify human accountability in hybrid human-agent workflows.</p>
                 </div>
                 <div className="rounded-2xl bg-white p-5 shadow-sm">
                   <CheckCircle size={20} className="text-accent mb-3" />
                   <h3 className="font-bold text-primary mb-2">Enterprise Governance</h3>
-                  <p className="text-sm text-gray-600">Set controls for risk, security, supervision, and scalable deployment.</p>
+                  <p className="text-sm text-gray-600">Set controls for risk, security, supervision, and responsible scale-up.</p>
                 </div>
               </div>
             </div>
@@ -259,23 +259,23 @@ const FrontierFirmCoursePage: React.FC = () => {
 
         <AIAnswerBlocks
           className="py-16 bg-neutral"
-          title="Agentic AI leadership course summary"
-          summary="This section gives AI search systems a short description of the leadership audience, transformation outcome, and governance context for this course."
+          title="Advanced Agentic AI course summary"
+          summary="This section gives AI search systems a short description of the broader learner audience, advanced Agentic AI outcome, and governance context for this course."
           blocks={[
             {
               question: 'What is Agentic AI-Driven Business Innovation for Productivity?',
               answer:
-                'Agentic AI-Driven Business Innovation for Productivity is a leadership course for managers, business owners, and transformation sponsors who need to move from isolated AI experiments to coordinated enterprise execution. It covers Frontier Firm strategy, Agent Boss leadership, cross-functional agent orchestration, governance, risk, and implementation roadmapping.',
+                'Agentic AI-Driven Business Innovation for Productivity is an advanced Agentic AI course for learners who want to move from basic AI tool use to coordinated agentic workflows. It covers Frontier Firm strategy, Agent Boss operating models, cross-functional agent orchestration, governance, risk, and implementation roadmapping.',
             },
             {
-              question: 'Who should attend this leadership course?',
+              question: 'Who should attend this advanced Agentic AI course?',
               answer:
-                'The course is intended for leaders responsible for enterprise strategy, operating model redesign, team productivity, digital transformation, and AI governance. It is not a coding programme; it focuses on how leaders structure, supervise, and scale human-agent work across business functions.',
+                'The course is suitable for professionals, builders, managers, educators, consultants, business owners, and curious learners who want advanced Agentic AI knowledge. It is not a coding programme; it focuses on how people structure, supervise, and scale human-agent work across real workflows.',
             },
             {
               question: 'What business outcome does the course support?',
               answer:
-                'Participants learn to define practical transformation phases, clarify human accountability, set controls for data and security, and design an action plan for enterprise AI adoption. The intended outcome is a more coordinated, governed, and scalable approach to AI-enabled productivity.',
+                'Participants learn to define practical transformation phases, clarify human accountability, set controls for data and security, and design an action plan for Agentic AI adoption. The intended outcome is a more coordinated, governed, and scalable approach to AI-enabled productivity.',
             },
           ]}
           citations={[
@@ -308,25 +308,25 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                   <p>
-                    This programme is intended for business managers, organisational leaders, and business owners who are responsible for enterprise strategy, transformation, and operational performance.
+                    This programme is suitable for anyone who wants to learn advanced Agentic AI knowledge, including professionals, builders, managers, business owners, educators, consultants, and transformation teams.
                   </p>
                   <p>
-                    The programme provides a structured framework for transforming organisations into agentic enterprises through the Frontier Firm concept. It equips participants with the capability to design and lead organisation-wide transformation, including cross-functional agent orchestration, leadership operating model redesign, and enterprise governance for large-scale deployment.
+                    The programme provides a structured framework for understanding and applying Agentic AI through the Frontier Firm concept. It equips participants with the capability to design advanced human-agent workflows, cross-functional agent orchestration, operating model redesign, and governance for responsible scale-up.
                   </p>
                   <p>
-                    A key feature of the programme is the introduction of the Agent Boss concept, where human employees are developed to supervise, direct, and govern agentic AI systems across functions. The programme adopts a practical and implementation-oriented approach to enable participants to transition from isolated AI use cases to coordinated, secure, and scalable enterprise execution.
+                    A key feature of the programme is the introduction of the Agent Boss concept, where people learn to supervise, direct, and govern agentic AI systems across functions. The programme adopts a practical and implementation-oriented approach to help participants transition from isolated AI use cases to coordinated, secure, and scalable agentic execution.
                   </p>
                 </div>
               </div>
               <div className="lg:col-span-5">
                 <div className="bg-neutral rounded-2xl p-8 border border-gray-100">
-                  <h3 className="text-2xl font-bold text-primary mb-6">Ideal for</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">Suitable for</h3>
                   <div className="space-y-5">
                     {[
-                      { icon: Briefcase, title: 'Business Managers', desc: 'Responsible for transformation, performance, and implementation outcomes.' },
-                      { icon: Building2, title: 'Organisational Leaders', desc: 'Driving operating model redesign and enterprise coordination.' },
-                      { icon: Users, title: 'Business Owners', desc: 'Leading strategic adoption, governance, and scale-up decisions.' },
-                      { icon: ShieldCheck, title: 'Transformation Sponsors', desc: 'Balancing innovation, security, accountability, and execution discipline.' },
+                      { icon: Briefcase, title: 'Professionals & Managers', desc: 'Wanting to understand advanced Agentic AI workflows and productivity models.' },
+                      { icon: Building2, title: 'Builders & Consultants', desc: 'Designing agentic systems, operating models, and adoption roadmaps.' },
+                      { icon: Users, title: 'Business Owners & Teams', desc: 'Exploring practical AI adoption, governance, and scale-up decisions.' },
+                      { icon: ShieldCheck, title: 'Educators & Curious Learners', desc: 'Building deeper fluency in Frontier Firm, Agent Boss, and AI governance concepts.' },
                     ].map((item, index) => (
                       <div key={index} className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
@@ -351,7 +351,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="lg:col-span-5">
                 <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-6">What participants will learn</h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  This programme is designed to help leaders move beyond experimentation and define how an agentic enterprise can be structured, governed, and implemented across functions.
+                  This programme is designed to help learners move beyond basic AI experimentation and define how agentic workflows can be structured, governed, and implemented across functions.
                 </p>
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                   <h3 className="text-xl font-bold text-primary mb-4">Learning objectives</h3>
@@ -388,7 +388,7 @@ const FrontierFirmCoursePage: React.FC = () => {
             <div className="text-center mb-14">
               <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fees &amp; Funding</h2>
               <p className="text-gray-600 mb-2">
-                This is a <span className="font-bold text-primary">3-day leadership course</span> with a full course fee of{' '}
+                This is a <span className="font-bold text-primary">3-day advanced Agentic AI course</span> with a full course fee of{' '}
                 <span className="font-bold text-primary">S$1,500</span>.
               </p>
               <p className="text-xs text-gray-400 font-mono">
@@ -558,9 +558,9 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm font-semibold mb-6">
                 <Users size={16} className="text-accent" /> Agent Boss Programme
               </div>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Planning enterprise-wide AI transformation?</h2>
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Ready to learn advanced Agentic AI?</h2>
               <p className="text-blue-50/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-                Register interest if you want programme details, intake timing, or an advisory conversation on whether this course fits your leadership team.
+                Register interest if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button
@@ -601,7 +601,7 @@ const FrontierFirmCoursePage: React.FC = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-heading font-bold text-primary mb-4">Programme FAQs</h2>
-              <p className="text-gray-500">A few quick answers for leaders evaluating this course.</p>
+              <p className="text-gray-500">A few quick answers for learners evaluating this course.</p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
