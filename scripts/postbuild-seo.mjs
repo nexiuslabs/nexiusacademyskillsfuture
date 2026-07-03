@@ -257,12 +257,12 @@ const frontierFaqs = [
   {
     question: 'Who should attend this course?',
     answer:
-      'This programme is intended for business managers, organisational leaders, and business owners responsible for enterprise strategy, transformation, and operational performance.',
+      'This programme is suitable for anyone who wants to learn advanced Agentic AI knowledge, including professionals, builders, managers, business owners, educators, consultants, and transformation teams.',
   },
   {
     question: 'What is the main outcome of the programme?',
     answer:
-      'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable enterprise execution through Frontier Firm and Agent Boss frameworks.',
+      'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable agentic workflows through Frontier Firm and Agent Boss frameworks.',
   },
 ];
 
@@ -553,17 +553,17 @@ const routes = [
     includeInSitemap: true,
     title: 'Agentic AI-Driven Innovation | Nexius Academy',
     description:
-      'A leadership course for managers and owners designing agentic enterprise transformation, orchestration, and AI governance.',
+      'An advanced Agentic AI course for learners who want to understand Frontier Firm strategy, agent orchestration, AI governance, and practical implementation.',
     ogType: 'course',
     ogImage: HOME_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI-Driven Innovation for Productivity',
         description:
-          'A leadership programme on agentic enterprise transformation, cross-functional orchestration, Agent Boss models, and AI governance.',
+          'An advanced Agentic AI programme on Frontier Firm strategy, cross-functional orchestration, Agent Boss operating models, and AI governance.',
         url: `${SITE_URL}/courses/frontier-firm-agent-boss`,
         image: HOME_IMAGE,
-        audienceType: 'Business leaders, transformation sponsors, and firm owners',
+        audienceType: 'Professionals, builders, managers, business owners, educators, consultants, and advanced AI learners',
         instructors: [melverickPerson, darrylPerson],
       }),
       faqSchema(frontierFaqs),
