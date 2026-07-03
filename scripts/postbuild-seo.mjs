@@ -264,6 +264,16 @@ const frontierFaqs = [
     answer:
       'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable agentic workflows through Frontier Firm and Agent Boss frameworks.',
   },
+  {
+    question: 'What is the course duration and fee?',
+    answer:
+      'The course runs over 3 days. The official TP/STMS payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
+  },
+  {
+    question: 'Will participants receive a certificate?',
+    answer:
+      'Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.',
+  },
 ];
 
 const routes = [

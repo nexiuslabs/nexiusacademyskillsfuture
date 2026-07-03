@@ -53,35 +53,38 @@ const transformationModules = [
 
 const pricingPlans = [
   {
-    title: 'Singapore Citizen 40+',
-    fee: 'S$150',
-    gst: 'S$94.50',
-    total: 'S$244.50',
-    note: 'Enhanced subsidy pathway for Singapore Citizens aged 40 and above.',
+    title: 'Singapore Citizen 40+ / eligible SME-sponsored',
+    total: 'S$190.50',
+    detail: 'Official payable amount incl. 9% GST',
+    note: 'For Singapore Citizens aged 40 and above and eligible SME-sponsored learner categories.',
     highlight: true,
   },
   {
-    title: 'Below 40',
-    fee: 'S$450',
-    gst: 'S$94.50',
-    total: 'S$544.50',
-    note: 'Subsidised payable fee for eligible learners below 40 years old.',
+    title: 'Singapore Citizen below 40 / PR / LTVP+',
+    total: 'S$490.50',
+    detail: 'Official payable amount incl. 9% GST',
+    note: 'For Singapore Citizens aged 39 and below, Singapore Permanent Residents, and LTVP+ learners.',
     highlight: false,
   },
   {
     title: 'Full Course Fee',
-    fee: 'S$1,500',
-    gst: 'TBC',
-    total: 'S$1,500',
-    note: 'Published course fee before applicable funding and final registration confirmation.',
+    total: 'S$1,635.00',
+    detail: 'Full fee incl. 9% GST',
+    note: 'Published full course fee before applicable SkillsFuture or sponsorship funding.',
     highlight: false,
   },
 ];
 
 const frontierFeeRows = [
-  { label: 'Full course fee', value: 'S$1,500' },
-  { label: 'Singapore Citizen aged 40 & above', value: 'S$244.50' },
-  { label: 'Below 40', value: 'S$544.50' },
+  { label: 'Full course fee', value: 'S$1,635.00' },
+  { label: 'Singaporean aged 40 & above', value: 'S$190.50' },
+  { label: 'SME-sponsored LTVP+', value: 'S$190.50' },
+  { label: 'SME-sponsored Singaporean aged 39 & below', value: 'S$190.50' },
+  { label: 'SME-sponsored Singaporean aged 40 & above', value: 'S$190.50' },
+  { label: 'SME-sponsored Singapore Permanent Resident', value: 'S$190.50' },
+  { label: 'Long Term Visit Pass+ (LTVP+)', value: 'S$490.50' },
+  { label: 'Singaporean aged 39 & below', value: 'S$490.50' },
+  { label: 'Singapore Permanent Resident', value: 'S$490.50' },
 ];
 
 const frontierAcceptedPayments = ['SkillsFuture Credits (where applicable)', 'Credit card', 'Debit card', 'PayNow'];
@@ -101,7 +104,11 @@ const faqs = [
   },
   {
     question: 'What is the course duration and fee?',
-    answer: 'The course runs over 3 days. The full course fee is S$1,500. Singapore Citizens aged 40 and above pay S$150 plus S$94.50 GST, while learners below 40 pay S$450 plus S$94.50 GST, subject to final eligibility confirmation.',
+    answer: 'The course runs over 3 days. The official TP/STMS payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
+  },
+  {
+    question: 'Will participants receive a certificate?',
+    answer: 'Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.',
   },
 ];
 
@@ -389,7 +396,11 @@ const FrontierFirmCoursePage: React.FC = () => {
               <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fees &amp; Funding</h2>
               <p className="text-gray-600 mb-2">
                 This is a <span className="font-bold text-primary">3-day advanced Agentic AI course</span> with a full course fee of{' '}
-                <span className="font-bold text-primary">S$1,500</span>.
+                <span className="font-bold text-primary">S$1,635.00 incl. GST</span>.
+              </p>
+              <p className="mx-auto mb-3 flex max-w-3xl items-center justify-center gap-2 text-sm font-semibold text-primary">
+                <CheckCircle size={16} className="text-accent" />
+                Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.
               </p>
               <p className="text-xs text-gray-400 font-mono">
                 Agentic AI-Driven Business Innovation for Productivity · Course Ref: TGS-2026063558
@@ -399,7 +410,7 @@ const FrontierFirmCoursePage: React.FC = () => {
             <div className="grid gap-6 md:grid-cols-3 mb-10">
               {pricingPlans.map((plan) => (
                 <div key={plan.title} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-                  <div className={`h-2 ${plan.highlight ? 'bg-primary' : plan.title === 'Below 40' ? 'bg-accent' : 'bg-slate-400'}`} />
+                  <div className={`h-2 ${plan.highlight ? 'bg-primary' : plan.title.startsWith('Singapore Citizen below') ? 'bg-accent' : 'bg-slate-400'}`} />
                   <div className="p-7">
                     <div className="text-4xl font-heading font-extrabold text-primary mb-3">{plan.total}</div>
                     <h3 className="text-lg font-bold text-primary mb-2">{plan.title}</h3>
@@ -413,7 +424,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="rounded-3xl border border-gray-200 bg-neutral p-7">
                 <h3 className="text-2xl font-bold text-primary mb-2">Fee Breakdown</h3>
                 <p className="text-sm text-gray-600 mb-6">
-                  The GST amount is shown separately based on the figures provided for this new course.
+                  Amounts below match the official TP/STMS payable amounts and are inclusive of 9% GST.
                 </p>
 
                 <div className="space-y-4">
@@ -422,7 +433,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <h4 className="font-bold text-primary">{plan.title}</h4>
-                          <p className="mt-1 text-sm text-gray-500">{plan.fee} course fee + {plan.gst} GST</p>
+                          <p className="mt-1 text-sm text-gray-500">{plan.detail}</p>
                         </div>
                         <div className="text-right">
                           <div className="text-xs font-bold uppercase tracking-wide text-gray-400">Total</div>
@@ -435,26 +446,26 @@ const FrontierFirmCoursePage: React.FC = () => {
               </div>
 
               <div className="rounded-3xl border border-primary/10 bg-white p-7 shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-2">Estimated Payable</p>
-                <div className="text-5xl font-heading font-extrabold text-primary mb-3">S$244.50</div>
-                <h3 className="text-xl font-bold text-primary mb-2">Singapore Citizen 40+</h3>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-2">Lowest Published Payable</p>
+                <div className="text-5xl font-heading font-extrabold text-primary mb-3">S$190.50</div>
+                <h3 className="text-xl font-bold text-primary mb-2">Singapore Citizen 40+ / eligible SME-sponsored</h3>
                 <p className="text-sm text-gray-600 mb-5">
-                  Enhanced pathway estimate for Singapore Citizens aged 40 and above, subject to eligibility confirmation.
+                  Official TP/STMS payable amount inclusive of 9% GST, subject to final learner eligibility and registration confirmation.
                 </p>
 
                 <div className="space-y-3 rounded-2xl border border-gray-100 bg-neutral p-5">
                   <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-gray-600">Course fee payable</span>
-                    <span className="font-semibold text-primary">S$150.00</span>
+                    <span className="text-gray-600">Course fee payable incl. GST</span>
+                    <span className="font-semibold text-primary">S$190.50</span>
                   </div>
                   <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-gray-600">GST</span>
-                    <span className="font-semibold text-primary">S$94.50</span>
+                    <span className="text-gray-600">Full course fee incl. GST</span>
+                    <span className="font-semibold text-primary">S$1,635.00</span>
                   </div>
                   <div className="h-px bg-gray-200" />
                   <div className="flex items-end justify-between gap-4">
-                    <span className="text-base font-bold text-primary">Course Fee Payable</span>
-                    <span className="text-2xl font-heading font-extrabold text-primary">S$244.50</span>
+                    <span className="text-base font-bold text-primary">Lowest Payable</span>
+                    <span className="text-2xl font-heading font-extrabold text-primary">S$190.50</span>
                   </div>
                 </div>
               </div>
@@ -519,11 +530,11 @@ const FrontierFirmCoursePage: React.FC = () => {
                   <ul className="space-y-3 text-sm text-gray-600">
                     <li className="flex items-start gap-2">
                       <CheckCircle size={14} className="mt-1 text-accent" />
-                      <span>Final payable amount is subject to learner eligibility, funding approval, and registration confirmation.</span>
+                      <span>Amounts are inclusive of 9% GST and subject to final eligibility, funding approval, and registration confirmation.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle size={14} className="mt-1 text-accent" />
-                      <span>GST is shown separately using the S$94.50 amount provided for this course.</span>
+                      <span>Official payable amounts are S$190.50, S$490.50, or S$1,635.00 depending on learner category and sponsorship pathway.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle size={14} className="mt-1 text-accent" />
