@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Building2, CheckCircle, ClipboardList, CreditCard, ExternalLink, GitBranch, Layers, Lock, MapPin, Receipt, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, Award, Building2, CheckCircle, ClipboardList, CreditCard, GitBranch, Layers, Lock, Receipt, ShieldCheck, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
@@ -62,12 +62,12 @@ const feeRows = [
 
 const paymentMethods = ['SkillsFuture Credits, where applicable', 'Credit card', 'Debit card', 'PayNow'];
 
-const TPAlignedAgenticAICoursePage: React.FC = () => (
+const AgenticAIBusinessInnovationPage: React.FC = () => (
   <>
     <SEO
-      title="TP-Aligned Agentic AI Course Summary | Nexius Academy"
-      description="A TP-aligned summary page for Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm, including overview, audience, outcomes, certification, fees, and official application links."
-      canonical="/courses/tp-agentic-ai-driven-business-innovation"
+      title="Agentic AI Business Innovation Course | Nexius Academy"
+      description="Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm, including overview, audience, outcomes, certification, fees, and application guidance."
+      canonical="/courses/agentic-ai-business-innovation"
       ogType="course"
     />
 
@@ -88,12 +88,10 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
             <a href="#contact" className="hover:text-accent">Contact</a>
           </nav>
           <a
-            href={stmsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-blue-900"
           >
-            Apply <ExternalLink size={16} />
+            Enquire <ArrowRight size={16} />
           </a>
         </div>
       </header>
@@ -104,30 +102,28 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
               <ShieldCheck size={16} className="text-accent" />
-              TP/STMS aligned course information · TGS-2026063558
+              Course information · TGS-2026063558
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-accent">SkillsFuture Series</p>
             <h1 className="mb-6 font-heading text-4xl font-extrabold leading-tight lg:text-6xl">
               Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm
             </h1>
             <p className="mb-8 max-w-3xl text-lg leading-relaxed text-blue-50/90 lg:text-xl">
-              This page is a TP-aligned course summary for learners reviewing the official course overview, target audience, learning outcomes, certification requirement, fees, and registration path.
+              This page summarises the course overview, target audience, learning outcomes, certification requirement, fees, and enquiry path for learners evaluating advanced Agentic AI training.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href={stmsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-xl transition-colors hover:bg-teal-500"
               >
-                Apply / Register Interest <ExternalLink size={18} />
+                Register Interest <ArrowRight size={18} />
               </a>
               <button
                 type="button"
                 onClick={() =>
                   openLeadModal('course_page_cta', 'advisory_call', {
-                    page: '/courses/tp-agentic-ai-driven-business-innovation',
-                    position: 'tp_aligned_course_advisory',
+                    page: '/courses/agentic-ai-business-innovation',
+                    position: 'agentic_ai_business_innovation_advisory',
                     ctaLabel: 'ask_nexius_about_course',
                   })
                 }
@@ -142,8 +138,8 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
 
       <AIAnswerBlocks
         className="bg-neutral py-16"
-        title="TP-aligned Agentic AI course summary"
-        summary="This AI-readable section summarises the official TP course positioning, intended leadership audience, Frontier Firm transformation outcome, and official source links."
+        title="Advanced Agentic AI course summary"
+        summary="This AI-readable section summarises the course positioning, intended learner audience, Frontier Firm transformation outcome, and official source links."
         citationsPlacement="left"
         blocks={[
           {
@@ -152,9 +148,9 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
               'It is an executive course that addresses the productivity paradox and teaches business leaders how to restructure an organisation into an Agentic Company using the Frontier Firm concept and a proprietary 3-phase roadmap for company-wide transformation.',
           },
           {
-            question: 'Who should attend this TP-aligned course?',
+            question: 'Who should attend this advanced Agentic AI course?',
             answer:
-              'The official TP audience is SME Owners and Founders, Business Managers and C-Suite Executives, and Entrepreneurs and Intrapreneurs.',
+              'The course is suitable for SME owners and founders, business managers and C-suite executives, entrepreneurs, intrapreneurs, and professionals who want advanced Agentic AI knowledge for organisation-wide productivity.',
           },
           {
             question: 'What outcome does the course support?',
@@ -174,7 +170,7 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
             <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
               <div className="lg:col-span-7">
                 <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Overview</p>
-                <h2 className="mb-6 font-heading text-3xl font-bold text-primary lg:text-4xl">Official TP course positioning</h2>
+                <h2 className="mb-6 font-heading text-3xl font-bold text-primary lg:text-4xl">Course positioning</h2>
                 <div className="prose prose-lg max-w-none text-gray-700">
                   <p>
                     Many firms suffer from the “Productivity Paradox,” in which they invest more in technology but earn less per employee. While basic AI courses teach learners how to use tools for daily tasks, this executive course flips the script.
@@ -216,7 +212,7 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 max-w-3xl">
               <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Who Should Attend</p>
-              <h2 className="font-heading text-3xl font-bold text-primary lg:text-4xl">Official target audience</h2>
+              <h2 className="font-heading text-3xl font-bold text-primary lg:text-4xl">Who should attend</h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {attendItems.map((item) => (
@@ -255,18 +251,23 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
             <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
               <div className="lg:col-span-5">
                 <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Fee / Schedule / Apply</p>
-                <h2 className="mb-5 font-heading text-3xl font-bold text-primary lg:text-4xl">Official TP/STMS payable amounts</h2>
+                <h2 className="mb-5 font-heading text-3xl font-bold text-primary lg:text-4xl">Course fee amounts</h2>
                 <p className="mb-6 text-gray-600">
-                  The published STMS fee amounts below are inclusive of 9% GST and subject to final funding eligibility and registration confirmation.
+                  The fee amounts below are inclusive of 9% GST and subject to final funding eligibility and registration confirmation.
                 </p>
-                <a
-                  href={stmsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() =>
+                    openLeadModal('course_fee_section', 'advisory_call', {
+                      page: '/courses/agentic-ai-business-innovation',
+                      position: 'fee_schedule_enquiry',
+                      ctaLabel: 'ask_about_fees_and_schedule',
+                    })
+                  }
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
                 >
-                  View fee / schedule / apply on STMS <ExternalLink size={18} />
-                </a>
+                  Ask about fees and schedule <ArrowRight size={18} />
+                </button>
               </div>
               <div className="lg:col-span-7">
                 <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm">
@@ -288,7 +289,7 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
                   <div className="rounded-2xl bg-white p-5 shadow-sm">
                     <Receipt size={22} className="mb-3 text-accent" />
                     <h3 className="mb-3 font-bold text-primary">Refund note</h3>
-                    <p className="text-sm leading-relaxed text-gray-700">Refer to the official TP/STMS application page for the latest refund policy, schedule, and registration details.</p>
+                    <p className="text-sm leading-relaxed text-gray-700">Confirm the latest refund policy, schedule, and registration details during application or enquiry.</p>
                   </div>
                 </div>
               </div>
@@ -301,23 +302,26 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
             <div className="rounded-3xl bg-primary p-8 text-white lg:p-10">
               <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                 <div className="lg:col-span-8">
-                  <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Contact</p>
-                  <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Temasek SkillsFuture Academy (TSA)</h2>
-                  <div className="flex items-start gap-3 text-blue-50/90">
-                    <MapPin size={20} className="mt-1 shrink-0 text-accent" />
-                    <p>
-                      Temasek Polytechnic, East Wing, Block 1A, Level 3, Unit 109<br />
-                      21 Tampines Ave 1, Singapore 529757
-                    </p>
-                  </div>
+                  <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Enquiry</p>
+                  <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Ask Nexius Academy about this course</h2>
+                  <p className="max-w-2xl text-blue-50/90">
+                    Share your learner profile, company sponsorship context, and preferred training timeline so the team can guide you on next steps.
+                  </p>
                 </div>
                 <div className="flex flex-col gap-3 lg:col-span-4">
-                  <a href={tpCourseUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-primary transition-colors hover:bg-blue-50">
-                    View official TP page <ExternalLink size={18} />
-                  </a>
-                  <a href={stmsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-bold text-white transition-colors hover:bg-teal-500">
-                    Apply / Register Interest <ExternalLink size={18} />
-                  </a>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLeadModal('course_contact_section', 'advisory_call', {
+                        page: '/courses/agentic-ai-business-innovation',
+                        position: 'course_enquiry',
+                        ctaLabel: 'ask_nexius_about_course',
+                      })
+                    }
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-bold text-white transition-colors hover:bg-teal-500"
+                  >
+                    Register Interest <ArrowRight size={18} />
+                  </button>
                 </div>
               </div>
             </div>
@@ -330,4 +334,4 @@ const TPAlignedAgenticAICoursePage: React.FC = () => (
   </>
 );
 
-export default TPAlignedAgenticAICoursePage;
+export default AgenticAIBusinessInnovationPage;

@@ -276,11 +276,11 @@ const frontierFaqs = [
   },
 ];
 
-const tpAlignedAgenticAIFaqs = [
+const agenticBusinessInnovationFaqs = [
   {
-    question: 'Who should attend the TP-aligned Agentic AI course?',
+    question: 'Who should attend this advanced Agentic AI course?',
     answer:
-      'The official TP audience is SME Owners and Founders, Business Managers and C-Suite Executives, and Entrepreneurs and Intrapreneurs.',
+      'The course is suitable for SME owners and founders, business managers and C-suite executives, entrepreneurs, intrapreneurs, and professionals who want advanced Agentic AI knowledge for organisation-wide productivity.',
   },
   {
     question: 'What does the course teach?',
@@ -288,9 +288,9 @@ const tpAlignedAgenticAIFaqs = [
       'The course teaches business leaders how to restructure an organization into an Agentic Company using the Frontier Firm concept, a 3-phase roadmap, multi-department agent orchestration, the Agent Boss paradigm, hybrid workforce management, governance, security, and transformation roadmapping.',
   },
   {
-    question: 'What are the official TP/STMS fee amounts?',
+    question: 'What are the course fee amounts?',
     answer:
-      'Official TP/STMS payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
+      'The published payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
   },
   {
     question: 'Will participants receive a certificate?',
@@ -603,27 +603,26 @@ const routes = [
     ],
   },
   {
-    path: '/courses/tp-agentic-ai-driven-business-innovation',
+    path: '/courses/agentic-ai-business-innovation',
     priority: '0.6',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'TP-Aligned Agentic AI Course Summary | Nexius Academy',
+    title: 'Agentic AI Business Innovation Course | Nexius Academy',
     description:
-      'A TP-aligned summary for Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm, covering overview, audience, outcomes, certification, fees, and official application links.',
+      'Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm, covering overview, audience, outcomes, certification, fees, and application guidance.',
     ogType: 'course',
     ogImage: HOME_IMAGE,
     schemas: [
       courseSchema({
         name: 'Agentic AI-Driven Business Innovation for Productivity: Strategies for the Frontier Firm',
         description:
-          'A TP-aligned course summary for an executive Agentic AI programme on the Frontier Firm concept, Agentic Company transformation, multi-department agent orchestration, Agent Boss operating models, governance, security, and transformation roadmapping.',
-        url: `${SITE_URL}/courses/tp-agentic-ai-driven-business-innovation`,
+          'An advanced Agentic AI programme on the Frontier Firm concept, Agentic Company transformation, multi-department agent orchestration, Agent Boss operating models, governance, security, and transformation roadmapping.',
+        url: `${SITE_URL}/courses/agentic-ai-business-innovation`,
         image: HOME_IMAGE,
-        audienceType: 'SME Owners and Founders, Business Managers and C-Suite Executives, Entrepreneurs and Intrapreneurs',
+        audienceType: 'SME owners and founders, business managers and C-suite executives, entrepreneurs, intrapreneurs, and advanced Agentic AI learners',
         instructors: [melverickPerson, darrylPerson],
         offers: {
           '@type': 'Offer',
-          url: 'https://stms.polite.edu.sg/student/ihlcourse/detail/63b27e4c-e2ec-47f3-baeb-caff5fbaa641',
           priceCurrency: 'SGD',
           price: '1635.00',
           availability: 'https://schema.org/InStock',
@@ -632,20 +631,9 @@ const routes = [
           '@type': 'CourseInstance',
           courseMode: 'In-person',
           courseWorkload: 'P3D',
-          location: {
-            '@type': 'Place',
-            name: 'Temasek Polytechnic',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: '21 Tampines Ave 1',
-              addressLocality: 'Singapore',
-              postalCode: '529757',
-              addressCountry: 'SG',
-            },
-          },
         },
       }),
-      faqSchema(tpAlignedAgenticAIFaqs),
+      faqSchema(agenticBusinessInnovationFaqs),
     ],
   },
   {

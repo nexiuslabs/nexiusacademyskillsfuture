@@ -21,7 +21,7 @@ import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
 import FrontierFirmCoursePage from './pages/FrontierFirmCoursePage';
-import TPAlignedAgenticAICoursePage from './pages/TPAlignedAgenticAICoursePage';
+import AgenticAIBusinessInnovationPage from './pages/AgenticAIBusinessInnovationPage';
 import CorporateClassLandingPage from './pages/CorporateClassLandingPage';
 import PrivateClassPage from './pages/PrivateClassPage';
 import PreviewSessionPage from './pages/PreviewSessionPage';
@@ -108,7 +108,8 @@ export const AppShell: React.FC = () => {
         <Route path="/sim-preview" element={<PreviewSessionPage partner="sim" />} />
         <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />
         <Route path="/courses/advanced-agentic-ai" element={<FrontierFirmCoursePage />} />
-        <Route path="/courses/tp-agentic-ai-driven-business-innovation" element={<TPAlignedAgenticAICoursePage />} />
+        <Route path="/courses/agentic-ai-business-innovation" element={<AgenticAIBusinessInnovationPage />} />
+        <Route path="/courses/tp-agentic-ai-driven-business-innovation" element={<Navigate to="/courses/agentic-ai-business-innovation" replace />} />
         <Route path="/courses/frontier-firm-agent-boss" element={<Navigate to="/courses/advanced-agentic-ai" replace />} />
         <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
