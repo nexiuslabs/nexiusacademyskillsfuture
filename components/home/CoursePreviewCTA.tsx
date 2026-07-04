@@ -3,7 +3,7 @@ import { CalendarDays, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ResponsiveImage from '../ResponsiveImage';
 
-const COURSE_PREVIEW_REGISTER_URL = 'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals';
+const COURSE_PREVIEW_REGISTER_URL = 'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals-workshop-2';
 
 const CoursePreviewCTA: React.FC = () => {
   return (
@@ -36,8 +36,13 @@ const CoursePreviewCTA: React.FC = () => {
                 <div className="flex gap-3">
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
-                    <div className="font-bold text-white">17 June 2026</div>
-                    <div>Wednesday, 2:00pm to 5:00pm</div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-bold text-white">11th July 2026</span>
+                      <span className="rounded-full bg-red-500 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-red-950/30">
+                        Fully Booked
+                      </span>
+                    </div>
+                    <div>Saturday, 10:00am to 1:00pm</div>
                   </div>
                 </div>
                 <div className="flex gap-3">
@@ -54,7 +59,7 @@ const CoursePreviewCTA: React.FC = () => {
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
-                Register
+                View Fully Booked Event
               </a>
             </div>
           </div>
