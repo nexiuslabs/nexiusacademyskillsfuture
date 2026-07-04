@@ -28,8 +28,8 @@ const AVAILABLE_COURSES: Course[] = [
     rating: 5.0,
     students: 0,
     image: '/images/courses/frontier-firm-card.jpg',
-    author: 'Darryl Wong',
-    authorImage: '/images/authors/darryl-wong-selected.jpeg',
+    author: 'Melverick Ng',
+    authorImage: '/images/authors/melverick-ng-selected.jpg',
     path: '/courses/advanced-agentic-ai',
   },
   {
@@ -52,8 +52,8 @@ const AVAILABLE_COURSES: Course[] = [
     rating: 5.0,
     students: 0,
     image: '/images/courses/agentic-ai-business-innovation-hero.jpg',
-    author: 'Darryl Wong',
-    authorImage: '/images/authors/darryl-wong-selected.jpeg',
+    author: 'Melverick Ng',
+    authorImage: '/images/authors/melverick-ng-selected.jpg',
     path: '/courses/agentic-ai-business-innovation',
   }
 ];
