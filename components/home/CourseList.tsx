@@ -22,6 +22,18 @@ const AVAILABLE_COURSES: Course[] = [
   },
   {
     id: 2,
+    title: 'Agentic AI-Driven Innovation for Productivity',
+    category: 'Advanced AI',
+    price: 0,
+    rating: 5.0,
+    students: 0,
+    image: '/images/courses/frontier-firm-card.jpg',
+    author: 'Darryl Wong',
+    authorImage: '/images/authors/darryl-wong-selected.jpeg',
+    path: '/courses/advanced-agentic-ai',
+  },
+  {
+    id: 3,
     title: 'Agentic AI Foundations for Accounting & CSP Professionals',
     category: 'AI',
     price: 67,
@@ -33,16 +45,16 @@ const AVAILABLE_COURSES: Course[] = [
     path: '/courses/agentic-ai-accountants',
   },
   {
-    id: 3,
-    title: 'Agentic AI-Driven Innovation for Productivity',
-    category: 'Leadership',
+    id: 4,
+    title: 'Agentic AI Business Innovation for Productivity',
+    category: 'Business AI',
     price: 0,
     rating: 5.0,
     students: 0,
-    image: '/images/courses/frontier-firm-card.jpg',
+    image: '/images/courses/agentic-ai-business-innovation-hero.jpg',
     author: 'Darryl Wong',
     authorImage: '/images/authors/darryl-wong-selected.jpeg',
-    path: '/courses/advanced-agentic-ai',
+    path: '/courses/agentic-ai-business-innovation',
   }
 ];
 
@@ -61,7 +73,7 @@ const CourseList: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
@@ -69,12 +81,12 @@ const CourseList: React.FC = () => {
               className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-primary">
-                <ResponsiveImage src={course.image} alt={course.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="contain" className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]" />
+                <ResponsiveImage src={course.image} alt={course.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 25vw" fit="contain" className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]" />
                 <span className="absolute top-4 left-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
                   {course.category}
                 </span>
                 <span className="absolute top-4 right-4 bg-white/90 text-primary text-sm font-bold px-2 py-1 rounded">
-                  {course.id === 1 ? 'Hot' : course.id === 2 ? 'Accounting/CSP-Focused' : 'New'}
+                  {course.id === 1 ? 'Hot' : course.id === 3 ? 'Accounting/CSP-Focused' : 'New'}
                 </span>
               </div>
 
@@ -124,7 +136,7 @@ const CourseList: React.FC = () => {
             </Link>
           ))}
 
-          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:col-span-2 md:px-10 lg:col-span-3">
+          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:col-span-2 md:px-10 lg:col-span-4">
             <div className="grid w-full gap-6 md:grid-cols-[1fr,auto] md:items-center">
               <div>
                 <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">For Company Teams</div>
