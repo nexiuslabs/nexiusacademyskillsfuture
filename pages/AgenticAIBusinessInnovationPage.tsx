@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Building2, CheckCircle, ClipboardList, CreditCard, GitBranch, Layers, Lock, Receipt, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, Award, Building2, CheckCircle, ClipboardList, CreditCard, GitBranch, Layers, Lock, Receipt, ShieldCheck, Users, Wallet } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
+import Instructors from '../components/courses/Instructors';
+import CourseTestimonials from '../components/courses/CourseTestimonials';
 import { openLeadModal } from '../services/leadModal';
 
 const tpCourseUrl = 'https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-driven-business-innovation-for-productivity--strategies-for-the-frontier-firm.html';
@@ -48,7 +50,31 @@ const learnItems = [
   },
 ];
 
-const feeRows = [
+const pricingPlans = [
+  {
+    title: 'Singapore Citizen 40+ / eligible SME-sponsored',
+    total: 'S$190.50',
+    detail: 'Official payable amount incl. 9% GST',
+    note: 'For Singapore Citizens aged 40 and above and eligible SME-sponsored learner categories.',
+    highlight: true,
+  },
+  {
+    title: 'Singapore Citizen below 40 / PR / LTVP+',
+    total: 'S$490.50',
+    detail: 'Official payable amount incl. 9% GST',
+    note: 'For Singapore Citizens aged 39 and below, Singapore Permanent Residents, and LTVP+ learners.',
+    highlight: false,
+  },
+  {
+    title: 'Full Course Fee',
+    total: 'S$1,635.00',
+    detail: 'Full fee incl. 9% GST',
+    note: 'Published full course fee before applicable SkillsFuture or sponsorship funding.',
+    highlight: false,
+  },
+];
+
+const frontierFeeRows = [
   { label: 'Full course fee', value: 'S$1,635.00' },
   { label: 'Singaporean aged 40 & above', value: 'S$190.50' },
   { label: 'SME-sponsored LTVP+', value: 'S$190.50' },
@@ -60,7 +86,30 @@ const feeRows = [
   { label: 'Singapore Permanent Resident', value: 'S$490.50' },
 ];
 
-const paymentMethods = ['SkillsFuture Credits, where applicable', 'Credit card', 'Debit card', 'PayNow'];
+const frontierAcceptedPayments = ['SkillsFuture Credits (where applicable)', 'Credit card', 'Debit card', 'PayNow'];
+
+const faqs = [
+  {
+    question: 'Who should attend this course?',
+    answer: 'This programme is suitable for anyone who wants to learn advanced Agentic AI knowledge, including professionals, builders, managers, business owners, educators, consultants, and transformation teams.',
+  },
+  {
+    question: 'What is the main outcome of the programme?',
+    answer: 'Participants will learn how to move from isolated AI use cases to coordinated, secure, and scalable agentic workflows through Frontier Firm and Agent Boss frameworks.',
+  },
+  {
+    question: 'Is this a technical builder programme?',
+    answer: 'No. The emphasis is on advanced Agentic AI concepts, workflow design, governance, orchestration, and practical implementation planning rather than coding.',
+  },
+  {
+    question: 'What is the course duration and fee?',
+    answer: 'The course runs over 3 days. The official payable amounts are S$190.50 for Singaporean aged 40 and above or eligible SME-sponsored learners, S$490.50 for Singaporean aged 39 and below, Singapore Permanent Residents, and LTVP+ learners, and S$1,635.00 for the full course fee. Amounts are inclusive of 9% GST and subject to final eligibility confirmation.',
+  },
+  {
+    question: 'Will participants receive a certificate?',
+    answer: 'Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.',
+  },
+];
 
 const AgenticAIBusinessInnovationPage: React.FC = () => (
   <>
@@ -253,87 +302,241 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
           </div>
         </section>
 
-        <section id="fees" className="bg-neutral py-20">
+        <section id="fees" className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-              <div className="lg:col-span-5">
-                <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Fee / Schedule / Apply</p>
-                <h2 className="mb-5 font-heading text-3xl font-bold text-primary lg:text-4xl">Course fee amounts</h2>
-                <p className="mb-6 text-gray-600">
-                  The fee amounts below are inclusive of 9% GST and subject to final funding eligibility and registration confirmation.
+            <div className="mb-14 text-center">
+              <h2 className="mb-4 font-heading text-3xl font-bold text-primary">Course Fees &amp; Funding</h2>
+              <p className="mb-2 text-gray-600">
+                This is a <span className="font-bold text-primary">3-day advanced Agentic AI course</span> with a full course fee of{' '}
+                <span className="font-bold text-primary">S$1,635.00 incl. GST</span>.
+              </p>
+              <p className="mx-auto mb-3 flex max-w-3xl items-center justify-center gap-2 text-sm font-semibold text-primary">
+                <CheckCircle size={16} className="text-accent" />
+                Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.
+              </p>
+              <p className="font-mono text-xs text-gray-400">
+                Agentic AI-Driven Business Innovation for Productivity · Course Ref: TGS-2026063558
+              </p>
+            </div>
+
+            <div className="mb-10 grid gap-6 md:grid-cols-3">
+              {pricingPlans.map((plan) => (
+                <div key={plan.title} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+                  <div className={`h-2 ${plan.highlight ? 'bg-primary' : plan.title.startsWith('Singapore Citizen below') ? 'bg-accent' : 'bg-slate-400'}`} />
+                  <div className="p-7">
+                    <div className="mb-3 font-heading text-4xl font-extrabold text-primary">{plan.total}</div>
+                    <h3 className="mb-2 text-lg font-bold text-primary">{plan.title}</h3>
+                    <p className="text-sm text-gray-600">{plan.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mb-10 grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
+              <div className="rounded-3xl border border-gray-200 bg-neutral p-7">
+                <h3 className="mb-2 text-2xl font-bold text-primary">Fee Breakdown</h3>
+                <p className="mb-6 text-sm text-gray-600">
+                  Amounts below match the official payable amounts and are inclusive of 9% GST.
                 </p>
-                <button
-                  type="button"
-                  onClick={() =>
-                    openLeadModal('course_fee_section', 'advisory_call', {
-                      page: '/courses/agentic-ai-business-innovation',
-                      position: 'fee_schedule_enquiry',
-                      ctaLabel: 'ask_about_fees_and_schedule',
-                    })
-                  }
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
-                >
-                  Ask about fees and schedule <ArrowRight size={18} />
-                </button>
-              </div>
-              <div className="lg:col-span-7">
-                <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm">
-                  {feeRows.map((row, index) => (
-                    <div key={row.label} className={`flex items-center justify-between gap-4 px-6 py-4 text-sm ${index !== feeRows.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                      <span className="font-medium text-gray-700">{row.label}</span>
-                      <span className="shrink-0 font-bold text-primary">{row.value}</span>
+
+                <div className="space-y-4">
+                  {pricingPlans.map((plan) => (
+                    <div key={plan.title} className="rounded-2xl border border-gray-200 bg-white px-5 py-4">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <h4 className="font-bold text-primary">{plan.title}</h4>
+                          <p className="mt-1 text-sm text-gray-500">{plan.detail}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-xs font-bold uppercase tracking-wide text-gray-400">Total</div>
+                          <div className="font-heading text-xl font-extrabold text-primary">{plan.total}</div>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-white p-5 shadow-sm">
-                    <CreditCard size={22} className="mb-3 text-accent" />
-                    <h3 className="mb-3 font-bold text-primary">Accepted payment methods</h3>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      {paymentMethods.map((method) => <li key={method}>• {method}</li>)}
-                    </ul>
+              </div>
+
+              <div className="rounded-3xl border border-primary/10 bg-white p-7 shadow-sm">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Lowest Published Payable</p>
+                <div className="mb-3 font-heading text-5xl font-extrabold text-primary">S$190.50</div>
+                <h3 className="mb-2 text-xl font-bold text-primary">Singapore Citizen 40+ / eligible SME-sponsored</h3>
+                <p className="mb-5 text-sm text-gray-600">
+                  Official payable amount inclusive of 9% GST, subject to final learner eligibility and registration confirmation.
+                </p>
+
+                <div className="space-y-3 rounded-2xl border border-gray-100 bg-neutral p-5">
+                  <div className="flex items-start justify-between gap-4 text-sm">
+                    <span className="text-gray-600">Course fee payable incl. GST</span>
+                    <span className="font-semibold text-primary">S$190.50</span>
                   </div>
-                  <div className="rounded-2xl bg-white p-5 shadow-sm">
-                    <Receipt size={22} className="mb-3 text-accent" />
-                    <h3 className="mb-3 font-bold text-primary">Refund note</h3>
-                    <p className="text-sm leading-relaxed text-gray-700">Confirm the latest refund policy, schedule, and registration details during application or enquiry.</p>
+                  <div className="flex items-start justify-between gap-4 text-sm">
+                    <span className="text-gray-600">Full course fee incl. GST</span>
+                    <span className="font-semibold text-primary">S$1,635.00</span>
+                  </div>
+                  <div className="h-px bg-gray-200" />
+                  <div className="flex items-end justify-between gap-4">
+                    <span className="text-base font-bold text-primary">Lowest Payable</span>
+                    <span className="font-heading text-2xl font-extrabold text-primary">S$190.50</span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="mb-12 space-y-4">
+              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+                <summary className="cursor-pointer list-none text-lg font-bold text-primary">See full fee breakdown</summary>
+                <div className="mt-5 overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-200 text-left text-gray-500">
+                        <th className="pb-3 pr-6 font-semibold">Learner Category</th>
+                        <th className="pb-3 font-semibold">Course Fee Payable</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {frontierFeeRows.map((row) => (
+                        <tr key={row.label} className="border-b border-gray-100 last:border-b-0">
+                          <td className="py-3 pr-6 text-gray-700">{row.label}</td>
+                          <td className="py-3 font-semibold text-primary">{row.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+
+              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Payment methods</summary>
+                <div className="mt-5 grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                      <Wallet size={18} />
+                    </div>
+                    <h4 className="mb-2 font-bold text-primary">Payment timing</h4>
+                    <p className="text-sm text-gray-600">Payment details will be confirmed during registration.</p>
+                  </div>
+                  <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                      <CreditCard size={18} />
+                    </div>
+                    <h4 className="mb-2 font-bold text-primary">Accepted methods</h4>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      {frontierAcceptedPayments.map((method) => (
+                        <li key={method} className="flex items-center gap-2">
+                          <CheckCircle size={14} className="text-accent" />
+                          {method}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </details>
+
+              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
+                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Funding and eligibility note</summary>
+                <div className="mt-5 rounded-2xl border border-gray-100 bg-neutral p-5">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
+                    <Receipt size={18} />
+                  </div>
+                  <ul className="space-y-3 text-sm text-gray-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={14} className="mt-1 text-accent" />
+                      <span>Amounts are inclusive of 9% GST and subject to final eligibility, funding approval, and registration confirmation.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={14} className="mt-1 text-accent" />
+                      <span>Official payable amounts are S$190.50, S$490.50, or S$1,635.00 depending on learner category and sponsorship pathway.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={14} className="mt-1 text-accent" />
+                      <span>For company-sponsored groups, request an advisory call so we can confirm the most suitable registration pathway.</span>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={() =>
+                  openLeadModal('course_page_cta', 'reserve_seat', {
+                    page: '/courses/agentic-ai-business-innovation',
+                    position: 'business_innovation_pricing_register_interest',
+                    ctaLabel: 'register_interest',
+                  })
+                }
+                className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
+              >
+                Register Interest
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl bg-primary p-8 text-center text-white shadow-2xl lg:p-12">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold">
+                <Users size={16} className="text-accent" /> Agent Boss Programme
+              </div>
+              <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Ready to learn advanced Agentic AI?</h2>
+              <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-blue-50/90">
+                Register interest if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <button
+                  type="button"
+                  onClick={() =>
+                    openLeadModal('course_page_cta', 'reserve_seat', {
+                      page: '/courses/agentic-ai-business-innovation',
+                      position: 'business_innovation_midpage_register_interest',
+                      ctaLabel: 'register_interest',
+                    })
+                  }
+                  className="rounded-xl bg-accent px-8 py-4 font-bold text-white transition-colors hover:bg-teal-500"
+                >
+                  Register Interest
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    openLeadModal('course_page_cta', 'advisory_call', {
+                      page: '/courses/agentic-ai-business-innovation',
+                      position: 'business_innovation_midpage_advisory',
+                      ctaLabel: 'request_advisory_call',
+                    })
+                  }
+                  className="rounded-xl border border-white/30 px-8 py-4 font-bold text-white transition-colors hover:bg-white/10"
+                >
+                  Request Advisory Call
+                </button>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="bg-white py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl bg-primary p-8 text-white lg:p-10">
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-8">
-                  <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Course Enquiry</p>
-                  <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Ask Nexius Academy about this course</h2>
-                  <p className="max-w-2xl text-blue-50/90">
-                    Share your learner profile, company sponsorship context, and preferred training timeline so the team can guide you on next steps.
-                  </p>
+        <Instructors />
+        <CourseTestimonials />
+
+        <section id="faq" className="bg-white py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-heading text-3xl font-bold text-primary">Programme FAQs</h2>
+              <p className="text-gray-500">A few quick answers for learners evaluating this course.</p>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="rounded-xl border border-gray-200 bg-neutral p-6">
+                  <h3 className="mb-2 text-lg font-bold text-primary">{faq.question}</h3>
+                  <p className="leading-relaxed text-gray-600">{faq.answer}</p>
                 </div>
-                <div className="flex flex-col gap-3 lg:col-span-4">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_contact_section', 'advisory_call', {
-                        page: '/courses/agentic-ai-business-innovation',
-                        position: 'course_enquiry',
-                        ctaLabel: 'ask_nexius_about_course',
-                      })
-                    }
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-bold text-white transition-colors hover:bg-teal-500"
-                  >
-                    Register Interest <ArrowRight size={18} />
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
