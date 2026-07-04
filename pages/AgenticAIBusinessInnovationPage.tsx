@@ -136,12 +136,19 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             <a href="#fees" className="hover:text-accent">Fees</a>
             <a href="#contact" className="hover:text-accent">Contact</a>
           </nav>
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal('course_page_cta', 'reserve_seat', {
+                page: '/courses/agentic-ai-business-innovation',
+                position: 'business_innovation_nav_register_interest',
+                ctaLabel: 'register_interest',
+              })
+            }
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-blue-900"
           >
-            Enquire <ArrowRight size={16} />
-          </a>
+            Register Interest <ArrowRight size={16} />
+          </button>
         </div>
       </header>
 
@@ -168,12 +175,19 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
               This page summarises the course overview, target audience, learning outcomes, certification requirement, fees, and enquiry path for learners evaluating advanced Agentic AI training.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={() =>
+                  openLeadModal('course_page_cta', 'reserve_seat', {
+                    page: '/courses/agentic-ai-business-innovation',
+                    position: 'business_innovation_hero_register_interest',
+                    ctaLabel: 'register_interest',
+                  })
+                }
                 className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-xl transition-colors hover:bg-teal-500"
               >
                 Register Interest <ArrowRight size={18} />
-              </a>
+              </button>
               <button
                 type="button"
                 onClick={() =>
