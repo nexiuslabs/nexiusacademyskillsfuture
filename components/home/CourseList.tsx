@@ -51,7 +51,7 @@ const AVAILABLE_COURSES: Course[] = [
     price: 0,
     rating: 5.0,
     students: 0,
-    image: '/images/courses/agentic-ai-business-innovation-hero.jpg',
+    image: '/images/courses/agentic-ai-business-innovation-card.jpg',
     author: 'Melverick Ng',
     authorImage: '/images/authors/melverick-ng-selected.jpg',
     path: '/courses/agentic-ai-business-innovation',
