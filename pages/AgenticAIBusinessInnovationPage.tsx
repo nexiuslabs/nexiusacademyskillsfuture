@@ -216,7 +216,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
         ]}
         citations={[
           { label: 'Official TP course page', href: tpCourseUrl },
-          { label: 'Official TP/STMS application page', href: stmsUrl },
+          { label: 'Official SkillsFuture page', href: stmsUrl },
         ]}
       />
 
