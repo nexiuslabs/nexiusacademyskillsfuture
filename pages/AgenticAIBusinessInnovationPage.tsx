@@ -96,8 +96,15 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
         </div>
       </header>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-[#12306b] to-[#0c1b3f] text-white">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_#14b8a6,_transparent_30%),radial-gradient(circle_at_bottom_left,_#60a5fa,_transparent_25%)]" />
+      <section className="relative overflow-hidden bg-primary text-white">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center opacity-45"
+          style={{ backgroundImage: 'url(/images/courses/agentic-ai-business-innovation-hero.jpg)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071327]/95 via-[#0b1f44]/85 to-[#071327]/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071327]/80 via-transparent to-[#071327]/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(20,184,166,0.35),_transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(96,165,250,0.22),_transparent_28%)]" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
