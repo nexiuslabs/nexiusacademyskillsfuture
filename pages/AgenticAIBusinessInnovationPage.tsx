@@ -9,7 +9,7 @@ import CourseTestimonials from '../components/courses/CourseTestimonials';
 import { openLeadModal } from '../services/leadModal';
 
 const tpCourseUrl = 'https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-driven-business-innovation-for-productivity--strategies-for-the-frontier-firm.html';
-const stmsUrl = 'https://stms.polite.edu.sg/student/ihlcourse/detail/63b27e4c-e2ec-47f3-baeb-caff5fbaa641';
+const stmsUrl = 'https://courses.myskillsfuture.gov.sg/courses/TGS-2026063558--Agentic-AIDriven-Business-Innovation-Productivity-Strategies-Frontier-Firm';
 
 const attendItems = [
   'SME Owners and Founders',
