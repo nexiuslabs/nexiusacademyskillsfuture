@@ -149,6 +149,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 15,
+    slug: 'research-agents-business-professionals',
+    title: 'Research Agents: What Business Professionals Must Learn Before AI Starts Writing the Brief',
+    date: '06 Jul 2026',
+    views: 0,
+    image: '/images/blog/research-agents-business-professionals.png',
+    excerpt: 'AI research agents are moving from chat answers to decision-prep workflows. Learn the source-checking, context, approval, testing, and governance skills business professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 14,
     slug: 'agent-handoffs-business-professionals',
     title: 'Agent Handoffs: What Business Professionals Must Learn Before AI Coworkers Start Passing Work to Each Other',

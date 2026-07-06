@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-06-29';
+const LASTMOD = '2026-07-06';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -846,6 +846,20 @@ const routes = [
     ogImageAlt: 'Business professionals mapping governed AI agent handoffs and approval gates',
     schemas: [],
     articleDate: '2026-06-29',
+  },
+  {
+    path: '/blog/research-agents-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Research Agents: What Business Professionals Must Learn',
+    description:
+      'AI research agents are moving from chat answers to decision-prep workflows. Learn the source-checking, context, approval, testing, and governance skills professionals need next.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/research-agents-business-professionals.png',
+    ogImageAlt: 'Business professionals supervising AI research agents with source checks and approval gates',
+    schemas: [],
+    articleDate: '2026-07-06',
   },
   {
     path: '/admin',
