@@ -405,7 +405,7 @@ const AboutPage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
               {sharedTestimonials.map((item) => (
-                <div key={item.name} className="bg-neutral rounded-xl p-8 shadow-card">
+                <div key={item.id} className="bg-neutral rounded-xl p-8 shadow-card">
                   <Quote className="text-accent mb-4" size={28} />
                   <div className="flex items-center gap-4 mb-5">
                     <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
