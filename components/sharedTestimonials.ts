@@ -77,4 +77,28 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote:
       'I already feel like my productivity has easily doubled in the past two weeks by using Codex. It is such a no-brainer... everybody needs to learn how to use this.',
   },
+  {
+    id: 12,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.png',
+    quote:
+      'What I appreciated most was that Melverick and Darryl are not just teaching theory. They bring years of real-world experience and actively apply AI in their own daily work and corporate productivity systems. That made the learning much more relevant and practical.',
+  },
+  {
+    id: 13,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.png',
+    quote:
+      'The class was easy to follow, even when the concepts were new. Once you see how AI can be used beyond images and videos, you start to realise how it can support repetitive tasks, streamline daily operations, and free up time for more important work.',
+  },
+  {
+    id: 14,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.png',
+    quote:
+      'I highly recommend this course to business owners, professionals, and anyone who wants to move beyond basic AI tools and start using Agentic AI to improve productivity in a practical way.',
+  },
 ];
