@@ -15,6 +15,14 @@ export const sharedTestimonials: SharedTestimonial[] = [
     quote: 'We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools.',
   },
   {
+    id: 12,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.jpg',
+    quote:
+      'What I appreciated most was that Melverick and Darryl are not just teaching theory. They bring years of real-world experience and actively apply AI in their own daily work and corporate productivity systems. That made the learning much more relevant and practical.',
+  },
+  {
     id: 8,
     name: 'Priscilla Hoon',
     title: 'Founder, Provident Corporate Services',
@@ -36,6 +44,14 @@ export const sharedTestimonials: SharedTestimonial[] = [
     image: '/images/testimonials/priscilla-hoon.jpeg',
     quote:
       'Melverick and Darryl were experienced and generous in sharing real-life cases and examples, which made the session very relevant and relatable. The class was interactive, engaging, and quite eye-opening for me.',
+  },
+  {
+    id: 13,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.jpg',
+    quote:
+      'The class was easy to follow, even when the concepts were new. Once you see how AI can be used beyond images and videos, you start to realise how it can support repetitive tasks, streamline daily operations, and free up time for more important work.',
   },
   {
     id: 5,
@@ -70,35 +86,19 @@ export const sharedTestimonials: SharedTestimonial[] = [
       'Nexius AI Agentic course was practical and engaging. I appreciated the clear explanations, hands-on exercises, and real-world examples, which made AI concepts easier to understand and apply confidently professionally.',
   },
   {
+    id: 14,
+    name: 'Vern Lai',
+    title: 'Fat-Loss & Metabolic Health Coach',
+    image: '/images/testimonials/vern-lai.jpg',
+    quote:
+      'I highly recommend this course to business owners, professionals, and anyone who wants to move beyond basic AI tools and start using Agentic AI to improve productivity in a practical way.',
+  },
+  {
     id: 11,
     name: 'Daniel Tan',
     title: 'Founder, Food Playground',
     image: '/images/testimonials/daniel-tan.jpg',
     quote:
       'I already feel like my productivity has easily doubled in the past two weeks by using Codex. It is such a no-brainer... everybody needs to learn how to use this.',
-  },
-  {
-    id: 12,
-    name: 'Vern Lai',
-    title: 'Fat-Loss & Metabolic Health Coach',
-    image: '/images/testimonials/vern-lai.png',
-    quote:
-      'What I appreciated most was that Melverick and Darryl are not just teaching theory. They bring years of real-world experience and actively apply AI in their own daily work and corporate productivity systems. That made the learning much more relevant and practical.',
-  },
-  {
-    id: 13,
-    name: 'Vern Lai',
-    title: 'Fat-Loss & Metabolic Health Coach',
-    image: '/images/testimonials/vern-lai.png',
-    quote:
-      'The class was easy to follow, even when the concepts were new. Once you see how AI can be used beyond images and videos, you start to realise how it can support repetitive tasks, streamline daily operations, and free up time for more important work.',
-  },
-  {
-    id: 14,
-    name: 'Vern Lai',
-    title: 'Fat-Loss & Metabolic Health Coach',
-    image: '/images/testimonials/vern-lai.png',
-    quote:
-      'I highly recommend this course to business owners, professionals, and anyone who wants to move beyond basic AI tools and start using Agentic AI to improve productivity in a practical way.',
   },
 ];
