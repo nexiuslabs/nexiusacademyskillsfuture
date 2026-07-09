@@ -48,9 +48,12 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-5">
-              <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center text-white font-bold text-lg">N</div>
-              <span className="text-2xl font-bold">Nexius<span className="text-accent">Academy</span></span>
+            <Link to="/" className="flex items-center mb-5" aria-label="Nexius Academy home">
+              <img
+                src="/images/brand/nexius-academy-logo.webp"
+                alt="Nexius Academy"
+                className="h-12 w-auto max-w-[190px] rounded-sm object-contain"
+              />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-5">
               Hands-on AI training for non-technical professionals and SMEs. WSQ-aligned, SkillsFuture-eligible, and outcome-driven.
