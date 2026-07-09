@@ -10,16 +10,16 @@ type CourseScheduleSectionProps = {
 
 const ADVANCED_COURSE_SCHEDULES = [
   {
-    month: 'Sep 2026',
-    dates: '18 Sep 2026 (Fri) & 25 Sep 2026 (Fri)',
+    month: 'Oct 2026',
+    dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',
     time: '9:00am - 6:00pm',
-    venue: 'SIM at Clementi Road, 461 Clementi Road, Singapore 599491',
+    venue: 'Venue to be confirmed',
   },
 ];
 
 const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, positionPrefix }) => {
   const months = Array.from(new Set(ADVANCED_COURSE_SCHEDULES.map((schedule) => schedule.month)));
-  const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Sep 2026');
+  const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Oct 2026');
   const filteredSchedules = ADVANCED_COURSE_SCHEDULES.filter((schedule) => schedule.month === selectedMonth);
 
   return (
