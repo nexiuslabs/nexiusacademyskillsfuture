@@ -55,13 +55,12 @@ const Navbar: React.FC = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-3' : 'bg-white py-3'}`}>
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent font-bold text-xl">
-              N
-            </div>
-            <span className="font-heading font-bold text-xl text-primary tracking-tight">
-              Nexius<span className="text-accent">Academy</span>
-            </span>
+          <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
+            <img
+              src="/images/brand/nexius-academy-logo.webp"
+              alt="Nexius Academy"
+              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
