@@ -198,11 +198,12 @@ const AdminPage: React.FC = () => {
       <div className="min-h-screen bg-[linear-gradient(180deg,#f7fafc_0%,#eef3fb_100%)] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 flex items-center justify-between gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-xl font-bold text-accent">N</div>
-              <span className="font-heading text-xl font-bold text-primary">
-                Nexius<span className="text-accent">Academy</span>
-              </span>
+            <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
+              <img
+                src="/images/brand/nexius-academy-logo.webp"
+                alt="Nexius Academy"
+                className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
+              />
             </Link>
             {session.status === 'authenticated' && (
               <button

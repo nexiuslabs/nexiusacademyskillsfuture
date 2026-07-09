@@ -199,11 +199,12 @@ const AccountantCspLandingPage: React.FC = () => {
       <div className="min-h-screen bg-white pb-20 lg:pb-0">
         <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] aspect-square bg-primary rounded-lg flex items-center justify-center text-accent font-bold text-xl leading-none">N</div>
-              <span className="font-heading font-bold text-xl text-primary tracking-tight leading-none">
-                Nexius<span className="text-accent">Academy</span>
-              </span>
+            <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
+              <img
+                src="/images/brand/nexius-academy-logo.webp"
+                alt="Nexius Academy"
+                className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
+              />
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
               <a href="#schedule" className="hover:text-accent">Schedule</a>

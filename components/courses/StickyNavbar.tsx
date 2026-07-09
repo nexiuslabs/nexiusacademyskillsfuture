@@ -11,13 +11,12 @@ const StickyNavbar: React.FC = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent font-bold text-xl">
-              N
-            </div>
-            <span className="font-heading font-bold text-xl text-primary tracking-tight">
-              Nexius<span className="text-accent">Academy</span>
-            </span>
+          <Link to="/" className="flex-shrink-0 flex items-center" aria-label="Nexius Academy home">
+            <img
+              src="/images/brand/nexius-academy-logo.webp"
+              alt="Nexius Academy"
+              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
+            />
           </Link>
 
           {/* Desktop Menu */}

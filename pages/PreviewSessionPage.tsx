@@ -214,13 +214,12 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
 
       <header className={`sticky top-0 z-50 border-b backdrop-blur ${isDarkPreview ? 'border-white/10 bg-[#0b1527]/95' : 'border-primary/10 bg-white/95'}`}>
         <div className="container-page flex min-h-20 items-center justify-between gap-4 py-4">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-xl font-bold text-accent">
-              N
-            </span>
-            <span className={`font-heading text-xl font-bold tracking-tight ${isDarkPreview ? 'text-white' : 'text-primary'}`}>
-              Nexius<span className="text-accent">Academy</span>
-            </span>
+          <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
+            <img
+              src="/images/brand/nexius-academy-logo.webp"
+              alt="Nexius Academy"
+              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
+            />
           </Link>
 
           <nav className={`hidden items-center gap-7 text-sm font-semibold md:flex ${isDarkPreview ? 'text-white/75' : 'text-gray-700'}`}>
