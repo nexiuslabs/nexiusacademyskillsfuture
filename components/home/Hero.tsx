@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import React from 'react';
+import { BookOpen } from 'lucide-react';
 import ResponsiveImage from '../ResponsiveImage';
-import { sharedTestimonials } from '../sharedTestimonials';
-
-const TESTIMONIAL_ROTATION_MS = 6500;
 
 const Hero: React.FC = () => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const testimonial = sharedTestimonials[activeTestimonial];
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveTestimonial((current) => (current + 1) % sharedTestimonials.length);
-    }, TESTIMONIAL_ROTATION_MS);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative w-full pt-32 pb-20 md:pt-40 md:pb-28 bg-neutral overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E6F0F9] rounded-bl-[200px] -z-10 hidden lg:block"></div>
@@ -115,26 +101,14 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="absolute inset-x-4 bottom-5 z-20 rounded-2xl bg-white/95 p-5 shadow-2xl ring-1 ring-primary/10 backdrop-blur-md md:inset-x-6 lg:left-8 lg:right-6">
-              <div className="flex items-start gap-3">
-                <span className="mt-1 text-3xl leading-none text-secondary" aria-hidden="true">“</span>
-                <div className="min-h-[142px] flex-1">
-                  <p className="line-clamp-4 text-sm font-medium leading-relaxed text-primary md:text-base" aria-live="polite">
-                    {testimonial.quote}
-                  </p>
-                  <div className="mt-4 flex flex-col gap-2 border-t border-gray-100 pt-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{testimonial.name}</p>
-                      <p className="text-xs text-gray-500">{testimonial.title}</p>
-                    </div>
-                    <a
-                      href="#reviews"
-                      className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-secondary hover:text-primary"
-                    >
-                      More testimonials
-                      <ArrowRight size={14} aria-hidden="true" />
-                    </a>
-                  </div>
+            <div className="absolute bottom-20 -right-5 bg-white p-4 rounded-xl shadow-lg z-20 hidden md:block">
+              <div className="flex items-center gap-3">
+                <div className="bg-green-100 p-2 rounded-full text-green-600 font-bold">
+                  95%
+                </div>
+                <div>
+                  <p className="font-bold text-primary text-sm">Satisfaction Rate</p>
+                  <p className="text-xs text-gray-500">Based on reviews</p>
                 </div>
               </div>
             </div>

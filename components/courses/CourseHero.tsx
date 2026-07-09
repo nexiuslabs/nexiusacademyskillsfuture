@@ -1,11 +1,24 @@
-import React from 'react';
-import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet, ArrowRight } from 'lucide-react';
 import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
 import ResponsiveImage from '../ResponsiveImage';
+import { sharedTestimonials } from '../sharedTestimonials';
 
 const SHOW_TEMASEK_POLY_LOGO = false;
+const TESTIMONIAL_ROTATION_MS = 6500;
 
 const Hero: React.FC = () => {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const testimonial = sharedTestimonials[activeTestimonial];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveTestimonial((current) => (current + 1) % sharedTestimonials.length);
+    }, TESTIMONIAL_ROTATION_MS);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
       <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent opacity-60"></div>
@@ -121,10 +134,21 @@ const Hero: React.FC = () => {
               />
             </div>
             <div className="relative z-10 mx-4 -mt-4 rounded-xl bg-white p-6 shadow-lg sm:mx-8">
-              <p className="font-heading font-bold text-primary text-lg mb-2">
-                "We are grateful for the highly insightful learnings that will be instrumental in our effective adoption of AI tools."
+              <p className="line-clamp-4 font-heading text-lg font-bold text-primary" aria-live="polite">
+                “{testimonial.quote}”
               </p>
-              <p className="text-sm font-medium text-accent">Jacky Wong, Chief Librarian of NIE</p>
+              <div className="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm font-medium text-accent">
+                  {testimonial.name}, {testimonial.title}
+                </p>
+                <a
+                  href="#testimonials"
+                  className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-accent hover:text-primary"
+                >
+                  More testimonials
+                  <ArrowRight size={14} aria-hidden="true" />
+                </a>
+              </div>
             </div>
             {SHOW_TEMASEK_POLY_LOGO && (
               <div className="mt-4 flex flex-col items-end text-gray-500">
