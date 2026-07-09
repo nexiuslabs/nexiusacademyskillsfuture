@@ -5,6 +5,7 @@ import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
+import CourseScheduleSection from '../components/courses/CourseScheduleSection';
 import { openLeadModal } from '../services/leadModal';
 import ResponsiveImage from '../components/ResponsiveImage';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
@@ -136,6 +137,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <a href="#overview" className="hover:text-accent">Overview</a>
               <a href="#curriculum" className="hover:text-accent">Curriculum</a>
               <a href="#pricing" className="hover:text-accent">Pricing</a>
+              <a href="#schedule" className="hover:text-accent">Schedule</a>
               <a href="#instructors" className="hover:text-accent">Instructors</a>
               <a href="#testimonials" className="hover:text-accent">Testimonials</a>
               <a href="#faq" className="hover:text-accent">FAQ</a>
@@ -564,6 +566,8 @@ const FrontierFirmCoursePage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <CourseScheduleSection page="/courses/advanced-agentic-ai" positionPrefix="frontier_firm" />
 
         <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
