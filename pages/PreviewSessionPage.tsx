@@ -216,7 +216,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
         <div className="container-page flex min-h-20 items-center justify-between gap-4 py-4">
           <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
             <img
-              src="/images/brand/nexius-academy-logo-transparent.webp"
+              src="/images/brand/nexius-academy-horizontal.webp"
               alt="Nexius Academy"
               className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
             />

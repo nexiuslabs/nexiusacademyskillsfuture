@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           <div>
             <Link to="/" className="flex items-center mb-5" aria-label="Nexius Academy home">
               <img
-                src="/images/brand/nexius-academy-logo-transparent.webp"
+                src="/images/brand/nexius-academy-horizontal.webp"
                 alt="Nexius Academy"
                 className="h-12 w-auto max-w-[190px] rounded-sm object-contain"
               />

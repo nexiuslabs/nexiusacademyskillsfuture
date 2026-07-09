@@ -13,7 +13,7 @@ const StickyNavbar: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex-shrink-0 flex items-center" aria-label="Nexius Academy home">
             <img
-              src="/images/brand/nexius-academy-logo-transparent.webp"
+              src="/images/brand/nexius-academy-horizontal.webp"
               alt="Nexius Academy"
               className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
             />
@@ -27,7 +27,7 @@ const StickyNavbar: React.FC = () => {
             <a href="#instructors" className="text-textDark hover:text-accent font-medium transition-colors">Instructors</a>
             <a href="#workshop-photos" className="text-textDark hover:text-accent font-medium transition-colors">Photos</a>
             <a href="#schedule" className="text-textDark hover:text-accent font-medium transition-colors">Schedule</a>
-            <button 
+            <button
               type="button"
               onClick={() =>
                 openRegisterInterestModal('course_page_cta', {
@@ -60,7 +60,7 @@ const StickyNavbar: React.FC = () => {
             <a href="#workshop-photos" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Photos</a>
             <a href="#schedule" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Schedule</a>
             <div className="pt-4 pb-2">
-               <button 
+               <button
                 type="button"
                 onClick={() =>
                   openRegisterInterestModal('course_page_cta', {
