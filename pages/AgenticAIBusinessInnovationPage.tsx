@@ -6,6 +6,7 @@ import Footer from '../components/home/Footer';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
+import CourseScheduleSection from '../components/courses/CourseScheduleSection';
 import { openLeadModal } from '../services/leadModal';
 
 const tpCourseUrl = 'https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-driven-business-innovation-for-productivity--strategies-for-the-frontier-firm.html';
@@ -135,6 +136,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             <a href="#audience" className="hover:text-accent">Audience</a>
             <a href="#learn" className="hover:text-accent">What You'll Learn</a>
             <a href="#fees" className="hover:text-accent">Fees</a>
+            <a href="#schedule" className="hover:text-accent">Schedule</a>
             <a href="#contact" className="hover:text-accent">Contact</a>
           </nav>
           <button
@@ -489,6 +491,8 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             </div>
           </div>
         </section>
+
+        <CourseScheduleSection page="/courses/agentic-ai-business-innovation" positionPrefix="business_innovation" />
 
         <section className="bg-white py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
