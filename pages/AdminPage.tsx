@@ -200,7 +200,7 @@ const AdminPage: React.FC = () => {
           <div className="mb-10 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
               <img
-                src="/images/brand/nexius-academy-logo-transparent.webp"
+                src="/images/brand/nexius-academy-horizontal.webp"
                 alt="Nexius Academy"
                 className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
               />

@@ -201,7 +201,7 @@ const AccountantCspLandingPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
               <img
-                src="/images/brand/nexius-academy-logo-transparent.webp"
+                src="/images/brand/nexius-academy-horizontal.webp"
                 alt="Nexius Academy"
                 className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
               />
@@ -248,7 +248,7 @@ const AccountantCspLandingPage: React.FC = () => {
                     SkillsFuture-supported
                   </span>
                 </div>
-                <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-4xl"> 
+                <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-4xl">
                   <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
                     <div className="text-sm text-blue-100/80 mb-1">Best for</div>
                     <div className="font-semibold">Accounting and CSP teams</div>
