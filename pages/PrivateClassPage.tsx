@@ -263,7 +263,7 @@ const PrivateClassNavbar: React.FC = () => {
       <nav className="container-page flex items-center justify-between py-5">
         <a href="/" className="flex items-center" aria-label="Nexius Academy home">
           <img
-            src="/images/brand/nexius-academy-logo.webp"
+            src="/images/brand/nexius-academy-logo-transparent.webp"
             alt="Nexius Academy"
             className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
           />
