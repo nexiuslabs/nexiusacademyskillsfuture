@@ -13,7 +13,7 @@ const StickyNavbar: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex-shrink-0 flex items-center" aria-label="Nexius Academy home">
             <img
-              src="/images/brand/nexius-academy-logo.webp"
+              src="/images/brand/nexius-academy-logo-transparent.webp"
               alt="Nexius Academy"
               className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
             />

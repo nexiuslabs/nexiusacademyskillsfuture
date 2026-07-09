@@ -127,7 +127,7 @@ const FrontierFirmCoursePage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
               <img
-                src="/images/brand/nexius-academy-logo.webp"
+                src="/images/brand/nexius-academy-logo-transparent.webp"
                 alt="Nexius Academy"
                 className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
               />
