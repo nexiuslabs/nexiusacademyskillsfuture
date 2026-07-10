@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BookOpen, BrainCircuit, CheckCircle, ShieldCheck, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
@@ -157,6 +157,16 @@ const pillars = [
 ];
 
 const AgenticAIChallengePage: React.FC = () => {
+  const [isQuizActive, setIsQuizActive] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle('assessment-quiz-active', isQuizActive);
+
+    return () => {
+      document.body.classList.remove('assessment-quiz-active');
+    };
+  }, [isQuizActive]);
+
   const handleLeadClick = (_score: number, _resultTitle: string) => {
     openLeadModal('course_page_cta', 'reserve_seat', {
       page: 'agentic_ai_challenge',
@@ -175,16 +185,22 @@ const AgenticAIChallengePage: React.FC = () => {
         canonical="/assessments"
         ogType="website"
       />
-      <Navbar />
+      <style>{`
+        body.assessment-quiz-active .ai-advisor-trigger,
+        body.assessment-quiz-active .ai-advisor-panel {
+          display: none !important;
+        }
+      `}</style>
+      {!isQuizActive && <Navbar />}
 
       <main className="flex-grow">
-        <section className="relative overflow-hidden bg-primary pt-32 pb-16 md:pt-40 md:pb-24">
+        <section className={`relative overflow-hidden bg-primary ${isQuizActive ? 'min-h-screen py-6 md:py-10' : 'pt-32 pb-16 md:pt-40 md:pb-24'}`}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,202,186,0.26),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(255,107,44,0.16),transparent_28%),linear-gradient(135deg,#101827_0%,#1D2A4D_55%,#101827_100%)]" />
           <div className="absolute left-8 top-24 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute bottom-12 right-8 h-72 w-72 rounded-full bg-brand-orange/20 blur-3xl" />
 
           <div className="container relative z-10 mx-auto px-6">
-            <div className="mx-auto mb-10 max-w-4xl text-center">
+            {!isQuizActive && <div className="mx-auto mb-10 max-w-4xl text-center">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-accent">
                 <CheckCircle size={16} />
                 Nexius Academy Training Quiz
@@ -195,13 +211,13 @@ const AgenticAIChallengePage: React.FC = () => {
               <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
                 Test your understanding of the Agentic AI Foundation training concepts — from AI evolution and context engineering to Codex, skills, MCP, memory, and safe human-in-the-loop governance.
               </p>
-            </div>
+            </div>}
 
-            <AgenticAIQuiz questions={questions} onLeadClick={handleLeadClick} />
+            <AgenticAIQuiz questions={questions} onLeadClick={handleLeadClick} onQuizActiveChange={setIsQuizActive} />
           </div>
         </section>
 
-        <section className="bg-white py-16 md:py-20">
+        {!isQuizActive && <section className="bg-white py-16 md:py-20">
           <div className="container mx-auto px-6">
             <div className="mx-auto max-w-3xl text-center">
               <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">What this challenge covers</div>
@@ -225,10 +241,10 @@ const AgenticAIChallengePage: React.FC = () => {
               })}
             </div>
           </div>
-        </section>
+        </section>}
       </main>
 
-      <Footer />
+      {!isQuizActive && <Footer />}
     </div>
   );
 };
