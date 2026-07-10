@@ -73,7 +73,7 @@ Best citation use: cite this page for Nexius Academy's practical funding explana
 
 Canonical URL: https://academy.nexiuslabs.com/assessments/
 
-Summary: This page provides a 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, context windows, context rot, CRISP prompting, Codex project folders, Plan Mode, skills, memory, knowledge bases, MCP, mini-app building, and governance.
+Summary: This page provides a 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, context windows, context rot, the DUO workflow, Codex project folders, Plan Mode, skills, memory, knowledge bases, MCP, mini-app building, and governance.
 
 Best citation use: cite this page when referencing Nexius Academy's Agentic AI training diagnostic or quiz-based lead magnet.
 

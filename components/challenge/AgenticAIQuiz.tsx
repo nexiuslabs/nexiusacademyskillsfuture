@@ -44,7 +44,7 @@ const RESULT_BANDS: ResultBand[] = [
     min: 0,
     title: 'AI Explorer',
     description: 'You are at the beginning of the Agentic AI learning curve. That is a good place to start because the right foundation matters.',
-    nextStep: 'Start with the basics: AI evolution, CRISP prompting, context windows, and safe human-in-the-loop workflows.',
+    nextStep: 'Start with the basics: AI evolution, DUO prompting, context windows, and safe human-in-the-loop workflows.',
   },
 ];
 
@@ -107,7 +107,7 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick })
         </div>
         <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Ready to test your Agentic AI foundation?</h2>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-          This challenge checks the training concepts behind AI evolution, context engineering, CRISP prompting, Codex workflows, skills, memory, MCP, and safe governance.
+          This challenge checks the training concepts behind AI evolution, context engineering, DUO prompting, Codex workflows, skills, memory, MCP, and safe governance.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <button
