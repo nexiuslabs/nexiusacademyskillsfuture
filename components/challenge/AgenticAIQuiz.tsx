@@ -80,6 +80,7 @@ const escapeHtml = (value: string) =>
 const buildCertificatePrintHtml = (details: CertificateDetails) => {
   const safeName = escapeHtml(details.recipientName.trim() || 'Participant');
   const safeCourseName = escapeHtml(details.courseName.trim() || CERTIFICATE_DETAILS.courseName);
+  const safeTrainerName = escapeHtml(details.trainerName.trim() || CERTIFICATE_DETAILS.trainerName);
   const dateLines = (details.courseDates.length ? details.courseDates : ['Date to be confirmed']).slice(0, 4).map(escapeHtml);
   const coursePeriod = dateLines.join('<br />');
   const assetBase = window.location.origin;
@@ -189,7 +190,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .completed {
       position: absolute;
-      top: 151mm;
+      top: 151.5mm;
       left: 0;
       right: 0;
       z-index: 2;
@@ -200,14 +201,16 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .course-panel {
       position: absolute;
-      top: 150mm;
-      left: 28mm;
+      top: 161mm;
+      left: 50%;
       width: 154mm;
-      height: 38mm;
+      height: 36mm;
       z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
+      transform: translateX(-50%);
+      text-align: center;
       padding: 7mm 9mm;
       border-top: 0.35mm solid #d8dfe8;
       border-bottom: 0.35mm solid #d8dfe8;
@@ -233,22 +236,26 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       position: relative;
       z-index: 2;
       color: #151d2c;
+      max-width: 100%;
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 14.8pt;
       font-weight: 700;
       letter-spacing: 0.035em;
       line-height: 1.32;
+      text-align: center;
       text-transform: uppercase;
     }
     .info-box {
       position: absolute;
-      top: 197mm;
-      left: 34mm;
+      top: 199mm;
+      left: 50%;
       width: 142mm;
       min-height: 23mm;
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      transform: translateX(-50%);
+      text-align: center;
       border: 0.55mm solid #1c2635;
       background: transparent;
     }
@@ -343,7 +350,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       <section class="signature-block">
         <img class="signature-image" src="${assetBase}/images/certificate/melverick-signature.png" alt="Melverick signature" />
         <div class="signature-line"></div>
-        <p class="signatory-name">Melverick Ng</p>
+        <p class="signatory-name">${safeTrainerName}</p>
         <p class="signatory-title">Director</p>
         <p class="signatory-company">Nexius Labs Pte Ltd</p>
       </section>
