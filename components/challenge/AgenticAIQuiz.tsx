@@ -190,7 +190,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .completed {
       position: absolute;
-      top: 151.5mm;
+      top: 142mm;
       left: 0;
       right: 0;
       z-index: 2;
@@ -201,7 +201,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .course-panel {
       position: absolute;
-      top: 156mm;
+      top: 148mm;
       left: 50%;
       width: 154mm;
       height: 36mm;
@@ -217,21 +217,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       background: #f0f1f3;
       overflow: hidden;
     }
-    .watermark {
-      position: absolute;
-      top: 8mm;
-      left: -6mm;
-      width: 176mm;
-      z-index: 1;
-      color: rgba(85, 93, 107, 0.12);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 25pt;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transform: rotate(-10deg);
-      white-space: nowrap;
-    }
+
     .course-title {
       position: relative;
       z-index: 2;
@@ -247,7 +233,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .info-box {
       position: absolute;
-      top: 194mm;
+      top: 186mm;
       left: 50%;
       width: 142mm;
       min-height: 23mm;
@@ -334,7 +320,6 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       <div class="recipient">${safeName}</div>
       <div class="completed">having successfully completed the 16-hour course</div>
       <section class="course-panel">
-        <div class="watermark">Nexius Academy</div>
         <div class="course-title">${safeCourseName}</div>
       </section>
       <section class="info-box">
