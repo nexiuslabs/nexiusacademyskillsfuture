@@ -114,14 +114,14 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       height: 297mm;
       margin: 0 auto;
       padding: 12.5mm;
-      background: #f8f7f3;
+      background: #fffdf8;
     }
     .certificate {
       position: relative;
       width: 100%;
       height: 100%;
-      border: 1.25mm solid #1c2635;
-      background: #f8f7f3;
+      border: 0.55mm solid #1c2635;
+      background: #fffdf8;
       overflow: hidden;
       text-align: center;
     }
@@ -129,21 +129,21 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       content: '';
       position: absolute;
       inset: 3.2mm;
-      border: 0.38mm solid #b98b2d;
+      border: 0.26mm solid #b98b2d;
       pointer-events: none;
       z-index: 1;
     }
     .logo {
       position: absolute;
-      top: 27mm;
-      right: 24mm;
+      top: 16mm;
+      right: 10mm;
       width: 52mm;
       height: auto;
       z-index: 2;
     }
     .title {
       position: absolute;
-      top: 78mm;
+      top: 74mm;
       left: 0;
       right: 0;
       z-index: 2;
@@ -157,16 +157,12 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .title-rule {
       position: absolute;
-      top: 99mm;
-      left: 62mm;
-      width: 86mm;
-      height: 0.35mm;
-      background: #d7c690;
+      display: none;
       z-index: 2;
     }
     .awarded {
       position: absolute;
-      top: 114mm;
+      top: 104mm;
       left: 0;
       right: 0;
       z-index: 2;
@@ -177,7 +173,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .recipient {
       position: absolute;
-      top: 128mm;
+      top: 118mm;
       left: 18mm;
       right: 18mm;
       z-index: 2;
@@ -188,33 +184,22 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       font-weight: 700;
       line-height: 1.12;
     }
-    .completed {
-      position: absolute;
-      top: 142mm;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      color: #647084;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 12.2pt;
-      font-style: italic;
-    }
     .course-panel {
       position: absolute;
-      top: 148mm;
+      top: 139mm;
       left: 50%;
       width: 154mm;
-      height: 36mm;
+      height: 35mm;
       z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
       transform: translateX(-50%);
       text-align: center;
-      padding: 7mm 9mm;
-      border-top: 0.35mm solid #d8dfe8;
-      border-bottom: 0.35mm solid #d8dfe8;
-      background: #f0f1f3;
+      padding: 6.5mm 9mm;
+      border-top: 0.28mm solid #8a94a3;
+      border-bottom: 0.28mm solid #8a94a3;
+      background: transparent;
       overflow: hidden;
     }
 
@@ -233,7 +218,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .info-box {
       position: absolute;
-      top: 186mm;
+      top: 184mm;
       left: 50%;
       width: 142mm;
       min-height: 23mm;
@@ -272,7 +257,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .signature-block {
       position: absolute;
-      top: 229mm;
+      top: 224mm;
       left: 112mm;
       width: 54mm;
       z-index: 2;
@@ -318,7 +303,6 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
       <div class="title-rule"></div>
       <div class="awarded">Awarded to</div>
       <div class="recipient">${safeName}</div>
-      <div class="completed">having successfully completed the 16-hour course</div>
       <section class="course-panel">
         <div class="course-title">${safeCourseName}</div>
       </section>
