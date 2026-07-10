@@ -1,5 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, CheckCircle, Printer, RotateCcw, Trophy, XCircle } from 'lucide-react';
+import { submitQuizResult } from '../../services/quizResultService';
 
 type QuizQuestion = {
   id: number;
@@ -57,6 +58,7 @@ const RESULT_BANDS: ResultBand[] = [
 ];
 
 const optionLetters = ['A', 'B', 'C', 'D'];
+const QUESTION_VERSION = 'agentic-ai-foundation-2026-07-10-v1';
 
 const CERTIFICATE_DETAILS = {
   courseName:
@@ -357,6 +359,8 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
   const [certificateCourseName, setCertificateCourseName] = useState(CERTIFICATE_DETAILS.courseName);
   const [certificateDates, setCertificateDates] = useState(CERTIFICATE_DETAILS.courseDates.join('\n'));
   const [certificateTrainerName, setCertificateTrainerName] = useState(CERTIFICATE_DETAILS.trainerName);
+  const [quizResultId, setQuizResultId] = useState<string | null>(null);
+  const [quizResultSaveStatus, setQuizResultSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
 
   const currentQuestion = questions[currentQuestionIndex];
   const score = useMemo(
@@ -379,6 +383,8 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
     setCertificateCourseName(CERTIFICATE_DETAILS.courseName);
     setCertificateDates(CERTIFICATE_DETAILS.courseDates.join('\n'));
     setCertificateTrainerName(CERTIFICATE_DETAILS.trainerName);
+    setQuizResultId(null);
+    setQuizResultSaveStatus('idle');
   };
 
   const chooseOption = (optionIndex: number) => {
@@ -402,6 +408,60 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
     setCurrentQuestionIndex((index) => index + 1);
     setSelectedOption(null);
   };
+
+  const buildQuizResultAnswers = () =>
+    questions.map((question, index) => {
+      const selectedIndex = selectedAnswers[index] ?? -1;
+
+      return {
+        questionId: question.id,
+        questionPrompt: question.prompt,
+        selectedIndex,
+        selectedOptionLetter: optionLetters[selectedIndex] || '',
+        selectedOptionText: question.options[selectedIndex] || '',
+        correctIndex: question.answerIndex,
+        correctOptionLetter: optionLetters[question.answerIndex] || '',
+        correctOptionText: question.options[question.answerIndex] || '',
+        isCorrect: selectedIndex === question.answerIndex,
+      };
+    });
+
+  const saveQuizResult = async (certificateDetails?: CertificateDetails, certificateGenerated = false) => {
+    const percentage = Math.round((score / questions.length) * 100);
+
+    setQuizResultSaveStatus('saving');
+
+    try {
+      const { id } = await submitQuizResult({
+        id: quizResultId || undefined,
+        assessmentSlug: 'agentic-ai-challenge',
+        questionVersion: QUESTION_VERSION,
+        pagePath: `${window.location.pathname}${window.location.search}${window.location.hash}`,
+        score,
+        totalQuestions: questions.length,
+        percentage,
+        resultTitle: resultBand.title,
+        resultDescription: resultBand.description,
+        answers: buildQuizResultAnswers(),
+        certificateRecipientName: certificateDetails?.recipientName,
+        certificateCourseName: certificateDetails?.courseName,
+        certificateCourseDates: certificateDetails?.courseDates,
+        certificateTrainerName: certificateDetails?.trainerName,
+        certificateGenerated,
+      });
+
+      setQuizResultId(id);
+      setQuizResultSaveStatus('saved');
+    } catch (error) {
+      console.warn('Quiz result could not be saved', error);
+      setQuizResultSaveStatus('error');
+    }
+  };
+
+  useEffect(() => {
+    if (!showResult || quizResultId || selectedAnswers.length < questions.length) return;
+    void saveQuizResult();
+  }, [showResult]);
 
   if (!hasStarted) {
     return (
@@ -458,6 +518,11 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
             <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">Your Agentic AI readiness snapshot</h2>
             <p className="mt-4 text-gray-600">{resultBand.description}</p>
             <p className="mt-3 text-gray-600">{resultBand.nextStep}</p>
+            <p className="mt-3 text-xs font-semibold text-gray-500" aria-live="polite">
+              {quizResultSaveStatus === 'saving' && 'Saving quiz result...'}
+              {quizResultSaveStatus === 'saved' && 'Quiz result saved.'}
+              {quizResultSaveStatus === 'error' && 'Quiz result could not be saved automatically.'}
+            </p>
             <div className="mt-6 rounded-2xl border border-primary/10 bg-neutral p-5">
               <div className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Certificate download</div>
               <h3 className="mt-2 font-heading text-xl font-bold text-primary">Generate your completion certificate</h3>
@@ -513,16 +578,17 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
               <button
                 type="button"
                 disabled={!canDownloadCertificate}
-                onClick={() =>
-                  openCertificatePrintWindow(
-                    {
-                      recipientName: certificateName,
-                      courseName: certificateCourseName,
-                      courseDates: certificateDateEntries,
-                      trainerName: certificateTrainerName,
-                    },
-                  )
-                }
+                onClick={() => {
+                  const certificateDetails = {
+                    recipientName: certificateName,
+                    courseName: certificateCourseName,
+                    courseDates: certificateDateEntries,
+                    trainerName: certificateTrainerName,
+                  };
+
+                  openCertificatePrintWindow(certificateDetails);
+                  void saveQuizResult(certificateDetails, true);
+                }}
                 className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3 font-bold text-primary transition hover:bg-[#22E0D0] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 sm:w-auto"
               >
                 <Printer size={18} />
