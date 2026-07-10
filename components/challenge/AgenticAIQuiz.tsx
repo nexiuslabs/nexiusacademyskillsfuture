@@ -77,70 +77,242 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-const buildCertificatePrintHtml = (details: CertificateDetails, score: number, total: number) => {
-  const issuedOn = new Intl.DateTimeFormat('en-SG', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-  }).format(new Date());
+const buildCertificatePrintHtml = (details: CertificateDetails) => {
   const safeName = escapeHtml(details.recipientName.trim() || 'Participant');
   const safeCourseName = escapeHtml(details.courseName.trim() || CERTIFICATE_DETAILS.courseName);
-  const safeTrainerName = escapeHtml(details.trainerName.trim() || 'Trainer to be confirmed');
-  const dateLines = (details.courseDates.length ? details.courseDates : ['Date to be confirmed']).slice(0, 6).map(escapeHtml);
+  const dateLines = (details.courseDates.length ? details.courseDates : ['Date to be confirmed']).slice(0, 4).map(escapeHtml);
+  const coursePeriod = dateLines.join('<br />');
+  const assetBase = window.location.origin;
 
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Nexius Academy Certificate - ${safeName}</title>
+  <title>Certificate of Completion - ${safeName}</title>
   <style>
     @page { size: A4 portrait; margin: 0; }
     * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
     body {
-      margin: 0;
-      min-height: 100vh;
-      background: #eef6f6;
-      color: #101827;
+      background: #f7f6f1;
+      color: #172033;
       font-family: Arial, Helvetica, sans-serif;
+    }
+    .screen-actions { padding: 16px; text-align: center; }
+    .screen-actions button {
+      border: 0;
+      border-radius: 14px;
+      background: #b98b2d;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 800;
+      padding: 12px 18px;
     }
     .sheet {
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
       margin: 0 auto;
-      padding: 16mm;
-      background: #fbfeff;
-      display: flex;
-      align-items: stretch;
+      padding: 12.5mm;
+      background: #f8f7f3;
     }
     .certificate {
-      width: 100%;
-      border: 2.5mm solid #101827;
-      outline: 0.8mm solid #00caba;
-      outline-offset: -6mm;
-      padding: 24mm 16mm 18mm;
-      text-align: center;
       position: relative;
+      width: 100%;
+      height: 100%;
+      border: 1.25mm solid #1c2635;
+      background: #f8f7f3;
+      overflow: hidden;
+      text-align: center;
     }
-    .brand { color: #00a99d; font-size: 11pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
-    h1 { margin: 14mm 0 10mm; font-size: 25pt; letter-spacing: 0.08em; text-transform: uppercase; }
-    .label { color: #4b5563; font-size: 11pt; letter-spacing: 0.08em; text-transform: uppercase; }
-    .name { margin: 6mm auto 7mm; padding-bottom: 4mm; max-width: 150mm; border-bottom: 0.5mm solid #00caba; font-size: 27pt; font-weight: 800; }
-    .statement { color: #374151; font-size: 11.5pt; line-height: 1.6; }
-    .course { margin: 10mm auto; padding: 8mm; max-width: 154mm; background: #eefafa; color: #101827; font-size: 15pt; font-weight: 800; line-height: 1.35; text-transform: uppercase; }
-    .details { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin: 10mm 0 14mm; text-align: left; }
-    .box { min-height: 31mm; padding: 5mm; background: #f5f9fa; border-radius: 4mm; }
-    .box h2 { margin: 0 0 3mm; color: #00a99d; font-size: 9pt; letter-spacing: 0.16em; text-transform: uppercase; }
-    .box p { margin: 1.8mm 0; font-size: 11.5pt; font-weight: 700; line-height: 1.4; }
-    .signature { margin-top: 9mm; }
-    .signature-name { display: inline-block; min-width: 80mm; padding-bottom: 2.5mm; border-bottom: 0.5mm solid #101827; font-size: 15pt; font-weight: 800; }
-    .signature-title, .note { color: #4b5563; font-size: 9pt; }
-    .note { margin-top: 8mm; }
-    .screen-actions { padding: 16px; text-align: center; }
-    .screen-actions button { border: 0; border-radius: 14px; background: #00caba; color: #101827; cursor: pointer; font-weight: 800; padding: 12px 18px; }
+    .certificate::before {
+      content: '';
+      position: absolute;
+      inset: 3.2mm;
+      border: 0.38mm solid #b98b2d;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .logo {
+      position: absolute;
+      top: 27mm;
+      right: 24mm;
+      width: 52mm;
+      height: auto;
+      z-index: 2;
+    }
+    .title {
+      position: absolute;
+      top: 78mm;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      color: #151d2c;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24pt;
+      font-weight: 600;
+      letter-spacing: 0.055em;
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+    .title-rule {
+      position: absolute;
+      top: 99mm;
+      left: 62mm;
+      width: 86mm;
+      height: 0.35mm;
+      background: #d7c690;
+      z-index: 2;
+    }
+    .awarded {
+      position: absolute;
+      top: 114mm;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      color: #647084;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 13pt;
+      font-style: italic;
+    }
+    .recipient {
+      position: absolute;
+      top: 128mm;
+      left: 18mm;
+      right: 18mm;
+      z-index: 2;
+      color: #173a63;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 25pt;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.12;
+    }
+    .completed {
+      position: absolute;
+      top: 151mm;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      color: #647084;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 12.2pt;
+      font-style: italic;
+    }
+    .course-panel {
+      position: absolute;
+      top: 150mm;
+      left: 28mm;
+      width: 154mm;
+      height: 38mm;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7mm 9mm;
+      border-top: 0.35mm solid #d8dfe8;
+      border-bottom: 0.35mm solid #d8dfe8;
+      background: #f0f1f3;
+      overflow: hidden;
+    }
+    .watermark {
+      position: absolute;
+      top: 8mm;
+      left: -6mm;
+      width: 176mm;
+      z-index: 1;
+      color: rgba(85, 93, 107, 0.12);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 25pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: rotate(-10deg);
+      white-space: nowrap;
+    }
+    .course-title {
+      position: relative;
+      z-index: 2;
+      color: #151d2c;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 14.8pt;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      line-height: 1.32;
+      text-transform: uppercase;
+    }
+    .info-box {
+      position: absolute;
+      top: 197mm;
+      left: 34mm;
+      width: 142mm;
+      min-height: 23mm;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 0.55mm solid #1c2635;
+      background: transparent;
+    }
+    .info-cell {
+      min-height: 22mm;
+      padding: 4.4mm 4mm 3.6mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .info-cell + .info-cell { border-left: 0.55mm solid #1c2635; }
+    .info-label {
+      margin-bottom: 3.2mm;
+      color: #647084;
+      font-size: 8.2pt;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .info-value {
+      color: #172033;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 11.4pt;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.34;
+    }
+    .signature-block {
+      position: absolute;
+      top: 229mm;
+      left: 112mm;
+      width: 54mm;
+      z-index: 2;
+      color: #172033;
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    .signature-image {
+      display: block;
+      width: 36mm;
+      height: auto;
+      margin: 0 auto -1mm;
+    }
+    .signature-line {
+      width: 48mm;
+      margin: 0 auto 2.4mm;
+      border-top: 0.35mm solid #1c2635;
+    }
+    .signatory-name { margin: 0 0 1mm; font-size: 11.4pt; font-weight: 700; }
+    .signatory-title, .signatory-company { margin: 0.7mm 0; font-size: 10.2pt; }
+    .footer-note {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 4mm;
+      z-index: 2;
+      color: #526071;
+      font-size: 8.2pt;
+    }
     @media print {
       body { background: #fff; }
-      .sheet { margin: 0; }
       .screen-actions { display: none; }
+      .sheet { margin: 0; }
     }
   </style>
 </head>
@@ -148,21 +320,34 @@ const buildCertificatePrintHtml = (details: CertificateDetails, score: number, t
   <div class="screen-actions"><button onclick="window.print()">Save / Print as PDF</button></div>
   <main class="sheet">
     <section class="certificate" aria-label="Certificate of completion">
-      <div class="brand">Nexius Academy</div>
-      <h1>Certificate of Completion</h1>
-      <div class="label">Awarded to</div>
-      <div class="name">${safeName}</div>
-      <p class="statement">having completed the Agentic AI assessment with a score of <strong>${score}/${total}</strong><br />and the stated training programme</p>
-      <div class="course">${safeCourseName}</div>
-      <div class="details">
-        <div class="box"><h2>Course dates</h2>${dateLines.map((date) => `<p>${date}</p>`).join('')}</div>
-        <div class="box"><h2>Trainer</h2><p>${safeTrainerName}</p><h2 style="margin-top:7mm">Issued on</h2><p>${escapeHtml(issuedOn)}</p></div>
-      </div>
-      <div class="signature">
-        <div class="signature-name">${safeTrainerName}</div>
-        <p class="signature-title">Master Trainer, Nexius Academy</p>
-      </div>
-      <p class="note">This certificate is generated by Nexius Academy for completion of the stated programme.</p>
+      <img class="logo" src="${assetBase}/images/certificate/nexius-labs-logo.png" alt="Nexius Labs" />
+      <h1 class="title">Certificate of Completion</h1>
+      <div class="title-rule"></div>
+      <div class="awarded">Awarded to</div>
+      <div class="recipient">${safeName}</div>
+      <div class="completed">having successfully completed the 16-hour course</div>
+      <section class="course-panel">
+        <div class="watermark">Nexius Academy</div>
+        <div class="course-title">${safeCourseName}</div>
+      </section>
+      <section class="info-box">
+        <div class="info-cell">
+          <div class="info-label">Course Period</div>
+          <div class="info-value">${coursePeriod}</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">Issued By</div>
+          <div class="info-value">Nexius Academy</div>
+        </div>
+      </section>
+      <section class="signature-block">
+        <img class="signature-image" src="${assetBase}/images/certificate/melverick-signature.png" alt="Melverick signature" />
+        <div class="signature-line"></div>
+        <p class="signatory-name">Melverick Ng</p>
+        <p class="signatory-title">Director</p>
+        <p class="signatory-company">Nexius Labs Pte Ltd</p>
+      </section>
+      <p class="footer-note">This certificate is issued by Nexius Academy for completion of the stated programme.</p>
     </section>
   </main>
   <script>window.addEventListener('load', () => setTimeout(() => window.print(), 250));</script>
@@ -170,7 +355,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails, score: number, t
 </html>`;
 };
 
-const openCertificatePrintWindow = (details: CertificateDetails, score: number, total: number) => {
+const openCertificatePrintWindow = (details: CertificateDetails) => {
   const certificateWindow = window.open('', '_blank');
 
   if (!certificateWindow) {
@@ -179,7 +364,7 @@ const openCertificatePrintWindow = (details: CertificateDetails, score: number, 
   }
 
   certificateWindow.document.open();
-  certificateWindow.document.write(buildCertificatePrintHtml(details, score, total));
+  certificateWindow.document.write(buildCertificatePrintHtml(details));
   certificateWindow.document.close();
   certificateWindow.focus();
 };
@@ -360,8 +545,6 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
                       courseDates: certificateDateEntries,
                       trainerName: certificateTrainerName,
                     },
-                    score,
-                    questions.length,
                   )
                 }
                 className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3 font-bold text-primary transition hover:bg-[#22E0D0] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 sm:w-auto"
