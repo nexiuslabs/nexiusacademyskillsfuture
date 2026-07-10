@@ -20,7 +20,7 @@ const json = (statusCode, body) => ({
 const normalizeEmail = (value) => (typeof value === 'string' ? value.trim().toLowerCase() : '');
 const normalizeCode = (value) => (typeof value === 'string' ? value.replace(/\D/g, '') : '');
 const hashAccessCode = (email, code) =>
-  crypto.createHmac('sha256', SUPABASE_SERVICE_ROLE_KEY).update(`${email}:${code}`).digest('hex');
+  crypto.createHash('sha256').update(`${email}:${code}`).digest('hex');
 const hashIp = (value) =>
   value ? crypto.createHmac('sha256', SUPABASE_SERVICE_ROLE_KEY).update(value).digest('hex') : null;
 

@@ -1,5 +1,5 @@
 -- Invite-only access control for Nexius Academy assessments.
--- Codes are stored as server-side HMAC-SHA256 hashes of lower(email) || ':' || six_digit_code.
+-- Codes are stored as SHA-256 hashes of lower(email) || ':' || six_digit_code.
 
 create table if not exists public.assessment_invites (
   id uuid primary key default gen_random_uuid(),
@@ -81,7 +81,7 @@ comment on table public.assessment_invites is
   'Invite-only learner access records for Nexius Academy assessments. Access codes are stored as hashes and consumed by server-side Netlify functions.';
 
 comment on column public.assessment_invites.access_code_hash is
-  'Server-side HMAC-SHA256 hex of lower(trim(learner_email)) || '':'' || six_digit_code.';
+  'SHA-256 hex of lower(trim(learner_email)) || '':'' || six_digit_code.';
 
 comment on table public.assessment_invite_access_attempts is
   'Server-side audit/rate-limit log for learner invite code validation attempts.';
