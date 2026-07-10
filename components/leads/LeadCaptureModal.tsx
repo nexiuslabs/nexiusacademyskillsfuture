@@ -81,6 +81,7 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai-accountants': [{ label: 'TBD', code: 'tbd' }],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
   'agentic-ai-course-preview': [{ label: '17 Jun 2026 course preview (2pm-5pm)', code: 'course-preview-2026-06-17' }],
+  'agentic-ai-challenge': [{ label: 'Agentic AI Challenge result follow-up', code: 'agentic-ai-challenge' }],
   'agentic-ai-preview-session': [{ label: '26 Jun 2026 preview session (2pm-6pm)', code: 'e2i-preview-2026-06-26' }],
   'agentic-ai-sim-preview-session': [
     { label: '04 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-04' },
@@ -93,6 +94,7 @@ const ACCOUNTANTS_SELF_REGISTRATION_URL =
 
 const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/courses/agentic-ai-company-class')) return 'agentic-ai-company-class';
+  if (path.includes('/assessments')) return 'agentic-ai-challenge';
   if (path.includes('/courses/agentic-ai-accountants')) return 'agentic-ai-accountants';
   if (path.includes('/course-preview')) return 'agentic-ai-course-preview';
   if (path.includes('/sim-preview')) return 'agentic-ai-sim-preview-session';

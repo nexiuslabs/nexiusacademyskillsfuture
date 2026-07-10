@@ -11,6 +11,7 @@ Primary website: https://academy.nexiuslabs.com/
 - Homepage: https://academy.nexiuslabs.com/
 - About Nexius Academy: https://academy.nexiuslabs.com/about/
 - SkillsFuture Funding Guide: https://academy.nexiuslabs.com/skillsfuture-funding-guide/
+- Agentic AI Challenge: https://academy.nexiuslabs.com/assessments/
 - Singapore AI Training & Readiness Report 2026: https://academy.nexiuslabs.com/reports/singapore-ai-training-readiness-2026/
 - Blog: https://academy.nexiuslabs.com/blog/
 - Sitemap: https://academy.nexiuslabs.com/sitemap.xml

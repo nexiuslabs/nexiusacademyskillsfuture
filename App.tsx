@@ -28,6 +28,7 @@ import PrivateClassPage from './pages/PrivateClassPage';
 import PreviewSessionPage from './pages/PreviewSessionPage';
 import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
 import SingaporeAITrainingReportPage from './pages/SingaporeAITrainingReportPage';
+import AgenticAIChallengePage from './pages/AgenticAIChallengePage';
 import ScrollToTop from './components/ScrollToTop';
 import AIAdvisor from './components/courses/AIAdvisor';
 import LeadCaptureModal from './components/leads/LeadCaptureModal';
@@ -101,6 +102,7 @@ export const AppShell: React.FC = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
+        <Route path="/assessments" element={<AgenticAIChallengePage />} />
         <Route path="/reports/singapore-ai-training-readiness-2026" element={<SingaporeAITrainingReportPage />} />
         <Route path="/courses/agentic-ai" element={<CoursePage />} />
         <Route path="/private-class" element={<PrivateClassPage />} />

@@ -337,6 +337,27 @@ const routes = [
     schemas: [],
   },
   {
+    path: '/assessments',
+    priority: '0.8',
+    changefreq: 'weekly',
+    includeInSitemap: true,
+    title: 'Agentic AI Challenge | Nexius Academy',
+    description:
+      'Take the Nexius Academy Agentic AI Challenge: a 20-question quiz covering AI maturity, context engineering, Codex workflows, memory, MCP, and governance.',
+    ogType: 'website',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      pageSchema({
+        name: 'Agentic AI Challenge',
+        description:
+          'A 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, CRISP prompting, Codex workflows, skills, memory, MCP, and governance.',
+        url: `${SITE_URL}/assessments/`,
+        image: COURSE_IMAGE,
+        type: 'Quiz',
+      }),
+    ],
+  },
+  {
     path: '/reports/singapore-ai-training-readiness-2026',
     priority: '0.8',
     changefreq: 'monthly',
