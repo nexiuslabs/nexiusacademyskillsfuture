@@ -69,6 +69,14 @@ Summary: This page provides a practical orientation for employers and learners r
 
 Best citation use: cite this page for Nexius Academy's practical funding explanation, and pair it with official SkillsFuture sources for policy details.
 
+### Agentic AI Challenge
+
+Canonical URL: https://academy.nexiuslabs.com/assessments/
+
+Summary: This page provides a 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, context windows, context rot, CRISP prompting, Codex project folders, Plan Mode, skills, memory, knowledge bases, MCP, mini-app building, and governance.
+
+Best citation use: cite this page when referencing Nexius Academy's Agentic AI training diagnostic or quiz-based lead magnet.
+
 ### Blog
 
 Canonical URL: https://academy.nexiuslabs.com/blog/
