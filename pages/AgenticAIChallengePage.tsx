@@ -17,22 +17,22 @@ const questions: QuizQuestion[] = [
   {
     id: 2,
     prompt: 'Which stage best describes traditional chatbots?',
-    options: ['They coordinate multiple agents across departments', 'They answer questions but do not execute real work', 'They autonomously approve payments', 'They manage company workflows end-to-end'],
-    answerIndex: 1,
+    options: ['They coordinate multiple agents across departments', 'They autonomously approve payments', 'They answer questions but do not execute real work', 'They manage company workflows end-to-end'],
+    answerIndex: 2,
     explanation: 'Traditional chatbots mainly answer questions. They do not usually plan, operate tools, or execute real work across systems.',
   },
   {
     id: 3,
     prompt: 'What makes an AI agent different from ordinary ChatGPT use?',
-    options: ['It only writes longer answers', 'It can plan, use tools, and take action within boundaries', 'It does not need any user instructions', 'It always replaces human approval'],
-    answerIndex: 1,
+    options: ['It only writes longer answers', 'It does not need any user instructions', 'It always replaces human approval', 'It can plan, use tools, and take action within boundaries'],
+    answerIndex: 3,
     explanation: 'An AI agent can plan steps, use tools, and take action, but it still needs clear boundaries, context, and human oversight for higher-risk decisions.',
   },
   {
     id: 4,
     prompt: 'In the training, Agentic AI requires control layers because:',
-    options: ['Better prompts alone are enough for safe adoption', 'Agents can act across systems, so access and decision authority must be managed', 'AI agents should be allowed to work without limits', 'Governance is only needed after something fails'],
-    answerIndex: 1,
+    options: ['Agents can act across systems, so access and decision authority must be managed', 'Better prompts alone are enough for safe adoption', 'AI agents should be allowed to work without limits', 'Governance is only needed after something fails'],
+    answerIndex: 0,
     explanation: 'Because agents can act across systems, organisations need controls for access, approvals, decision authority, and accountability.',
   },
   {
@@ -45,8 +45,8 @@ const questions: QuizQuestion[] = [
   {
     id: 6,
     prompt: 'What is “context engineering” as taught in the training?',
-    options: ['Writing longer prompts with more words', 'Selecting the right source material, constraints, examples, and goals for the AI', 'Asking the AI to ignore all previous information', 'Using only technical jargon in prompts'],
-    answerIndex: 1,
+    options: ['Writing longer prompts with more words', 'Asking the AI to ignore all previous information', 'Selecting the right source material, constraints, examples, and goals for the AI', 'Using only technical jargon in prompts'],
+    answerIndex: 2,
     explanation: 'Context engineering means shaping what the AI can see and use: relevant source material, constraints, examples, goals, and boundaries.',
   },
   {
@@ -59,15 +59,15 @@ const questions: QuizQuestion[] = [
   {
     id: 8,
     prompt: 'What is “context rot”?',
-    options: ['When the AI becomes better as a conversation gets longer', 'When response quality degrades because the conversation becomes too long or cluttered', 'When the AI refuses to answer all questions', 'When a file is deleted from the project folder'],
-    answerIndex: 1,
+    options: ['When the AI becomes better as a conversation gets longer', 'When the AI refuses to answer all questions', 'When a file is deleted from the project folder', 'When response quality degrades because the conversation becomes too long or cluttered'],
+    answerIndex: 3,
     explanation: 'Context rot happens when a conversation becomes too long, noisy, or cluttered, causing useful signal and instructions to degrade.',
   },
   {
     id: 9,
     prompt: 'Why can auto-compacting create problems?',
-    options: ['It always deletes all files from the computer', 'It may summarise older conversation details and lose useful nuance', 'It prevents users from sending new prompts', 'It disables all AI tools permanently'],
-    answerIndex: 1,
+    options: ['It always deletes all files from the computer', 'It prevents users from sending new prompts', 'It may summarise older conversation details and lose useful nuance', 'It disables all AI tools permanently'],
+    answerIndex: 2,
     explanation: 'Auto-compacting can preserve the gist but lose nuance, exact instructions, examples, or decision details that matter later.',
   },
   {
@@ -87,15 +87,15 @@ const questions: QuizQuestion[] = [
   {
     id: 12,
     prompt: 'What is Plan Mode in Codex used for?',
-    options: ['To force Codex to delete all previous work', 'To make Codex interview the user and create a structure before modifying files', 'To prevent Codex from asking questions', 'To skip planning and immediately write code'],
-    answerIndex: 1,
+    options: ['To force Codex to delete all previous work', 'To prevent Codex from asking questions', 'To skip planning and immediately write code', 'To make Codex interview the user and create a structure before modifying files'],
+    answerIndex: 3,
     explanation: 'Plan Mode helps Codex clarify requirements, structure work, and propose a plan before making file changes.',
   },
   {
     id: 13,
     prompt: 'What is a Codex project folder?',
-    options: ['A random online chatroom', 'A dedicated local workspace where Codex can read, edit, and run project files', 'A Microsoft Teams channel', 'A static PDF document'],
-    answerIndex: 1,
+    options: ['A random online chatroom', 'A Microsoft Teams channel', 'A dedicated local workspace where Codex can read, edit, and run project files', 'A static PDF document'],
+    answerIndex: 2,
     explanation: 'A Codex project folder is a local workspace containing the files Codex can inspect, edit, run, and verify.',
   },
   {
@@ -108,15 +108,15 @@ const questions: QuizQuestion[] = [
   {
     id: 15,
     prompt: 'A good skill should be:',
-    options: ['Broad, vague, and inspirational', 'Narrow, procedural, and testable', 'Hidden from the user', 'Dependent on constantly changing external webpages'],
-    answerIndex: 1,
+    options: ['Broad, vague, and inspirational', 'Hidden from the user', 'Dependent on constantly changing external webpages', 'Narrow, procedural, and testable'],
+    answerIndex: 3,
     explanation: 'A good skill is narrow enough to apply reliably, procedural enough to execute, and testable enough to verify.',
   },
   {
     id: 16,
     prompt: 'What is the main purpose of turning a repeated workflow into a skill?',
-    options: ['To avoid documenting the process', 'To make reliable execution less dependent on perfect prompting each time', 'To remove the need for any human review', 'To make every task more complicated'],
-    answerIndex: 1,
+    options: ['To avoid documenting the process', 'To remove the need for any human review', 'To make reliable execution less dependent on perfect prompting each time', 'To make every task more complicated'],
+    answerIndex: 2,
     explanation: 'Skills reduce dependency on perfect one-off prompting by capturing reliable steps, checks, and pitfalls for repeated workflows.',
   },
   {
@@ -129,15 +129,15 @@ const questions: QuizQuestion[] = [
   {
     id: 18,
     prompt: 'Which statement best describes good AI memory?',
-    options: ['Store everything forever', 'Retrieve the right prior context into the current context window', 'Avoid using past information', 'Let the model secretly learn the company’s entire job'],
-    answerIndex: 1,
+    options: ['Retrieve the right prior context into the current context window', 'Store everything forever', 'Avoid using past information', 'Let the model secretly learn the company’s entire job'],
+    answerIndex: 0,
     explanation: 'Good AI memory is selective: it retrieves the right prior context into the current context window rather than storing or injecting everything.',
   },
   {
     id: 19,
     prompt: 'In the training, why is MCP useful for AI agents?',
-    options: ['It lets AI agents connect to external tools and systems through a standard protocol', 'It permanently trains the model on company data', 'It removes the need for APIs, tools, or permissions', 'It allows agents to bypass all governance controls'],
-    answerIndex: 0,
+    options: ['It permanently trains the model on company data', 'It removes the need for APIs, tools, or permissions', 'It allows agents to bypass all governance controls', 'It lets AI agents connect to external tools and systems through a standard protocol'],
+    answerIndex: 3,
     explanation: 'MCP is useful because it gives agents a standard way to connect with external tools, systems, and context sources while still respecting boundaries.',
   },
   {
