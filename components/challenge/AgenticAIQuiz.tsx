@@ -201,7 +201,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .course-panel {
       position: absolute;
-      top: 161mm;
+      top: 156mm;
       left: 50%;
       width: 154mm;
       height: 36mm;
@@ -247,7 +247,7 @@ const buildCertificatePrintHtml = (details: CertificateDetails) => {
     }
     .info-box {
       position: absolute;
-      top: 199mm;
+      top: 194mm;
       left: 50%;
       width: 142mm;
       min-height: 23mm;
