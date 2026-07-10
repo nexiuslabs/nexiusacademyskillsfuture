@@ -621,14 +621,24 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
               </button>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => onLeadClick(score, resultBand.title)}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-blue-900"
-              >
-                Get Course Guidance
-                <ArrowRight size={18} />
-              </button>
+              {score >= 15 ? (
+                <a
+                  href="/courses/advanced-agentic-ai/"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-blue-900"
+                >
+                  Level Up
+                  <ArrowRight size={18} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => onLeadClick(score, resultBand.title)}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-blue-900"
+                >
+                  Get Course Guidance
+                  <ArrowRight size={18} />
+                </button>
+              )}
               <button
                 type="button"
                 onClick={startQuiz}
