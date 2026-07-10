@@ -1,6 +1,7 @@
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const TABLE = 'assessment_quiz_results';
+const INVITES_TABLE = 'assessment_invites';
 
 const json = (statusCode, body) => ({
   statusCode,
@@ -49,7 +50,60 @@ const normalizeAnswers = (answers) => {
   }));
 };
 
-const buildRecord = (payload) => {
+const supabaseHeaders = () => ({
+  apikey: SUPABASE_SERVICE_ROLE_KEY,
+  Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+  'Content-Type': 'application/json',
+});
+
+const isExpired = (expiresAt) => Boolean(expiresAt && new Date(expiresAt).getTime() < Date.now());
+
+const fetchInvite = async (inviteId, assessmentSlug) => {
+  const endpoint = new URL(`${SUPABASE_URL}/rest/v1/${INVITES_TABLE}`);
+  endpoint.searchParams.set('select', 'id,assessment_slug,cohort_code,learner_name,learner_email,course_name,course_dates,trainer_name,expires_at,active,certificate_enabled,max_results');
+  endpoint.searchParams.set('id', `eq.${inviteId}`);
+  endpoint.searchParams.set('assessment_slug', `eq.${assessmentSlug}`);
+  endpoint.searchParams.set('active', 'eq.true');
+  endpoint.searchParams.set('limit', '1');
+
+  const response = await fetch(endpoint, { headers: supabaseHeaders() });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(body || 'Could not load learner invite.');
+  }
+
+  const rows = await response.json();
+  const invite = rows?.[0];
+
+  if (!invite || isExpired(invite.expires_at)) {
+    const error = new Error('This assessment is only available to registered learners with a valid access code.');
+    error.statusCode = 403;
+    throw error;
+  }
+
+  return invite;
+};
+
+const fetchCompletedResultCount = async (inviteId) => {
+  const endpoint = new URL(`${SUPABASE_URL}/rest/v1/${TABLE}`);
+  endpoint.searchParams.set('select', 'id');
+  endpoint.searchParams.set('assessment_invite_id', `eq.${inviteId}`);
+
+  const response = await fetch(endpoint, {
+    headers: {
+      ...supabaseHeaders(),
+      Prefer: 'count=exact',
+    },
+  });
+
+  if (!response.ok) return null;
+  const range = response.headers.get('content-range') || '';
+  const count = Number(range.split('/')[1]);
+  return Number.isFinite(count) ? count : null;
+};
+
+const buildRecord = (payload, invite) => {
   const visitor = payload?.visitorContext || {};
   const score = clampInteger(payload?.score, 0, 500);
   const totalQuestions = clampInteger(payload?.totalQuestions, 1, 500);
@@ -60,7 +114,8 @@ const buildRecord = (payload) => {
   }
 
   const record = {
-    assessment_slug: clampText(payload?.assessmentSlug, 120) || 'agentic-ai-challenge',
+    assessment_invite_id: invite.id,
+    assessment_slug: invite.assessment_slug,
     question_version: clampText(payload?.questionVersion, 120) || 'unknown',
     visitor_id: clampText(visitor?.visitorId, 64),
     session_id: clampText(visitor?.sessionId, 64),
@@ -79,18 +134,15 @@ const buildRecord = (payload) => {
     result_title: clampText(payload?.resultTitle, 160),
     result_description: clampText(payload?.resultDescription, 1000),
     answers: normalizeAnswers(payload?.answers),
+    certificate_recipient_name: invite.learner_name,
+    certificate_course_name: invite.course_name,
+    certificate_course_dates: asStringArray(invite.course_dates, 12, 120),
+    certificate_trainer_name: invite.trainer_name,
   };
 
-  const certificateRecipientName = clampText(payload?.certificateRecipientName, 200);
-  const certificateCourseName = clampText(payload?.certificateCourseName, 500);
-  const certificateCourseDates = asStringArray(payload?.certificateCourseDates, 12, 120);
-  const certificateTrainerName = clampText(payload?.certificateTrainerName, 200);
-
-  if (certificateRecipientName) record.certificate_recipient_name = certificateRecipientName;
-  if (certificateCourseName) record.certificate_course_name = certificateCourseName;
-  if (certificateCourseDates.length) record.certificate_course_dates = certificateCourseDates;
-  if (certificateTrainerName) record.certificate_trainer_name = certificateTrainerName;
-  if (payload?.certificateGenerated) record.certificate_generated_at = new Date().toISOString();
+  if (payload?.certificateGenerated && invite.certificate_enabled) {
+    record.certificate_generated_at = new Date().toISOString();
+  }
 
   return record;
 };
@@ -111,28 +163,45 @@ export async function handler(event) {
     return json(400, { error: 'Invalid JSON payload.' });
   }
 
+  const assessmentSlug = clampText(payload?.assessmentSlug, 120) || 'agentic-ai-challenge';
+  const inviteId = clampText(payload?.assessmentInviteId, 64);
+
+  if (!inviteId) {
+    return json(403, { error: 'Learner access validation is required before saving quiz results.' });
+  }
+
+  let invite;
+  try {
+    invite = await fetchInvite(inviteId, assessmentSlug);
+  } catch (error) {
+    return json(error.statusCode || 500, { error: error.message || 'Could not validate learner access.' });
+  }
+
+  const existingId = clampText(payload?.id, 64);
+  if (!existingId) {
+    const completedCount = await fetchCompletedResultCount(invite.id);
+    if (completedCount !== null && completedCount >= invite.max_results) {
+      return json(403, { error: 'This learner has reached the maximum number of assessment submissions.' });
+    }
+  }
+
   let record;
   try {
-    record = buildRecord(payload);
+    record = buildRecord(payload, invite);
   } catch (error) {
     return json(400, { error: error.message || 'Invalid quiz result payload.' });
   }
 
-  const headers = {
-    apikey: SUPABASE_SERVICE_ROLE_KEY,
-    Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-    'Content-Type': 'application/json',
-    Prefer: 'return=representation',
-  };
-
-  const existingId = clampText(payload?.id, 64);
   const endpoint = existingId
-    ? `${SUPABASE_URL}/rest/v1/${TABLE}?id=eq.${encodeURIComponent(existingId)}&select=id`
+    ? `${SUPABASE_URL}/rest/v1/${TABLE}?id=eq.${encodeURIComponent(existingId)}&assessment_invite_id=eq.${encodeURIComponent(invite.id)}&select=id`
     : `${SUPABASE_URL}/rest/v1/${TABLE}?select=id`;
 
   const response = await fetch(endpoint, {
     method: existingId ? 'PATCH' : 'POST',
-    headers,
+    headers: {
+      ...supabaseHeaders(),
+      Prefer: 'return=representation',
+    },
     body: JSON.stringify(record),
   });
 
@@ -142,10 +211,14 @@ export async function handler(event) {
   }
 
   const rows = await response.json();
-  const id = rows?.[0]?.id || existingId;
+  const id = rows?.[0]?.id;
 
   if (!id) {
-    return json(500, { error: 'Quiz result saved but no id was returned.' });
+    return json(existingId ? 404 : 500, {
+      error: existingId
+        ? 'Could not update quiz result for this learner invite.'
+        : 'Quiz result saved but no id was returned.',
+    });
   }
 
   return json(200, { id });

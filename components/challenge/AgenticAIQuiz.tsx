@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, CheckCircle, Printer, RotateCcw, Trophy, XCircle } from 'lucide-react';
-import { submitQuizResult } from '../../services/quizResultService';
+import { AssessmentInvite, submitQuizResult, validateAssessmentInvite } from '../../services/quizResultService';
 
 type QuizQuestion = {
   id: number;
@@ -355,10 +355,11 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [certificateName, setCertificateName] = useState('');
-  const [certificateCourseName, setCertificateCourseName] = useState(CERTIFICATE_DETAILS.courseName);
-  const [certificateDates, setCertificateDates] = useState(CERTIFICATE_DETAILS.courseDates.join('\n'));
-  const [certificateTrainerName, setCertificateTrainerName] = useState(CERTIFICATE_DETAILS.trainerName);
+  const [invite, setInvite] = useState<AssessmentInvite | null>(null);
+  const [inviteEmail, setInviteEmail] = useState('');
+  const [inviteCode, setInviteCode] = useState('');
+  const [inviteStatus, setInviteStatus] = useState<'idle' | 'checking' | 'valid' | 'error'>('idle');
+  const [inviteError, setInviteError] = useState('');
   const [quizResultId, setQuizResultId] = useState<string | null>(null);
   const [quizResultSaveStatus, setQuizResultSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
 
@@ -372,6 +373,22 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
   const progress = Math.round(((currentQuestionIndex + (isAnswered ? 1 : 0)) / questions.length) * 100);
   const resultBand = getResultBand(score);
 
+  const handleValidateInvite = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setInviteStatus('checking');
+    setInviteError('');
+
+    try {
+      const { invite: validatedInvite } = await validateAssessmentInvite(inviteEmail, inviteCode);
+      setInvite(validatedInvite);
+      setInviteStatus('valid');
+    } catch (error) {
+      setInvite(null);
+      setInviteStatus('error');
+      setInviteError(error instanceof Error ? error.message : 'Could not validate learner access.');
+    }
+  };
+
   const startQuiz = () => {
     setHasStarted(true);
     onQuizActiveChange?.(true);
@@ -379,10 +396,6 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
     setSelectedAnswers([]);
     setSelectedOption(null);
     setShowResult(false);
-    setCertificateName('');
-    setCertificateCourseName(CERTIFICATE_DETAILS.courseName);
-    setCertificateDates(CERTIFICATE_DETAILS.courseDates.join('\n'));
-    setCertificateTrainerName(CERTIFICATE_DETAILS.trainerName);
     setQuizResultId(null);
     setQuizResultSaveStatus('idle');
   };
@@ -426,7 +439,12 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
       };
     });
 
-  const saveQuizResult = async (certificateDetails?: CertificateDetails, certificateGenerated = false) => {
+  const saveQuizResult = async (_certificateDetails?: CertificateDetails, certificateGenerated = false) => {
+    if (!invite) {
+      setQuizResultSaveStatus('error');
+      return;
+    }
+
     const percentage = Math.round((score / questions.length) * 100);
 
     setQuizResultSaveStatus('saving');
@@ -434,6 +452,7 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
     try {
       const { id } = await submitQuizResult({
         id: quizResultId || undefined,
+        assessmentInviteId: invite.id,
         assessmentSlug: 'agentic-ai-challenge',
         questionVersion: QUESTION_VERSION,
         pagePath: `${window.location.pathname}${window.location.search}${window.location.hash}`,
@@ -443,10 +462,6 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
         resultTitle: resultBand.title,
         resultDescription: resultBand.description,
         answers: buildQuizResultAnswers(),
-        certificateRecipientName: certificateDetails?.recipientName,
-        certificateCourseName: certificateDetails?.courseName,
-        certificateCourseDates: certificateDetails?.courseDates,
-        certificateTrainerName: certificateDetails?.trainerName,
         certificateGenerated,
       });
 
@@ -467,40 +482,85 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
     return (
       <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-white/10 p-8 text-center shadow-2xl shadow-black/20 backdrop-blur md:p-12">
         <div className="mb-5 inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-accent">
-          20-question challenge
+          Learner-only assessment
         </div>
-        <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Ready to test your Agentic AI foundation?</h2>
+        <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Validate your learner access</h2>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-          This challenge checks the training concepts behind AI evolution, context engineering, DUO prompting, Codex workflows, skills, memory, MCP, and safe governance.
+          Enter the email used for your Nexius Academy registration and your 6-digit learner code. Only validated learners can start the quiz or generate a certificate.
         </p>
-        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={startQuiz}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-7 py-4 font-bold text-primary shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-[#22E0D0]"
-          >
-            Start Challenge
-            <ArrowRight size={18} />
-          </button>
-          <a
-            href="/courses/agentic-ai"
-            className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-7 py-4 font-bold text-white transition hover:border-accent hover:text-accent"
-          >
-            View Foundation Course
-          </a>
-        </div>
+
+        {!invite ? (
+          <form onSubmit={handleValidateInvite} className="mx-auto mt-8 grid max-w-xl gap-4 text-left">
+            <label className="block text-sm font-bold text-white" htmlFor="invite-email">
+              Learner email
+              <input
+                id="invite-email"
+                type="email"
+                autoComplete="email"
+                value={inviteEmail}
+                onChange={(event) => setInviteEmail(event.target.value)}
+                placeholder="e.g. rachel@example.com"
+                className="mt-2 w-full rounded-xl border border-white/20 bg-white px-4 py-3 font-normal text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
+                required
+              />
+            </label>
+            <label className="block text-sm font-bold text-white" htmlFor="invite-code">
+              6-digit access code
+              <input
+                id="invite-code"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]{6}"
+                maxLength={6}
+                value={inviteCode}
+                onChange={(event) => setInviteCode(event.target.value.replace(/\D/g, '').slice(0, 6))}
+                placeholder="123456"
+                className="mt-2 w-full rounded-xl border border-white/20 bg-white px-4 py-3 text-center font-mono text-2xl tracking-[0.35em] text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30"
+                required
+              />
+            </label>
+            {inviteStatus === 'error' && <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{inviteError}</p>}
+            <button
+              type="submit"
+              disabled={inviteStatus === 'checking'}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-7 py-4 font-bold text-primary shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-[#22E0D0] disabled:cursor-not-allowed disabled:bg-gray-300"
+            >
+              {inviteStatus === 'checking' ? 'Checking access...' : 'Unlock Assessment'}
+              <ArrowRight size={18} />
+            </button>
+          </form>
+        ) : (
+          <div className="mx-auto mt-8 max-w-2xl rounded-3xl border border-accent/30 bg-white p-6 text-left text-primary">
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Access verified</div>
+            <h3 className="mt-2 font-heading text-2xl font-bold">{invite.learnerName}</h3>
+            <p className="mt-2 text-sm text-gray-600">{invite.courseName}</p>
+            <p className="mt-2 text-sm font-semibold text-gray-700">Course dates: {invite.courseDates.join(', ')}</p>
+            <button
+              type="button"
+              onClick={startQuiz}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-7 py-4 font-bold text-white transition hover:bg-blue-900 sm:w-auto"
+            >
+              Start Challenge
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        )}
       </div>
     );
   }
 
   if (showResult) {
+    if (!invite) return null;
+
     const percentage = Math.round((score / questions.length) * 100);
-    const certificateDateEntries = certificateDates
-      .split(/\n|,/)
-      .map((date) => date.trim())
-      .filter(Boolean);
-    const canDownloadCertificate =
-      certificateName.trim() && certificateCourseName.trim() && certificateDateEntries.length > 0 && certificateTrainerName.trim();
+    const certificateDateEntries = invite.courseDates.length ? invite.courseDates : CERTIFICATE_DETAILS.courseDates;
+    const certificateDetails = {
+      recipientName: invite.learnerName,
+      courseName: invite.courseName,
+      courseDates: certificateDateEntries,
+      trainerName: invite.trainerName,
+    };
+    const canDownloadCertificate = invite.certificateEnabled && certificateDateEntries.length > 0;
 
     return (
       <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-white p-6 shadow-2xl shadow-black/20 md:p-10">
@@ -527,65 +587,30 @@ const AgenticAIQuiz: React.FC<AgenticAIQuizProps> = ({ questions, onLeadClick, o
               <div className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Certificate download</div>
               <h3 className="mt-2 font-heading text-xl font-bold text-primary">Generate your completion certificate</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                Enter the learner name, course name, course dates, and trainer name exactly as they should appear. The button opens the browser print dialog; choose “Save as PDF” to avoid antivirus blocking a generated download.
+                Certificate details are locked to the validated learner record. If any detail is wrong, contact Nexius Academy before saving the certificate.
               </p>
-              <div className="mt-4 grid gap-3">
-                <label className="block text-sm font-bold text-primary" htmlFor="certificate-name">
-                  Learner name
-                  <input
-                    id="certificate-name"
-                    type="text"
-                    value={certificateName}
-                    onChange={(event) => setCertificateName(event.target.value)}
-                    placeholder="e.g. Rachel Tan"
-                    className="mt-2 w-full rounded-xl border border-primary/15 bg-white px-4 py-3 font-normal text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
-                <label className="block text-sm font-bold text-primary" htmlFor="certificate-course">
-                  Course name
-                  <input
-                    id="certificate-course"
-                    type="text"
-                    value={certificateCourseName}
-                    onChange={(event) => setCertificateCourseName(event.target.value)}
-                    placeholder="Course name"
-                    className="mt-2 w-full rounded-xl border border-primary/15 bg-white px-4 py-3 font-normal text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
-                <label className="block text-sm font-bold text-primary" htmlFor="certificate-dates">
-                  Course dates <span className="font-normal text-gray-500">(one date per line)</span>
-                  <textarea
-                    id="certificate-dates"
-                    value={certificateDates}
-                    onChange={(event) => setCertificateDates(event.target.value)}
-                    placeholder="07 Oct 2026\n08 Oct 2026\n15 Oct 2026"
-                    rows={3}
-                    className="mt-2 w-full rounded-xl border border-primary/15 bg-white px-4 py-3 font-normal text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
-                <label className="block text-sm font-bold text-primary" htmlFor="certificate-trainer">
-                  Trainer name
-                  <input
-                    id="certificate-trainer"
-                    type="text"
-                    value={certificateTrainerName}
-                    onChange={(event) => setCertificateTrainerName(event.target.value)}
-                    placeholder="e.g. Melverick Ng"
-                    className="mt-2 w-full rounded-xl border border-primary/15 bg-white px-4 py-3 font-normal text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
+              <div className="mt-4 grid gap-3 rounded-2xl bg-white p-4 text-sm text-gray-700">
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">Learner</div>
+                  <div className="mt-1 font-semibold text-primary">{certificateDetails.recipientName}</div>
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">Course</div>
+                  <div className="mt-1 font-semibold text-primary">{certificateDetails.courseName}</div>
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">Course dates</div>
+                  <div className="mt-1 font-semibold text-primary">{certificateDateEntries.join(', ')}</div>
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">Trainer</div>
+                  <div className="mt-1 font-semibold text-primary">{certificateDetails.trainerName}</div>
+                </div>
               </div>
               <button
                 type="button"
                 disabled={!canDownloadCertificate}
                 onClick={() => {
-                  const certificateDetails = {
-                    recipientName: certificateName,
-                    courseName: certificateCourseName,
-                    courseDates: certificateDateEntries,
-                    trainerName: certificateTrainerName,
-                  };
-
                   openCertificatePrintWindow(certificateDetails);
                   void saveQuizResult(certificateDetails, true);
                 }}
