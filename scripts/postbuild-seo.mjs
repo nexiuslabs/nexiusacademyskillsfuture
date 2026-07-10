@@ -350,7 +350,7 @@ const routes = [
       pageSchema({
         name: 'Agentic AI Challenge',
         description:
-          'A 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, CRISP prompting, Codex workflows, skills, memory, MCP, and governance.',
+          'A 20-question Agentic AI Foundation quiz covering AI maturity, context engineering, the DUO workflow, Codex workflows, skills, memory, MCP, and governance.',
         url: `${SITE_URL}/assessments/`,
         image: COURSE_IMAGE,
         type: 'Quiz',

@@ -72,17 +72,17 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 10,
-    prompt: 'In the CRISP prompting framework, what does “C” stand for?',
-    options: ['Control', 'Context', 'Coding', 'Compliance'],
+    prompt: 'In the DUO workflow taught in the training, what does D stand for?',
+    options: ['Deploy', 'Discover', 'Debug', 'Decide'],
     answerIndex: 1,
-    explanation: 'In CRISP, “C” stands for Context: give the AI the relevant background and task conditions before asking it to produce output.',
+    explanation: 'In DUO, D stands for Discover: first clarify the task, goal, audience, constraints, and success criteria before producing the final output.',
   },
   {
     id: 11,
-    prompt: 'Which prompt best follows the CRISP idea?',
-    options: ['“Make this better.”', '“Help me with this.”', '“Act as a communications advisor. Rewrite this client update in 150–180 words, using a professional and reassuring tone.”', '“Do something useful.”'],
-    answerIndex: 2,
-    explanation: 'The best prompt gives role, task, output length, audience/tone, and constraints, making it much more actionable than a vague instruction.',
+    prompt: 'Which option best describes the DUO workflow?',
+    options: ['Discover the task, Understand the context, then Output the final artefact', 'Delete old prompts, Upload files, then Open a browser', 'Design the app, Use code, then Optimise speed', 'Draft once, Undo errors, then Overwrite the file'],
+    answerIndex: 0,
+    explanation: 'DUO means Discover the task, Understand the context, then Output the final artefact in a structured and useful form.',
   },
   {
     id: 12,
@@ -135,10 +135,10 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 19,
-    prompt: 'In agent connectivity, what does MCP stand for?',
-    options: ['Model Context Protocol', 'Machine Coding Platform', 'Manual Control Process', 'Memory Cache Programme'],
+    prompt: 'In the training, why is MCP useful for AI agents?',
+    options: ['It lets AI agents connect to external tools and systems through a standard protocol', 'It permanently trains the model on company data', 'It removes the need for APIs, tools, or permissions', 'It allows agents to bypass all governance controls'],
     answerIndex: 0,
-    explanation: 'MCP stands for Model Context Protocol, a standard pattern for connecting models and agents to external tools or context sources.',
+    explanation: 'MCP is useful because it gives agents a standard way to connect with external tools, systems, and context sources while still respecting boundaries.',
   },
   {
     id: 20,
@@ -151,7 +151,7 @@ const questions: QuizQuestion[] = [
 
 const pillars = [
   { icon: BrainCircuit, label: 'AI maturity', detail: 'Chatbot → GenAI → Workflow → Agent → Agentic AI' },
-  { icon: BookOpen, label: 'Context engineering', detail: 'Context window, context rot, CRISP prompting' },
+  { icon: BookOpen, label: 'Context engineering', detail: 'Context window, context rot, DUO workflow' },
   { icon: Sparkles, label: 'Codex workflows', detail: 'Project folders, Plan Mode, skills, plugins, mini-apps' },
   { icon: ShieldCheck, label: 'Governance', detail: 'Bounding, HITL checkpoints, access, accountability' },
 ];
