@@ -451,36 +451,20 @@ const routes = [
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Course Preview: Agentic AI Foundations | Nexius Academy',
+    title: 'Next Free Preview: Agentic AI Foundations | Nexius Academy',
     description:
-      'Join the 11 July 2026 course preview for Agentic AI Foundations. A classroom session for non-technical professionals from 10am to 1pm.',
+      'Watch out for the next free Agentic AI Foundations preview session. Register interest and Nexius Academy will notify you when the next session opens.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
-        name: 'Agentic AI Foundations for Non-Technical Professionals Course Preview',
+        name: 'Agentic AI Foundations for Non-Technical Professionals Free Preview Interest',
         description:
-          'A 3-hour preview introducing non-technical professionals to Agentic AI, workplace use cases, hands-on AI activity, and safe adoption habits.',
+          'Register interest for the next free preview introducing non-technical professionals to Agentic AI, workplace use cases, hands-on AI activity, and safe adoption habits.',
         url: `${SITE_URL}/course-preview`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
         instructors: [melverickPerson, darrylPerson],
-        courseInstance: {
-          '@type': 'CourseInstance',
-          courseMode: 'In-person',
-          courseWorkload: 'PT3H',
-          startDate: '2026-07-11T10:00:00+08:00',
-          endDate: '2026-07-11T13:00:00+08:00',
-          location: {
-            '@type': 'Place',
-            name: 'Devan Nair Institute for Employment and Employability',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: '80 Jurong East St 21',
-              addressCountry: 'SG',
-            },
-          },
-        },
       }),
     ],
   },

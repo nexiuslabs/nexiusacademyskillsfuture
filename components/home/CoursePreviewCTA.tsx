@@ -1,9 +1,18 @@
 import React from 'react';
-import { CalendarDays, MapPin } from 'lucide-react';
+import { ArrowRight, CalendarDays, MailCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ResponsiveImage from '../ResponsiveImage';
+import { openLeadModal } from '../../services/leadModal';
 
-const COURSE_PREVIEW_REGISTER_URL = 'https://event.e2i.com.sg/view-event/agentic-ai-foundations-for-non-technical-professionals-workshop-2';
+const openFreePreviewInterest = () =>
+  openLeadModal('free_preview', 'reserve_seat', {
+    page: '/',
+    position: 'home_course_preview_cta',
+    ctaLabel: 'register_interest_next_free_preview',
+    preferredIntake: 'Free preview — register interest for the next session',
+    cohortCode: 'free-preview-next-session',
+    courseSlug: 'free-preview',
+  });
 
 const CoursePreviewCTA: React.FC = () => {
   return (
@@ -27,40 +36,39 @@ const CoursePreviewCTA: React.FC = () => {
 
             <div className="flex flex-col justify-center bg-[#0d1f3d] px-6 py-7 text-white md:px-8">
               <div className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-secondary">
-                Course Preview
+                Free Preview
               </div>
               <h2 className="text-2xl font-bold leading-tight md:text-3xl lg:text-[2rem]">
-                Join the next Agentic AI preview session
+                Watch out for our next Agentic AI preview session
               </h2>
               <div className="mt-5 space-y-4 text-sm text-white/80">
                 <div className="flex gap-3">
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-bold text-white">11th July 2026</span>
-                      <span className="rounded-full bg-red-500 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-red-950/30">
-                        Fully Booked
+                      <span className="font-bold text-white">Next date to be announced</span>
+                      <span className="rounded-full bg-teal-400 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-[#0d1f3d] shadow-lg shadow-teal-950/20">
+                        Register Interest
                       </span>
                     </div>
-                    <div>Saturday, 10:00am to 1:00pm</div>
+                    <div>Leave your details and we will notify you when the next free preview opens.</div>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 flex-none text-secondary" />
+                  <MailCheck className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
-                    <div className="font-bold text-white">Devan Nair Institute</div>
-                    <div>80 Jurong East St 21, Singapore 609607</div>
+                    <div className="font-bold text-white">Interested parties welcome</div>
+                    <div>We will follow up with the next session details once confirmed.</div>
                   </div>
                 </div>
               </div>
-              <a
-                href={COURSE_PREVIEW_REGISTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={openFreePreviewInterest}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
-                View Fully Booked Event
-              </a>
+                Register Interest <ArrowRight className="ml-2 h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>

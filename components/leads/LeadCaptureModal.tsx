@@ -37,6 +37,7 @@ declare global {
       skipPayerStep?: boolean;
       preferredIntake?: string;
       cohortCode?: string;
+      courseSlug?: string;
     }>;
   }
 }
@@ -80,7 +81,7 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   ],
   'agentic-ai-accountants': [{ label: 'TBD', code: 'tbd' }],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
-  'agentic-ai-course-preview': [{ label: '17 Jun 2026 course preview (2pm-5pm)', code: 'course-preview-2026-06-17' }],
+  'free-preview': [{ label: 'Free preview — register interest for the next session', code: 'free-preview-next-session' }],
   'agentic-ai-challenge': [{ label: 'Agentic AI Challenge result follow-up', code: 'agentic-ai-challenge' }],
   'agentic-ai-preview-session': [{ label: '26 Jun 2026 preview session (2pm-6pm)', code: 'e2i-preview-2026-06-26' }],
   'agentic-ai-sim-preview-session': [
@@ -96,7 +97,7 @@ const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/courses/agentic-ai-company-class')) return 'agentic-ai-company-class';
   if (path.includes('/assessments')) return 'agentic-ai-challenge';
   if (path.includes('/courses/agentic-ai-accountants')) return 'agentic-ai-accountants';
-  if (path.includes('/course-preview')) return 'agentic-ai-course-preview';
+  if (path.includes('/course-preview')) return 'free-preview';
   if (path.includes('/sim-preview')) return 'agentic-ai-sim-preview-session';
   if (path.includes('/e2i-preview')) return 'agentic-ai-preview-session';
   if (path.includes('/courses/agentic-ai')) return 'agentic-ai';
@@ -146,9 +147,11 @@ const LeadCaptureModal: React.FC = () => {
 
   const estimate = useMemo(() => estimateNetFee(formState.ageBand), [formState.ageBand]);
   const cohortOptions = useMemo(() => {
-    const options = COHORTS_BY_COURSE[getCourseSlugFromPath(location.pathname)] || [];
+    const routeSlug = getCourseSlugFromPath(location.pathname);
+    const activeSlug = formState.courseSlug && formState.courseSlug !== routeSlug ? formState.courseSlug : routeSlug;
+    const options = COHORTS_BY_COURSE[activeSlug] || [];
     return options.length > 0 ? options : [{ label: 'TBD', code: 'tbd' }];
-  }, [location.pathname]);
+  }, [formState.courseSlug, location.pathname]);
 
   const isReserveFlow = formState.intent === 'reserve_seat';
   const isAdvisoryFlow = formState.intent === 'advisory_call';
@@ -300,7 +303,7 @@ const LeadCaptureModal: React.FC = () => {
         sponsorContactName: '',
         sponsorContactEmail: '',
         sponsorStatus: nextPayerType === 'company_sponsored' ? 'pending_hr_approval' : 'not_applicable',
-        courseSlug: getCourseSlugFromPath(location.pathname),
+        courseSlug: event.detail?.courseSlug || getCourseSlugFromPath(location.pathname),
         preferredIntake: requestedCohort.label,
         cohortCode: requestedCohort.code,
       }));
