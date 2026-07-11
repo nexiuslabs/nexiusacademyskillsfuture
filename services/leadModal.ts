@@ -16,6 +16,7 @@ export const openLeadModal = (
     skipPayerStep?: boolean;
     preferredIntake?: string;
     cohortCode?: string;
+    courseSlug?: string;
   }
 ) => {
   trackCtaClick({
@@ -36,6 +37,7 @@ export const openLeadModal = (
         skipPayerStep: ctaMeta?.skipPayerStep,
         preferredIntake: ctaMeta?.preferredIntake,
         cohortCode: ctaMeta?.cohortCode,
+        courseSlug: ctaMeta?.courseSlug,
       },
     })
   );
