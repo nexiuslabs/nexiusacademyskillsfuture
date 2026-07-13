@@ -307,7 +307,7 @@ const Pricing: React.FC<PricingProps> = ({
             Most learners pay either <span className="font-bold text-primary">S$113.03</span> or{' '}
             <span className="font-bold text-primary">S$291.03</span>, inclusive of GST.
           </p>
-          <p className="text-xs text-gray-400 font-mono">Course Ref No: TP-NC-C0021-F</p>
+          <p className="text-xs text-gray-400 font-mono">Foundation course</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 mb-10">

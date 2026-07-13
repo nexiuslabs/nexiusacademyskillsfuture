@@ -11,7 +11,7 @@ const AVAILABLE_COURSES: Course[] = [
   {
     id: 1,
     title: 'Agentic AI Foundations for Non-Technical Professionals',
-    category: 'AI',
+    category: 'Foundation',
     price: 67,
     rating: 5.0,
     students: 223,
@@ -23,7 +23,7 @@ const AVAILABLE_COURSES: Course[] = [
   {
     id: 2,
     title: 'Agentic AI-Driven Innovation for Productivity',
-    category: 'Advanced AI',
+    category: 'Advanced',
     price: 0,
     rating: 5.0,
     students: 0,
@@ -62,7 +62,7 @@ const CourseList: React.FC = () => {
                   {course.category}
                 </span>
                 <span className="absolute top-4 right-4 bg-white/90 text-primary text-sm font-bold px-2 py-1 rounded">
-                  {course.id === 1 ? 'Hot' : 'New'}
+                  {course.id === 1 ? 'Popular' : 'New'}
                 </span>
               </div>
 

@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
               <Star size={14} className="fill-accent text-accent" />
-              TP-NC-C0021-F
+              Foundation
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">

@@ -230,7 +230,7 @@ const AccountantCspLandingPage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-50 mb-5">
                   <CheckCircle size={16} className="text-accent" />
-                  TP-NC-C0021-F
+                  Foundation
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6 max-w-4xl">
                   Agentic AI for Accountants and CSP Professionals

@@ -178,7 +178,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
                   <Sparkles size={16} className="text-accent" />
-                  TGS-2026063558
+                  Advanced
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
                   Agentic AI-Driven Business Innovation for Productivity
@@ -407,7 +407,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                 Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.
               </p>
               <p className="text-xs text-gray-400 font-mono">
-                Agentic AI-Driven Business Innovation for Productivity · Course Ref: TGS-2026063558
+                Advanced course
               </p>
             </div>
 

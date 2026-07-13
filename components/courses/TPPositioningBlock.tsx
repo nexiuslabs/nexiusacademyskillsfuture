@@ -12,7 +12,7 @@ const TPPositioningBlock: React.FC = () => (
               Practitioner-led delivery of a SkillsFuture-supported agentic AI programme
             </h2>
             <p className="mt-5 text-base leading-relaxed text-gray-600">
-              This Nexius Academy page is the practitioner-led course and advisory page for learners who want hands-on help applying Agentic AI Foundations to real workplace tasks. The course reference shown on this page is TP-NC-C0021-F, and learners should verify final registration and funding details through official training and SkillsFuture channels.
+              This Nexius Academy page is the practitioner-led course and advisory page for learners who want hands-on help applying Agentic AI Foundations to real workplace tasks. Learners should verify final registration and funding details through official training and SkillsFuture channels.
             </p>
           </div>
 

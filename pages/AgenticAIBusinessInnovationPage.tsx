@@ -168,7 +168,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
               <ShieldCheck size={16} className="text-accent" />
-              Course information · TGS-2026063558
+              Advanced course
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-accent">SkillsFuture Series</p>
             <h1 className="mb-6 font-heading text-4xl font-extrabold leading-tight lg:text-6xl">
@@ -261,7 +261,6 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                 <div className="space-y-4 text-sm text-gray-700">
                   <div className="flex items-start gap-3">
                     <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent" />
-                    <span><strong>TGS reference:</strong> TGS-2026063558</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent" />
@@ -332,7 +331,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                 Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.
               </p>
               <p className="font-mono text-xs text-gray-400">
-                Agentic AI-Driven Business Innovation for Productivity · Course Ref: TGS-2026063558
+                Advanced course
               </p>
             </div>
 
