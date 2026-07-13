@@ -157,26 +157,26 @@ const Hero: React.FC = () => {
                 </a>
               </div>
             </div>
-            <div className="mx-4 mt-5 flex justify-end sm:mx-8">
-              <div className="flex flex-col items-end text-gray-400">
-                <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
-                  In collaboration with
-                </div>
-                <ResponsiveImage
-                  src="/images/partners/temasek-poly-logo-transparent.png"
-                  alt="Temasek Polytechnic collaboration logo"
-                  widths={[128, 256]}
-                  sizes="224px"
-                  fit="contain"
-                  className="h-10 w-auto object-contain sm:h-12"
-                />
+            <div className="absolute -z-10 top-10 -right-10 w-4/5 h-4/5 bg-accent/10 rounded-3xl transform rotate-3"></div>
+          </div>
+          <div className="mx-4 mt-6 flex justify-end sm:mx-8">
+            <div className="flex flex-col items-end text-gray-400">
+              <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+                In collaboration with
               </div>
+              <ResponsiveImage
+                src="/images/partners/temasek-poly-logo-transparent.png"
+                alt="Temasek Polytechnic collaboration logo"
+                widths={[128, 256]}
+                sizes="224px"
+                fit="contain"
+                className="h-10 w-auto object-contain sm:h-12"
+              />
             </div>
-            <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>
       </div>
-    </section>
+  </section>
   );
 };
 
