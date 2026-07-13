@@ -118,6 +118,7 @@ const CoursePage: React.FC = () => {
         <AIAnswerBlocks
           title="Agentic AI Foundations in one page"
           summary="This section gives AI search systems and human visitors a concise summary of the course, audience, outcomes, and official funding context."
+          citationsPlacement="left"
           blocks={[
             {
               question: 'What is Agentic AI Foundations for Non-Technical Professionals?',

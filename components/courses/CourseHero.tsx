@@ -4,7 +4,6 @@ import { openLeadModal, openRegisterInterestModal } from '../../services/leadMod
 import ResponsiveImage from '../ResponsiveImage';
 import { sharedTestimonials } from '../sharedTestimonials';
 
-const SHOW_TEMASEK_POLY_LOGO = false;
 const TESTIMONIAL_ROTATION_MS = 6500;
 
 const Hero: React.FC = () => {
@@ -34,6 +33,14 @@ const Hero: React.FC = () => {
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
               Agentic AI Foundations for Non-technical Professionals
             </h1>
+            <p className="text-sm font-medium text-gray-500">
+              <a
+                href="https://academy.nexiuslabs.com/courses/agentic-ai/"
+                className="text-accent hover:text-primary transition-colors"
+              >
+                Enhancing Productivity and Business Process Automation
+              </a>
+            </p>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
               <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
@@ -149,9 +156,7 @@ const Hero: React.FC = () => {
                   <ArrowRight size={14} aria-hidden="true" />
                 </a>
               </div>
-            </div>
-            {SHOW_TEMASEK_POLY_LOGO && (
-              <div className="mt-4 flex flex-col items-end text-gray-500">
+              <div className="mt-3 flex flex-col items-end text-gray-400">
                 <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
                   In collaboration with
                 </div>
@@ -161,10 +166,10 @@ const Hero: React.FC = () => {
                   widths={[128, 256]}
                   sizes="224px"
                   fit="contain"
-                  className="h-12 w-auto object-contain sm:h-14"
+                  className="h-10 w-auto object-contain sm:h-12"
                 />
               </div>
-            )}
+            </div>
             <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>
