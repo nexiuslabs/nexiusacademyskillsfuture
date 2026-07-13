@@ -149,6 +149,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 16,
+    slug: 'workspace-agents-business-professionals',
+    title: 'Workspace Agents: What Business Professionals Must Learn Before AI Starts Working Across Apps',
+    date: '13 Jul 2026',
+    views: 0,
+    image: '/images/blog/workspace-agents-business-professionals.png',
+    excerpt: 'Workspace agents are moving AI from chat into business workflows. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 15,
     slug: 'research-agents-business-professionals',
     title: 'Research Agents: What Business Professionals Must Learn Before AI Starts Writing the Brief',

@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-07-06';
+const LASTMOD = '2026-07-13';
 
 const melverickPerson = {
   '@type': 'Person',
@@ -865,6 +865,20 @@ const routes = [
     ogImageAlt: 'Business professionals supervising AI research agents with source checks and approval gates',
     schemas: [],
     articleDate: '2026-07-06',
+  },
+  {
+    path: '/blog/workspace-agents-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Workspace Agents: What Business Professionals Must Learn',
+    description:
+      'Workspace agents are moving AI from chat into business workflows. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need next.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/workspace-agents-business-professionals.png',
+    ogImageAlt: 'Business professionals mapping governed workspace AI agent workflows and approval gates',
+    schemas: [],
+    articleDate: '2026-07-13',
   },
   {
     path: '/admin',
