@@ -86,33 +86,7 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                type="button"
-                onClick={() =>
-                  openLeadModal('course_page_cta', 'subsidy_fit', {
-                    page: '/courses/agentic-ai',
-                    position: 'course_hero_primary',
-                    ctaLabel: 'check_subsidy_eligibility',
-                  })
-                }
-                className="bg-primary hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 transition-all transform hover:-translate-y-1"
-              >
-                Check Subsidy
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  openRegisterInterestModal('course_page_cta', {
-                    page: '/courses/agentic-ai',
-                    position: 'course_hero_secondary_register_interest',
-                  })
-                }
-                className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
-              >
-                Register Interest
-              </button>
-            </div>
+            {/* CTA Buttons moved below grid */}
 
             <div className="flex flex-wrap gap-4 pt-2 text-sm font-medium text-gray-500">
               <div className="flex items-center gap-1">
@@ -160,8 +134,35 @@ const Hero: React.FC = () => {
             <div className="absolute -z-10 top-10 -right-10 w-4/5 h-4/5 bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>
-        <div className="mt-4 text-right sm:pr-6 lg:pr-8">
-          <div className="inline-flex flex-col items-end text-gray-400">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              type="button"
+              onClick={() =>
+                openLeadModal('course_page_cta', 'subsidy_fit', {
+                  page: '/courses/agentic-ai',
+                  position: 'course_hero_primary',
+                  ctaLabel: 'check_subsidy_eligibility',
+                })
+              }
+              className="bg-primary hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 transition-all transform hover:-translate-y-1"
+            >
+              Check Subsidy
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                openRegisterInterestModal('course_page_cta', {
+                  page: '/courses/agentic-ai',
+                  position: 'course_hero_secondary_register_interest',
+                })
+              }
+              className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
+            >
+              Register Interest
+            </button>
+          </div>
+          <div className="flex flex-col items-end text-gray-400">
             <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
               In collaboration with
             </div>
