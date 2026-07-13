@@ -31,30 +31,6 @@ const AVAILABLE_COURSES: Course[] = [
     author: 'Melverick Ng',
     authorImage: '/images/authors/melverick-ng-selected.jpg',
     path: '/courses/advanced-agentic-ai',
-  },
-  {
-    id: 3,
-    title: 'Agentic AI Foundations for Accounting & CSP Professionals',
-    category: 'AI',
-    price: 67,
-    rating: 5.0,
-    students: 0,
-    image: MELVERICK_COURSE_IMAGE,
-    author: 'Darryl Wong',
-    authorImage: '/images/authors/darryl-wong-selected.jpeg',
-    path: '/courses/agentic-ai-accountants',
-  },
-  {
-    id: 4,
-    title: 'Agentic AI Business Innovation for Productivity',
-    category: 'Business AI',
-    price: 0,
-    rating: 5.0,
-    students: 0,
-    image: '/images/courses/agentic-ai-business-innovation-card.jpg',
-    author: 'Melverick Ng',
-    authorImage: '/images/authors/melverick-ng-selected.jpg',
-    path: '/courses/agentic-ai-business-innovation',
   }
 ];
 
@@ -73,7 +49,7 @@ const CourseList: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto">
           {AVAILABLE_COURSES.map((course) => (
             <Link
               key={course.id}
@@ -86,7 +62,7 @@ const CourseList: React.FC = () => {
                   {course.category}
                 </span>
                 <span className="absolute top-4 right-4 bg-white/90 text-primary text-sm font-bold px-2 py-1 rounded">
-                  {course.id === 1 ? 'Hot' : course.id === 3 ? 'Accounting/CSP-Focused' : 'New'}
+                  {course.id === 1 ? 'Hot' : 'New'}
                 </span>
               </div>
 
@@ -136,7 +112,7 @@ const CourseList: React.FC = () => {
             </Link>
           ))}
 
-          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:col-span-2 md:px-10 lg:col-span-4">
+          <div className="flex min-h-full rounded-[1.75rem] border border-primary/10 bg-neutral px-6 py-8 shadow-sm md:col-span-2 md:px-10 lg:col-span-2">
             <div className="grid w-full gap-6 md:grid-cols-[1fr,auto] md:items-center">
               <div>
                 <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">For Company Teams</div>
