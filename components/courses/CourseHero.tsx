@@ -156,7 +156,9 @@ const Hero: React.FC = () => {
                   <ArrowRight size={14} aria-hidden="true" />
                 </a>
               </div>
-              <div className="mt-3 flex flex-col items-end text-gray-400">
+            </div>
+            <div className="mx-4 mt-5 flex justify-end sm:mx-8">
+              <div className="flex flex-col items-end text-gray-400">
                 <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
                   In collaboration with
                 </div>
