@@ -228,13 +228,24 @@ const FrontierFirmCoursePage: React.FC = () => {
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Duration</div>
-                    <div className="text-blue-50/85">3 days</div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+        <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8">
+          <div className="flex flex-col items-end">
+            <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
+              In collaboration with
+            </span>
+            <img
+              src="/images/partners/temasek-poly-logo-transparent.png"
+              alt="Temasek Polytechnic collaboration logo"
+              className="h-10 w-auto object-contain brightness-0 invert opacity-80 sm:h-12"
+            />
+          </div>
+        </div>
+      </section>
 
         <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
