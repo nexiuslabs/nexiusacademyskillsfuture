@@ -86,19 +86,7 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* CTA Buttons moved below grid */}
-
-            <div className="flex flex-wrap gap-4 pt-2 text-sm font-medium text-gray-500">
-              <div className="flex items-center gap-1">
-                <CheckCircle size={16} className="text-accent" /> SkillsFuture Eligible
-              </div>
-              <div className="flex items-center gap-1">
-                <CheckCircle size={16} className="text-accent" /> No coding required
-              </div>
-              <div className="flex items-center gap-1">
-                <CheckCircle size={16} className="text-accent" /> Up to 90% Subsidy
-              </div>
-            </div>
+            {/* CTA Buttons and eligibility badges moved below grid */}
           </div>
 
           <div className="relative">
@@ -174,6 +162,17 @@ const Hero: React.FC = () => {
               fit="contain"
               className="h-10 w-auto object-contain sm:h-12"
             />
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 pt-4 text-sm font-medium text-gray-500">
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> SkillsFuture Eligible
+          </div>
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> No coding required
+          </div>
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> Up to 90% Subsidy
           </div>
         </div>
       </div>
