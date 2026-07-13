@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
             <div className="absolute -z-10 top-10 -right-10 w-4/5 h-4/5 bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 mt-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               type="button"
