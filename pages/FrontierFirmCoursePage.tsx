@@ -217,7 +217,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     Request Advisory Call
                   </button>
                 </div>
-                <div className="grid sm:grid-cols-3 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-3 text-sm lg:grid-cols-4">
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Designed for</div>
                     <div className="text-blue-50/85">Advanced AI learners</div>
@@ -228,11 +228,16 @@ const FrontierFirmCoursePage: React.FC = () => {
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Duration</div>
+                    <div className="text-blue-50/85">3 days</div>
+                  </div>
+                  <div className="bg-white/10 rounded-xl p-4 border border-white/10">
+                    <div className="font-bold mb-1">Venue</div>
+                    <div className="text-blue-50/85 text-[13px] leading-tight">60 Cecil St<br />ISCA House, Level 4<br />Room 4-2, S(049709)</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8">
           <div className="flex flex-col items-end">
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
