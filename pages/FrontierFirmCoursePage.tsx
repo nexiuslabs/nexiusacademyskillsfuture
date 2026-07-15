@@ -217,7 +217,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     Request Advisory Call
                   </button>
                 </div>
-                <div className="grid grid-cols-2 gap-3 text-sm lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 text-sm">
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Designed for</div>
                     <div className="text-blue-50/85">Advanced AI learners</div>
@@ -225,14 +225,6 @@ const FrontierFirmCoursePage: React.FC = () => {
                   <div className="bg-white/10 rounded-xl p-4 border border-white/10">
                     <div className="font-bold mb-1">Focus</div>
                     <div className="text-blue-50/85">Agentic AI orchestration</div>
-                  </div>
-                  <div className="bg-white/10 rounded-xl p-4 border border-white/10">
-                    <div className="font-bold mb-1">Duration</div>
-                    <div className="text-blue-50/85">3 days</div>
-                  </div>
-                  <div className="bg-white/10 rounded-xl p-4 border border-white/10">
-                    <div className="font-bold mb-1">Venue</div>
-                    <div className="text-blue-50/85 text-[13px] leading-tight">60 Cecil St<br />ISCA House, Level 4<br />Room 4-2, S(049709)</div>
                   </div>
                 </div>
               </div>
@@ -243,11 +235,11 @@ const FrontierFirmCoursePage: React.FC = () => {
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
-            <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm">
+            <div className="rounded-lg bg-white px-4 py-2 shadow-sm">
               <img
                 src="/images/partners/temasek-poly-logo-transparent.png"
                 alt="Temasek Polytechnic collaboration logo"
-                className="h-8 w-auto object-contain sm:h-10"
+                className="w-36 sm:w-44 h-auto object-contain"
               />
             </div>
           </div>
