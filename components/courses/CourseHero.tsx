@@ -154,14 +154,16 @@ const Hero: React.FC = () => {
             <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
               In collaboration with
             </div>
-            <ResponsiveImage
-              src="/images/partners/temasek-poly-logo-transparent.png"
-              alt="Temasek Polytechnic collaboration logo"
-              widths={[128, 256]}
-              sizes="224px"
-              fit="contain"
-              className="w-32 h-auto object-contain"
-            />
+            <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
+              <ResponsiveImage
+                src="/images/partners/temasek-poly-logo-transparent.png"
+                alt="Temasek Polytechnic collaboration logo"
+                widths={[128, 256]}
+                sizes="224px"
+                fit="contain"
+                className="h-10 w-auto object-contain sm:h-12"
+              />
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-4 pt-4 text-sm font-medium text-gray-500">
