@@ -155,12 +155,9 @@ const Hero: React.FC = () => {
               In collaboration with
             </div>
             <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
-              <ResponsiveImage
+              <img
                 src="/images/partners/temasek-poly-logo-transparent.png"
                 alt="Temasek Polytechnic collaboration logo"
-                widths={[128, 256]}
-                sizes="224px"
-                fit="contain"
                 className="h-10 w-auto object-contain sm:h-12"
               />
             </div>
