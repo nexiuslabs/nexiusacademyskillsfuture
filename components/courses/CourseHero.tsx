@@ -160,7 +160,7 @@ const Hero: React.FC = () => {
               widths={[128, 256]}
               sizes="224px"
               fit="contain"
-              className="w-24 h-auto object-contain"
+              className="w-36 h-auto object-contain"
             />
           </div>
         </div>
