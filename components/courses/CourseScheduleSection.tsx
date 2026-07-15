@@ -13,7 +13,7 @@ const ADVANCED_COURSE_SCHEDULES = [
     month: 'Oct 2026',
     dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',
     time: '9:00am - 6:00pm',
-    venue: 'Venue to be confirmed',
+    venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
   },
 ];
 
