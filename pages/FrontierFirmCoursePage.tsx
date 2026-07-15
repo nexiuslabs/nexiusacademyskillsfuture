@@ -235,11 +235,11 @@ const FrontierFirmCoursePage: React.FC = () => {
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
-            <div className="rounded-lg bg-white px-4 py-2 shadow-sm">
+            <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
               <img
                 src="/images/partners/temasek-poly-logo-transparent.png"
                 alt="Temasek Polytechnic collaboration logo"
-                className="w-36 sm:w-44 h-auto object-contain"
+                className="w-24 h-auto object-contain"
               />
             </div>
           </div>
