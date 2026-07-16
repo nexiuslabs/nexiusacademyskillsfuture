@@ -239,7 +239,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <img
                 src="/images/partners/temasek-poly-logo-transparent.png"
                 alt="Temasek Polytechnic collaboration logo"
-                className="h-10 w-auto object-contain sm:h-12"
+                className="h-12 w-auto object-contain"
               />
             </div>
           </div>
