@@ -35,31 +35,6 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
-            <div className="select-none transform transition-transform hover:scale-105 duration-300 origin-left cursor-pointer">
-              <svg
-                viewBox="0 0 350 160"
-                className="w-40 md:w-48 h-auto drop-shadow-md"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Up to 70% Course Subsidy + SkillsFuture Balance Fees Claimable"
-              >
-                <circle cx="80" cy="80" r="78" fill="#EAF4FF" stroke="#8EB6F7" strokeWidth="3" />
-                <text x="80" y="52" textAnchor="middle" fill="#1D2A4D" fontSize="14" fontWeight="bold" fontFamily="sans-serif">Up to</text>
-                <text x="80" y="102" textAnchor="middle" fill="#1D2A4D" fontSize="60" fontWeight="800" fontFamily="sans-serif">70%</text>
-                <text x="80" y="126" textAnchor="middle" fill="#1D2A4D" fontSize="13" fontWeight="bold" fontFamily="sans-serif">Course Subsidy</text>
-                <text x="175" y="95" textAnchor="middle" fill="#1D2A4D" fontSize="40" fontWeight="bold" fontFamily="sans-serif">+</text>
-                <circle cx="270" cy="80" r="78" fill="#FFFFFF" stroke="#C8DBF9" strokeWidth="3" />
-                <text x="270" y="55" textAnchor="middle" fill="#1D2A4D" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.2">Balance Fees Claimable</text>
-                <g transform="translate(225, 75)">
-                  <rect x="0" y="0" width="8" height="8" rx="2" fill="#D71E28" />
-                  <rect x="0" y="9" width="8" height="8" rx="2" fill="#4F2D7F" />
-                  <rect x="9" y="9" width="8" height="8" rx="2" fill="#4F2D7F" />
-                  <text x="20" y="15" fill="#4F2D7F" fontSize="19" fontWeight="bold" fontFamily="sans-serif">skills</text>
-                  <text x="65" y="15" fill="#4F2D7F" fontSize="19" fontFamily="serif" fontStyle="italic">future</text>
-                </g>
-              </svg>
-            </div>
 
             <a
               href="#courses"
