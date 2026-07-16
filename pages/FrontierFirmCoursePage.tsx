@@ -153,7 +153,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               }
               className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
             >
-              Register Interest
+              Apply Now
             </button>
           </div>
         </header>
@@ -201,7 +201,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
-                    Register Interest <ArrowRight size={18} />
+                    Apply Now <ArrowRight size={18} />
                   </button>
                   <button
                     type="button"
@@ -571,7 +571,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                 }
                 className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
               >
-                Register Interest
+                Apply Now
               </button>
             </div>
           </div>
@@ -601,7 +601,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                   }
                   className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
                 >
-                  Register Interest
+                  Apply Now
                 </button>
                 <button
                   type="button"

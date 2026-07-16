@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
               }
               className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
             >
-              Register Interest
+              Apply Now
             </button>
           </div>
           <div className="flex flex-col items-end text-gray-400">

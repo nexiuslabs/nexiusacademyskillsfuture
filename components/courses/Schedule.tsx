@@ -93,7 +93,7 @@ const Schedule: React.FC = () => {
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
                     >
-                      Register Interest
+                      Apply Now
                     </button>
                   )}
                 </div>

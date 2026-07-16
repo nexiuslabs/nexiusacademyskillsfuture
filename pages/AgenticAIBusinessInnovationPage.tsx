@@ -150,7 +150,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             }
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-blue-900"
           >
-            Register Interest <ArrowRight size={16} />
+            Apply Now <ArrowRight size={16} />
           </button>
         </div>
       </header>
@@ -189,7 +189,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                 }
                 className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-xl transition-colors hover:bg-teal-500"
               >
-                Register Interest <ArrowRight size={18} />
+                Apply Now <ArrowRight size={18} />
               </button>
               <button
                 type="button"
@@ -497,7 +497,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                 }
                 className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
               >
-                Register Interest
+                Apply Now
               </button>
             </div>
           </div>
@@ -527,7 +527,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                   }
                   className="rounded-xl bg-accent px-8 py-4 font-bold text-white transition-colors hover:bg-teal-500"
                 >
-                  Register Interest
+                  Apply Now
                 </button>
                 <button
                   type="button"

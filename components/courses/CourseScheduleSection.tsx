@@ -85,7 +85,7 @@ const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, pos
                   }
                   className="inline-block w-full rounded-lg bg-primary px-6 py-3 text-center font-bold text-white transition-colors hover:bg-blue-900 md:w-auto"
                 >
-                  Register Interest
+                  Apply Now
                 </button>
               </div>
             </div>

@@ -102,7 +102,7 @@ const formatCurrency = (amount: number) => `S$${amount.toFixed(2)}`;
 const Pricing: React.FC<PricingProps> = ({
   pagePath = '/courses/agentic-ai',
   reserveLabel = 'register_interest_next_cohort',
-  reserveButtonText = 'Register Interest',
+  reserveButtonText = 'Apply Now',
   reserveRedirectUrl,
   reserveSkipPayerStep = false,
   sectionClassName = 'py-20 bg-white',

@@ -61,7 +61,7 @@ const StickyConversionRail: React.FC = () => {
               }
               className="block text-center w-full border border-primary text-primary px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-primary hover:text-white"
             >
-              Register Interest
+              Apply Now
             </button>
           </div>
         </aside>

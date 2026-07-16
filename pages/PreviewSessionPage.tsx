@@ -233,7 +233,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
               onClick={() => openPreviewLeadModal('preview_nav_register', config.pagePath)}
               className="inline-flex items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-900"
             >
-              Register Interest
+              Apply Now
             </button>
           )}
         </div>
@@ -265,7 +265,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
                   className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
                 >
-                  Register Interest <ArrowRight size={18} />
+                  Apply Now <ArrowRight size={18} />
                 </button>
                 <a
                   href={
@@ -386,7 +386,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                             onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath, config.schedules[0])}
                             className="mt-4 inline-flex rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
                           >
-                            Register Interest
+                            Apply Now
                           </button>
                         </div>
                       </div>
@@ -415,7 +415,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                     onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath)}
                     className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
                   >
-                    Register Interest <ArrowRight size={18} />
+                    Apply Now <ArrowRight size={18} />
                   </button>
                 )}
               </div>
@@ -570,7 +570,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 onClick={() => openPreviewLeadModal('preview_footer_register', config.pagePath)}
                 className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-teal-500"
               >
-                Register Interest <ArrowRight size={18} />
+                Apply Now <ArrowRight size={18} />
               </button>
             )}
           </div>
