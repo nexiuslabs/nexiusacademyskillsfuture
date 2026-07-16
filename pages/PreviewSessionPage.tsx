@@ -270,8 +270,8 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 <a
                   href={
                     isDarkPreview
-                      ? 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20please%20notify%20me%20when%20the%20next%20free%20Agentic%20AI%20preview%20session%20opens.'
-                      : 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session.'
+                      ? COURSE_PREVIEW_REGISTER_URL
+                      : 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session.'
                   }
                   target="_blank"
                   rel="noopener noreferrer"

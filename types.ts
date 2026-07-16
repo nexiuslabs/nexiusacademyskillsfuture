@@ -5,6 +5,8 @@ export interface Instructor {
   role: string;
   image: string;
   bio: string;
+  credentials?: string[];
+  focusAreas?: string[];
 }
 
 export interface Review {

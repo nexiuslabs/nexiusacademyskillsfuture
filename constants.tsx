@@ -3,15 +3,19 @@ import { Instructor, Review, ScheduleItem, FaqItem, CurriculumModule, BlogPost }
 export const INSTRUCTORS: Instructor[] = [
   {
     name: 'Melverick Ng',
-    role: 'Master Trainer',
+    role: 'Co-founder & Lead Trainer, Nexius Academy',
     image: '/images/authors/melverick-ng-selected.jpg',
-    bio: 'Non-technical Business Consultant with 30+ years professional experience.',
+    bio: 'Melverick Ng is the co-founder and director of Nexius Labs and a Nexius Academy trainer. He helps business leaders, SMEs, and professional teams move from AI chat to practical, governed execution with agentic AI workflows, human review, and auditability built in.',
+    credentials: ['Nexius Labs Co-founder / Director', 'Nexius Academy trainer', '30+ years professional experience'],
+    focusAreas: ['Agentic AI adoption', 'AI workforce governance', 'Business workflow redesign', 'Human-in-the-loop operating models'],
   },
   {
     name: 'Darryl Wong',
-    role: 'Master Sifu',
+    role: 'AI Workflow Trainer',
     image: '/images/authors/darryl-wong-selected.jpeg',
-    bio: 'AI Enthusiast with CPA, 20+ years professional experience .',
+    bio: 'Darryl Wong brings a CPA background and more than 20 years of professional experience to practical AI adoption for business and professional-services teams.',
+    credentials: ['CPA background', '20+ years professional experience'],
+    focusAreas: ['Accounting and finance workflows', 'Professional-services productivity', 'Practical AI use cases'],
   },
 ];
 
