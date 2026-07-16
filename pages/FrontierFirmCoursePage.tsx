@@ -142,19 +142,6 @@ const FrontierFirmCoursePage: React.FC = () => {
               <a href="#testimonials" className="hover:text-accent">Testimonials</a>
               <a href="#faq" className="hover:text-accent">FAQ</a>
             </nav>
-            <button
-              type="button"
-              onClick={() =>
-                openLeadModal('course_page_cta', 'reserve_seat', {
-                  page: '/courses/advanced-agentic-ai',
-                  position: 'frontier_firm_nav_register_interest',
-                  ctaLabel: 'register_interest',
-                })
-              }
-              className="bg-primary text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-900 transition-colors"
-            >
-              Apply Now
-            </button>
           </div>
         </header>
 
@@ -201,7 +188,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
-                    Apply Now <ArrowRight size={18} />
+                    Register Interest <ArrowRight size={18} />
                   </button>
                   <button
                     type="button"

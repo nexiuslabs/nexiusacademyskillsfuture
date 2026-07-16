@@ -139,19 +139,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             <a href="#schedule" className="hover:text-accent">Schedule</a>
             <a href="#contact" className="hover:text-accent">Contact</a>
           </nav>
-          <button
-            type="button"
-            onClick={() =>
-              openLeadModal('course_page_cta', 'reserve_seat', {
-                page: '/courses/agentic-ai-business-innovation',
-                position: 'business_innovation_nav_register_interest',
-                ctaLabel: 'register_interest',
-              })
-            }
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-blue-900"
-          >
-            Apply Now <ArrowRight size={16} />
-          </button>
+          <div className="hidden items-center gap-2 lg:flex"> </div>
         </div>
       </header>
 
@@ -189,7 +177,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
                 }
                 className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-xl transition-colors hover:bg-teal-500"
               >
-                Apply Now <ArrowRight size={18} />
+                Register Interest <ArrowRight size={18} />
               </button>
               <button
                 type="button"
