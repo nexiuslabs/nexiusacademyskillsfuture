@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
               <li><Link to="/blog" className="hover:text-accent">Blog</Link></li>
               <li><Link to="/reports/singapore-ai-training-readiness-2026" className="hover:text-accent">AI Training Report</Link></li>
               <li><a href="mailto:hello@nexiuslabs.com" className="hover:text-accent">Contact</a></li>
-              <li><a href="https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20need%20help%20from%20a%20course%20advisor." target="_blank" rel="noopener noreferrer" onClick={() => trackOutboundClick({ channel: 'whatsapp', pagePath: location.pathname, position: 'footer_whatsapp_advisor' })} className="hover:text-accent">WhatsApp Advisor</a></li>
+              <li><a href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20help%20from%20a%20course%20advisor." target="_blank" rel="noopener noreferrer" onClick={() => trackOutboundClick({ channel: 'whatsapp', pagePath: location.pathname, position: 'footer_whatsapp_advisor' })} className="hover:text-accent">WhatsApp Advisor</a></li>
             </ul>
           </div>
 

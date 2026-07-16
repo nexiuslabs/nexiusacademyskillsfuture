@@ -431,7 +431,7 @@ const LeadCaptureModal: React.FC = () => {
       const message =
         error instanceof Error && error.message
           ? `Could not submit right now. ${error.message}`
-          : 'Could not submit right now. Please try again, or message Melverick on WhatsApp.';
+          : 'Could not submit right now. Please try again, or message Cariah on WhatsApp.';
       alert(message);
     } finally {
       setIsSubmitting(false);
@@ -492,8 +492,8 @@ const LeadCaptureModal: React.FC = () => {
       : 'Continue to Payer Mode';
 
   const whatsappHref = isAdvisoryFlow
-    ? 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20a%20team%20training%20enquiry%20and%20want%20to%20discuss%20a%20dedicated%20company%20class.'
-    : 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake.';
+    ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20just%20submitted%20a%20team%20training%20enquiry%20and%20want%20to%20discuss%20a%20dedicated%20company%20class.'
+    : 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake.';
 
   return (
     <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/45 px-4 py-6">
@@ -1060,7 +1060,7 @@ const LeadCaptureModal: React.FC = () => {
                   Your enquiry has been submitted. Our team will contact you to discuss the most suitable dedicated-company class setup.
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
-                  If you want to move faster, message Melverick directly on WhatsApp.
+                  If you want to move faster, message Cariah directly on WhatsApp.
                 </p>
               </>
             ) : isChecklistFlow ? (
@@ -1117,12 +1117,12 @@ const LeadCaptureModal: React.FC = () => {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="https://wa.me/6589002130"
+                    href="https://wa.me/6596615284"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
                   >
-                    WhatsApp Melverick <ArrowRight size={16} />
+                    WhatsApp Cariah <ArrowRight size={16} />
                   </a>
                   <button
                     type="button"
@@ -1140,7 +1140,7 @@ const LeadCaptureModal: React.FC = () => {
                   Your registration request is in. Your estimated net fee is <strong>{estimate.amount}</strong>, and our team will contact you with the best intake and eligibility guidance.
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
-                  Next best action: message Melverick directly for immediate advice.
+                  Next best action: message Cariah directly for immediate advice.
                 </p>
               </>
             )}

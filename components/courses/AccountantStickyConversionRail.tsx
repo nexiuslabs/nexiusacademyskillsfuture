@@ -4,7 +4,7 @@ import { openApplyNowModal, openLeadModal } from '../../services/leadModal';
 import { trackOutboundClick } from '../../services/analytics';
 
 const TEAM_TRAINING_URL =
-  'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training.';
+  'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%27m%20from%20an%20accounting%20or%20CSP%20team%20and%20want%20to%20enquire%20about%20team%20training.';
 
 const AccountantStickyConversionRail: React.FC = () => {
   const [desktopVisible, setDesktopVisible] = useState(true);

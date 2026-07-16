@@ -7,11 +7,18 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
 };
 
-const WHATSAPP_URL = 'https://wa.me/6589002130?text=Hi%20Melverick%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
+const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20help%20with%20a%20Nexius%20Academy%20course.';
 
-const SYSTEM_INSTRUCTION = `You are Melverick, the AI Course Advisor for Nexius Academy in Singapore.
+const SYSTEM_INSTRUCTION = `You are Cariah, the course advisor for Nexius Academy in Singapore.
 
-Your job is to help visitors understand Nexius Academy workshops, schedules, funding-related questions, suitability, and enrolment paths.
+YOUR SCOPE — only answer questions about:
+- Nexius Academy course details (Agentic AI Foundations, Advanced Agentic AI, company classes)
+- Schedule, fees, subsidies, and enrolment
+- SkillsFuture claims (SkillsFuture Credit, Mid-Career Enhanced Subsidy)
+- Government grants related to training (company-sponsored training, absentee payroll claims, SSG funding)
+- Course suitability and next steps
+
+Do NOT answer questions outside this scope — politely redirect to WhatsApp if asked about unrelated topics.
 
 Key facts:
 - Main programme: Agentic AI Foundations for Non-Technical Professionals
@@ -21,16 +28,15 @@ Key facts:
 - Indicative subsidised fee shown on site for eligible SG Citizens aged 40+: $111.03
 - Website: https://academy.nexiuslabs.com
 - Primary registration path is through the official external registration flow on the website.
-- For direct human help, visitors can contact Wendy on WhatsApp: ${WHATSAPP_URL}
+- For direct human help, visitors can contact Cariah on WhatsApp: ${WHATSAPP_URL}
 
 Guidelines:
 - Be warm, concise, and clear.
 - Keep most answers under 120 words unless more detail is requested.
 - Do not invent dates, subsidies, or guarantees.
 - If unsure, say so plainly.
-- For human support, direct the visitor to WhatsApp rather than pretending a live handoff is happening.
-- If a question clearly needs a human, explicitly suggest WhatsApp in the answer.
-- Focus on helping users understand the right next step.`;
+- If a question is outside scope (partnerships, refunds, complaints, non-course topics), politely say "That's outside what I can help with — please message Cariah on WhatsApp for assistance."
+- Focus on helping users understand course + funding options and the right next step.`;
 
 type IncomingMessage = { role: 'user' | 'assistant' | 'system'; content: string };
 type LlmMessage = { role: 'user' | 'assistant' | 'system'; content: string };
@@ -55,7 +61,7 @@ const needsHumanHelp = (message: string) => {
 const simpleGreetingReply = (message: string) => {
   const text = message.trim().toLowerCase();
   if (['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'].includes(text)) {
-    return 'Hi! I’m Melverick 👋 I can help with course details, fees, subsidy questions, suitability, and next steps. What would you like to know?';
+    return 'Hi! I'm Cariah 👋 I can help with course details, SkillsFuture subsidies, company-sponsored training, and absentee payroll claims. What would you like to know?';
   }
   return null;
 };
@@ -168,10 +174,10 @@ Deno.serve(async (req: Request) => {
       content: row.message_text,
     }));
 
-    let responseText = simpleGreetingReply(latestUserMessage) || `I’m having trouble answering right now. Please try again, or message Melverick directly on WhatsApp for help: ${WHATSAPP_URL}`;
+    let responseText = simpleGreetingReply(latestUserMessage) || `I'm having trouble answering right now. Please try again, or message Cariah directly on WhatsApp for help: ${WHATSAPP_URL}`;
 
     if (needsHumanHelp(latestUserMessage)) {
-      responseText = `For this, the fastest next step is to message Melverick directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
+      responseText = `For this, the fastest next step is to message Cariah directly on WhatsApp so a human can help you properly: ${WHATSAPP_URL}`;
     } else if (!simpleGreetingReply(latestUserMessage)) {
       const openaiKey = Deno.env.get('OPENAI_API_KEY');
       const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY');
@@ -202,7 +208,7 @@ Deno.serve(async (req: Request) => {
       }
 
       if (responseText.includes('I’m having trouble answering right now') && diagnostics.length > 0) {
-        responseText = `WENDY_DEBUG: ${diagnostics.join(' | ')}`;
+        responseText = `CARIAH_DEBUG: ${diagnostics.join(' | ')}`;
       }
     }
 
@@ -223,7 +229,7 @@ Deno.serve(async (req: Request) => {
   } catch (error) {
     console.error('openclaw-chat error:', error);
     return new Response(
-      JSON.stringify({ error: 'Melverick is temporarily unavailable. Please try again shortly.' }),
+      JSON.stringify({ error: 'Cariah is temporarily unavailable. Please try again shortly.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
