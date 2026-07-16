@@ -78,32 +78,32 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [
     { label: '14 Aug 2026 & 21 Aug 2026 (9am-6pm)', code: '2026-08-14' },
     { label: '18 Sep 2026 & 25 Sep 2026 (9am-6pm)', code: '2026-09-18' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-accountants': [
     { label: 'TBD', code: 'tbd' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
   'free-preview': [{ label: 'Free preview — apply for the next session', code: 'free-preview-next-session' }],
   'agentic-ai-challenge': [{ label: 'Agentic AI Challenge result follow-up', code: 'agentic-ai-challenge' }],
   'agentic-ai-preview-session': [
     { label: '26 Jun 2026 preview session (2pm-6pm)', code: 'e2i-preview-2026-06-26' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-sim-preview-session': [
     { label: '04 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-04' },
     { label: '11 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-11' },
     { label: '18 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-18' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
   'advanced-agentic-ai': [
     { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-business-innovation': [
     { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
-    { label: 'Next Available Cohort', code: 'next-available' },
+    { label: 'Register Interest', code: 'next-available' },
   ],
 };
 const ACCOUNTANTS_SELF_REGISTRATION_URL =
