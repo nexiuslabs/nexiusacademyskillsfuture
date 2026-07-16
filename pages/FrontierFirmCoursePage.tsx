@@ -235,19 +235,6 @@ const FrontierFirmCoursePage: React.FC = () => {
                   >
                     Apply Now <ArrowRight size={18} />
                   </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/courses/advanced-agentic-ai',
-                        position: 'frontier_firm_hero_advisory',
-                        ctaLabel: 'request_advisory_call',
-                      })
-                    }
-                    className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
-                  >
-                    Request Advisory Call
-                  </button>
                 </div>
               </div>
             </div>
