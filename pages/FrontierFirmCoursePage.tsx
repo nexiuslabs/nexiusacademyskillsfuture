@@ -176,34 +176,6 @@ const FrontierFirmCoursePage: React.FC = () => {
                 <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
                   A practical advanced Agentic AI course for anyone who wants to understand Frontier Firm strategy, agent orchestration, governance, and how human-agent work will operate in the future.
                 </p>
-                <div className="flex flex-wrap gap-4 mb-10">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/advanced-agentic-ai',
-                        position: 'frontier_firm_hero_register_interest',
-                        ctaLabel: 'register_interest',
-                      })
-                    }
-                    className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
-                  >
-                    Register Interest <ArrowRight size={18} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'advisory_call', {
-                        page: '/courses/advanced-agentic-ai',
-                        position: 'frontier_firm_hero_advisory',
-                        ctaLabel: 'request_advisory_call',
-                      })
-                    }
-                    className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
-                  >
-                    Request Advisory Call
-                  </button>
-                </div>
                 <div className="mt-10">
                   <div className="rounded-[18px] border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
                     <div className="grid grid-cols-2 gap-4">
@@ -248,6 +220,34 @@ const FrontierFirmCoursePage: React.FC = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className="flex flex-wrap gap-4 mt-10">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLeadModal('course_page_cta', 'reserve_seat', {
+                        page: '/courses/advanced-agentic-ai',
+                        position: 'frontier_firm_hero_register_interest',
+                        ctaLabel: 'register_interest',
+                      })
+                    }
+                    className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
+                  >
+                    Register Interest <ArrowRight size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLeadModal('course_page_cta', 'advisory_call', {
+                        page: '/courses/advanced-agentic-ai',
+                        position: 'frontier_firm_hero_advisory',
+                        ctaLabel: 'request_advisory_call',
+                      })
+                    }
+                    className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
+                  >
+                    Request Advisory Call
+                  </button>
                 </div>
               </div>
             </div>
