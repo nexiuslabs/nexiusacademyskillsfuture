@@ -85,7 +85,7 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
     { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-company-class': [{ label: 'Private class schedule by arrangement', code: 'corporate-custom' }],
-  'free-preview': [{ label: 'Free preview — apply for the next session', code: 'free-preview-next-session' }],
+  'free-preview': [{ label: 'Free preview — register interest for the next session', code: 'free-preview-next-session' }],
   'agentic-ai-challenge': [{ label: 'Agentic AI Challenge result follow-up', code: 'agentic-ai-challenge' }],
   'agentic-ai-preview-session': [
     { label: '26 Jun 2026 preview session (2pm-6pm)', code: 'e2i-preview-2026-06-26' },

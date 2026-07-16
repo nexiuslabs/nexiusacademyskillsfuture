@@ -9,7 +9,7 @@ const openFreePreviewInterest = () =>
     page: '/',
     position: 'home_course_preview_cta',
     ctaLabel: 'register_interest_next_free_preview',
-    preferredIntake: 'Free preview — apply for the next session',
+    preferredIntake: 'Free preview — register interest for the next session',
     cohortCode: 'free-preview-next-session',
     courseSlug: 'free-preview',
   });

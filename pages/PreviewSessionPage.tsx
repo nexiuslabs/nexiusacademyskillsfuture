@@ -46,9 +46,9 @@ const partnerConfigs: Record<
     schedules: [
       {
         date: 'Next date to be announced',
-        time: 'Apply now for programme details and next intake timing',
+        time: 'Register interest to be notified when the next free preview opens',
         cohortCode: 'free-preview-next-session',
-        cohortLabel: 'Free preview — apply for the next session',
+        cohortLabel: 'Free preview — register interest for the next session',
       },
     ],
     partnerName: 'e2i',
@@ -182,7 +182,7 @@ const openPreviewLeadModal = (
     page: pagePath,
     position,
     ctaLabel: 'register_interest_next_free_preview',
-    preferredIntake: schedule?.cohortLabel || 'Free preview — apply for the next session',
+    preferredIntake: schedule?.cohortLabel || 'Free preview — register interest for the next session',
     cohortCode: schedule?.cohortCode || 'free-preview-next-session',
     courseSlug: 'free-preview',
   });
@@ -204,7 +204,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
     <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
         title={isDarkPreview ? 'Next Free Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
-        description={isDarkPreview ? 'Watch out for the next free Agentic AI Foundations preview session. Apply now and Nexius Academy will notify you when the next session opens.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
+        description={isDarkPreview ? 'Watch out for the next free Agentic AI Foundations preview session. Register interest and Nexius Academy will notify you when the next session opens.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -233,7 +233,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
               onClick={() => openPreviewLeadModal('preview_nav_register', config.pagePath)}
               className="inline-flex items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-900"
             >
-              Apply Now
+              Register Interest
             </button>
           )}
         </div>
@@ -265,7 +265,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
                   className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
                 >
-                  Apply Now <ArrowRight size={18} />
+                  Register Interest <ArrowRight size={18} />
                 </button>
                 <a
                   href={
@@ -369,7 +369,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         <div className="text-2xl" aria-hidden="true">⏱️</div>
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Notification</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">Apply now</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">Register interest</div>
                           <div className="mt-1 text-base font-semibold text-white/45">We will follow up when details are confirmed</div>
                         </div>
                       </div>
@@ -386,7 +386,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                             onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath, config.schedules[0])}
                             className="mt-4 inline-flex rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
                           >
-                            Apply Now
+                            Register Interest
                           </button>
                         </div>
                       </div>
@@ -415,7 +415,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                     onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath)}
                     className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors hover:bg-blue-900"
                   >
-                    Apply Now <ArrowRight size={18} />
+                    Register Interest <ArrowRight size={18} />
                   </button>
                 )}
               </div>
@@ -561,7 +561,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 Use the preview session to qualify interest before your paid class journey.
               </h2>
               <p className="mt-4 max-w-2xl text-white/75">
-                Apply now and our team will follow up with session details and suitable next steps for the full programme.
+                Register interest and our team will follow up with session details and suitable next steps for the full programme.
               </p>
             </div>
             {!isDarkPreview && (
@@ -570,7 +570,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 onClick={() => openPreviewLeadModal('preview_footer_register', config.pagePath)}
                 className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-teal-500"
               >
-                Apply Now <ArrowRight size={18} />
+                Register Interest <ArrowRight size={18} />
               </button>
             )}
           </div>
