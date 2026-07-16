@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Briefcase, Building2, ShieldCheck, Sparkles, Users, CheckCircle, Layers, GitBranch, Lock, ClipboardList, CreditCard, Receipt, Wallet } from 'lucide-react';
+import { ArrowRight, Briefcase, Building2, ShieldCheck, Sparkles, Users, CheckCircle, Layers, GitBranch, Lock, ClipboardList, CreditCard, Receipt, Wallet, Calendar, Monitor, Clock } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
@@ -204,14 +204,49 @@ const FrontierFirmCoursePage: React.FC = () => {
                     Request Advisory Call
                   </button>
                 </div>
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div className="bg-white/10 rounded-xl p-4 border border-white/10">
-                    <div className="font-bold mb-1">Designed for</div>
-                    <div className="text-blue-50/85">Advanced AI learners</div>
-                  </div>
-                  <div className="bg-white/10 rounded-xl p-4 border border-white/10">
-                    <div className="font-bold mb-1">Focus</div>
-                    <div className="text-blue-50/85">Agentic AI orchestration</div>
+                <div className="mt-10">
+                  <div className="rounded-[18px] border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+                        <div className="flex items-start gap-3">
+                          <Calendar size={20} className="mt-0.5 shrink-0 text-accent" />
+                          <div>
+                            <div className="text-base font-bold">Next Cohort</div>
+                            <div className="mt-1 text-sm text-blue-50/85">07 Oct, 08 Oct & 15 Oct 2026</div>
+                            <a href="#schedule" className="mt-2 inline-block text-sm font-bold text-accent hover:text-teal-300 transition-colors">
+                              More
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+                        <div className="flex items-start gap-3">
+                          <Monitor size={20} className="mt-0.5 shrink-0 text-accent" />
+                          <div>
+                            <div className="text-base font-bold">Format:</div>
+                            <div className="mt-1 text-sm text-blue-50/85">In-Person</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+                        <div className="flex items-start gap-3">
+                          <Clock size={20} className="mt-0.5 shrink-0 text-accent" />
+                          <div>
+                            <div className="text-base font-bold">Duration:</div>
+                            <div className="mt-1 text-sm text-blue-50/85">3 Days</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+                        <div className="flex items-start gap-3">
+                          <Wallet size={20} className="mt-0.5 shrink-0 text-accent" />
+                          <div>
+                            <div className="text-base font-bold">Net Fee:</div>
+                            <div className="mt-1 text-sm text-blue-50/85">from S$190.50*</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
