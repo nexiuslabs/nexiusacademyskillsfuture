@@ -44,10 +44,10 @@ const BottomSection: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="mb-8 grid gap-3 md:grid-cols-[minmax(0,220px),minmax(0,1fr)] md:items-start md:gap-8">
             <h4 className="text-lg font-bold leading-tight text-primary md:text-xl">
-              100+ Trusted Companies
+              Organizations represented
             </h4>
             <p className="max-w-none text-sm leading-relaxed text-gray-500 sm:text-base">
-              Upskilling your workforce with AI training Singapore companies trust. Our hands-on agentic AI courses enable rapid product development and no-code AI automation across your enterprise.
+              Logos shown reflect organizations represented in past workshops, collaborations, or training engagements. They do not necessarily indicate an endorsement.
             </p>
           </div>
 
@@ -105,7 +105,9 @@ const BottomSection: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                     <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
-                    <span className="flex items-center gap-1"><Eye size={12}/> {post.views} Views</span>
+                    {post.views > 0 && (
+                      <span className="flex items-center gap-1"><Eye size={12}/> {post.views} Views</span>
+                    )}
                   </div>
                   <h3 className="font-bold text-primary text-lg mb-2 group-hover:text-secondary transition-colors">
                     {post.title}

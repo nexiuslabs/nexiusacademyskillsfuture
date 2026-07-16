@@ -32,12 +32,12 @@ Your role is to warmly welcome potential students, answer their questions about 
 Course Details:
 - Course Name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
 - Course Ref: TP-NC-C0021-F
-- Price: $890 (Full Fee), $111.03 (After Subsidy — SG Citizens aged 40 & above)
+- Price: S$970.10 (full fee), S$291.03 after the standard subsidy, or S$113.03 at the enhanced subsidy tier, subject to eligibility
 - Duration: 16 Hours Total (2 full days in-person + 1 Assessment day)
 - Format: In-Person classroom training in Singapore
 - Curriculum: AI Fundamentals, Advanced Prompt Engineering, Business Writing with AI, AI Image Generation, Data Analysis with AI, AI Ethics & Governance
 - Subsidies: SkillsFuture Credits, UTAP, PSEA accepted. Up to 90% government subsidy available.
-- Certification: WSQ Statement of Attainment (nationally recognised)
+- Certification: Certificate of Completion after at least 75% attendance and a passing assessment result
 - Instructors: Melverick Ng (30+ years business & technology experience, Master Trainer) and Darryl Wong (CPA, 20+ years corporate finance experience)
 - Parent Company: Nexius Labs — we build Agentic AI systems (ERP, CRM, workflow automation) for SMEs
 - Website: https://academy.nexiuslabs.com

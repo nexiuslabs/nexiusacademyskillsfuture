@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-5">
-              Hands-on AI training for non-technical professionals and SMEs. WSQ-aligned, SkillsFuture-eligible, and outcome-driven.
+              Hands-on, SkillsFuture-eligible AI training for non-technical professionals and SMEs, focused on practical workplace outcomes.
             </p>
             <a
               href="https://www.linkedin.com/company/105886234/"

@@ -42,6 +42,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   srcSet,
   className,
   optimize = true,
+  fetchPriority,
   ...props
 }) => {
   const generatedSrcSet =
@@ -52,6 +53,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   return (
     <img
       {...props}
+      {...(fetchPriority ? { fetchpriority: fetchPriority } : {})}
       src={src}
       srcSet={generatedSrcSet}
       sizes={generatedSrcSet ? sizes : undefined}

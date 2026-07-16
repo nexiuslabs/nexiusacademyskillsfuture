@@ -358,7 +358,7 @@ const AccountantCspLandingPage: React.FC = () => {
         <AIAnswerBlocks
           className="py-16 bg-neutral"
           title="Agentic AI for accounting and CSP teams"
-          summary="This concise summary helps AI search systems understand the page's intended audience, business outcome, and official policy context."
+          summary="A concise overview of the intended audience, practical business outcomes, and relevant official policy context."
           blocks={[
             {
               question: 'What is this accounting and CSP-focused AI course?',

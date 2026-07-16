@@ -82,7 +82,7 @@ const BestAICoursesPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">"Will I build something I can use at work?"</strong> The gold standard is leaving a course with a working prototype or automated workflow you can immediately deploy in your business.</li>
             <li><strong className="font-semibold text-[#1a1a1a]">"Is it SkillsFuture eligible?"</strong> SkillsFuture AI courses can reduce your out-of-pocket cost by up to 90%. Look for the SSG course reference number (TGS-XXXXXXX). Note that SkillsFuture eligibility also signals quality — SSG vets the curriculum and training provider.</li>
             <li><strong className="font-semibold text-[#1a1a1a]">"Does it cover agentic AI or just prompting?"</strong> In 2026, prompt engineering alone is table stakes. The real competitive advantage comes from understanding autonomous agent workflows. Look for courses that teach you to build agents, not just chat with them.</li>
-            <li><strong className="font-semibold text-[#1a1a1a]">"What certification do I get?"</strong> A WSQ Statement of Attainment carries weight with Singapore employers and demonstrates formal competency. Generic "certificates of completion" from online platforms carry less recognition.</li>
+            <li><strong className="font-semibold text-[#1a1a1a]">"What certification do I get?"</strong> Confirm the exact award with the provider. A Statement of Attainment and a Certificate of Completion are different credentials, so check the course listing and completion requirements before enrolling.</li>
             <li><strong className="font-semibold text-[#1a1a1a]">"Is there post-course support?"</strong> The best programmes offer alumni communities, follow-up resources, or ongoing access to tools and materials. Learning AI is a journey, not a destination.</li>
           </ul>
 
@@ -100,7 +100,7 @@ const BestAICoursesPage: React.FC = () => {
             <li><strong className="font-semibold text-[#1a1a1a]">Budget 2026 bonus:</strong> PM Wong announced free access to premium AI tools for six months for participants in selected AI courses — a significant added incentive.</li>
           </ul>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
-            The practical effect? A $890 AI certification course in Singapore can cost as little as $111 after subsidies — less than most professionals spend on coffee in a month.
+            The practical effect varies by course and learner eligibility. Compare the published full fee, subsidised fee tiers, and current official funding conditions before enrolling.
           </p>
 
           <div className="border-l-4 border-[#f90] bg-[#fcf8e3] p-6 my-8 italic text-[#555] text-lg">

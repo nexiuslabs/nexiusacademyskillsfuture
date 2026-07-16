@@ -70,8 +70,8 @@ const Hero: React.FC = () => {
                   <span className="text-2xl">🎓</span>
                 </div>
                 <div>
-                  <p className="font-bold text-primary text-lg">500+</p>
-                  <p className="text-xs text-gray-500">Learners</p>
+                  <p className="font-bold text-primary text-lg">Hands-on</p>
+                  <p className="text-xs text-gray-500">Guided learning</p>
                 </div>
               </div>
             </div>
@@ -79,11 +79,11 @@ const Hero: React.FC = () => {
             <div className="absolute bottom-20 -right-5 bg-white p-4 rounded-xl shadow-lg z-20 hidden md:block">
               <div className="flex items-center gap-3">
                 <div className="bg-green-100 p-2 rounded-full text-green-600 font-bold">
-                  95%
+                  AI
                 </div>
                 <div>
-                  <p className="font-bold text-primary text-sm">Satisfaction Rate</p>
-                  <p className="text-xs text-gray-500">Based on reviews</p>
+                  <p className="font-bold text-primary text-sm">Business-first</p>
+                  <p className="text-xs text-gray-500">Applied outcomes</p>
                 </div>
               </div>
             </div>

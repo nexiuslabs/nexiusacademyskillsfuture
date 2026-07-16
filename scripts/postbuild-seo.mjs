@@ -7,21 +7,29 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const LASTMOD = '2026-07-13';
+const DEFAULT_LASTMOD = '2026-07-13';
+const ACADEMY_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const MELVERICK_ID = `${SITE_URL}/about/#melverick-ng`;
+const DARRYL_ID = `${SITE_URL}/about/#darryl-wong`;
+const ACADEMY_LOGO = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexius_logo_no_text_transparent_bg.png';
 
 const melverickPerson = {
   '@type': 'Person',
+  '@id': MELVERICK_ID,
   name: 'Melverick Ng',
   url: 'https://academy.nexiuslabs.com/about/',
   image: `${SITE_URL}/images/authors/melverick-ng-selected.jpg`,
   jobTitle: 'Founder of Nexius Labs and Master Trainer at Nexius Academy',
   worksFor: {
     '@type': 'Organization',
+    '@id': 'https://nexiuslabs.com/#organization',
     name: 'Nexius Labs',
     url: 'https://nexiuslabs.com',
   },
   affiliation: {
     '@type': 'EducationalOrganization',
+    '@id': ACADEMY_ID,
     name: 'Nexius Academy',
     url: SITE_URL,
   },
@@ -30,6 +38,7 @@ const melverickPerson = {
 
 const darrylPerson = {
   '@type': 'Person',
+  '@id': DARRYL_ID,
   name: 'Darryl Wong',
   url: 'https://academy.nexiuslabs.com/about/',
   image: `${SITE_URL}/images/authors/darryl-wong-selected.jpeg`,
@@ -41,6 +50,7 @@ const darrylPerson = {
   },
   affiliation: {
     '@type': 'EducationalOrganization',
+    '@id': ACADEMY_ID,
     name: 'Nexius Academy',
     url: SITE_URL,
   },
@@ -49,32 +59,43 @@ const darrylPerson = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
+  '@id': ACADEMY_ID,
   name: 'Nexius Academy',
-  url: SITE_URL,
-  logo: DEFAULT_IMAGE,
+  url: `${SITE_URL}/`,
+  logo: {
+    '@type': 'ImageObject',
+    url: ACADEMY_LOGO,
+  },
   description:
     'Nexius Academy offers hands-on AI training in Singapore for business professionals, covering agentic AI, no-code automation, and generative AI workshops.',
   parentOrganization: {
     '@type': 'Organization',
+    '@id': 'https://nexiuslabs.com/#organization',
     name: 'Nexius Labs',
-    url: 'https://nexiuslabs.com',
+    url: 'https://nexiuslabs.com/',
   },
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'SG',
   },
-  sameAs: [
-    'https://www.linkedin.com/company/nexius-labs',
-    'https://www.linkedin.com/in/melverick',
-  ],
+  sameAs: ['https://www.linkedin.com/company/105886234/'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+65 8900 2130',
+    contactType: 'course enquiries',
+    areaServed: 'SG',
+    availableLanguage: 'English',
+  },
   employee: [melverickPerson, darrylPerson],
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': WEBSITE_ID,
   name: 'Nexius Academy',
-  url: SITE_URL,
+  url: `${SITE_URL}/`,
+  publisher: { '@id': ACADEMY_ID },
   inLanguage: 'en-SG',
 };
 
@@ -113,7 +134,7 @@ const breadcrumbSchema = (routePath, title) => {
   };
 };
 
-const courseSchema = ({ name, description, url, image, audienceType, courseInstance, aggregateRating, offers, instructors }) => ({
+const courseSchema = ({ name, description, url, image, audienceType, courseInstance, offers, instructors }) => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name,
@@ -122,12 +143,12 @@ const courseSchema = ({ name, description, url, image, audienceType, courseInsta
   image,
   provider: {
     '@type': 'EducationalOrganization',
+    '@id': ACADEMY_ID,
     name: 'Nexius Academy',
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
   },
   instructor: instructors,
   offers,
-  aggregateRating,
   hasCourseInstance: courseInstance,
   educationalLevel: 'Professional',
   audience: {
@@ -158,7 +179,7 @@ const faqSchema = (items) => ({
   })),
 });
 
-const articleSchema = ({ headline, description, url, image, datePublished }) => ({
+const articleSchema = ({ headline, description, url, image, datePublished, dateModified }) => ({
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline,
@@ -166,16 +187,17 @@ const articleSchema = ({ headline, description, url, image, datePublished }) => 
   image,
   mainEntityOfPage: url,
   datePublished,
-  dateModified: LASTMOD,
+  dateModified,
   author: {
     ...melverickPerson,
   },
   publisher: {
     '@type': 'EducationalOrganization',
+    '@id': ACADEMY_ID,
     name: 'Nexius Academy',
     logo: {
       '@type': 'ImageObject',
-      url: DEFAULT_IMAGE,
+      url: ACADEMY_LOGO,
     },
   },
 });
@@ -189,6 +211,7 @@ const pageSchema = ({ name, description, url, image, type = 'WebPage' }) => ({
   inLanguage: 'en-SG',
   isPartOf: {
     '@type': 'WebSite',
+    '@id': WEBSITE_ID,
     name: 'Nexius Academy',
     url: SITE_URL,
   },
@@ -302,6 +325,7 @@ const agenticBusinessInnovationFaqs = [
 const routes = [
   {
     path: '/',
+    lastmod: '2026-07-16',
     priority: '1.0',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -314,6 +338,7 @@ const routes = [
   },
   {
     path: '/about',
+    lastmod: '2026-07-16',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -326,6 +351,7 @@ const routes = [
   },
   {
     path: '/skillsfuture-funding-guide',
+    lastmod: '2026-07-16',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -372,6 +398,7 @@ const routes = [
   },
   {
     path: '/courses/agentic-ai',
+    lastmod: '2026-07-16',
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -385,40 +412,76 @@ const routes = [
         name: 'Agentic AI Foundations for Non-Technical Professionals',
         description:
           'A 16-hour, SkillsFuture-eligible course on agentic AI, no-code automation, prompt engineering, and practical business workflow design.',
-        url: `${SITE_URL}/courses/agentic-ai`,
+        url: `${SITE_URL}/courses/agentic-ai/`,
         image: COURSE_IMAGE,
         audienceType: 'Business professionals, SME owners, and non-technical teams',
         instructors: [melverickPerson, darrylPerson],
-        offers: {
-          '@type': 'Offer',
-          url: `${SITE_URL}/courses/agentic-ai/`,
-          priceCurrency: 'SGD',
-          availability: 'https://schema.org/InStock',
-        },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: '223',
-        },
-        courseInstance: {
-          '@type': 'CourseInstance',
-          courseMode: 'In-person',
-          courseWorkload: 'PT16H',
-          startDate: '2026-08-14',
-          endDate: '2026-08-21',
-          location: {
-            '@type': 'Place',
-            name: 'Nexius Academy',
-            address: {
-              '@type': 'PostalAddress',
-              addressCountry: 'SG',
+        offers: [
+          {
+            '@type': 'Offer',
+            name: 'Singapore Citizen aged 40 and above fee after subsidy',
+            url: `${SITE_URL}/courses/agentic-ai/`,
+            price: '113.03',
+            priceCurrency: 'SGD',
+            availability: 'https://schema.org/InStock',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Singapore Citizen below 40 or Permanent Resident fee after subsidy',
+            url: `${SITE_URL}/courses/agentic-ai/`,
+            price: '291.03',
+            priceCurrency: 'SGD',
+            availability: 'https://schema.org/InStock',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Full course fee before subsidy',
+            url: `${SITE_URL}/courses/agentic-ai/`,
+            price: '970.10',
+            priceCurrency: 'SGD',
+            availability: 'https://schema.org/InStock',
+          },
+        ],
+        courseInstance: [
+          {
+            '@type': 'CourseInstance',
+            courseMode: 'In-person',
+            courseWorkload: 'PT16H',
+            startDate: '2026-08-14T09:00:00+08:00',
+            endDate: '2026-08-21T18:00:00+08:00',
+            location: {
+              '@type': 'Place',
+              name: 'Devan Nair Institute for Employment and Employability',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '80 Jurong East Street 21',
+                addressLocality: 'Singapore',
+                postalCode: '609607',
+                addressCountry: 'SG',
+              },
             },
+            instructor: { '@id': MELVERICK_ID },
           },
-          instructor: {
-            '@type': 'Person',
-            name: 'Melverick Ng',
+          {
+            '@type': 'CourseInstance',
+            courseMode: 'In-person',
+            courseWorkload: 'PT16H',
+            startDate: '2026-09-18T09:00:00+08:00',
+            endDate: '2026-09-25T18:00:00+08:00',
+            location: {
+              '@type': 'Place',
+              name: 'Singapore Institute of Management',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '461 Clementi Road',
+                addressLocality: 'Singapore',
+                postalCode: '599491',
+                addressCountry: 'SG',
+              },
+            },
+            instructor: { '@id': MELVERICK_ID },
           },
-        },
+        ],
       }),
       faqSchema(mainCourseFaqs),
     ],
@@ -575,11 +638,6 @@ const routes = [
         image: COURSE_IMAGE,
         audienceType: 'Accountants, corporate service providers, firm owners, and non-technical finance teams',
         instructors: [melverickPerson, darrylPerson],
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: '223',
-        },
       }),
       faqSchema(accountantsFaqs),
     ],
@@ -950,8 +1008,10 @@ const applyHead = (html, route) => {
   output = upsertMeta(output, 'name="twitter:site"', '<meta name="twitter:site" content="@nexiuslabs" />');
   output = upsertMeta(output, 'name="twitter:creator"', '<meta name="twitter:creator" content="@melverick" />');
   if (route.ogType === 'article') {
-    output = upsertMeta(output, 'property="article:published_time"', `<meta property="article:published_time" content="${route.articleDate ?? LASTMOD}" />`);
-    output = upsertMeta(output, 'property="article:modified_time"', `<meta property="article:modified_time" content="${LASTMOD}" />`);
+    const articleDate = route.articleDate ?? route.lastmod ?? DEFAULT_LASTMOD;
+    const modifiedDate = route.lastmod ?? route.articleDate ?? DEFAULT_LASTMOD;
+    output = upsertMeta(output, 'property="article:published_time"', `<meta property="article:published_time" content="${articleDate}" />`);
+    output = upsertMeta(output, 'property="article:modified_time"', `<meta property="article:modified_time" content="${modifiedDate}" />`);
     output = upsertMeta(output, 'property="article:author"', '<meta property="article:author" content="Melverick Ng" />');
   }
   output = upsertLink(output, 'rel="canonical"', `<link rel="canonical" href="${canonicalUrl}" />`);
@@ -973,7 +1033,8 @@ const applyHead = (html, route) => {
         description: route.description,
         url: pageUrl,
         image: route.ogImage,
-        datePublished: route.articleDate ?? LASTMOD,
+        datePublished: route.articleDate ?? route.lastmod ?? DEFAULT_LASTMOD,
+        dateModified: route.lastmod ?? route.articleDate ?? DEFAULT_LASTMOD,
       }),
     );
   } else if (!hasExplicitSchemas && route.path !== '/admin') {
@@ -1012,7 +1073,7 @@ const writeSitemap = () => {
       return [
         '  <url>',
         `    <loc>${loc}</loc>`,
-        `    <lastmod>${LASTMOD}</lastmod>`,
+        `    <lastmod>${route.lastmod ?? route.articleDate ?? DEFAULT_LASTMOD}</lastmod>`,
         `    <changefreq>${route.changefreq}</changefreq>`,
         `    <priority>${route.priority}</priority>`,
         '  </url>',

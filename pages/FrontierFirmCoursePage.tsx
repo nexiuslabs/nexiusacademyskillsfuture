@@ -267,7 +267,7 @@ const FrontierFirmCoursePage: React.FC = () => {
         <AIAnswerBlocks
           className="py-16 bg-neutral"
           title="Advanced Agentic AI course summary"
-          summary="This section gives AI search systems a short description of the broader learner audience, advanced Agentic AI outcome, and governance context for this course."
+          summary="A concise overview of the learner audience, advanced Agentic AI outcomes, and governance context for this course."
           blocks={[
             {
               question: 'What is Agentic AI-Driven Business Innovation for Productivity?',

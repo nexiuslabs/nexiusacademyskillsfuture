@@ -89,7 +89,7 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What AI certification will I receive in Singapore?',
     answer:
-      'Upon completion, you will receive a WSQ Statement of Attainment - a nationally recognized credential validating your AI upskilling outcomes.',
+      'You will receive a Certificate of Completion after attending at least 75% of the course and passing the assessment.',
   },
 ];
 
@@ -352,11 +352,11 @@ Your goal is to help potential students understand the course and encourage them
 
 - Course Name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
 - Course Ref: TP-NC-C0021-F
-- Price: $890 (Full), $111.03 (After Subsidy for SG Citizens 40 & above).
+- Price: S$970.10 (full fee), S$291.03 after the standard subsidy, or S$113.03 at the enhanced subsidy tier, subject to eligibility.
 - Duration: 16 Hours Total (2 full days + 1 Assessment).
 - Format: In-Person.
 - Curriculum: Fundamentals, Advanced Prompt Engineering, Business Writing, Image Generation, Data Analysis, Ethics.
 - Subsidies: SkillsFuture Credits, UTAP, PSEA available.
-- Cert: WSQ Statement of Attainment.
+- Cert: Certificate of Completion after at least 75% attendance and a passing assessment result.
 - Tone: Professional, encouraging, and helpful. Keep answers concise (under 100 words).
 `;

@@ -212,7 +212,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
       <AIAnswerBlocks
         className="bg-neutral py-16"
         title="Advanced Agentic AI course summary"
-        summary="This AI-readable section summarises the course positioning, intended learner audience, Frontier Firm transformation outcome, and official source links."
+        summary="A concise overview of the course positioning, intended learner audience, Frontier Firm transformation outcomes, and official source links."
         citationsPlacement="left"
         blocks={[
           {

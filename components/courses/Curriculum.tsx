@@ -60,7 +60,7 @@ const Curriculum: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent"></div>
                   <span className="font-bold text-primary">Certification:</span>
-                  <span className="text-gray-600">Certificate of Attainment</span>
+                  <span className="text-gray-600">Certificate of Completion</span>
                 </div>
               </div>
 

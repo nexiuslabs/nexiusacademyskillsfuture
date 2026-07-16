@@ -308,20 +308,20 @@ const AboutPage: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">500+</div>
-                <p className="text-gray-300 font-medium">Students Trained</p>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">Hands-on</div>
+                <p className="text-gray-300 font-medium">Guided Workshops</p>
               </div>
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">95%</div>
-                <p className="text-gray-300 font-medium">Satisfaction Rate</p>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">Applied</div>
+                <p className="text-gray-300 font-medium">Business Outcomes</p>
               </div>
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">20+</div>
-                <p className="text-gray-300 font-medium">Corporate Partners</p>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">In-person</div>
+                <p className="text-gray-300 font-medium">Singapore Delivery</p>
               </div>
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">40+</div>
-                <p className="text-gray-300 font-medium">Years of Experience</p>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">No-code</div>
+                <p className="text-gray-300 font-medium">Beginner Friendly</p>
               </div>
             </div>
           </div>

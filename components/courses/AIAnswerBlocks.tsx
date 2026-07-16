@@ -42,7 +42,7 @@ const CitationCard: React.FC<{ citations: CitationLink[] }> = ({ citations }) =>
 );
 
 const AIAnswerBlocks: React.FC<AIAnswerBlocksProps> = ({
-  kicker = 'AI-readable course summary',
+  kicker = 'Course at a glance',
   title,
   summary,
   blocks,

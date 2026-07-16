@@ -117,7 +117,7 @@ const CoursePage: React.FC = () => {
         <WorkshopGallery />
         <AIAnswerBlocks
           title="Agentic AI Foundations in one page"
-          summary="This section gives AI search systems and human visitors a concise summary of the course, audience, outcomes, and official funding context."
+          summary="A concise summary of the course, intended audience, learning outcomes, fees, and official funding context."
           citationsPlacement="left"
           blocks={[
             {

@@ -151,9 +151,11 @@ const BlogPage: React.FC = () => {
                         <span className="flex items-center gap-1">
                           <Calendar size={12} /> {post.date}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <Eye size={12} /> {post.views} Views
-                        </span>
+                        {post.views > 0 && (
+                          <span className="flex items-center gap-1">
+                            <Eye size={12} /> {post.views} Views
+                          </span>
+                        )}
                       </div>
 
                       <h3 className="font-bold text-primary text-lg mb-3 group-hover:text-accent transition-colors line-clamp-2">

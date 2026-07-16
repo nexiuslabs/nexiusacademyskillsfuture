@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
 import { Course } from '../../types';
 import ResponsiveImage from '../ResponsiveImage';
 
 const MELVERICK_COURSE_IMAGE = '/images/courses/agentic-ai-foundations-card.jpg';
-const DISPLAY_RATING = 4.8;
 
 const AVAILABLE_COURSES: Course[] = [
   {
@@ -14,7 +12,7 @@ const AVAILABLE_COURSES: Course[] = [
     category: 'Foundation',
     price: 67,
     rating: 5.0,
-    students: 223,
+    students: 0,
     image: MELVERICK_COURSE_IMAGE,
     author: 'Melverick Ng',
     authorImage: '/images/authors/melverick-ng-selected.jpg',
@@ -35,10 +33,6 @@ const AVAILABLE_COURSES: Course[] = [
 ];
 
 const CourseList: React.FC = () => {
-  const fullStars = Math.floor(DISPLAY_RATING);
-  const partialStarWidth = `${Math.round((DISPLAY_RATING % 1) * 100)}%`;
-  const hasPartialStar = DISPLAY_RATING % 1 !== 0;
-
   return (
     <section id="courses" className="py-24 bg-white scroll-mt-32">
       <div className="container mx-auto px-6">
@@ -77,37 +71,6 @@ const CourseList: React.FC = () => {
                   {course.title}
                 </h3>
 
-                <div className="flex items-center justify-between border-t pt-4">
-                  <div className="flex items-center gap-2 text-xs font-bold">
-                    <div className="flex items-center gap-0.5 text-yellow-500">
-                      {Array.from({ length: 5 }).map((_, index) => {
-                        const isFullStar = index < fullStars;
-                        const isPartialStar = index === fullStars && hasPartialStar;
-
-                        if (isPartialStar) {
-                          return (
-                            <span key={index} className="relative inline-flex h-[14px] w-[14px]">
-                              <Star size={14} className="absolute inset-0 text-gray-300" fill="currentColor" />
-                              <span className="absolute inset-0 overflow-hidden" style={{ width: partialStarWidth }}>
-                                <Star size={14} className="text-yellow-500" fill="currentColor" />
-                              </span>
-                            </span>
-                          );
-                        }
-
-                        return (
-                          <Star
-                            key={index}
-                            size={14}
-                            className={isFullStar ? 'text-yellow-500' : 'text-gray-300'}
-                            fill="currentColor"
-                          />
-                        );
-                      })}
-                    </div>
-                    <span className="text-primary">{DISPLAY_RATING.toFixed(1)}</span>
-                  </div>
-                </div>
               </div>
             </Link>
           ))}

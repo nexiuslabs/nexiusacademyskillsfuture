@@ -24,8 +24,9 @@ Key facts:
 - Main programme: Agentic AI Foundations for Non-Technical Professionals
 - Course ref: TP-NC-C0021-F
 - Format: in-person classroom training in Singapore
-- Full fee: $890
-- Indicative subsidised fee shown on site for eligible SG Citizens aged 40+: $111.03
+- Full fee: S$970.10
+- Indicative subsidised fees shown on site: S$291.03 at the standard tier or S$113.03 at the enhanced tier, subject to eligibility
+- Certificate: Certificate of Completion after at least 75% attendance and a passing assessment result
 - Website: https://academy.nexiuslabs.com
 - Primary registration path is through the official external registration flow on the website.
 - For direct human help, visitors can contact Cariah on WhatsApp: ${WHATSAPP_URL}
