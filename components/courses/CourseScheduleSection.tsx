@@ -68,7 +68,7 @@ const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, pos
                   </div>
                   <div className="inline-flex items-center gap-1.5 text-gray-700">
                     <Users size={16} className="text-accent" />
-                    <span>Register interest early to lock your seat</span>
+                    <span>Apply early to lock your seat</span>
                   </div>
                 </div>
               </div>

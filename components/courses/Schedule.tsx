@@ -62,7 +62,7 @@ const Schedule: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
-                      {isFull ? 'Join waitlist to secure next intake' : 'Register interest early to lock your seat'}
+                      {isFull ? 'Join waitlist to secure next intake' : 'Apply early to lock your seat'}
                     </div>
                   </div>
                 </div>

@@ -513,7 +513,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
               </div>
               <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Ready to learn advanced Agentic AI?</h2>
               <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-blue-50/90">
-                Register interest if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
+                Apply now if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button

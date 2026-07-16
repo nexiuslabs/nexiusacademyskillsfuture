@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Primary path</div>
-                <div className="font-semibold text-primary text-sm">Register interest for the next cohort</div>
+                <div className="font-semibold text-primary text-sm">Apply for the next cohort</div>
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">Need help first?</div>

@@ -587,7 +587,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               </div>
               <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Ready to learn advanced Agentic AI?</h2>
               <p className="text-blue-50/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-                Register interest if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
+                Apply now if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button
