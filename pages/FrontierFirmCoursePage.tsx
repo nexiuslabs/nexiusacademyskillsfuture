@@ -233,7 +233,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                     }
                     className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
                   >
-                    Register Interest <ArrowRight size={18} />
+                    Apply Now <ArrowRight size={18} />
                   </button>
                   <button
                     type="button"
