@@ -47,9 +47,6 @@ const CoursePreviewCTA: React.FC = () => {
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="font-bold text-white">Next date to be announced</span>
-                      <span className="rounded-full bg-teal-400 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-[#0d1f3d] shadow-lg shadow-teal-950/20">
-                        Apply Now
-                      </span>
                     </div>
                     <div>Leave your details and we will notify you when the next free preview opens.</div>
                   </div>
@@ -67,7 +64,7 @@ const CoursePreviewCTA: React.FC = () => {
                 onClick={openFreePreviewInterest}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
-                Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                Register Interest <ArrowRight className="ml-2 h-5 w-5" />
               </button>
             </div>
           </div>
