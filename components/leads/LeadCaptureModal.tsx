@@ -89,6 +89,12 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
     { label: '11 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-11' },
     { label: '18 Jul 2026 preview session (9am-1pm)', code: 'sim-preview-2026-07-18' },
   ],
+  'advanced-agentic-ai': [
+    { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
+  ],
+  'agentic-ai-business-innovation': [
+    { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
+  ],
 };
 const ACCOUNTANTS_SELF_REGISTRATION_URL =
   'https://stms.polite.edu.sg/identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DStudent%26redirect_uri%3Dhttps%253A%252F%252Fstms.polite.edu.sg%252Fsignin-student%26response_type%3Dcode%26scope%3Dopenid%2520profile%26code_challenge%3DE_QgKHQVqjJlxFGerdkqw-CVtB-r2B4RdhgYFtBulIg%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639124957031034808.NDQzYmQwOTYtOWY5Ni00OTM5LTkwMDgtYTBiMzk1NjVjOGQzZjFmMWM5YWYtYmRjYS00NWM1LTkxNmItOThkOTA5MGVhNTQx%26state%3DE6QlwbfBI3OA11ZwIH4Ce3Hy1zQSg-TlR9ATT08PgcDZpzYcK6Hlnu7JhAzoSqzcviv-hCEO-K0WzQqqJ6BMKJRFlmWyH-xHA3nc04SezmEcoiwp6IinEGRjRL8p1l3t6DTM32RcTGSLk4Ic9tuN3uQzK30xsOv5ofLW5nXy3Rsq5FJ_pwLHx680-VeNfDmEw6kTwtTFgvIkkxc8HHa80_hXIT_s9ce9z_9X_NbHJ935xIUquP9iuh_uIKmQNfupYVgc32kCr6I9EsBzyuC3APFjPcoOCuIX84yq8-rGRqHnKXcOzVCND5n_Ssn5rH-JaNOgNuFppkA1c8LVzOvdaJ5pJI-mkj3rW2nFKpt3v8g9EG4uHe8tPjV04bncLHH8o8ydsxcgOQy9sBUPIYTVxcpyAbw8ywMmo_yJMRuvr2T4ZbH0_q3ZoMsK-cA-qhuZrtpMA-nMLcIVV7Vx7MAfQLBb-C3hh9Wp2ICoTnmKJKk8ahBCRZdFmtyO3XWJEWOAVlJz07Uv33KeKJZqIHlZxQ%26x-client-SKU%3DID_NET8_0%26x-client-ver%3D7.1.2.0';
@@ -100,6 +106,8 @@ const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/course-preview')) return 'free-preview';
   if (path.includes('/sim-preview')) return 'agentic-ai-sim-preview-session';
   if (path.includes('/e2i-preview')) return 'agentic-ai-preview-session';
+  if (path.includes('/courses/advanced-agentic-ai')) return 'advanced-agentic-ai';
+  if (path.includes('/courses/agentic-ai-business-innovation')) return 'agentic-ai-business-innovation';
   if (path.includes('/courses/agentic-ai')) return 'agentic-ai';
   return 'general';
 };
