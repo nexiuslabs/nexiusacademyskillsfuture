@@ -121,7 +121,7 @@ const faqs = [
   },
   {
     question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 12 pax for a dedicated company run.',
+    answer: 'The minimum class size is 15 pax for a dedicated company run.',
   },
   {
     question: 'Can the workshop focus on our real internal workflows?',
@@ -149,7 +149,7 @@ const faqs = [
       'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
   },
   {
-    question: 'What if we have fewer than 12 pax?',
+    question: 'What if we have fewer than 15 pax?',
     answer:
       'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
   },
@@ -399,7 +399,7 @@ const PrivateClassHero: React.FC = () => {
               className="mt-8 flex flex-col items-center gap-5"
             >
               <div className="flex flex-wrap items-center justify-center gap-2 text-center text-lg text-gray-600 sm:text-xl">
-                <span className="font-semibold text-primary">12 pax</span>
+                <span className="font-semibold text-primary">15 pax</span>
                 <span className="text-gray-300">|</span>
                 <span>Dedicated company class and above</span>
               </div>

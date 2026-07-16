@@ -135,8 +135,8 @@ const deliveryPoints = [
 const pricingCards = [
   {
     title: 'Minimum Class Size',
-    value: '12 pax',
-    description: 'Private runs are designed for a single company cohort with at least 12 participants.',
+    value: '15 pax',
+    description: 'Private runs are designed for a single company cohort with at least 15 participants.',
   },
   {
     title: 'Pricing Approach',
@@ -173,7 +173,7 @@ const faqs = [
   },
   {
     question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 12 pax for a dedicated company run.',
+    answer: 'The minimum class size is 15 pax for a dedicated company run.',
   },
   {
     question: 'Can the workshop focus on our real internal workflows?',
@@ -201,7 +201,7 @@ const faqs = [
       'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
   },
   {
-    question: 'What if we have fewer than 12 pax?',
+    question: 'What if we have fewer than 15 pax?',
     answer:
       'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
   },
@@ -262,7 +262,7 @@ const CorporateClassLandingPage: React.FC = () => {
             <div className="lg:col-span-7 lg:pr-8">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm">
                 <Building2 size={16} className="text-accent" />
-                Dedicated company class for teams of 12 pax and above
+                Dedicated company class for teams of 15 pax and above
               </div>
 
               <h1 className="mb-6 max-w-4xl font-heading text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl lg:text-7xl">
@@ -279,7 +279,7 @@ const CorporateClassLandingPage: React.FC = () => {
                 </div>
                 <div className="rounded-3xl border border-primary/10 bg-white px-4 py-4 shadow-sm">
                   <div className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Minimum size</div>
-                  <div className="font-semibold">12 pax</div>
+                  <div className="font-semibold">15 pax</div>
                 </div>
                 <div className="rounded-3xl border border-primary/10 bg-white px-4 py-4 shadow-sm">
                   <div className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Delivery</div>
@@ -675,7 +675,7 @@ const CorporateClassLandingPage: React.FC = () => {
               <div className="relative">
                 <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Want a private AI class for your company?</h2>
                 <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-blue-50/90">
-                  If you have 12 pax or more and want a more relevant, private, and operationally practical format, we can scope a dedicated run for your team.
+                  If you have 15 pax or more and want a more relevant, private, and operationally practical format, we can scope a dedicated run for your team.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <button
