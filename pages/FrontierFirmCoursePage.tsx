@@ -236,20 +236,6 @@ const FrontierFirmCoursePage: React.FC = () => {
                     Apply Now <ArrowRight size={18} />
                   </button>
                 </div>
-                <div className="mt-6 block sm:hidden">
-                  <div className="flex flex-col items-start">
-                    <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
-                      In collaboration with
-                    </span>
-                    <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
-                      <img
-                        src="/images/partners/temasek-poly-logo-transparent.png"
-                        alt="Temasek Polytechnic collaboration logo"
-                        className="h-12 w-auto object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -268,6 +254,23 @@ const FrontierFirmCoursePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+        <div className="block sm:hidden bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col items-start">
+              <span className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                In collaboration with
+              </span>
+              <div className="rounded-lg bg-white border border-gray-200 px-3 py-1.5 shadow-sm inline-block">
+                <img
+                  src="/images/partners/temasek-poly-logo-transparent.png"
+                  alt="Temasek Polytechnic collaboration logo"
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
         <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
