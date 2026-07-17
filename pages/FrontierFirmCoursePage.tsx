@@ -239,7 +239,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               </div>
             </div>
           </div>
-        <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8">
+        <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8 hidden sm:block">
           <div className="flex flex-col items-end">
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
