@@ -236,6 +236,20 @@ const FrontierFirmCoursePage: React.FC = () => {
                     Apply Now <ArrowRight size={18} />
                   </button>
                 </div>
+                <div className="mt-6 block sm:hidden">
+                  <div className="flex flex-col items-start">
+                    <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
+                      In collaboration with
+                    </span>
+                    <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
+                      <img
+                        src="/images/partners/temasek-poly-logo-transparent.png"
+                        alt="Temasek Polytechnic collaboration logo"
+                        className="h-12 w-auto object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
