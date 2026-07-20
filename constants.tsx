@@ -153,6 +153,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 17,
+    slug: 'agentic-ai-cost-control-business-professionals',
+    title: 'Agentic AI Cost Control: What Business Professionals Must Learn Before Agents Start Executing Work',
+    date: '20 Jul 2026',
+    views: 0,
+    image: '/images/blog/agentic-ai-cost-control-business-professionals.png',
+    excerpt: 'Agentic AI cost pressure is an orchestration problem. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need before agents execute work.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 16,
     slug: 'workspace-agents-business-professionals',
     title: 'Workspace Agents: What Business Professionals Must Learn Before AI Starts Working Across Apps',

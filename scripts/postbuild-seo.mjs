@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const DEFAULT_LASTMOD = '2026-07-13';
+const DEFAULT_LASTMOD = '2026-07-20';
 const ACADEMY_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const MELVERICK_ID = `${SITE_URL}/about/#melverick-ng`;
@@ -859,6 +859,12 @@ const routes = [
       'position': 16,
       'url': '/blog/workspace-agents-business-professionals/',
       'name': 'Workspace Agents: What Business Professionals Must Learn',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 17,
+      'url': '/blog/agentic-ai-cost-control-business-professionals/',
+      'name': 'Agentic AI Cost Control: What Business Professionals Must Learn',
     }
     ],
   },
@@ -1076,6 +1082,20 @@ const routes = [
     ogImageAlt: 'Business professionals mapping governed workspace AI agent workflows and approval gates',
     schemas: [],
     articleDate: '2026-07-13',
+  },
+  {
+    path: '/blog/agentic-ai-cost-control-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agentic AI Cost Control: What Business Professionals Must Learn',
+    description:
+      'Agentic AI cost pressure is an orchestration problem. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need before agents execute work.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agentic-ai-cost-control-business-professionals.png',
+    ogImageAlt: 'Business professionals controlling agentic AI costs through workflow orchestration and approval gates',
+    schemas: [],
+    articleDate: '2026-07-20',
   },
   {
     path: '/admin',

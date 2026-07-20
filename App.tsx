@@ -19,6 +19,7 @@ import AIConnectorsMCPBusinessPage from './pages/AIConnectorsMCPBusinessPage';
 import AgentHandoffsBusinessPage from './pages/AgentHandoffsBusinessPage';
 import ResearchAgentsBusinessProfessionalsPage from './pages/ResearchAgentsBusinessProfessionalsPage';
 import WorkspaceAgentsBusinessProfessionalsPage from './pages/WorkspaceAgentsBusinessProfessionalsPage';
+import AgenticAICostControlBusinessPage from './pages/AgenticAICostControlBusinessPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -133,6 +134,7 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/agent-handoffs-business-professionals" element={<AgentHandoffsBusinessPage />} />
         <Route path="/blog/research-agents-business-professionals" element={<ResearchAgentsBusinessProfessionalsPage />} />
         <Route path="/blog/workspace-agents-business-professionals" element={<WorkspaceAgentsBusinessProfessionalsPage />} />
+        <Route path="/blog/agentic-ai-cost-control-business-professionals" element={<AgenticAICostControlBusinessPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />
