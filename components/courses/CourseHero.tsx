@@ -150,13 +150,13 @@ const Hero: React.FC = () => {
               Apply Now
             </button>
           </div>
-          <div className="inline-grid justify-items-stretch text-gray-400">
-            <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+          <div className="inline-grid w-[124px] self-start justify-items-stretch text-gray-400 sm:w-auto sm:self-auto">
+            <div className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[10px] sm:tracking-[0.18em]">
               In collaboration with
             </div>
             <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white shadow-sm">
               <img
-                src="/images/partners/temasek-poly-logo-transparent.png"
+                src="/images/partners/temasek-poly-full-color-right-align.png"
                 alt="Temasek Polytechnic collaboration logo"
                 className="h-auto w-full object-contain"
               />
