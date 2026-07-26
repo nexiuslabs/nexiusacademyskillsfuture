@@ -168,7 +168,13 @@ const SMEsNoCodeAIPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to automate your first workflow?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Join our next AI training cohort →
+              Explore a practical AI agent course in Singapore →
+            </Link>
+          </p>
+          <p className="mb-6 text-lg leading-relaxed text-[#333]">
+            Before enrolling, use the{' '}
+            <Link to="/blog/best-ai-courses-singapore-2026" className="text-[#007bff] font-semibold hover:underline">
+              Singapore AI course and SkillsFuture comparison guide →
             </Link>
           </p>
           <ArticleCTA articleSlug="smes-no-code-ai-automation-singapore" ctaType="join_next_cohort" position="article_end" />

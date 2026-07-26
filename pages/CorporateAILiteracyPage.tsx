@@ -155,7 +155,13 @@ const CorporateAILiteracyPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Explore our SkillsFuture-eligible programme:</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Agentic AI Foundations for Non-Technical Professionals -&gt;
+              Agentic AI training for non-technical business professionals →
+            </Link>
+          </p>
+          <p className="mb-6 text-lg leading-relaxed text-[#333]">
+            Choosing between programmes?{' '}
+            <Link to="/blog/best-ai-courses-singapore-2026" className="text-[#007bff] font-semibold hover:underline">
+              Compare the best AI course and SkillsFuture options in Singapore →
             </Link>
           </p>
           <ArticleCTA articleSlug="ai-literacy-corporate-learning-2026" ctaType="join_next_cohort" position="article_end" />

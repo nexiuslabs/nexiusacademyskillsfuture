@@ -72,6 +72,32 @@ const BestAICoursesPage: React.FC = () => {
             </p>
           </aside>
 
+          <section className="my-8 rounded-xl border border-gray-200 bg-white p-6 text-[#333] shadow-sm">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#007b8a]">12-point course scorecard</p>
+            <h2 className="mb-3 text-2xl font-bold text-[#1a1a1a]">Score every AI course using the same six checks</h2>
+            <p className="mb-5 leading-relaxed">
+              Give each criterion 0 points when evidence is missing, 1 point when it is partly explained, and 2 points when the provider publishes clear, verifiable details. Compare totals only after checking that each course serves the same learner goal.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                ['Outcome fit', 'The workplace result or capability is clearly defined.'],
+                ['Audience fit', 'Prerequisites and intended learner roles are explicit.'],
+                ['Hands-on evidence', 'Exercises produce a workflow, prototype, or reusable work product.'],
+                ['Trainer evidence', 'Trainer experience is relevant and easy to verify.'],
+                ['Assessment and award', 'Assessment requirements and the exact credential are published.'],
+                ['Fees and funding', 'Full fees, payable tiers and official funding checks are transparent.'],
+              ].map(([title, description]) => (
+                <div key={title} className="rounded-lg bg-gray-50 p-4">
+                  <h3 className="mb-1 font-bold text-[#1a1a1a]">{title}: 0–2 points</h3>
+                  <p className="m-0 text-sm leading-relaxed text-[#555]">{description}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mb-0 mt-5 text-sm leading-relaxed text-[#555]">
+              A high score is not a universal ranking. It means the provider gives you enough evidence to make a better decision for your specific goal.
+            </p>
+          </section>
+
           <section className="my-8 rounded-xl border border-teal-200 bg-teal-50 p-6 text-[#333]">
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#007b8a]">Quick answer</p>
             <h2 className="mb-3 text-2xl font-bold text-[#1a1a1a]">What is the best AI course in Singapore for your goal?</h2>

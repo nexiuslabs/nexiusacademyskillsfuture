@@ -116,6 +116,40 @@ const CoursePage: React.FC = () => {
         <Schedule />
         <Instructors />
         <WorkshopGallery />
+        <section className="bg-neutral py-16">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-9 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Evidence you can verify</p>
+              <h2 className="mb-3 text-3xl font-heading font-bold text-primary">Check the course details before you enrol</h2>
+              <p className="leading-relaxed text-gray-600">
+                A credible AI agent course should make its delivery, fees, trainers, learning environment, and official course information easy to inspect. Use these links to verify the current details for this programme.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <a href="#pricing" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                <div className="mb-2 font-bold text-primary">Published fees</div>
+                <p className="text-sm leading-relaxed text-gray-600">Review the full fee, subsidy tiers, GST and estimated payable amount.</p>
+              </a>
+              <a href="#schedule" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                <div className="mb-2 font-bold text-primary">Current schedule</div>
+                <p className="text-sm leading-relaxed text-gray-600">Check the published cohort dates, training hours and classroom location.</p>
+              </a>
+              <a href="#instructors" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                <div className="mb-2 font-bold text-primary">Trainer experience</div>
+                <p className="text-sm leading-relaxed text-gray-600">Review the trainers’ professional backgrounds and practical focus areas.</p>
+              </a>
+              <a
+                href="https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent"
+              >
+                <div className="mb-2 font-bold text-primary">Official course information</div>
+                <p className="text-sm leading-relaxed text-gray-600">Open the Temasek Polytechnic course page and confirm the latest published details.</p>
+              </a>
+            </div>
+          </div>
+        </section>
         <AIAnswerBlocks
           title="Agentic AI Foundations in one page"
           summary="A concise summary of the course, intended audience, learning outcomes, fees, and official funding context."

@@ -115,9 +115,15 @@ const BestAIForCodingBusinessPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Want to learn this hands-on?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Explore Agentic AI Foundations for Non-Technical Professionals
+              Explore a hands-on AI agent course in Singapore
             </Link>
             .
+          </p>
+          <p className="mb-6 text-lg leading-relaxed text-[#333]">
+            For a broader decision framework,{' '}
+            <Link to="/blog/best-ai-courses-singapore-2026" className="text-[#007bff] font-semibold hover:underline">
+              compare the best agentic AI course options in Singapore →
+            </Link>
           </p>
 
           <h2 className="text-2xl font-bold text-[#1a1a1a] mt-10 mb-4">Sources</h2>

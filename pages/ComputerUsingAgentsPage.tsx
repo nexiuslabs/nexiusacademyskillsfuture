@@ -239,7 +239,7 @@ const ComputerUsingAgentsPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to build applied AI readiness?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Explore Agentic AI Foundations for Non-Technical Professionals -&gt;
+              Explore an agentic AI course for non-technical professionals →
             </Link>
           </p>
 

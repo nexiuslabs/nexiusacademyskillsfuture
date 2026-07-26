@@ -152,7 +152,7 @@ const WhatIsAgenticAIPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to go from AI user to AI architect?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Explore our SkillsFuture-eligible Agentic AI Course →
+              Explore an AI agent course in Singapore for non-technical professionals →
             </Link>
           </p>
 

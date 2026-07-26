@@ -148,7 +148,7 @@ const AIReadinessSingaporePage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to build applied AI readiness?</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Explore our Agentic AI Foundations course -&gt;
+              Review the Agentic AI SkillsFuture course in Singapore →
             </Link>
           </p>
 
