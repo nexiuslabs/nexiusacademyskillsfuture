@@ -1,6 +1,6 @@
 # Academy SEO ranking plan
 
-Last updated: 26 July 2026
+Last updated: 27 July 2026
 
 ## Objective
 
@@ -45,8 +45,8 @@ Primary cluster:
 - [x] Add a consistent 12-point course comparison scorecard.
 - [x] Add descriptive internal links from relevant Academy articles.
 - [x] Preserve one canonical landing page for each keyword cluster.
-- [ ] Publish the validated release.
-- [ ] Request recrawling for the two landing pages after publication.
+- [x] Publish the validated release.
+- [x] Request recrawling for the two landing pages after publication.
 - [ ] Secure relevant external mentions from partners, employers, trainers and industry communities.
 - [ ] Review query-level impressions, positions and CTR after 14 and 28 days.
 
