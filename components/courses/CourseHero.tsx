@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
             <div className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[10px] sm:tracking-[0.18em]">
               In collaboration with
             </div>
-            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white shadow-sm">
+            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white p-[5%] shadow-sm">
               <img
                 src="/images/partners/temasek-poly-full-color-right-align.png"
                 alt="Temasek Polytechnic collaboration logo"

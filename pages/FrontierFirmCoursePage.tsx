@@ -244,7 +244,7 @@ const FrontierFirmCoursePage: React.FC = () => {
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
-            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white shadow-sm">
+            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white p-[5%] shadow-sm">
               <img
                 src="/images/partners/temasek-poly-full-color-right-align.png"
                 alt="Temasek Polytechnic collaboration logo"
@@ -261,7 +261,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <span className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] text-gray-400">
                 In collaboration with
               </span>
-              <div className="w-0 min-w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+              <div className="w-0 min-w-full overflow-hidden rounded-lg border border-gray-200 bg-white p-[5%] shadow-sm">
                 <img
                   src="/images/partners/temasek-poly-full-color-right-align.png"
                   alt="Temasek Polytechnic collaboration logo"
