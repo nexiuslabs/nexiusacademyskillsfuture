@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Building2, Wallet, FileText, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
@@ -225,6 +226,34 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
                     <ArrowRight size={16} className="shrink-0" />
                   </a>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-teal-100 bg-teal-50 p-8 lg:p-10">
+              <div className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-accent">Choose your next step</div>
+              <h2 className="mb-4 text-2xl font-heading font-bold text-primary">Compare SkillsFuture AI course options</h2>
+              <p className="mb-6 max-w-3xl leading-relaxed text-gray-700">
+                Use the comparison guide to assess course formats and outcomes, or review the practical agentic AI programme for non-technical professionals.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Link
+                  to="/blog/best-ai-courses-singapore-2026"
+                  className="inline-flex items-center justify-between gap-3 rounded-xl bg-white px-5 py-4 font-semibold text-primary transition-colors hover:text-accent"
+                >
+                  <span>Compare the best AI course and SkillsFuture options in Singapore</span>
+                  <ArrowRight size={18} className="shrink-0" />
+                </Link>
+                <Link
+                  to="/courses/agentic-ai"
+                  className="inline-flex items-center justify-between gap-3 rounded-xl bg-white px-5 py-4 font-semibold text-primary transition-colors hover:text-accent"
+                >
+                  <span>View the Agentic AI and AI agent course in Singapore</span>
+                  <ArrowRight size={18} className="shrink-0" />
+                </Link>
               </div>
             </div>
           </div>

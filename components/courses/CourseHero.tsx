@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Agentic AI Course Singapore: Foundations for Non-technical Professionals
+              Agentic AI Course Singapore: Practical AI Agent Training for Non-technical Professionals
             </h1>
             <p className="text-lg font-bold uppercase tracking-[0.18em]">
               <a
@@ -40,6 +40,9 @@ const Hero: React.FC = () => {
               >
                 Enhancing Productivity and Business Process Automation
               </a>
+            </p>
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
+              This practical AI agent course in Singapore helps non-technical professionals design governed, no-code workflows for real workplace tasks, with guided exercises and human review built in.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">

@@ -101,8 +101,8 @@ const CoursePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-neutral font-sans text-textDark pb-20 lg:pb-0">
       <SEO
-        title="Agentic AI Course Singapore | Nexius Academy"
-        description="Join a 16-hour, in-person agentic AI course in Singapore for non-technical professionals. Build no-code workflows and check SkillsFuture support."
+        title="Agentic AI & AI Agent Course Singapore | Nexius Academy"
+        description="Take a 16-hour agentic AI and AI agent course in Singapore for non-technical professionals. Build no-code workflows and check current SkillsFuture support."
         canonical="/courses/agentic-ai"
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -122,9 +122,9 @@ const CoursePage: React.FC = () => {
           citationsPlacement="left"
           blocks={[
             {
-              question: 'What is Agentic AI Foundations for Non-Technical Professionals?',
+              question: 'Which AI agent course in Singapore is designed for non-technical professionals?',
               answer:
-                'Agentic AI Foundations for Non-Technical Professionals is a 16-hour in-person course in Singapore that teaches business users how to apply AI agents, no-code tools, reusable prompts, and human review habits to practical workplace tasks. The course is designed for people who need useful AI workflows without learning software engineering.',
+                'Agentic AI Foundations for Non-Technical Professionals is a 16-hour in-person AI agent course in Singapore for business users who want practical workflows without learning software engineering. Learners apply AI agents, no-code tools, reusable instructions, and human review habits to workplace tasks.',
             },
             {
               question: 'Who is this course for?',
@@ -168,7 +168,7 @@ const CoursePage: React.FC = () => {
                 to="/blog/best-ai-courses-singapore-2026"
                 className="inline-flex items-center font-bold text-accent hover:text-primary hover:underline"
               >
-                Compare the best AI course options in Singapore for 2026 →
+                Compare the best AI course and SkillsFuture options in Singapore for 2026 →
               </Link>
             </div>
           </div>

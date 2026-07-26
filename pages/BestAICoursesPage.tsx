@@ -5,14 +5,46 @@ import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 
+const bestAICourseFaqs = [
+  {
+    question: 'What is the best AI course in Singapore for non-technical professionals?',
+    answer:
+      'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
+  },
+  {
+    question: 'How do I choose a SkillsFuture AI course in Singapore?',
+    answer:
+      'Compare the intended audience, hands-on time, trainer experience, assessment, delivery format, published fees, and the current official SkillsFuture listing. Confirm your personal eligibility and payable amount before enrolment because funding rules and course details can change.',
+  },
+  {
+    question: 'Is the Nexius Academy agentic AI course SkillsFuture eligible?',
+    answer:
+      'The current course page presents Agentic AI Foundations for Non-Technical Professionals as SkillsFuture-eligible. Learners should verify the latest course listing, funding conditions, and payable amount through the official registration and SkillsFuture channels before enrolling.',
+  },
+  {
+    question: 'Can SkillsFuture Credits cover an AI course in Singapore?',
+    answer:
+      'SkillsFuture Credits may be used toward the payable fees of eligible listed courses, subject to the learner’s available balance and prevailing rules. Check the official course listing and your SkillsFuture account for the current amount that can be applied.',
+  },
+];
+
 const BestAICoursesPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Best AI Courses Singapore 2026: How to Choose"
-        description="Compare AI courses in Singapore for 2026, from SkillsFuture options to agentic AI training for business professionals."
+        title="Best AI Course Singapore 2026: SkillsFuture Guide"
+        description="Compare the best AI course options in Singapore, including SkillsFuture-supported agentic AI training, fees, formats, outcomes, and eligibility checks."
         canonical="/blog/best-ai-courses-singapore-2026"
         ogType="article"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: bestAICourseFaqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        }}
       />
       <ScrollToTop />
       <div className="min-h-screen bg-[#f4f7f9] py-10">
@@ -23,7 +55,7 @@ const BestAICoursesPage: React.FC = () => {
           </Link>
 
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1a1a1a] leading-tight mb-5">
-            Best AI Courses Singapore 2026: How to Choose the Right Programme
+            Best AI Course Singapore 2026: SkillsFuture Comparison Guide
           </h1>
 
           <ArticleMeta articleSlug="best-ai-courses-singapore-2026" readTime="10 min read" modifiedDateIso="2026-07-26" modifiedDateDisplay="26 Jul 2026" />
@@ -34,6 +66,20 @@ const BestAICoursesPage: React.FC = () => {
               We compare course categories using six practical criteria: intended outcome, audience, hands-on work, delivery format, credential, and current funding information. Nexius Academy provides one of the programmes discussed, so this is a decision guide rather than an independent ranking. Course details can change; verify fees, dates, and eligibility on each provider's official page. Reviewed 26 July 2026.
             </p>
           </aside>
+
+          <section className="my-8 rounded-xl border border-teal-200 bg-teal-50 p-6 text-[#333]">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#007b8a]">Quick answer</p>
+            <h2 className="mb-3 text-2xl font-bold text-[#1a1a1a]">What is the best AI course in Singapore for your goal?</h2>
+            <p className="mb-4 leading-relaxed">
+              The best AI course in Singapore is the one that matches the work you need to perform after class. For non-technical business professionals, prioritise hands-on workflow design, realistic exercises, human-review controls, and a reusable output. If funding matters, compare SkillsFuture-supported options using the official listing and your actual payable fee—not the headline subsidy alone.
+            </p>
+            <ul className="grid gap-3 text-sm sm:grid-cols-2">
+              <li className="rounded-lg bg-white p-4"><strong>Everyday AI literacy:</strong> choose guided fundamentals and safe-use practice.</li>
+              <li className="rounded-lg bg-white p-4"><strong>Workflow automation:</strong> choose agentic AI with a practical work product.</li>
+              <li className="rounded-lg bg-white p-4"><strong>Technical model building:</strong> choose a coding and machine-learning programme.</li>
+              <li className="rounded-lg bg-white p-4"><strong>Leadership and governance:</strong> choose strategy, risk, and operating-model training.</li>
+            </ul>
+          </section>
 
           <div className="my-8 overflow-x-auto rounded-lg border border-gray-200">
             <table className="w-full min-w-[680px] border-collapse text-left text-sm">
@@ -128,6 +174,11 @@ const BestAICoursesPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             The practical effect varies by course and learner eligibility. Compare the published full fee, subsidised fee tiers, and current official funding conditions before enrolling.
           </p>
+          <p className="mb-6 text-lg leading-relaxed text-[#333]">
+            <Link to="/skillsfuture-funding-guide" className="text-[#007bff] font-semibold hover:underline">
+              Read the SkillsFuture funding guide for AI courses in Singapore →
+            </Link>
+          </p>
 
           <div className="border-l-4 border-[#f90] bg-[#fcf8e3] p-6 my-8 italic text-[#555] text-lg">
             <p className="m-0 leading-relaxed">
@@ -153,6 +204,20 @@ const BestAICoursesPage: React.FC = () => {
           <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="subsidy_check" position="70_percent" />
           <RelatedCourseModuleCard articleSlug="best-ai-courses-singapore-2026" />
 
+          <section className="mt-12 border-t border-gray-200 pt-10">
+            <h2 className="mb-6 text-3xl font-bold text-[#1a1a1a]">
+              Best AI Course Singapore and SkillsFuture FAQs
+            </h2>
+            <div className="space-y-4">
+              {bestAICourseFaqs.map((faq) => (
+                <div key={faq.question} className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+                  <h3 className="mb-3 text-xl font-bold text-[#1a1a1a]">{faq.question}</h3>
+                  <p className="m-0 leading-relaxed text-[#333]">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5">
             Conclusion: The Right Course Depends on Where You're Going
           </h2>
@@ -165,7 +230,7 @@ const BestAICoursesPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Explore our SkillsFuture-eligible programme:</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Agentic AI Foundations for Non-Technical Professionals →
+              Agentic AI course Singapore: Foundations for Non-Technical Professionals →
             </Link>
           </p>
           <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="join_next_cohort" position="article_end" />

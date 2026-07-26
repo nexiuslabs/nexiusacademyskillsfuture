@@ -96,6 +96,11 @@ export const FAQS: FaqItem[] = [
     answer:
       'You will receive a Certificate of Completion after attending at least 75% of the course and passing the assessment.',
   },
+  {
+    question: 'Is this an AI agent course in Singapore for beginners?',
+    answer:
+      'Yes. This 16-hour AI agent course in Singapore is designed for non-technical professionals and does not require coding experience. Learners practise structuring workplace tasks, configuring no-code agent workflows, reviewing outputs, and deciding where human approval is required.',
+  },
 ];
 
 export const MODULES: CurriculumModule[] = [
@@ -304,7 +309,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 5,
     slug: 'best-ai-courses-singapore-2026',
-    title: 'Best AI Courses Singapore 2026: How to Choose the Right Programme',
+    title: 'Best AI Course Singapore 2026: SkillsFuture Comparison Guide',
     date: '22 Jan 2026',
     views: 63,
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',

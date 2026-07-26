@@ -223,7 +223,7 @@ const mainCourseFaqs = [
   {
     question: 'Can I use SkillsFuture credits fully?',
     answer:
-      'Many eligible learners can offset most or all out-of-pocket fees using a mix of SkillsFuture subsidy and available SkillsFuture Credits. Final payable depends on your eligibility profile and current funding rules at application time.',
+      'Many eligible learners can offset most or all out-of-pocket fees using a mix of SkillsFuture subsidy + available SkillsFuture Credits. Final payable depends on your eligibility profile and current funding rules at application time.',
   },
   {
     question: 'Will I get hands-on help for my own workflow?',
@@ -231,19 +231,56 @@ const mainCourseFaqs = [
       'Yes. This course is workshop-first. You will apply concepts to your own use cases during guided activities, with trainer support to shape one practical workflow blueprint you can deploy after class.',
   },
   {
-    question: 'What happens after class?',
+    question: 'What happens after class (support/community)?',
     answer:
       'You will receive implementation templates and can continue with advisor follow-up for next steps. For teams, we also provide options for post-course implementation support and corporate enablement.',
   },
   {
     question: 'What is agentic AI and how does it differ from generative AI?',
     answer:
-      'Generative AI creates content like text, images, and code, while agentic AI takes it further with autonomous agents that can plan, execute multi-step workflows, and take actions on your behalf.',
+      'Generative AI creates content (text, images, code), while agentic AI takes it further - autonomous AI agents can plan, execute multi-step workflows, and take actions on your behalf. Our course teaches practical business automation with this approach, no coding required.',
+  },
+  {
+    question: 'What are the prerequisites for this course?',
+    answer: 'There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques.',
   },
   {
     question: 'How do I choose the best AI course in Singapore for my needs?',
     answer:
-      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
+      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete. This course is designed for non-technical professionals who want practical, governed AI workflows rather than a coding programme.',
+  },
+  {
+    question: 'What AI certification will I receive in Singapore?',
+    answer:
+      'You will receive a Certificate of Completion after attending at least 75% of the course and passing the assessment.',
+  },
+  {
+    question: 'Is this an AI agent course in Singapore for beginners?',
+    answer:
+      'Yes. This 16-hour AI agent course in Singapore is designed for non-technical professionals and does not require coding experience. Learners practise structuring workplace tasks, configuring no-code agent workflows, reviewing outputs, and deciding where human approval is required.',
+  },
+];
+
+const bestAICourseFaqs = [
+  {
+    question: 'What is the best AI course in Singapore for non-technical professionals?',
+    answer:
+      'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
+  },
+  {
+    question: 'How do I choose a SkillsFuture AI course in Singapore?',
+    answer:
+      'Compare the intended audience, hands-on time, trainer experience, assessment, delivery format, published fees, and the current official SkillsFuture listing. Confirm your personal eligibility and payable amount before enrolment because funding rules and course details can change.',
+  },
+  {
+    question: 'Is the Nexius Academy agentic AI course SkillsFuture eligible?',
+    answer:
+      'The current course page presents Agentic AI Foundations for Non-Technical Professionals as SkillsFuture-eligible. Learners should verify the latest course listing, funding conditions, and payable amount through the official registration and SkillsFuture channels before enrolling.',
+  },
+  {
+    question: 'Can SkillsFuture Credits cover an AI course in Singapore?',
+    answer:
+      'SkillsFuture Credits may be used toward the payable fees of eligible listed courses, subject to the learner’s available balance and prevailing rules. Check the official course listing and your SkillsFuture account for the current amount that can be applied.',
   },
 ];
 
@@ -408,9 +445,9 @@ const routes = [
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Agentic AI Course Singapore | Nexius Academy',
+    title: 'Agentic AI & AI Agent Course Singapore | Nexius Academy',
     description:
-      'Join a 16-hour, in-person agentic AI course in Singapore for non-technical professionals. Build no-code workflows and check SkillsFuture support.',
+      'Take a 16-hour agentic AI and AI agent course in Singapore for non-technical professionals. Build no-code workflows and check current SkillsFuture support.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
@@ -933,12 +970,12 @@ const routes = [
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'Best AI Courses Singapore 2026: How to Choose',
+    title: 'Best AI Course Singapore 2026: SkillsFuture Guide',
     description:
-      'Compare AI courses in Singapore for 2026, from SkillsFuture options to agentic AI training for business professionals.',
+      'Compare the best AI course options in Singapore, including SkillsFuture-supported agentic AI training, fees, formats, outcomes, and eligibility checks.',
     ogType: 'article',
     ogImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80',
-    schemas: [],
+    schemas: [faqSchema(bestAICourseFaqs)],
     articleDate: '2026-01-22',
   },
   {
