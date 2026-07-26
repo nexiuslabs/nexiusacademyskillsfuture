@@ -200,11 +200,13 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
-            <img
-              src="/images/partners/temasek-poly-logo-transparent.png"
-              alt="Temasek Polytechnic collaboration logo"
-              className="h-auto w-0 min-w-full object-contain brightness-0 invert opacity-80"
-            />
+            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white shadow-sm">
+              <img
+                src="/images/partners/temasek-poly-logo-transparent.png"
+                alt="Temasek Polytechnic collaboration logo"
+                className="h-auto w-full object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
