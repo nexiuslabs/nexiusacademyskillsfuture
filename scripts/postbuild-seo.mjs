@@ -259,6 +259,11 @@ const mainCourseFaqs = [
     answer:
       'Yes. This 16-hour AI agent course in Singapore is designed for non-technical professionals and does not require coding experience. Learners practise structuring workplace tasks, configuring no-code agent workflows, reviewing outputs, and deciding where human approval is required.',
   },
+  {
+    question: 'Is this an AI agent course in Singapore with SkillsFuture support?',
+    answer:
+      'Yes. The course page presents this programme as SkillsFuture-eligible and publishes the current subsidy tiers and estimated payable fees. Learners comparing an Agentic AI SkillsFuture course in Singapore should confirm their eligibility, available SkillsFuture Credits, and final payable amount through the official registration channels before enrolling.',
+  },
 ];
 
 const bestAICourseFaqs = [
@@ -266,6 +271,11 @@ const bestAICourseFaqs = [
     question: 'What is the best AI course in Singapore for non-technical professionals?',
     answer:
       'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
+  },
+  {
+    question: 'What is the best agentic AI course in Singapore?',
+    answer:
+      'The best agentic AI course in Singapore is one matched to your role and implementation goal. Compare hands-on workflow design, no-code accessibility, trainer practice, human-review controls, assessment, post-course support, and current funding information instead of choosing from the course title alone.',
   },
   {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',

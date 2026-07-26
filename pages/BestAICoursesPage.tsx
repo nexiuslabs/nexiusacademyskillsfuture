@@ -12,6 +12,11 @@ const bestAICourseFaqs = [
       'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
   },
   {
+    question: 'What is the best agentic AI course in Singapore?',
+    answer:
+      'The best agentic AI course in Singapore is one matched to your role and implementation goal. Compare hands-on workflow design, no-code accessibility, trainer practice, human-review controls, assessment, post-course support, and current funding information instead of choosing from the course title alone.',
+  },
+  {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',
     answer:
       'Compare the intended audience, hands-on time, trainer experience, assessment, delivery format, published fees, and the current official SkillsFuture listing. Confirm your personal eligibility and payable amount before enrolment because funding rules and course details can change.',
@@ -71,7 +76,7 @@ const BestAICoursesPage: React.FC = () => {
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#007b8a]">Quick answer</p>
             <h2 className="mb-3 text-2xl font-bold text-[#1a1a1a]">What is the best AI course in Singapore for your goal?</h2>
             <p className="mb-4 leading-relaxed">
-              The best AI course in Singapore is the one that matches the work you need to perform after class. For non-technical business professionals, prioritise hands-on workflow design, realistic exercises, human-review controls, and a reusable output. If funding matters, compare SkillsFuture-supported options using the official listing and your actual payable fee—not the headline subsidy alone.
+              The best AI course in Singapore is the one that matches the work you need to perform after class. For non-technical business professionals comparing the best agentic AI course in Singapore, prioritise hands-on workflow design, realistic exercises, human-review controls, and a reusable output. If funding matters, compare SkillsFuture-supported options using the official listing and your actual payable fee—not the headline subsidy alone.
             </p>
             <ul className="grid gap-3 text-sm sm:grid-cols-2">
               <li className="rounded-lg bg-white p-4"><strong>Everyday AI literacy:</strong> choose guided fundamentals and safe-use practice.</li>
@@ -206,7 +211,7 @@ const BestAICoursesPage: React.FC = () => {
 
           <section className="mt-12 border-t border-gray-200 pt-10">
             <h2 className="mb-6 text-3xl font-bold text-[#1a1a1a]">
-              Best AI Course Singapore and SkillsFuture FAQs
+              Best AI and Agentic AI Courses in Singapore: SkillsFuture FAQs
             </h2>
             <div className="space-y-4">
               {bestAICourseFaqs.map((faq) => (
@@ -230,7 +235,7 @@ const BestAICoursesPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Explore our SkillsFuture-eligible programme:</strong>{' '}
             <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
-              Agentic AI course Singapore: Foundations for Non-Technical Professionals →
+              Explore the Agentic AI SkillsFuture course in Singapore →
             </Link>
           </p>
           <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="join_next_cohort" position="article_end" />

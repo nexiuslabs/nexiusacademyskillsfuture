@@ -162,13 +162,13 @@ const CoursePage: React.FC = () => {
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Compare before you enrol</p>
               <h2 className="mb-3 text-2xl font-heading font-bold text-primary">Is this the best AI course in Singapore for your goal?</h2>
               <p className="mb-5 leading-relaxed text-gray-600">
-                The right programme depends on your role, desired outcome, technical level, delivery format, funding eligibility, and the evidence you expect to leave with. Use our transparent comparison guide to assess those factors before choosing.
+                The right programme depends on your role, desired outcome, technical level, delivery format, funding eligibility, and the evidence you expect to leave with. If you are comparing an AI agent course in Singapore with SkillsFuture support, review the published subsidy tiers as well as the practical work product. Use our transparent comparison guide to assess those factors before choosing.
               </p>
               <Link
                 to="/blog/best-ai-courses-singapore-2026"
                 className="inline-flex items-center font-bold text-accent hover:text-primary hover:underline"
               >
-                Compare the best AI course and SkillsFuture options in Singapore for 2026 →
+                Compare the best AI and agentic AI course options in Singapore, including SkillsFuture →
               </Link>
             </div>
           </div>

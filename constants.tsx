@@ -101,6 +101,11 @@ export const FAQS: FaqItem[] = [
     answer:
       'Yes. This 16-hour AI agent course in Singapore is designed for non-technical professionals and does not require coding experience. Learners practise structuring workplace tasks, configuring no-code agent workflows, reviewing outputs, and deciding where human approval is required.',
   },
+  {
+    question: 'Is this an AI agent course in Singapore with SkillsFuture support?',
+    answer:
+      'Yes. The course page presents this programme as SkillsFuture-eligible and publishes the current subsidy tiers and estimated payable fees. Learners comparing an Agentic AI SkillsFuture course in Singapore should confirm their eligibility, available SkillsFuture Credits, and final payable amount through the official registration channels before enrolling.',
+  },
 ];
 
 export const MODULES: CurriculumModule[] = [
