@@ -103,9 +103,11 @@ export const ArticleCTA: React.FC<ArticleCTAProps> = ({ articleSlug, ctaType, po
 interface ArticleMetaProps {
   articleSlug: string;
   readTime?: string;
+  modifiedDateIso?: string;
+  modifiedDateDisplay?: string;
 }
 
-export const ArticleMeta: React.FC<ArticleMetaProps> = ({ articleSlug, readTime = '8 min read' }) => {
+export const ArticleMeta: React.FC<ArticleMetaProps> = ({ articleSlug, readTime = '8 min read', modifiedDateIso = ARTICLE_LAST_MODIFIED_ISO, modifiedDateDisplay = ARTICLE_LAST_MODIFIED_DISPLAY }) => {
   const post = BLOG_POSTS.find((item) => item.slug === articleSlug);
   const publishedDate = post?.date ?? '2026';
 
@@ -115,7 +117,7 @@ export const ArticleMeta: React.FC<ArticleMetaProps> = ({ articleSlug, readTime 
       {' | '}
       Published <time itemProp="datePublished">{publishedDate}</time>
       {' | '}
-      Updated <time itemProp="dateModified" dateTime={ARTICLE_LAST_MODIFIED_ISO}>{ARTICLE_LAST_MODIFIED_DISPLAY}</time>
+      Updated <time itemProp="dateModified" dateTime={modifiedDateIso}>{modifiedDateDisplay}</time>
       {' | '}
       {readTime}
     </p>

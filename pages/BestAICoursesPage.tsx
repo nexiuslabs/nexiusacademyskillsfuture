@@ -26,7 +26,33 @@ const BestAICoursesPage: React.FC = () => {
             Best AI Courses Singapore 2026: How to Choose the Right Programme
           </h1>
 
-          <ArticleMeta articleSlug="best-ai-courses-singapore-2026" readTime="10 min read" />
+          <ArticleMeta articleSlug="best-ai-courses-singapore-2026" readTime="10 min read" modifiedDateIso="2026-07-26" modifiedDateDisplay="26 Jul 2026" />
+
+          <aside className="my-8 rounded-lg border border-blue-200 bg-blue-50 p-6 text-[#333]">
+            <h2 className="mb-2 text-xl font-bold text-[#1a1a1a]">How this guide was prepared</h2>
+            <p className="m-0 leading-relaxed">
+              We compare course categories using six practical criteria: intended outcome, audience, hands-on work, delivery format, credential, and current funding information. Nexius Academy provides one of the programmes discussed, so this is a decision guide rather than an independent ranking. Course details can change; verify fees, dates, and eligibility on each provider's official page. Reviewed 26 July 2026.
+            </p>
+          </aside>
+
+          <div className="my-8 overflow-x-auto rounded-lg border border-gray-200">
+            <table className="w-full min-w-[680px] border-collapse text-left text-sm">
+              <caption className="bg-gray-50 px-5 py-3 text-left font-bold text-[#1a1a1a]">AI course categories by learner goal</caption>
+              <thead className="bg-[#0b2d4d] text-white">
+                <tr>
+                  <th className="px-4 py-3">Course type</th>
+                  <th className="px-4 py-3">Best suited to</th>
+                  <th className="px-4 py-3">Evidence to look for</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 text-[#333]">
+                <tr><td className="px-4 py-3 font-semibold">Generative AI fundamentals</td><td className="px-4 py-3">Beginners building everyday AI literacy</td><td className="px-4 py-3">Guided exercises and safe-use practices</td></tr>
+                <tr className="bg-gray-50"><td className="px-4 py-3 font-semibold">Agentic AI and automation</td><td className="px-4 py-3">Business professionals improving workflows</td><td className="px-4 py-3">A working workflow, review controls, and implementation plan</td></tr>
+                <tr><td className="px-4 py-3 font-semibold">Data science and machine learning</td><td className="px-4 py-3">Technical learners building models</td><td className="px-4 py-3">Coding projects, datasets, and assessed technical work</td></tr>
+                <tr className="bg-gray-50"><td className="px-4 py-3 font-semibold">AI strategy and leadership</td><td className="px-4 py-3">Leaders governing adoption</td><td className="px-4 py-3">Roadmaps, risk decisions, and operating-model outputs</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             The AI Training Landscape Has Changed

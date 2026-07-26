@@ -240,6 +240,11 @@ const mainCourseFaqs = [
     answer:
       'Generative AI creates content like text, images, and code, while agentic AI takes it further with autonomous agents that can plan, execute multi-step workflows, and take actions on your behalf.',
   },
+  {
+    question: 'How do I choose the best AI course in Singapore for my needs?',
+    answer:
+      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
+  },
 ];
 
 const privateClassFaqs = [
@@ -399,13 +404,13 @@ const routes = [
   },
   {
     path: '/courses/agentic-ai',
-    lastmod: '2026-07-16',
+    lastmod: '2026-07-26',
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
     title: 'Agentic AI Course Singapore | Nexius Academy',
     description:
-      'Learn agentic AI in a 16-hour SkillsFuture-eligible course for non-technical business professionals. Build no-code AI workflows.',
+      'Join a 16-hour, in-person agentic AI course in Singapore for non-technical professionals. Build no-code workflows and check SkillsFuture support.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
@@ -924,6 +929,7 @@ const routes = [
   },
   {
     path: '/blog/best-ai-courses-singapore-2026',
+    lastmod: '2026-07-26',
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,

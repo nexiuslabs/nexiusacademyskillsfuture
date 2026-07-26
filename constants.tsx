@@ -87,6 +87,11 @@ export const FAQS: FaqItem[] = [
     answer: 'There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques.',
   },
   {
+    question: 'How do I choose the best AI course in Singapore for my needs?',
+    answer:
+      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete. This course is designed for non-technical professionals who want practical, governed AI workflows rather than a coding programme.',
+  },
+  {
     question: 'What AI certification will I receive in Singapore?',
     answer:
       'You will receive a Certificate of Completion after attending at least 75% of the course and passing the assessment.',
