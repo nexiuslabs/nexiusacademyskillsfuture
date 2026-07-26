@@ -240,15 +240,15 @@ const FrontierFirmCoursePage: React.FC = () => {
             </div>
           </div>
         <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8 hidden sm:block">
-          <div className="flex flex-col items-end">
+          <div className="inline-grid justify-items-stretch">
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
-            <div className="rounded-lg bg-white px-3 py-1.5 shadow-sm inline-block">
+            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white shadow-sm">
               <img
                 src="/images/partners/temasek-poly-logo-transparent.png"
                 alt="Temasek Polytechnic collaboration logo"
-                className="h-12 w-auto object-contain"
+                className="h-auto w-full object-contain"
               />
             </div>
           </div>
@@ -257,15 +257,15 @@ const FrontierFirmCoursePage: React.FC = () => {
 
         <div className="block sm:hidden bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex flex-col items-start">
+            <div className="inline-grid justify-items-stretch">
               <span className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
                 In collaboration with
               </span>
-              <div className="rounded-lg bg-white border border-gray-200 px-3 py-1.5 shadow-sm inline-block">
+              <div className="w-0 min-w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
                 <img
                   src="/images/partners/temasek-poly-logo-transparent.png"
                   alt="Temasek Polytechnic collaboration logo"
-                  className="h-12 w-auto object-contain"
+                  className="h-auto w-full object-contain"
                 />
               </div>
             </div>

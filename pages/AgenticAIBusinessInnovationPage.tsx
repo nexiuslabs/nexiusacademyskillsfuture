@@ -196,14 +196,14 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
           </div>
         </div>
         <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8">
-          <div className="flex flex-col items-end">
+          <div className="inline-grid justify-items-stretch">
             <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
               In collaboration with
             </span>
             <img
               src="/images/partners/temasek-poly-logo-transparent.png"
               alt="Temasek Polytechnic collaboration logo"
-              className="h-10 w-auto object-contain brightness-0 invert opacity-80 sm:h-12"
+              className="h-auto w-0 min-w-full object-contain brightness-0 invert opacity-80"
             />
           </div>
         </div>
