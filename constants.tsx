@@ -168,6 +168,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 18,
+    slug: 'agent-execution-readiness-business-professionals',
+    title: 'Agent Execution Readiness: What Business Professionals Must Learn Before AI Acts Across Tools',
+    date: '27 Jul 2026',
+    views: 0,
+    image: '/images/blog/agent-execution-readiness-business-professionals.png',
+    excerpt: 'AI agents are moving from chat into business execution. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need before agents act across tools.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 17,
     slug: 'agentic-ai-cost-control-business-professionals',
     title: 'Agentic AI Cost Control: What Business Professionals Must Learn Before Agents Start Executing Work',

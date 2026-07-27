@@ -917,6 +917,12 @@ const routes = [
       'position': 17,
       'url': '/blog/agentic-ai-cost-control-business-professionals/',
       'name': 'Agentic AI Cost Control: What Business Professionals Must Learn',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 18,
+      'url': '/blog/agent-execution-readiness-business-professionals/',
+      'name': 'Agent Execution Readiness: What Business Professionals Must Learn',
     }
     ],
   },
@@ -1149,6 +1155,20 @@ const routes = [
     ogImageAlt: 'Business professionals controlling agentic AI costs through workflow orchestration and approval gates',
     schemas: [],
     articleDate: '2026-07-20',
+  },
+  {
+    path: '/blog/agent-execution-readiness-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agent Execution Readiness: What Business Professionals Must Learn',
+    description:
+      'AI agents are moving from chat into business execution. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need before agents act across tools.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-execution-readiness-business-professionals.png',
+    ogImageAlt: 'Business professionals designing agent execution readiness controls across workplace tools',
+    schemas: [],
+    articleDate: '2026-07-27',
   },
   {
     path: '/admin',
