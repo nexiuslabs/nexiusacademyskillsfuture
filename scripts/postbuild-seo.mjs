@@ -135,13 +135,16 @@ const breadcrumbSchema = (routePath, title) => {
   };
 };
 
-const courseSchema = ({ name, description, url, image, audienceType, courseInstance, offers, instructors }) => ({
+const courseSchema = ({ name, description, url, image, audienceType, courseInstance, offers, instructors, courseCode, identifier, sameAs, contributor }) => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name,
   description,
   url,
   image,
+  courseCode,
+  identifier,
+  sameAs,
   provider: {
     '@type': 'EducationalOrganization',
     '@id': ACADEMY_ID,
@@ -149,6 +152,7 @@ const courseSchema = ({ name, description, url, image, audienceType, courseInsta
     url: `${SITE_URL}/`,
   },
   instructor: instructors,
+  contributor,
   offers,
   hasCourseInstance: courseInstance,
   educationalLevel: 'Professional',
@@ -462,11 +466,34 @@ const routes = [
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
-        name: 'Agentic AI Foundations for Non-Technical Professionals',
+        name: 'Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation',
         description:
           'A 16-hour, SkillsFuture-eligible course on agentic AI, no-code automation, prompt engineering, and practical business workflow design.',
         url: `${SITE_URL}/courses/agentic-ai/`,
         image: COURSE_IMAGE,
+        courseCode: 'TP-NC-C0021-F',
+        identifier: [
+          {
+            '@type': 'PropertyValue',
+            propertyID: 'Temasek Polytechnic course reference',
+            value: 'TP-NC-C0021-F',
+          },
+          {
+            '@type': 'PropertyValue',
+            propertyID: 'SkillsFuture Training Grant System course reference',
+            value: 'TGS-2025059915',
+            url: 'https://courses.myskillsfuture.gov.sg/courses/TGS-2025059915--Agentic-AI-Foundations-NonTechnical-Professionals-Enhancing-Productivity-Business-Process-Automation',
+          },
+        ],
+        sameAs: [
+          'https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html',
+          'https://courses.myskillsfuture.gov.sg/courses/TGS-2025059915--Agentic-AI-Foundations-NonTechnical-Professionals-Enhancing-Productivity-Business-Process-Automation',
+        ],
+        contributor: {
+          '@type': 'CollegeOrUniversity',
+          name: 'Temasek Polytechnic',
+          url: 'https://www.tp.edu.sg/',
+        },
         audienceType: 'Business professionals, SME owners, and non-technical teams',
         instructors: [melverickPerson, darrylPerson],
         offers: [

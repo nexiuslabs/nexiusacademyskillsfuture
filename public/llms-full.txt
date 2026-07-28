@@ -28,6 +28,7 @@ Other trainer surfaced on course pages: Darryl Wong
 - Nexius Academy is a Singapore-based applied AI training provider.
 - Nexius Academy teaches agentic AI, generative AI, no-code automation, workflow design, prompt engineering, and responsible AI use for business teams.
 - The primary course is Agentic AI Foundations for Non-Technical Professionals.
+- Nexius Academy delivers the course's practitioner-led learning experience in collaboration with Temasek Polytechnic. Temasek Polytechnic is the official course owner and administers registration, certification, schedules and funding information.
 - The main audience includes non-technical professionals, SMEs, managers, operations teams, finance teams, HR teams, accounting and CSP teams, and business leaders.
 - Training emphasizes practical workplace use cases, reusable AI instructions, human review, safe adoption, and business process automation.
 - The site provides course pages, a SkillsFuture funding guide, AI readiness content, and articles for Singapore professionals.
@@ -106,6 +107,14 @@ Audience: non-technical professionals, SME owners, managers, operations teams, s
 Main outcomes: learners practise converting recurring work into structured AI-assisted workflows, writing clearer AI instructions, reviewing AI output safely, protecting sensitive information, and identifying realistic workplace automation opportunities.
 
 Course reference: TP-NC-C0021-F
+
+SkillsFuture Training Grant System reference: TGS-2025059915
+
+Delivery and administration: Nexius Academy delivers the practitioner-led learning experience in collaboration with Temasek Polytechnic. Temasek Polytechnic is the official course owner and administers registration, certification, schedules and funding information.
+
+Official Temasek Polytechnic listing: https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html
+
+Official SkillsFuture listing: https://courses.myskillsfuture.gov.sg/courses/TGS-2025059915--Agentic-AI-Foundations-NonTechnical-Professionals-Enhancing-Productivity-Business-Process-Automation
 
 Best citation use: cite this page for course facts, audience, outcomes, schedule, fees, trainer names, FAQ, and SkillsFuture-supported training context.
 

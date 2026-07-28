@@ -19,7 +19,7 @@ Primary website: https://academy.nexiuslabs.com/
 
 ## Courses
 
-- Agentic AI Foundations for Non-Technical Professionals: https://academy.nexiuslabs.com/courses/agentic-ai/
+- Agentic AI Foundations for Non-Technical Professionals: https://academy.nexiuslabs.com/courses/agentic-ai/ — delivered by Nexius Academy in collaboration with Temasek Polytechnic; official registration, certification, schedules and funding details are administered through Temasek Polytechnic.
 - Private Company Class: https://academy.nexiuslabs.com/private-class/
 - Agentic AI for Accountants: https://academy.nexiuslabs.com/courses/agentic-ai-accountants/
 - Frontier Firm Agent Boss Course: https://academy.nexiuslabs.com/courses/advanced-agentic-ai/ — official payable amounts: S$190.50, S$490.50, or S$1,635.00 incl. GST depending on learner category; Certificate of Completion requires at least 75% attendance and assessment attempt.
@@ -36,6 +36,10 @@ Primary website: https://academy.nexiuslabs.com/
 
 - Course name: Agentic AI Foundations for Non-Technical Professionals: Enhancing Productivity and Business Process Automation
 - Course reference: TP-NC-C0021-F
+- SkillsFuture Training Grant System reference: TGS-2025059915
+- Delivery relationship: Nexius Academy delivers the practitioner-led learning experience in collaboration with Temasek Polytechnic. Temasek Polytechnic is the official course owner and administers registration, certification, schedules and funding information.
+- Official Temasek Polytechnic listing: https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html
+- Official SkillsFuture listing: https://courses.myskillsfuture.gov.sg/courses/TGS-2025059915--Agentic-AI-Foundations-NonTechnical-Professionals-Enhancing-Productivity-Business-Process-Automation
 - Location focus: Singapore
 - Audience: non-technical professionals, SME owners, managers, operations teams, sales teams, finance teams, HR/L&D teams, and business leaders
 - Format: in-person training
