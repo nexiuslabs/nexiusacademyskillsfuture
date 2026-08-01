@@ -76,32 +76,6 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid gap-3 rounded-2xl border border-blue-100 bg-white p-4 text-sm font-semibold text-gray-600 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>Best for non-technical teams, managers and SMEs</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>Apply for the next cohort</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>Check subsidy before applying</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>SkillsFuture Eligible</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>No coding required</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle size={17} className="mt-0.5 shrink-0 text-accent" />
-                <span>Up to 90% Subsidy</span>
-              </div>
-            </div>
 
             {/* CTA Buttons and eligibility badges moved below grid */}
           </div>
@@ -178,6 +152,17 @@ const Hero: React.FC = () => {
                 className="h-auto w-full object-contain"
               />
             </div>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 pt-4 text-sm font-medium text-gray-500">
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> SkillsFuture Eligible
+          </div>
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> No coding required
+          </div>
+          <div className="flex items-center gap-1">
+            <CheckCircle size={16} className="text-accent" /> Up to 90% Subsidy
           </div>
         </div>
       </div>
