@@ -60,89 +60,93 @@ const TPPositioningBlock: React.FC = () => (
           </div>
         </div>
 
-        <div className="mt-10 border-t border-primary/10 pt-8">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-start">
-            <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Course at a glance</p>
-              <h2 className="text-2xl font-heading font-bold text-primary lg:text-3xl">Agentic AI Foundations in one page</h2>
-              <p className="mt-5 text-base leading-relaxed text-gray-600">
-                A concise summary of the course, intended audience, learning outcomes, fees, and official funding context.
-              </p>
+        <div className="mt-10 rounded-3xl border border-primary/10 bg-white p-5 shadow-sm md:p-7">
+          <div className="grid gap-6 lg:grid-cols-[0.82fr,1.18fr] lg:items-start">
+            <div className="space-y-5">
+              <div>
+                <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Course at a glance</p>
+                <h2 className="text-2xl font-heading font-bold text-primary lg:text-3xl">Agentic AI Foundations in one page</h2>
+                <p className="mt-4 text-base leading-relaxed text-gray-600">
+                  A concise summary of the course, intended audience, learning outcomes, fees, and official funding context.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-blue-100 bg-blue-50/70 p-5">
+                <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Evidence you can verify</p>
+                <h3 className="mb-3 text-xl font-heading font-bold text-primary">Check the course details before you enrol</h3>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  A credible AI agent course should make its delivery, fees, trainers, learning environment, and official course information easy to inspect. Use these links to verify the current details for this programme.
+                </p>
+              </div>
             </div>
-            <div className="rounded-2xl border border-primary/10 bg-white p-6 shadow-sm">
-              <h3 className="mb-4 text-base font-bold text-primary">Official references</h3>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <a
-                  href="https://www.skillsfuture.gov.sg/initiatives/employers"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
-                >
-                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
-                  <span>SkillsFuture employer funding guidance</span>
+
+            <div className="grid gap-4">
+              <div className="rounded-2xl border border-primary/10 bg-neutral p-5">
+                <h3 className="mb-4 text-base font-bold text-primary">Official references</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <a
+                    href="https://www.skillsfuture.gov.sg/initiatives/employers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-start gap-2 rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                    <span>SkillsFuture employer funding guidance</span>
+                  </a>
+                  <a
+                    href="https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-start gap-2 rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                    <span>Enhanced Training Support for SMEs</span>
+                  </a>
+                  <a
+                    href="https://www.imda.gov.sg/how-we-can-help/ai-verify"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-start gap-2 rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                    <span>IMDA AI Verify and AI governance</span>
+                  </a>
+                  <a
+                    href="https://www.mddi.gov.sg/newsroom/update-to-singapore-s-national-ai-strategy--refreshed-priorities-to-harness-ai-for-the-public-good-factsheet/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-start gap-2 rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                    <span>Singapore National AI Strategy update</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <a href="#pricing" className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                  <div className="mb-2 font-bold text-primary">Published fees</div>
+                  <p className="text-sm leading-relaxed text-gray-600">Review the full fee, subsidy tiers, GST and estimated payable amount.</p>
+                </a>
+                <a href="#schedule" className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                  <div className="mb-2 font-bold text-primary">Current schedule</div>
+                  <p className="text-sm leading-relaxed text-gray-600">Check the published cohort dates, training hours and classroom location.</p>
+                </a>
+                <a href="#instructors" className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
+                  <div className="mb-2 font-bold text-primary">Trainer experience</div>
+                  <p className="text-sm leading-relaxed text-gray-600">Review the trainers’ professional backgrounds and practical focus areas.</p>
                 </a>
                 <a
-                  href="https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes"
+                  href="https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                  className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-accent"
                 >
-                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
-                  <span>Enhanced Training Support for SMEs</span>
-                </a>
-                <a
-                  href="https://www.imda.gov.sg/how-we-can-help/ai-verify"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
-                >
-                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
-                  <span>IMDA AI Verify and AI governance</span>
-                </a>
-                <a
-                  href="https://www.mddi.gov.sg/newsroom/update-to-singapore-s-national-ai-strategy--refreshed-priorities-to-harness-ai-for-the-public-good-factsheet/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
-                >
-                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
-                  <span>Singapore National AI Strategy update</span>
+                  <div className="mb-2 font-bold text-primary">Official course information</div>
+                  <p className="text-sm leading-relaxed text-gray-600">Open the Temasek Polytechnic course page and confirm the latest published details.</p>
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-10 border-t border-primary/10 pt-8">
-          <div className="mb-8 max-w-3xl">
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Evidence you can verify</p>
-            <h2 className="mb-3 text-3xl font-heading font-bold text-primary">Check the course details before you enrol</h2>
-            <p className="leading-relaxed text-gray-600">
-              A credible AI agent course should make its delivery, fees, trainers, learning environment, and official course information easy to inspect. Use these links to verify the current details for this programme.
-            </p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <a href="#pricing" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
-              <div className="mb-2 font-bold text-primary">Published fees</div>
-              <p className="text-sm leading-relaxed text-gray-600">Review the full fee, subsidy tiers, GST and estimated payable amount.</p>
-            </a>
-            <a href="#schedule" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
-              <div className="mb-2 font-bold text-primary">Current schedule</div>
-              <p className="text-sm leading-relaxed text-gray-600">Check the published cohort dates, training hours and classroom location.</p>
-            </a>
-            <a href="#instructors" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent">
-              <div className="mb-2 font-bold text-primary">Trainer experience</div>
-              <p className="text-sm leading-relaxed text-gray-600">Review the trainers’ professional backgrounds and practical focus areas.</p>
-            </a>
-            <a
-              href="https://www.tp.edu.sg/schools-and-courses/adult-learners/all-courses/short-courses/agentic-ai-foundations-for-non-technical-professionals-enhancing-productivity-and-business-process-automation.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-accent"
-            >
-              <div className="mb-2 font-bold text-primary">Official course information</div>
-              <p className="text-sm leading-relaxed text-gray-600">Open the Temasek Polytechnic course page and confirm the latest published details.</p>
-            </a>
           </div>
         </div>
       </div>
