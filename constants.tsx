@@ -45,7 +45,7 @@ export const SCHEDULES: ScheduleItem[] = [
     time: '9:00am - 6:00pm',
     format: 'In-Person',
     venue: 'Devan Nair Institute, 80 Jurong East Street 21, Singapore 609607',
-    slotsLeft: 4,
+    slotsLeft: 0,
     month: 'Aug 2026',
     registrationCloses: 'TBC',
   },

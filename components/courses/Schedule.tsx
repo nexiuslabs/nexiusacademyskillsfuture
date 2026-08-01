@@ -44,6 +44,11 @@ const Schedule: React.FC = () => {
                 <div className="space-y-3">
                   <div className="font-bold text-primary text-lg flex flex-wrap items-center gap-2">
                     {schedule.dates}
+                    {isFull ? (
+                      <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-red-600 ring-1 ring-red-100">
+                        Full
+                      </span>
+                    ) : null}
                   </div>
 
                   <div className="space-y-2 text-sm text-gray-600">
