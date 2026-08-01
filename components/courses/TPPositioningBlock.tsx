@@ -61,6 +61,59 @@ const TPPositioningBlock: React.FC = () => (
         </div>
 
         <div className="mt-10 border-t border-primary/10 pt-8">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-start">
+            <div>
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Course at a glance</p>
+              <h2 className="text-2xl font-heading font-bold text-primary lg:text-3xl">Agentic AI Foundations in one page</h2>
+              <p className="mt-5 text-base leading-relaxed text-gray-600">
+                A concise summary of the course, intended audience, learning outcomes, fees, and official funding context.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-primary/10 bg-white p-6 shadow-sm">
+              <h3 className="mb-4 text-base font-bold text-primary">Official references</h3>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a
+                  href="https://www.skillsfuture.gov.sg/initiatives/employers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                >
+                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                  <span>SkillsFuture employer funding guidance</span>
+                </a>
+                <a
+                  href="https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                >
+                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                  <span>Enhanced Training Support for SMEs</span>
+                </a>
+                <a
+                  href="https://www.imda.gov.sg/how-we-can-help/ai-verify"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                >
+                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                  <span>IMDA AI Verify and AI governance</span>
+                </a>
+                <a
+                  href="https://www.mddi.gov.sg/newsroom/update-to-singapore-s-national-ai-strategy--refreshed-priorities-to-harness-ai-for-the-public-good-factsheet/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+                >
+                  <ExternalLink size={16} className="mt-0.5 shrink-0" />
+                  <span>Singapore National AI Strategy update</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-primary/10 pt-8">
           <div className="mb-8 max-w-3xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Evidence you can verify</p>
             <h2 className="mb-3 text-3xl font-heading font-bold text-primary">Check the course details before you enrol</h2>

@@ -106,6 +106,21 @@ export const FAQS: FaqItem[] = [
     answer:
       'Yes. The course page presents this programme as SkillsFuture-eligible and publishes the current subsidy tiers and estimated payable fees. Learners comparing an Agentic AI SkillsFuture course in Singapore should confirm their eligibility, available SkillsFuture Credits, and final payable amount through the official registration channels before enrolling.',
   },
+  {
+    question: 'Which AI agent course in Singapore is designed for non-technical professionals?',
+    answer:
+      'Agentic AI Foundations for Non-Technical Professionals is a 16-hour in-person AI agent course in Singapore for business users who want practical workflows without learning software engineering. Learners apply AI agents, no-code tools, reusable instructions, and human review habits to workplace tasks.',
+  },
+  {
+    question: 'Who is this course for?',
+    answer:
+      'The course is for non-technical professionals, SME owners, managers, operations teams, finance teams, HR teams, sales teams, and customer-support teams that want to reduce repetitive drafting, reporting, follow-up, and coordination work while keeping human judgement in the loop.',
+  },
+  {
+    question: 'What will learners be able to do?',
+    answer:
+      'Learners practise turning common business tasks into structured AI-assisted workflows. They learn to write better instructions, review AI output, protect sensitive information, and identify which tasks are suitable for automation, drafting, synthesis, and internal process support.',
+  },
 ];
 
 export const MODULES: CurriculumModule[] = [

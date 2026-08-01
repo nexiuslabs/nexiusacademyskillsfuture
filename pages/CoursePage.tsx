@@ -14,7 +14,6 @@ import FAQ from '../components/courses/FAQ';
 import CourseFooter from '../components/courses/CourseFooter';
 import AIAdvisor from '../components/courses/AIAdvisor';
 import StickyConversionRail from '../components/courses/StickyConversionRail';
-import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 import TPPositioningBlock from '../components/courses/TPPositioningBlock';
 import { trackCourseScrollDepth, trackSectionView, trackTimeOnPage } from '../services/analytics';
 
@@ -116,46 +115,6 @@ const CoursePage: React.FC = () => {
         <Schedule />
         <Instructors />
         <WorkshopGallery />
-        <AIAnswerBlocks
-          title="Agentic AI Foundations in one page"
-          summary="A concise summary of the course, intended audience, learning outcomes, fees, and official funding context."
-          citationsPlacement="left"
-          blocks={[
-            {
-              question: 'Which AI agent course in Singapore is designed for non-technical professionals?',
-              answer:
-                'Agentic AI Foundations for Non-Technical Professionals is a 16-hour in-person AI agent course in Singapore for business users who want practical workflows without learning software engineering. Learners apply AI agents, no-code tools, reusable instructions, and human review habits to workplace tasks.',
-            },
-            {
-              question: 'Who is this course for?',
-              answer:
-                'The course is for non-technical professionals, SME owners, managers, operations teams, finance teams, HR teams, sales teams, and customer-support teams that want to reduce repetitive drafting, reporting, follow-up, and coordination work while keeping human judgement in the loop.',
-            },
-            {
-              question: 'What will learners be able to do?',
-              answer:
-                'Learners practise turning common business tasks into structured AI-assisted workflows. They learn to write better instructions, review AI output, protect sensitive information, and identify which tasks are suitable for automation, drafting, synthesis, and internal process support.',
-            },
-          ]}
-          citations={[
-            {
-              label: 'SkillsFuture employer funding guidance',
-              href: 'https://www.skillsfuture.gov.sg/initiatives/employers',
-            },
-            {
-              label: 'Enhanced Training Support for SMEs',
-              href: 'https://www.skillsfuture.gov.sg/initiatives/employers/enhanced-training-support-for-smes',
-            },
-            {
-              label: 'IMDA AI Verify and AI governance',
-              href: 'https://www.imda.gov.sg/how-we-can-help/ai-verify',
-            },
-            {
-              label: 'Singapore National AI Strategy update',
-              href: 'https://www.mddi.gov.sg/newsroom/update-to-singapore-s-national-ai-strategy--refreshed-priorities-to-harness-ai-for-the-public-good-factsheet/',
-            },
-          ]}
-        />
         <section className="bg-white py-14">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-7 sm:p-9">
