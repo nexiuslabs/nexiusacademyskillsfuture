@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
               </a>
             </p>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              This practical AI agent course in Singapore helps non-technical professionals design governed, no-code workflows for real workplace tasks, with guided exercises and human review built in.
+              This practical AI agent course in Singapore helps non-technical professionals design governed, no-code workflows for real workplace tasks, with guided exercises and human review built in. Learn how to apply AI to repetitive work and internal drafting with a no-code approach for business teams.
             </p>
 
 
@@ -75,10 +75,6 @@ const Hero: React.FC = () => {
                 <div className="font-medium leading-6 text-gray-700">Net Fee: from S$113.03*</div>
               </div>
             </div>
-
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-              Learn how to apply AI to repetitive work and internal drafting with a no-code approach for business teams.
-            </p>
 
             <div className="grid sm:grid-cols-3 gap-3 bg-white border border-blue-100 rounded-2xl p-4">
               <div>
