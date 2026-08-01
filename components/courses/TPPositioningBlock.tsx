@@ -14,6 +14,16 @@ const TPPositioningBlock: React.FC = () => (
             <p className="mt-5 text-base leading-relaxed text-gray-600">
               Nexius Academy delivers the practitioner-led learning experience for professionals who want hands-on help applying Agentic AI Foundations to real workplace tasks. Temasek Polytechnic is the official course owner and administers registration, certification, schedules and funding information.
             </p>
+            <div className="mt-6 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+              <p className="text-base leading-relaxed text-gray-700">
+                <strong className="text-primary">Delivered by Nexius Academy</strong> in collaboration with Temasek Polytechnic.
+                Official registration, certification and funding details are administered through Temasek Polytechnic and SkillsFuture.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-600">
+                <span><strong className="text-primary">TP course reference:</strong> TP-NC-C0021-F</span>
+                <span><strong className="text-primary">SkillsFuture reference:</strong> TGS-2025059915</span>
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

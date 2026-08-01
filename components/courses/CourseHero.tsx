@@ -45,16 +45,6 @@ const Hero: React.FC = () => {
               This practical AI agent course in Singapore helps non-technical professionals design governed, no-code workflows for real workplace tasks, with guided exercises and human review built in.
             </p>
 
-            <div className="rounded-2xl border border-blue-100 bg-white/90 p-5 shadow-sm">
-              <p className="text-base leading-relaxed text-gray-700">
-                <strong className="text-primary">Delivered by Nexius Academy</strong> in collaboration with Temasek Polytechnic.
-                Official registration, certification and funding details are administered through Temasek Polytechnic and SkillsFuture.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-600">
-                <span><strong className="text-primary">TP course reference:</strong> TP-NC-C0021-F</span>
-                <span><strong className="text-primary">SkillsFuture reference:</strong> TGS-2025059915</span>
-              </div>
-            </div>
 
             <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
               <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
