@@ -183,6 +183,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 19,
+    slug: 'agent-builders-business-professionals',
+    title: 'Agent Builders: What Business Professionals Must Learn Before AI Starts Building Workflows',
+    date: '03 Aug 2026',
+    views: 0,
+    image: '/images/blog/agent-builders-business-professionals.png',
+    excerpt: 'Enterprise agent builders are moving AI from chat into workflow construction. Learn the workflow mapping, permission boundaries, approval gates, testing, and telemetry skills professionals need next.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 18,
     slug: 'agent-execution-readiness-business-professionals',
     title: 'Agent Execution Readiness: What Business Professionals Must Learn Before AI Acts Across Tools',

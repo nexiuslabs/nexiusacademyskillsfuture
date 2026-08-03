@@ -1198,6 +1198,20 @@ const routes = [
     articleDate: '2026-07-27',
   },
   {
+    path: '/blog/agent-builders-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agent Builders: What Business Professionals Must Learn',
+    description:
+      'Enterprise agent builders are moving AI from chat into workflow construction. Learn the workflow mapping, permission boundaries, approval gates, testing, and telemetry skills professionals need next.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-builders-business-professionals.png',
+    ogImageAlt: 'Business professionals mapping permission boundaries for AI agent builders',
+    schemas: [],
+    articleDate: '2026-08-03',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',
