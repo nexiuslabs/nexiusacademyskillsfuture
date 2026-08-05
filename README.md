@@ -65,6 +65,18 @@ This is a modern web application for Nexius Academy's Generative AI training cou
    npm run build
    ```
 
+## Run the functions on a VPS
+
+The Netlify-compatible handlers can also run as a standalone Node service without Netlify:
+
+```bash
+npm run start:functions
+```
+
+Copy the variable names from `.env.vps.example` into a root-owned runtime environment file. The admin endpoints fail closed until `ADMIN_USERNAME`, a SHA-256 `ADMIN_PASSWORD_HASH`, and an `ADMIN_SESSION_SECRET` of at least 32 characters are all configured. Keep `SUPABASE_SERVICE_ROLE_KEY` and the admin values out of browser builds, Git, container layers, and logs.
+
+The service exposes only `/healthz` and the existing `/.netlify/functions/*` routes. In production it should remain on an internal container network behind the static web reverse proxy.
+
 ## Architecture
 
 - **Frontend**: React + TypeScript + Vite

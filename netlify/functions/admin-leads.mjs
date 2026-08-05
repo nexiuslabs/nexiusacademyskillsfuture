@@ -1,7 +1,5 @@
-import crypto from 'node:crypto';
+import { getAdminConfig, readSession } from '../runtime/admin-session.mjs';
 
-const ADMIN_SESSION_SECRET = process.env.ADMIN_SESSION_SECRET || 'nexius-academy-admin-session-secret';
-const COOKIE_NAME = 'nexius_academy_admin';
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -13,37 +11,6 @@ const json = (statusCode, body) => ({
   },
   body: JSON.stringify(body),
 });
-
-const sign = (value) =>
-  crypto.createHmac('sha256', ADMIN_SESSION_SECRET).update(value).digest('base64url');
-
-const parseCookies = (cookieHeader = '') =>
-  Object.fromEntries(
-    cookieHeader
-      .split(';')
-      .map((part) => part.trim())
-      .filter(Boolean)
-      .map((part) => {
-        const separatorIndex = part.indexOf('=');
-        return [part.slice(0, separatorIndex), part.slice(separatorIndex + 1)];
-      })
-  );
-
-const readSession = (cookieHeader) => {
-  const cookies = parseCookies(cookieHeader);
-  const raw = cookies[COOKIE_NAME];
-
-  if (!raw) return null;
-
-  const [payload, signature] = raw.split('.');
-  if (!payload || !signature) return null;
-  if (sign(payload) !== signature) return null;
-
-  const decoded = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
-  if (!decoded.exp || decoded.exp < Math.floor(Date.now() / 1000)) return null;
-
-  return decoded;
-};
 
 const derivePayerType = (lead) => {
   if (lead.payer_type) return lead.payer_type;
@@ -62,7 +29,12 @@ export async function handler(event) {
     return json(405, { error: 'Method not allowed' });
   }
 
-  const session = readSession(event.headers.cookie || event.headers.Cookie || '');
+  const config = getAdminConfig();
+  if (!config) {
+    return json(503, { error: 'Admin authentication is not configured.' });
+  }
+
+  const session = readSession(event.headers.cookie || event.headers.Cookie || '', config);
   if (!session) {
     return json(401, { error: 'Unauthorized' });
   }

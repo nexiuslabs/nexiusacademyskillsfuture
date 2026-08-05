@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node scripts/postbuild-seo.mjs && node scripts/prerender-routes.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:functions": "node netlify/runtime/server.mjs",
+    "test:functions": "node --test tests/functions/*.test.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
