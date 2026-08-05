@@ -15,6 +15,7 @@ const isOptimizable = (src?: string) =>
 
 const canUseNetlifyImageCdn = () => {
   if (typeof window === 'undefined') return false;
+  if (import.meta.env.VITE_DISABLE_NETLIFY_IMAGE_CDN === 'true') return false;
   return !['localhost', '127.0.0.1'].includes(window.location.hostname);
 };
 
