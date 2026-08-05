@@ -124,14 +124,14 @@ const BlogPage: React.FC = () => {
                     to={`/blog/${post.slug}/`}
                     className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group hover:-translate-y-1 duration-300"
                   >
-                    <div className="overflow-hidden h-52">
+                    <div className="h-52 overflow-hidden bg-primary/5 border-b border-gray-100 flex items-center justify-center">
                       <ResponsiveImage
                         src={post.image}
                         alt={post.title}
                         widths={[480, 768]}
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        fit="cover"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        fit="contain"
+                        className="w-full h-full object-contain"
                       />
                     </div>
 
