@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Agentic AI Course Singapore: Practical AI Agent Training for Non-technical Professionals
+              Agentic AI Foundations for Non-Technical Professionals
             </h1>
             <p className="text-lg font-bold uppercase tracking-[0.18em]">
               <a
@@ -171,4 +171,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-
