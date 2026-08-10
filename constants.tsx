@@ -44,7 +44,7 @@ export const SCHEDULES: ScheduleItem[] = [
     dates: '14 Aug 2026 & 21 Aug 2026',
     time: '9:00am - 6:00pm',
     format: 'In-Person',
-    venue: 'Devan Nair Institute, 80 Jurong East Street 21, Singapore 609607',
+    venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
     slotsLeft: 0,
     month: 'Aug 2026',
     registrationCloses: 'TBC',
