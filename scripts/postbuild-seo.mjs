@@ -1212,6 +1212,20 @@ const routes = [
     articleDate: '2026-08-03',
   },
   {
+    path: '/blog/finance-agent-maker-checker-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Finance AI Agents: Learn Maker-Checker Workflow Design',
+    description:
+      'Finance AI agents are entering receivables and audit. Learn maker-checker workflow mapping, evidence design, approval rules, exception handling, testing, and auditability.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/finance-agent-maker-checker-business-professionals.png',
+    ogImageAlt: 'Business professionals learning maker-checker workflow design for finance AI agents',
+    schemas: [],
+    articleDate: '2026-08-10',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

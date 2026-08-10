@@ -183,6 +183,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 20,
+    slug: 'finance-agent-maker-checker-business-professionals',
+    title: 'Finance AI Agents: What Business Professionals Must Learn About Maker-Checker Workflows',
+    date: '10 Aug 2026',
+    views: 0,
+    image: '/images/blog/finance-agent-maker-checker-business-professionals.png',
+    excerpt: 'Finance AI agents are entering receivables and audit. Learn maker-checker workflow mapping, evidence design, approval rules, exception handling, testing, and auditability.',
+    category: 'Beginner Guides',
+    bestFor: 'Finance professionals, accountants, SME owners, operations managers, auditors, L&D teams',
+    featured: true,
+  },
+  {
     id: 19,
     slug: 'agent-builders-business-professionals',
     title: 'Agent Builders: What Business Professionals Must Learn Before AI Starts Building Workflows',
