@@ -531,12 +531,12 @@ const routes = [
             endDate: '2026-08-21T18:00:00+08:00',
             location: {
               '@type': 'Place',
-              name: 'Devan Nair Institute for Employment and Employability',
+              name: 'Singapore Institute of Management',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '80 Jurong East Street 21',
+                streetAddress: '461 Clementi Road',
                 addressLocality: 'Singapore',
-                postalCode: '609607',
+                postalCode: '599491',
                 addressCountry: 'SG',
               },
             },
