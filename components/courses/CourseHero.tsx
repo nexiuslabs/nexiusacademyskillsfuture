@@ -52,10 +52,7 @@ const Hero: React.FC = () => {
                 <div>
                   <div className="font-semibold text-primary mb-1">Next Cohort</div>
                   <div className="flex flex-wrap items-center gap-2 text-gray-600">
-                    <span>14 Aug &amp; 21 Aug 2026</span>
-                    <span className="inline-flex items-center rounded-full bg-red-50 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-red-600 ring-1 ring-red-100">
-                      Full
-                    </span>
+                    <span>18 Sep &amp; 25 Sep 2026</span>
                   </div>
                   <a href="#schedule" className="inline-flex items-center mt-2 text-sm font-semibold text-accent hover:underline">
                     More
