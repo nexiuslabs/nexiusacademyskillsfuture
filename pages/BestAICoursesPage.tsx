@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import CompactCoursePreviewCTA from '../components/preview/CompactCoursePreviewCTA';
 
 const bestAICourseFaqs = [
   {
@@ -264,7 +265,10 @@ const BestAICoursesPage: React.FC = () => {
               Explore the Agentic AI SkillsFuture course in Singapore →
             </Link>
           </p>
-          <ArticleCTA articleSlug="best-ai-courses-singapore-2026" ctaType="join_next_cohort" position="article_end" />
+          <CompactCoursePreviewCTA
+            pagePath="/blog/best-ai-courses-singapore-2026"
+            position="article_end_preview_cta"
+          />
           <AuthorCredibilityBox articleSlug="best-ai-courses-singapore-2026" />
         </div>
       </div>

@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
+import CompactCoursePreviewCTA from '../components/preview/CompactCoursePreviewCTA';
 
 const WhatIsAgenticAIPage: React.FC = () => {
   return (
@@ -147,7 +148,10 @@ const WhatIsAgenticAIPage: React.FC = () => {
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             The best AI courses in Singapore for 2026 are already teaching these skills — combining generative AI fundamentals with agentic AI workflows, no-code automation tools, and practical business application. Whether you're a founder, a department head, or a team lead, the time to build your agentic AI fluency is now.
           </p>
-          <ArticleCTA articleSlug="what-is-agentic-ai-guide" ctaType="join_next_cohort" position="article_end" />
+          <CompactCoursePreviewCTA
+            pagePath="/blog/what-is-agentic-ai-guide"
+            position="article_end_preview_cta"
+          />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Ready to go from AI user to AI architect?</strong>{' '}

@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Building2, Wallet, FileText, Users } from 'luc
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import CompactCoursePreviewCTA from '../components/preview/CompactCoursePreviewCTA';
 
 const highlights = [
   'Training support depends on the course, trainee profile, employer profile, and prevailing SkillsFuture / SSG rules.',
@@ -152,6 +153,15 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-4">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CompactCoursePreviewCTA
+              pagePath="/skillsfuture-funding-guide"
+              position="funding_guide_preview_cta"
+            />
           </div>
         </section>
 
