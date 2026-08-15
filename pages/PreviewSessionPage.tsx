@@ -180,9 +180,9 @@ const openPreviewLeadModal = (
   openLeadModal('free_preview', 'reserve_seat', {
     page: pagePath,
     position,
-    ctaLabel: 'register_interest_next_free_preview',
-    preferredIntake: schedule?.cohortLabel || 'Free preview — register interest for the next session',
-    cohortCode: schedule?.cohortCode || 'free-preview-next-session',
+    ctaLabel: 'reserve_preview_seat',
+    preferredIntake: schedule?.cohortLabel || '22 Aug 2026 preview session (10am-1pm)',
+    cohortCode: schedule?.cohortCode || 'free-preview-2026-08-22',
     courseSlug: 'free-preview',
   });
 
@@ -264,7 +264,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
                   className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
                 >
-                  Register Interest <ArrowRight size={18} />
+                  {isDarkPreview ? 'Reserve Your Seat' : 'Register Interest'} <ArrowRight size={18} />
                 </button>
                 <a
                   href={
@@ -384,7 +384,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                             onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath, config.schedules[0])}
                             className="mt-4 inline-flex rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
                           >
-                            Register Interest
+                            Reserve Your Seat
                           </button>
                         </div>
                       </div>

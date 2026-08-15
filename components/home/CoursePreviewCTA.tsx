@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CalendarDays, MailCheck } from 'lucide-react';
+import { ArrowRight, CalendarDays, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ResponsiveImage from '../ResponsiveImage';
 import { openLeadModal } from '../../services/leadModal';
@@ -8,9 +8,9 @@ const openFreePreviewInterest = () =>
   openLeadModal('free_preview', 'reserve_seat', {
     page: '/',
     position: 'home_course_preview_cta',
-    ctaLabel: 'register_interest_next_free_preview',
-    preferredIntake: 'Free preview — register interest for the next session',
-    cohortCode: 'free-preview-next-session',
+    ctaLabel: 'reserve_22_aug_free_preview',
+    preferredIntake: '22 Aug 2026 preview session (10am-1pm)',
+    cohortCode: 'free-preview-2026-08-22',
     courseSlug: 'free-preview',
   });
 
@@ -39,23 +39,23 @@ const CoursePreviewCTA: React.FC = () => {
                 Free Preview
               </div>
               <h2 className="text-2xl font-bold leading-tight md:text-3xl lg:text-[2rem]">
-                Watch out for our next Agentic AI preview session
+                Join our next Agentic AI preview session
               </h2>
               <div className="mt-5 space-y-4 text-sm text-white/80">
                 <div className="flex gap-3">
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-bold text-white">Next date to be announced</span>
+                      <span className="font-bold text-white">Saturday, 22 August 2026</span>
                     </div>
-                    <div>Leave your details and we will notify you when the next free preview opens.</div>
+                    <div>10:00am to 1:00pm · Free 3-hour preview</div>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <MailCheck className="mt-0.5 h-5 w-5 flex-none text-secondary" />
+                  <MapPin className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
-                    <div className="font-bold text-white">Interested parties welcome</div>
-                    <div>We will follow up with the next session details once confirmed.</div>
+                    <div className="font-bold text-white">Singapore Institute of Management</div>
+                    <div>461 Clementi Road, Singapore 599491</div>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@ const CoursePreviewCTA: React.FC = () => {
                 onClick={openFreePreviewInterest}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
-                Register Interest <ArrowRight className="ml-2 h-5 w-5" />
+                Reserve Your Seat <ArrowRight className="ml-2 h-5 w-5" />
               </button>
             </div>
           </div>
