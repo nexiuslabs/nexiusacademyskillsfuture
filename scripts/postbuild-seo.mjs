@@ -594,21 +594,49 @@ const routes = [
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Next Free Preview: Agentic AI Foundations | Nexius Academy',
+    title: '22 August Free Preview: Agentic AI Foundations | Nexius Academy',
     description:
-      'Watch out for the next free Agentic AI Foundations preview session. Register interest and Nexius Academy will notify you when the next session opens.',
+      'Join our next free Agentic AI Foundations preview on 22 August 2026, 10:00am–1:00pm, at the Singapore Institute of Management.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [
       courseSchema({
-        name: 'Agentic AI Foundations for Non-Technical Professionals Free Preview Interest',
+        name: 'Agentic AI Foundations for Non-Technical Professionals Free Preview',
         description:
-          'Register interest for the next free preview introducing non-technical professionals to Agentic AI, workplace use cases, hands-on AI activity, and safe adoption habits.',
+          'A free preview introducing non-technical professionals to Agentic AI, workplace use cases, hands-on AI activity, and safe adoption habits.',
         url: `${SITE_URL}/course-preview/`,
         image: COURSE_IMAGE,
         audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
         instructors: [melverickPerson, darrylPerson],
       }),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Agentic AI Foundations Free Preview',
+        startDate: '2026-08-22T10:00:00+08:00',
+        endDate: '2026-08-22T13:00:00+08:00',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: {
+          '@type': 'Place',
+          name: 'Singapore Institute of Management',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '461 Clementi Road',
+            addressLocality: 'Singapore',
+            postalCode: '599491',
+            addressCountry: 'SG',
+          },
+        },
+        image: [COURSE_IMAGE],
+        description:
+          'A free Agentic AI Foundations preview for non-technical professionals at the Singapore Institute of Management.',
+        organizer: {
+          '@type': 'Organization',
+          name: 'Nexius Academy',
+          url: SITE_URL,
+        },
+      },
     ],
   },
   {

@@ -45,10 +45,10 @@ const partnerConfigs: Record<
     bodyClass: 'course-preview-page',
     schedules: [
       {
-        date: 'Next date to be announced',
-        time: 'Register interest to be notified when the next free preview opens',
-        cohortCode: 'free-preview-next-session',
-        cohortLabel: 'Free preview — register interest for the next session',
+        date: '22 August 2026',
+        time: 'Saturday, 10:00am to 1:00pm',
+        cohortCode: 'free-preview-2026-08-22',
+        cohortLabel: '22 Aug 2026 preview session (10am-1pm)',
       },
     ],
     partnerName: 'e2i',
@@ -56,8 +56,7 @@ const partnerConfigs: Record<
     logoAlt: 'e2i collaboration logo',
     logoClassName: 'h-10 w-auto object-contain sm:h-12',
     eventName: 'Agentic AI Foundations for Non-Technical Professionals',
-    venue: 'Devan Nair Institute for Employment and Employability\n80 Jurong East St 21, #01-01/02/03, Singapore 609607',
-    nearestMrt: 'Jurong East',
+    venue: 'Singapore Institute of Management\n461 Clementi Road, Singapore 599491',
     theme: 'dark',
     showPartnerBadge: false,
   },
@@ -203,8 +202,8 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
   return (
     <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
-        title={isDarkPreview ? 'Next Free Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
-        description={isDarkPreview ? 'Watch out for the next free Agentic AI Foundations preview session. Register interest and Nexius Academy will notify you when the next session opens.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
+        title={isDarkPreview ? '22 August Free Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
+        description={isDarkPreview ? 'Join our next free Agentic AI Foundations preview on 22 August 2026, 10:00am–1:00pm, at the Singapore Institute of Management.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -246,7 +245,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
             <div>
               <div className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold shadow-soft ${isDarkPreview ? 'border-white/10 bg-white/5 text-white' : 'border-primary/10 bg-white text-primary'}`}>
                 <Clock3 size={16} className="text-accent" />
-                {isDarkPreview ? 'Next free preview' : '4-hour hands-on preview workshop'}
+                {isDarkPreview ? 'Next free preview · 22 August 2026' : '4-hour hands-on preview workshop'}
               </div>
 
               <h1 className={`max-w-4xl text-balance font-heading text-4xl font-extrabold leading-[1.02] sm:text-5xl lg:text-6xl ${isDarkPreview ? 'text-white' : 'text-primary'}`}>
@@ -255,7 +254,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
 
               <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${isDarkPreview ? 'text-white/72' : 'text-gray-600'}`}>
                 {isDarkPreview
-                  ? 'The latest preview session has taken place. Register your interest and we will notify you when the next free Agentic AI preview session opens.'
+                  ? 'Join us at the Singapore Institute of Management for a practical introduction to Agentic AI, designed for non-technical professionals.'
                   : 'A practical preview session for professionals who want to use AI more confidently at work before committing to a full paid class. Learn better prompts, reusable AI instructions, and safe workplace use cases.'}
               </p>
 
@@ -270,7 +269,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 <a
                   href={
                     isDarkPreview
-                      ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20please%20notify%20me%20when%20the%20next%20free%20Agentic%20AI%20preview%20session%20opens.'
+                      ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%20free%20Agentic%20AI%20preview%20on%2022%20August%202026%20at%20SIM.'
                       : 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session.'
                   }
                   target="_blank"
@@ -289,7 +288,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
               </div>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {['No coding required', 'Beginner-friendly', isDarkPreview ? 'Next session notification' : 'Paid class preview'].map((item) => (
+                {['No coding required', 'Beginner-friendly', isDarkPreview ? 'Free 3-hour preview' : 'Paid class preview'].map((item) => (
                   <div key={item} className={`rounded-2xl border px-4 py-3 text-sm font-semibold shadow-soft ${isDarkPreview ? 'border-white/10 bg-white/5 text-white' : 'border-primary/10 bg-white text-primary'}`}>
                     {item}
                   </div>
@@ -360,26 +359,25 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:pr-8">
                         <div className="text-2xl" aria-hidden="true">🗓️</div>
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Next session</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">Watch out for our next session</div>
-                          <div className="mt-1 text-base font-semibold text-white/45">Date to be announced</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Date</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].date}</div>
+                          <div className="mt-1 text-base font-semibold text-white/60">Saturday</div>
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:px-8">
                         <div className="text-2xl" aria-hidden="true">⏱️</div>
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Notification</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">Register interest</div>
-                          <div className="mt-1 text-base font-semibold text-white/45">We will follow up when details are confirmed</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Time</div>
+                          <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].time.replace('Saturday, ', '')}</div>
+                          <div className="mt-1 text-base font-semibold text-white/60">3-hour preview session</div>
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:pl-8">
                         <div className="text-2xl" aria-hidden="true">📩</div>
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Free preview</div>
-                          <div className="mt-2 text-lg font-extrabold text-white">Interested parties welcome</div>
-                          <div className="mt-1 text-base font-semibold leading-snug text-white/45">
-                            Leave your details and we will notify you when the next preview opens.
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Venue</div>
+                          <div className="mt-2 whitespace-pre-line text-lg font-extrabold leading-snug text-white">
+                            {config.venue}
                           </div>
                           <button
                             type="button"
