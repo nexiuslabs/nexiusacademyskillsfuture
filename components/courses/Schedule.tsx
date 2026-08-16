@@ -87,9 +87,9 @@ const Schedule: React.FC = () => {
                       onClick={() =>
                         openLeadModal('course_page_cta', 'reserve_seat', {
                           page: '/courses/agentic-ai',
-                          position: 'schedule_october_register_interest_button',
-                          ctaLabel: 'register_interest_october_2026',
-                          preferredIntake: '09 Oct 2026 & 16 Oct 2026 (9am-5pm) — Registration of interest (venue TBC)',
+                          position: `schedule_${schedule.month.toLowerCase().replace(' ', '_')}_register_interest_button`,
+                          ctaLabel: `register_interest_${schedule.cohortCode}`,
+                          preferredIntake: `${schedule.dates} (${schedule.time.replace(/:00/g, '').replace(' - ', '-')}) — Registration of interest (venue TBC)`,
                           cohortCode: schedule.cohortCode,
                           courseSlug: 'agentic-ai',
                         })
