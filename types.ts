@@ -27,6 +27,8 @@ export interface ScheduleItem {
   slotsLeft: number;
   month: string;
   registrationCloses?: string;
+  interestOnly?: boolean;
+  cohortCode?: string;
 }
 
 export interface FaqItem {

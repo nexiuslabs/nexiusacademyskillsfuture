@@ -34,7 +34,7 @@ const Schedule: React.FC = () => {
 
         <div className="space-y-6">
           {filteredSchedules.map((schedule, index) => {
-            const isFull = schedule.slotsLeft <= 0;
+            const isFull = schedule.slotsLeft <= 0 && !schedule.interestOnly;
 
             return (
               <div
@@ -47,6 +47,10 @@ const Schedule: React.FC = () => {
                     {isFull ? (
                       <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-red-600 ring-1 ring-red-100">
                         Full
+                      </span>
+                    ) : schedule.interestOnly ? (
+                      <span className="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700 ring-1 ring-amber-200">
+                        Registration of interest only
                       </span>
                     ) : null}
                   </div>
@@ -67,13 +71,34 @@ const Schedule: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
-                      {isFull ? 'Join waitlist to secure next intake' : 'Filling up fast'}
+                      {isFull
+                        ? 'Join waitlist to secure next intake'
+                        : schedule.interestOnly
+                          ? 'We will follow up when the cohort details are confirmed'
+                          : 'Filling up fast'}
                     </div>
                   </div>
                 </div>
 
                 <div className="flex-shrink-0">
-                  {isFull ? (
+                  {schedule.interestOnly ? (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openLeadModal('course_page_cta', 'reserve_seat', {
+                          page: '/courses/agentic-ai',
+                          position: 'schedule_october_register_interest_button',
+                          ctaLabel: 'register_interest_october_2026',
+                          preferredIntake: '09 Oct 2026 & 16 Oct 2026 — Registration of interest (venue TBC)',
+                          cohortCode: schedule.cohortCode,
+                          courseSlug: 'agentic-ai',
+                        })
+                      }
+                      className="inline-block w-full rounded-lg bg-primary px-6 py-3 text-center font-bold text-white transition-colors hover:bg-blue-900 md:w-auto"
+                    >
+                      Register Interest
+                    </button>
+                  ) : isFull ? (
                     <button
                       type="button"
                       onClick={() =>
