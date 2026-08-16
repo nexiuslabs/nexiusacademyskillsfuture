@@ -52,7 +52,7 @@ export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
     dates: '09 Oct 2026 & 16 Oct 2026',
-    time: 'Time to be confirmed',
+    time: '9:00am - 5:00pm',
     format: 'In-Person',
     venue: 'Venue to be confirmed',
     slotsLeft: 0,

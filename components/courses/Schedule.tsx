@@ -89,7 +89,7 @@ const Schedule: React.FC = () => {
                           page: '/courses/agentic-ai',
                           position: 'schedule_october_register_interest_button',
                           ctaLabel: 'register_interest_october_2026',
-                          preferredIntake: '09 Oct 2026 & 16 Oct 2026 — Registration of interest (venue TBC)',
+                          preferredIntake: '09 Oct 2026 & 16 Oct 2026 (9am-5pm) — Registration of interest (venue TBC)',
                           cohortCode: schedule.cohortCode,
                           courseSlug: 'agentic-ai',
                         })
