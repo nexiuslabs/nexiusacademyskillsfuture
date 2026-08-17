@@ -1254,6 +1254,20 @@ const routes = [
     articleDate: '2026-08-10',
   },
   {
+    path: '/blog/agent-team-diversity-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Agent Teams: Learn to Design for Dissent',
+    description:
+      'More AI agents can repeat the same blind spot. Learn evidence-lane design, dissent roles, integration, testing, and human judgment for reliable agent teams.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-team-diversity-business-professionals.png',
+    ogImageAlt: 'Business professional learning to design independent evidence lanes and constructive dissent for AI agent teams',
+    schemas: [],
+    articleDate: '2026-08-17',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',
