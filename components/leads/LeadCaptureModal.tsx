@@ -100,12 +100,10 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   ],
   'advanced-agentic-ai': [
     { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
-    { label: '08 Nov 2026, 09 Nov 2026 & 15 Nov 2026 (9am-6pm) — Venue TBC', code: '2026-11-08' },
     { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-business-innovation': [
     { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
-    { label: '08 Nov 2026, 09 Nov 2026 & 15 Nov 2026 (9am-6pm) — Venue TBC', code: '2026-11-08' },
     { label: 'Register Interest', code: 'next-available' },
   ],
 };
