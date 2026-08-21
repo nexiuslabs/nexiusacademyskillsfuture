@@ -15,6 +15,12 @@ const ADVANCED_COURSE_SCHEDULES = [
     time: '9:00am - 6:00pm',
     venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
   },
+  {
+    month: 'Nov 2026',
+    dates: '08 Nov 2026 (Sun), 09 Nov 2026 (Mon) & 15 Nov 2026 (Sun)',
+    time: '9:00am - 6:00pm',
+    venue: 'Venue to be confirmed',
+  },
 ];
 
 const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, positionPrefix }) => {
@@ -26,7 +32,7 @@ const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, pos
     <section id="schedule" className="bg-neutral py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="mb-4 font-heading text-3xl font-bold text-primary">Upcoming Course Schedules</h2>
-        <p className="mb-10 text-gray-600">Choose from our upcoming weekday schedules, or ask us about a private class for your team.</p>
+        <p className="mb-10 text-gray-600">Choose from our upcoming class schedules, or ask us about a private class for your team.</p>
 
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
           {months.map((month) => (
