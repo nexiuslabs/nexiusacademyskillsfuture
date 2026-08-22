@@ -45,10 +45,10 @@ const partnerConfigs: Record<
     bodyClass: 'course-preview-page',
     schedules: [
       {
-        date: '22 August 2026',
-        time: 'Saturday, 10:00am to 1:00pm',
-        cohortCode: 'free-preview-2026-08-22',
-        cohortLabel: '22 Aug 2026 preview session (10am-1pm)',
+        date: 'Register Interest',
+        time: 'Register Interest',
+        cohortCode: 'next-available',
+        cohortLabel: 'Register Interest',
       },
     ],
     partnerName: 'e2i',
@@ -56,7 +56,7 @@ const partnerConfigs: Record<
     logoAlt: 'e2i collaboration logo',
     logoClassName: 'h-10 w-auto object-contain sm:h-12',
     eventName: 'Agentic AI Foundations for Non-Technical Professionals',
-    venue: 'Singapore Institute of Management\n461 Clementi Road, Singapore 599491',
+    venue: 'Register Interest',
     theme: 'dark',
     showPartnerBadge: false,
   },
@@ -181,7 +181,7 @@ const openPreviewLeadModal = (
     page: pagePath,
     position,
     ctaLabel: 'reserve_preview_seat',
-    preferredIntake: schedule?.cohortLabel || '22 Aug 2026 preview session (10am-1pm)',
+    preferredIntake: schedule?.cohortLabel || 'Register Interest',
     cohortCode: schedule?.cohortCode || 'free-preview-2026-08-22',
     courseSlug: 'free-preview',
   });
@@ -202,8 +202,8 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
   return (
     <div className={isDarkPreview ? 'min-h-screen bg-[#0b1527] text-white' : 'min-h-screen bg-white text-textDark'}>
       <SEO
-        title={isDarkPreview ? '22 August Free Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
-        description={isDarkPreview ? 'Join our next free Agentic AI Foundations preview on 22 August 2026, 10:00am–1:00pm, at the Singapore Institute of Management.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
+        title={isDarkPreview ? 'Free Preview: Agentic AI Foundations | Nexius Academy' : '4-Hour Agentic AI Preview Session | Nexius Academy'}
+        description={isDarkPreview ? 'Register your interest in the next free Agentic AI Foundations preview for non-technical professionals.' : 'A beginner-friendly 4-hour Agentic AI preview for non-technical professionals. Learn prompts, reusable instructions, and safe AI habits.'}
         canonical={config.pagePath}
         ogType="course"
         ogImage="https://academy.nexiuslabs.com/images/og/agentic-ai-course-og.jpg"
@@ -245,7 +245,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
             <div>
               <div className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold shadow-soft ${isDarkPreview ? 'border-white/10 bg-white/5 text-white' : 'border-primary/10 bg-white text-primary'}`}>
                 <Clock3 size={16} className="text-accent" />
-                {isDarkPreview ? 'Next free preview · 22 August 2026' : '4-hour hands-on preview workshop'}
+                {isDarkPreview ? 'Next free preview · Register Interest' : '4-hour hands-on preview workshop'}
               </div>
 
               <h1 className={`max-w-4xl text-balance font-heading text-4xl font-extrabold leading-[1.02] sm:text-5xl lg:text-6xl ${isDarkPreview ? 'text-white' : 'text-primary'}`}>
@@ -254,7 +254,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
 
               <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${isDarkPreview ? 'text-white/72' : 'text-gray-600'}`}>
                 {isDarkPreview
-                  ? 'Join us at the Singapore Institute of Management for a practical introduction to Agentic AI, designed for non-technical professionals.'
+                  ? 'Register your interest in the next practical introduction to Agentic AI, designed for non-technical professionals.'
                   : 'A practical preview session for professionals who want to use AI more confidently at work before committing to a full paid class. Learn better prompts, reusable AI instructions, and safe workplace use cases.'}
               </p>
 
@@ -264,7 +264,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   onClick={() => openPreviewLeadModal('preview_hero_register', config.pagePath)}
                   className="inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3 font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
                 >
-                  {isDarkPreview ? 'Reserve Your Seat' : 'Register Interest'} <ArrowRight size={18} />
+                  Register Interest <ArrowRight size={18} />
                 </button>
                 <a
                   href={
@@ -361,7 +361,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Date</div>
                           <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].date}</div>
-                          <div className="mt-1 text-base font-semibold text-white/60">Saturday</div>
+                          <div className="mt-1 text-base font-semibold text-white/60">Next session to be announced</div>
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:px-8">
@@ -369,7 +369,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Time</div>
                           <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].time.replace('Saturday, ', '')}</div>
-                          <div className="mt-1 text-base font-semibold text-white/60">3-hour preview session</div>
+                          <div className="mt-1 text-base font-semibold text-white/60">Next session to be announced</div>
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:pl-8">
@@ -384,7 +384,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                             onClick={() => openPreviewLeadModal('preview_schedule_register', config.pagePath, config.schedules[0])}
                             className="mt-4 inline-flex rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-teal-500"
                           >
-                            Reserve Your Seat
+                            Register Interest
                           </button>
                         </div>
                       </div>

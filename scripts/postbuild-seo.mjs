@@ -594,9 +594,9 @@ const routes = [
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: '22 August Free Preview: Agentic AI Foundations | Nexius Academy',
+    title: 'Free Preview: Agentic AI Foundations | Nexius Academy',
     description:
-      'Join our next free Agentic AI Foundations preview on 22 August 2026, 10:00am–1:00pm, at the Singapore Institute of Management.',
+      'Register your interest in the next free Agentic AI Foundations preview for non-technical professionals.',
     ogType: 'course',
     ogImage: COURSE_IMAGE,
     schemas: [

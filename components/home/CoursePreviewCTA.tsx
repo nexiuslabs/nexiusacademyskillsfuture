@@ -8,9 +8,9 @@ const openFreePreviewInterest = () =>
   openLeadModal('free_preview', 'reserve_seat', {
     page: '/',
     position: 'home_course_preview_cta',
-    ctaLabel: 'reserve_22_aug_free_preview',
-    preferredIntake: '22 Aug 2026 preview session (10am-1pm)',
-    cohortCode: 'free-preview-2026-08-22',
+    ctaLabel: 'register_interest_free_preview',
+    preferredIntake: 'Register Interest',
+    cohortCode: 'next-available',
     courseSlug: 'free-preview',
   });
 
@@ -46,16 +46,16 @@ const CoursePreviewCTA: React.FC = () => {
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-bold text-white">Saturday, 22 August 2026</span>
+                      <span className="font-bold text-white">Register Interest</span>
                     </div>
-                    <div>10:00am to 1:00pm · Free 3-hour preview</div>
+                    <div>We’ll share the next available preview session.</div>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
-                    <div className="font-bold text-white">Singapore Institute of Management</div>
-                    <div>461 Clementi Road, Singapore 599491</div>
+                    <div className="font-bold text-white">Register Interest</div>
+                    <div>Venue details will be confirmed with the next session.</div>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@ const CoursePreviewCTA: React.FC = () => {
                 onClick={openFreePreviewInterest}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
               >
-                Reserve Your Seat <ArrowRight className="ml-2 h-5 w-5" />
+                Register Interest <ArrowRight className="ml-2 h-5 w-5" />
               </button>
             </div>
           </div>
