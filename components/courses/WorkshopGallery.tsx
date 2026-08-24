@@ -38,6 +38,18 @@ const workshopPhotos = [
     src: '/images/workshops/workshop-gallery-09.jpg',
     alt: 'Small group selfie after an AI automation session',
   },
+  {
+    src: '/images/workshops/workshop-gallery-12.jpg',
+    alt: 'Agentic AI Foundations workshop cohort posing together in the classroom',
+  },
+  {
+    src: '/images/workshops/workshop-gallery-13.jpg',
+    alt: 'Nexius Labs workshop participants and trainers giving thumbs up after a session',
+  },
+  {
+    src: '/images/workshops/workshop-gallery-14.jpg',
+    alt: 'Agentic AI workshop cohort gathered with Nexius Labs trainers after day one',
+  },
 ];
 
 const WorkshopGallery: React.FC = () => {
