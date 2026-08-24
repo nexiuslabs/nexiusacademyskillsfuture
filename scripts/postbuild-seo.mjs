@@ -1268,6 +1268,20 @@ const routes = [
     articleDate: '2026-08-17',
   },
   {
+    path: '/blog/problem-framing-ai-agents-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Problem Framing for AI Agents | Nexius Academy',
+    description:
+      'Learn how to turn vague AI requests into testable workplace problems before building an agent: recurring pain, evidence, decisions, exceptions, outcomes, and stop rules.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/problem-framing-ai-agents-business-professionals.png',
+    ogImageAlt: 'Business professionals turning vague AI requests into clear workflow problem statements',
+    schemas: [],
+    articleDate: '2026-08-24',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

@@ -197,6 +197,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 22,
+    slug: 'problem-framing-ai-agents-business-professionals',
+    title: 'Problem Framing for AI Agents: What Business Professionals Must Learn Before They Build',
+    date: '24 Aug 2026',
+    views: 0,
+    image: '/images/blog/problem-framing-ai-agents-business-professionals.png',
+    excerpt: 'AI makes execution cheaper, so choosing the right problem matters more. Learn how to define recurring pain, evidence, decisions, exceptions, outcomes, and stop rules before building an agent.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, analysts, L&D teams',
+    featured: true,
+  },
+  {
     id: 21,
     slug: 'agent-team-diversity-business-professionals',
     title: 'AI Agent Teams: What Business Professionals Must Learn About Designed Dissent',
