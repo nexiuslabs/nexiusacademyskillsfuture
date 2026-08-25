@@ -476,6 +476,28 @@ const routes = [
     ],
   },
   {
+    path: '/workshops/agentic-ai-personal-assistant',
+    lastmod: '2026-08-25',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Build Your Own Agentic AI Personal Assistant Workshop | Nexius Academy',
+    description:
+      'Join a free, two-hour hands-on workshop for non-technical professionals. Build an agentic AI personal assistant for recurring work—no coding required.',
+    ogType: 'website',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      pageSchema({
+        name: 'Build Your Own Agentic AI Personal Assistant Workshop',
+        description:
+          'A free, two-hour hands-on workshop for non-technical professionals to build a governed AI personal assistant for recurring work.',
+        url: `${SITE_URL}/workshops/agentic-ai-personal-assistant/`,
+        image: COURSE_IMAGE,
+        type: 'WebPage',
+      }),
+    ],
+  },
+  {
     path: '/courses/agentic-ai',
     lastmod: '2026-07-26',
     priority: '0.9',
