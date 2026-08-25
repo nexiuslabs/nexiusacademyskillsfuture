@@ -74,8 +74,12 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
           <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(50,178,238,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(50,178,238,.12)_1px,transparent_1px)] [background-size:54px_54px]" />
           <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-7 sm:px-8 lg:px-10 lg:pb-28">
             <header className="mb-16 flex items-center justify-between">
-              <a href="https://nexiuslabs.com" aria-label="Nexius Labs home" className="flex items-center gap-3 font-black tracking-tight">
-                <span className="text-4xl leading-none">∞</span><span className="text-xl leading-5">NEXIUS<br />LABS</span>
+              <a href="/" aria-label="Nexius Academy home" className="flex items-center">
+                <img
+                  src="/images/brand/nexius-academy-horizontal.webp"
+                  alt="Nexius Academy"
+                  className="h-12 w-auto sm:h-14"
+                />
               </a>
               <a href="#register" className="rounded-full border border-cyan-300/40 bg-cyan-400/10 px-5 py-2.5 text-sm font-bold text-cyan-200 transition hover:bg-cyan-400/20">Register now</a>
             </header>
