@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, CheckCircle2, Clock3, Laptop, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CalendarDays, Check, CheckCircle2, Clock3, Laptop, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import { submitLeadCapture } from '../services/leadCaptureService';
 import { getVisitorContext } from '../services/visitorSession';
@@ -34,8 +34,8 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
         departmentOrDesignation: form.role.trim(),
         leadFlow: 'apply_now',
         ageBand: form.ageBand,
-        preferredIntake: 'Next available workshop',
-        cohortCode: 'LINKEDIN-AI-AGENT',
+        preferredIntake: '16 September, 12:30pm–2:30pm at Hotel Boss',
+        cohortCode: 'LINKEDIN-AI-AGENT-16SEP',
         courseSlug: 'linkedin-ai-agent-workshop',
         intent: 'reserve_seat',
         payerType: 'self',
@@ -96,7 +96,9 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
                   <p><strong className="text-amber-300">Bring a laptop.</strong> Leave with a working agent you can reuse.</p>
                 </div>
                 <div className="mt-10 flex flex-wrap gap-3 text-sm text-slate-300">
-                  <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><Clock3 className="h-4 w-4 text-cyan-300" /> Practical, guided build</span>
+                  <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><CalendarDays className="h-4 w-4 text-cyan-300" /> 16 September</span>
+                  <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><Clock3 className="h-4 w-4 text-cyan-300" /> 12:30pm–2:30pm</span>
+                  <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><MapPin className="h-4 w-4 text-cyan-300" /> Hotel Boss, Level 4</span>
                   <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><ShieldCheck className="h-4 w-4 text-cyan-300" /> No coding required</span>
                 </div>
               </div>
@@ -132,12 +134,16 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
           <aside id="register" className="scroll-mt-8">
             <div className="sticky top-8 rounded-3xl bg-white p-6 text-slate-900 shadow-2xl sm:p-8">
               {status === 'success' ? (
-                <div className="py-10 text-center"><CheckCircle2 className="mx-auto h-14 w-14 text-emerald-500" /><h2 className="mt-5 text-2xl font-black">You’re on the list.</h2><p className="mt-3 leading-7 text-slate-600">We’ll contact you with the next workshop date, venue and registration details.</p></div>
+                <div className="py-10 text-center"><CheckCircle2 className="mx-auto h-14 w-14 text-emerald-500" /><h2 className="mt-5 text-2xl font-black">You’re registered.</h2><p className="mt-3 leading-7 text-slate-600">We’ll contact you with confirmation details for 16 September at Hotel Boss.</p></div>
               ) : (
                 <>
                   <div className="flex items-center gap-2 font-bold text-cyan-700"><Sparkles className="h-5 w-5" /> Workshop registration</div>
-                  <h2 className="mt-3 text-3xl font-black tracking-tight">Reserve your interest</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">Complete the short form and we’ll send the next available workshop details.</p>
+                  <h2 className="mt-3 text-3xl font-black tracking-tight">Register your seat</h2>
+                  <div className="mt-4 space-y-2 rounded-2xl bg-cyan-50 p-4 text-sm text-slate-700">
+                    <p className="flex gap-2"><CalendarDays className="h-5 w-5 shrink-0 text-cyan-700" /><strong>16 September, 12:30pm–2:30pm</strong></p>
+                    <p className="flex gap-2"><MapPin className="h-5 w-5 shrink-0 text-cyan-700" /><span><strong>Hotel Boss, Level 4</strong><br />500 Jalan Sultan Road, Singapore</span></p>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-600">Complete the short form to register for this workshop.</p>
                   <form onSubmit={handleSubmit} className="mt-7 space-y-4">
                     <label className="block text-sm font-bold">Full name<input required autoComplete="name" value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 font-normal outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100" /></label>
                     <label className="block text-sm font-bold">Work email<input required type="email" autoComplete="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 font-normal outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100" /></label>
