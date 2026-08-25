@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, CalendarDays, Check, CheckCircle2, Clock3, Laptop, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
+import Footer from '../components/home/Footer';
 import { submitLeadCapture } from '../services/leadCaptureService';
 import { getVisitorContext } from '../services/visitorSession';
 
@@ -170,7 +171,7 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
             </div>
           </aside>
         </section>
-        <footer className="border-t border-white/10 px-5 py-8 text-center text-sm text-slate-500">Practical AI training for non-technical professionals · Nexius Academy</footer>
+        <Footer />
       </main>
     </>
   );
