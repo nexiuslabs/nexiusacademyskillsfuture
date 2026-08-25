@@ -454,6 +454,28 @@ const routes = [
     articleDate: '2026-05-29',
   },
   {
+    path: '/workshops/linkedin-ai-agent',
+    lastmod: '2026-08-25',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Build Your Own LinkedIn AI Agent Workshop | Nexius Academy',
+    description:
+      'A hands-on, no-code workshop for professionals who want a practical LinkedIn content copilot they control. Bring a laptop and leave with a reusable agent.',
+    ogType: 'website',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      pageSchema({
+        name: 'Build Your Own LinkedIn AI Agent Workshop',
+        description:
+          'A two-hour hands-on workshop for professionals to build a reusable LinkedIn research, drafting, and review agent without coding.',
+        url: `${SITE_URL}/workshops/linkedin-ai-agent/`,
+        image: COURSE_IMAGE,
+        type: 'WebPage',
+      }),
+    ],
+  },
+  {
     path: '/courses/agentic-ai',
     lastmod: '2026-07-26',
     priority: '0.9',
