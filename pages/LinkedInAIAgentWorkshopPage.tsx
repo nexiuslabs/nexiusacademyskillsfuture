@@ -95,6 +95,9 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
                   <Laptop className="mt-0.5 h-6 w-6 shrink-0 text-amber-300" />
                   <p><strong className="text-amber-300">Bring a laptop.</strong> Leave with a working agent you can reuse.</p>
                 </div>
+                <p className="mt-5 max-w-2xl text-sm leading-6 text-slate-400">
+                  Workshop admission is complimentary. Lunch is not included and will be at each participant’s own expense.
+                </p>
                 <div className="mt-10 flex flex-wrap gap-3 text-sm text-slate-300">
                   <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><CalendarDays className="h-4 w-4 text-cyan-300" /> 16 September</span>
                   <span className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2"><Clock3 className="h-4 w-4 text-cyan-300" /> 12:30pm–2:30pm</span>
@@ -142,6 +145,7 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
                   <div className="mt-4 space-y-2 rounded-2xl bg-cyan-50 p-4 text-sm text-slate-700">
                     <p className="flex gap-2"><CalendarDays className="h-5 w-5 shrink-0 text-cyan-700" /><strong>16 September, 12:30pm–2:30pm</strong></p>
                     <p className="flex gap-2"><MapPin className="h-5 w-5 shrink-0 text-cyan-700" /><span><strong>Hotel Boss, Level 4</strong><br />500 Jalan Sultan Road, Singapore</span></p>
+                    <p className="border-t border-cyan-200 pt-3 leading-6"><strong>Complimentary admission.</strong> Lunch is not included and will be at each participant’s own expense.</p>
                   </div>
                   <p className="mt-4 text-sm leading-6 text-slate-600">Complete the short form to register for this workshop.</p>
                   <form onSubmit={handleSubmit} className="mt-7 space-y-4">
