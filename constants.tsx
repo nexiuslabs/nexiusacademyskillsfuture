@@ -54,7 +54,7 @@ export const SCHEDULES: ScheduleItem[] = [
     dates: '09 Oct 2026 & 16 Oct 2026',
     time: '9:00am - 5:00pm',
     format: 'In-Person',
-    venue: 'Venue to be confirmed',
+    venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
     slotsLeft: 1,
     month: 'Oct 2026',
     registrationCloses: 'TBC',
