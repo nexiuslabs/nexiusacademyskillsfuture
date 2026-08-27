@@ -55,11 +55,10 @@ export const SCHEDULES: ScheduleItem[] = [
     time: '9:00am - 5:00pm',
     format: 'In-Person',
     venue: 'Venue to be confirmed',
-    slotsLeft: 0,
+    slotsLeft: 1,
     month: 'Oct 2026',
     registrationCloses: 'TBC',
-    interestOnly: true,
-    cohortCode: '2026-10-09-interest',
+    cohortCode: '2026-10-09',
   },
   {
     type: 'Weekday',

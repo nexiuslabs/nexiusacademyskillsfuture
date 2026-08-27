@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SCHEDULES } from '../../constants';
 import { MapPin, Clock, Users } from 'lucide-react';
-import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
+import { openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
@@ -116,9 +116,13 @@ const Schedule: React.FC = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        openRegisterInterestModal('course_page_cta', {
+                        openLeadModal('course_page_cta', 'reserve_seat', {
                           page: '/courses/agentic-ai',
-                          position: 'schedule_register_interest_button',
+                          position: `schedule_${schedule.month.toLowerCase().replace(' ', '_')}_apply_now_button`,
+                          ctaLabel: `apply_now_${schedule.cohortCode || schedule.month.toLowerCase().replace(' ', '_')}`,
+                          preferredIntake: `${schedule.dates} (${schedule.time.replace(/:00/g, '').replace(' - ', '-')})`,
+                          cohortCode: schedule.cohortCode,
+                          courseSlug: 'agentic-ai',
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
