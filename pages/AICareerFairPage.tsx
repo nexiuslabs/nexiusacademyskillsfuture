@@ -179,12 +179,16 @@ const AICareerFairPage: React.FC = () => {
                 practical next step for your target role.
               </p>
               <div className="mt-6 rounded-xl bg-purple-50 p-5 text-sm leading-6 text-primary">
-                <ShieldCheck className="mb-2 text-secondary" />
-                <strong>
-                  Choose a suitable time directly in the booking calendar.
-                </strong>{" "}
-                Your meeting is confirmed only after you complete the Outlook
-                booking process.
+                <div className="flex items-center gap-3">
+                  <ShieldCheck className="shrink-0 text-secondary" />
+                  <strong>
+                    Choose a suitable time directly in the booking calendar.
+                  </strong>
+                </div>
+                <p className="mt-3">
+                  Your meeting is confirmed only after you complete the Outlook
+                  booking process.
+                </p>
               </div>
             </div>
             <form

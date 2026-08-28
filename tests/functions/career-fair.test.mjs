@@ -45,6 +45,8 @@ test('requires name, valid email and an eight-digit Singapore phone to unlock bo
   assert.match(page, /intent: "advisory_call"/);
   assert.match(page, /consultation_lead_captured/);
   assert.doesNotMatch(page, /These details stay on this page/);
+  assert.match(page, /className="flex items-center gap-3"/);
+  assert.match(page, /<p className="mt-3">/);
   assert.match(page, /rQlRqMpqtECRRRNfXW-T9A2/);
   for (const removed of ['Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
 });
