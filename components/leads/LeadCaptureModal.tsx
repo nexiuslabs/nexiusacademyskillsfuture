@@ -140,6 +140,7 @@ const LeadCaptureModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [leadReference, setLeadReference] = useState<string | null>(null);
   const [hasStartedForm, setHasStartedForm] = useState(false);
   const [registrationStep, setRegistrationStep] = useState<1 | 2>(1);
   const [isPayerTypeLocked, setIsPayerTypeLocked] = useState(false);
@@ -220,6 +221,7 @@ const LeadCaptureModal: React.FC = () => {
     });
     setIsOpen(false);
     setIsSubmitting(false);
+    setLeadReference(null);
   };
 
   const resetCourseFields = () => {
@@ -287,6 +289,7 @@ const LeadCaptureModal: React.FC = () => {
       }));
       resetCourseFields();
       setIsSubmitted(false);
+      setLeadReference(null);
       setHasStartedForm(false);
       setRegistrationStep(1);
       setIsOpen(true);
@@ -333,6 +336,7 @@ const LeadCaptureModal: React.FC = () => {
         cohortCode: requestedCohort.code,
       }));
       setIsSubmitted(false);
+      setLeadReference(null);
       setHasStartedForm(false);
       setRegistrationStep(1);
       setIsOpen(true);
@@ -367,7 +371,7 @@ const LeadCaptureModal: React.FC = () => {
     const visitorContext = getVisitorContext();
 
     try {
-      await submitLeadCapture({
+      const captureResult = await submitLeadCapture({
         ...formState,
         phone: isChecklistFlow ? '' : formState.phone,
         ...(isChecklistFlow
@@ -400,6 +404,7 @@ const LeadCaptureModal: React.FC = () => {
         utmContent: visitorContext?.utmContent,
         deviceType: visitorContext?.deviceType,
       });
+      setLeadReference(captureResult.reference);
 
       trackLeadFormSubmit({
         sourceTag,
@@ -498,9 +503,8 @@ const LeadCaptureModal: React.FC = () => {
       ? 'Continue to Sponsor Details'
       : 'Continue to Payer Mode';
 
-  const whatsappHref = isAdvisoryFlow
-    ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20just%20submitted%20a%20team%20training%20enquiry%20and%20want%20to%20discuss%20a%20dedicated%20company%20class.'
-    : 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20just%20submitted%20the%20subsidy%20form%20and%20want%20to%20confirm%20my%20best%20intake.';
+  const whatsappMessage = `Hi Cariah, I submitted a website enquiry. Reference: ${leadReference || ''}`;
+  const whatsappHref = `https://wa.me/6596615284?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/45 px-4 py-6">
@@ -1067,7 +1071,7 @@ const LeadCaptureModal: React.FC = () => {
                   Your enquiry has been submitted. Our team will contact you to discuss the most suitable dedicated-company class setup.
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
-                  If you want to move faster, message Cariah directly on WhatsApp.
+                  Please keep the reference in your message so Cariah can locate your enquiry.
                 </p>
               </>
             ) : isChecklistFlow ? (
@@ -1122,15 +1126,10 @@ const LeadCaptureModal: React.FC = () => {
                     Once that is done, our team will follow up with the next registration step. You do not need to forward the registration link yourself.
                   </p>
                 </div>
+                <p className="mb-5 text-sm text-gray-600">
+                  Please keep the reference in your message so Cariah can locate your enquiry.
+                </p>
                 <div className="flex flex-wrap gap-3">
-                  <a
-                    href="https://wa.me/6596615284"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
-                  >
-                    WhatsApp Cariah <ArrowRight size={16} />
-                  </a>
                   <button
                     type="button"
                     onClick={closeModal}
@@ -1147,12 +1146,12 @@ const LeadCaptureModal: React.FC = () => {
                   Your registration request is in. Your estimated net fee is <strong>{estimate.amount}</strong>, and our team will contact you with the best intake and eligibility guidance.
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
-                  Next best action: message Cariah directly for immediate advice.
+                  Please keep the reference in your message so Cariah can locate your enquiry.
                 </p>
               </>
             )}
 
-            {!isChecklistFlow && !isCompanySponsored ? (
+            {!isChecklistFlow && leadReference ? (
               <a
                 href={whatsappHref}
                 target="_blank"
@@ -1166,7 +1165,7 @@ const LeadCaptureModal: React.FC = () => {
                 }
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white"
               >
-                Continue on WhatsApp <ArrowRight size={16} />
+                Continue your enquiry on WhatsApp <ArrowRight size={16} />
               </a>
             ) : null}
           </div>

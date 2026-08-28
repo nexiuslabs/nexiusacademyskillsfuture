@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { generateLeadReference } from '../_shared/lead-reference.mjs';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -243,13 +244,35 @@ Deno.serve(async (req) => {
       sponsor_status: payload.sponsorStatus,
     };
 
-    let { data: insertedLead, error } = await supabase.from('lead_captures').insert(insertPayload).select('id').single();
+    const referenceIssuedAt = new Date();
+    const referenceExpiresAt = new Date(referenceIssuedAt.getTime() + 30 * 24 * 60 * 60 * 1000);
+    let reference = generateLeadReference();
+    const withReference = <T extends Record<string, unknown>>(lead: T) => ({
+      ...lead,
+      lead_reference_identifier: reference,
+      lead_reference_issued_at: referenceIssuedAt.toISOString(),
+      lead_reference_expires_at: referenceExpiresAt.toISOString(),
+    });
+    let { data: insertedLead, error } = await supabase
+      .from('lead_captures')
+      .insert(withReference(insertPayload))
+      .select('id')
+      .single();
+
+    if (error?.code === '23505' && (error.message || '').includes('lead_reference')) {
+      reference = generateLeadReference();
+      ({ data: insertedLead, error } = await supabase
+        .from('lead_captures')
+        .insert(withReference(insertPayload))
+        .select('id')
+        .single());
+    }
 
     if (error && isMissingAttributionColumnError(error.message || '')) {
       const { visitor_id, session_id, landing_path, entry_referrer, lead_source, utm_source, utm_medium, utm_campaign, utm_content, device_type, ...payloadWithoutAttribution } = insertPayload;
       ({ data: insertedLead, error } = await supabase
         .from('lead_captures')
-        .insert(payloadWithoutAttribution)
+        .insert(withReference(payloadWithoutAttribution))
         .select('id')
         .single());
     }
@@ -272,7 +295,7 @@ Deno.serve(async (req) => {
         page_path: payload.pagePath,
       };
 
-      ({ data: insertedLead, error } = await supabase.from('lead_captures').insert(legacyPayload).select('id').single());
+      ({ data: insertedLead, error } = await supabase.from('lead_captures').insert(withReference(legacyPayload)).select('id').single());
     }
 
     if (error) {
@@ -290,7 +313,7 @@ Deno.serve(async (req) => {
       await sendSponsorRequestEmail(payload);
     }
 
-    return new Response(JSON.stringify({ ok: true }), {
+    return new Response(JSON.stringify({ ok: true, reference, expiresAt: referenceExpiresAt.toISOString() }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
