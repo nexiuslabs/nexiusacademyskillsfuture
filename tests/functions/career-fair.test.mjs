@@ -7,12 +7,16 @@ const service = fs.readFileSync(new URL('../../services/careerFairService.ts', i
 const fn = fs.readFileSync(new URL('../../supabase/functions/capture-career-fair-lead/index.ts', import.meta.url), 'utf8');
 const migration = fs.readFileSync(new URL('../../supabase/migrations/20260828103000_create_career_fair_applications.sql', import.meta.url), 'utf8');
 
-test('publishes approved tracks, self-check, course facts, and downloadable starter pack', () => {
-  for (const phrase of ['Accounting & Finance','Business Operations','Career & Portfolio','Explorer','Collaborator','Workflow Builder','18 & 25 September 2026','9 & 16 October 2026','/downloads/ai-career-starter-pack.pdf']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
+test('publishes self-check and course facts without the removed pathway section', () => {
+  for (const phrase of ['Explorer','Collaborator','Workflow Builder','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
+  assert.doesNotMatch(page, /Choose your pathway/);
 });
-test('keeps service, marketing and WhatsApp consent separate and unchecked', () => {
-  assert.match(page, /serviceConsent: false, marketingConsent: false, whatsappConsent: false/);
-  assert.match(migration, /'service'.*'marketing'.*'whatsapp'/s);
+test('uses only name and phone to unlock the approved booking URL', () => {
+  assert.match(page, /label="Name"/);
+  assert.match(page, /label="Phone number"/);
+  assert.match(page, /bookingReady/);
+  assert.match(page, /rQlRqMpqtECRRRNfXW-T9A2/);
+  for (const removed of ['Email address','Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
 });
 test('validates client and server fields and uses atomic idempotent persistence', () => {
   for (const field of ['firstName','email','phone','track','targetRole','taskToImprove','aiLevel','cohortInterest','consultationWindow','serviceConsent']) { assert.match(service, new RegExp(field)); assert.match(fn, new RegExp(field)); }

@@ -27,8 +27,8 @@ test('personalisation stays client-side and analytics contain enums only', () =>
   assert.match(analytics, /task_count/);
 });
 
-test('keeps a generic PDF fallback for visitors who skip the check', () => {
-  assert.match(assessment, /Prefer not to complete the check/);
-  assert.match(assessment, /generateGeneric/);
-  assert.match(assessment, /generic_action_kit_downloaded/);
+test('requires the personalised check and removes the generic kit shortcut', () => {
+  assert.doesNotMatch(assessment, /Prefer not to complete the check/);
+  assert.doesNotMatch(assessment, /generateGeneric/);
+  assert.doesNotMatch(assessment, /generic_action_kit_downloaded/);
 });
