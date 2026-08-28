@@ -8,7 +8,7 @@ export interface LeadCapturePayload {
   companyName: string;
   departmentOrDesignation: string;
   leadFlow: 'apply_now' | 'subsidy_fit' | 'advisory_call' | 'checklist_download' | 'company_sponsorship';
-  ageBand: 'below_40' | '40_and_above';
+  ageBand: 'below_40' | '40_and_above' | 'not_provided';
   preferredIntake: string;
   cohortCode: string;
   courseSlug: string;

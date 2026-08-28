@@ -5,6 +5,8 @@ import Footer from "../components/home/Footer";
 import SEO from "../components/SEO";
 import WorkplaceGapTest from "../components/career/WorkplaceGapTest";
 import { trackEvent } from "../services/analytics";
+import { submitLeadCapture } from "../services/leadCaptureService";
+import { getVisitorContext } from "../services/visitorSession";
 
 const capabilities = [
   "Problem framing",
@@ -24,10 +26,38 @@ const AICareerFairPage: React.FC = () => {
   const [bookingName, setBookingName] = useState("");
   const [bookingEmail, setBookingEmail] = useState("");
   const [bookingPhone, setBookingPhone] = useState("");
+  const [bookingBusy, setBookingBusy] = useState(false);
+  const [bookingSaved, setBookingSaved] = useState(false);
+  const [bookingError, setBookingError] = useState("");
   const bookingReady =
     bookingName.trim().length >= 2 &&
     validEmail(bookingEmail) &&
     validPhone(bookingPhone);
+  const submitBookingLead = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!bookingReady || bookingBusy) return;
+    if (bookingSaved) { window.location.assign(bookingUrl); return; }
+    setBookingBusy(true);
+    setBookingError("");
+    try {
+      const context = getVisitorContext();
+      await submitLeadCapture({
+        fullName: bookingName.trim(), email: bookingEmail.trim().toLowerCase(), phone: bookingPhone.replace(/[\s().-]/g, ""),
+        role: "Not provided", companyName: "", departmentOrDesignation: "", leadFlow: "advisory_call", ageBand: "not_provided",
+        preferredIntake: "15-minute AI career consultation", cohortCode: "not_applicable", courseSlug: "ai-career", intent: "advisory_call",
+        payerType: "self", sponsorContactName: "", sponsorContactEmail: "", sponsorStatus: "not_applicable",
+        sourceTag: "ai-career-consultation", pagePath: "/ai-career/", visitorId: context?.visitorId, sessionId: context?.sessionId,
+        landingPath: context?.landingPath, referrer: context?.referrer, leadSource: context?.leadSource || "ai-career-consultation",
+        utmSource: context?.utmSource, utmMedium: context?.utmMedium, utmCampaign: context?.utmCampaign, utmContent: context?.utmContent,
+        deviceType: context?.deviceType,
+      });
+      setBookingSaved(true);
+      trackEvent("consultation_lead_captured", { campaign: "career_fair_2026", source: "booth_qr" });
+      window.location.assign(bookingUrl);
+    } catch {
+      setBookingError("We could not save your details. Please try again before opening the booking calendar.");
+    } finally { setBookingBusy(false); }
+  };
 
   return (
     <div className="min-h-screen bg-[#f7f8fc] text-gray-800">
@@ -158,7 +188,7 @@ const AICareerFairPage: React.FC = () => {
               </div>
             </div>
             <form
-              onSubmit={(event) => event.preventDefault()}
+              onSubmit={submitBookingLead}
               className="rounded-2xl bg-white p-6 shadow-xl md:p-8"
             >
               <div className="grid gap-5">
@@ -192,30 +222,14 @@ const AICareerFairPage: React.FC = () => {
                   ? "You can now open the booking calendar."
                   : "Enter your name, a valid email address and a +65 phone number with 8 digits to enable booking."}
               </p>
-              <a
-                href={bookingReady ? bookingUrl : undefined}
-                target={bookingReady ? "_blank" : undefined}
-                rel={bookingReady ? "noreferrer" : undefined}
-                aria-disabled={!bookingReady}
-                tabIndex={bookingReady ? 0 : -1}
-                onClick={
-                  bookingReady
-                    ? () =>
-                        trackEvent("consultation_booking_opened", {
-                          campaign: "career_fair_2026",
-                          source: "booth_qr",
-                        })
-                    : (event) => event.preventDefault()
-                }
-                className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-lg px-6 py-3 font-bold text-white shadow-lg ${bookingReady ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
+              {bookingError && <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">{bookingError}</p>}
+              <button
+                type="submit"
+                disabled={!bookingReady || bookingBusy}
+                className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-lg px-6 py-3 font-bold text-white shadow-lg ${bookingReady && !bookingBusy ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
               >
-                Book this meeting
-              </a>
-              <p className="mt-4 text-xs leading-5 text-gray-500">
-                These details stay on this page and are not submitted by Nexius
-                Academy. Enter them again if requested in the Microsoft booking
-                form.
-              </p>
+                {bookingBusy ? "Saving details…" : "Book this meeting"}
+              </button>
             </form>
           </div>
         </section>
