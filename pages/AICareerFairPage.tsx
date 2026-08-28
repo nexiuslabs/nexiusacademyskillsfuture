@@ -16,13 +16,18 @@ const capabilities = [
 const bookingUrl =
   "https://outlook.office.com/bookwithme/user/1a3b3c1b65044d24b6cddcc6b42c8ecb@nexiuslabs.com/meetingtype/rQlRqMpqtECRRRNfXW-T9A2?anonymous&ismsaljsauthenabled&ep=mlink";
 const validPhone = (value: string) =>
-  /^\+?[0-9]{7,15}$/.test(value.replace(/[\s().-]/g, ""));
+  /^\+65[0-9]{8}$/.test(value.replace(/[\s().-]/g, ""));
+const validEmail = (value: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
 
 const AICareerFairPage: React.FC = () => {
   const [bookingName, setBookingName] = useState("");
+  const [bookingEmail, setBookingEmail] = useState("");
   const [bookingPhone, setBookingPhone] = useState("");
   const bookingReady =
-    bookingName.trim().length >= 2 && validPhone(bookingPhone);
+    bookingName.trim().length >= 2 &&
+    validEmail(bookingEmail) &&
+    validPhone(bookingPhone);
 
   return (
     <div className="min-h-screen bg-[#f7f8fc] text-gray-800">
@@ -164,18 +169,28 @@ const AICareerFairPage: React.FC = () => {
                   autoComplete="name"
                 />
                 <Field
+                  label="Email address"
+                  type="email"
+                  value={bookingEmail}
+                  onChange={setBookingEmail}
+                  autoComplete="email"
+                  invalid={bookingEmail.length > 0 && !validEmail(bookingEmail)}
+                  hint="Enter a valid email address, for example name@example.com"
+                />
+                <Field
                   label="Phone number"
                   type="tel"
                   value={bookingPhone}
                   onChange={setBookingPhone}
                   autoComplete="tel"
-                  hint="Include country code, for example +65 …"
+                  invalid={bookingPhone.length > 0 && !validPhone(bookingPhone)}
+                  hint="Use +65 followed by exactly 8 digits, for example +65 8123 4567"
                 />
               </div>
               <p className="mt-5 text-sm text-gray-600" aria-live="polite">
                 {bookingReady
                   ? "You can now open the booking calendar."
-                  : "Enter your name and a valid phone number to enable booking."}
+                  : "Enter your name, a valid email address and a +65 phone number with 8 digits to enable booking."}
               </p>
               <a
                 href={bookingReady ? bookingUrl : undefined}
@@ -265,6 +280,7 @@ function Field({
   type = "text",
   autoComplete,
   hint,
+  invalid = false,
 }: {
   label: string;
   value: string;
@@ -272,6 +288,7 @@ function Field({
   type?: string;
   autoComplete?: string;
   hint?: string;
+  invalid?: boolean;
 }) {
   return (
     <label className="block font-semibold text-primary">
@@ -281,8 +298,9 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        autoComplete={autoComplete}
-        required
+          autoComplete={autoComplete}
+          aria-invalid={invalid}
+          required
       />
       {hint && (
         <span className="mt-1 block text-xs font-normal text-gray-500">

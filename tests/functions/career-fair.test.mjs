@@ -33,12 +33,15 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.match(page, /Start gap test/);
   assert.match(page, /Book consultation/);
 });
-test('uses only name and phone to unlock the approved booking URL', () => {
+test('requires name, valid email and an eight-digit Singapore phone to unlock booking', () => {
   assert.match(page, /label="Name"/);
+  assert.match(page, /label="Email address"/);
   assert.match(page, /label="Phone number"/);
+  assert.match(page, /validEmail/);
+  assert.match(page, /\^\\\+65\[0-9\]\{8\}\$/);
   assert.match(page, /bookingReady/);
   assert.match(page, /rQlRqMpqtECRRRNfXW-T9A2/);
-  for (const removed of ['Email address','Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
+  for (const removed of ['Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
 });
 test('validates client and server fields and uses atomic idempotent persistence', () => {
   for (const field of ['firstName','email','phone','track','targetRole','taskToImprove','aiLevel','cohortInterest','consultationWindow','serviceConsent']) { assert.match(service, new RegExp(field)); assert.match(fn, new RegExp(field)); }
