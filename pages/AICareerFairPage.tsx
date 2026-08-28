@@ -45,7 +45,11 @@ const AICareerFairPage: React.FC = () => {
     try { const response = await submitCareerFairApplication(form); setStatus(response.duplicate ? 'duplicate' : response.outcome); trackEvent('consultation_submitted', { track, capacity_state: response.outcome, cohort_interest: form.cohortInterest, campaign: 'career_fair_2026', source: 'booth_qr' }); }
     catch (error) { setStatus('idle'); setFailure(error instanceof Error ? error.message : 'We could not confirm your application yet. Please try again.'); }
   };
-  const openPack = () => trackEvent('starter_pack_opened', { track, campaign: 'career_fair_2026', source: 'booth_qr' });
+  const openPack = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    document.getElementById('action-kit')?.scrollIntoView({ behavior: 'smooth' });
+    trackEvent('action_kit_builder_reopened', { track, campaign: 'career_fair_2026', source: 'booth_qr' });
+  };
 
   return <div className="min-h-screen bg-[#f7f8fc] text-gray-800"><SEO title="Free AI Career Starter Pack | Nexius Academy" description="Choose an AI career pathway, check your AI work level, open the free Starter Pack and apply for a founder-reviewed consultation." canonical="/ai-career" /><Navbar />
     <main>
