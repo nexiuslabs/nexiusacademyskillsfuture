@@ -498,6 +498,28 @@ const routes = [
     ],
   },
   {
+    path: '/ai-career',
+    lastmod: '2026-08-28',
+    priority: '0.9',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Free AI Career Starter Pack | Nexius Academy',
+    description:
+      'Choose an AI career pathway, check your AI work level, open the free Starter Pack and apply for a founder-reviewed consultation.',
+    ogType: 'website',
+    ogImage: COURSE_IMAGE,
+    schemas: [
+      pageSchema({
+        name: 'AI Career Starter Pack and Consultation',
+        description:
+          'A free career-fair resource for applied AI pathways, self-assessment, a 30-day plan and founder-reviewed consultation applications.',
+        url: `${SITE_URL}/ai-career/`,
+        image: COURSE_IMAGE,
+        type: 'WebPage',
+      }),
+    ],
+  },
+  {
     path: '/courses/agentic-ai',
     lastmod: '2026-07-26',
     priority: '0.9',
