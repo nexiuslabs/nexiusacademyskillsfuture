@@ -18,6 +18,8 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.match(page, /lg:object-contain/);
   assert.match(page, /lg:object-right/);
   assert.doesNotMatch(page, /lg:object-cover/);
+  assert.match(page, /transparent_58%/);
+  assert.doesNotMatch(page, /via-\[#001827\]\/95/);
   assert.match(page, />Build my kit </);
   assert.match(page, />Check my readiness</);
 });
