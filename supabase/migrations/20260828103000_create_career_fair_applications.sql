@@ -33,7 +33,7 @@ create or replace function public.submit_career_fair_application(
 ) returns jsonb language plpgsql security definer set search_path=public as $$
 declare v_existing public.career_fair_applications%rowtype; v_app public.career_fair_applications%rowtype; v_count integer; v_status text; v_now timestamptz:=now();
 begin
-  if not p_service_consent or p_privacy_version <> 'career-fair-2026-08-28' or p_capacity < 0 then raise exception 'invalid request'; end if;
+  if not p_service_consent or p_privacy_version <> 'career-fair-2026-08-28' or coalesce(p_capacity,0) < 0 then raise exception 'invalid request'; end if;
   select * into v_existing from public.career_fair_applications where idempotency_key=p_idempotency_key;
   if v_existing.id is not null then return jsonb_build_object('stored',true,'duplicate',true,'outcome',v_existing.status,'submissionId',v_existing.id); end if;
   insert into public.career_fair_rate_limits as r(rate_limit_hash,window_started_at,request_count) values(p_rate_limit_hash,v_now,1)
@@ -43,7 +43,7 @@ begin
   if v_existing.id is not null then return jsonb_build_object('stored',true,'duplicate',true,'outcome',v_existing.status,'submissionId',v_existing.id); end if;
   perform pg_advisory_xact_lock(hashtextextended('career-fair-consultation-capacity',0));
   select count(*) into v_count from public.career_fair_applications where status in ('consultation_review','contacted','booked','completed');
-  v_status:=case when v_count<p_capacity then 'consultation_review' else 'waitlisted' end;
+  v_status:=case when p_capacity is null or v_count<p_capacity then 'consultation_review' else 'waitlisted' end;
   insert into public.career_fair_applications(idempotency_key,contact_hash,first_name,email,phone,track,target_role,task_to_improve,ai_level,ai_concern,cohort_interest,consultation_window,status)
     values(p_idempotency_key,p_contact_hash,p_first_name,p_email,p_phone,p_track,p_target_role,p_task_to_improve,p_ai_level,nullif(p_ai_concern,''),p_cohort_interest,p_consultation_window,v_status) returning * into v_app;
   insert into public.career_fair_consents(application_id,consent_type,consent_value,consented_at,policy_version,campaign,source) values

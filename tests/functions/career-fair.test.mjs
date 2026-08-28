@@ -19,6 +19,7 @@ test('validates client and server fields and uses atomic idempotent persistence'
   assert.match(migration, /idempotency_key uuid not null unique/);
   assert.match(migration, /pg_advisory_xact_lock/);
   assert.match(migration, /created_at>=v_now-interval '24 hours'/);
+  assert.match(migration, /p_capacity is null or v_count<p_capacity/);
 });
 test('analytics include only approved enums and exclude form PII', () => {
   const analyticsCalls = [...page.matchAll(/trackEvent\(([^;]+)\);/gs)].map(match => match[1]).join('\n');

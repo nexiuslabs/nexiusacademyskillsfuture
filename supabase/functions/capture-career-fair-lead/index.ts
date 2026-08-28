@@ -29,7 +29,8 @@ Deno.serve(async req => {
     if (invalid) return json({ error: 'Check the highlighted fields. Your application has not been submitted.' }, 400);
     const url = Deno.env.get('SUPABASE_URL'); const roleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'); const abuseKey = Deno.env.get('CAREER_FAIR_ABUSE_KEY');
     if (!url || !roleKey || !abuseKey) throw new Error('Career fair service is not configured');
-    const capacity = Number(Deno.env.get('CAREER_FAIR_CONSULTATION_CAPACITY') || '0');
+    const capacityValue = Deno.env.get('CAREER_FAIR_CONSULTATION_CAPACITY');
+    const capacity = capacityValue === undefined || capacityValue === '' ? null : Number(capacityValue);
     const caller = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     const [contactHash, rateHash] = await Promise.all([hmac(`career-fair:contact:${data.email}`, abuseKey), hmac(`career-fair:caller:${caller}`, abuseKey)]);
     const supabase = createClient(url, roleKey, { auth: { persistSession: false } });
@@ -37,7 +38,7 @@ Deno.serve(async req => {
       p_idempotency_key: data.idempotencyKey, p_contact_hash: contactHash, p_rate_limit_hash: rateHash, p_first_name: data.firstName, p_email: data.email, p_phone: data.phone,
       p_track: data.track, p_target_role: data.targetRole, p_task_to_improve: data.taskToImprove, p_ai_level: data.aiLevel, p_ai_concern: data.aiConcern || null,
       p_cohort_interest: data.cohortInterest, p_consultation_window: data.consultationWindow, p_service_consent: data.serviceConsent, p_marketing_consent: data.marketingConsent,
-      p_whatsapp_consent: data.whatsappConsent, p_privacy_version: data.privacyVersion, p_capacity: Number.isInteger(capacity) && capacity >= 0 ? capacity : 0,
+      p_whatsapp_consent: data.whatsappConsent, p_privacy_version: data.privacyVersion, p_capacity: capacity === null ? null : Number.isInteger(capacity) && capacity >= 0 ? capacity : null,
     });
     if (error) throw error;
     if (result?.rateLimited) return json({ error: 'Too many attempts. Please wait and try again.' }, 429);
