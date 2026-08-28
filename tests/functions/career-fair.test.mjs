@@ -10,8 +10,11 @@ const migration = fs.readFileSync(new URL('../../supabase/migrations/20260828103
 
 test('publishes the three-minute scenario diagnostic and course facts without the removed pathway section', () => {
   for (const phrase of ['3-minute gap test','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
-  for (const phrase of ['Free 3-minute diagnostic','Framing the work','Handling sensitive information','Handling failure cases','Building portfolio evidence','Nexius benchmark','Demonstrated judgment','Retake the test']) assert.match(gapTest, new RegExp(phrase));
+  for (const phrase of ['Free 3-minute diagnostic','A number does not match','The useful file contains sensitive data','The automation stops halfway','Put the work in order','Evidence of practice','Confidence calibration','AI-aware','Applied foundation','Workflow practitioner','Workplace-proven','Retake the test']) assert.match(gapTest, new RegExp(phrase));
   assert.match(gapTest, /Math\.random/);
+  assert.match(gapTest, /seconds <= 180 \? 1 : seconds <= 240 \? 0\.5 : seconds <= 300 \? 0\.3 : 0\.1/);
+  assert.match(gapTest, /role="timer"/);
+  assert.match(gapTest, /relationScore/);
   assert.match(gapTest, /resultRef\.current\?\.scrollIntoView/);
   assert.doesNotMatch(page, /Two-minute self-check/);
   assert.doesNotMatch(page, /<ActionKitAssessment/);
