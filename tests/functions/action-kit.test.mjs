@@ -6,8 +6,9 @@ const page = fs.readFileSync(new URL('../../pages/AICareerFairPage.tsx', import.
 const assessment = fs.readFileSync(new URL('../../components/career/ActionKitAssessment.tsx', import.meta.url), 'utf8');
 const pdf = fs.readFileSync(new URL('../../services/actionKitPdf.ts', import.meta.url), 'utf8');
 
-test('makes the personalised Tech or Accountancy Action Kit the primary CTA', () => {
-  assert.match(page, /Build my kit/);
+test('keeps the Action Kit implementation available while hiding it from this page', () => {
+  assert.doesNotMatch(page, /Build my kit/);
+  assert.doesNotMatch(page, /<ActionKitAssessment/);
   assert.match(page, /AI changes tasks before it changes job titles/);
   assert.match(assessment, /Complete the check to download your personalised AI Career Readiness Action Kit/);
   assert.match(assessment, /\['tech','accountancy'\]/);

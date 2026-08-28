@@ -12,7 +12,10 @@ test('publishes the three-minute scenario diagnostic and course facts without th
   for (const phrase of ['3-minute gap test','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
   for (const phrase of ['Free 3-minute diagnostic','Framing the work','Handling sensitive information','Handling failure cases','Building portfolio evidence','Nexius benchmark','Demonstrated judgment','Retake the test']) assert.match(gapTest, new RegExp(phrase));
   assert.match(gapTest, /Math\.random/);
+  assert.match(gapTest, /resultRef\.current\?\.scrollIntoView/);
   assert.doesNotMatch(page, /Two-minute self-check/);
+  assert.doesNotMatch(page, /<ActionKitAssessment/);
+  assert.doesNotMatch(page, /Build the Action Kit you will actually use/);
   assert.doesNotMatch(page, /Choose your pathway/);
 });
 test('uses the supplied career artwork and matching hero background', () => {
@@ -24,8 +27,8 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.doesNotMatch(page, /lg:object-cover/);
   assert.match(page, /transparent_58%/);
   assert.doesNotMatch(page, /via-\[#001827\]\/95/);
-  assert.match(page, />Build my kit </);
-  assert.match(page, />Check my readiness</);
+  assert.match(page, /Start gap test/);
+  assert.match(page, /Book consultation/);
 });
 test('uses only name and phone to unlock the approved booking URL', () => {
   assert.match(page, /label="Name"/);
