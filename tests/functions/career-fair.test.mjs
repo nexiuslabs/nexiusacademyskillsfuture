@@ -15,6 +15,8 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.match(page, /\/images\/career\/ai-career-readiness-hero\.jpg/);
   assert.match(page, /bg-\[#001827\]/);
   assert.match(page, /loading="eager"/);
+  assert.match(page, /lg:object-contain/);
+  assert.doesNotMatch(page, /lg:object-cover/);
 });
 test('uses only name and phone to unlock the approved booking URL', () => {
   assert.match(page, /label="Name"/);
