@@ -1,31 +1,22 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ArrowRight, Check, ShieldCheck } from 'lucide-react';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import SEO from '../components/SEO';
 import ActionKitAssessment from '../components/career/ActionKitAssessment';
+import WorkplaceGapTest from '../components/career/WorkplaceGapTest';
+import { ActionKitAnswers } from '../services/actionKitPdf';
 import { trackEvent } from '../services/analytics';
-
-const levels = [
-  { id: 'explorer', label: 'Explorer', result: 'You are building safe AI foundations.', guidance: 'Focus on task framing, structured requests, data boundaries and a simple review checklist.', artifact: 'A tested instruction-and-review card for one recurring task.', statements: ['I can describe a work problem clearly.', 'I know AI output can be wrong.', 'I avoid confidential and personal data.', 'I can compare and improve two outputs.'] },
-  { id: 'collaborator', label: 'Collaborator', result: 'You are ready to move from prompting to workflow design.', guidance: 'Make steps, handoffs, checks and human decisions visible so the result is repeatable.', artifact: 'A before/after process map with a verification gate.', statements: ['I give AI useful context and an output format.', 'I refine the result with feedback.', 'I verify claims, sources and calculations.', 'I can explain what the human remains responsible for.'] },
-  { id: 'workflow_builder', label: 'Workflow Builder', result: 'You are ready to strengthen governance and evidence.', guidance: 'Add exception handling, test cases, approval records and a business outcome you can defend.', artifact: 'A governed workflow blueprint and short test log.', statements: ['I map multi-step work and handoffs.', 'I define approval and exception gates.', 'I test normal and failure cases.', 'I produce an audit trail or portfolio artifact.'] },
-] as const;
 
 const capabilities = ['Problem framing', 'Workflow design', 'AI collaboration', 'Verification and governance', 'Evidence of application'];
 const bookingUrl = 'https://outlook.office.com/bookwithme/user/1a3b3c1b65044d24b6cddcc6b42c8ecb@nexiuslabs.com/meetingtype/rQlRqMpqtECRRRNfXW-T9A2?anonymous&ismsaljsauthenabled&ep=mlink';
 const validPhone = (value: string) => /^\+?[0-9]{7,15}$/.test(value.replace(/[\s().-]/g, ''));
 
 const AICareerFairPage: React.FC = () => {
-  const [checked, setChecked] = useState<Record<string, boolean>>({});
+  const [actionKitProfile, setActionKitProfile] = useState<ActionKitAnswers | null>(null);
   const [bookingName, setBookingName] = useState('');
   const [bookingPhone, setBookingPhone] = useState('');
-  const result = useMemo(() => {
-    const counts = levels.map(level => ({ level, count: level.statements.filter((_, i) => checked[`${level.id}-${i}`]).length }));
-    let best = counts[0];
-    for (const item of counts.slice(1)) if (item.count > best.count || (item.count === best.count && item.count >= 3)) best = item;
-    return best.count ? best.level : null;
-  }, [checked]);
+  const updateProfile = useCallback((profile: ActionKitAnswers | null) => setActionKitProfile(profile), []);
   const bookingReady = bookingName.trim().length >= 2 && validPhone(bookingPhone);
 
   return <div className="min-h-screen bg-[#f7f8fc] text-gray-800">
@@ -38,13 +29,13 @@ const AICareerFairPage: React.FC = () => {
         <img src="/images/career/ai-career-readiness-hero.jpg" alt="Three early-career professionals walking towards connected Tech and Accountancy opportunities" width="1280" height="720" loading="eager" className="relative z-0 block h-auto w-full lg:absolute lg:inset-0 lg:h-full lg:object-contain lg:object-right" />
       </section>
 
-      <section className="container-page py-16"><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{['Practical role examples','Two-minute self-check','30-day action plan','Human-led, privacy-aware guidance'].map(item => <div key={item} className="flex items-center gap-3 rounded-xl border border-purple-100 bg-white p-4 shadow-sm"><Check className="text-secondary" size={20}/><span className="font-semibold">{item}</span></div>)}</div></section>
+      <section className="container-page py-16"><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{['Practical role examples','3-minute gap test','30-day action plan','Human-led, privacy-aware guidance'].map(item => <div key={item} className="flex items-center gap-3 rounded-xl border border-purple-100 bg-white p-4 shadow-sm"><Check className="text-secondary" size={20}/><span className="font-semibold">{item}</span></div>)}</div></section>
 
-      <ActionKitAssessment />
+      <ActionKitAssessment onProfileChange={updateProfile} />
 
       <section className="bg-white py-20"><div className="container-page"><p className="text-sm font-bold uppercase tracking-wider text-secondary">Transferable skills</p><h2 className="mt-2 text-3xl font-black text-primary md:text-4xl">Five AI capabilities employers can use</h2><p className="mt-3 text-gray-600">Tools will change. These capabilities travel with you.</p><div className="mt-8 grid gap-4 md:grid-cols-5">{capabilities.map((item,i)=><div key={item} className="rounded-xl bg-purple-50 p-5"><span className="text-sm font-black text-secondary">0{i+1}</span><h3 className="mt-2 font-bold text-primary">{item}</h3></div>)}</div><blockquote className="mt-8 rounded-xl border-l-4 border-accent bg-orange-50 p-6 font-semibold text-primary">“I used AI” is weak evidence. “I mapped the process, limited the data, designed review gates, tested exceptions and documented the result” is credible.</blockquote></div></section>
 
-      <section className="container-page py-20" id="self-check"><p className="text-sm font-bold uppercase tracking-wider text-secondary">Two-minute self-check</p><h2 className="mt-2 text-3xl font-black text-primary md:text-4xl">Where are you now?</h2><p className="mt-3 text-gray-600">Select every statement you can demonstrate, not merely explain.</p><div className="mt-8 grid gap-6 lg:grid-cols-3">{levels.map(level=><fieldset key={level.id} className="rounded-2xl bg-white p-6 shadow-sm"><legend className="text-xl font-black text-primary">{level.label}</legend><div className="mt-4 space-y-4">{level.statements.map((statement,i)=><label key={statement} className="flex cursor-pointer gap-3 leading-6"><input className="mt-1 h-5 w-5 accent-secondary" type="checkbox" checked={!!checked[`${level.id}-${i}`]} onChange={e=>setChecked(v=>({...v,[`${level.id}-${i}`]:e.target.checked}))}/><span>{statement}</span></label>)}</div></fieldset>)}</div>{result&&<div className="mt-8 rounded-2xl bg-primary p-7 text-white" aria-live="polite"><p className="text-sm font-bold uppercase tracking-wider text-teal-200">Your task-specific level: {result.label}</p><h3 className="mt-2 text-2xl font-black">{result.result}</h3><p className="mt-3 text-purple-100">{result.guidance}</p><p className="mt-4"><strong>Next artifact:</strong> {result.artifact}</p></div>}</section>
+      <WorkplaceGapTest profile={actionKitProfile} />
 
       <section className="bg-gradient-to-r from-secondary to-[#0d807d] py-16 text-white"><div className="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-center"><div><h2 className="text-3xl font-black">Build the Action Kit you will actually use</h2><p className="mt-3 max-w-2xl text-teal-50">Your personalised download turns your field, role, concern and selected tasks into an opportunity map, focused skills and a 30/60/90-day plan.</p></div><a href="#action-kit" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-lg bg-white px-6 py-3 font-bold text-primary shadow-lg">Complete the check <ArrowRight size={18}/></a></div></section>
 

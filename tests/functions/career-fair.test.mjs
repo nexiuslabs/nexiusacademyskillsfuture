@@ -3,12 +3,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const page = fs.readFileSync(new URL('../../pages/AICareerFairPage.tsx', import.meta.url), 'utf8');
+const gapTest = fs.readFileSync(new URL('../../components/career/WorkplaceGapTest.tsx', import.meta.url), 'utf8');
 const service = fs.readFileSync(new URL('../../services/careerFairService.ts', import.meta.url), 'utf8');
 const fn = fs.readFileSync(new URL('../../supabase/functions/capture-career-fair-lead/index.ts', import.meta.url), 'utf8');
 const migration = fs.readFileSync(new URL('../../supabase/migrations/20260828103000_create_career_fair_applications.sql', import.meta.url), 'utf8');
 
-test('publishes self-check and course facts without the removed pathway section', () => {
-  for (const phrase of ['Explorer','Collaborator','Workflow Builder','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
+test('publishes the three-minute scenario diagnostic and course facts without the removed pathway section', () => {
+  for (const phrase of ['3-minute gap test','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
+  for (const phrase of ['Free 3-minute diagnostic','Framing the work','Handling sensitive information','Handling failure cases','Building portfolio evidence','Nexius benchmark','Demonstrated judgment','Retake the test']) assert.match(gapTest, new RegExp(phrase));
+  assert.match(gapTest, /Math\.random/);
+  assert.doesNotMatch(page, /Two-minute self-check/);
   assert.doesNotMatch(page, /Choose your pathway/);
 });
 test('uses the supplied career artwork and matching hero background', () => {

@@ -7,6 +7,16 @@ export type ActionKitAnswers = {
   pathway: string;
   tasks: string[];
 };
+export type GapAnalysis = {
+  score: number;
+  label: string;
+  gap: number;
+  capabilities: { name: string; score: number }[];
+  strongest: string;
+  priorityGaps: string[];
+  sevenDayChallenge: string;
+  thirtyDayAction: string;
+};
 
 const fieldContent = {
   tech: {
@@ -36,7 +46,7 @@ const skills = [
   ['Verification, governance and accountability', 'Test outputs, preserve evidence and keep a named human responsible.'],
 ];
 
-export async function downloadActionKit(answers: ActionKitAnswers) {
+export async function downloadActionKit(answers: ActionKitAnswers, gapAnalysis?: GapAnalysis) {
   const { jsPDF } = await import('jspdf');
   const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true });
   const content = fieldContent[answers.field];
@@ -121,6 +131,26 @@ export async function downloadActionKit(answers: ActionKitAnswers) {
   y = heading('Privacy', y); body('This PDF was generated in your browser. Your readiness answers were not sent to analytics or stored merely to create this download. Consultation information is handled separately under the Nexius Labs Privacy Notice.', y);
   footer(8);
 
+  if (gapAnalysis) {
+    y = nextPage('Optional AI workplace gap analysis', `Your AI Workplace Readiness: ${gapAnalysis.score}/100`);
+    y = heading(gapAnalysis.label, y);
+    y = body(`Gap to the Nexius workplace-ready benchmark: ${gapAnalysis.gap} points. The 70-point benchmark is criterion-based and is not an industry average.`, y);
+    y = heading('Five capability results', y + 3);
+    for (const item of gapAnalysis.capabilities) y = body(`${item.name}: ${item.score}/100`, y);
+    y = heading(`Your strength: ${gapAnalysis.strongest}`, y + 3);
+    y = heading(`Priority gaps: ${gapAnalysis.priorityGaps.join(' and ')}`, y + 3);
+    footer(9);
+
+    y = nextPage('Gap-closing action plan', 'Turn the diagnostic into practical evidence.');
+    y = heading('Your seven-day challenge', y);
+    y = body(gapAnalysis.sevenDayChallenge, y);
+    y = heading('Your tailored 30-day action', y + 4);
+    y = body(gapAnalysis.thirtyDayAction, y);
+    y = heading('Important safeguard', y + 4);
+    body('This is a short, educational diagnostic based on practical workplace scenarios. It is not a certified assessment, hiring decision, population percentile or prediction of employment success.', y, 9);
+    footer(10);
+  }
+
   doc.setProperties({ title: 'AI Career Readiness Action Kit - Tech & Accountancy', subject: 'Personalised 90-day AI career readiness plan', author: 'Nexius Academy', creator: 'Nexius Academy' });
-  doc.save(`nexius-ai-career-readiness-${answers.field}.pdf`);
+  doc.save(`nexius-ai-career-readiness-${answers.field}${gapAnalysis ? '-enhanced' : ''}.pdf`);
 }

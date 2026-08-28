@@ -10,7 +10,9 @@ const tasks: Record<ActionKitField, string[]> = {
 const pathways: Record<ActionKitField, string> = { tech: 'AI-assisted technical workflow and verification', accountancy: 'AI-assisted finance workflow and accountable review' };
 const stages = ['Student or recent graduate', 'Early career', 'Mid-career or career switcher', 'Returning to work', 'Exploring options'];
 
-const ActionKitAssessment: React.FC = () => {
+type Props = { onProfileChange?: (answers: ActionKitAnswers | null) => void };
+
+const ActionKitAssessment: React.FC<Props> = ({ onProfileChange }) => {
   const [field, setField] = useState<ActionKitField>('tech');
   const [careerStage, setCareerStage] = useState('');
   const [role, setRole] = useState('');
@@ -19,12 +21,14 @@ const ActionKitAssessment: React.FC = () => {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const ready = useMemo(() => careerStage && role.trim().length >= 2 && selectedTasks.length > 0, [careerStage, role, selectedTasks]);
+  const answers = useMemo<ActionKitAnswers | null>(() => ready ? ({ field, careerStage, role: role.trim().slice(0, 100), concern: concern.trim().slice(0, 180), pathway: pathways[field], tasks: selectedTasks }) : null, [ready, field, careerStage, role, concern, selectedTasks]);
+  React.useEffect(() => onProfileChange?.(answers), [answers, onProfileChange]);
   const selectField = (next: ActionKitField) => { setField(next); setSelectedTasks([]); trackEvent('action_kit_field_selected', { field: next, campaign: 'career_fair_2026' }); };
   const toggleTask = (task: string) => setSelectedTasks(current => current.includes(task) ? current.filter(item => item !== task) : [...current, task]);
   const generate = async () => {
     if (!ready || busy) { setError('Choose a field, career stage, role and at least one task.'); return; }
     setBusy(true); setError('');
-    const answers: ActionKitAnswers = { field, careerStage, role: role.trim().slice(0, 100), concern: concern.trim().slice(0, 180), pathway: pathways[field], tasks: selectedTasks };
+    if (!answers) return;
     try { await downloadActionKit(answers); trackEvent('personalised_action_kit_downloaded', { field, career_stage: stages.indexOf(careerStage), task_count: selectedTasks.length, campaign: 'career_fair_2026' }); }
     catch { setError('We could not generate the kit on this device. Please use the generic version below.'); }
     finally { setBusy(false); }
