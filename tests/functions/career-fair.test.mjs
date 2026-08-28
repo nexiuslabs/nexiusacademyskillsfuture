@@ -11,6 +11,11 @@ test('publishes self-check and course facts without the removed pathway section'
   for (const phrase of ['Explorer','Collaborator','Workflow Builder','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
   assert.doesNotMatch(page, /Choose your pathway/);
 });
+test('uses the supplied career artwork and matching hero background', () => {
+  assert.match(page, /\/images\/career\/ai-career-readiness-hero\.jpg/);
+  assert.match(page, /bg-\[#001827\]/);
+  assert.match(page, /loading="eager"/);
+});
 test('uses only name and phone to unlock the approved booking URL', () => {
   assert.match(page, /label="Name"/);
   assert.match(page, /label="Phone number"/);
