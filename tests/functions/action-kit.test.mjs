@@ -7,7 +7,7 @@ const assessment = fs.readFileSync(new URL('../../components/career/ActionKitAss
 const pdf = fs.readFileSync(new URL('../../services/actionKitPdf.ts', import.meta.url), 'utf8');
 
 test('makes the personalised Tech or Accountancy Action Kit the primary CTA', () => {
-  assert.match(page, /Complete the check and build my kit/);
+  assert.match(page, /Build my kit/);
   assert.match(page, /AI changes tasks before it changes job titles/);
   assert.match(assessment, /Complete the check to download your personalised AI Career Readiness Action Kit/);
   assert.match(assessment, /\['tech','accountancy'\]/);

@@ -16,7 +16,10 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.match(page, /bg-\[#001827\]/);
   assert.match(page, /loading="eager"/);
   assert.match(page, /lg:object-contain/);
+  assert.match(page, /lg:object-right/);
   assert.doesNotMatch(page, /lg:object-cover/);
+  assert.match(page, />Build my kit </);
+  assert.match(page, />Check my readiness</);
 });
 test('uses only name and phone to unlock the approved booking URL', () => {
   assert.match(page, /label="Name"/);
