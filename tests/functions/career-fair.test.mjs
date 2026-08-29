@@ -63,6 +63,7 @@ test('gates the agentic AI employability guide behind a stored lead capture', ()
   assert.match(page, /role="dialog"/);
   assert.match(page, /translate-x-full/);
   assert.match(page, /md:grid-cols-2/);
+  assert.match(page, /We respect your privacy\. Your information is safe and will never be shared\./);
 });
 test('validates client and server fields and uses atomic idempotent persistence', () => {
   for (const field of ['firstName','email','phone','track','targetRole','taskToImprove','aiLevel','cohortInterest','consultationWindow','serviceConsent']) { assert.match(service, new RegExp(field)); assert.match(fn, new RegExp(field)); }

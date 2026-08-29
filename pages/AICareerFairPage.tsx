@@ -378,7 +378,7 @@ const AICareerFairPage: React.FC = () => {
             </div>
             <div className="mt-6 flex items-start gap-3 rounded-lg bg-purple-50 p-4 text-sm leading-6 text-primary">
               <ShieldCheck className="mt-0.5 shrink-0 text-secondary" size={20} />
-              <p>Your details will be stored securely as a Nexius Academy lead capture.</p>
+              <p>We respect your privacy. Your information is safe and will never be shared.</p>
             </div>
             <p className="mt-5 text-sm text-gray-600" aria-live="polite">
               {contactReady
