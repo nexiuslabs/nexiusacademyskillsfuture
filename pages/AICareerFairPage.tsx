@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ArrowRight, Check, Download, ShieldCheck } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ArrowRight, CalendarDays, Check, Download, ShieldCheck, X } from "lucide-react";
 import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
 import SEO from "../components/SEO";
@@ -23,27 +23,32 @@ const validPhone = (value: string) =>
   /^\+65[0-9]{8}$/.test(value.replace(/[\s().-]/g, ""));
 const validEmail = (value: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
+type ContactIntent = "consultation" | "guide";
 
 const AICareerFairPage: React.FC = () => {
-  const [bookingName, setBookingName] = useState("");
-  const [bookingEmail, setBookingEmail] = useState("");
-  const [bookingPhone, setBookingPhone] = useState("");
-  const [bookingBusy, setBookingBusy] = useState(false);
-  const [bookingSaved, setBookingSaved] = useState(false);
-  const [bookingError, setBookingError] = useState("");
-  const [downloadName, setDownloadName] = useState("");
-  const [downloadEmail, setDownloadEmail] = useState("");
-  const [downloadPhone, setDownloadPhone] = useState("");
-  const [downloadBusy, setDownloadBusy] = useState(false);
-  const [downloadError, setDownloadError] = useState("");
-  const bookingReady =
-    bookingName.trim().length >= 2 &&
-    validEmail(bookingEmail) &&
-    validPhone(bookingPhone);
-  const downloadReady =
-    downloadName.trim().length >= 2 &&
-    validEmail(downloadEmail) &&
-    validPhone(downloadPhone);
+  const [contactIntent, setContactIntent] = useState<ContactIntent | null>(null);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactBusy, setContactBusy] = useState(false);
+  const [contactError, setContactError] = useState("");
+  const contactReady =
+    contactName.trim().length >= 2 &&
+    validEmail(contactEmail) &&
+    validPhone(contactPhone);
+
+  useEffect(() => {
+    if (!contactIntent) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setContactIntent(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [contactIntent]);
 
   const startGuideDownload = () => {
     const link = document.createElement("a");
@@ -54,80 +59,68 @@ const AICareerFairPage: React.FC = () => {
     link.remove();
   };
 
-  const submitDownloadLead = async (event: React.FormEvent) => {
+  const submitContactLead = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!downloadReady || downloadBusy) return;
-    setDownloadBusy(true);
-    setDownloadError("");
+    if (!contactIntent || !contactReady || contactBusy) return;
+    setContactBusy(true);
+    setContactError("");
+    const isGuide = contactIntent === "guide";
     try {
       const context = getVisitorContext();
       await submitLeadCapture({
-        fullName: downloadName.trim(),
-        email: downloadEmail.trim().toLowerCase(),
-        phone: downloadPhone.replace(/[\s().-]/g, ""),
+        fullName: contactName.trim(),
+        email: contactEmail.trim().toLowerCase(),
+        phone: contactPhone.replace(/[\s().-]/g, ""),
         role: "Not provided",
         companyName: "",
         departmentOrDesignation: "",
-        leadFlow: "checklist_download",
+        leadFlow: isGuide ? "checklist_download" : "advisory_call",
         ageBand: "not_provided",
-        preferredIntake: "30 Days to Agentic AI Employability guide",
-        cohortCode: "agentic-ai-employability-guide",
+        preferredIntake: isGuide
+          ? "30 Days to Agentic AI Employability guide"
+          : "15-minute AI career consultation",
+        cohortCode: isGuide ? "agentic-ai-employability-guide" : "not_applicable",
         courseSlug: "ai-career",
-        intent: "download_checklist",
+        intent: isGuide ? "download_checklist" : "advisory_call",
         payerType: "self",
         sponsorContactName: "",
         sponsorContactEmail: "",
         sponsorStatus: "not_applicable",
-        sourceTag: "ai-career-employability-guide",
+        sourceTag: isGuide ? "ai-career-employability-guide" : "ai-career-consultation",
         pagePath: "/ai-career/",
         visitorId: context?.visitorId,
         sessionId: context?.sessionId,
         landingPath: context?.landingPath,
         referrer: context?.referrer,
-        leadSource: context?.leadSource || "ai-career-employability-guide",
+        leadSource:
+          context?.leadSource ||
+          (isGuide ? "ai-career-employability-guide" : "ai-career-consultation"),
         utmSource: context?.utmSource,
         utmMedium: context?.utmMedium,
         utmCampaign: context?.utmCampaign,
         utmContent: context?.utmContent,
         deviceType: context?.deviceType,
       });
-      trackEvent("employability_guide_downloaded", {
-        campaign: "career_fair_2026",
-        source: "ai_career_page",
-      });
-      startGuideDownload();
+      if (isGuide) {
+        trackEvent("employability_guide_downloaded", {
+          campaign: "career_fair_2026",
+          source: "ai_career_page",
+        });
+        startGuideDownload();
+      } else {
+        trackEvent("consultation_lead_captured", {
+          campaign: "career_fair_2026",
+          source: "ai_career_page",
+        });
+        window.location.assign(bookingUrl);
+      }
     } catch {
-      setDownloadError(
-        "We could not save your details. Please try again before downloading the guide.",
+      setContactError(
+        `We could not save your details. Please try again before ${isGuide ? "downloading the guide" : "opening the booking calendar"}.`,
       );
     } finally {
-      setDownloadBusy(false);
+      setContactBusy(false);
     }
-  };
-  const submitBookingLead = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!bookingReady || bookingBusy) return;
-    if (bookingSaved) { window.location.assign(bookingUrl); return; }
-    setBookingBusy(true);
-    setBookingError("");
-    try {
-      const context = getVisitorContext();
-      await submitLeadCapture({
-        fullName: bookingName.trim(), email: bookingEmail.trim().toLowerCase(), phone: bookingPhone.replace(/[\s().-]/g, ""),
-        role: "Not provided", companyName: "", departmentOrDesignation: "", leadFlow: "advisory_call", ageBand: "not_provided",
-        preferredIntake: "15-minute AI career consultation", cohortCode: "not_applicable", courseSlug: "ai-career", intent: "advisory_call",
-        payerType: "self", sponsorContactName: "", sponsorContactEmail: "", sponsorStatus: "not_applicable",
-        sourceTag: "ai-career-consultation", pagePath: "/ai-career/", visitorId: context?.visitorId, sessionId: context?.sessionId,
-        landingPath: context?.landingPath, referrer: context?.referrer, leadSource: context?.leadSource || "ai-career-consultation",
-        utmSource: context?.utmSource, utmMedium: context?.utmMedium, utmCampaign: context?.utmCampaign, utmContent: context?.utmContent,
-        deviceType: context?.deviceType,
-      });
-      setBookingSaved(true);
-      trackEvent("consultation_lead_captured", { campaign: "career_fair_2026", source: "booth_qr" });
-      window.location.assign(bookingUrl);
-    } catch {
-      setBookingError("We could not save your details. Please try again before opening the booking calendar.");
-    } finally { setBookingBusy(false); }
   };
 
   return (
@@ -157,19 +150,27 @@ const AICareerFairPage: React.FC = () => {
                 Understand the shift, assess your work and build a practical
                 30/60/90-day plan for Tech or Accountancy.
               </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+                <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                   <a
                     href="#self-check"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white shadow-lg hover:bg-accent/90"
                   >
-                    Start gap test <ArrowRight size={18} />
+                    AI Gap Test <ArrowRight size={18} />
                   </a>
-                  <a
-                    href="#consultation"
+                  <button
+                    type="button"
+                    onClick={() => setContactIntent("consultation")}
                     className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/50 px-6 py-3 font-bold hover:bg-white/10"
                   >
-                    Book consultation
-                  </a>
+                    Book Consultation
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setContactIntent("guide")}
+                    className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/50 px-6 py-3 font-bold hover:bg-white/10"
+                  >
+                    AI Learning Guide
+                  </button>
                 </div>
                 <p className="mt-5 text-sm text-purple-100">
                   Your diagnostic answers stay in your browser and are not stored.
@@ -236,149 +237,40 @@ const AICareerFairPage: React.FC = () => {
 
         <WorkplaceGapTest />
 
-        <section className="bg-[#001827] py-20 text-white" id="employability-guide">
-          <div className="container-page grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-teal-200">
-                Free practical guide
-              </p>
-              <h2 className="mt-2 text-3xl font-black md:text-4xl">
-                30 Days to Agentic AI Employability
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-purple-100">
-                Download a focused 30-day roadmap for building practical AI
-                capability, stronger work evidence and career-ready habits.
-              </p>
-              <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/20 bg-white/10 p-5 text-sm leading-6">
-                <ShieldCheck className="mt-0.5 shrink-0 text-teal-200" size={21} />
-                <p>
-                  Enter your contact details to receive the PDF. Your details
-                  will be stored securely as a Nexius Academy lead capture.
+        <section className="bg-[#001827] py-20 text-white" id="career-actions">
+          <div className="container-page">
+            <p className="text-sm font-bold uppercase tracking-wider text-teal-200">
+              Choose your next step
+            </p>
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">
+              Get practical guidance for your AI career
+            </h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <article className="flex flex-col rounded-2xl bg-white p-6 text-gray-800 shadow-xl md:p-8" id="consultation">
+                <CalendarDays className="text-secondary" size={32} />
+                <h3 className="mt-5 text-2xl font-black text-primary">
+                  Book a 15-minute AI career consultation
+                </h3>
+                <p className="mt-3 flex-1 leading-7 text-gray-600">
+                  Receive one personalised AI-career recommendation and one practical next step for your target role.
                 </p>
-              </div>
+                <button type="button" onClick={() => setContactIntent("consultation")} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white hover:bg-accent/90">
+                  Book Consultation <ArrowRight size={18} />
+                </button>
+              </article>
+              <article className="flex flex-col rounded-2xl bg-white p-6 text-gray-800 shadow-xl md:p-8" id="employability-guide">
+                <Download className="text-secondary" size={32} />
+                <h3 className="mt-5 text-2xl font-black text-primary">
+                  30 Days to Agentic AI Employability
+                </h3>
+                <p className="mt-3 flex-1 leading-7 text-gray-600">
+                  Download a focused roadmap for building practical AI capability, stronger work evidence and career-ready habits.
+                </p>
+                <button type="button" onClick={() => setContactIntent("guide")} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white hover:bg-accent/90">
+                  Get AI Learning Guide <Download size={18} />
+                </button>
+              </article>
             </div>
-            <form
-              onSubmit={submitDownloadLead}
-              className="rounded-2xl bg-white p-6 text-gray-800 shadow-xl md:p-8"
-            >
-              <div className="grid gap-5">
-                <Field
-                  label="Full name"
-                  value={downloadName}
-                  onChange={setDownloadName}
-                  autoComplete="name"
-                />
-                <Field
-                  label="Email address"
-                  type="email"
-                  value={downloadEmail}
-                  onChange={setDownloadEmail}
-                  autoComplete="email"
-                  invalid={downloadEmail.length > 0 && !validEmail(downloadEmail)}
-                  hint="Enter a valid email address, for example name@example.com"
-                />
-                <Field
-                  label="Phone number"
-                  type="tel"
-                  value={downloadPhone}
-                  onChange={setDownloadPhone}
-                  autoComplete="tel"
-                  invalid={downloadPhone.length > 0 && !validPhone(downloadPhone)}
-                  hint="Use +65 followed by exactly 8 digits, for example +65 8123 4567"
-                />
-              </div>
-              <p className="mt-5 text-sm text-gray-600" aria-live="polite">
-                {downloadReady
-                  ? "Your guide is ready to download."
-                  : "Enter your full name, a valid email address and a +65 phone number with 8 digits to unlock the guide."}
-              </p>
-              {downloadError && (
-                <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">
-                  {downloadError}
-                </p>
-              )}
-              <button
-                type="submit"
-                disabled={!downloadReady || downloadBusy}
-                className={`mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold text-white shadow-lg ${downloadReady && !downloadBusy ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
-              >
-                {downloadBusy ? "Saving details…" : "Download the free guide"}
-                {!downloadBusy && <Download size={18} />}
-              </button>
-            </form>
-          </div>
-        </section>
-
-        <section className="container-page py-20" id="consultation">
-          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-secondary">
-                Founder guidance
-              </p>
-              <h2 className="mt-2 text-3xl font-black text-primary md:text-4xl">
-                Book a 15-minute AI career consultation
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-                Receive one personalised AI-career recommendation and one
-                practical next step for your target role.
-              </p>
-              <div className="mt-6 rounded-xl bg-purple-50 p-5 text-sm leading-6 text-primary">
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className="shrink-0 text-secondary" />
-                  <strong>
-                    Choose a suitable time directly in the booking calendar.
-                  </strong>
-                </div>
-                <p className="mt-3">
-                  Your meeting is confirmed only after you complete the Outlook
-                  booking process.
-                </p>
-              </div>
-            </div>
-            <form
-              onSubmit={submitBookingLead}
-              className="rounded-2xl bg-white p-6 shadow-xl md:p-8"
-            >
-              <div className="grid gap-5">
-                <Field
-                  label="Name"
-                  value={bookingName}
-                  onChange={setBookingName}
-                  autoComplete="name"
-                />
-                <Field
-                  label="Email address"
-                  type="email"
-                  value={bookingEmail}
-                  onChange={setBookingEmail}
-                  autoComplete="email"
-                  invalid={bookingEmail.length > 0 && !validEmail(bookingEmail)}
-                  hint="Enter a valid email address, for example name@example.com"
-                />
-                <Field
-                  label="Phone number"
-                  type="tel"
-                  value={bookingPhone}
-                  onChange={setBookingPhone}
-                  autoComplete="tel"
-                  invalid={bookingPhone.length > 0 && !validPhone(bookingPhone)}
-                  hint="Use +65 followed by exactly 8 digits, for example +65 8123 4567"
-                />
-              </div>
-              <p className="mt-5 text-sm text-gray-600" aria-live="polite">
-                {bookingReady
-                  ? "You can now open the booking calendar."
-                  : "Enter your name, a valid email address and a +65 phone number with 8 digits to enable booking."}
-              </p>
-              {bookingError && <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">{bookingError}</p>}
-              <button
-                type="submit"
-                disabled={!bookingReady || bookingBusy}
-                className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-lg px-6 py-3 font-bold text-white shadow-lg ${bookingReady && !bookingBusy ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
-              >
-                {bookingBusy ? "Saving details…" : "Book this meeting"}
-              </button>
-            </form>
           </div>
         </section>
 
@@ -429,6 +321,84 @@ const AICareerFairPage: React.FC = () => {
         </section>
       </main>
       <Footer />
+      <div
+        className={`fixed inset-0 z-[100] transition ${contactIntent ? "pointer-events-auto bg-black/55" : "pointer-events-none bg-black/0"}`}
+        aria-hidden={!contactIntent}
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setContactIntent(null);
+        }}
+      >
+        <aside
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-drawer-title"
+          className={`absolute right-0 top-0 flex h-full w-full max-w-lg flex-col overflow-y-auto bg-white p-6 text-gray-800 shadow-2xl transition-transform duration-300 ease-out md:p-9 ${contactIntent ? "translate-x-0" : "translate-x-full"}`}
+        >
+          <div className="flex items-start justify-between gap-5">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wider text-secondary">
+                {contactIntent === "guide" ? "AI Learning Guide" : "Book Consultation"}
+              </p>
+              <h2 id="contact-drawer-title" className="mt-2 text-3xl font-black text-primary">
+                {contactIntent === "guide"
+                  ? "Download your 30-day guide"
+                  : "Book your 15-minute consultation"}
+              </h2>
+            </div>
+            <button type="button" onClick={() => setContactIntent(null)} aria-label="Close contact form" className="rounded-full border border-gray-200 p-2 text-gray-600 hover:bg-gray-100">
+              <X size={22} />
+            </button>
+          </div>
+          <p className="mt-4 leading-7 text-gray-600">
+            {contactIntent === "guide"
+              ? "Complete the form to save your details and unlock the AI Learning Guide."
+              : "Complete the form, then choose a suitable time in the booking calendar."}
+          </p>
+          <form onSubmit={submitContactLead} className="mt-7 flex flex-1 flex-col">
+            <div className="grid gap-5">
+              <Field label="Full name" value={contactName} onChange={setContactName} autoComplete="name" />
+              <Field
+                label="Email address"
+                type="email"
+                value={contactEmail}
+                onChange={setContactEmail}
+                autoComplete="email"
+                invalid={contactEmail.length > 0 && !validEmail(contactEmail)}
+                hint="Enter a valid email address, for example name@example.com"
+              />
+              <Field
+                label="Phone number"
+                type="tel"
+                value={contactPhone}
+                onChange={setContactPhone}
+                autoComplete="tel"
+                invalid={contactPhone.length > 0 && !validPhone(contactPhone)}
+                hint="Use +65 followed by exactly 8 digits, for example +65 8123 4567"
+              />
+            </div>
+            <div className="mt-6 flex items-start gap-3 rounded-lg bg-purple-50 p-4 text-sm leading-6 text-primary">
+              <ShieldCheck className="mt-0.5 shrink-0 text-secondary" size={20} />
+              <p>Your details will be stored securely as a Nexius Academy lead capture.</p>
+            </div>
+            <p className="mt-5 text-sm text-gray-600" aria-live="polite">
+              {contactReady
+                ? contactIntent === "guide" ? "Your guide is ready to unlock." : "You can now continue to the booking calendar."
+                : "Enter your full name, a valid email address and a +65 phone number with 8 digits to continue."}
+            </p>
+            {contactError && <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">{contactError}</p>}
+            <button
+              type="submit"
+              disabled={!contactReady || contactBusy}
+              className={`mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold text-white shadow-lg ${contactReady && !contactBusy ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
+            >
+              {contactBusy
+                ? "Saving details…"
+                : contactIntent === "guide" ? "Download AI Learning Guide" : "Continue to booking"}
+              {!contactBusy && (contactIntent === "guide" ? <Download size={18} /> : <ArrowRight size={18} />)}
+            </button>
+          </form>
+        </aside>
+      </div>
     </div>
   );
 };

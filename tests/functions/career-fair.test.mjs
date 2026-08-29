@@ -30,38 +30,39 @@ test('uses the supplied career artwork and matching hero background', () => {
   assert.doesNotMatch(page, /lg:object-cover/);
   assert.match(page, /transparent_58%/);
   assert.doesNotMatch(page, /via-\[#001827\]\/95/);
-  assert.match(page, /Start gap test/);
-  assert.match(page, /Book consultation/);
+  for (const label of ['AI Gap Test','Book Consultation','AI Learning Guide']) assert.match(page, new RegExp(label));
 });
 test('requires name, valid email and an eight-digit Singapore phone to unlock booking', () => {
-  assert.match(page, /label="Name"/);
+  assert.match(page, /label="Full name"/);
   assert.match(page, /label="Email address"/);
   assert.match(page, /label="Phone number"/);
   assert.match(page, /validEmail/);
   assert.match(page, /\^\\\+65\[0-9\]\{8\}\$/);
-  assert.match(page, /bookingReady/);
+  assert.match(page, /contactReady/);
   assert.match(page, /submitLeadCapture/);
   assert.match(page, /ageBand: "not_provided"/);
-  assert.match(page, /intent: "advisory_call"/);
+  assert.match(page, /intent: isGuide \? "download_checklist" : "advisory_call"/);
   assert.match(page, /consultation_lead_captured/);
   assert.doesNotMatch(page, /These details stay on this page/);
-  assert.match(page, /className="flex items-center gap-3"/);
-  assert.match(page, /<p className="mt-3">/);
+  assert.match(page, /setContactIntent\("consultation"\)/);
   assert.match(page, /rQlRqMpqtECRRRNfXW-T9A2/);
   for (const removed of ['Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
 });
 test('gates the agentic AI employability guide behind a stored lead capture', () => {
-  for (const phrase of ['30 Days to Agentic AI Employability','Full name','Download the free guide']) {
+  for (const phrase of ['30 Days to Agentic AI Employability','Full name','Get AI Learning Guide']) {
     assert.match(page, new RegExp(phrase));
   }
   assert.match(page, /30-days-to-agentic-ai-employability\.pdf/);
-  assert.match(page, /downloadReady/);
-  assert.match(page, /leadFlow: "checklist_download"/);
-  assert.match(page, /intent: "download_checklist"/);
-  assert.match(page, /sourceTag: "ai-career-employability-guide"/);
+  assert.match(page, /contactIntent === "guide"/);
+  assert.match(page, /leadFlow: isGuide \? "checklist_download" : "advisory_call"/);
+  assert.match(page, /intent: isGuide \? "download_checklist" : "advisory_call"/);
+  assert.match(page, /isGuide \? "ai-career-employability-guide" : "ai-career-consultation"/);
   assert.match(page, /await submitLeadCapture/);
   assert.match(page, /employability_guide_downloaded/);
   assert.match(page, /startGuideDownload\(\)/);
+  assert.match(page, /role="dialog"/);
+  assert.match(page, /translate-x-full/);
+  assert.match(page, /md:grid-cols-2/);
 });
 test('validates client and server fields and uses atomic idempotent persistence', () => {
   for (const field of ['firstName','email','phone','track','targetRole','taskToImprove','aiLevel','cohortInterest','consultationWindow','serviceConsent']) { assert.match(service, new RegExp(field)); assert.match(fn, new RegExp(field)); }
