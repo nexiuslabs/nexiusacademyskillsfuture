@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Download, ShieldCheck } from "lucide-react";
 import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
 import SEO from "../components/SEO";
@@ -17,6 +17,8 @@ const capabilities = [
 ];
 const bookingUrl =
   "https://outlook.office.com/bookwithme/user/1a3b3c1b65044d24b6cddcc6b42c8ecb@nexiuslabs.com/meetingtype/rQlRqMpqtECRRRNfXW-T9A2?anonymous&ismsaljsauthenabled&ep=mlink";
+const employabilityGuideUrl =
+  "/downloads/30-days-to-agentic-ai-employability.pdf";
 const validPhone = (value: string) =>
   /^\+65[0-9]{8}$/.test(value.replace(/[\s().-]/g, ""));
 const validEmail = (value: string) =>
@@ -29,10 +31,79 @@ const AICareerFairPage: React.FC = () => {
   const [bookingBusy, setBookingBusy] = useState(false);
   const [bookingSaved, setBookingSaved] = useState(false);
   const [bookingError, setBookingError] = useState("");
+  const [downloadName, setDownloadName] = useState("");
+  const [downloadEmail, setDownloadEmail] = useState("");
+  const [downloadPhone, setDownloadPhone] = useState("");
+  const [downloadBusy, setDownloadBusy] = useState(false);
+  const [downloadError, setDownloadError] = useState("");
   const bookingReady =
     bookingName.trim().length >= 2 &&
     validEmail(bookingEmail) &&
     validPhone(bookingPhone);
+  const downloadReady =
+    downloadName.trim().length >= 2 &&
+    validEmail(downloadEmail) &&
+    validPhone(downloadPhone);
+
+  const startGuideDownload = () => {
+    const link = document.createElement("a");
+    link.href = employabilityGuideUrl;
+    link.download = "30-days-to-agentic-ai-employability.pdf";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  const submitDownloadLead = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!downloadReady || downloadBusy) return;
+    setDownloadBusy(true);
+    setDownloadError("");
+    try {
+      const context = getVisitorContext();
+      await submitLeadCapture({
+        fullName: downloadName.trim(),
+        email: downloadEmail.trim().toLowerCase(),
+        phone: downloadPhone.replace(/[\s().-]/g, ""),
+        role: "Not provided",
+        companyName: "",
+        departmentOrDesignation: "",
+        leadFlow: "checklist_download",
+        ageBand: "not_provided",
+        preferredIntake: "30 Days to Agentic AI Employability guide",
+        cohortCode: "agentic-ai-employability-guide",
+        courseSlug: "ai-career",
+        intent: "download_checklist",
+        payerType: "self",
+        sponsorContactName: "",
+        sponsorContactEmail: "",
+        sponsorStatus: "not_applicable",
+        sourceTag: "ai-career-employability-guide",
+        pagePath: "/ai-career/",
+        visitorId: context?.visitorId,
+        sessionId: context?.sessionId,
+        landingPath: context?.landingPath,
+        referrer: context?.referrer,
+        leadSource: context?.leadSource || "ai-career-employability-guide",
+        utmSource: context?.utmSource,
+        utmMedium: context?.utmMedium,
+        utmCampaign: context?.utmCampaign,
+        utmContent: context?.utmContent,
+        deviceType: context?.deviceType,
+      });
+      trackEvent("employability_guide_downloaded", {
+        campaign: "career_fair_2026",
+        source: "ai_career_page",
+      });
+      startGuideDownload();
+    } catch {
+      setDownloadError(
+        "We could not save your details. Please try again before downloading the guide.",
+      );
+    } finally {
+      setDownloadBusy(false);
+    }
+  };
   const submitBookingLead = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!bookingReady || bookingBusy) return;
@@ -164,6 +235,79 @@ const AICareerFairPage: React.FC = () => {
         </section>
 
         <WorkplaceGapTest />
+
+        <section className="bg-[#001827] py-20 text-white" id="employability-guide">
+          <div className="container-page grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-200">
+                Free practical guide
+              </p>
+              <h2 className="mt-2 text-3xl font-black md:text-4xl">
+                30 Days to Agentic AI Employability
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-purple-100">
+                Download a focused 30-day roadmap for building practical AI
+                capability, stronger work evidence and career-ready habits.
+              </p>
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/20 bg-white/10 p-5 text-sm leading-6">
+                <ShieldCheck className="mt-0.5 shrink-0 text-teal-200" size={21} />
+                <p>
+                  Enter your contact details to receive the PDF. Your details
+                  will be stored securely as a Nexius Academy lead capture.
+                </p>
+              </div>
+            </div>
+            <form
+              onSubmit={submitDownloadLead}
+              className="rounded-2xl bg-white p-6 text-gray-800 shadow-xl md:p-8"
+            >
+              <div className="grid gap-5">
+                <Field
+                  label="Full name"
+                  value={downloadName}
+                  onChange={setDownloadName}
+                  autoComplete="name"
+                />
+                <Field
+                  label="Email address"
+                  type="email"
+                  value={downloadEmail}
+                  onChange={setDownloadEmail}
+                  autoComplete="email"
+                  invalid={downloadEmail.length > 0 && !validEmail(downloadEmail)}
+                  hint="Enter a valid email address, for example name@example.com"
+                />
+                <Field
+                  label="Phone number"
+                  type="tel"
+                  value={downloadPhone}
+                  onChange={setDownloadPhone}
+                  autoComplete="tel"
+                  invalid={downloadPhone.length > 0 && !validPhone(downloadPhone)}
+                  hint="Use +65 followed by exactly 8 digits, for example +65 8123 4567"
+                />
+              </div>
+              <p className="mt-5 text-sm text-gray-600" aria-live="polite">
+                {downloadReady
+                  ? "Your guide is ready to download."
+                  : "Enter your full name, a valid email address and a +65 phone number with 8 digits to unlock the guide."}
+              </p>
+              {downloadError && (
+                <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">
+                  {downloadError}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={!downloadReady || downloadBusy}
+                className={`mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold text-white shadow-lg ${downloadReady && !downloadBusy ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-gray-400"}`}
+              >
+                {downloadBusy ? "Saving details…" : "Download the free guide"}
+                {!downloadBusy && <Download size={18} />}
+              </button>
+            </form>
+          </div>
+        </section>
 
         <section className="container-page py-20" id="consultation">
           <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">

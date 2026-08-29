@@ -50,6 +50,19 @@ test('requires name, valid email and an eight-digit Singapore phone to unlock bo
   assert.match(page, /rQlRqMpqtECRRRNfXW-T9A2/);
   for (const removed of ['Pathway','Current or target role','Preferred consultation window']) assert.doesNotMatch(page, new RegExp(removed));
 });
+test('gates the agentic AI employability guide behind a stored lead capture', () => {
+  for (const phrase of ['30 Days to Agentic AI Employability','Full name','Download the free guide']) {
+    assert.match(page, new RegExp(phrase));
+  }
+  assert.match(page, /30-days-to-agentic-ai-employability\.pdf/);
+  assert.match(page, /downloadReady/);
+  assert.match(page, /leadFlow: "checklist_download"/);
+  assert.match(page, /intent: "download_checklist"/);
+  assert.match(page, /sourceTag: "ai-career-employability-guide"/);
+  assert.match(page, /await submitLeadCapture/);
+  assert.match(page, /employability_guide_downloaded/);
+  assert.match(page, /startGuideDownload\(\)/);
+});
 test('validates client and server fields and uses atomic idempotent persistence', () => {
   for (const field of ['firstName','email','phone','track','targetRole','taskToImprove','aiLevel','cohortInterest','consultationWindow','serviceConsent']) { assert.match(service, new RegExp(field)); assert.match(fn, new RegExp(field)); }
   assert.match(migration, /idempotency_key uuid not null unique/);
