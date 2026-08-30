@@ -15,6 +15,12 @@ const ADVANCED_COURSE_SCHEDULES = [
     time: '9:00am - 6:00pm',
     venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
   },
+  {
+    month: 'Nov 2026',
+    dates: '11 Nov 2026 (Wed), 12 Nov 2026 (Thu) & 18 Nov 2026 (Wed)',
+    time: '9:00am - 5:00pm',
+    venue: 'Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601',
+  },
 ];
 
 const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, positionPrefix }) => {
