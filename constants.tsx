@@ -196,6 +196,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 23,
+    slug: 'agent-finops-business-professionals',
+    title: 'Agent FinOps: What Business Professionals Must Learn Before Digital Coworkers Scale',
+    date: '31 Aug 2026',
+    views: 0,
+    image: '/images/blog/agent-finops-business-professionals.png',
+    excerpt: 'AI agent cost control is moving into the operating layer. Learn to budget, instrument, and measure digital coworkers by cost per accepted outcome—not token volume alone.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, finance teams, L&D teams',
+    featured: true,
+  },
+  {
     id: 22,
     slug: 'problem-framing-ai-agents-business-professionals',
     title: 'Problem Framing for AI Agents: What Business Professionals Must Learn Before They Build',

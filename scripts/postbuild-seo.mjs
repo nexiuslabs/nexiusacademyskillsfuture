@@ -1348,6 +1348,20 @@ const routes = [
     articleDate: '2026-08-24',
   },
   {
+    path: '/blog/agent-finops-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agent FinOps for Business Professionals | Nexius Academy',
+    description:
+      'Learn to budget, measure, and govern AI agent workflows by cost per completed outcome—not token volume alone.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-finops-business-professionals.png',
+    ogImageAlt: 'Business professionals learning to measure and control AI agent workflow costs',
+    schemas: [],
+    articleDate: '2026-08-31',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',
