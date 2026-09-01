@@ -284,10 +284,9 @@ const AICareerFairPage: React.FC = () => {
               practical, no-code, 2-day course for turning everyday work into
               governed AI-assisted workflows with human review built in.
             </p>
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="mt-8 grid gap-6">
               {[
                 ["September cohort", "18 & 25 September 2026", "9:00am–6:00pm"],
-                ["October cohort", "9 & 16 October 2026", "9:00am–5:00pm"],
               ].map((cohort) => (
                 <article
                   className="rounded-2xl border border-purple-100 p-6"
