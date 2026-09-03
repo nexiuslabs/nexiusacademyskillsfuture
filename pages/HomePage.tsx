@@ -5,6 +5,7 @@ import Navbar from '../components/home/Navbar';
 import Hero from '../components/home/Hero';
 import CoursePreviewCTA from '../components/home/CoursePreviewCTA';
 import Features from '../components/home/Features';
+import WhyDifferent from '../components/home/WhyDifferent';
 import About from '../components/home/About';
 import Categories from '../components/home/Categories';
 import StatsStrip from '../components/home/StatsStrip';
@@ -40,6 +41,7 @@ const HomePage: React.FC = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
+        <WhyDifferent />
         <About />
         <Categories />
 
