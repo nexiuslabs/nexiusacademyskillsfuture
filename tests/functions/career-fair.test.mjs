@@ -9,8 +9,7 @@ const fn = fs.readFileSync(new URL('../../supabase/functions/capture-career-fair
 const migration = fs.readFileSync(new URL('../../supabase/migrations/20260828103000_create_career_fair_applications.sql', import.meta.url), 'utf8');
 
 test('publishes the three-minute scenario diagnostic and course facts without the removed pathway section', () => {
-  for (const phrase of ['3-minute gap test','18 & 25 September 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
-  assert.doesNotMatch(page, /October cohort|9 & 16 October 2026/);
+  for (const phrase of ['3-minute gap test','18 & 25 September 2026','9 & 16 October 2026']) assert.match(page, new RegExp(phrase.replace(/[&/]/g, '\\$&')));
   for (const phrase of ['Free 3-minute diagnostic','A number does not match','The useful file contains sensitive data','The automation stops halfway','Put the work in order','Evidence of practice','Confidence calibration','AI-aware','Applied foundation','Workflow practitioner','Workplace-proven','Retake the test']) assert.match(gapTest, new RegExp(phrase));
   assert.match(gapTest, /Math\.random/);
   assert.match(gapTest, /seconds <= 180 \? 1 : seconds <= 240 \? 0\.5 : seconds <= 300 \? 0\.3 : 0\.1/);
