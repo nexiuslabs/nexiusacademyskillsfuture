@@ -208,7 +208,7 @@ export const trackLeadFormSubmit = (params: {
 };
 
 export const trackOutboundClick = (params: {
-  channel: 'skillsfuture' | 'whatsapp';
+  channel: 'luma' | 'skillsfuture' | 'whatsapp';
   pagePath: string;
   position: string;
 }) => {
