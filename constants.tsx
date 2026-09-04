@@ -52,7 +52,7 @@ export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
     dates: '09 Oct 2026 & 16 Oct 2026',
-    time: '9:00am - 5:00pm',
+    time: '9:00am - 6:00pm',
     format: 'In-Person',
     venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
     month: 'Oct 2026',
