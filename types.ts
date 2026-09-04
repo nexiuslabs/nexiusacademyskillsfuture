@@ -27,6 +27,7 @@ export interface ScheduleItem {
   slotsLeft?: number;
   month: string;
   registrationCloses?: string;
+  registrationUrl?: string;
   interestOnly?: boolean;
   cohortCode?: string;
 }

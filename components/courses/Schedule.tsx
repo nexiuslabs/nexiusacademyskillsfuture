@@ -125,6 +125,8 @@ const Schedule: React.FC = () => {
                           preferredIntake: `${schedule.dates} (${schedule.time.replace(/:00/g, '').replace(' - ', '-')})`,
                           cohortCode: schedule.cohortCode,
                           courseSlug: 'agentic-ai',
+                          redirectUrl: schedule.registrationUrl,
+                          skipPayerStep: Boolean(schedule.registrationUrl),
                         })
                       }
                       className="inline-block text-center w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-colors"
