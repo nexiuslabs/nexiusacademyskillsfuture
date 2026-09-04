@@ -34,7 +34,7 @@ const Schedule: React.FC = () => {
 
         <div className="space-y-6">
           {filteredSchedules.map((schedule, index) => {
-            const isFull = schedule.slotsLeft <= 0 && !schedule.interestOnly;
+            const isFull = typeof schedule.slotsLeft === 'number' && schedule.slotsLeft <= 0 && !schedule.interestOnly;
 
             return (
               <div
@@ -75,7 +75,9 @@ const Schedule: React.FC = () => {
                         ? 'Join waitlist to secure next intake'
                         : schedule.interestOnly
                           ? 'We will follow up when the cohort details are confirmed'
-                          : 'Filling up fast'}
+                          : schedule.registrationCloses && schedule.registrationCloses !== 'TBC'
+                            ? `Registration closes ${schedule.registrationCloses}`
+                            : 'Registration open'}
                     </div>
                   </div>
                 </div>

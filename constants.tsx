@@ -55,9 +55,8 @@ export const SCHEDULES: ScheduleItem[] = [
     time: '9:00am - 5:00pm',
     format: 'In-Person',
     venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
-    slotsLeft: 1,
     month: 'Oct 2026',
-    registrationCloses: 'TBC',
+    registrationCloses: '25 Sep 2026',
     cohortCode: '2026-10-09',
   },
   {

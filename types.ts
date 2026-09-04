@@ -24,7 +24,7 @@ export interface ScheduleItem {
   time: string;
   format: 'Online (Zoom)' | 'In-Person';
   venue?: string;
-  slotsLeft: number;
+  slotsLeft?: number;
   month: string;
   registrationCloses?: string;
   interestOnly?: boolean;
