@@ -77,7 +77,7 @@ const resolveCampaignLeadIntent = (lead: string): LeadIntent =>
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [
     { label: '18 Sep 2026 & 25 Sep 2026 (9am-6pm)', code: '2026-09-18' },
-    { label: '09 Oct 2026 & 16 Oct 2026 (9am-5pm) — Singapore Institute of Management (SIM)', code: '2026-10-09' },
+    { label: '09 Oct 2026 & 16 Oct 2026 (9am-6pm) — Singapore Institute of Management (SIM)', code: '2026-10-09' },
     { label: '13 Nov 2026 & 20 Nov 2026 (9am-5pm) — Registration of interest (venue TBC)', code: '2026-11-13-interest' },
     { label: 'Register Interest', code: 'next-available' },
   ],
