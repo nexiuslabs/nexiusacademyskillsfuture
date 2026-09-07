@@ -296,7 +296,7 @@ const CorporateClassLandingPage: React.FC = () => {
                   Request Proposal <ArrowRight size={18} />
                 </button>
                 <a
-                  href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20want%20to%20explore%20a%20dedicated%20company%20class%20for%20our%20team%20of%2012%2B."
+                  href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20want%20to%20explore%20a%20dedicated%20company%20class%20for%20our%20team%20of%2015%2B."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>

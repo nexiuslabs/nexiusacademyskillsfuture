@@ -10,6 +10,7 @@ const AIAdvisor: React.FC = () => {
   return (
     <>
       <button
+        aria-label="Open course advisor"
         onClick={() => {
           setIsOpen(true);
           trackAdvisorInteraction({
@@ -46,6 +47,7 @@ const AIAdvisor: React.FC = () => {
                   pagePath: window.location.pathname,
                 });
               }}
+              aria-label="Close course advisor"
               className="text-white/80 hover:text-white"
             >
               <X size={20} />

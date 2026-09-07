@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet, ArrowRight } from 'lucide-react';
 import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
+import { SCHEDULES } from '../../constants';
 import ResponsiveImage from '../ResponsiveImage';
 import { sharedTestimonials } from '../sharedTestimonials';
 
 const TESTIMONIAL_ROTATION_MS = 6500;
 
 const Hero: React.FC = () => {
+  const nextCohort = SCHEDULES.find((schedule) => !schedule.registrationClosed && !schedule.interestOnly && (schedule.slotsLeft === undefined || schedule.slotsLeft > 0));
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const testimonial = sharedTestimonials[activeTestimonial];
 
@@ -52,12 +54,10 @@ const Hero: React.FC = () => {
                 <div>
                   <div className="font-semibold text-primary mb-1">Next Cohort</div>
                   <div className="flex flex-wrap items-center gap-2 text-gray-600">
-                    <span>18 Sep &amp; 25 Sep 2026</span>
-                    <span className="text-gray-400">•</span>
-                    <span>09 Oct &amp; 16 Oct 2026</span>
+                    <span>{nextCohort?.dates ?? 'Register interest for the next intake'}</span>
                   </div>
                   <a href="#schedule" className="inline-flex items-center mt-2 text-sm font-semibold text-accent hover:underline">
-                    More
+                    View dates and registration deadline
                   </a>
                 </div>
               </div>

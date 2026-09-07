@@ -14,7 +14,7 @@ const Schedule: React.FC = () => {
     <section id="schedule" className="py-20 bg-neutral">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-heading font-bold text-primary mb-4">Upcoming Course Schedules</h2>
-        <p className="text-gray-600 mb-10">Choose from our flexible schedules. Weekday evenings or weekends available.</p>
+        <p className="text-gray-600 mb-10">Choose an upcoming weekday intake. Session times, venue and registration deadlines are listed below.</p>
 
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
           {months.map((month) => (

@@ -70,3 +70,17 @@ body {
     bottom: 8.75rem;
   }
 }
+
+/* Keep the advisor clear of mobile registration rails and device safe areas. */
+@media (max-width: 1023px) {
+  .ai-advisor-trigger,
+  .ai-advisor-panel {
+    bottom: calc(6.5rem + env(safe-area-inset-bottom));
+    right: 1rem;
+  }
+  .ai-advisor-panel {
+    width: calc(100vw - 2rem);
+    max-height: calc(100dvh - 8rem - env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+}
