@@ -18,3 +18,5 @@ The four benefit illustrations share teal, navy and warm white, softly shaded ge
 The Foundation page is unchanged. Its existing class photo is intentionally not reused. Old shared images remain available to other routes. Preserve this image selection and the distinction between illustration and real photography in future edits.
 
 The six compact WebPs use direct delivery (`optimize={false}`), because CDN width-only cover transforms cropped their compositions during live verification. Preserve this setting unless replacement delivery is visually verified.
+
+Owner clarification: show every person in the full hero composition and the complete benefit illustrations. Use contain sizing, preserve the hero source aspect ratio, and do not apply hover zoom to the illustrations.

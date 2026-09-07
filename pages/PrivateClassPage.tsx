@@ -415,7 +415,7 @@ const PrivateClassHero: React.FC = () => {
 
           <div className="space-y-6">
             <figure className="overflow-hidden rounded-3xl border border-primary/10 bg-white shadow-card">
-              <ResponsiveImage src="/images/private-class/corporate-team-hero.webp" optimize={false} alt="Illustration of a business team exploring AI-assisted workflows together" loading="eager" fetchPriority="high" widths={[640, 960, 1280]} sizes="(max-width: 1024px) 100vw, 50vw" fit="cover" className="aspect-[4/3] w-full object-cover object-right" />
+              <ResponsiveImage src="/images/private-class/corporate-team-hero.webp" optimize={false} alt="Illustration of a business team exploring AI-assisted workflows together" loading="eager" fetchPriority="high" widths={[640, 960, 1280]} sizes="(max-width: 1024px) 100vw, 50vw" fit="contain" className="aspect-[1672/940] w-full object-contain object-center" />
               <figcaption className="px-5 py-3 text-xs text-gray-500">Illustration: applying AI together in a company setting</figcaption>
             </figure>
             <figure className="ml-auto max-w-md overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-soft">
@@ -459,8 +459,8 @@ const PrivateClassPrograms: React.FC = () => (
                 alt={card.title}
                 widths={[480, 768]}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                fit="cover"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fit="contain"
+                className="h-full w-full object-contain object-center"
               />
             </div>
             <div className="p-3 pt-4">
