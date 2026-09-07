@@ -1381,6 +1381,20 @@ const routes = [
     articleDate: '2026-08-31',
   },
   {
+    path: '/blog/agent-boss-concurrent-ai-work-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Agent Boss Skills: Manage Concurrent AI Work | Nexius Academy',
+    description:
+      'Learn how business professionals can brief, supervise, review, and improve concurrent AI agent work without losing judgment, quality, or control.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-boss-concurrent-ai-work-business-professionals.png',
+    ogImageAlt: 'Business professionals learning to supervise concurrent AI agent work',
+    schemas: [],
+    articleDate: '2026-09-07',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

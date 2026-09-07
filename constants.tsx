@@ -196,6 +196,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 24,
+    slug: 'agent-boss-concurrent-ai-work-business-professionals',
+    title: 'Agent Boss Skills: What Business Professionals Must Learn Before Managing Concurrent AI Work',
+    date: '07 Sep 2026',
+    views: 0,
+    image: '/images/blog/agent-boss-concurrent-ai-work-business-professionals.png',
+    excerpt: 'AI agents can multiply work capacity. Learn to brief, orchestrate, review, and govern concurrent digital coworkers without surrendering judgment.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, team leaders, L&D teams',
+    featured: true,
+  },
+  {
     id: 23,
     slug: 'agent-finops-business-professionals',
     title: 'Agent FinOps: What Business Professionals Must Learn Before Digital Coworkers Scale',
