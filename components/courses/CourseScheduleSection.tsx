@@ -8,7 +8,7 @@ type CourseScheduleSectionProps = {
   positionPrefix: string;
 };
 
-const ADVANCED_COURSE_SCHEDULES = [
+export const ADVANCED_COURSE_SCHEDULES = [
   {
     month: 'Oct 2026',
     dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',

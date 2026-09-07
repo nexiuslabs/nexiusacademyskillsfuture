@@ -1,23 +1,33 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
+import { SCHEDULES } from '../../constants';
 import ResponsiveImage from '../ResponsiveImage';
 
 const Hero: React.FC = () => {
+  const nextCohort = SCHEDULES.find((schedule) => !schedule.registrationClosed && !schedule.interestOnly && (schedule.slotsLeft === undefined || schedule.slotsLeft > 0));
   return (
-    <section className="relative w-full pt-32 pb-20 md:pt-40 md:pb-28 bg-neutral overflow-hidden">
+    <section className="relative w-full pt-24 pb-16 md:pt-40 md:pb-28 bg-neutral overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E6F0F9] rounded-bl-[200px] -z-10 hidden lg:block"></div>
 
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6 z-10">
+        <div className="space-y-4 md:space-y-6 z-10">
           <div className="inline-block px-3 py-1 bg-white rounded-full shadow-sm text-xs font-bold text-secondary tracking-wide uppercase mb-2">
             SkillsFuture-supported practical AI training
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight max-w-3xl">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight max-w-3xl">
             Practical agentic AI training for non-technical teams
           </h1>
           <p className="text-charcoal text-lg md:text-xl max-w-2xl leading-relaxed">
             Learn no-code AI workflows to draft faster, automate repetitive work, and improve team productivity.
           </p>
+
+          <div className="space-y-3">
+            {nextCohort ? <p className="text-sm font-semibold text-primary">Next Foundation intake: {nextCohort.dates} · 16 hours</p> : null}
+            <div className="flex flex-wrap items-center gap-3">
+              <a href="/courses/agentic-ai/#schedule" className="rounded-lg bg-secondary px-5 py-3 font-bold text-white hover:bg-primary">View Foundation Intake</a>
+              <a href="#courses" className="rounded-lg px-3 py-3 font-semibold text-primary underline">Compare Courses</a>
+            </div>
+            <p className="text-xs text-gray-600">Foundation fees from S$113.03 including GST for eligible enhanced-funded learners. <a href="/courses/agentic-ai/#pricing" className="underline">Check your fee</a></p>
+          </div>
 
           <div className="grid sm:grid-cols-3 gap-3 pt-2 max-w-3xl">
             <div className="bg-white/90 border border-blue-100 rounded-2xl px-4 py-4 shadow-sm">
@@ -34,18 +44,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
 
-            <a
-              href="#courses"
-              className="flex items-center gap-3 px-6 py-3 rounded-lg font-bold bg-secondary text-white hover:bg-opacity-90 transition-all group shadow-lg"
-            >
-              <div className="w-10 h-10 bg-white shadow-md rounded-full flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
-                <BookOpen size={24} className="text-secondary" />
-              </div>
-              <span className="text-base md:text-lg">Browse Courses</span>
-            </a>
-          </div>
         </div>
 
         <div className="relative z-10 flex justify-center lg:justify-end">

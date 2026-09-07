@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SCHEDULES } from '../../constants';
+import { ADVANCED_COURSE_SCHEDULES } from '../courses/CourseScheduleSection';
 import { Course } from '../../types';
 import ResponsiveImage from '../ResponsiveImage';
 
@@ -33,13 +35,14 @@ const AVAILABLE_COURSES: Course[] = [
 ];
 
 const CourseList: React.FC = () => {
+  const nextFoundation = SCHEDULES.find((schedule) => !schedule.registrationClosed && !schedule.interestOnly && (schedule.slotsLeft === undefined || schedule.slotsLeft > 0));
   return (
     <section id="courses" className="py-24 bg-white scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-primary mb-3">Our Current Courses</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We currently offer segment-specific variants of our flagship programme for different audiences, plus a dedicated company-class option for internal team training.
+            Start with Foundation to build practical no-code workflows. Choose Advanced to develop AI-driven business innovation and productivity initiatives.
           </p>
         </div>
 
@@ -70,6 +73,13 @@ const CourseList: React.FC = () => {
                 <h3 className="font-bold text-primary text-base mb-3 line-clamp-2 h-12">
                   {course.title}
                 </h3>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p className="font-semibold text-primary">{course.id === 1 ? '16 hours · In person' : '3 days · In person'}</p>
+                  <p>{course.id === 1 ? nextFoundation?.dates || 'Next intake: register interest' : ADVANCED_COURSE_SCHEDULES[0]?.dates}</p>
+                  <p>From {course.id === 1 ? 'S$113.03' : 'S$190.50'} including GST*</p>
+                  <p className="text-xs">*For eligible enhanced-funded learners. See course page for eligibility and full fees.</p>
+                  <span className="inline-block pt-2 font-bold text-accent">View course, fees and dates →</span>
+                </div>
 
               </div>
             </Link>
