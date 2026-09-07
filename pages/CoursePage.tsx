@@ -97,7 +97,7 @@ const CoursePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-neutral font-sans text-textDark pb-20 lg:pb-0">
+    <div className="min-h-screen bg-neutral font-sans text-textDark pb-24">
       <SEO
         title="Agentic AI & AI Agent Course Singapore | Nexius Academy"
         description="Take a 16-hour agentic AI and AI agent course in Singapore for non-technical professionals. Build no-code workflows and check current SkillsFuture support."
@@ -110,7 +110,7 @@ const CoursePage: React.FC = () => {
         <CourseHero />
         <Overview />
         <Curriculum />
-        <Pricing />
+        <Pricing reserveButtonText="Get help registering" />
         <Schedule />
         <Instructors />
         <WorkshopGallery />

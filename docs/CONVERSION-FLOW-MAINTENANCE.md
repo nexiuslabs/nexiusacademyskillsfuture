@@ -21,3 +21,11 @@ The isolated browser audit covers widths 375, 390, 599, 768, 1024 and 1440; firs
 Release only through `/usr/local/share/nexius/RELEASE_COORDINATION.md` and the existing Academy `nexius-devctl` controller. Preserve the last production snapshot for rollback. Do not modify database, email, analytics configuration or the paused course rebuild as part of this UI release.
 
 Conversion improvement remains a hypothesis until measured. Existing analytics and UTM capture remain in place; this change does not claim an uplift or install new instrumentation.
+
+## October paid-ad landing page — 8 September 2026
+
+Owner task: Facebook Paid Ads for Oct Class, requested implementation of landing-page friction review. Base: 9c9c52e1be7a545c124b746b587b78a978cce859. Scope: Foundation hero, navbar, bottom rail, enquiry presentation and duplicate advisor suppression. The official schedule capture-before-handoff path, fees, schemas, outbound integrations and UTM handling are unchanged.
+
+Hero now matches the 16-hour ad promise and presents dates, venue, conditional fee and registration help before the workshop image. Assisted actions explicitly say Get help registering. Name/email and preselected intake are visible; optional phone/work fields are collapsed. Official schedule Apply Now remains distinct. The two-action rail replaces three competing actions; the duplicate advisor is suppressed only on the Foundation course path.
+
+Validation: production build and all 26 function tests passed; browser checked 375, 390, 768, 1024 and 1440 widths with no horizontal overflow; mobile hero and assisted form visually reviewed; official schedule still opens Registration Details with Save Details & Continue. No production lead was submitted and no email was sent. Conversion uplift and backend delivery are not claimed.

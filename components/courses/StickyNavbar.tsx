@@ -20,7 +20,7 @@ const StickyNavbar: React.FC = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden xl:flex space-x-5 items-center">
             <a href="#overview" className="text-textDark hover:text-accent font-medium transition-colors">Overview</a>
             <a href="#curriculum" className="text-textDark hover:text-accent font-medium transition-colors">Curriculum</a>
             <a href="#pricing" className="text-textDark hover:text-accent font-medium transition-colors">Fees</a>
@@ -37,13 +37,13 @@ const StickyNavbar: React.FC = () => {
               }
               className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
             >
-              Apply Now
+              Get help registering
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-primary hover:text-accent focus:outline-none">
+          <div className="xl:hidden flex items-center">
+            <button aria-label="Toggle course navigation" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)} className="text-primary hover:text-accent focus:outline-none">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -52,7 +52,7 @@ const StickyNavbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div className="xl:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
             <a href="#overview" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Overview</a>
             <a href="#curriculum" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Curriculum</a>
@@ -70,7 +70,7 @@ const StickyNavbar: React.FC = () => {
                 }
                 className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
                >
-                Apply Now
+                Get help registering
               </button>
             </div>
           </div>

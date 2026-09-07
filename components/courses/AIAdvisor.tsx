@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X, MessageCircle, Sparkles } from 'lucide-react';
 import { trackAdvisorInteraction, trackOutboundClick } from '../../services/analytics';
 
@@ -6,6 +7,9 @@ const WHATSAPP_URL = 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20
 
 const AIAdvisor: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
+  // This page already provides a persistent WhatsApp action beside registration help.
+  if (pathname.replace(/\/$/, '') === '/courses/agentic-ai') return null;
 
   return (
     <>

@@ -517,7 +517,7 @@ const LeadCaptureModal: React.FC = () => {
         ? 'Registration Details'
       : isAccountantsRegistration
           ? 'Who Is Paying?'
-          : 'Registration'
+          : isFoundation ? 'Get help registering' : 'Registration'
     : isAdvisoryFlow
       ? 'Team Training Enquiry'
       : isChecklistFlow
@@ -527,7 +527,7 @@ const LeadCaptureModal: React.FC = () => {
   const submitLabel = isReserveFlow
     ? isCompanySponsored
       ? 'Submit Sponsorship Request'
-      : isFoundation && !effectiveRedirectUrl ? 'Send Registration Enquiry' : 'Continue with Registration'
+      : isFoundation && !effectiveRedirectUrl ? 'Request registration help' : 'Continue with Registration'
     : isAdvisoryFlow
       ? 'Request Proposal'
       : isChecklistFlow
@@ -566,7 +566,7 @@ const LeadCaptureModal: React.FC = () => {
             {isReserveFlow && !isCompanySponsored ? <p className="rounded-lg bg-blue-50 p-4 text-sm text-primary">
               {effectiveRedirectUrl
                 ? 'First, save your contact details with Nexius Academy. Then continue to the registration or onboarding page. Your place is confirmed only after the registration requirements are completed.'
-                : 'Send an enquiry for this intake. Our team will help you complete official registration; this form alone does not confirm a place.'}
+                : 'Share your name and email. Our team will contact you with the next steps for your selected intake and help you complete official registration with Temasek Polytechnic. This enquiry does not confirm a place.'}
             </p> : null}
             {isFoundation ? <details className="rounded-lg border p-3"><summary className="cursor-pointer text-sm font-semibold text-primary">Fee estimate: {estimate.amount} — check or update eligibility</summary><div className="mt-3"><FoundationFeeEstimator /></div></details> : null}
             {usesStructuredReserveFlow ? (
@@ -820,7 +820,7 @@ const LeadCaptureModal: React.FC = () => {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <LeadInput
                     required
-                    placeholder="Full name"
+                    autoComplete="name" placeholder="Full name"
                     className="rounded-lg border px-4 py-3"
                     value={formState.fullName}
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
@@ -828,41 +828,13 @@ const LeadCaptureModal: React.FC = () => {
                   />
                   <LeadInput
                     required
-                    type="email"
+                    type="email" autoComplete="email"
                     placeholder="Email"
                     className="rounded-lg border px-4 py-3"
                     value={formState.email}
                     onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('email', e.target.value)}
-                  />
-                  <LeadInput
-                    placeholder="Company name"
-                    className="rounded-lg border px-4 py-3"
-                    value={formState.companyName}
-                    onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
-                    onFocus={onFieldFocus}
-                  />
-                  <LeadInput
-                    placeholder="Department or designation"
-                    className="rounded-lg border px-4 py-3"
-                    value={formState.departmentOrDesignation}
-                    onChange={(e) =>
-                      setFormState((s) => ({
-                        ...s,
-                        departmentOrDesignation: e.target.value,
-                        role: e.target.value,
-                      }))
-                    }
-                    onFocus={onFieldFocus}
-                  />
-                  <LeadInput
-                    placeholder="Mobile number (optional)"
-                    className="rounded-lg border px-4 py-3"
-                    value={formState.phone}
-                    onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
-                    onFocus={onFieldFocus}
-                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
                   <select aria-label="Preferred intake"
                     required
@@ -885,6 +857,39 @@ const LeadCaptureModal: React.FC = () => {
                     ))}
                   </select>
                 </div>
+                <details className="rounded-lg border border-gray-200 p-3">
+                  <summary className="cursor-pointer text-sm font-semibold text-primary">Add phone or work details (optional)</summary>
+                  <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <LeadInput
+                    placeholder="Company name"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.companyName}
+                    onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
+                    onFocus={onFieldFocus}
+                  />
+                  <LeadInput
+                    placeholder="Department or designation"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.departmentOrDesignation}
+                    onChange={(e) =>
+                      setFormState((s) => ({
+                        ...s,
+                        departmentOrDesignation: e.target.value,
+                        role: e.target.value,
+                      }))
+                    }
+                    onFocus={onFieldFocus}
+                  />
+                  <LeadInput
+                    type="tel" autoComplete="tel" placeholder="Mobile number (optional)"
+                    className="rounded-lg border px-4 py-3"
+                    value={formState.phone}
+                    onChange={(e) => setFormState((s) => ({ ...s, phone: e.target.value }))}
+                    onFocus={onFieldFocus}
+                    onBlur={(e) => onFieldCompleted('phone', e.target.value)}
+                  />
+                  </div>
+                </details>
               </>
             ) : isAdvisoryFlow ? (
               <>

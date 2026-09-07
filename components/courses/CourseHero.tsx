@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Star, CheckCircle, CalendarDays, Clock3, Presentation, Wallet, ArrowRight } from 'lucide-react';
-import { openLeadModal, openRegisterInterestModal } from '../../services/leadModal';
+import { Star, CheckCircle, CalendarDays, Clock3, ArrowRight } from 'lucide-react';
+import { openRegisterInterestModal } from '../../services/leadModal';
 import { SCHEDULES } from '../../constants';
 import ResponsiveImage from '../ResponsiveImage';
 import { sharedTestimonials } from '../sharedTestimonials';
@@ -21,61 +21,39 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-neutral">
+    <section className="relative pt-24 pb-12 lg:pt-28 lg:pb-20 overflow-hidden bg-neutral">
       <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent opacity-60"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-4">
             <div className="inline-flex items-center gap-2 bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
               <Star size={14} className="fill-accent text-accent" />
               Foundation
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Agentic AI Foundations for Non-Technical Professionals
+              Build Your First AI Agent in 16 Hours
             </h1>
-            <p className="text-lg font-bold uppercase tracking-[0.18em]">
-              <a
-                href="https://academy.nexiuslabs.com/courses/agentic-ai/"
-                className="text-accent hover:text-primary transition-colors"
-              >
-                Enhancing Productivity and Business Process Automation
-              </a>
+            <p className="text-sm font-semibold text-primary">Agentic AI Foundations for Non-Technical Professionals</p>
+            <p className="max-w-2xl text-base leading-relaxed text-gray-700">
+              Turn one everyday work task into an AI workflow, with guided practice and human review. No coding background required.
             </p>
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              This practical AI agent course in Singapore helps non-technical professionals design governed, no-code workflows for real workplace tasks, with guided exercises and human review built in. Learn how to apply AI to repetitive work and internal drafting with a no-code approach for business teams.
-            </p>
-
-
-            <div className="grid sm:grid-cols-2 gap-3 bg-white/90 border border-blue-100 rounded-xl p-5">
-              <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
-                <CalendarDays size={16} className="text-accent mt-0.5 shrink-0" />
-                <div>
-                  <div className="font-semibold text-primary mb-1">Next Cohort</div>
-                  <div className="flex flex-wrap items-center gap-2 text-gray-600">
-                    <span>{nextCohort?.dates ?? 'Register interest for the next intake'}</span>
-                  </div>
-                  <a href="#schedule" className="inline-flex items-center mt-2 text-sm font-semibold text-accent hover:underline">
-                    View dates and registration deadline
-                  </a>
-                </div>
-              </div>
-              <div className="flex min-h-[96px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
-                <Presentation size={16} className="text-accent mt-0.5 shrink-0" />
-                <div className="font-medium leading-6 text-gray-700">Format: In-Person</div>
-              </div>
-              <div className="flex min-h-[64px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
-                <Clock3 size={16} className="text-accent mt-0.5 shrink-0" />
-                <div className="font-medium leading-6 text-gray-700">Duration: 16 Hours</div>
-              </div>
-              <div className="flex min-h-[64px] items-start gap-3 rounded-xl bg-white px-4 py-4 text-sm text-gray-700 shadow-sm">
-                <Wallet size={16} className="text-accent mt-0.5 shrink-0" />
-                <div className="font-medium leading-6 text-gray-700">Net Fee: from S$113.03*</div>
-              </div>
+            <div className="space-y-2 rounded-xl border border-blue-100 bg-white p-4 text-sm text-gray-700">
+              <p className="flex gap-2"><CalendarDays size={18} className="shrink-0 text-accent" /><strong>{nextCohort?.dates ?? 'Next intake to be confirmed'}</strong></p>
+              <p className="flex gap-2"><Clock3 size={18} className="shrink-0 text-accent" />{nextCohort?.time ?? '16 hours over two days'} · In person</p>
+              {nextCohort && <p>{nextCohort.venue}</p>}
+              <p className="font-semibold text-primary">From S$113.03 incl. GST, subject to eligibility.</p>
+              <a href="#pricing" className="inline-block text-accent underline">Check your fee — no contact details needed</a>
+              {nextCohort?.registrationCloses && <p>Registration closes {nextCohort.registrationCloses}.</p>}
             </div>
-
-
+            <button type="button" onClick={() => openRegisterInterestModal('course_page_cta', {
+              page: '/courses/agentic-ai', position: 'course_hero_registration_help', ctaLabel: 'get_help_registering',
+            })} className="w-full sm:w-auto rounded-lg bg-primary px-6 py-3 font-bold text-white hover:bg-blue-900">
+              Get help registering
+            </button>
+            <p className="text-sm text-gray-600">Share your name and email. Our team will guide you through official registration with Temasek Polytechnic. An enquiry does not confirm a place.</p>
+            <a href="#schedule" className="inline-block text-sm font-semibold text-accent underline">Ready to apply? View intake and registration steps</a>
             {/* CTA Buttons and eligibility badges moved below grid */}
           </div>
 
@@ -113,33 +91,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4 mt-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              type="button"
-              onClick={() =>
-                openLeadModal('course_page_cta', 'subsidy_fit', {
-                  page: '/courses/agentic-ai',
-                  position: 'course_hero_primary',
-                  ctaLabel: 'check_subsidy_eligibility',
-                })
-              }
-              className="bg-primary hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-blue-900/20 transition-all transform hover:-translate-y-1"
-            >
-              Check Subsidy
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                openRegisterInterestModal('course_page_cta', {
-                  page: '/courses/agentic-ai',
-                  position: 'course_hero_secondary_register_interest',
-                })
-              }
-              className="bg-white border-2 border-primary text-primary hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-all text-center"
-            >
-              Apply Now
-            </button>
-          </div>
           <div className="inline-grid w-[124px] self-start justify-items-stretch text-gray-400 sm:w-auto sm:self-auto">
             <div className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[10px] sm:tracking-[0.18em]">
               In collaboration with
