@@ -6,7 +6,7 @@ import { openLeadModal } from '../../services/leadModal';
 
 const Schedule: React.FC = () => {
   const months = Array.from(new Set(SCHEDULES.map((schedule) => schedule.month)));
-  const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Apr 2026');
+  const [selectedMonth, setSelectedMonth] = useState(SCHEDULES.find((schedule) => !schedule.registrationClosed)?.month ?? months[0]);
 
   const filteredSchedules = SCHEDULES.filter((schedule) => schedule.month === selectedMonth);
 
@@ -44,7 +44,9 @@ const Schedule: React.FC = () => {
                 <div className="space-y-3">
                   <div className="font-bold text-primary text-lg flex flex-wrap items-center gap-2">
                     {schedule.dates}
-                    {isFull ? (
+                    {schedule.registrationClosed ? (
+                      <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-bold text-gray-700">Registration closed</span>
+                    ) : isFull ? (
                       <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-red-600 ring-1 ring-red-100">
                         Full
                       </span>
@@ -71,7 +73,9 @@ const Schedule: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
-                      {isFull
+                      {schedule.registrationClosed
+                        ? 'September registration is closed. Please choose the October intake.'
+                        : isFull
                         ? 'Join waitlist to secure next intake'
                         : schedule.interestOnly
                           ? 'We will follow up when the cohort details are confirmed'
@@ -83,7 +87,9 @@ const Schedule: React.FC = () => {
                 </div>
 
                 <div className="flex-shrink-0">
-                  {schedule.interestOnly ? (
+                  {schedule.registrationClosed ? (
+                    <button type="button" disabled className="w-full rounded-lg bg-gray-200 px-6 py-3 font-bold text-gray-600 md:w-auto">Registration Closed</button>
+                  ) : schedule.interestOnly ? (
                     <button
                       type="button"
                       onClick={() =>
