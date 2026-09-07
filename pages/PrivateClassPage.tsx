@@ -6,7 +6,6 @@ import {
   Mail,
   Menu,
   Play,
-  Star,
   Target,
   Users,
   Wrench,
@@ -33,25 +32,25 @@ const programCards = [
     title: 'Focus on real use cases',
     description: 'Examples, exercises, and workflows can be built around the exact work your teams already do.',
     mode: 'RELEVANCE',
-    image: '/images/private-class/workflow-demo.jpeg',
+    image: '/images/private-class/benefit-use-cases.webp',
   },
   {
     title: 'Solve real pain points',
     description: 'Instructors help teams structure practical AI workflows around bottlenecks, repetitive work, and review-heavy tasks.',
     mode: 'PRACTICAL',
-    image: '/images/private-class/custom-gpt.jpg',
+    image: '/images/private-class/benefit-pain-points.webp',
   },
   {
     title: 'Privacy for internal sharing',
     description: 'Sensitive workflows can be discussed in a closed company setting instead of a public mixed cohort.',
     mode: 'PRIVATE',
-    image: '/images/private-class/speaker-audience.jpg',
+    image: '/images/private-class/benefit-private-sharing.webp',
   },
   {
     title: 'Stronger governance alignment',
     description: 'Leaders can set clear boundaries for approved use, review controls, and escalation rules from day one.',
     mode: 'ALIGNMENT',
-    image: '/images/private-class/lecture-hall.jpeg',
+    image: '/images/private-class/benefit-governance.webp',
   },
 ];
 
@@ -339,11 +338,6 @@ const PrivateClassNavbar: React.FC = () => {
 };
 
 const PrivateClassHero: React.FC = () => {
-  const avatars = [
-    'https://nvuzklxegzsfziorfkvd.supabase.co/storage/v1/object/public/Headshots/jacky_wong.jpeg',
-    '/images/testimonials/thomas-lee.jpg',
-  ];
-
   return (
     <section id="home" className="relative overflow-hidden pb-24 pt-10 md:pb-32 md:pt-16">
       <div className="pointer-events-none absolute inset-0 grid-dots opacity-60" />
@@ -351,34 +345,13 @@ const PrivateClassHero: React.FC = () => {
       <div className="pointer-events-none absolute right-0 top-32 h-80 w-80 rounded-full bg-primary/10 opacity-70 blur-3xl" />
 
       <div className="container-page relative">
-        <div className="grid grid-cols-12 items-center gap-6">
-          <div className="relative col-span-12 h-72 md:col-span-3 md:h-[420px]">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="floaty absolute left-0 top-0 w-44 overflow-hidden rounded-2xl shadow-card md:w-52"
-              style={{ ['--rot' as string]: '-4deg', transform: 'rotate(-4deg)' }}
-            >
-              <ResponsiveImage src="/images/private-class/session-room.jpeg" alt="Workshop participants" widths={[360, 480]} sizes="208px" fit="cover" className="h-44 w-full object-cover" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="floaty absolute bottom-0 left-6 w-40 overflow-hidden rounded-2xl shadow-card md:left-14 md:w-44"
-              style={{ ['--rot' as string]: '5deg', animationDelay: '1.5s', transform: 'rotate(5deg)' }}
-            >
-              <ResponsiveImage src="/images/private-class/speaker-audience.jpg" alt="Lead trainer" widths={[360, 480]} sizes="176px" fit="cover" className="h-40 w-full object-cover" />
-            </motion.div>
-          </div>
-
-          <div className="col-span-12 text-center md:col-span-6">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="text-left">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="text-balance text-4xl font-bold leading-[1.1] text-primary sm:text-5xl md:text-6xl"
+              className="text-balance text-4xl font-bold leading-[1.1] text-primary sm:text-5xl xl:text-6xl"
             >
               Train your team on AI in a format built for real company <span className="font-serif font-normal italic text-gray-600">work</span>
             </motion.h1>
@@ -387,7 +360,7 @@ const PrivateClassHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.7 }}
-              className="mx-auto mt-6 max-w-xl text-balance text-base text-gray-600 md:text-lg"
+              className="mt-6 max-w-xl text-balance text-base text-gray-600 md:text-lg"
             >
               Instead of sending staff into a general public intake, run the course as a private company cohort shaped around your workflows, decision-making context, and internal operating constraints.
             </motion.p>
@@ -396,12 +369,12 @@ const PrivateClassHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="mt-8 flex flex-col items-center gap-5"
+              className="mt-8 flex flex-col items-start gap-5"
             >
-              <div className="flex flex-wrap items-center justify-center gap-2 text-center text-lg text-gray-600 sm:text-xl">
+              <div className="flex flex-wrap items-center gap-2 text-left text-lg text-gray-600 sm:text-xl">
                 <span className="font-semibold text-primary">15 pax</span>
                 <span className="text-gray-300">|</span>
-                <span>Dedicated company class and above</span>
+                <span>Minimum for a dedicated company class</span>
               </div>
 
               <div className="flex w-full max-w-2xl flex-col items-stretch justify-center gap-4 sm:flex-row">
@@ -430,31 +403,6 @@ const PrivateClassHero: React.FC = () => {
                 </a>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <div className="flex items-center rounded-full bg-white/95 px-4 py-2 shadow-soft ring-1 ring-primary/5">
-                  <div className="flex -space-x-2">
-                    {avatars.map((avatar) => (
-                      <span key={avatar} className="block h-9 w-9 shrink-0 overflow-hidden rounded-full border-2 border-white bg-gray-100">
-                        <ResponsiveImage
-                          src={avatar}
-                          alt=""
-                          optimize={false}
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-base font-semibold text-primary">
-                  <div className="flex items-center gap-1 text-accent">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star key={index} size={16} className="fill-current" />
-                    ))}
-                  </div>
-                  <span>4.5</span>
-                </div>
-              </div>
-
               <div className="grid w-full max-w-2xl gap-3 sm:grid-cols-2">
                 {proofChips.map((chip) => (
                   <div key={chip} className="rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm text-gray-700 shadow-soft">
@@ -465,16 +413,15 @@ const PrivateClassHero: React.FC = () => {
             </motion.div>
           </div>
 
-          <div className="relative col-span-12 h-72 md:col-span-3 md:h-[420px]">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="floaty absolute right-0 top-10 w-56 overflow-hidden rounded-2xl shadow-card md:w-64"
-              style={{ ['--rot' as string]: '3deg', animationDelay: '0.8s', transform: 'rotate(3deg)' }}
-            >
-              <ResponsiveImage src="/images/private-class/hall-room.jpg" alt="Nexius Academy classroom" widths={[480, 768]} sizes="256px" fit="cover" className="h-72 w-full object-cover" />
-            </motion.div>
+          <div className="space-y-6">
+            <figure className="overflow-hidden rounded-3xl border border-primary/10 bg-white shadow-card">
+              <ResponsiveImage src="/images/private-class/corporate-team-hero.webp" alt="Illustration of a business team exploring AI-assisted workflows together" loading="eager" fetchPriority="high" widths={[640, 960, 1280]} sizes="(max-width: 1024px) 100vw, 50vw" fit="cover" className="aspect-[4/3] w-full object-cover object-right" />
+              <figcaption className="px-5 py-3 text-xs text-gray-500">Illustration: applying AI together in a company setting</figcaption>
+            </figure>
+            <figure className="ml-auto max-w-md overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-soft">
+              <ResponsiveImage src="/images/private-class/workshop-class-alternative.webp" alt="Nexius workshop group with trainers, participants and laptops in the classroom" widths={[480, 900]} sizes="(max-width: 640px) 100vw, 448px" fit="contain" className="aspect-[3/2] w-full object-contain" />
+              <figcaption className="px-5 py-3 text-sm font-medium text-primary">Learning together at a Nexius workshop</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -505,12 +452,12 @@ const PrivateClassPrograms: React.FC = () => (
             transition={{ duration: 0.5, delay: index * 0.08 }}
             className="group relative rounded-3xl bg-white p-3 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
           >
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F6FAFA]">
               <ResponsiveImage
                 src={card.image}
                 alt={card.title}
                 widths={[480, 768]}
-                sizes="(max-width: 1024px) 50vw, 25vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 fit="cover"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
