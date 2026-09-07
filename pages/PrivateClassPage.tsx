@@ -415,11 +415,11 @@ const PrivateClassHero: React.FC = () => {
 
           <div className="space-y-6">
             <figure className="overflow-hidden rounded-3xl border border-primary/10 bg-white shadow-card">
-              <ResponsiveImage src="/images/private-class/corporate-team-hero.webp" alt="Illustration of a business team exploring AI-assisted workflows together" loading="eager" fetchPriority="high" widths={[640, 960, 1280]} sizes="(max-width: 1024px) 100vw, 50vw" fit="cover" className="aspect-[4/3] w-full object-cover object-right" />
+              <ResponsiveImage src="/images/private-class/corporate-team-hero.webp" optimize={false} alt="Illustration of a business team exploring AI-assisted workflows together" loading="eager" fetchPriority="high" widths={[640, 960, 1280]} sizes="(max-width: 1024px) 100vw, 50vw" fit="cover" className="aspect-[4/3] w-full object-cover object-right" />
               <figcaption className="px-5 py-3 text-xs text-gray-500">Illustration: applying AI together in a company setting</figcaption>
             </figure>
             <figure className="ml-auto max-w-md overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-soft">
-              <ResponsiveImage src="/images/private-class/workshop-class-alternative.webp" alt="Nexius workshop group with trainers, participants and laptops in the classroom" widths={[480, 900]} sizes="(max-width: 640px) 100vw, 448px" fit="contain" className="aspect-[3/2] w-full object-contain" />
+              <ResponsiveImage src="/images/private-class/workshop-class-alternative.webp" optimize={false} alt="Nexius workshop group with trainers, participants and laptops in the classroom" widths={[480, 900]} sizes="(max-width: 640px) 100vw, 448px" fit="contain" className="aspect-[3/2] w-full object-contain" />
               <figcaption className="px-5 py-3 text-sm font-medium text-primary">Learning together at a Nexius workshop</figcaption>
             </figure>
           </div>
@@ -455,6 +455,7 @@ const PrivateClassPrograms: React.FC = () => (
             <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F6FAFA]">
               <ResponsiveImage
                 src={card.image}
+                optimize={false}
                 alt={card.title}
                 widths={[480, 768]}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

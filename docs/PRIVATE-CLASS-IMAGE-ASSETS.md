@@ -16,3 +16,5 @@ The hero uses an existing generated corporate-team illustration, explicitly capt
 The four benefit illustrations share teal, navy and warm white, softly shaded geometric forms, and no embedded text. All six WebPs preserve source dimensions. The workshop photo has no creative edits and is displayed at a modest width. Original PNGs and exact generation prompts are retained in the owner's task artifact folder `audits/private-class-imagery-2026-09-07`.
 
 The Foundation page is unchanged. Its existing class photo is intentionally not reused. Old shared images remain available to other routes. Preserve this image selection and the distinction between illustration and real photography in future edits.
+
+The six compact WebPs use direct delivery (`optimize={false}`), because CDN width-only cover transforms cropped their compositions during live verification. Preserve this setting unless replacement delivery is visually verified.
