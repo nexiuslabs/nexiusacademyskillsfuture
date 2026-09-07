@@ -53,8 +53,6 @@ const Hero: React.FC = () => {
               Get help registering
             </button>
             <p className="text-sm text-gray-600">Share your name and email. Our team will guide you through official registration with Temasek Polytechnic. An enquiry does not confirm a place.</p>
-            <a href="#schedule" className="inline-block text-sm font-semibold text-accent underline">Ready to apply? View intake and registration steps</a>
-            {/* CTA Buttons and eligibility badges moved below grid */}
           </div>
 
           <div className="relative">
@@ -90,29 +88,32 @@ const Hero: React.FC = () => {
             <div className="absolute -z-10 top-10 -right-10 w-4/5 h-4/5 bg-accent/10 rounded-3xl transform rotate-3"></div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="inline-grid w-[124px] self-start justify-items-stretch text-gray-400 sm:w-auto sm:self-auto">
+        <div className="mt-4 flex items-start justify-between gap-4">
+          <div className="min-w-0 space-y-3">
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium text-gray-500">
+              <div className="flex items-center gap-1">
+                <CheckCircle size={16} className="shrink-0 text-accent" /> SkillsFuture Eligible
+              </div>
+              <div className="flex items-center gap-1">
+                <CheckCircle size={16} className="shrink-0 text-accent" /> No coding required
+              </div>
+              <div className="flex items-center gap-1">
+                <CheckCircle size={16} className="shrink-0 text-accent" /> Up to 90% Subsidy
+              </div>
+            </div>
+            <a href="#schedule" className="inline-block text-sm font-semibold text-accent underline">Ready to apply? View intake and registration steps</a>
+          </div>
+          <div className="ml-auto grid w-[124px] shrink-0 justify-items-stretch text-gray-400 sm:w-[180px]">
             <div className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[10px] sm:tracking-[0.18em]">
               In collaboration with
             </div>
-            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white p-[5%] shadow-sm">
+            <div className="overflow-hidden rounded-lg bg-white p-[5%] shadow-sm">
               <img
                 src="/images/partners/temasek-poly-full-color-right-align.png"
                 alt="Temasek Polytechnic collaboration logo"
                 className="h-auto w-full object-contain"
               />
             </div>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-4 pt-4 text-sm font-medium text-gray-500">
-          <div className="flex items-center gap-1">
-            <CheckCircle size={16} className="text-accent" /> SkillsFuture Eligible
-          </div>
-          <div className="flex items-center gap-1">
-            <CheckCircle size={16} className="text-accent" /> No coding required
-          </div>
-          <div className="flex items-center gap-1">
-            <CheckCircle size={16} className="text-accent" /> Up to 90% Subsidy
           </div>
         </div>
       </div>
