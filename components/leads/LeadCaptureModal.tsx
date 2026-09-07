@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useRef, useSyncExternalStore } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   X,
@@ -25,6 +25,9 @@ import {
   trackOutboundClick,
   trackRegistrationPathSelected,
 } from '../../services/analytics';
+import FoundationFeeEstimator from '../courses/FoundationFeeEstimator';
+import { calculateFoundationFee, getFoundationProfile, subscribeFoundationProfile } from '../../services/foundationFees';
+import { SCHEDULES } from '../../constants';
 import { getVisitorContext } from '../../services/visitorSession';
 
 declare global {
@@ -76,8 +79,10 @@ const resolveCampaignLeadIntent = (lead: string): LeadIntent =>
 
 const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
   'agentic-ai': [
-    { label: '09 Oct 2026 & 16 Oct 2026 (9am-6pm) — Singapore Institute of Management (SIM)', code: '2026-10-09' },
-    { label: '13 Nov 2026 & 20 Nov 2026 (9am-5pm) — Registration of interest (venue TBC)', code: '2026-11-13-interest' },
+    ...SCHEDULES.filter((schedule) => !schedule.registrationClosed && (schedule.interestOnly || schedule.slotsLeft === undefined || schedule.slotsLeft > 0)).map((schedule) => ({
+      label: `${schedule.dates} (${schedule.time})${schedule.interestOnly ? ' — Registration of interest (venue TBC)' : ''}`,
+      code: schedule.cohortCode || 'next-available',
+    })),
     { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-accountants': [
@@ -112,6 +117,7 @@ const ADVANCED_COURSE_REGISTRATION_URL =
   'https://stms.polite.edu.sg/student/ihlcourse/detail/63b27e4c-e2ec-47f3-baeb-caff5fbaa641';
 
 const getCourseSlugFromPath = (path: string) => {
+  if (path.includes('/private-class')) return 'agentic-ai-company-class';
   if (path.includes('/courses/agentic-ai-company-class')) return 'agentic-ai-company-class';
   if (path.includes('/assessments')) return 'agentic-ai-challenge';
   if (path.includes('/courses/agentic-ai-accountants')) return 'agentic-ai-accountants';
@@ -121,7 +127,7 @@ const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/courses/advanced-agentic-ai')) return 'advanced-agentic-ai';
   if (path.includes('/courses/agentic-ai-business-innovation')) return 'agentic-ai-business-innovation';
   if (path.includes('/courses/agentic-ai')) return 'agentic-ai';
-  return 'general';
+  return path === '/' ? 'agentic-ai' : 'general';
 };
 
 const defaultCohortForPath = (path: string): CohortOption => {
@@ -130,12 +136,25 @@ const defaultCohortForPath = (path: string): CohortOption => {
   return cohorts[0] || { label: 'TBD', code: 'tbd' };
 };
 
+const LeadInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
+  const id = React.useId();
+  const text = props.placeholder || props['aria-label'] || 'Details';
+  const label = props.required ? text : text.includes('(optional)') ? text : `${text} (optional)`;
+  const phone = /phone|mobile/i.test(text);
+  const autoComplete = phone ? 'tel' : /email/i.test(text) ? 'email' : /full name/i.test(text) ? 'name' : /company name/i.test(text) ? 'organization' : undefined;
+  if (props.type === 'checkbox' || props.type === 'radio') return <input {...props} />;
+  return <label htmlFor={id} className="flex flex-col gap-1 text-sm font-medium text-gray-700">{label}<input {...props} id={id} type={phone ? 'tel' : props.type} autoComplete={autoComplete} /></label>;
+};
+
 const LeadCaptureModal: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const initialCohort = defaultCohortForPath(location.pathname);
   const isAccountantsRegistration = location.pathname.includes('/courses/agentic-ai-accountants');
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const [showSubsidyContact, setShowSubsidyContact] = useState(false);
+  const foundationProfile = useSyncExternalStore(subscribeFoundationProfile, getFoundationProfile, getFoundationProfile);
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -165,7 +184,10 @@ const LeadCaptureModal: React.FC = () => {
     sponsorStatus: 'not_applicable',
   });
 
-  const estimate = useMemo(() => estimateNetFee(formState.ageBand), [formState.ageBand]);
+  const isFoundation = formState.courseSlug === 'agentic-ai';
+  const estimate = isFoundation
+    ? calculateFoundationFee(foundationProfile) || { amount: 'Not yet estimated', note: 'Choose your eligibility profile to see a fee estimate. The advertised S$113.03 requires enhanced funding eligibility.' }
+    : estimateNetFee(formState.ageBand);
   const cohortOptions = useMemo(() => {
     const routeSlug = getCourseSlugFromPath(location.pathname);
     const activeSlug = formState.courseSlug && formState.courseSlug !== routeSlug ? formState.courseSlug : routeSlug;
@@ -220,6 +242,25 @@ const LeadCaptureModal: React.FC = () => {
     setIsOpen(false);
     setIsSubmitting(false);
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialogRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { event.preventDefault(); closeModal(); }
+      if (event.key !== 'Tab') return;
+      const nodes = Array.from(dialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], summary') || []).filter((node) => node.getClientRects().length > 0);
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (!first) { event.preventDefault(); return; }
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialogRef.current)) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => { document.removeEventListener('keydown', onKeyDown); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
+  }, [isOpen]);
 
   const resetCourseFields = () => {
     const first = defaultCohortForPath(location.pathname);
@@ -288,6 +329,7 @@ const LeadCaptureModal: React.FC = () => {
       setIsSubmitted(false);
       setHasStartedForm(false);
       setRegistrationStep(1);
+      setShowSubsidyContact(false);
       setIsOpen(true);
     }
   }, [location.search]);
@@ -334,6 +376,7 @@ const LeadCaptureModal: React.FC = () => {
       setIsSubmitted(false);
       setHasStartedForm(false);
       setRegistrationStep(1);
+      setShowSubsidyContact(false);
       setIsOpen(true);
     };
 
@@ -376,7 +419,7 @@ const LeadCaptureModal: React.FC = () => {
               companyName: formState.intent === 'reserve_seat' ? optionalCompanyValue : formState.companyName,
               departmentOrDesignation: formState.departmentOrDesignation.trim() || optionalPositionValue,
               leadFlow: formState.leadFlow,
-              ageBand: formState.ageBand,
+              ageBand: isFoundation ? foundationProfile.ageBand : formState.ageBand,
               preferredIntake: formState.preferredIntake,
               cohortCode: formState.cohortCode,
               courseSlug: formState.courseSlug,
@@ -484,15 +527,15 @@ const LeadCaptureModal: React.FC = () => {
   const submitLabel = isReserveFlow
     ? isCompanySponsored
       ? 'Submit Sponsorship Request'
-      : 'Continue with Registration'
+      : isFoundation && !effectiveRedirectUrl ? 'Send Registration Enquiry' : 'Continue with Registration'
     : isAdvisoryFlow
       ? 'Request Proposal'
       : isChecklistFlow
         ? 'Send My Checklist'
-        : 'Get My Estimate & Next Step';
+        : isFoundation ? 'Request Eligibility Advice' : 'Get My Estimate & Next Step';
 
   const stepOneButtonLabel = shouldSkipPayerStep
-    ? 'Next'
+    ? 'Save Details & Continue'
     : isPayerTypeLocked && formState.payerType === 'company_sponsored'
       ? 'Continue to Sponsor Details'
       : 'Continue to Payer Mode';
@@ -503,17 +546,29 @@ const LeadCaptureModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-[10000] overflow-y-auto bg-black/45 px-4 py-6">
-      <div className="mx-auto flex max-h-[calc(100vh-3rem)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="lead-dialog-title" tabIndex={-1} className="mx-auto flex max-h-[calc(100vh-3rem)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
-          <h3 className="text-xl font-bold text-primary">{modalTitle}</h3>
+          <h3 id="lead-dialog-title" className="text-xl font-bold text-primary">{modalTitle}</h3>
           <button onClick={closeModal} className="text-gray-500 hover:text-primary" aria-label="Close lead form">
             <X size={20} />
           </button>
         </div>
 
-        {!isSubmitted ? (
+        {!isSubmitted && isFoundation && formState.intent === 'subsidy_fit' && !showSubsidyContact ? (
+          <div className="min-h-0 overflow-y-auto space-y-4 p-6">
+            <FoundationFeeEstimator />
+            <button type="button" onClick={() => setShowSubsidyContact(true)} className="w-full rounded-lg bg-primary py-3 font-bold text-white">Ask an advisor to confirm my eligibility</button>
+            <p className="text-sm text-gray-600">The estimate is free to use. Share contact details only if you would like a follow-up.</p>
+          </div>
+        ) : !isSubmitted ? (
           <form className="min-h-0 flex-1 overflow-y-auto p-6" onSubmit={onSubmit}>
             <div className="space-y-4">
+            {isReserveFlow && !isCompanySponsored ? <p className="rounded-lg bg-blue-50 p-4 text-sm text-primary">
+              {effectiveRedirectUrl
+                ? 'First, save your contact details with Nexius Academy. Then continue to the registration or onboarding page. Your place is confirmed only after the registration requirements are completed.'
+                : 'Send an enquiry for this intake. Our team will help you complete official registration; this form alone does not confirm a place.'}
+            </p> : null}
+            {isFoundation ? <details className="rounded-lg border p-3"><summary className="cursor-pointer text-sm font-semibold text-primary">Fee estimate: {estimate.amount} — check or update eligibility</summary><div className="mt-3"><FoundationFeeEstimator /></div></details> : null}
             {usesStructuredReserveFlow ? (
               <>
                 {showsPayerStep ? (
@@ -551,7 +606,7 @@ const LeadCaptureModal: React.FC = () => {
                     ) : null}
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                      <input
+                      <LeadInput
                         required
                         placeholder="Your full name"
                         className="rounded-lg border px-4 py-3"
@@ -559,7 +614,7 @@ const LeadCaptureModal: React.FC = () => {
                         onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
                         onFocus={onFieldFocus}
                       />
-                      <input
+                      <LeadInput
                         required
                         type="email"
                         placeholder="Your work email"
@@ -569,7 +624,7 @@ const LeadCaptureModal: React.FC = () => {
                         onFocus={onFieldFocus}
                         onBlur={(e) => onFieldCompleted('email', e.target.value)}
                       />
-                      <input
+                      <LeadInput
                         required
                         placeholder="Mobile number"
                         className="rounded-lg border px-4 py-3"
@@ -578,7 +633,7 @@ const LeadCaptureModal: React.FC = () => {
                         onFocus={onFieldFocus}
                         onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                       />
-                      <input
+                      <LeadInput
                         placeholder="Your role or designation"
                         className="rounded-lg border px-4 py-3"
                         value={formState.role}
@@ -594,7 +649,7 @@ const LeadCaptureModal: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                      <select
+                      {!isFoundation ? <select aria-label="Age band"
                         className="rounded-lg border px-4 py-3"
                         value={formState.ageBand}
                         onChange={(e) =>
@@ -607,8 +662,8 @@ const LeadCaptureModal: React.FC = () => {
                       >
                         <option value="below_40">Learner age below 40</option>
                         <option value="40_and_above">Learner age 40 and above</option>
-                      </select>
-                      <select
+                      </select> : null}
+                      <select aria-label="Preferred intake"
                         required
                         className="rounded-lg border px-4 py-3"
                         value={formState.cohortCode}
@@ -713,14 +768,14 @@ const LeadCaptureModal: React.FC = () => {
                         </div>
 
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                          <input
+                          <LeadInput
                             placeholder="Company name"
                             className="rounded-lg border px-4 py-3"
                             value={formState.companyName}
                             onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
                             onFocus={onFieldFocus}
                           />
-                          <input
+                          <LeadInput
                             required
                             placeholder="Sponsor contact name"
                             className="rounded-lg border px-4 py-3"
@@ -728,7 +783,7 @@ const LeadCaptureModal: React.FC = () => {
                             onChange={(e) => setFormState((s) => ({ ...s, sponsorContactName: e.target.value }))}
                             onFocus={onFieldFocus}
                           />
-                          <input
+                          <LeadInput
                             required
                             type="email"
                             placeholder="Sponsor contact email"
@@ -763,7 +818,7 @@ const LeadCaptureModal: React.FC = () => {
             ) : isReserveFlow ? (
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input
+                  <LeadInput
                     required
                     placeholder="Full name"
                     className="rounded-lg border px-4 py-3"
@@ -771,7 +826,7 @@ const LeadCaptureModal: React.FC = () => {
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     required
                     type="email"
                     placeholder="Email"
@@ -781,14 +836,14 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
-                  <input
+                  <LeadInput
                     placeholder="Company name"
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
                     onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     placeholder="Department or designation"
                     className="rounded-lg border px-4 py-3"
                     value={formState.departmentOrDesignation}
@@ -801,7 +856,7 @@ const LeadCaptureModal: React.FC = () => {
                     }
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     placeholder="Mobile number (optional)"
                     className="rounded-lg border px-4 py-3"
                     value={formState.phone}
@@ -809,7 +864,7 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
-                  <select
+                  <select aria-label="Preferred intake"
                     required
                     className="rounded-lg border px-4 py-3"
                     value={formState.cohortCode}
@@ -837,7 +892,7 @@ const LeadCaptureModal: React.FC = () => {
                   Tell us about your team and we will advise on the most suitable private-company class setup.
                 </p>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input
+                  <LeadInput
                     required
                     placeholder="Full name"
                     className="rounded-lg border px-4 py-3"
@@ -845,7 +900,7 @@ const LeadCaptureModal: React.FC = () => {
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     required
                     type="email"
                     placeholder="Email"
@@ -855,7 +910,7 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
-                  <input
+                  <LeadInput
                     required
                     placeholder="Phone"
                     className="rounded-lg border px-4 py-3"
@@ -864,27 +919,23 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
-                  <input
+                  <LeadInput
                     placeholder="Company name"
                     className="rounded-lg border px-4 py-3"
                     value={formState.companyName}
                     onChange={(e) => setFormState((s) => ({ ...s, companyName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
-                    placeholder="Role"
-                    className="rounded-lg border px-4 py-3"
-                    value={formState.role}
-                    onChange={(e) => setFormState((s) => ({ ...s, role: e.target.value }))}
-                    onFocus={onFieldFocus}
-                  />
-                  <input
-                    placeholder="Department or designation"
+                  <LeadInput
+                    placeholder="Role or designation (optional)"
                     className="rounded-lg border px-4 py-3"
                     value={formState.departmentOrDesignation}
-                    onChange={(e) => setFormState((s) => ({ ...s, departmentOrDesignation: e.target.value }))}
+                    onChange={(e) => setFormState((s) => ({ ...s, departmentOrDesignation: e.target.value, role: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
+                  <label className="flex flex-col gap-1 text-sm font-medium text-gray-700 md:col-span-2">Team size, preferred timing and training goals (optional)
+                    <textarea rows={3} maxLength={1000} placeholder="For example: 15 people, November, automate monthly reporting" className="rounded-lg border px-4 py-3" value={formState.preferredIntake === 'Private class schedule by arrangement' ? '' : formState.preferredIntake} onChange={(e) => setFormState((s) => ({ ...s, preferredIntake: e.target.value || 'Private class schedule by arrangement' }))} />
+                  </label>
                 </div>
                 <div className="rounded-lg border border-[#d8e8ff] bg-[#f6faff] px-4 py-3 text-sm text-primary">
                   We will use this enquiry to advise on schedule options, venue setup, and the best next step for your company cohort.
@@ -896,7 +947,7 @@ const LeadCaptureModal: React.FC = () => {
                   Enter your name and email to download the SME AI workflow checklist.
                 </p>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input
+                  <LeadInput
                     required
                     placeholder="Full name"
                     className="rounded-lg border px-4 py-3"
@@ -904,7 +955,7 @@ const LeadCaptureModal: React.FC = () => {
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     required
                     type="email"
                     placeholder="Email"
@@ -923,7 +974,7 @@ const LeadCaptureModal: React.FC = () => {
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input
+                  <LeadInput
                     required
                     placeholder="Full name"
                     className="rounded-lg border px-4 py-3"
@@ -931,7 +982,7 @@ const LeadCaptureModal: React.FC = () => {
                     onChange={(e) => setFormState((s) => ({ ...s, fullName: e.target.value }))}
                     onFocus={onFieldFocus}
                   />
-                  <input
+                  <LeadInput
                     required
                     type="email"
                     placeholder="Email"
@@ -941,7 +992,7 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('email', e.target.value)}
                   />
-                  <input
+                  <LeadInput
                     required
                     placeholder="Phone"
                     className="rounded-lg border px-4 py-3"
@@ -950,7 +1001,7 @@ const LeadCaptureModal: React.FC = () => {
                     onFocus={onFieldFocus}
                     onBlur={(e) => onFieldCompleted('phone', e.target.value)}
                   />
-                  <input
+                  <LeadInput
                     placeholder="Role"
                     className="rounded-lg border px-4 py-3"
                     value={formState.role}
@@ -960,7 +1011,7 @@ const LeadCaptureModal: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <select
+                  {!isFoundation ? <select aria-label="Age band"
                     className="rounded-lg border px-4 py-3"
                     value={formState.ageBand}
                     onChange={(e) =>
@@ -973,9 +1024,9 @@ const LeadCaptureModal: React.FC = () => {
                   >
                     <option value="below_40">Age below 40</option>
                     <option value="40_and_above">Age 40 and above</option>
-                  </select>
+                  </select> : null}
 
-                  <select
+                  <select aria-label="Preferred intake"
                     required
                     className="rounded-lg border px-4 py-3"
                     value={formState.cohortCode}
@@ -1143,7 +1194,7 @@ const LeadCaptureModal: React.FC = () => {
               <>
                 <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
                 <p className="mb-4 text-gray-700">
-                  Your registration request is in. Your estimated net fee is <strong>{estimate.amount}</strong>, and our team will contact you with the best intake and eligibility guidance.
+                  Your enquiry is in. Our team will contact you with intake and eligibility guidance. Your place is confirmed after official registration is completed.
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
                   Next best action: message Cariah directly for immediate advice.

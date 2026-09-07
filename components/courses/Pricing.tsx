@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
+import FoundationFeeEstimator from './FoundationFeeEstimator';
 import { Check, CreditCard, Receipt, Wallet } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
@@ -11,20 +12,6 @@ type PricingProps = {
   sectionClassName?: string;
   variant?: 'public' | 'private_company';
 };
-
-type LearnerType = 'sg_citizen' | 'pr' | 'ltvp' | 'full_fee';
-type AgeBand = '40_and_above' | '39_and_below';
-type BreakdownLine = {
-  label: string;
-  amount: number;
-  negative?: boolean;
-};
-
-const baseFee = 890.0;
-const gst = 80.1;
-const fullFee = 970.1;
-const grant = 623.0;
-const additionalSubsidy = 178.0;
 
 const learnerSummary = [
   {
@@ -63,9 +50,9 @@ const acceptedPayments = ['SkillsFuture Credits (SFC)', 'Credit card', 'Debit ca
 
 const privateSummary = [
   {
-    title: '12 pax',
+    title: '15 pax',
     subtitle: 'Minimum class size',
-    note: 'Private runs are designed for a single company cohort with at least 12 participants.',
+    note: 'Private runs are designed for a single company cohort with at least 15 participants.',
     accent: 'bg-primary',
   },
   {
@@ -97,7 +84,6 @@ const privateProposalChecklist = [
   'Any important workflows, pain points, or governance concerns to keep in view',
 ];
 
-const formatCurrency = (amount: number) => `S$${amount.toFixed(2)}`;
 
 const Pricing: React.FC<PricingProps> = ({
   pagePath = '/courses/agentic-ai',
@@ -108,51 +94,6 @@ const Pricing: React.FC<PricingProps> = ({
   sectionClassName = 'py-20 bg-white',
   variant = 'public',
 }) => {
-  const [learnerType, setLearnerType] = useState<LearnerType>('sg_citizen');
-  const [ageBand, setAgeBand] = useState<AgeBand>('40_and_above');
-  const [isSmeSponsored, setIsSmeSponsored] = useState(false);
-
-  const estimator = useMemo(() => {
-    if (learnerType === 'full_fee') {
-      return {
-        payable: fullFee,
-        headline: 'Full fee applies',
-        note: 'This path does not use SkillsFuture subsidy support.',
-        lines: [
-          { label: 'Course Fee', amount: baseFee },
-          { label: 'GST (9%)', amount: gst },
-        ] as BreakdownLine[],
-      };
-    }
-
-    const isEnhancedRate =
-      isSmeSponsored || (learnerType === 'sg_citizen' && ageBand === '40_and_above');
-
-    const lines: BreakdownLine[] = [
-      { label: 'Course Fee', amount: baseFee },
-      { label: '[BG SSG] SkillsFuture Funding – Grant', amount: grant, negative: true },
-      { label: 'Nett Course Fee', amount: 267.0 },
-      { label: 'GST (9%)', amount: 24.03 },
-    ];
-
-    if (isEnhancedRate) {
-      lines.push({
-        label: '[BG SSG] SkillsFuture Funding – Subsidy',
-        amount: additionalSubsidy,
-        negative: true,
-      });
-    }
-
-    return {
-      payable: isEnhancedRate ? 113.03 : 291.03,
-      headline: isEnhancedRate ? 'Enhanced subsidy rate' : 'Standard funded rate',
-      note: isEnhancedRate
-        ? 'Applies to Singaporeans aged 40+ and all SME-sponsored eligible learners.'
-        : 'Applies to PR, LTVP+, and Singaporeans aged 39 and below.',
-      lines,
-    };
-  }, [ageBand, isSmeSponsored, learnerType]);
-
   if (variant === 'private_company') {
     return (
       <section id="pricing" className={sectionClassName}>
@@ -162,7 +103,7 @@ const Pricing: React.FC<PricingProps> = ({
             <p className="text-gray-600 mb-2">
               Private-run pricing is quoted based on your actual team setup and delivery requirements.
             </p>
-            <p className="text-xs text-gray-400 font-mono">Dedicated company class for teams of 12 pax and above</p>
+            <p className="text-xs text-gray-400 font-mono">Dedicated company class for teams of 15 pax and above</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3 mb-10">
@@ -271,7 +212,7 @@ const Pricing: React.FC<PricingProps> = ({
                   </li>
                   <li className="flex items-start gap-2">
                     <Check size={14} className="mt-1 text-accent" />
-                    <span>If you have fewer than 12 pax, contact us and we can advise whether a later internal run or public intake is a better fit.</span>
+                    <span>If you have fewer than 15 pax, contact us and we can advise whether a later internal run or public intake is a better fit.</span>
                   </li>
                 </ul>
               </div>
@@ -323,79 +264,7 @@ const Pricing: React.FC<PricingProps> = ({
           ))}
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] mb-10">
-          <div className="rounded-3xl border border-gray-200 bg-neutral p-7">
-            <h3 className="text-2xl font-bold text-primary mb-2">Check Your Payable Fee</h3>
-            <p className="text-sm text-gray-600 mb-6">Select your learner profile to estimate the actual course fee payable.</p>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="text-sm text-gray-700">
-                Learner Type
-                <select
-                  value={learnerType}
-                  onChange={(e) => setLearnerType(e.target.value as LearnerType)}
-                  className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3"
-                >
-                  <option value="sg_citizen">Singapore Citizen</option>
-                  <option value="pr">Singapore Permanent Resident</option>
-                  <option value="ltvp">Long Term Visit Pass+ (LTVP+)</option>
-                  <option value="full_fee">No subsidy / full fee</option>
-                </select>
-              </label>
-
-              <label className="text-sm text-gray-700">
-                Age Band
-                <select
-                  value={ageBand}
-                  onChange={(e) => setAgeBand(e.target.value as AgeBand)}
-                  disabled={learnerType !== 'sg_citizen'}
-                  className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 disabled:bg-gray-100 disabled:text-gray-400"
-                >
-                  <option value="40_and_above">40 years and above</option>
-                  <option value="39_and_below">39 years and below</option>
-                </select>
-              </label>
-            </div>
-
-            <label className="mt-4 flex items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-4">
-              <input
-                type="checkbox"
-                checked={isSmeSponsored}
-                onChange={(e) => setIsSmeSponsored(e.target.checked)}
-                disabled={learnerType === 'full_fee'}
-                className="mt-1 h-4 w-4 rounded border-gray-300 text-primary"
-              />
-              <span>
-                <span className="block font-semibold text-primary">SME-sponsored learner</span>
-                <span className="block text-sm text-gray-500">If checked, eligible learners move to the S$113.03 payable tier.</span>
-              </span>
-            </label>
-          </div>
-
-          <div className="rounded-3xl border border-primary/10 bg-white p-7 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-2">Estimated Payable</p>
-            <div className="text-5xl font-heading font-extrabold text-primary mb-3">{formatCurrency(estimator.payable)}</div>
-            <h3 className="text-xl font-bold text-primary mb-2">{estimator.headline}</h3>
-            <p className="text-sm text-gray-600 mb-5">{estimator.note}</p>
-
-            <div className="space-y-3 rounded-2xl border border-gray-100 bg-neutral p-5">
-              {estimator.lines.map((line) => (
-                <div key={line.label} className="flex items-start justify-between gap-4 text-sm">
-                  <span className="text-gray-600">{line.label}</span>
-                  <span className={`font-semibold ${line.negative ? 'text-accent' : 'text-primary'}`}>
-                    {line.negative ? '-' : ''}
-                    {formatCurrency(line.amount)}
-                  </span>
-                </div>
-              ))}
-              <div className="h-px bg-gray-200" />
-              <div className="flex items-end justify-between gap-4">
-                <span className="text-base font-bold text-primary">Course Fee Payable</span>
-                <span className="text-2xl font-heading font-extrabold text-primary">{formatCurrency(estimator.payable)}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="mb-10"><FoundationFeeEstimator /></div>
 
         <div className="space-y-4 mb-12">
           <details className="group rounded-2xl border border-gray-200 bg-white p-6">

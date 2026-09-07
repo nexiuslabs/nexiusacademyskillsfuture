@@ -12,7 +12,6 @@ import WorkshopGallery from '../components/courses/WorkshopGallery';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import FAQ from '../components/courses/FAQ';
 import CourseFooter from '../components/courses/CourseFooter';
-import AIAdvisor from '../components/courses/AIAdvisor';
 import StickyConversionRail from '../components/courses/StickyConversionRail';
 import TPPositioningBlock from '../components/courses/TPPositioningBlock';
 import { trackCourseScrollDepth, trackSectionView, trackTimeOnPage } from '../services/analytics';
@@ -138,7 +137,6 @@ const CoursePage: React.FC = () => {
       </main>
       <CourseFooter />
       <StickyConversionRail />
-      <AIAdvisor />
     </div>
   );
 };

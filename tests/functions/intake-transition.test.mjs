@@ -9,7 +9,8 @@ test('September is closed while October is the default available Foundation inta
  const modal=readFileSync(new URL('../../components/leads/LeadCaptureModal.tsx',import.meta.url),'utf8');
  assert.doesNotMatch(modal,/code: '2026-09-18'/);
  const options=modal.slice(modal.indexOf("'agentic-ai': ["));
- assert.ok(options.indexOf("code: '2026-10-09'") < options.indexOf("code: '2026-11-13-interest'"));
+ assert.match(options, /SCHEDULES.filter/);
+ assert.match(options, /!schedule.registrationClosed/);
  const schedule=readFileSync(new URL('../../components/courses/Schedule.tsx',import.meta.url),'utf8');
  assert.match(schedule,/SCHEDULES.find\(\(schedule\) => !schedule.registrationClosed\)/);
  assert.match(schedule,/disabled[^>]*>Registration Closed/);
