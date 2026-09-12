@@ -72,6 +72,17 @@ export const SCHEDULES: ScheduleItem[] = [
     interestOnly: true,
     cohortCode: '2026-11-13-interest',
   },
+  {
+    type: 'Weekday',
+    dates: '15 Dec 2026 & 18 Dec 2026',
+    time: 'Session times to be confirmed',
+    format: 'In-Person',
+    venue: 'Venue to be confirmed',
+    month: 'Dec 2026',
+    registrationCloses: 'TBC',
+    interestOnly: true,
+    cohortCode: '2026-12-15-interest',
+  },
 ];
 
 export const FAQS: FaqItem[] = [
