@@ -593,25 +593,6 @@ const routes = [
             '@type': 'CourseInstance',
             courseMode: 'In-person',
             courseWorkload: 'PT16H',
-            startDate: '2026-08-14T09:00:00+08:00',
-            endDate: '2026-08-21T18:00:00+08:00',
-            location: {
-              '@type': 'Place',
-              name: 'Singapore Institute of Management',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '461 Clementi Road',
-                addressLocality: 'Singapore',
-                postalCode: '599491',
-                addressCountry: 'SG',
-              },
-            },
-            instructor: { '@id': MELVERICK_ID },
-          },
-          {
-            '@type': 'CourseInstance',
-            courseMode: 'In-person',
-            courseWorkload: 'PT16H',
             startDate: '2026-09-18T09:00:00+08:00',
             endDate: '2026-09-25T18:00:00+08:00',
             location: {
@@ -702,34 +683,6 @@ const routes = [
         audienceType: 'Non-technical professionals, business managers, SME owners, and workplace teams',
         instructors: [melverickPerson, darrylPerson],
       }),
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Event',
-        name: 'Agentic AI Foundations Free Preview',
-        startDate: '2026-08-22T10:00:00+08:00',
-        endDate: '2026-08-22T13:00:00+08:00',
-        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-        eventStatus: 'https://schema.org/EventScheduled',
-        location: {
-          '@type': 'Place',
-          name: 'Singapore Institute of Management',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: '461 Clementi Road',
-            addressLocality: 'Singapore',
-            postalCode: '599491',
-            addressCountry: 'SG',
-          },
-        },
-        image: [COURSE_IMAGE],
-        description:
-          'A free Agentic AI Foundations preview for non-technical professionals at the Singapore Institute of Management.',
-        organizer: {
-          '@type': 'Organization',
-          name: 'Nexius Academy',
-          url: SITE_URL,
-        },
-      },
     ],
   },
   {
@@ -873,7 +826,7 @@ const routes = [
           },
           {
             '@type': 'Offer',
-            name: 'Singapore Citizen below 39, Permanent Resident, or LTVP+ fee after subsidy',
+            name: 'Singapore Citizen below 40, Permanent Resident, or LTVP+ fee after subsidy',
             url: `${SITE_URL}/courses/advanced-agentic-ai/`,
             price: '490.50',
             priceCurrency: 'SGD',

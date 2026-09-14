@@ -182,7 +182,7 @@ const openPreviewLeadModal = (
     position,
     ctaLabel: 'reserve_preview_seat',
     preferredIntake: schedule?.cohortLabel || 'Register Interest',
-    cohortCode: schedule?.cohortCode || 'free-preview-2026-08-22',
+    cohortCode: schedule?.cohortCode || 'next-available',
     courseSlug: 'free-preview',
   });
 
@@ -269,7 +269,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                 <a
                   href={
                     isDarkPreview
-                      ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%20free%20Agentic%20AI%20preview%20on%2022%20August%202026%20at%20SIM.'
+                      ? 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%20next%20free%20Agentic%20AI%20preview.%20Please%20let%20me%20know%20when%20the%20next%20session%20is%20announced.'
                       : 'https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20am%20interested%20in%20the%204-hour%20Agentic%20AI%20preview%20session.'
                   }
                   target="_blank"
