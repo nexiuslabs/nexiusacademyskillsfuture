@@ -207,6 +207,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 25,
+    slug: 'ai-agent-governance-skills-business-professionals',
+    title: 'AI Agent Governance Skills: What Business Professionals Must Learn Before Agents Act',
+    date: '14 Sep 2026',
+    views: 0,
+    image: '/images/blog/ai-agent-governance-skills-business-professionals.png',
+    excerpt: 'AI agents can act across business systems. Learn to inventory, permission, supervise, test, approve, and audit digital coworkers without surrendering judgment.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, risk teams, L&D teams',
+    featured: true,
+  },
+  {
     id: 24,
     slug: 'agent-boss-concurrent-ai-work-business-professionals',
     title: 'Agent Boss Skills: What Business Professionals Must Learn Before Managing Concurrent AI Work',

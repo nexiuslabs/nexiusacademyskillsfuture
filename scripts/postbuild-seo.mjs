@@ -1356,6 +1356,20 @@ const routes = [
     articleDate: '2026-09-07',
   },
   {
+    path: '/blog/ai-agent-governance-skills-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Agent Governance Skills | Nexius Academy',
+    description:
+      'Learn the practical skills needed to inventory, supervise, test, approve, and audit AI agents before they act across business systems.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/ai-agent-governance-skills-business-professionals.png',
+    ogImageAlt: 'Business professional learning to supervise governed AI agents',
+    schemas: [],
+    articleDate: '2026-09-14',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',
