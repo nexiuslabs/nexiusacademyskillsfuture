@@ -14,6 +14,7 @@ export const ADVANCED_COURSE_SCHEDULES = [
     dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',
     time: '9:00am - 6:00pm',
     venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
+    registrationCloses: '23 Sep 2026, 11:59pm SGT',
   },
   {
     month: 'Nov 2026',
@@ -74,7 +75,7 @@ const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, pos
                   </div>
                   <div className="inline-flex items-center gap-1.5 text-gray-700">
                     <Users size={16} className="text-accent" />
-                    <span>Apply early to lock your seat</span>
+                    <span>{schedule.registrationCloses ? `Registration closes ${schedule.registrationCloses}` : 'Apply early to lock your seat'}</span>
                   </div>
                 </div>
               </div>
