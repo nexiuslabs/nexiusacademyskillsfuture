@@ -33,9 +33,9 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-primary leading-tight max-w-4xl">
-              Build Your First AI Agent in 16 Hours
+              Agentic AI Foundations for Non-Technical Professionals
             </h1>
-            <p className="text-sm font-semibold text-primary">Agentic AI Foundations for Non-Technical Professionals</p>
+            <p className="text-base font-semibold leading-relaxed text-primary">Enhancing Productivity and Business Process Automation</p>
             <p className="max-w-2xl text-base leading-relaxed text-gray-700">
               Turn one everyday work task into an AI workflow, with guided practice and human review. No coding background required.
             </p>
