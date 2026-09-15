@@ -118,6 +118,17 @@ const CoursePage: React.FC = () => {
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-7 sm:p-9">
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-accent">Compare before you enrol</p>
+              <div className="mb-8 border-b border-blue-100 pb-8" aria-labelledby="foundation-advanced-fit">
+                <h2 id="foundation-advanced-fit" className="mb-3 text-2xl font-heading font-bold text-primary">Should I choose Foundation or Advanced?</h2>
+                <div className="space-y-4 leading-relaxed text-gray-600">
+                  <p>Choose <strong>Agentic AI Foundations</strong> if you want guided practice turning everyday workplace tasks into AI-assisted workflows. The two-day course is designed for non-technical professionals and covers context, no-code workflows and reviewing AI output.</p>
+                  <p>Explore <strong>Advanced Agentic AI</strong> if your learning goal is to coordinate work across departments, define human accountability, and plan governance and organisational transformation. The three-day course focuses on orchestration and a transformation roadmap.</p>
+                  <p>For example, preparing a single team's weekly report and designing a service-request workflow spanning several departments raise different learning needs. These are illustrative ways to think about course fit, not promised course exercises or completed project outcomes.</p>
+                  <p>
+                    Compare the <a href="#curriculum" className="font-bold text-accent underline hover:text-primary">Foundation curriculum</a> with the <Link to="/courses/advanced-agentic-ai/" className="font-bold text-accent underline hover:text-primary">Advanced course outline</Link>. Still unsure? Use <strong>Get help registering</strong> to tell us your role and the workflow you want to improve. An enquiry does not confirm a place.
+                  </p>
+                </div>
+              </div>
               <h2 className="mb-3 text-2xl font-heading font-bold text-primary">Is this the best AI course in Singapore for your goal?</h2>
               <p className="mb-5 leading-relaxed text-gray-600">
                 The right programme depends on your role, desired outcome, technical level, delivery format, funding eligibility, and the evidence you expect to leave with. If you are comparing an AI agent course in Singapore with SkillsFuture support, review the published subsidy tiers as well as the practical work product. Use our transparent comparison guide to assess those factors before choosing.
