@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             <button type="button" onClick={() => openRegisterInterestModal('course_page_cta', {
               page: '/courses/agentic-ai', position: 'course_hero_registration_help', ctaLabel: 'get_help_registering',
             })} className="w-full sm:w-auto rounded-lg bg-primary px-6 py-3 font-bold text-white hover:bg-blue-900">
-              Get help registering
+              Sign Me Up
             </button>
             <p className="text-sm text-gray-600">Share your name and email. Our team will guide you through official registration with Temasek Polytechnic. An enquiry does not confirm a place.</p>
           </div>

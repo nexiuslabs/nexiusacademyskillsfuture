@@ -8,7 +8,7 @@ const StickyConversionRail: React.FC = () => (
       <button type="button" onClick={() => openRegisterInterestModal('course_sticky', {
         page: '/courses/agentic-ai', position: 'course_sticky_registration_help', ctaLabel: 'get_help_registering',
       })} className="flex-1 rounded-lg bg-primary px-4 py-3 text-sm font-bold text-white hover:bg-blue-900">
-        Get help registering
+        Sign Me Up
       </button>
       <a href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20help%20registering%20for%20Agentic%20AI%20Foundations."
         target="_blank" rel="noopener noreferrer"

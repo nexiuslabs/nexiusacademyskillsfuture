@@ -110,7 +110,7 @@ const CoursePage: React.FC = () => {
         <CourseHero />
         <Overview />
         <Curriculum />
-        <Pricing reserveButtonText="Get help registering" />
+        <Pricing reserveButtonText="Sign Me Up" />
         <Schedule />
         <Instructors />
         <WorkshopGallery />
