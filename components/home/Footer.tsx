@@ -69,10 +69,10 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-5">Courses</h4>
+            <h2 className="font-bold text-lg mb-5">Courses</h2>
             <ul className="space-y-3 text-sm text-gray-300">
               <li><Link to="/courses/agentic-ai" className="hover:text-accent">Agentic AI Foundations</Link></li>
-              <li><Link to="/courses/advanced-agentic-ai" className="hover:text-accent">Frontier Firm &amp; Agent Boss</Link></li>
+              <li><Link to="/courses/advanced-agentic-ai" className="hover:text-accent">Advanced Agentic AI</Link></li>
               <li><Link to="/courses/agentic-ai-company-class" className="hover:text-accent">Dedicated Company Class</Link></li>
               <li><Link to="/skillsfuture-funding-guide" className="hover:text-accent">SkillsFuture Funding Guide</Link></li>
               <li><Link to="/courses/agentic-ai" className="hover:text-accent">Upcoming Cohort</Link></li>
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-5">Company</h4>
+            <h2 className="font-bold text-lg mb-5">Company</h2>
             <ul className="space-y-3 text-sm text-gray-300">
               <li><Link to="/about" className="hover:text-accent">About</Link></li>
               <li><Link to="/blog" className="hover:text-accent">Blog</Link></li>
@@ -91,21 +91,24 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-5">Subscribe</h4>
+            <h2 className="font-bold text-lg mb-5">Subscribe</h2>
             <p className="text-gray-300 text-sm mb-4">Get practical AI tips and new intake updates.</p>
             <form onSubmit={handleSubscribe} className="space-y-3">
+              <label htmlFor="academy-newsletter-email" className="block text-sm font-medium">Email address</label>
               <input
+                id="academy-newsletter-email"
+                autoComplete="email"
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 required
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 bg-[#2A3B66] border border-gray-700 rounded-lg text-white placeholder-gray-400 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-[#2A3B66] border border-gray-700 rounded-lg text-white placeholder-gray-300 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-accent/90 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="w-full bg-accent text-primary font-bold py-3 rounded-lg hover:bg-accent/90 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>

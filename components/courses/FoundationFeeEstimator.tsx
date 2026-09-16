@@ -1,11 +1,11 @@
 import { useSyncExternalStore } from 'react';
 import { calculateFoundationFee, FoundationProfile, getFoundationProfile, subscribeFoundationProfile, updateFoundationProfile } from '../../services/foundationFees';
 
-export default function FoundationFeeEstimator() {
+export default function FoundationFeeEstimator({ title = 'Check your Foundation course fee' }: { title?: string }) {
   const profile = useSyncExternalStore(subscribeFoundationProfile, getFoundationProfile, getFoundationProfile);
   const estimate = calculateFoundationFee(profile);
   return <div className="space-y-4 rounded-2xl border border-blue-100 bg-blue-50/40 p-5">
-    <h3 className="font-bold text-primary">Check your Foundation course fee</h3>
+    <h3 className="font-bold text-primary">{title}</h3>
     <p className="text-sm text-gray-600">No contact details needed. Choose your eligibility profile to see an estimate.</p>
     <div className="grid gap-4 sm:grid-cols-2">
       <label className="text-sm font-medium text-primary">Residency / funding profile

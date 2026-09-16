@@ -38,12 +38,11 @@ const About: React.FC = () => {
 
         {/* Right Content */}
         <div>
-          <div className="text-sm font-bold uppercase tracking-[0.16em] text-accent mb-3">Why people sign up</div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 max-w-2xl">
-            Learn practical AI workflows you can use immediately
+            Learn through guided practice
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed max-w-2xl">
-            A hands-on no-code course for business professionals who want faster drafts, better processes, and useful automation.
+            Work through practical business tasks with guidance from our trainers. These workshop photographs show the Nexius Academy learning environment.
           </p>
 
           <ul className="space-y-4 mb-10">
@@ -71,7 +70,7 @@ const About: React.FC = () => {
                 redirectUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu',
               })
             }
-            className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-opacity-90 transition-all"
+            className="academy-button-primary "
           >
             Register Now
           </button>

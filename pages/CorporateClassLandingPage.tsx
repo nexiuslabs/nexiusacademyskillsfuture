@@ -135,7 +135,7 @@ const deliveryPoints = [
 const pricingCards = [
   {
     title: 'Minimum Class Size',
-    value: '15 pax',
+    value: '15 participants',
     description: 'Private runs are designed for a single company cohort with at least 15 participants.',
   },
   {
@@ -173,7 +173,7 @@ const faqs = [
   },
   {
     question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 15 pax for a dedicated company run.',
+    answer: 'The minimum class size is 15 participants for a dedicated company run.',
   },
   {
     question: 'Can the workshop focus on our real internal workflows?',
@@ -201,7 +201,7 @@ const faqs = [
       'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
   },
   {
-    question: 'What if we have fewer than 15 pax?',
+    question: 'What if we have fewer than 15 participants?',
     answer:
       'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
   },
@@ -219,7 +219,7 @@ const CorporateClassLandingPage: React.FC = () => {
     <>
       <SEO
         title="Dedicated Company AI Class | Nexius Academy"
-        description="Private agentic AI training for teams of 12 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
+        description="Private agentic AI training for teams of 15 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
         canonical="/private-class"
         robots="noindex,follow"
         ogType="course"
@@ -247,7 +247,7 @@ const CorporateClassLandingPage: React.FC = () => {
             <button
               type="button"
               onClick={() => openProposalModal('corporate_nav_request_proposal')}
-              className="rounded-lg bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-blue-900"
+              className="academy-button-primary "
             >
               Request Proposal
             </button>
@@ -262,7 +262,7 @@ const CorporateClassLandingPage: React.FC = () => {
             <div className="lg:col-span-7 lg:pr-8">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm">
                 <Building2 size={16} className="text-accent" />
-                Dedicated company class for teams of 15 pax and above
+                Dedicated company class for teams of 15 participants and above
               </div>
 
               <h1 className="mb-6 max-w-4xl font-heading text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl lg:text-7xl">
@@ -279,7 +279,7 @@ const CorporateClassLandingPage: React.FC = () => {
                 </div>
                 <div className="rounded-3xl border border-primary/10 bg-white px-4 py-4 shadow-sm">
                   <div className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Minimum size</div>
-                  <div className="font-semibold">15 pax</div>
+                  <div className="font-semibold">15 participants</div>
                 </div>
                 <div className="rounded-3xl border border-primary/10 bg-white px-4 py-4 shadow-sm">
                   <div className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Delivery</div>
@@ -291,7 +291,7 @@ const CorporateClassLandingPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openProposalModal('corporate_hero_request_proposal')}
-                  className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-lg transition-colors hover:bg-teal-500"
+                  className="academy-button-primary "
                 >
                   Request Proposal <ArrowRight size={18} />
                 </button>
@@ -370,7 +370,7 @@ const CorporateClassLandingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openProposalModal('corporate_hero_card_request_proposal')}
-                    className="w-full rounded-xl bg-accent px-6 py-4 text-center font-bold text-white transition-colors hover:bg-teal-500"
+                    className="academy-button-primary w-full"
                   >
                     Request a Company Proposal
                   </button>
@@ -632,7 +632,7 @@ const CorporateClassLandingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openProposalModal('corporate_pricing_request_proposal')}
-                    className="w-full rounded-xl bg-accent px-6 py-4 text-center font-bold text-white transition-colors hover:bg-teal-500"
+                    className="academy-button-primary w-full"
                   >
                     Request Proposal
                   </button>
@@ -675,13 +675,13 @@ const CorporateClassLandingPage: React.FC = () => {
               <div className="relative">
                 <h2 className="mb-4 font-heading text-3xl font-bold lg:text-4xl">Want a private AI class for your company?</h2>
                 <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-blue-50/90">
-                  If you have 15 pax or more and want a more relevant, private, and operationally practical format, we can scope a dedicated run for your team.
+                  If you have 15 participants or more and want a more relevant, private, and operationally practical format, we can scope a dedicated run for your team.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <button
                     type="button"
                     onClick={() => openProposalModal('corporate_final_request_proposal')}
-                    className="rounded-xl bg-accent px-8 py-4 font-bold text-white transition-colors hover:bg-teal-500"
+                    className="academy-button-inverse "
                   >
                     Request Proposal
                   </button>

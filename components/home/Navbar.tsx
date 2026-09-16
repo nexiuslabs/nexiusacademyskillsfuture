@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                   ctaLabel: 'check_subsidy',
                 })
               }
-              className="hidden md:inline-block bg-accent text-white px-6 py-2.5 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md"
+              className="academy-button-primary hidden md:inline-flex"
             >
               Check Subsidy
             </button>
@@ -151,7 +151,7 @@ const Navbar: React.FC = () => {
                   });
                   setIsMobileMenuOpen(false);
                 }}
-                className="bg-accent text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-opacity-90 transition-all shadow-md text-center mt-2"
+                className="academy-button-primary "
               >
                 Check Subsidy
               </button>

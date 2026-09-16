@@ -17,19 +17,18 @@ const Categories: React.FC = () => {
     <section id="skills" className="py-20 bg-neutral scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary">Skills You Will Learn</h2>
-          <p className="text-gray-500 mt-2">Upgrade Yourself with these Future-ready Skills</p>
+          <h2 className="text-3xl font-bold text-primary">Skills you can apply at work</h2>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {categories.map((cat, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 cursor-pointer group">
-              <div className={`p-4 rounded-lg ${cat.color} group-hover:scale-110 transition-transform`}>
+            <div key={idx} className="border-t border-primary/15 py-6 flex items-start gap-4">
+              <div className={`pt-1 text-primary`}>
                 {cat.icon}
               </div>
               <div>
-                <h4 className="font-bold text-primary">{cat.name}</h4>
-                <p className="text-xs text-gray-500">{cat.courses}</p>
+                <h3 className="font-bold text-primary">{cat.name}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{cat.courses}</p>
               </div>
             </div>
           ))}

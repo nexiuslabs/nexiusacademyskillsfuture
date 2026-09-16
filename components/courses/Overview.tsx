@@ -52,9 +52,9 @@ const Overview: React.FC = () => {
               <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">
                 Agentic AI in workplace terms
               </div>
-              <h3 className="text-2xl font-bold leading-tight text-primary lg:text-3xl">
+              <h2 className="text-2xl font-bold leading-tight text-primary lg:text-3xl">
                 Learn to use AI as a practical work partner, not just a chatbot
-              </h3>
+              </h2>
 
               <div className="mt-9 space-y-5">
                 {overviewCards.map((item) => {
@@ -65,7 +65,7 @@ const Overview: React.FC = () => {
                         <Icon size={30} />
                       </div>
                       <div>
-                        <h4 className="mb-2 text-lg font-bold text-primary">{item.title}</h4>
+                        <h3 className="mb-2 text-lg font-bold text-primary">{item.title}</h3>
                         <p className="text-sm leading-relaxed text-gray-700">{item.description}</p>
                       </div>
                     </div>

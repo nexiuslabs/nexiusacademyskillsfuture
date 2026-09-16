@@ -22,7 +22,7 @@ const AVAILABLE_COURSES: Course[] = [
   },
   {
     id: 2,
-    title: 'Agentic AI-Driven Innovation for Productivity',
+    title: 'Advanced Agentic AI',
     category: 'Advanced',
     price: 0,
     rating: 5.0,
@@ -96,7 +96,7 @@ const CourseList: React.FC = () => {
               </div>
               <Link
                 to="/private-class/"
-                className="inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900"
+                className="academy-button-primary "
               >
                 View Private Class
               </Link>

@@ -136,7 +136,7 @@ const FrontierFirmCoursePage: React.FC = () => {
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
               <a href="#overview" className="hover:text-accent">Overview</a>
               <a href="#curriculum" className="hover:text-accent">Curriculum</a>
-              <a href="#pricing" className="hover:text-accent">Pricing</a>
+              <a href="#pricing" className="hover:text-accent">Fees</a>
               <a href="#schedule" className="hover:text-accent">Schedule</a>
               <a href="#instructors" className="hover:text-accent">Instructors</a>
               <a href="#testimonials" className="hover:text-accent">Testimonials</a>
@@ -186,7 +186,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                             <div className="text-base font-bold">Next Cohort</div>
                             <div className="mt-1 text-sm text-blue-50/85">07 Oct, 08 Oct & 15 Oct 2026</div>
                             <a href="#schedule" className="mt-2 inline-block text-sm font-bold text-accent hover:text-teal-300 transition-colors">
-                              More
+                              View all dates
                             </a>
                           </div>
                         </div>
@@ -231,10 +231,11 @@ const FrontierFirmCoursePage: React.FC = () => {
                         ctaLabel: 'register_interest',
                       })
                     }
-                    className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors shadow-xl"
+                    className="academy-button-inverse "
                   >
                     Apply Now <ArrowRight size={18} />
                   </button>
+                  <p className="w-full text-sm text-blue-100">Request help with official registration. An enquiry does not reserve a place.</p>
                 </div>
               </div>
             </div>
@@ -416,7 +417,7 @@ const FrontierFirmCoursePage: React.FC = () => {
               <div className="lg:col-span-7">
                 <div className="grid sm:grid-cols-2 gap-6">
                   {transformationModules.map((module, index) => (
-                    <div key={index} className="bg-white p-6 rounded-2xl border-l-4 border-transparent hover:border-accent shadow-sm hover:shadow-lg transition-all">
+                    <div key={index} className="bg-white p-6 rounded-xl border border-gray-200">
                       <div className="text-accent mb-4">
                         <module.icon size={24} />
                       </div>
@@ -433,7 +434,7 @@ const FrontierFirmCoursePage: React.FC = () => {
         <section id="pricing" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fees &amp; Funding</h2>
+              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course fees, including GST</h2>
               <p className="text-gray-600 mb-2">
                 This is a <span className="font-bold text-primary">3-day advanced Agentic AI course</span> with a full course fee of{' '}
                 <span className="font-bold text-primary">S$1,635.00 incl. GST</span>.
@@ -460,60 +461,10 @@ const FrontierFirmCoursePage: React.FC = () => {
               ))}
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] mb-10">
-              <div className="rounded-3xl border border-gray-200 bg-neutral p-7">
-                <h3 className="text-2xl font-bold text-primary mb-2">Fee Breakdown</h3>
-                <p className="text-sm text-gray-600 mb-6">
-                  Amounts below match the official TP/STMS payable amounts and are inclusive of 9% GST.
-                </p>
-
-                <div className="space-y-4">
-                  {pricingPlans.map((plan) => (
-                    <div key={plan.title} className="rounded-2xl border border-gray-200 bg-white px-5 py-4">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <h4 className="font-bold text-primary">{plan.title}</h4>
-                          <p className="mt-1 text-sm text-gray-500">{plan.detail}</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xs font-bold uppercase tracking-wide text-gray-400">Total</div>
-                          <div className="text-xl font-heading font-extrabold text-primary">{plan.total}</div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-primary/10 bg-white p-7 shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-2">Lowest Published Payable</p>
-                <div className="text-5xl font-heading font-extrabold text-primary mb-3">S$190.50</div>
-                <h3 className="text-xl font-bold text-primary mb-2">Singapore Citizen 40+ / eligible SME-sponsored</h3>
-                <p className="text-sm text-gray-600 mb-5">
-                  Official TP/STMS payable amount inclusive of 9% GST, subject to final learner eligibility and registration confirmation.
-                </p>
-
-                <div className="space-y-3 rounded-2xl border border-gray-100 bg-neutral p-5">
-                  <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-gray-600">Course fee payable incl. GST</span>
-                    <span className="font-semibold text-primary">S$190.50</span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-gray-600">Full course fee incl. GST</span>
-                    <span className="font-semibold text-primary">S$1,635.00</span>
-                  </div>
-                  <div className="h-px bg-gray-200" />
-                  <div className="flex items-end justify-between gap-4">
-                    <span className="text-base font-bold text-primary">Lowest Payable</span>
-                    <span className="text-2xl font-heading font-extrabold text-primary">S$190.50</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <p className="mb-8 text-sm leading-relaxed text-gray-600">Amounts include 9% GST and are subject to final learner eligibility, funding approval and registration confirmation. S$190.50 is the lowest published payable amount for the eligible category shown above.</p>
             <div className="space-y-4 mb-12">
               <details className="group rounded-2xl border border-gray-200 bg-white p-6">
-                <summary className="cursor-pointer list-none text-lg font-bold text-primary">See full fee breakdown</summary>
+                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Funding details by learner category</summary>
                 <div className="mt-5 overflow-x-auto">
                   <table className="min-w-full text-sm">
                     <thead>
@@ -595,10 +546,11 @@ const FrontierFirmCoursePage: React.FC = () => {
                     ctaLabel: 'register_interest',
                   })
                 }
-                className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
+                className="academy-button-primary w-full sm:w-auto"
               >
                 Apply Now
               </button>
+              <p className="mt-3 text-sm text-gray-600">Request help with official registration. An enquiry does not reserve a place.</p>
             </div>
           </div>
         </section>
@@ -625,7 +577,7 @@ const FrontierFirmCoursePage: React.FC = () => {
                       ctaLabel: 'register_interest',
                     })
                   }
-                  className="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-500 transition-colors"
+                  className="academy-button-inverse "
                 >
                   Apply Now
                 </button>

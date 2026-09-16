@@ -43,9 +43,9 @@ const BottomSection: React.FC = () => {
       <section className="py-12 bg-white border-b border-gray-100">
         <div className="container mx-auto px-6">
           <div className="mb-8 grid gap-3 md:grid-cols-[minmax(0,220px),minmax(0,1fr)] md:items-start md:gap-8">
-            <h4 className="text-lg font-bold leading-tight text-primary md:text-xl">
+            <h2 className="text-lg font-bold leading-tight text-primary md:text-xl">
               Organizations represented
-            </h4>
+            </h2>
             <p className="max-w-none text-sm leading-relaxed text-gray-500 sm:text-base">
               Logos shown reflect organizations represented in past workshops, collaborations, or training engagements. They do not necessarily indicate an endorsement.
             </p>

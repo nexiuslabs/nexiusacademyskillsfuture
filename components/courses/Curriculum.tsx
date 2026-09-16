@@ -25,14 +25,11 @@ const Curriculum: React.FC = () => {
               <h2 className="text-3xl font-heading font-bold text-primary mb-6">
                 Course Modules & Details
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Agentic AI is transforming how we work – imagine having a digital partner that can organize, plan, make decisions, and even take action on your behalf. From handling routine tasks to automating entire workflows, AI agents can boost productivity, simplify operations, and support smarter context-aware decision-making.
-              </p>
 
               {/* What You'll Learn Sub-section */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                  What You'll Learn?
+                  What you'll learn
                 </h3>
                 <ul className="space-y-3">
                   {LEARNING_OUTCOMES.map((outcome, index) => (
@@ -71,7 +68,7 @@ const Curriculum: React.FC = () => {
           <div className="lg:col-span-7">
              <div className="grid sm:grid-cols-2 gap-6 h-full content-start">
                 {MODULES.map((module, index) => (
-                    <div key={index} className="bg-white p-6 rounded-xl hover:shadow-lg transition-shadow border-l-4 border-transparent hover:border-accent">
+                    <div key={index} className="bg-white p-6 rounded-xl border border-gray-200">
                         <div className="text-accent mb-4">
                             {iconMap[module.iconName]}
                         </div>

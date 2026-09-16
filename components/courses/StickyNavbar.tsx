@@ -35,7 +35,7 @@ const StickyNavbar: React.FC = () => {
                   position: 'course_navbar_desktop_register_interest',
                 })
               }
-              className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-md font-bold transition-all shadow-lg shadow-blue-900/20"
+              className="academy-button-primary "
             >
               Sign Me Up
             </button>
@@ -68,7 +68,7 @@ const StickyNavbar: React.FC = () => {
                     position: 'course_navbar_mobile_register_interest',
                   })
                 }
-                className="block text-center w-full bg-accent text-white px-5 py-3 rounded-md font-bold"
+                className="academy-button-primary w-full"
                >
                 Sign Me Up
               </button>

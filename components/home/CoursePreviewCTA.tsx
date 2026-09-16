@@ -46,7 +46,7 @@ const CoursePreviewCTA: React.FC = () => {
                   <CalendarDays className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-bold text-white">Register Interest</span>
+                      <span className="font-bold text-white">Next session to be announced</span>
                     </div>
                     <div>We’ll share the next available preview session.</div>
                   </div>
@@ -54,7 +54,7 @@ const CoursePreviewCTA: React.FC = () => {
                 <div className="flex gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 flex-none text-secondary" />
                   <div>
-                    <div className="font-bold text-white">Register Interest</div>
+                    <div className="font-bold text-white">Venue to be confirmed</div>
                     <div>Venue details will be confirmed with the next session.</div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ const CoursePreviewCTA: React.FC = () => {
               <button
                 type="button"
                 onClick={openFreePreviewInterest}
-                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-teal-400 px-6 py-3.5 text-base font-bold text-black shadow-lg transition-colors hover:bg-teal-300"
+                className="academy-button-inverse mt-6 w-full"
               >
                 Register Interest <ArrowRight className="ml-2 h-5 w-5" />
               </button>

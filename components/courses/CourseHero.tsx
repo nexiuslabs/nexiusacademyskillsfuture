@@ -47,12 +47,12 @@ const Hero: React.FC = () => {
               <a href="#pricing" className="inline-block text-accent underline">Check your fee — no contact details needed</a>
               {nextCohort?.registrationCloses && <p>Registration closes {nextCohort.registrationCloses}.</p>}
             </div>
-            <button type="button" onClick={() => openRegisterInterestModal('course_page_cta', {
+            <button id="foundation-hero-register" type="button" onClick={() => openRegisterInterestModal('course_page_cta', {
               page: '/courses/agentic-ai', position: 'course_hero_registration_help', ctaLabel: 'get_help_registering',
-            })} className="w-full sm:w-auto rounded-lg bg-primary px-6 py-3 font-bold text-white hover:bg-blue-900">
+            })} className="academy-button-primary w-full sm:w-auto">
               Sign Me Up
             </button>
-            <p className="text-sm text-gray-600">Share your name and email. Our team will guide you through official registration with Temasek Polytechnic. An enquiry does not confirm a place.</p>
+            <p className="text-sm text-gray-600">Get help with official registration through Temasek Polytechnic. Your enquiry does not reserve a place.</p>
           </div>
 
           <div className="relative">

@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 15 pax for a dedicated company run.',
+    answer: 'The minimum class size is 15 participants for a dedicated company run.',
   },
   {
     question: 'Can the workshop focus on our real internal workflows?',
@@ -148,7 +148,7 @@ const faqs = [
       'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
   },
   {
-    question: 'What if we have fewer than 15 pax?',
+    question: 'What if we have fewer than 15 participants?',
     answer:
       'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
   },
@@ -285,7 +285,7 @@ const PrivateClassNavbar: React.FC = () => {
           <button
             type="button"
             onClick={() => openProposalModal('private_class_nav_request_proposal')}
-            className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+            className="academy-button-primary "
           >
             Request Proposal
           </button>
@@ -325,7 +325,7 @@ const PrivateClassNavbar: React.FC = () => {
                   setOpen(false);
                   openProposalModal('private_class_nav_mobile_request_proposal');
                 }}
-                className="block w-full rounded-full bg-accent px-5 py-2.5 text-center font-semibold text-white"
+                className="academy-button-primary w-full"
               >
                 Request Proposal
               </button>
@@ -353,7 +353,7 @@ const PrivateClassHero: React.FC = () => {
               transition={{ duration: 0.7 }}
               className="text-balance text-4xl font-bold leading-[1.1] text-primary sm:text-5xl xl:text-6xl"
             >
-              Train your team on AI in a format built for real company <span className="font-serif font-normal italic text-gray-600">work</span>
+              Train your team on AI in a format built for real company work
             </motion.h1>
 
             <motion.p
@@ -372,7 +372,7 @@ const PrivateClassHero: React.FC = () => {
               className="mt-8 flex flex-col items-start gap-5"
             >
               <div className="flex flex-wrap items-center gap-2 text-left text-lg text-gray-600 sm:text-xl">
-                <span className="font-semibold text-primary">15 pax</span>
+                <span className="font-semibold text-primary">15 participants</span>
                 <span className="text-gray-300">|</span>
                 <span>Minimum for a dedicated company class</span>
               </div>
@@ -381,7 +381,7 @@ const PrivateClassHero: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openProposalModal('private_class_hero_request_proposal')}
-                  className="group inline-flex min-h-[4.25rem] flex-1 items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-lg font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+                  className="academy-button-primary flex-1"
                 >
                   <Play size={16} className="fill-white" />
                   Request Proposal
@@ -397,7 +397,7 @@ const PrivateClassHero: React.FC = () => {
                       position: 'private_class_hero_whatsapp',
                     })
                   }
-                  className="inline-flex min-h-[4.25rem] flex-1 items-center justify-center rounded-full border border-primary/10 bg-white px-8 py-4 text-lg font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                  className="academy-button-secondary flex-1"
                 >
                   Talk on WhatsApp
                 </a>
@@ -439,7 +439,7 @@ const PrivateClassPrograms: React.FC = () => (
         transition={{ duration: 0.6 }}
         className="max-w-2xl text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl"
       >
-        What a company-only class does <span className="font-serif font-normal italic text-gray-600">better</span>
+        What a company-only class does better
       </motion.h2>
 
       <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -492,7 +492,7 @@ const PrivateClassComparison: React.FC = () => (
         <div>
           <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Decision support</div>
           <h2 className="text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
-            When a private run makes more sense than a public <span className="font-serif font-normal italic text-gray-600">class</span>
+            When a private run makes more sense than a public class
           </h2>
         </div>
         <p className="max-w-3xl text-base leading-relaxed text-gray-600 md:text-lg">
@@ -539,7 +539,7 @@ const PrivateClassAbout: React.FC = () => (
           <div className="lg:sticky lg:top-28">
             <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Why companies choose this format</div>
             <h2 className="text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
-              Why companies choose this <span className="font-serif font-normal italic">format</span>
+              Why companies choose this format
             </h2>
             <p className="mt-6 leading-relaxed text-gray-600">
               A dedicated run gives your team room to discuss real work, set clearer boundaries, and move faster after training.
@@ -625,7 +625,7 @@ const PrivateClassTeams: React.FC = () => (
         transition={{ duration: 0.6 }}
         className="text-center text-3xl font-bold text-primary sm:text-4xl md:text-5xl"
       >
-        Common team contexts this format supports <span className="font-serif font-normal italic">well</span>
+        Common team contexts this format supports well
       </motion.h2>
 
       <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -675,7 +675,7 @@ const PrivateClassTeams: React.FC = () => (
               <button
                 type="button"
                 onClick={() => openProposalModal('private_class_delivery_request_proposal')}
-                className="inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+                className="academy-button-primary "
               >
                 Request Proposal
               </button>
@@ -694,7 +694,7 @@ const PrivateClassPlanning: React.FC = () => (
         <div>
           <div className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-accent">Planning support</div>
           <h2 className="text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
-            Planning a company run should feel <span className="font-serif font-normal italic text-gray-600">straightforward</span>
+            Planning a company run should feel straightforward
           </h2>
         </div>
         <p className="max-w-3xl text-base leading-relaxed text-gray-600 md:text-lg">
@@ -734,7 +734,7 @@ const PrivateClassPlanning: React.FC = () => (
             <button
               type="button"
               onClick={() => openProposalModal('private_class_planning_request_proposal')}
-              className="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
+              className="academy-button-primary "
             >
               Request Proposal
             </button>
@@ -785,7 +785,7 @@ const PrivateClassPage: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden bg-white">
       <SEO
         title="Dedicated Company AI Class | Nexius Academy"
-        description="Private agentic AI training for teams of 12 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
+        description="Private agentic AI training for teams of 15 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
         canonical={PAGE_PATH}
         ogType="website"
       />
@@ -795,6 +795,7 @@ const PrivateClassPage: React.FC = () => {
         <PrivateClassPrograms />
         <PrivateClassComparison />
         <Pricing
+          companyContext
           pagePath={PAGE_PATH}
           reserveLabel="request_company_proposal"
           reserveButtonText="Request Proposal"

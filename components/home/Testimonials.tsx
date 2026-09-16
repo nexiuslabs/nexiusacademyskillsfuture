@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
                   <ResponsiveImage src={testimonial.image} alt={testimonial.name} optimize={false} className="h-full w-full object-cover object-center" />
                 </span>
                 <div>
-                  <h4 className="font-bold text-primary">{testimonial.name}</h4>
+                  <h3 className="font-bold text-primary">{testimonial.name}</h3>
                   <p className="text-xs text-gray-500">{testimonial.title}</p>
                 </div>
               </div>

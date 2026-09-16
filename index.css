@@ -84,3 +84,24 @@ body {
     overflow-y: auto;
   }
 }
+
+/* Shared Academy action hierarchy; handlers and analytics remain on each control. */
+@layer components {
+  .academy-button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-center text-base font-bold text-white transition-colors hover:bg-blue-900;
+  }
+  .academy-button-inverse {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-center text-base font-bold text-primary transition-colors hover:bg-teal-300;
+  }
+  .academy-button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-primary/25 px-6 py-3 text-center font-semibold text-primary transition-colors hover:bg-neutral;
+  }
+}
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #1D2A4D !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fff;
+}
+summary { text-underline-offset: 0.2em; }
+section[id] { scroll-margin-top: 6rem; }
+::selection { background: #baf2eb; color: #1D2A4D; }

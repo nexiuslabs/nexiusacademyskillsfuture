@@ -647,7 +647,7 @@ const routes = [
     includeInSitemap: true,
     title: 'Dedicated Company AI Class | Nexius Academy',
     description:
-      'Private agentic AI training for teams of 12 or more. Tailor the workshop to real workflows and align staff on practical AI adoption.',
+      'Private agentic AI training for teams of 15 or more. Tailor the workshop to real workflows and align staff on practical AI adoption.',
     ogType: 'website',
     ogImage: PRIVATE_CLASS_IMAGE,
     schemas: [

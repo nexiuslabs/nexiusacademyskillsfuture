@@ -1,4 +1,5 @@
 import React from 'react';
+import { GraduationCap } from 'lucide-react';
 import { SCHEDULES } from '../../constants';
 import ResponsiveImage from '../ResponsiveImage';
 
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
           <div className="space-y-3">
             {nextCohort ? <p className="text-sm font-semibold text-primary">Next Foundation intake: {nextCohort.dates} · 16 hours</p> : null}
             <div className="flex flex-wrap items-center gap-3">
-              <a href="/courses/agentic-ai/#schedule" className="rounded-lg bg-secondary px-5 py-3 font-bold text-white hover:bg-primary">View Foundation Intake</a>
+              <a href="/courses/agentic-ai/#schedule" className="academy-button-primary ">View Foundation Intake</a>
               <a href="#courses" className="rounded-lg px-3 py-3 font-semibold text-primary underline">Compare Courses</a>
             </div>
             <p className="text-xs text-gray-600">Foundation fees from S$113.03 including GST for eligible enhanced-funded learners. <a href="/courses/agentic-ai/#pricing" className="underline">Check your fee</a></p>
@@ -63,10 +64,10 @@ const Hero: React.FC = () => {
               className="relative rounded-3xl shadow-2xl z-10 w-full max-w-md object-cover h-[500px] lg:h-[600px]"
             />
 
-            <div className="absolute top-20 -left-10 bg-white p-4 rounded-xl shadow-lg z-20 animate-bounce" style={{ animationDuration: '3s' }}>
+            <div className="absolute top-20 -left-10 bg-white p-4 rounded-xl shadow-lg z-20">
               <div className="flex items-center gap-3">
                 <div className="bg-yellow-100 p-2 rounded-full">
-                  <span className="text-2xl">🎓</span>
+                  <GraduationCap size={24} className="text-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-bold text-primary text-lg">Hands-on</p>

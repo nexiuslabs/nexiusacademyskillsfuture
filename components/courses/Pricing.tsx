@@ -11,13 +11,14 @@ type PricingProps = {
   reserveSkipPayerStep?: boolean;
   sectionClassName?: string;
   variant?: 'public' | 'private_company';
+  companyContext?: boolean;
 };
 
 const learnerSummary = [
   {
     title: 'S$113.03',
     subtitle: 'Singaporeans 40+ or SME-sponsored',
-    note: 'Best subsidized outcome including GST.',
+    note: 'Estimated fee including GST, subject to eligibility.',
     accent: 'bg-primary',
   },
   {
@@ -93,6 +94,7 @@ const Pricing: React.FC<PricingProps> = ({
   reserveSkipPayerStep = false,
   sectionClassName = 'py-20 bg-white',
   variant = 'public',
+  companyContext = false,
 }) => {
   if (variant === 'private_company') {
     return (
@@ -229,7 +231,7 @@ const Pricing: React.FC<PricingProps> = ({
                   ctaLabel: reserveLabel,
                 })
               }
-              className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
+              className="academy-button-primary w-full sm:w-auto"
             >
               {reserveButtonText}
             </button>
@@ -243,7 +245,8 @@ const Pricing: React.FC<PricingProps> = ({
     <section id="pricing" className={sectionClassName}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course Fees & Funding</h2>
+          <h2 className="text-3xl font-heading font-bold text-primary mb-4">{companyContext ? 'Planning fees for a company class' : 'Course fees, including GST'}</h2>
+          {companyContext && <p className="mx-auto mb-4 max-w-2xl leading-relaxed text-gray-600">The figures below are the standard Foundation course fees. Contact us to confirm the structure and applicable funding for your company run. <strong className="text-primary">Minimum 15 participants.</strong></p>}
           <p className="text-gray-600 mb-2">
             Most learners pay either <span className="font-bold text-primary">S$113.03</span> or{' '}
             <span className="font-bold text-primary">S$291.03</span>, inclusive of GST.
@@ -264,7 +267,7 @@ const Pricing: React.FC<PricingProps> = ({
           ))}
         </div>
 
-        <div className="mb-10"><FoundationFeeEstimator /></div>
+        <div className="mb-10">{companyContext ? <details className="rounded-xl border border-gray-200 p-5"><summary className="cursor-pointer font-semibold text-primary">Estimate an individual learner’s Foundation fee</summary><div className="mt-5"><FoundationFeeEstimator title="Individual learner fee estimate" /></div></details> : <FoundationFeeEstimator />}</div>
 
         <div className="space-y-4 mb-12">
           <details className="group rounded-2xl border border-gray-200 bg-white p-6">
@@ -352,7 +355,7 @@ const Pricing: React.FC<PricingProps> = ({
                 skipPayerStep: reserveSkipPayerStep,
               })
             }
-            className="inline-block w-full rounded-xl bg-primary px-10 py-4 text-center text-lg font-bold text-white shadow-xl shadow-blue-900/20 transition-colors hover:bg-blue-900 sm:w-auto"
+            className="academy-button-primary w-full sm:w-auto"
           >
             {reserveButtonText}
           </button>
