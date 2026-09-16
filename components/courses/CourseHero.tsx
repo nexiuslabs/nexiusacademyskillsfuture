@@ -52,7 +52,6 @@ const Hero: React.FC = () => {
             })} className="academy-button-primary w-full sm:w-auto">
               Sign Me Up
             </button>
-            <p className="text-sm text-gray-600">Get help with official registration through Temasek Polytechnic. Your enquiry does not reserve a place.</p>
           </div>
 
           <div className="relative">
