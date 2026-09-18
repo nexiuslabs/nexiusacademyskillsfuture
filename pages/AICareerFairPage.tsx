@@ -286,7 +286,7 @@ const AICareerFairPage: React.FC = () => {
             </p>
             <div className="mt-8 grid gap-6">
               {[
-                ["September cohort", "18 & 25 September 2026", "9:00am–6:00pm"],
+                ["October cohort", "9 & 16 October 2026", "9:00am–6:00pm"],
               ].map((cohort) => (
                 <article
                   className="rounded-2xl border border-purple-100 p-6"

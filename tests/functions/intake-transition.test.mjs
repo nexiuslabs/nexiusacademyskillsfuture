@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-test('September is closed while October is the default available Foundation intake', () => {
+test('Started September cohort is removed while later Foundation intakes remain', () => {
  const constants=readFileSync(new URL('../../constants.tsx',import.meta.url),'utf8');
- const september=constants.slice(constants.indexOf("dates: '18 Sep 2026"),constants.indexOf("dates: '09 Oct 2026"));
- assert.match(september,/registrationClosed: true/);
- assert.doesNotMatch(september,/slotsLeft/);
+ assert.doesNotMatch(constants,/18 Sep 2026|2026-09-18/);
+ for (const code of ['2026-10-09', '2026-11-13-interest', '2026-12-15-interest']) assert.ok(constants.includes(code));
+ const seo=readFileSync(new URL('../../scripts/postbuild-seo.mjs',import.meta.url),'utf8');
+ assert.doesNotMatch(seo,/2026-09-18|2026-09-25/);
+ assert.match(seo,/2026-10-09T09:00:00/);
  const modal=readFileSync(new URL('../../components/leads/LeadCaptureModal.tsx',import.meta.url),'utf8');
  assert.doesNotMatch(modal,/code: '2026-09-18'/);
  const options=modal.slice(modal.indexOf("'agentic-ai': ["));

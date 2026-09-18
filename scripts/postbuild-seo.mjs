@@ -593,25 +593,6 @@ const routes = [
             '@type': 'CourseInstance',
             courseMode: 'In-person',
             courseWorkload: 'PT16H',
-            startDate: '2026-09-18T09:00:00+08:00',
-            endDate: '2026-09-25T18:00:00+08:00',
-            location: {
-              '@type': 'Place',
-              name: 'Singapore Institute of Management',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '461 Clementi Road',
-                addressLocality: 'Singapore',
-                postalCode: '599491',
-                addressCountry: 'SG',
-              },
-            },
-            instructor: { '@id': MELVERICK_ID },
-          },
-          {
-            '@type': 'CourseInstance',
-            courseMode: 'In-person',
-            courseWorkload: 'PT16H',
             startDate: '2026-10-09T09:00:00+08:00',
             endDate: '2026-10-16T18:00:00+08:00',
             location: {
