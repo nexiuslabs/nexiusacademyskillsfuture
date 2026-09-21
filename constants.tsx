@@ -46,7 +46,7 @@ export const SCHEDULES: ScheduleItem[] = [
     format: 'In-Person',
     venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
     month: 'Oct 2026',
-    registrationCloses: '25 Sep 2026',
+    registrationCloses: '24 Sep 2026, 11:59pm SGT',
     registrationUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=1wsDaJJk5wQr1wPR7QlB%2fPIC08jBM4tkciRKsCmN6LAJxPVn3yrm6zAFin2Y6rXd',
     cohortCode: '2026-10-09',
   },
