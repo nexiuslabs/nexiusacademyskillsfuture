@@ -592,6 +592,24 @@ const routes = [
           {
             '@type': 'CourseInstance',
             courseMode: 'In-person',
+            startDate: '2026-09-24T09:00:00+08:00',
+            endDate: '2026-09-29T17:00:00+08:00',
+            location: {
+              '@type': 'Place',
+              name: 'Lifelong Learning Institute (Paya Lebar)',
+              description: 'Level 4 (Lobby A), Room R2 Arena',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '11 Eunos Rd 8',
+                addressLocality: 'Singapore',
+                postalCode: '408601',
+                addressCountry: 'SG',
+              },
+            },
+          },
+          {
+            '@type': 'CourseInstance',
+            courseMode: 'In-person',
             courseWorkload: 'PT16H',
             startDate: '2026-10-09T09:00:00+08:00',
             endDate: '2026-10-16T18:00:00+08:00',

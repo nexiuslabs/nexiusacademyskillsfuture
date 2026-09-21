@@ -74,7 +74,7 @@ const Schedule: React.FC = () => {
                     <div className="inline-flex items-center gap-1.5 text-gray-700">
                       <Users size={16} className="text-accent" />
                       {schedule.registrationClosed
-                        ? 'September registration is closed. Please choose the October intake.'
+                        ? `Registration closed${schedule.registrationCloses ? ` on ${schedule.registrationCloses}` : ''}. Please choose an open intake.`
                         : isFull
                         ? 'Join waitlist to secure next intake'
                         : schedule.interestOnly
