@@ -1343,6 +1343,20 @@ const routes = [
     articleDate: '2026-09-14',
   },
   {
+    path: '/blog/agent-runtime-authorization-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'Runtime Authorization for AI Agents | Nexius Academy',
+    description:
+      'Learn to authorize AI agent actions using identity, intent, scope, risk, human approval, stop conditions, and auditable evidence.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/agent-runtime-authorization-business-professionals.png',
+    ogImageAlt: 'Business professionals learning to supervise AI agent permissions and approvals',
+    schemas: [],
+    articleDate: '2026-09-21',
+  },
+  {
     path: '/admin',
     priority: '0.1',
     changefreq: 'monthly',

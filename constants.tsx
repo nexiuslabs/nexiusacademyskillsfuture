@@ -186,6 +186,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 26,
+    slug: 'agent-runtime-authorization-business-professionals',
+    title: 'Runtime Authorization for AI Agents: What Business Professionals Must Learn Before Digital Coworkers Act',
+    date: '21 Sep 2026',
+    views: 0,
+    image: '/images/blog/agent-runtime-authorization-business-professionals.png',
+    excerpt: 'Agent identity is not enough. Learn to authorize each action by intent, scope, consequence, approval requirements, stop conditions, and audit evidence.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, risk teams, L&D teams',
+    featured: true,
+  },
+  {
     id: 25,
     slug: 'ai-agent-governance-skills-business-professionals',
     title: 'AI Agent Governance Skills: What Business Professionals Must Learn Before Agents Act',
