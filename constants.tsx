@@ -41,17 +41,6 @@ export const REVIEWS: Review[] = [
 export const SCHEDULES: ScheduleItem[] = [
   {
     type: 'Weekday',
-    dates: '24 Sep 2026 & 29 Sep 2026',
-    time: '9:00am - 5:00pm',
-    format: 'In-Person',
-    venue: 'Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601; Level 4 (Lobby A), Room R2 Arena',
-    month: 'Sep 2026',
-    registrationCloses: '10 Sep 2026, 11:59pm SGT',
-    registrationClosed: true,
-    cohortCode: '2026-09-24',
-  },
-  {
-    type: 'Weekday',
     dates: '09 Oct 2026 & 16 Oct 2026',
     time: '9:00am - 6:00pm',
     format: 'In-Person',
