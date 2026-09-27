@@ -67,12 +67,11 @@ const About: React.FC = () => {
                 page: '/',
                 position: 'home_about_register_now',
                 ctaLabel: 'register_now',
-                redirectUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu',
               })
             }
             className="academy-button-primary "
           >
-            Register Now
+            Register Interest
           </button>
         </div>
 

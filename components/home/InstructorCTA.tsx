@@ -32,12 +32,11 @@ const InstructorCTA: React.FC = () => {
                 page: '/',
                 position: 'home_instructor_cta',
                 ctaLabel: 'register_today',
-                redirectUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=rHHqe3GLYxhIYwh82qTpAKuHaXtejYUMXXcX5m42t14MVbIM54f%2BJo2weFWoM7%2Fu',
               })
             }
             className="inline-block bg-secondary text-white px-8 py-3 rounded-md font-bold shadow-lg hover:bg-white hover:text-secondary transition-colors"
           >
-            Register Now
+            Register Interest
           </button>
         </div>
         
