@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { openRegisterInterestModal } from '../../services/leadModal';
+import { SCHEDULES } from '../../constants';
 import { trackOutboundClick } from '../../services/analytics';
 
 const StickyConversionRail: React.FC = () => {
@@ -17,7 +18,7 @@ const StickyConversionRail: React.FC = () => {
       <button type="button" onClick={() => openRegisterInterestModal('course_sticky', {
         page: '/courses/agentic-ai', position: 'course_sticky_registration_help', ctaLabel: 'get_help_registering',
       })} className="academy-button-primary flex-1 !px-4 !text-sm">
-        Sign Me Up
+        {SCHEDULES.some((schedule) => !schedule.registrationClosed && !schedule.interestOnly) ? 'Sign Me Up' : 'Register Interest'}
       </button>
       <a href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20help%20registering%20for%20Agentic%20AI%20Foundations."
         target="_blank" rel="noopener noreferrer"

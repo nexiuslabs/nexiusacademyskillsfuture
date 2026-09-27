@@ -27,7 +27,7 @@ import {
 } from '../../services/analytics';
 import FoundationFeeEstimator from '../courses/FoundationFeeEstimator';
 import { calculateFoundationFee, getFoundationProfile, subscribeFoundationProfile } from '../../services/foundationFees';
-import { SCHEDULES } from '../../constants';
+import { SCHEDULES, ADVANCED_COURSE_SCHEDULES } from '../../constants';
 import { getVisitorContext } from '../../services/visitorSession';
 
 declare global {
@@ -103,18 +103,16 @@ const COHORTS_BY_COURSE: Record<string, CohortOption[]> = {
     { label: 'Register Interest', code: 'next-available' },
   ],
   'advanced-agentic-ai': [
-    { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
+    ...ADVANCED_COURSE_SCHEDULES.filter((schedule) => !schedule.registrationClosed).map((schedule) => ({ label: `${schedule.dates} (${schedule.time})`, code: schedule.cohortCode })),
     { label: 'Register Interest', code: 'next-available' },
   ],
   'agentic-ai-business-innovation': [
-    { label: '07 Oct 2026, 08 Oct 2026 & 15 Oct 2026 (9am-6pm)', code: '2026-10-07' },
+    ...ADVANCED_COURSE_SCHEDULES.filter((schedule) => !schedule.registrationClosed).map((schedule) => ({ label: `${schedule.dates} (${schedule.time})`, code: schedule.cohortCode })),
     { label: 'Register Interest', code: 'next-available' },
   ],
 };
 const ACCOUNTANTS_SELF_REGISTRATION_URL =
   'https://stms.polite.edu.sg/identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DStudent%26redirect_uri%3Dhttps%253A%252F%252Fstms.polite.edu.sg%252Fsignin-student%26response_type%3Dcode%26scope%3Dopenid%2520profile%26code_challenge%3DE_QgKHQVqjJlxFGerdkqw-CVtB-r2B4RdhgYFtBulIg%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639124957031034808.NDQzYmQwOTYtOWY5Ni00OTM5LTkwMDgtYTBiMzk1NjVjOGQzZjFmMWM5YWYtYmRjYS00NWM1LTkxNmItOThkOTA5MGVhNTQx%26state%3DE6QlwbfBI3OA11ZwIH4Ce3Hy1zQSg-TlR9ATT08PgcDZpzYcK6Hlnu7JhAzoSqzcviv-hCEO-K0WzQqqJ6BMKJRFlmWyH-xHA3nc04SezmEcoiwp6IinEGRjRL8p1l3t6DTM32RcTGSLk4Ic9tuN3uQzK30xsOv5ofLW5nXy3Rsq5FJ_pwLHx680-VeNfDmEw6kTwtTFgvIkkxc8HHa80_hXIT_s9ce9z_9X_NbHJ935xIUquP9iuh_uIKmQNfupYVgc32kCr6I9EsBzyuC3APFjPcoOCuIX84yq8-rGRqHnKXcOzVCND5n_Ssn5rH-JaNOgNuFppkA1c8LVzOvdaJ5pJI-mkj3rW2nFKpt3v8g9EG4uHe8tPjV04bncLHH8o8ydsxcgOQy9sBUPIYTVxcpyAbw8ywMmo_yJMRuvr2T4ZbH0_q3ZoMsK-cA-qhuZrtpMA-nMLcIVV7Vx7MAfQLBb-C3hh9Wp2ICoTnmKJKk8ahBCRZdFmtyO3XWJEWOAVlJz07Uv33KeKJZqIHlZxQ%26x-client-SKU%3DID_NET8_0%26x-client-ver%3D7.1.2.0';
-const ADVANCED_COURSE_REGISTRATION_URL =
-  "https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=B0%2ftm9y0s%2brl042JkMgousCjY7yOM7YPsLCyQcgxf1WHZkJJwPa0mu0BnOR7A2D%2f";
 
 const getCourseSlugFromPath = (path: string) => {
   if (path.includes('/private-class')) return 'agentic-ai-company-class';
@@ -199,13 +197,10 @@ const LeadCaptureModal: React.FC = () => {
   const isAdvisoryFlow = formState.intent === 'advisory_call';
   const isChecklistFlow = formState.intent === 'download_checklist';
   const isCompanySponsored = isReserveFlow && isAccountantsRegistration && formState.payerType === 'company_sponsored';
-  const isAdvancedCourseRegistration =
-    isReserveFlow && location.pathname.includes('/courses/advanced-agentic-ai');
+  const isInterestOnly = isFoundation && (formState.cohortCode.endsWith('-interest') || formState.cohortCode === 'next-available');
   const effectiveRedirectUrl =
-    redirectUrl ||
-    (isAdvancedCourseRegistration
-      ? ADVANCED_COURSE_REGISTRATION_URL
-      : isReserveFlow && isAccountantsRegistration && formState.payerType === 'self'
+    isInterestOnly ? null : redirectUrl ||
+    (isReserveFlow && isAccountantsRegistration && formState.payerType === 'self'
         ? ACCOUNTANTS_SELF_REGISTRATION_URL
         : null);
   const shouldSkipPayerStep =
@@ -418,12 +413,12 @@ const LeadCaptureModal: React.FC = () => {
               role: optionalPositionValue,
               companyName: formState.intent === 'reserve_seat' ? optionalCompanyValue : formState.companyName,
               departmentOrDesignation: formState.departmentOrDesignation.trim() || optionalPositionValue,
-              leadFlow: formState.leadFlow,
+              leadFlow: isInterestOnly ? 'subsidy_fit' : formState.leadFlow,
               ageBand: isFoundation ? foundationProfile.ageBand : formState.ageBand,
               preferredIntake: formState.preferredIntake,
               cohortCode: formState.cohortCode,
               courseSlug: formState.courseSlug,
-              intent: formState.intent,
+              intent: isInterestOnly ? 'subsidy_fit' : formState.intent,
               payerType: formState.payerType,
               sponsorContactName: formState.sponsorContactName,
               sponsorContactEmail: formState.sponsorContactEmail,
@@ -510,7 +505,7 @@ const LeadCaptureModal: React.FC = () => {
     });
   };
 
-  const modalTitle = isReserveFlow
+  const modalTitle = isInterestOnly && isReserveFlow ? 'Register Interest' : isReserveFlow
     ? isSubmitted && isCompanySponsored
       ? "You're all set"
       : usesStructuredReserveFlow && (registrationStep === 1 || shouldSkipPayerStep)
@@ -524,7 +519,7 @@ const LeadCaptureModal: React.FC = () => {
         ? 'Get the Checklist'
         : 'Check Subsidy & Fit';
 
-  const submitLabel = isReserveFlow
+  const submitLabel = isInterestOnly && isReserveFlow ? 'Register Interest' : isReserveFlow
     ? isCompanySponsored
       ? 'Submit Sponsorship Request'
       : isFoundation && !effectiveRedirectUrl ? 'Request registration help' : 'Continue with Registration'
@@ -564,7 +559,9 @@ const LeadCaptureModal: React.FC = () => {
           <form className="min-h-0 flex-1 overflow-y-auto p-6" onSubmit={onSubmit}>
             <div className="space-y-4">
             {isReserveFlow && !isCompanySponsored ? <p className="rounded-lg bg-blue-50 p-4 text-sm text-primary">
-              {effectiveRedirectUrl
+              {isInterestOnly
+                ? 'Register your interest in these proposed dates. This is not an application, enrolment or seat reservation. We will follow up when the intake details are confirmed.'
+                : effectiveRedirectUrl
                 ? 'First, save your contact details with Nexius Academy. Then continue to the registration or onboarding page. Your place is confirmed only after the registration requirements are completed.'
                 : 'Share your name and email. Our team will contact you with the next steps for your selected intake and help you complete official registration with Temasek Polytechnic. This enquiry does not confirm a place.'}
             </p> : null}
@@ -1199,7 +1196,7 @@ const LeadCaptureModal: React.FC = () => {
               <>
                 <h4 className="mb-2 text-xl font-bold text-primary">You're all set</h4>
                 <p className="mb-4 text-gray-700">
-                  Your enquiry is in. Our team will contact you with intake and eligibility guidance. Your place is confirmed after official registration is completed.
+                  {isInterestOnly ? 'Your interest has been recorded. This is not enrolment or a reserved place. We will contact you when intake details are confirmed.' : 'Your enquiry is in. Our team will contact you with intake and eligibility guidance. Your place is confirmed after official registration is completed.'}
                 </p>
                 <p className="mb-5 text-sm text-gray-600">
                   Next best action: message Cariah directly for immediate advice.

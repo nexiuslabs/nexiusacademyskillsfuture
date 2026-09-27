@@ -183,8 +183,8 @@ const FrontierFirmCoursePage: React.FC = () => {
                         <div className="flex items-start gap-3">
                           <Calendar size={20} className="mt-0.5 shrink-0 text-accent" />
                           <div>
-                            <div className="text-base font-bold">Next Cohort</div>
-                            <div className="mt-1 text-sm text-blue-50/85">07 Oct, 08 Oct & 15 Oct 2026</div>
+                            <div className="text-base font-bold">Next Open Cohort</div>
+                            <div className="mt-1 text-sm text-blue-50/85">11 Nov, 12 Nov & 18 Nov 2026</div>
                             <a href="#schedule" className="mt-2 inline-block text-sm font-bold text-accent hover:text-teal-300 transition-colors">
                               View all dates
                             </a>

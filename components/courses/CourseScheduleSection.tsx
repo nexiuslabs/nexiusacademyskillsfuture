@@ -8,25 +8,11 @@ type CourseScheduleSectionProps = {
   positionPrefix: string;
 };
 
-export const ADVANCED_COURSE_SCHEDULES = [
-  {
-    month: 'Oct 2026',
-    dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',
-    time: '9:00am - 6:00pm',
-    venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
-    registrationCloses: '23 Sep 2026, 11:59pm SGT',
-  },
-  {
-    month: 'Nov 2026',
-    dates: '11 Nov 2026 (Wed), 12 Nov 2026 (Thu) & 18 Nov 2026 (Wed)',
-    time: '9:00am - 5:00pm',
-    venue: 'Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601',
-  },
-];
+import { ADVANCED_COURSE_SCHEDULES } from '../../constants';
 
 const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, positionPrefix }) => {
   const months = Array.from(new Set(ADVANCED_COURSE_SCHEDULES.map((schedule) => schedule.month)));
-  const [selectedMonth, setSelectedMonth] = useState(months[0] ?? 'Oct 2026');
+  const [selectedMonth, setSelectedMonth] = useState(ADVANCED_COURSE_SCHEDULES.find((schedule) => !schedule.registrationClosed)?.month ?? months[0]);
   const filteredSchedules = ADVANCED_COURSE_SCHEDULES.filter((schedule) => schedule.month === selectedMonth);
 
   return (
@@ -75,24 +61,28 @@ const CourseScheduleSection: React.FC<CourseScheduleSectionProps> = ({ page, pos
                   </div>
                   <div className="inline-flex items-center gap-1.5 text-gray-700">
                     <Users size={16} className="text-accent" />
-                    <span>{schedule.registrationCloses ? `Registration closes ${schedule.registrationCloses}` : 'Apply early to lock your seat'}</span>
+                    <span>{schedule.registrationClosed ? `Registration closed on ${schedule.registrationCloses}` : `Registration open — closes ${schedule.registrationCloses}`}</span>
                   </div>
                 </div>
               </div>
 
               <div className="shrink-0">
                 <button
+                  disabled={schedule.registrationClosed}
                   type="button"
                   onClick={() =>
                     openLeadModal('course_page_cta', 'reserve_seat', {
                       page,
+                      preferredIntake: `${schedule.dates} (${schedule.time})`,
+                      cohortCode: schedule.cohortCode,
+                      courseSlug: page.includes("business-innovation") ? "agentic-ai-business-innovation" : "advanced-agentic-ai",
                       position: `${positionPrefix}_schedule_register_interest`,
                       ctaLabel: 'register_interest',
                     })
                   }
-                  className="inline-block w-full rounded-lg bg-primary px-6 py-3 text-center font-bold text-white transition-colors hover:bg-blue-900 md:w-auto"
+                  className="inline-block w-full rounded-lg bg-primary px-6 py-3 text-center font-bold text-white transition-colors hover:bg-blue-900 disabled:bg-gray-200 disabled:text-gray-600 md:w-auto"
                 >
-                  Apply Now
+                  {schedule.registrationClosed ? 'Registration Closed' : 'Apply Now'}
                 </button>
               </div>
             </div>

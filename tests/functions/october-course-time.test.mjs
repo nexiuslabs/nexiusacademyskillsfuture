@@ -16,17 +16,12 @@ test('October Agentic AI cohort consistently uses the owner-confirmed 9am to 6pm
   assert.doesNotMatch(leadCapture, /09 Oct 2026 & 16 Oct 2026 \(9am-5pm\)/);
 });
 
-test('October Agentic AI cohort routes its CTA to the official registration destination', () => {
+test('Closed October Foundation has no registration URL and cannot be selected', () => {
   const scheduleData = source('constants.tsx');
-  const scheduleComponent = source('components/courses/Schedule.tsx');
-  const officialRegistrationUrl =
-    'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=1wsDaJJk5wQr1wPR7QlB%2fPIC08jBM4tkciRKsCmN6LAJxPVn3yrm6zAFin2Y6rXd';
-  const octoberScheduleStart = scheduleData.indexOf("dates: '09 Oct 2026 & 16 Oct 2026'");
-  const octoberSchedule = scheduleData.slice(octoberScheduleStart, scheduleData.indexOf('},', octoberScheduleStart));
-
-  assert.notEqual(octoberScheduleStart, -1);
-  assert.ok(octoberSchedule.includes(`registrationUrl: '${officialRegistrationUrl}'`));
-  assert.match(octoberSchedule, /cohortCode: '2026-10-09'/);
-  assert.match(scheduleComponent, /redirectUrl: schedule\.registrationUrl/);
-  assert.match(scheduleComponent, /skipPayerStep: Boolean\(schedule\.registrationUrl\)/);
+  const start = scheduleData.indexOf("dates: '09 Oct 2026 & 16 Oct 2026'");
+  const october = scheduleData.slice(start, scheduleData.indexOf('},', start));
+  assert.match(october, /registrationClosed: true/);
+  assert.match(october, /registrationCloses: '25 Sep 2026'/);
+  assert.doesNotMatch(october, /registrationUrl/);
+  assert.match(source('components/courses/Schedule.tsx'), /disabled[^>]*>Registration Closed/);
 });

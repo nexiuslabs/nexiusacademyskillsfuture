@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SCHEDULES } from '../../constants';
-import { ADVANCED_COURSE_SCHEDULES } from '../courses/CourseScheduleSection';
+import { SCHEDULES, ADVANCED_COURSE_SCHEDULES } from '../../constants';
 import { Course } from '../../types';
 import ResponsiveImage from '../ResponsiveImage';
 
@@ -75,7 +74,7 @@ const CourseList: React.FC = () => {
                 </h3>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p className="font-semibold text-primary">{course.id === 1 ? '16 hours · In person' : '3 days · In person'}</p>
-                  <p>{course.id === 1 ? nextFoundation?.dates || 'Next intake: register interest' : ADVANCED_COURSE_SCHEDULES[0]?.dates}</p>
+                  <p>{course.id === 1 ? nextFoundation?.dates || 'Next intake: register interest' : ADVANCED_COURSE_SCHEDULES.find((schedule) => !schedule.registrationClosed)?.dates}</p>
                   <p>From {course.id === 1 ? 'S$113.03' : 'S$190.50'} including GST*</p>
                   <p className="text-xs">*For eligible enhanced-funded learners. See course page for eligibility and full fees.</p>
                   <span className="inline-block pt-2 font-bold text-accent">View course, fees and dates →</span>

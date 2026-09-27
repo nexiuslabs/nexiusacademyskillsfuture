@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             <button id="foundation-hero-register" type="button" onClick={() => openRegisterInterestModal('course_page_cta', {
               page: '/courses/agentic-ai', position: 'course_hero_registration_help', ctaLabel: 'get_help_registering',
             })} className="academy-button-primary w-full sm:w-auto">
-              Sign Me Up
+              {nextCohort ? 'Sign Me Up' : 'Register Interest'}
             </button>
           </div>
 

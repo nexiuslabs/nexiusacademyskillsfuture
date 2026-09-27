@@ -46,21 +46,41 @@ export const SCHEDULES: ScheduleItem[] = [
     format: 'In-Person',
     venue: 'Singapore Institute of Management, 461 Clementi Road, Singapore 599491',
     month: 'Oct 2026',
-    registrationCloses: '24 Sep 2026, 11:59pm SGT',
-    registrationUrl: 'https://stms.polite.edu.sg/cetapi/api/v1/custom/extendauthorize?id_token=1wsDaJJk5wQr1wPR7QlB%2fPIC08jBM4tkciRKsCmN6LAJxPVn3yrm6zAFin2Y6rXd',
+    registrationCloses: '25 Sep 2026',
+    registrationClosed: true,
     cohortCode: '2026-10-09',
   },
   {
     type: 'Weekday',
-    dates: '13 Nov 2026 & 20 Nov 2026',
+    dates: 'Proposed: 13 Nov 2026 & 20 Nov 2026',
     time: '9:00am - 5:00pm',
     format: 'In-Person',
     venue: 'Venue to be confirmed',
-    slotsLeft: 0,
     month: 'Nov 2026',
     registrationCloses: 'TBC',
     interestOnly: true,
     cohortCode: '2026-11-13-interest',
+  },
+];
+
+export const ADVANCED_COURSE_SCHEDULES = [
+  {
+    month: 'Oct 2026',
+    dates: '07 Oct 2026 (Wed), 08 Oct 2026 (Thu) & 15 Oct 2026 (Thu)',
+    time: '9:00am - 6:00pm',
+    venue: '60 Cecil St, ISCA House, Level 4, Room 4-2, S(049709)',
+    registrationCloses: '23 Sep 2026',
+    registrationClosed: true,
+    cohortCode: '2026-10-07',
+  },
+  {
+    month: 'Nov 2026',
+    dates: '11 Nov 2026 (Wed), 12 Nov 2026 (Thu) & 18 Nov 2026 (Wed)',
+    time: '9:00am - 5:00pm',
+    venue: 'Venue to be confirmed',
+    registrationCloses: '28 Oct 2026',
+    registrationClosed: false,
+    cohortCode: '2026-11-11',
   },
 ];
 

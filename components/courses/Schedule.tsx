@@ -14,12 +14,13 @@ const Schedule: React.FC = () => {
     <section id="schedule" className="py-20 bg-neutral">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-heading font-bold text-primary mb-4">Upcoming Course Schedules</h2>
-        <p className="text-gray-600 mb-10">Choose an upcoming weekday intake. Session times, venue and registration deadlines are listed below.</p>
+        <p className="text-gray-600 mb-10">The 18 & 25 September 2026 intake has completed delivery. October registration is closed; November dates are proposed and open for interest only.</p>
 
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
           {months.map((month) => (
             <button
               key={month}
+              aria-pressed={selectedMonth === month}
               onClick={() => setSelectedMonth(month)}
               className={`px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${
                 selectedMonth === month
