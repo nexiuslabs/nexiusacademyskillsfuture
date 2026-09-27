@@ -454,13 +454,12 @@ const routes = [
     articleDate: '2026-05-29',
   },
   {
-    // NEX-1338 unpublished candidate: enable indexing only after the CTA is confirmed.
     path: '/workshops/build-your-first-ai-agent',
     lastmod: '2026-09-27',
     priority: '0.8',
     changefreq: 'monthly',
-    includeInSitemap: false,
-    robots: 'noindex,nofollow',
+    includeInSitemap: true,
+    robots: 'index,follow',
     title: 'Build Your First AI Agent in 2 Hours | 17 October 2026 | Nexius Academy',
     description: 'Join Nexius Academy on 17 October 2026, 10am–12pm Singapore time, at Devan Nair Institute. Build your first AI agent around an everyday work task. No coding background required.',
     ogType: 'website',
