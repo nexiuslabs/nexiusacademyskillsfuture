@@ -41,6 +41,7 @@ import AccountantCspLandingPage from './pages/AccountantCspLandingPage';
 import SingaporeAITrainingReportPage from './pages/SingaporeAITrainingReportPage';
 import AgenticAIChallengePage from './pages/AgenticAIChallengePage';
 import LinkedInAIAgentWorkshopPage from './pages/LinkedInAIAgentWorkshopPage';
+import FirstAIAgentWorkshopPage from './pages/FirstAIAgentWorkshopPage';
 import AgenticAIPersonalAssistantWorkshopPage from './pages/AgenticAIPersonalAssistantWorkshopPage';
 import AICareerFairPage from './pages/AICareerFairPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -118,6 +119,7 @@ export const AppShell: React.FC = () => {
         <Route path="/skillsfuture-funding-guide" element={<SkillsFutureFundingGuidePage />} />
         <Route path="/assessments" element={<AgenticAIChallengePage />} />
         <Route path="/ai-career" element={<AICareerFairPage />} />
+        <Route path="/workshops/build-your-first-ai-agent" element={<FirstAIAgentWorkshopPage />} />
         <Route path="/workshops/linkedin-ai-agent" element={<LinkedInAIAgentWorkshopPage />} />
         <Route path="/workshops/agentic-ai-personal-assistant" element={<AgenticAIPersonalAssistantWorkshopPage />} />
         <Route path="/reports/singapore-ai-training-readiness-2026" element={<SingaporeAITrainingReportPage />} />

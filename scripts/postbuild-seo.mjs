@@ -454,6 +454,30 @@ const routes = [
     articleDate: '2026-05-29',
   },
   {
+    // NEX-1338 unpublished candidate: enable indexing only after the CTA is confirmed.
+    path: '/workshops/build-your-first-ai-agent',
+    lastmod: '2026-09-27',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: false,
+    robots: 'noindex,nofollow',
+    title: 'Build Your First AI Agent in 2 Hours | 17 October 2026 | Nexius Academy',
+    description: 'Join Nexius Academy on 17 October 2026, 10am–12pm Singapore time, at Devan Nair Institute. Build your first AI agent around an everyday work task. No coding background required.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/images/workshops/first-ai-agent-20261017.jpg`,
+    ogImageWidth: 1024,
+    ogImageHeight: 1536,
+    schemas: [
+      pageSchema({
+        name: 'Build Your First AI Agent in 2 Hours',
+        description: 'A practical two-hour session on 17 October 2026, 10am–12pm Singapore time, at Devan Nair Institute. No coding background is required.',
+        url: `${SITE_URL}/workshops/build-your-first-ai-agent/`,
+        image: `${SITE_URL}/images/workshops/first-ai-agent-20261017.jpg`,
+        type: 'WebPage',
+      }),
+    ],
+  },
+  {
     path: '/workshops/linkedin-ai-agent',
     lastmod: '2026-08-25',
     priority: '0.8',
@@ -1406,8 +1430,8 @@ const applyHead = (html, route) => {
   output = upsertMeta(output, 'property="og:url"', `<meta property="og:url" content="${pageUrl}" />`);
   output = upsertMeta(output, 'property="og:type"', `<meta property="og:type" content="${route.ogType}" />`);
   output = upsertMeta(output, 'property="og:image"', `<meta property="og:image" content="${route.ogImage}" />`);
-  output = upsertMeta(output, 'property="og:image:width"', '<meta property="og:image:width" content="1200" />');
-  output = upsertMeta(output, 'property="og:image:height"', '<meta property="og:image:height" content="630" />');
+  output = upsertMeta(output, 'property="og:image:width"', `<meta property="og:image:width" content="${route.ogImageWidth ?? 1200}" />`);
+  output = upsertMeta(output, 'property="og:image:height"', `<meta property="og:image:height" content="${route.ogImageHeight ?? 630}" />`);
   output = upsertMeta(output, 'property="og:image:alt"', `<meta property="og:image:alt" content="${route.ogImageAlt ?? route.title}" />`);
   output = upsertMeta(output, 'property="og:site_name"', '<meta property="og:site_name" content="Nexius Academy" />');
   output = upsertMeta(output, 'name="twitter:card"', '<meta name="twitter:card" content="summary_large_image" />');
