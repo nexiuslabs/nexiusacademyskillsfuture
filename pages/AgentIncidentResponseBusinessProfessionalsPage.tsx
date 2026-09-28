@@ -30,7 +30,12 @@ const AgentIncidentResponseBusinessProfessionalsPage: React.FC = () => {
             AI Agent Incident Response: What Business Professionals Must Learn Before Digital Coworkers Go Wrong
           </h1>
 
-          <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="9 min read" />
+          <ArticleMeta
+            articleSlug={ARTICLE_SLUG}
+            readTime="9 min read"
+            modifiedDateIso="2026-09-28"
+            modifiedDateDisplay="28 Sep 2026"
+          />
 
           <img
             src="/images/blog/ai-agent-incident-response-business-professionals.png"
