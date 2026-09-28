@@ -29,6 +29,7 @@ import AgentFinOpsBusinessProfessionalsPage from './pages/AgentFinOpsBusinessPro
 import AgentBossConcurrentWorkBusinessProfessionalsPage from './pages/AgentBossConcurrentWorkBusinessProfessionalsPage';
 import AgentGovernanceSkillsBusinessProfessionalsPage from './pages/AgentGovernanceSkillsBusinessProfessionalsPage';
 import AgentRuntimeAuthorizationBusinessProfessionalsPage from './pages/AgentRuntimeAuthorizationBusinessProfessionalsPage';
+import AgentIncidentResponseBusinessProfessionalsPage from './pages/AgentIncidentResponseBusinessProfessionalsPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import SkillsFutureFundingGuidePage from './pages/SkillsFutureFundingGuidePage';
@@ -161,6 +162,7 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/agent-boss-concurrent-ai-work-business-professionals" element={<AgentBossConcurrentWorkBusinessProfessionalsPage />} />
         <Route path="/blog/ai-agent-governance-skills-business-professionals" element={<AgentGovernanceSkillsBusinessProfessionalsPage />} />
         <Route path="/blog/agent-runtime-authorization-business-professionals" element={<AgentRuntimeAuthorizationBusinessProfessionalsPage />} />
+        <Route path="/blog/ai-agent-incident-response-business-professionals" element={<AgentIncidentResponseBusinessProfessionalsPage />} />
       </Routes>
       <AIAdvisor />
       <LeadCaptureModal />

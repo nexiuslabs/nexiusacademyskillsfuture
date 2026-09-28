@@ -206,6 +206,18 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 27,
+    slug: 'ai-agent-incident-response-business-professionals',
+    title: 'AI Agent Incident Response: What Business Professionals Must Learn Before Digital Coworkers Go Wrong',
+    date: '28 Sep 2026',
+    views: 0,
+    image: '/images/blog/ai-agent-incident-response-business-professionals.png',
+    excerpt: 'A kill switch is not a recovery plan. Learn to detect, contain, investigate, restore, and improve AI agent workflows without losing accountability.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, risk teams, L&D teams',
+    featured: true,
+  },
+  {
     id: 26,
     slug: 'agent-runtime-authorization-business-professionals',
     title: 'Runtime Authorization for AI Agents: What Business Professionals Must Learn Before Digital Coworkers Act',

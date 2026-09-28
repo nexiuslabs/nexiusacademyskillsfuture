@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const DEFAULT_LASTMOD = '2026-07-20';
+const DEFAULT_LASTMOD = '2026-09-28';
 const ACADEMY_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const MELVERICK_ID = `${SITE_URL}/about/#melverick-ng`;
@@ -1369,6 +1369,20 @@ const routes = [
     ogImageAlt: 'Business professionals learning to supervise AI agent permissions and approvals',
     schemas: [],
     articleDate: '2026-09-21',
+  },
+  {
+    path: '/blog/ai-agent-incident-response-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Agent Incident Response Skills | Nexius Academy',
+    description:
+      'Learn how business professionals can detect, contain, investigate, recover, and improve when a digital coworker goes outside its intended workflow.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/ai-agent-incident-response-business-professionals.png',
+    ogImageAlt: 'Singapore business professionals practising an AI agent incident response drill',
+    schemas: [],
+    articleDate: '2026-09-28',
   },
   {
     path: '/admin',
