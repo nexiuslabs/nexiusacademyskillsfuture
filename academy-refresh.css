@@ -570,3 +570,13 @@ body:has(.academy-refresh) svg[class*="text-secondary"], body:has(.academy-refre
 .academy-about-collage-second {bottom:0;right:0;border:6px solid #fff;}
 .academy-about-mobile-photo {width:100%;margin-bottom:32px;}
 .academy-about-full-photo {display:block;width:100%;height:auto;border-radius:10px;}
+/* Course arrival and Foundation audience states stay in the monochrome palette. */
+.academy-hero-links {display:flex;flex-wrap:wrap;gap:12px 28px;}
+.academy-foundation-benefits {display:flex;flex-wrap:wrap;gap:16px 24px;margin-top:32px;font-size:14px;color:#525252;}
+.academy-foundation-benefits li {display:flex;align-items:center;gap:8px;}
+.academy-foundation-other-dates {display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#111;text-decoration:underline;text-underline-offset:4px;margin-bottom:16px;}
+.academy-foundation-audience-icon {background:#f6f6f4;color:#111;}
+.academy-foundation-audience-card:hover .academy-foundation-audience-icon {background:#111;color:#fff;}
+.academy-foundation-audience-card:hover .academy-foundation-audience-icon svg {color:#fff;}
+#root .academy-foundation-hero {background:#f6f6f4;}
+#root .academy-foundation-hero h1 {color:#111;}

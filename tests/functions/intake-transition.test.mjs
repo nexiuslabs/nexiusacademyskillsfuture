@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 test('Started September and withdrawn December cohorts are removed while October and November remain', () => {
  const constants=readFileSync(new URL('../../constants.tsx',import.meta.url),'utf8');
  assert.doesNotMatch(constants,/18 Sep 2026|2026-09-18|15 Dec 2026|18 Dec 2026|2026-12-15/);
- for (const code of ['2026-10-09', '2026-11-13-interest']) assert.ok(constants.includes(code));
+ for (const code of ['2026-10-09', '2026-11-06']) assert.ok(constants.includes(code));
  const seo=readFileSync(new URL('../../scripts/postbuild-seo.mjs',import.meta.url),'utf8');
  assert.doesNotMatch(seo,/2026-09-18|2026-09-25|2026-12-15|2026-12-18/);
  assert.match(seo,/2026-10-09T09:00:00/);
@@ -16,4 +16,18 @@ test('Started September and withdrawn December cohorts are removed while October
  const schedule=readFileSync(new URL('../../components/courses/Schedule.tsx',import.meta.url),'utf8');
  assert.match(schedule,/SCHEDULES.find\(\(schedule\) => !schedule.registrationClosed\)/);
  assert.match(schedule,/disabled[^>]*>Registration Closed/);
+});
+
+test('November Foundation is confirmed for 6 and 13 November across booking and search metadata', () => {
+ const constants=readFileSync(new URL('../../constants.tsx',import.meta.url),'utf8');
+ const november=constants.slice(constants.indexOf("dates: '06 Nov 2026 & 13 Nov 2026'"), constants.indexOf('export const ADVANCED_COURSE_SCHEDULES'));
+ assert.match(november, /interestOnly: false/);
+ assert.match(november, /registrationClosed: false/);
+ assert.match(november, /cohortCode: '2026-11-06'/);
+ assert.doesNotMatch(constants, /2026-11-13-interest|Proposed: 13 Nov/);
+ const seo=readFileSync(new URL('../../scripts/postbuild-seo.mjs',import.meta.url),'utf8');
+ assert.match(seo, /2026-11-06T09:00:00/);
+ assert.match(seo, /2026-11-13T17:00:00/);
+ const schedule=readFileSync(new URL('../../components/courses/Schedule.tsx',import.meta.url),'utf8');
+ assert.doesNotMatch(schedule, /November dates are proposed/);
 });

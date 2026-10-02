@@ -9,7 +9,7 @@ export default function AdvancedPreviewHero() {
       <h1>Agentic AI-Driven Business Innovation for Productivity</h1>
       <p className="academy-course-subtitle">Strategies for the Frontier Firm</p>
       <p>A practical advanced Agentic AI course for anyone who wants to understand Frontier Firm strategy, agent orchestration, governance, and how human-agent work will operate in the future.</p>
-      <a href="#curriculum" className="academy-text-link">Explore what you’ll learn <ArrowDown size={18} aria-hidden="true" /></a>
+      <div className="academy-hero-links"><a href="#curriculum" className="academy-text-link">Explore what you’ll learn <ArrowDown size={18} aria-hidden="true" /></a><a href="#schedule" className="academy-text-link">Check course schedule <ArrowDown size={18} aria-hidden="true" /></a></div>
       <div className="academy-collaboration"><span>In collaboration with</span><img src="/images/partners/temasek-poly-full-color-right-align.png" alt="Temasek Polytechnic collaboration logo" /></div>
     </div><aside className="academy-registration-dossier" aria-label="Course dates and registration">
       <h2>Your next step</h2>

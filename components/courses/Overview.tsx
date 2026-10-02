@@ -96,9 +96,9 @@ const Overview: React.FC = () => {
               return (
                 <div
                   key={item.title}
-                  className="group rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-accent hover:shadow-card"
+                  className="academy-foundation-audience-card rounded-xl border border-gray-200 p-6"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-primary transition-colors group-hover:bg-accent group-hover:text-white">
+                  <div className="academy-foundation-audience-icon mb-4 flex h-12 w-12 items-center justify-center rounded-full">
                     <Icon size={24} />
                   </div>
                   <h4 className="mb-2 text-lg font-bold text-primary">{item.title}</h4>

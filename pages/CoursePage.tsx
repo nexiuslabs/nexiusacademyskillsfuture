@@ -118,7 +118,7 @@ const CoursePage: React.FC = () => {
                   <p>Explore <strong>Advanced Agentic AI</strong> if your learning goal is to coordinate work across departments, define human accountability, and plan governance and organisational transformation. The three-day course focuses on orchestration and a transformation roadmap.</p>
                   <p>For example, preparing a single team's weekly report and designing a service-request workflow spanning several departments raise different learning needs. These are illustrative ways to think about course fit, not promised course exercises or completed project outcomes.</p>
                   <p>
-                    Compare the <a href="#curriculum" className="font-bold text-accent underline hover:text-primary">Foundation curriculum</a> with the <Link to="/courses/advanced-agentic-ai/" className="font-bold text-accent underline hover:text-primary">Advanced course outline</Link>. Still unsure? Select <strong>Register Interest</strong> for updates on proposed intakes or ask us a general course question. Tell us your role and the workflow you want to improve. An enquiry does not confirm a place.
+                    Compare the <a href="#curriculum" className="font-bold text-accent underline hover:text-primary">Foundation curriculum</a> with the <Link to="/courses/advanced-agentic-ai/" className="font-bold text-accent underline hover:text-primary">Advanced course outline</Link>. Still unsure? Select <strong>Sign Me Up</strong> for help registering for the November class or ask us a general course question. Tell us your role and the workflow you want to improve. An enquiry does not confirm a place.
                   </p>
                 </div>
               </div>

@@ -52,14 +52,15 @@ export const SCHEDULES: ScheduleItem[] = [
   },
   {
     type: 'Weekday',
-    dates: 'Proposed: 13 Nov 2026 & 20 Nov 2026',
+    dates: '06 Nov 2026 & 13 Nov 2026',
     time: '9:00am - 5:00pm',
     format: 'In-Person',
     venue: 'Venue to be confirmed',
     month: 'Nov 2026',
     registrationCloses: 'TBC',
-    interestOnly: true,
-    cohortCode: '2026-11-13-interest',
+    interestOnly: false,
+    registrationClosed: false,
+    cohortCode: '2026-11-06',
   },
 ];
 
