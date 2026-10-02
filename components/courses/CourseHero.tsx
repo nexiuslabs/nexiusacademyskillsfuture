@@ -10,11 +10,11 @@ export default function CourseHero() {
       <h1>Agentic AI Foundations for Non-Technical Professionals</h1>
       <p className="academy-course-subtitle">Enhancing Productivity and Business Process Automation</p>
       <p>Turn one everyday work task into an AI workflow, with guided practice and human review. No coding background required.</p>
-      <a href="#curriculum" className="academy-text-link">Explore what you’ll learn <ArrowDown size={18} aria-hidden="true" /></a>
+      <div className="academy-hero-links"><a href="#curriculum" className="academy-text-link">Explore what you’ll learn <ArrowDown size={18} aria-hidden="true" /></a><a href="#schedule" className="academy-text-link">Check course schedule <ArrowDown size={18} aria-hidden="true" /></a></div>
       <div className="academy-collaboration"><span>In collaboration with</span><img src="/images/partners/temasek-poly-full-color-right-align.png" alt="Temasek Polytechnic collaboration logo" /></div>
     </div><aside className="academy-registration-dossier" aria-label="Course dates and registration">
       <h2>Your next step</h2>
-      <dl><div><dt>Next open cohort</dt><dd>{next?.dates ?? 'Next intake to be confirmed'}</dd><a className="academy-foundation-other-dates" href="#schedule">Other dates <ArrowDown size={14} aria-hidden="true" /></a></div><div className="academy-dossier-format"><div><dt>Format</dt><dd>In person</dd></div><div><dt>Duration</dt><dd>2 days</dd></div></div><div><dt>Net fee from</dt><dd className="academy-dossier-price">S$113.03<span>including GST*</span></dd></div></dl>
+      <dl><div><dt>Next open cohort</dt><dd>{next?.dates ?? 'Next intake to be confirmed'}</dd></div><div className="academy-dossier-format"><div><dt>Format</dt><dd>In person</dd></div><div><dt>Duration</dt><dd>2 days</dd></div></div><div><dt>Net fee from</dt><dd className="academy-dossier-price">S$113.03<span>including GST*</span></dd></div></dl>
       <p className="academy-small">*Subject to final learner eligibility and funding approval.</p>
       <button id="foundation-hero-register" className="academy-action" type="button" onClick={() => openLeadModal('course_page_cta', 'reserve_seat', {
         page: '/courses/agentic-ai', position: 'course_hero_registration_help', ctaLabel: 'get_help_registering', courseSlug: 'agentic-ai', cohortCode: next?.cohortCode,
