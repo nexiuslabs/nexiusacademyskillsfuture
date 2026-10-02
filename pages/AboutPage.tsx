@@ -144,28 +144,28 @@ const AboutPage: React.FC = () => {
               {/* Mission Tab */}
               {activeTab === 'mission' && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                  <div className="relative h-[500px] hidden md:block">
+                  <div className="academy-about-collage hidden md:block">
                     <ResponsiveImage
                       src={images[0]}
                       alt="Our mission"
                       widths={[480, 768]}
                       sizes="288px"
-                      fit="cover"
-                      className="absolute top-0 left-0 w-72 h-80 object-cover rounded-2xl shadow-xl z-10"
+                      optimize={false}
+                      className="academy-about-collage-first"
                     />
                     <ResponsiveImage
                       src={images[1]}
                       alt="Team collaboration"
                       widths={[480, 768]}
                       sizes="320px"
-                      fit="cover"
-                      className="absolute bottom-0 right-0 w-80 h-72 object-cover rounded-2xl shadow-xl z-20 border-8 border-white"
+                      optimize={false}
+                      className="academy-about-collage-second"
                     />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10"></div>
                   </div>
 
-                  <div className="md:hidden w-full h-72 overflow-hidden rounded-2xl shadow-lg mb-8">
-                    <ResponsiveImage src={images[0]} className="w-full h-full object-cover" alt="Our mission" widths={[480, 768]} sizes="100vw" fit="cover" />
+                  <div className="academy-about-mobile-photo md:hidden">
+                    <ResponsiveImage src={images[0]} className="academy-about-full-photo" alt="Our mission" optimize={false} />
                   </div>
 
                   <div>

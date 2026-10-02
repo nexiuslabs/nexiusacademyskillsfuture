@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T16:40:56.119639Z",
+  "generatedAt": "2026-10-02T22:05:53.453207Z",
   "title": "Design System: Nexius Academy",
   "extensions": {
     "colorMeta": {
@@ -226,6 +226,13 @@
       "description": "Newsletter field for the dark footer.",
       "html": "<label class=\"ds-field-label\" for=\"ds-email\">Email address</label><input class=\"ds-field\" id=\"ds-email\" type=\"email\" autocomplete=\"email\" placeholder=\"Email Address\">",
       "css": ".ds-field-label{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:block;font-size:14px;font-weight:500;color:#111;margin-bottom:12px}.ds-field{font-family:Inter,ui-sans-serif,system-ui,sans-serif;width:100%;padding:12px 16px;background:#262626;color:#fff;border:1px solid #525252;border-radius:6px;font-size:14px}.ds-field::placeholder{color:#d1d5db}.ds-field:disabled{opacity:.5}.ds-field:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    },
+    {
+      "name": "View All Articles",
+      "kind": "button",
+      "description": "Homepage insights action with explicit Ink/Paper hover and focus pairing.",
+      "html": "<a class=\"ds-articles\" href=\"#articles\">View All Articles</a>",
+      "css": ".ds-articles{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 32px;border:1px solid #111;border-radius:6px;background:transparent;color:#111;font-weight:600;transition:background-color .18s,color .18s}.ds-articles:hover,.ds-articles:focus-visible{background:#111;color:#fff}.ds-articles:focus-visible{outline:2px solid #525252;outline-offset:5px}"
     }
   ],
   "narrative": {
@@ -262,6 +269,16 @@
         "name": "The Paired Surface Rule",
         "body": "Use Ink or Secondary Ink on Paper and Canvas, and Paper on Ink and Inset Ink. A background change must carry its foreground and control states with it; retained utility colors are not independent brand roles. Nested surfaces reset the pair explicitly: dark panels inside light sections use Paper headings and labels; opaque light panels inside dark sections restore Ink headings and labels. Neutral programme heroes and navigation retain Ink text; primary controls retain Paper lettering, and inverse controls retain Ink lettering.\n",
         "section": "colors"
+      },
+      {
+        "name": "The Native Editorial Image Rule",
+        "body": "Homepage insight artwork uses native 16:9 contain frames and original assets without CDN optimization. Affected About images preserve native 4:3 collage or intrinsic mobile height; these image-specific treatments do not replace every route’s photography pattern.",
+        "section": "components"
+      },
+      {
+        "name": "The Homepage Surface Rhythm",
+        "body": "Following the company website, homepage hero, audience and latest insights use Canvas; skills uses Paper. Existing monochrome tokens remain unchanged.",
+        "section": "colors"
       }
     ],
     "dos": [
@@ -269,7 +286,8 @@
       "Do use real learning photographs with meaningful alternative text.",
       "Do keep eligibility notes adjacent to fees and enquiries distinct from confirmed registration.",
       "Do preserve visible keyboard focus and reduced-motion behavior.",
-      "Do pair every nested light or dark surface with explicit readable headings, diagnostic labels and action lettering."
+      "Do pair every nested light or dark surface with explicit readable headings, diagnostic labels and action lettering.",
+      "Do preserve complete article artwork and the affected About photographs with their native proportions."
     ],
     "donts": [
       "Don't introduce decorative gradients, AI spectacle or floating badges into these Academy surfaces.",

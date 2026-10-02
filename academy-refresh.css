@@ -553,3 +553,20 @@ body:has(.academy-refresh) svg[class*="text-secondary"], body:has(.academy-refre
 #root .academy-extension :is(nav,header) button:not([class~="bg-primary"]):not([class~="bg-accent"]):not(.academy-button-primary) {color:#111 !important;}
 #root .academy-extension :is(a,button)[class*="border-white"] {color:#fff !important;}
 #root .academy-extension :is(a,button).bg-white.bg-white {background:#fff !important;color:#111 !important;}
+
+/* Shared Paper / Canvas rhythm, following the company website. */
+.academy-home .academy-home-hero {background:var(--canvas);}
+.academy-home #skills {background:var(--paper);}
+.academy-home #audience, .academy-home #latest-insights {background:var(--canvas);}
+.academy-insight-image-frame {aspect-ratio:16/9;overflow:hidden;border-radius:10px;margin-bottom:16px;background:var(--paper);}
+.academy-insight-image {display:block;width:100%;height:100%;object-fit:contain;}
+.academy-articles-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 32px;border:1px solid #111;border-radius:6px;background:transparent;color:#111; font-weight:600;transition:none;}
+.academy-home #latest-insights .academy-articles-button:hover, .academy-home #latest-insights .academy-articles-button:focus-visible {background:#111;color:#fff;}
+.academy-home #latest-insights .academy-articles-button svg {color:inherit;}
+.academy-about-opening .academy-editorial-photo {height:auto;aspect-ratio:auto;object-fit:contain;}
+.academy-about-collage {position:relative;width:100%;max-width:560px;height:440px;margin-inline:auto;}
+.academy-about-collage > img {position:absolute;width:70%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#f6f6f4;border-radius:10px;}
+.academy-about-collage-first {top:0;left:0;}
+.academy-about-collage-second {bottom:0;right:0;border:6px solid #fff;}
+.academy-about-mobile-photo {width:100%;margin-bottom:32px;}
+.academy-about-full-photo {display:block;width:100%;height:auto;border-radius:10px;}

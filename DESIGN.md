@@ -129,7 +129,7 @@ Ink anchors headings, primary actions and the dark footer. Hover Ink supplies th
 
 ### Neutral
 
-Paper holds the homepage welcome hero, reading surface and registration dossier. Canvas groups the Advanced hero and supporting information. Secondary Ink carries descriptions and notes. Line and Strong Line organize factual rows. Inset Ink supports selection and footer fields. Partner assets retain their original colors.
+Paper holds homepage skills, reading surfaces and the registration dossier. Canvas groups the homepage welcome hero, audience and latest insights, following the company website’s Paper/Canvas rhythm, as well as the Advanced hero and supporting information. Secondary Ink carries descriptions and notes. Line and Strong Line organize factual rows. Inset Ink supports selection and footer fields. Partner assets retain their original colors.
 
 **The Neutral Hierarchy Rule.** Use Ink for authority and action, Secondary Ink for supporting information, Paper for readable surfaces and Canvas for tonal grouping.
 
@@ -151,7 +151,7 @@ About and journal openings share Editorial Display and Editorial Intro. Their he
 
 The reading container caps at 1280px, with desktop side padding (40px), tablet (24px) and mobile (20px). Broad two-column sections stack at 850px; homepage course comparisons become two columns at 850px and one column at 600px. Advanced section spacing tightens from the Section token to 56px on mobile. Homepage course comparison and practice use the Home Section tokens; supporting sections use 96px on desktop and 72px on mobile. The Advanced header is sticky with an 84px minimum height; its course links become an expandable menu at 850px. Controls provide a minimum target height (44px); primary actions use 48px. Preserve semantic reading order when stacking.
 
-The homepage welcome hero pairs a message on the left with a real classroom photograph on the right, on Paper. Equal columns use an 80px gap; the photo is 448px high. The gap becomes 40px at 1000px, and the layout stacks at 850px with the message first. The homepage evidence section places its heading on the left and a single column of evidence on the right, stacking at 850px. This composition is specific to the approved homepage revision, rather than a requirement for Advanced.
+The homepage welcome hero pairs a message on the left with a real classroom photograph on the right, on Canvas. Equal columns use an 80px gap; the photo is 448px high. The gap becomes 40px at 1000px, and the layout stacks at 850px with the message first. The homepage evidence section places its heading on the left and a single column of evidence on the right, stacking at 850px. This composition is specific to the approved homepage revision, rather than a requirement for Advanced.
 
 Homepage course choices are two open horizontal rows, each separating the course story, logistics and fee/action. Desktop columns use 1.45fr / 1fr / .85fr with a 56px gap and 48px vertical padding. At 1000px the columns become 1.25fr / 1fr / 1fr with a 32px gap; at 850px the story spans both columns above logistics and the decision. At 600px the row becomes one column with a 28px gap and 36px vertical padding. This course-section composition does not alter the homepage hero or Advanced layout.
 
@@ -181,6 +181,12 @@ Primary buttons are compact Ink controls with Paper lettering and the Action typ
 
 The registration dossier is a Paper surface on Canvas, with the Surface radius and desktop padding (28px), reduced to 24px on mobile. Homepage comparison articles use continuous fine dividers, an open story/logistics/decision structure and one primary exploration action per course. Course titles use 26px type at weight 600 and line height 1.25 (25px on mobile); supporting descriptions use 15px with line height 1.7, and fee numerals use 30px tabular figures. The homepage private-class prompt is a quiet text link below the rows, with a 32px top margin; it stacks on mobile. The retained private-class callout elsewhere uses Canvas and the Surface radius.
 
+### Editorial images and article action
+
+Homepage insights preserve the full original article artwork in native 16:9 Paper frames using `object-fit: contain`; these affected images bypass CDN optimization to keep the original asset intact. The View All Articles control has a transparent background, Ink lettering and a one-pixel Ink border; hover and visible focus pair an Ink background with Paper lettering, including the arrow.
+
+About opening photography uses intrinsic height and containment. The mission collage preserves native 4:3 photographs in a 440px desktop stage, with each image at 70% width and restrained Surface corners; its overlapping second image has a six-pixel Paper border. The mobile mission image uses full width and intrinsic height. The affected collage and mobile images bypass CDN optimization rather than cropping their source assets. These are image-specific treatments, not a new photography rule for every route.
+
 ### Inputs / Fields
 
 Extension task fields use Paper with Ink text, a neutral border, and Ink caret and selection accent. Headings, diagnostic labels, field labels and placeholders remain visible against their actual rendered surface. Do not hide meaningful diagnostic or task labels when removing decorative badges. Light fields use Secondary Ink placeholders; the inverse newsletter retains a light placeholder on Inset Ink. Selects and textareas keep their original task behavior. The newsletter remains the inverse field on the dark footer.
@@ -206,6 +212,7 @@ The advisor uses Ink with no badge or pulse; at 850px and below its trigger ente
 - Do keep eligibility notes adjacent to fees and enquiries distinct from confirmed registration.
 - Do preserve visible keyboard focus and reduced-motion behavior.
 - Do pair every nested light or dark surface with explicit readable headings, diagnostic labels and action lettering.
+- Do preserve complete article artwork and the affected About photographs with their native proportions.
 
 ### Don't:
 

@@ -90,7 +90,7 @@ const BottomSection: React.FC = () => {
       </section>
 
       {/* Latest News — pulls from BLOG_POSTS, shows 3 most recent featured */}
-      <section className="py-20 bg-white">
+      <section id="latest-insights" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary">Latest AI Training Insights</h2>
@@ -100,8 +100,8 @@ const BottomSection: React.FC = () => {
             {featuredPosts
               .map((post, _idx) => (
                 <Link key={post.id} to={`/blog/${post.slug}/`} className="group cursor-pointer">
-                  <div className="overflow-hidden rounded-xl mb-4 h-56">
-                    <ResponsiveImage src={post.image} alt={post.title} widths={[480, 768]} sizes="(max-width: 768px) 100vw, 33vw" fit="cover" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="academy-insight-image-frame">
+                    <ResponsiveImage src={post.image} alt={post.title} optimize={false} className="academy-insight-image" />
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                     <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
@@ -123,7 +123,7 @@ const BottomSection: React.FC = () => {
           <div className="text-center mt-12">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-bold transition-all"
+              className="academy-articles-button"
             >
               View All Articles
               <ArrowRight size={16} />
