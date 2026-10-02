@@ -137,11 +137,11 @@ Paper holds homepage skills, reading surfaces and the registration dossier. Canv
 
 ## Typography
 
-Inter uses the sans-serif fallback stack in the frontmatter. Display is the homepage headline; Course Display is the Advanced title. Headline marks section headings; Title marks course choices. Intro supports major headings, Body carries continuous reading, Action labels controls, and Small carries fee qualifications.
+Inter uses the sans-serif fallback stack in the frontmatter. Display is the homepage headline; Course Display is shared by the Advanced and Foundation hero titles. Headline marks section headings; Title marks course choices. Intro supports major headings, Body carries continuous reading, Action labels controls, and Small carries fee qualifications.
 
 Homepage display uses the Display token on desktop, then tablet (46px) and mobile (38px); the welcome paragraph uses 18px with 1.75 line height, reducing to 17px on mobile. Homepage section headings use 38px at weight 600, reducing to 32px on mobile. Advanced display adapts to a tablet clamp (36px, 5.6vw, 48px) and mobile (36px). Section headings become smaller on mobile (32px). Descriptions use a comfortable measure (60ch). Fee numerals use tabular figures. The wordmark places Nexius above Academy, with distinct weights (750 and 500) and tracking (-.04em and .07em).
 
-Extension page titles use a responsive ramp, reaching 40px at tablet and 34px at mobile; Foundation retains its own desktop clamp (36px, 3.7vw, 52px). Article titles use a reading display clamp (34px, 3.5vw, 52px), then 32px on mobile. Article body text and list items use 17px with a maximum measure of 72ch; article section headings use 28px. These are family-specific roles, not replacements for the approved homepage or Advanced ramp.
+Extension page titles use a responsive ramp, reaching 40px at tablet and 34px at mobile; Foundation uses the shared Course Display desktop ramp. Article titles use a reading display clamp (34px, 3.5vw, 52px), then 32px on mobile. Article body text and list items use 17px with a maximum measure of 72ch; article section headings use 28px. These are family-specific roles, not replacements for the approved homepage or Advanced ramp.
 
 **The One Family Rule.** Use Inter throughout the Academy site; separate roles through size, weight and spacing.
 

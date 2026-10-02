@@ -84,7 +84,7 @@
 .academy-course-breadcrumb {display: flex; gap: 12px; font-size: 13px; color: #525252; margin-bottom: 36px;}
 .academy-course-breadcrumb a {text-decoration: underline;}
 .academy-advanced-layout {display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: 72px; padding-bottom: 48px;}
-.academy-advanced-intro h1 {font-size: clamp(36px,4.1vw,60px); font-weight: 650; line-height: 1.1; letter-spacing: -.035em;}
+.academy-advanced-intro h1, #root .academy-foundation-hero .academy-advanced-intro h1 {font-size: clamp(36px,4.1vw,60px); font-weight: 650; line-height: 1.1; letter-spacing: -.035em;}
 .academy-course-subtitle {font-size: 23px !important; line-height: 1.3 !important; font-weight: 500; color: #111 !important; margin: 24px 0 20px;}
 .academy-advanced-intro > p:not(.academy-course-subtitle) {font-size: 17px; line-height: 1.7; color: #525252; max-width: 60ch; margin-bottom: 22px;}
 .academy-collaboration {display: flex; gap: 24px; align-items: center; margin-top: 28px; padding-top: 24px; border-top: 1px solid #d6d6d1;}
@@ -176,7 +176,7 @@ body:has(.academy-refresh) .ai-advisor-trigger {bottom: 20px; right: 20px;}
   .academy-hero-heading h1 {max-width: 18ch; font-size: clamp(40px,6.5vw,56px);}
   .academy-hero-intro {max-width: 60ch;}
   .academy-classroom-image {height: 320px;}
-  .academy-advanced-intro h1 {font-size: clamp(36px,5.6vw,48px); max-width: 24ch;}
+  .academy-advanced-intro h1, #root .academy-foundation-hero .academy-advanced-intro h1 {font-size: clamp(36px,5.6vw,48px); max-width: 24ch;}
   .academy-registration-dossier {max-width: 560px;}
   .academy-course-pair {gap: 32px;}
   .academy-course-option h3 {font-size: 25px; min-height: 115px;}
@@ -211,7 +211,7 @@ body:has(.academy-refresh) .ai-advisor-trigger {bottom: 20px; right: 20px;}
   .academy-wordmark span:last-child {font-size: 13px;}
   .academy-advanced-hero {padding-top: 24px;}
   .academy-course-breadcrumb {font-size: 12px; margin-bottom: 28px;}
-  .academy-advanced-intro h1 {font-size: 36px;}
+  .academy-advanced-intro h1, #root .academy-foundation-hero .academy-advanced-intro h1 {font-size: 36px;}
   .academy-course-subtitle {font-size: 21px !important;}
   .academy-advanced-intro > p:not(.academy-course-subtitle) {font-size: 16px;}
   .academy-registration-dossier {padding: 24px;}
@@ -572,11 +572,20 @@ body:has(.academy-refresh) svg[class*="text-secondary"], body:has(.academy-refre
 .academy-about-full-photo {display:block;width:100%;height:auto;border-radius:10px;}
 /* Course arrival and Foundation audience states stay in the monochrome palette. */
 .academy-hero-links {display:flex;flex-wrap:wrap;gap:12px 28px;}
-.academy-foundation-benefits {display:flex;flex-wrap:wrap;gap:16px 24px;margin-top:32px;font-size:14px;color:#525252;}
-.academy-foundation-benefits li {display:flex;align-items:center;gap:8px;}
 .academy-foundation-other-dates {display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#111;text-decoration:underline;text-underline-offset:4px;margin-bottom:16px;}
 .academy-foundation-audience-icon {background:#f6f6f4;color:#111;}
 .academy-foundation-audience-card:hover .academy-foundation-audience-icon {background:#111;color:#fff;}
 .academy-foundation-audience-card:hover .academy-foundation-audience-icon svg {color:#fff;}
 #root .academy-foundation-hero {background:#f6f6f4;}
 #root .academy-foundation-hero h1 {color:#111;}
+
+/* Foundation uses the Advanced hero system, with its fixed-header offset. */
+#root .academy-foundation-hero {padding:112px 0 0;color:#111;font-family:Inter,ui-sans-serif,system-ui,sans-serif;}
+#root .academy-foundation-hero .academy-registration-dossier dt {color:#525252 !important;}
+#root .academy-foundation-hero .academy-registration-dossier h2 {font-size:23px;font-weight:650;line-height:1.16;}
+#root .academy-foundation-hero .academy-dossier-price span {color:#525252 !important;}
+#root .academy-foundation-hero .academy-registration-dossier .academy-small {color:#525252 !important;line-height:1.6;}
+.academy-foundation-hero .academy-foundation-other-dates {margin:8px 0 0;}
+
+#root .academy-foundation-hero .academy-advanced-intro > p:not(.academy-course-subtitle), #root .academy-foundation-hero .academy-collaboration span {color:#525252 !important;}
+@media (max-width:600px) {#root .academy-foundation-hero {padding-top:104px;}}
