@@ -1,3 +1,5 @@
+import Navbar from './components/home/Navbar';
+import Footer from './components/home/Footer';
 import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -54,6 +56,10 @@ import { recordBlogArticleView } from './services/blogViews';
 
 export const AppShell: React.FC = () => {
   const location = useLocation();
+  const route = location.pathname.replace(/\/$/, '') || '/';
+  const approvedRoute = route === '/' || route === '/courses/advanced-agentic-ai';
+  const readingRoute = route.startsWith('/blog/');
+  const family = readingRoute ? 'reading' : route === '/blog' ? 'journal' : route === '/about' ? 'about' : route === '/courses/agentic-ai' ? 'foundation' : route.startsWith('/workshops/') ? 'workshop' : route === '/admin' ? 'operate' : 'programme';
   const previousPathRef = useRef<string | null>(null);
   const pageStartTimeRef = useRef<number>(Date.now());
 
@@ -113,6 +119,8 @@ export const AppShell: React.FC = () => {
   return (
     <>
       <ScrollToTop />
+      <div className={approvedRoute ? undefined : `academy-refresh academy-extension academy-${family}`}>
+      {readingRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<AdminPage />} />
@@ -164,6 +172,8 @@ export const AppShell: React.FC = () => {
         <Route path="/blog/agent-runtime-authorization-business-professionals" element={<AgentRuntimeAuthorizationBusinessProfessionalsPage />} />
         <Route path="/blog/ai-agent-incident-response-business-professionals" element={<AgentIncidentResponseBusinessProfessionalsPage />} />
       </Routes>
+      {readingRoute && <Footer />}
+      </div>
       <AIAdvisor />
       <LeadCaptureModal />
     </>

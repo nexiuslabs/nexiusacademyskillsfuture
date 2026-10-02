@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useRef, useState } from 'react';
 import { submitLeadCapture } from '../services/leadCaptureService';
 import { ArrowRight, CalendarDays, Clock3, MapPin, CheckCircle2 } from 'lucide-react';
@@ -91,7 +92,7 @@ const FirstAIAgentWorkshopPage: React.FC = () => (
       <a href="#workshop" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-slate-950">Skip to workshop details</a>
       <header className="border-b border-white/10">
         <nav aria-label="Workshop navigation" className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-6 sm:px-8">
-          <a href="/" aria-label="Nexius Academy home" className="text-sm font-bold uppercase tracking-[0.22em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300">Nexius Academy</a>
+          <a href="/" aria-label="Nexius Academy home" className="text-sm font-bold uppercase tracking-[0.22em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"><AcademyBrand /></a>
           <a href="#event-details" className="text-sm font-semibold text-slate-200 underline decoration-slate-500 underline-offset-4 hover:text-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300">Event details</a>
         </nav>
       </header>
@@ -138,7 +139,7 @@ const FirstAIAgentWorkshopPage: React.FC = () => (
         </section>
         <WorkshopRegistration />
       </main>
-      <footer className="border-t border-white/10 px-5 py-8 text-center text-sm text-slate-300"><a href="/" className="underline underline-offset-4 hover:text-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300">Nexius Academy</a> · Practical AI learning</footer>
+      <footer className="border-t border-white/10 px-5 py-8 text-center text-sm text-slate-300"><a href="/" className="underline underline-offset-4 hover:text-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"><AcademyBrand /></a> · Practical AI learning</footer>
     </div>
   </>
 );

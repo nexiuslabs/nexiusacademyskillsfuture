@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail, MessageCircle, Quote } from 'lucide-react';
-import { sharedTestimonials } from '../components/sharedTestimonials';
+import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail, MessageCircle } from 'lucide-react';
+import Testimonials from '../components/home/Testimonials';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
@@ -13,9 +13,9 @@ type TabType = 'mission' | 'values' | 'story';
 const AboutPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('mission');
   const [images, setImages] = useState<string[]>([
-    'https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800'
+    '/images/home/about-collage-1.jpg',
+    '/images/home/about-collage-2.jpg',
+    '/images/courses/agentic-ai-class-photo.jpg'
   ]);
 
   useEffect(() => {
@@ -94,29 +94,23 @@ const AboutPage: React.FC = () => {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative w-full pt-32 pb-20 md:pt-40 md:pb-28 bg-primary overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[#0F1829] opacity-95"></div>
-          <div className="absolute top-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
-
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block px-4 py-2 bg-accent/20 rounded-full text-sm font-bold text-accent tracking-wide uppercase mb-6">
-                About Nexius Academy
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Empowering Professionals with <span className="text-accent">Agentic AI Skills</span>
-              </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                We bridge the gap between cutting-edge AI technology and practical business application, making autonomous AI accessible to non-technical professionals.
-              </p>
+        <section className="academy-about-opening">
+          <div className="academy-container academy-about-opening-grid">
+            <div className="academy-editorial-copy">
+              <h1>Empowering Professionals with Agentic AI Skills</h1>
+              <p>We bridge the gap between cutting-edge AI technology and practical business application, making autonomous AI accessible to non-technical professionals.</p>
+              <a className="academy-text-link" href="#about-story">Meet Nexius Academy <ArrowRight size={18} aria-hidden="true" /></a>
             </div>
+            <figure className="academy-about-opening-photo">
+              <ResponsiveImage src="/images/courses/agentic-ai-class-photo.jpg" alt="Professionals and trainers together at a Nexius Academy classroom workshop" loading="eager" fetchPriority="high" optimize={false} className="academy-editorial-photo" />
+              <figcaption>Learning together. Applying AI to real work.</figcaption>
+            </figure>
           </div>
+          <div className="academy-container academy-about-opening-note"><span>Hands-on learning</span><span>No coding background required</span><span>Built around business application</span></div>
         </section>
 
         {/* Combined Tabbed Section */}
-        <section className="py-24 bg-white">
+        <section id="about-story" className="py-24 bg-white">
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -403,25 +397,11 @@ const AboutPage: React.FC = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-              {sharedTestimonials.map((item) => (
-                <div key={item.id} className="bg-neutral rounded-xl p-8 shadow-card">
-                  <Quote className="text-accent mb-4" size={28} />
-                  <div className="flex items-center gap-4 mb-5">
-                    <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                      <ResponsiveImage src={item.image} alt={item.name} optimize={false} className="h-full w-full object-cover object-center" />
-                    </span>
-                    <div>
-                      <p className="font-bold text-primary">{item.name}</p>
-                      <p className="text-sm text-gray-500">{item.title}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">“{item.quote}”</p>
-                </div>
-              ))}
-            </div>
+
           </div>
         </section>
+
+        <Testimonials />
 
         {/* Expertise Section */}
         <section className="py-24 bg-neutral">
@@ -471,12 +451,12 @@ const AboutPage: React.FC = () => {
         {/* CTA Section */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary to-[#0F1829] rounded-2xl p-12 md:p-16 text-center shadow-xl">
+            <div id="about-course-cta" className="max-w-4xl mx-auto bg-[#f6f6f4] text-[#111111] rounded-2xl p-12 md:p-16 text-center">
               <Mail className="w-16 h-16 text-accent mx-auto mb-6" />
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#111111] mb-6">
                 Ready to Transform Your Career with AI?
               </h2>
-              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-[#525252] text-lg mb-8 max-w-2xl mx-auto">
                 Join hundreds of professionals who have already mastered Agentic AI and are driving real business impact.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

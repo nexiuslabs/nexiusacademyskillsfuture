@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
-import Hero from '../components/home/Hero';
+import Hero from '../components/home/PreviewHero';
 import CoursePreviewCTA from '../components/home/CoursePreviewCTA';
-import Features from '../components/home/Features';
 import WhyDifferent from '../components/home/WhyDifferent';
-import About from '../components/home/About';
+import About from '../components/home/PreviewAbout';
 import Categories from '../components/home/Categories';
 import StatsStrip from '../components/home/StatsStrip';
-import CourseList from '../components/home/CourseList';
+import CourseList from '../components/home/PreviewCourseList';
 import Testimonials from '../components/home/Testimonials';
 import BottomSection from '../components/home/BottomSection';
 import Footer from '../components/home/Footer';
@@ -31,7 +30,7 @@ const HomePage: React.FC = () => {
   }, [location]);
 
   return (
-    <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
+    <div className="academy-refresh academy-home font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
         title="Nexius Academy | Practical AI Training in Singapore"
         description="Practical AI training in Singapore for business teams. Learn agentic AI, no-code automation, and useful workplace workflows."
@@ -40,7 +39,6 @@ const HomePage: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <Features />
         <CourseList />
         <WhyDifferent />
         <About />

@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useState } from 'react';
 import {
   ArrowRight,
@@ -122,7 +123,7 @@ const AgenticAIPersonalAssistantWorkshopPage: React.FC = () => {
           <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(0,202,186,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,202,186,.12)_1px,transparent_1px)] [background-size:54px_54px]" />
           <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-7 sm:px-8 lg:px-10 lg:pb-28">
             <header className="mb-16 flex items-center justify-between">
-              <a href="/" aria-label="Nexius Academy home"><img src="/images/brand/nexius-academy-horizontal.webp" alt="Nexius Academy" className="h-12 w-auto sm:h-14" /></a>
+              <a href="/" aria-label="Nexius Academy home"><AcademyBrand inverse /></a>
               <a href="#register" className="rounded-full border border-accent/40 bg-accent/10 px-5 py-2.5 text-sm font-bold text-accent transition hover:bg-accent/20">Reserve your free seat</a>
             </header>
 

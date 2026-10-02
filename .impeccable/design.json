@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T16:40:56.119639Z",
+  "title": "Design System: Nexius Academy",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "secondary-ink": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "strong-line": {
+        "role": "neutral",
+        "displayName": "Strong Line",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "hover-ink": {
+        "role": "neutral",
+        "displayName": "Hover Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "inset-ink": {
+        "role": "neutral",
+        "displayName": "Inset Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Homepage display",
+        "purpose": "Homepage welcome headline: desktop clamp, 46px tablet and 38px mobile; Advanced retains Course Display."
+      },
+      "course-display": {
+        "displayName": "Course display",
+        "purpose": "Advanced course hero headline."
+      },
+      "reading-display": {
+        "displayName": "Article display",
+        "purpose": "Article reading title; 32px at mobile."
+      },
+      "reading-body": {
+        "displayName": "Article body",
+        "purpose": "Continuous article prose and lists within a 72ch maximum measure."
+      },
+      "editorial-display": {
+        "displayName": "Editorial opening",
+        "purpose": "Shared About and journal opening title; 44px tablet and 38px mobile."
+      },
+      "editorial-intro": {
+        "displayName": "Editorial intro",
+        "purpose": "Shared About and journal introductory prose within a 48ch maximum measure; 17px mobile."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "action-color",
+        "value": "160ms ease-out",
+        "purpose": "Primary action background transition."
+      },
+      {
+        "name": "image-reveal",
+        "value": "600ms ease-out",
+        "purpose": "Retained classroom-image pattern only; revised homepage welcome photograph is static. Disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "600px"
+      },
+      {
+        "name": "stack-and-menu",
+        "value": "850px"
+      },
+      {
+        "name": "image-motion",
+        "value": "900px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "home-compact",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Course exploration, homepage comparison navigation or registration enquiry action.",
+      "html": "<button class=\"ds-primary\">Compare courses</button>",
+      "css": ".ds-primary{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:48px;padding:13px 22px;border:1px solid #111;border-radius:6px;background:#111;color:#fff;font-size:15px;font-weight:600;line-height:1.4;transition:background-color 160ms ease-out}.ds-primary:hover{background:#333}.ds-primary:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    },
+    {
+      "name": "Inverse control",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "Paper background with Ink lettering on a dark section; inherits local layout sizing.",
+      "html": "<a class=\"ds-inverse\" href=\"#preview\">Register now</a>",
+      "css": ".ds-inverse{font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:#fff;color:#111;border-radius:6px}.ds-inverse:hover{text-decoration:underline}.ds-inverse:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    },
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Secondary action with an open underline hover.",
+      "html": "<a class=\"ds-link\" href=\"#courses\">View course, fees and dates</a>",
+      "css": ".ds-link{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;gap:12px;min-height:44px;font-weight:600;font-size:15px;color:#111;text-decoration:none;text-underline-offset:5px}.ds-link:hover{text-decoration:underline}.ds-link:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    },
+    {
+      "name": "Course navigation",
+      "kind": "nav",
+      "description": "Compact course section navigation.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Course sections\"><a href=\"#overview\">Overview</a><a href=\"#fees\">Fees</a><a href=\"#schedule\">Schedule</a></nav>",
+      "css": ".ds-nav{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:flex;gap:22px;font-size:13px;font-weight:500;background:#fff;color:#111}.ds-nav a{display:inline-flex;min-height:44px;align-items:center;color:inherit;text-decoration:none;text-underline-offset:5px}.ds-nav a:hover{text-decoration:underline}.ds-nav a:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    },
+    {
+      "name": "Registration dossier",
+      "kind": "card",
+      "refersTo": "registration-dossier",
+      "description": "Paper course facts surface; open definition rows preserve the factual hierarchy.",
+      "html": "<aside class=\"ds-dossier\"><h2>Your next step</h2><dl><dt>Next open cohort</dt><dd>View available dates</dd></dl></aside>",
+      "css": ".ds-dossier{font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:#fff;color:#111;border-radius:10px;padding:28px}.ds-dossier h2{font-size:23px;font-weight:650;line-height:1.16;letter-spacing:-.025em;margin:0 0 24px}.ds-dossier dt{font-size:12px;color:#525252;margin-bottom:6px}.ds-dossier dd{font-size:16px;line-height:1.5;font-weight:500;margin:0}"
+    },
+    {
+      "name": "Newsletter email field",
+      "kind": "input",
+      "refersTo": "newsletter-input",
+      "description": "Newsletter field for the dark footer.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-email\">Email address</label><input class=\"ds-field\" id=\"ds-email\" type=\"email\" autocomplete=\"email\" placeholder=\"Email Address\">",
+      "css": ".ds-field-label{font-family:Inter,ui-sans-serif,system-ui,sans-serif;display:block;font-size:14px;font-weight:500;color:#111;margin-bottom:12px}.ds-field{font-family:Inter,ui-sans-serif,system-ui,sans-serif;width:100%;padding:12px 16px;background:#262626;color:#fff;border:1px solid #525252;border-radius:6px;font-size:14px}.ds-field::placeholder{color:#d1d5db}.ds-field:disabled{opacity:.5}.ds-field:focus-visible{outline:2px solid #525252;outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cohort Prospectus",
+    "overview": "A cohort prospectus makes practical learning and course choice tangible through real evidence and clear comparison. Ink/Paper/Canvas neutrals, Inter, photographic evidence, restrained control radii and open structured sections establish a composed professional atmosphere.\n\nThis extracted system applies across the Academy site: the approved homepage and Advanced route, remaining programme and workshop pages, About, journal and articles, reports, assessments and admin, including shared modal, footer and advisor treatments. The owner approved this extension as the same visual family, with course facts and registration journeys preserved. The intact Sculpted Loop master is paired with separate Academy lettering; original collaborator identities and editorial illustrations remain intact. On 3 October 2026 the owner authorized final review followed by merge to main and deployment if checks pass; that release authority is recorded in PRODUCT.md.",
+    "keyCharacteristics": [
+      "Composed monochrome typography",
+      "Real photographic evidence",
+      "Open structured information",
+      "Restrained controls and tonal depth"
+    ],
+    "rules": [
+      {
+        "name": "The Neutral Hierarchy Rule",
+        "body": "Use Ink for authority and action, Secondary Ink for supporting information, Paper for readable surfaces and Canvas for tonal grouping.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Use Inter throughout the Academy site; separate roles through size, weight and spacing.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal surfaces and fine dividers for depth; Academy content and navigation carry no ambient shadows.\n",
+        "section": "elevation"
+      },
+      {
+        "name": "The Intact Symbol Rule",
+        "body": "Use the supplied black or white Sculpted Loop SVG intact, alongside the separate Academy wordmark.\n",
+        "section": "shapes"
+      },
+      {
+        "name": "The Paired Surface Rule",
+        "body": "Use Ink or Secondary Ink on Paper and Canvas, and Paper on Ink and Inset Ink. A background change must carry its foreground and control states with it; retained utility colors are not independent brand roles. Nested surfaces reset the pair explicitly: dark panels inside light sections use Paper headings and labels; opaque light panels inside dark sections restore Ink headings and labels. Neutral programme heroes and navigation retain Ink text; primary controls retain Paper lettering, and inverse controls retain Ink lettering.\n",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do preserve the shared Sculpted Loop master and separate Academy lettering.",
+      "Do use real learning photographs with meaningful alternative text.",
+      "Do keep eligibility notes adjacent to fees and enquiries distinct from confirmed registration.",
+      "Do preserve visible keyboard focus and reduced-motion behavior.",
+      "Do pair every nested light or dark surface with explicit readable headings, diagnostic labels and action lettering."
+    ],
+    "donts": [
+      "Don't introduce decorative gradients, AI spectacle or floating badges into these Academy surfaces.",
+      "Don't turn course comparisons into generic piles of decorated cards.",
+      "Don't change facts, schedules, eligibility or the registration journey as part of a visual refresh; release authority remains recorded in PRODUCT.md.",
+      "Don't promote existing editorial illustrations or page-specific layouts into mandatory brand motifs."
+    ]
+  }
+}

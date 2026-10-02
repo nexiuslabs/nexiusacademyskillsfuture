@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Building2, CheckCircle, ClipboardList, CreditCard, GitBranch, Layers, Lock, Receipt, ShieldCheck, Users, Wallet } from 'lucide-react';
@@ -125,11 +126,7 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-            <img
-              src="/images/brand/nexius-academy-horizontal.webp"
-              alt="Nexius Academy"
-              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-            />
+            <AcademyBrand />
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium text-gray-700 md:flex">
             <a href="#overview" className="hover:text-accent">Overview</a>

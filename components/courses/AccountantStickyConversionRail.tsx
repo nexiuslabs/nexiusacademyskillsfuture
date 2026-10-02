@@ -12,7 +12,7 @@ const AccountantStickyConversionRail: React.FC = () => {
   return (
     <>
       {desktopVisible && (
-        <aside className="hidden lg:block fixed right-4 top-1/2 -translate-y-1/2 z-40">
+        <aside className="academy-accountant-rail hidden lg:block">
           <div className="bg-white border border-gray-200 shadow-xl rounded-xl p-3 w-56 space-y-2 relative">
             <button
               type="button"
@@ -71,7 +71,7 @@ const AccountantStickyConversionRail: React.FC = () => {
         </aside>
       )}
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 bg-white p-3 shadow-[0_-8px_20px_rgba(0,0,0,0.08)] lg:hidden">
+      <div className="academy-accountant-mobile-rail border-t border-gray-200 bg-white p-3 shadow-[0_-8px_20px_rgba(0,0,0,0.08)] lg:hidden">
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"

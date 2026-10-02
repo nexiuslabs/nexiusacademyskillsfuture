@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useState } from 'react';
 import { ArrowRight, CalendarDays, Check, CheckCircle2, Clock3, Laptop, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -76,11 +77,7 @@ const LinkedInAIAgentWorkshopPage: React.FC = () => {
           <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-7 sm:px-8 lg:px-10 lg:pb-28">
             <header className="mb-16 flex items-center justify-between">
               <a href="/" aria-label="Nexius Academy home" className="flex items-center">
-                <img
-                  src="/images/brand/nexius-academy-horizontal.webp"
-                  alt="Nexius Academy"
-                  className="h-12 w-auto sm:h-14"
-                />
+                <AcademyBrand inverse />
               </a>
               <a href="#register" className="rounded-full border border-accent/40 bg-accent/10 px-5 py-2.5 text-sm font-bold text-accent transition hover:bg-accent/20">Register now</a>
             </header>

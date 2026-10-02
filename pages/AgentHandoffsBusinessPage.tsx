@@ -19,7 +19,7 @@ const AgentHandoffsBusinessPage: React.FC = () => {
         ogImageAlt="Business professionals mapping governed AI agent handoffs and approval gates"
       />
       <ScrollToTop />
-      <div className="min-h-screen bg-[#f4f7f9] py-10">
+      <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
         <div className="max-w-[760px] mx-auto bg-white px-8 py-10 shadow-lg my-10 rounded-lg">
           <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors mb-8 font-semibold">
             <ArrowLeft size={20} />

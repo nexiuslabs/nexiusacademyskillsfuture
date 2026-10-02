@@ -5,11 +5,11 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#F5F7FA",
-  "theme_color": "#1D2A4D",
+  "background_color": "#f6f6f4",
+  "theme_color": "#111111",
   "icons": [
     {
-      "src": "/nexius_favicon.png",
+      "src": "/nexius-academy-favicon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"

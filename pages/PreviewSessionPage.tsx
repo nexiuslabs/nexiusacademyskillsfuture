@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -11,6 +12,7 @@ import {
   GraduationCap,
   Lightbulb,
   MessageSquareText,
+  MapPin,
   ShieldCheck,
   Sparkles,
   Users,
@@ -212,11 +214,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
       <header className={`sticky top-0 z-50 border-b backdrop-blur ${isDarkPreview ? 'border-white/10 bg-[#0b1527]/95' : 'border-primary/10 bg-white/95'}`}>
         <div className="container-page flex min-h-20 items-center justify-between gap-4 py-4">
           <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-            <img
-              src="/images/brand/nexius-academy-horizontal.webp"
-              alt="Nexius Academy"
-              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-            />
+            <AcademyBrand />
           </Link>
 
           <nav className={`hidden items-center gap-7 text-sm font-semibold md:flex ${isDarkPreview ? 'text-white/75' : 'text-gray-700'}`}>
@@ -357,7 +355,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                   {isDarkPreview ? (
                     <div className="grid gap-5 md:grid-cols-3">
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:pr-8">
-                        <div className="text-2xl" aria-hidden="true">🗓️</div>
+                        <CalendarRange size={24} aria-hidden="true" />
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Date</div>
                           <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].date}</div>
@@ -365,7 +363,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:border-r md:border-white/10 md:px-8">
-                        <div className="text-2xl" aria-hidden="true">⏱️</div>
+                        <Clock3 size={24} aria-hidden="true" />
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Time</div>
                           <div className="mt-2 text-lg font-extrabold text-white">{config.schedules[0].time.replace('Saturday, ', '')}</div>
@@ -373,7 +371,7 @@ const PreviewSessionPage: React.FC<PreviewSessionPageProps> = ({ partner = 'e2i'
                         </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:pl-8">
-                        <div className="text-2xl" aria-hidden="true">📩</div>
+                        <MapPin size={24} aria-hidden="true" />
                         <div>
                           <div className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Venue</div>
                           <div className="mt-2 whitespace-pre-line text-lg font-extrabold leading-snug text-white">

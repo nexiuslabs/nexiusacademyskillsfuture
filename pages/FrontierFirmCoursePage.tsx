@@ -1,13 +1,14 @@
+import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Briefcase, Building2, ShieldCheck, Sparkles, Users, CheckCircle, Layers, GitBranch, Lock, ClipboardList, CreditCard, Receipt, Wallet, Calendar, Monitor, Clock } from 'lucide-react';
+import AdvancedPreviewHeader from '../components/courses/AdvancedPreviewHeader';
+import AdvancedPreviewHero from '../components/courses/AdvancedPreviewHero';
+import { Briefcase, Building2, ShieldCheck, Users, CheckCircle, Layers, GitBranch, Lock, ClipboardList } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
 import Instructors from '../components/courses/Instructors';
 import CourseTestimonials from '../components/courses/CourseTestimonials';
 import CourseScheduleSection from '../components/courses/CourseScheduleSection';
 import { openLeadModal } from '../services/leadModal';
-import ResponsiveImage from '../components/ResponsiveImage';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
 
 const learningObjectives = [
@@ -52,43 +53,11 @@ const transformationModules = [
   },
 ];
 
-const pricingPlans = [
-  {
-    title: 'Singapore Citizen 40+ / eligible SME-sponsored',
-    total: 'S$190.50',
-    detail: 'Official payable amount incl. 9% GST',
-    note: 'For Singapore Citizens aged 40 and above and eligible SME-sponsored learner categories.',
-    highlight: true,
-  },
-  {
-    title: 'Singapore Citizen below 40 / PR / LTVP+',
-    total: 'S$490.50',
-    detail: 'Official payable amount incl. 9% GST',
-    note: 'For Singapore Citizens aged 39 and below, Singapore Permanent Residents, and LTVP+ learners.',
-    highlight: false,
-  },
-  {
-    title: 'Full Course Fee',
-    total: 'S$1,635.00',
-    detail: 'Full fee incl. 9% GST',
-    note: 'Published full course fee before applicable SkillsFuture or sponsorship funding.',
-    highlight: false,
-  },
-];
 
-const frontierFeeRows = [
-  { label: 'Full course fee', value: 'S$1,635.00' },
-  { label: 'Singaporean aged 40 & above', value: 'S$190.50' },
-  { label: 'SME-sponsored LTVP+', value: 'S$190.50' },
-  { label: 'SME-sponsored Singaporean aged 39 & below', value: 'S$190.50' },
-  { label: 'SME-sponsored Singaporean aged 40 & above', value: 'S$190.50' },
-  { label: 'SME-sponsored Singapore Permanent Resident', value: 'S$190.50' },
-  { label: 'Long Term Visit Pass+ (LTVP+)', value: 'S$490.50' },
-  { label: 'Singaporean aged 39 & below', value: 'S$490.50' },
-  { label: 'Singapore Permanent Resident', value: 'S$490.50' },
-];
 
-const frontierAcceptedPayments = ['SkillsFuture Credits (where applicable)', 'Credit card', 'Debit card', 'PayNow'];
+
+
+
 
 const faqs = [
   {
@@ -123,157 +92,12 @@ const FrontierFirmCoursePage: React.FC = () => {
         ogType="course"
       />
 
-      <div className="min-h-screen bg-white">
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-              <img
-                src="/images/brand/nexius-academy-horizontal.webp"
-                alt="Nexius Academy"
-                className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-              />
-            </Link>
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-              <a href="#overview" className="hover:text-accent">Overview</a>
-              <a href="#curriculum" className="hover:text-accent">Curriculum</a>
-              <a href="#pricing" className="hover:text-accent">Fees</a>
-              <a href="#schedule" className="hover:text-accent">Schedule</a>
-              <a href="#instructors" className="hover:text-accent">Instructors</a>
-              <a href="#testimonials" className="hover:text-accent">Testimonials</a>
-              <a href="#faq" className="hover:text-accent">FAQ</a>
-            </nav>
-          </div>
-        </header>
+      <div className="academy-refresh academy-advanced min-h-screen bg-white">
+        <AdvancedPreviewHeader />
+        <main>
+        <AdvancedPreviewHero />
 
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-[#12306b] to-[#0c1b3f] text-white">
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_#14b8a6,_transparent_30%),radial-gradient(circle_at_bottom_left,_#60a5fa,_transparent_25%)]" />
-          <div className="absolute inset-y-0 right-0 z-0 hidden w-[58%] opacity-80 mix-blend-screen lg:block">
-            <ResponsiveImage
-              src="/images/courses/frontier-firm-illustration.jpg"
-              alt=""
-              aria-hidden="true"
-              loading="eager"
-              widths={[768, 1200]}
-              sizes="58vw"
-              fit="cover"
-              className="h-full w-full object-cover object-center [mask-image:linear-gradient(to_right,transparent_0%,black_24%,black_100%)]"
-            />
-          </div>
-          <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-            <div className="grid lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold mb-6">
-                  <Sparkles size={16} className="text-accent" />
-                  Advanced
-                </div>
-                <h1 className="text-4xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                  Agentic AI-Driven Business Innovation for Productivity
-                </h1>
-                <p className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-accent">
-                  Strategies for the Frontier Firm
-                </p>
-                <p className="text-lg lg:text-xl text-blue-50/90 leading-relaxed mb-8 max-w-3xl">
-                  A practical advanced Agentic AI course for anyone who wants to understand Frontier Firm strategy, agent orchestration, governance, and how human-agent work will operate in the future.
-                </p>
-                <div className="mt-10">
-                  <div className="rounded-[18px] border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
-                        <div className="flex items-start gap-3">
-                          <Calendar size={20} className="mt-0.5 shrink-0 text-accent" />
-                          <div>
-                            <div className="text-base font-bold">Next Open Cohort</div>
-                            <div className="mt-1 text-sm text-blue-50/85">11 Nov, 12 Nov & 18 Nov 2026</div>
-                            <a href="#schedule" className="mt-2 inline-block text-sm font-bold text-accent hover:text-teal-300 transition-colors">
-                              View all dates
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
-                        <div className="flex items-start gap-3">
-                          <Monitor size={20} className="mt-0.5 shrink-0 text-accent" />
-                          <div>
-                            <div className="text-base font-bold">Format:</div>
-                            <div className="mt-1 text-sm text-blue-50/85">In-Person</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
-                        <div className="flex items-start gap-3">
-                          <Clock size={20} className="mt-0.5 shrink-0 text-accent" />
-                          <div>
-                            <div className="text-base font-bold">Duration:</div>
-                            <div className="mt-1 text-sm text-blue-50/85">3 Days</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-white/10 p-5">
-                        <div className="flex items-start gap-3">
-                          <Wallet size={20} className="mt-0.5 shrink-0 text-accent" />
-                          <div>
-                            <div className="text-base font-bold">Net Fee:</div>
-                            <div className="mt-1 text-sm text-blue-50/85">from S$190.50*</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-4 mt-10">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLeadModal('course_page_cta', 'reserve_seat', {
-                        page: '/courses/advanced-agentic-ai',
-                        position: 'frontier_firm_hero_register_interest',
-                        ctaLabel: 'register_interest',
-                      })
-                    }
-                    className="academy-button-inverse "
-                  >
-                    Apply Now <ArrowRight size={18} />
-                  </button>
-                  <p className="w-full text-sm text-blue-100">Request help with official registration. An enquiry does not reserve a place.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <div className="absolute bottom-3 right-4 sm:bottom-4 sm:right-6 lg:right-8 hidden sm:block">
-          <div className="inline-grid justify-items-stretch">
-            <span className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
-              In collaboration with
-            </span>
-            <div className="w-0 min-w-full overflow-hidden rounded-lg bg-white p-[5%] shadow-sm">
-              <img
-                src="/images/partners/temasek-poly-full-color-right-align.png"
-                alt="Temasek Polytechnic collaboration logo"
-                className="h-auto w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-        <div className="block sm:hidden bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="inline-grid w-[124px] justify-items-stretch">
-              <span className="mb-1 whitespace-nowrap text-center text-[8px] font-bold uppercase tracking-[0.12em] text-gray-400">
-                In collaboration with
-              </span>
-              <div className="w-0 min-w-full overflow-hidden rounded-lg border border-gray-200 bg-white p-[5%] shadow-sm">
-                <img
-                  src="/images/partners/temasek-poly-full-color-right-align.png"
-                  alt="Temasek Polytechnic collaboration logo"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section className="bg-white py-12">
+        <section className="academy-course-focus bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 rounded-3xl border border-gray-100 bg-neutral p-8 shadow-sm lg:grid-cols-[0.9fr,1.1fr] lg:items-center">
               <div>
@@ -305,7 +129,7 @@ const FrontierFirmCoursePage: React.FC = () => {
         </section>
 
         <AIAnswerBlocks
-          className="py-16 bg-neutral"
+          className="academy-summary py-16 bg-neutral"
           title="Advanced Agentic AI course summary"
           summary="A concise overview of the learner audience, advanced Agentic AI outcomes, and governance context for this course."
           blocks={[
@@ -431,138 +255,15 @@ const FrontierFirmCoursePage: React.FC = () => {
           </div>
         </section>
 
-        <section id="pricing" className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course fees, including GST</h2>
-              <p className="text-gray-600 mb-2">
-                This is a <span className="font-bold text-primary">3-day advanced Agentic AI course</span> with a full course fee of{' '}
-                <span className="font-bold text-primary">S$1,635.00 incl. GST</span>.
-              </p>
-              <p className="mx-auto mb-3 flex max-w-3xl items-center justify-center gap-2 text-sm font-semibold text-primary">
-                <CheckCircle size={16} className="text-accent" />
-                Participants who meet at least 75% attendance and attempt the assessment will be awarded a Certificate of Completion.
-              </p>
-              <p className="text-xs text-gray-400 font-mono">
-                Advanced course
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3 mb-10">
-              {pricingPlans.map((plan) => (
-                <div key={plan.title} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-                  <div className={`h-2 ${plan.highlight ? 'bg-primary' : plan.title.startsWith('Singapore Citizen below') ? 'bg-accent' : 'bg-slate-400'}`} />
-                  <div className="p-7">
-                    <div className="text-4xl font-heading font-extrabold text-primary mb-3">{plan.total}</div>
-                    <h3 className="text-lg font-bold text-primary mb-2">{plan.title}</h3>
-                    <p className="text-sm text-gray-600">{plan.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p className="mb-8 text-sm leading-relaxed text-gray-600">Amounts include 9% GST and are subject to final learner eligibility, funding approval and registration confirmation. S$190.50 is the lowest published payable amount for the eligible category shown above.</p>
-            <div className="space-y-4 mb-12">
-              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
-                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Funding details by learner category</summary>
-                <div className="mt-5 overflow-x-auto">
-                  <table className="min-w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-gray-200 text-left text-gray-500">
-                        <th className="pb-3 pr-6 font-semibold">Learner Category</th>
-                        <th className="pb-3 font-semibold">Course Fee Payable</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {frontierFeeRows.map((row) => (
-                        <tr key={row.label} className="border-b border-gray-100 last:border-b-0">
-                          <td className="py-3 pr-6 text-gray-700">{row.label}</td>
-                          <td className="py-3 font-semibold text-primary">{row.value}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </details>
-
-              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
-                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Payment methods</summary>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
-                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
-                      <Wallet size={18} />
-                    </div>
-                    <h4 className="font-bold text-primary mb-2">Payment timing</h4>
-                    <p className="text-sm text-gray-600">Payment details will be confirmed during registration.</p>
-                  </div>
-                  <div className="rounded-2xl border border-gray-100 bg-neutral p-5">
-                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
-                      <CreditCard size={18} />
-                    </div>
-                    <h4 className="font-bold text-primary mb-2">Accepted methods</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      {frontierAcceptedPayments.map((method) => (
-                        <li key={method} className="flex items-center gap-2">
-                          <CheckCircle size={14} className="text-accent" />
-                          {method}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </details>
-
-              <details className="group rounded-2xl border border-gray-200 bg-white p-6">
-                <summary className="cursor-pointer list-none text-lg font-bold text-primary">Funding and eligibility note</summary>
-                <div className="mt-5 rounded-2xl border border-gray-100 bg-neutral p-5">
-                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primary shadow-sm">
-                    <Receipt size={18} />
-                  </div>
-                  <ul className="space-y-3 text-sm text-gray-600">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle size={14} className="mt-1 text-accent" />
-                      <span>Amounts are inclusive of 9% GST and subject to final eligibility, funding approval, and registration confirmation.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle size={14} className="mt-1 text-accent" />
-                      <span>Official payable amounts are S$190.50, S$490.50, or S$1,635.00 depending on learner category and sponsorship pathway.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle size={14} className="mt-1 text-accent" />
-                      <span>For company-sponsored groups, request an advisory call so we can confirm the most suitable registration pathway.</span>
-                    </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={() =>
-                  openLeadModal('course_page_cta', 'reserve_seat', {
-                    page: '/courses/advanced-agentic-ai',
-                    position: 'frontier_firm_pricing_register_interest',
-                    ctaLabel: 'register_interest',
-                  })
-                }
-                className="academy-button-primary w-full sm:w-auto"
-              >
-                Apply Now
-              </button>
-              <p className="mt-3 text-sm text-gray-600">Request help with official registration. An enquiry does not reserve a place.</p>
-            </div>
-          </div>
-        </section>
+        <AdvancedCoursePricing onApply={() => openLeadModal('course_page_cta', 'reserve_seat', {
+          page: '/courses/advanced-agentic-ai', position: 'frontier_firm_pricing_register_interest', ctaLabel: 'register_interest',
+        })} />
 
         <CourseScheduleSection page="/courses/advanced-agentic-ai" positionPrefix="frontier_firm" />
 
         <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-primary rounded-3xl p-8 lg:p-12 text-white text-center shadow-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm font-semibold mb-6">
-                <Users size={16} className="text-accent" /> Agent Boss Programme
-              </div>
               <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">Ready to learn advanced Agentic AI?</h2>
               <p className="text-blue-50/90 max-w-2xl mx-auto mb-8 leading-relaxed">
                 Apply now if you want programme details, intake timing, or an advisory conversation on whether this course fits your learning goals or team needs.
@@ -619,6 +320,7 @@ const FrontierFirmCoursePage: React.FC = () => {
           </div>
         </section>
 
+        </main>
         <Footer />
       </div>
     </>

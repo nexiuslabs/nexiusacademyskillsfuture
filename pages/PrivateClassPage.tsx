@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -13,7 +14,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/home/Footer';
-import Pricing from '../components/courses/Pricing';
+import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
 import ResponsiveImage from '../components/ResponsiveImage';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
@@ -140,7 +141,7 @@ const faqs = [
   {
     question: 'How is pricing handled for a company class?',
     answer:
-      'The page shows the standard pricing table used across our course pages. If you are planning a company run, contact us so we can advise the most suitable structure for your team setup.',
+      'Private three-day classes follow the Advanced Agentic AI pricing table shown on this page. Fees include 9% GST and depend on learner eligibility and funding approval.',
   },
   {
     question: 'Can leaders and frontline staff attend together?',
@@ -261,11 +262,7 @@ const PrivateClassNavbar: React.FC = () => {
     >
       <nav className="container-page flex items-center justify-between py-5">
         <a href="/" className="flex items-center" aria-label="Nexius Academy home">
-          <img
-            src="/images/brand/nexius-academy-horizontal.webp"
-            alt="Nexius Academy"
-            className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-          />
+          <AcademyBrand />
         </a>
 
         <ul className="hidden items-center gap-8 text-sm font-medium text-gray-700 md:flex">
@@ -362,7 +359,7 @@ const PrivateClassHero: React.FC = () => {
               transition={{ delay: 0.15, duration: 0.7 }}
               className="mt-6 max-w-xl text-balance text-base text-gray-600 md:text-lg"
             >
-              Instead of sending staff into a general public intake, run the course as a private company cohort shaped around your workflows, decision-making context, and internal operating constraints.
+              Run a three-day private company cohort shaped around your workflows, decision-making context, and internal operating constraints. Choose your preferred training dates: the three days can be consecutive or split across separate dates.
             </motion.p>
 
             <motion.div
@@ -372,7 +369,7 @@ const PrivateClassHero: React.FC = () => {
               className="mt-8 flex flex-col items-start gap-5"
             >
               <div className="flex flex-wrap items-center gap-2 text-left text-lg text-gray-600 sm:text-xl">
-                <span className="font-semibold text-primary">15 participants</span>
+                <span className="font-semibold text-primary">3 days · 15 participants minimum</span>
                 <span className="text-gray-300">|</span>
                 <span>Minimum for a dedicated company class</span>
               </div>
@@ -698,7 +695,7 @@ const PrivateClassPlanning: React.FC = () => (
           </h2>
         </div>
         <p className="max-w-3xl text-base leading-relaxed text-gray-600 md:text-lg">
-          Tell us your approximate team size, preferred schedule, and whether you want onsite delivery. We will advise the best structure for your company run.
+          Tell us your approximate team size, preferred three training dates (consecutive or split across separate dates), and whether you want onsite delivery. We will advise the best structure for your company run.
         </p>
       </div>
 
@@ -794,13 +791,7 @@ const PrivateClassPage: React.FC = () => {
         <PrivateClassHero />
         <PrivateClassPrograms />
         <PrivateClassComparison />
-        <Pricing
-          companyContext
-          pagePath={PAGE_PATH}
-          reserveLabel="request_company_proposal"
-          reserveButtonText="Request Proposal"
-          sectionClassName="pb-20 md:pb-28"
-        />
+        <AdvancedCoursePricing actionLabel="Request Proposal" onApply={() => openProposalModal('private_class_pricing_request_proposal')} />
         <PrivateClassAbout />
         <PrivateClassTeams />
         <PrivateClassPlanning />

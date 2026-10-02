@@ -1,3 +1,4 @@
+import AcademyBrand from '../AcademyBrand';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -12,11 +13,7 @@ const StickyNavbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex-shrink-0 flex items-center" aria-label="Nexius Academy home">
-            <img
-              src="/images/brand/nexius-academy-horizontal.webp"
-              alt="Nexius Academy"
-              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-            />
+            <AcademyBrand />
           </Link>
 
           {/* Desktop Menu */}

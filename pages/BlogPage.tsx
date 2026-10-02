@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { openLeadModal } from '../services/leadModal';
-import { Calendar, Eye, ArrowRight, Filter } from 'lucide-react';
+import { Calendar, Eye, ArrowRight } from 'lucide-react';
 import { trackBlogToCourseClick } from '../services/analytics';
 import SEO from '../components/SEO';
 import Navbar from '../components/home/Navbar';
@@ -27,6 +27,8 @@ const BlogPage: React.FC = () => {
   const postsWithViews = useMemo(() => mergeBlogPostsWithViews(BLOG_POSTS, viewCounts), [viewCounts]);
   const sortedPosts = [...postsWithViews].sort((a, b) => b.id - a.id);
 
+  const featuredPost = sortedPosts[0];
+
   const filteredPosts = useMemo(() => {
     if (activeFilter === 'All') {
       return sortedPosts;
@@ -45,45 +47,26 @@ const BlogPage: React.FC = () => {
       <Navbar />
 
       <main className="flex-grow">
-        <section className="bg-accent text-white pt-24 pb-4 text-center text-sm md:text-base font-semibold tracking-wide">
-          <div className="container mx-auto px-6">
-            Want to implement this in 2 days?{' '}
-            <Link
-              to="/courses/agentic-ai"
-              onClick={() =>
-                trackBlogToCourseClick({
-                  sourceArea: 'blog_top_banner',
-                  pagePath: '/blog',
-                  targetPath: '/courses/agentic-ai',
-                })
-              }
-              className="underline underline-offset-4 font-bold hover:text-primary transition-colors"
-            >
-              Join our next cohort.
-            </Link>
-          </div>
-        </section>
-
-        <section className="relative w-full pt-20 pb-14 md:pt-24 md:pb-16 bg-primary overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[#0F1829] opacity-95"></div>
-          <div className="absolute top-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
-
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 rounded-full text-sm font-bold text-accent tracking-wide uppercase mb-6">
-                <Filter size={14} /> AI Training Blog
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-                Insights on <span className="text-accent">Agentic AI</span> & Business Automation
-              </h1>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                Practical guides, industry analysis, and expert perspectives on AI training Singapore professionals need to stay ahead.
-              </p>
+        <section className="academy-blog-opening">
+          <div className="academy-container academy-blog-opening-grid">
+            <div className="academy-editorial-copy">
+              <h1>Insights on Agentic AI &amp; Business Automation</h1>
+              <p>Practical guides, industry analysis, and expert perspectives on AI training Singapore professionals need to stay ahead.</p>
+              <a className="academy-text-link" href="#blog-topics">Explore the topics <ArrowRight size={18} aria-hidden="true" /></a>
             </div>
+            {featuredPost && <article className="academy-blog-feature">
+              <Link to={`/blog/${featuredPost.slug}/`} className="academy-blog-feature-link">
+                <ResponsiveImage src={featuredPost.image} alt={featuredPost.title} loading="eager" fetchPriority="high" optimize={false} className="academy-blog-feature-image" />
+                <h2>{featuredPost.title}</h2>
+                <p className="academy-blog-feature-meta">{featuredPost.date} · {featuredPost.category}</p>
+                <span className="academy-text-link">Read the latest article <ArrowRight size={18} aria-hidden="true" /></span>
+              </Link>
+            </article>}
           </div>
+          <div className="academy-container academy-blog-opening-note">Want to implement this in 2 days? <Link to="/courses/agentic-ai" onClick={() => trackBlogToCourseClick({sourceArea:'blog_top_banner',pagePath:'/blog',targetPath:'/courses/agentic-ai'})}>Join our next cohort <ArrowRight size={16} aria-hidden="true" /></Link></div>
         </section>
 
-        <section className="py-14 bg-neutral border-b border-gray-200">
+        <section id="blog-topics" className="py-14 bg-neutral border-b border-gray-200">
           <div className="container mx-auto px-6">
             <div className="flex flex-wrap items-center gap-3">
               {FILTERS.map((filter) => {

@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -200,11 +201,7 @@ const AccountantCspLandingPage: React.FC = () => {
         <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-              <img
-                src="/images/brand/nexius-academy-horizontal.webp"
-                alt="Nexius Academy"
-                className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-              />
+              <AcademyBrand />
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
               <a href="#schedule" className="hover:text-accent">Schedule</a>

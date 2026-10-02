@@ -1,3 +1,4 @@
+import AcademyBrand from '../components/AcademyBrand';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Brain, Calculator, Database, ExternalLink, LockKeyhole, LogOut, Rocket, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -199,11 +200,7 @@ const AdminPage: React.FC = () => {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 flex items-center justify-between gap-4">
             <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-              <img
-                src="/images/brand/nexius-academy-horizontal.webp"
-                alt="Nexius Academy"
-                className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-              />
+              <AcademyBrand />
             </Link>
             {session.status === 'authenticated' && (
               <button

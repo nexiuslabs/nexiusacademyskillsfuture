@@ -1,10 +1,10 @@
+import AcademyBrand from '../AcademyBrand';
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Linkedin } from 'lucide-react';
 import { trackOutboundClick } from '../../services/analytics';
 
 const Footer: React.FC = () => {
-  const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -49,11 +49,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
             <Link to="/" className="flex items-center mb-5" aria-label="Nexius Academy home">
-              <img
-                src="/images/brand/nexius-academy-horizontal.webp"
-                alt="Nexius Academy"
-                className="h-12 w-auto max-w-[190px] rounded-sm object-contain"
-              />
+              <AcademyBrand inverse />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-5">
               Hands-on, SkillsFuture-eligible AI training for non-technical professionals and SMEs, focused on practical workplace outcomes.

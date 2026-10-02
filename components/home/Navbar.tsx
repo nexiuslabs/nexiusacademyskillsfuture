@@ -1,3 +1,4 @@
+import AcademyBrand from '../AcademyBrand';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -56,11 +57,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center" aria-label="Nexius Academy home">
-            <img
-              src="/images/brand/nexius-academy-horizontal.webp"
-              alt="Nexius Academy"
-              className="h-11 w-auto max-w-[180px] rounded-sm object-contain md:h-12"
-            />
+            <AcademyBrand />
           </Link>
 
           <div className="hidden md:flex items-center gap-6">

@@ -132,7 +132,7 @@ const AICareerFairPage: React.FC = () => {
       />
       <Navbar />
       <main>
-        <section className="relative overflow-hidden bg-[#001827] pt-28 text-white lg:pt-0">
+        <section className="academy-career-hero relative overflow-hidden bg-[#001827] pt-28 text-white lg:pt-0">
           <div
             className="pointer-events-none absolute inset-0 z-[1] hidden bg-[linear-gradient(90deg,#001827_0%,rgba(0,24,39,0.9)_26%,rgba(0,24,39,0.28)_44%,transparent_58%)] lg:block"
             aria-hidden="true"
