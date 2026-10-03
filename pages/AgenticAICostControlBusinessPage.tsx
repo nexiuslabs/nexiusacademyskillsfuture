@@ -15,8 +15,10 @@ const AgenticAICostControlBusinessPage: React.FC = () => {
         description="Agentic AI cost pressure is an orchestration problem. Learn the workflow mapping, context design, approval gates, testing, and governance skills professionals need before agents execute work."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/agentic-ai-cost-control-business-professionals.png"
-        ogImageAlt="Business professionals controlling agentic AI costs through workflow orchestration and approval gates"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-agentic-ai-cost-leak-orchestration-not-prompts-b03f02c1ffda.webp"
+        ogImageAlt="Resource leakage from retries and poor orchestration, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const AgenticAICostControlBusinessPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="7 min read" />
 
           <img
-            src="/images/blog/agentic-ai-cost-control-business-professionals.png"
-            alt="Business professionals controlling agentic AI costs through workflow orchestration and approval gates"
+            src="/images/blog/approved/article-agentic-ai-cost-leak-orchestration-not-prompts-b03f02c1ffda.webp"
+            alt="Resource leakage from retries and poor orchestration, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">

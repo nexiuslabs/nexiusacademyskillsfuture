@@ -15,8 +15,10 @@ const AIConnectorsMCPBusinessPage: React.FC = () => {
         description="AI connectors, MCP, and work graph APIs are moving AI from chat into company systems. Learn the workflow, context, approval, testing, and governance skills professionals need next."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/ai-connectors-mcp-business-professionals.png"
-        ogImageAlt="Business professionals learning to design governed AI connector workflows"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-ai-connectors-workflow-layer-smes-control-30c0044db0af.webp"
+        ogImageAlt="Controlled connectors across business systems, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const AIConnectorsMCPBusinessPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
 
           <img
-            src="/images/blog/ai-connectors-mcp-business-professionals.png"
-            alt="Business professionals learning to design governed AI connector workflows"
+            src="/images/blog/approved/article-ai-connectors-workflow-layer-smes-control-30c0044db0af.webp"
+            alt="Controlled connectors across business systems, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">The next practical AI skill is not writing longer prompts.</p>

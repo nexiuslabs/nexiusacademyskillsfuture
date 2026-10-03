@@ -15,8 +15,10 @@ const AgentGovernanceSkillsBusinessProfessionalsPage: React.FC = () => {
         description="Learn the practical skills needed to inventory, supervise, test, approve, and audit AI agents before they act across business systems."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/ai-agent-governance-skills-business-professionals.png"
-        ogImageAlt="Business professional learning to supervise governed AI agents"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-agent-control-plane-sme-digital-coworkers-75c8a4a0bd18.webp"
+        ogImageAlt="The operating control plane above autonomous work, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const AgentGovernanceSkillsBusinessProfessionalsPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="9 min read" />
 
           <img
-            src="/images/blog/ai-agent-governance-skills-business-professionals.png"
-            alt="Business professional learning to supervise governed AI agents"
+            src="/images/blog/approved/article-agent-control-plane-sme-digital-coworkers-75c8a4a0bd18.webp"
+            alt="The operating control plane above autonomous work, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">

@@ -15,6 +15,10 @@ const AIReadinessSingaporePage: React.FC = () => {
         description="A practical AI-readiness checklist for Singapore professionals and SMEs before adopting agentic AI workflows, no-code automation, and workplace AI tools."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/where-to-start-2cf8d6a55be1.webp"
+        ogImageAlt="Selecting the first useful workflow, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -29,6 +33,7 @@ const AIReadinessSingaporePage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
+          <img src="/images/blog/approved/where-to-start-2cf8d6a55be1.webp" alt="Selecting the first useful workflow, represented in a cinematic graphite and silver composition" width={1672} height={941} className="w-full h-auto rounded-xl mb-8" loading="eager" decoding="async" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             AI Adoption Is No Longer the Hardest Question

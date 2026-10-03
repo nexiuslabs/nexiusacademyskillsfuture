@@ -15,8 +15,10 @@ const AgentHandoffsBusinessPage: React.FC = () => {
         description="Agent-to-agent protocols show AI moving from isolated assistants to coordinated digital coworkers. Learn the workflow mapping, context, approval, testing, and governance skills professionals need next."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/agent-handoffs-business-professionals.png"
-        ogImageAlt="Business professionals mapping governed AI agent handoffs and approval gates"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-agent-handoffs-sme-digital-coworkers-f6b40c0077fa.webp"
+        ogImageAlt="Governed handoffs between agents, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const AgentHandoffsBusinessPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
 
           <img
-            src="/images/blog/agent-handoffs-business-professionals.png"
-            alt="Business professionals mapping governed AI agent handoffs and approval gates"
+            src="/images/blog/approved/article-agent-handoffs-sme-digital-coworkers-f6b40c0077fa.webp"
+            alt="Governed handoffs between agents, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">The next workplace AI skill is not just using one assistant better.</p>

@@ -85,6 +85,7 @@ export interface BlogPost {
   date: string;
   views: number;
   image: string;
+  imageAlt?: string;
   excerpt: string;
   category: 'SME Automation' | 'SkillsFuture' | 'Beginner Guides' | 'Case Studies';
   bestFor: string;

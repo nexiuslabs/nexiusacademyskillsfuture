@@ -15,8 +15,10 @@ const AgentRuntimeAuthorizationBusinessProfessionalsPage: React.FC = () => {
         description="Learn how to decide whether an AI agent should be allowed to take a specific action using identity, intent, scope, risk, approval, and audit evidence."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/agent-runtime-authorization-business-professionals.png"
-        ogImageAlt="Business professionals learning to supervise AI agent permissions and approvals"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-ai-agent-runtime-authorization-smes-9a314c802f27.webp"
+        ogImageAlt="Runtime authorisation for each action, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const AgentRuntimeAuthorizationBusinessProfessionalsPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="9 min read" />
 
           <img
-            src="/images/blog/agent-runtime-authorization-business-professionals.png"
-            alt="Business professionals learning to supervise AI agent permissions and approvals"
+            src="/images/blog/approved/article-ai-agent-runtime-authorization-smes-9a314c802f27.webp"
+            alt="Runtime authorisation for each action, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">

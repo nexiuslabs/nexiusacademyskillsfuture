@@ -13,6 +13,10 @@ const AnthropicAISkillsPage: React.FC = () => {
         description="Explore the essential AI skills from Anthropic's ecosystem that business professionals need in 2026. From Claude to enterprise AI deployment strategies."
         canonical="/blog/anthropic-ai-skills"
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/guide-work-loops-7c1564772ffe.webp"
+        ogImageAlt="A non-technical human-led agent work loop, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -27,6 +31,7 @@ const AnthropicAISkillsPage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug="anthropic-ai-skills" readTime="7 min read" />
+          <img src="/images/blog/approved/guide-work-loops-7c1564772ffe.webp" alt="A non-technical human-led agent work loop, represented in a cinematic graphite and silver composition" width={1672} height={941} className="w-full h-auto rounded-xl mb-8" loading="eager" decoding="async" />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             We've all experienced the paradox of modern AI agents. They can feel like a "300 IQ mathematical genius"—capable of brilliant feats of logic—but when you ask them to perform a specific, real-world task, they often lack the practical know-how of an "experienced tax professional." This agent can solve complex equations from first principles, but it doesn't know the specific forms and procedures you need to file your taxes correctly and consistently.

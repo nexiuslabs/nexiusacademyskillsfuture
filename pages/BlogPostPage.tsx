@@ -13,6 +13,10 @@ const BlogPostPage: React.FC = () => {
         description="Most companies hit an AI plateau after adopting ChatGPT. Learn the leadership, structure, and strategy shifts behind AI-powered companies."
         canonical="/blog/beyond-chatgpt-ai-powered-company"
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/what-must-change-572bae41b7e2.webp"
+        ogImageAlt="From fragmented tools to coherent operations, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -27,6 +31,7 @@ const BlogPostPage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug="beyond-chatgpt-ai-powered-company" readTime="9 min read" />
+          <img src="/images/blog/approved/what-must-change-572bae41b7e2.webp" alt="From fragmented tools to coherent operations, represented in a cinematic graphite and silver composition" width={1672} height={941} className="w-full h-auto rounded-xl mb-8" loading="eager" decoding="async" />
 
           <h2 className="text-3xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             Introduction: The AI Plateau

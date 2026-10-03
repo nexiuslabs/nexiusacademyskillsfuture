@@ -15,8 +15,10 @@ const ComputerUsingAgentsPage: React.FC = () => {
         description="Learn what computer-using agents are, why they matter for non-technical teams, and the practical skills needed to supervise AI workflows safely."
         canonical={`/blog/${ARTICLE_SLUG}`}
         ogType="article"
-        ogImage="https://academy.nexiuslabs.com/images/blog/computer-using-agents.png"
-        ogImageAlt="Computer-using AI agent operating business software with approval gates and audit trails"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/article-agentic-ai-execution-layer-smes-operating-control-f19d74b5b5a1.webp"
+        ogImageAlt="Agents as the business execution layer, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -33,10 +35,13 @@ const ComputerUsingAgentsPage: React.FC = () => {
           <ArticleMeta articleSlug={ARTICLE_SLUG} readTime="8 min read" />
 
           <img
-            src="/images/blog/computer-using-agents.png"
-            alt="Computer-using AI agent operating business software with approval gates and audit trails"
+            src="/images/blog/approved/article-agentic-ai-execution-layer-smes-operating-control-f19d74b5b5a1.webp"
+            alt="Agents as the business execution layer, represented in a cinematic graphite and silver composition"
             className="w-full rounded-xl shadow-md border border-gray-100 mb-8"
             loading="eager"
+            width={1672}
+            height={941}
+            decoding="async"
           />
 
           <p className="mb-6 text-lg leading-relaxed text-[#333]">The next AI skill is not writing better prompts.</p>

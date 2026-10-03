@@ -56,7 +56,7 @@ const BlogPage: React.FC = () => {
             </div>
             {featuredPost && <article className="academy-blog-feature">
               <Link to={`/blog/${featuredPost.slug}/`} className="academy-blog-feature-link">
-                <ResponsiveImage src={featuredPost.image} alt={featuredPost.title} loading="eager" fetchPriority="high" optimize={false} className="academy-blog-feature-image" />
+                <ResponsiveImage src={featuredPost.image} alt={featuredPost.imageAlt ?? featuredPost.title} loading="eager" fetchPriority="high" optimize={false} className="academy-blog-feature-image" />
                 <h2>{featuredPost.title}</h2>
                 <p className="academy-blog-feature-meta">{featuredPost.date} · {featuredPost.category}</p>
                 <span className="academy-text-link">Read the latest article <ArrowRight size={18} aria-hidden="true" /></span>
@@ -110,7 +110,7 @@ const BlogPage: React.FC = () => {
                     <div className="h-52 overflow-hidden bg-primary/5 border-b border-gray-100 flex items-center justify-center">
                       <ResponsiveImage
                         src={post.image}
-                        alt={post.title}
+                        alt={post.imageAlt ?? post.title}
                         widths={[480, 768]}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         fit="contain"

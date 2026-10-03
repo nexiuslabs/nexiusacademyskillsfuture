@@ -13,6 +13,10 @@ const EnterpriseAIInsightsPage: React.FC = () => {
         description="Real-world insights on how enterprises deploy AI at scale, with strategies and lessons from agentic AI implementation."
         canonical="/blog/enterprise-ai-insights"
         ogType="article"
+        ogImage="https://academy.nexiuslabs.com/images/blog/approved/client-results-da0a09cac6d5.webp"
+        ogImageAlt="Traceable outcomes, represented in a cinematic graphite and silver composition"
+        ogImageWidth={1672}
+        ogImageHeight={941}
       />
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
@@ -27,6 +31,7 @@ const EnterpriseAIInsightsPage: React.FC = () => {
           </h1>
 
           <ArticleMeta articleSlug="enterprise-ai-insights" readTime="8 min read" />
+          <img src="/images/blog/approved/client-results-da0a09cac6d5.webp" alt="Traceable outcomes, represented in a cinematic graphite and silver composition" width={1672} height={941} className="w-full h-auto rounded-xl mb-8" loading="eager" decoding="async" />
 
           <h2 className="text-2xl font-bold text-[#1a1a1a] mt-10 mb-5 border-l-4 border-[#007bff] pl-4">
             Introduction

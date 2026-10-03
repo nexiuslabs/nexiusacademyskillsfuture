@@ -1,0 +1,249 @@
+{
+  "baseCommit": "d9d809f3fcc331c2a808344967959b3e8a12ab02",
+  "collection": "Owner-approved Nexius image collection, 63 originals in seven styles",
+  "posts": [
+    {
+      "slug": "ai-agent-incident-response-business-professionals",
+      "sourceId": "article-ai-agent-incident-response-smes",
+      "style": "human-networks",
+      "alt": "Incident response and recoverability, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "687c2f60df61ac22c0f3976280b8f9e1a9087534b94308e53a4a048d599847ab",
+      "image": "/images/blog/approved/article-ai-agent-incident-response-smes-5c96a2c7d96d.webp",
+      "mobile": "/images/blog/approved/article-ai-agent-incident-response-smes-720-53f08c557b24.webp"
+    },
+    {
+      "slug": "agent-runtime-authorization-business-professionals",
+      "sourceId": "article-ai-agent-runtime-authorization-smes",
+      "style": "agent-interfaces",
+      "alt": "Runtime authorisation for each action, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "afbb8284ffbabfb6152c6a004c45c753fbeb682f1d7a2dc7aefc32ef4aaa0b2e",
+      "image": "/images/blog/approved/article-ai-agent-runtime-authorization-smes-9a314c802f27.webp",
+      "mobile": "/images/blog/approved/article-ai-agent-runtime-authorization-smes-720-9a7d2f13a92b.webp"
+    },
+    {
+      "slug": "ai-agent-governance-skills-business-professionals",
+      "sourceId": "article-agent-control-plane-sme-digital-coworkers",
+      "style": "digital-workforce",
+      "alt": "The operating control plane above autonomous work, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "3ca0c7e8a2d54eb9768f7ed67b10891099bf7333a9048fc3e76c0f7fb805b683",
+      "image": "/images/blog/approved/article-agent-control-plane-sme-digital-coworkers-75c8a4a0bd18.webp",
+      "mobile": "/images/blog/approved/article-agent-control-plane-sme-digital-coworkers-720-fb35add6008e.webp"
+    },
+    {
+      "slug": "agent-boss-concurrent-ai-work-business-professionals",
+      "sourceId": "article-ai-agent-capacity-smes-need-agent-boss",
+      "style": "digital-workforce",
+      "alt": "Agent capacity outpacing human review capacity, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "dd1999227c553cc4967d38a5c90e6104dcb7acb37a97c0d532f0ecb1d576ae07",
+      "image": "/images/blog/approved/article-ai-agent-capacity-smes-need-agent-boss-b14e2e1f18c6.webp",
+      "mobile": "/images/blog/approved/article-ai-agent-capacity-smes-need-agent-boss-720-9ee69a39de6d.webp"
+    },
+    {
+      "slug": "agent-finops-business-professionals",
+      "sourceId": "article-ai-agent-finops-cost-per-outcome-smes",
+      "style": "analytics",
+      "alt": "Cost per accepted outcome, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "353f7707b07007f0cea5d16b727da03819a07601f42bd2f47dae9fa1a2ae8765",
+      "image": "/images/blog/approved/article-ai-agent-finops-cost-per-outcome-smes-31b6fbf9bc82.webp",
+      "mobile": "/images/blog/approved/article-ai-agent-finops-cost-per-outcome-smes-720-f5b05a870f68.webp"
+    },
+    {
+      "slug": "problem-framing-ai-agents-business-professionals",
+      "sourceId": "article-ai-problem-selection-sme-advantage",
+      "style": "human-information",
+      "alt": "Choosing valuable problems before rapid execution, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "6b1db3f3f9e91dd45695106bb712fa4cba9c123f3d17635c55184291d36ee962",
+      "image": "/images/blog/approved/article-ai-problem-selection-sme-advantage-103bcc618358.webp",
+      "mobile": "/images/blog/approved/article-ai-problem-selection-sme-advantage-720-535ae3430e70.webp"
+    },
+    {
+      "slug": "agent-team-diversity-business-professionals",
+      "sourceId": "article-agent-team-diversity-correlated-blind-spots-sme",
+      "style": "human-networks",
+      "alt": "Independent evidence and designed dissent, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "d465132f9be6b375c69c36e6b25895161be68559519dd4a2f1a4a3ad3a880770",
+      "image": "/images/blog/approved/article-agent-team-diversity-correlated-blind-spots-sme-f3e2462a4f65.webp",
+      "mobile": "/images/blog/approved/article-agent-team-diversity-correlated-blind-spots-sme-720-c6ec86a79d01.webp"
+    },
+    {
+      "slug": "finance-agent-maker-checker-business-professionals",
+      "sourceId": "article-finance-ai-agents-maker-checker-controls-smes",
+      "style": "agent-interfaces",
+      "alt": "Finance maker-checker separation of duties, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "e59ec1fa98ce9e53a6bee69001b0badda5473c6a6b64dfad94d900eaec7c4eac",
+      "image": "/images/blog/approved/article-finance-ai-agents-maker-checker-controls-smes-49a6f3b74652.webp",
+      "mobile": "/images/blog/approved/article-finance-ai-agents-maker-checker-controls-smes-720-c3b7847925fa.webp"
+    },
+    {
+      "slug": "agent-builders-business-professionals",
+      "sourceId": "article-agent-builders-business-apps-permission-boundaries",
+      "style": "agent-interfaces",
+      "alt": "Bounded agent creation inside business apps, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "7b189ec5cbe9d5edb57670c066b2d49d83cc82a125c17df88d9544029eb53c50",
+      "image": "/images/blog/approved/article-agent-builders-business-apps-permission-boundaries-6b3a0e49ac10.webp",
+      "mobile": "/images/blog/approved/article-agent-builders-business-apps-permission-boundaries-720-adb33b7ec9a5.webp"
+    },
+    {
+      "slug": "agent-execution-readiness-business-professionals",
+      "sourceId": "article-ai-agents-execution-control-plane-smes",
+      "style": "digital-workforce",
+      "alt": "From suggestions to authorised action, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "ee6bd4c5f5d591b63a21cfcf548f90319cdce47cf9fa2c185c7646963efad79e",
+      "image": "/images/blog/approved/article-ai-agents-execution-control-plane-smes-04243e593164.webp",
+      "mobile": "/images/blog/approved/article-ai-agents-execution-control-plane-smes-720-ba6ddc080c2f.webp"
+    },
+    {
+      "slug": "agentic-ai-cost-control-business-professionals",
+      "sourceId": "article-agentic-ai-cost-leak-orchestration-not-prompts",
+      "style": "analytics",
+      "alt": "Resource leakage from retries and poor orchestration, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "4be83487a1ce27d175a04cbbd4fa046f5063fddca6bd1c6c883dfe9960e05185",
+      "image": "/images/blog/approved/article-agentic-ai-cost-leak-orchestration-not-prompts-b03f02c1ffda.webp",
+      "mobile": "/images/blog/approved/article-agentic-ai-cost-leak-orchestration-not-prompts-720-ab4841cec7ce.webp"
+    },
+    {
+      "slug": "workspace-agents-business-professionals",
+      "sourceId": "article-workspace-agents-business-workflows-sme-control-plane",
+      "style": "agent-interfaces",
+      "alt": "Workspace agents operating under control, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "3118d5987be20a1e65bfe3df9335b7679c8cc4101513d75493ae277696fad3bb",
+      "image": "/images/blog/approved/article-workspace-agents-business-workflows-sme-control-plane-2234447469c8.webp",
+      "mobile": "/images/blog/approved/article-workspace-agents-business-workflows-sme-control-plane-720-9f4b494ed972.webp"
+    },
+    {
+      "slug": "research-agents-business-professionals",
+      "sourceId": "article-research-agents-need-decision-logs",
+      "style": "human-information",
+      "alt": "Research evidence turning into an accountable decision, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "50f06db9a2bb8fe23abb5a1dfddcfaad0806a2d4d5fc7486afaa98c4bc267221",
+      "image": "/images/blog/approved/article-research-agents-need-decision-logs-7201e2a29541.webp",
+      "mobile": "/images/blog/approved/article-research-agents-need-decision-logs-720-727f7dbca841.webp"
+    },
+    {
+      "slug": "agent-handoffs-business-professionals",
+      "sourceId": "article-agent-handoffs-sme-digital-coworkers",
+      "style": "digital-workforce",
+      "alt": "Governed handoffs between agents, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "81511d8ff6605dafedb977c7ded25ae00184a003d7decaa90f852c652d5cf211",
+      "image": "/images/blog/approved/article-agent-handoffs-sme-digital-coworkers-f6b40c0077fa.webp",
+      "mobile": "/images/blog/approved/article-agent-handoffs-sme-digital-coworkers-720-53fa9f415cd3.webp"
+    },
+    {
+      "slug": "ai-connectors-mcp-business-professionals",
+      "sourceId": "article-ai-connectors-workflow-layer-smes-control",
+      "style": "human-networks",
+      "alt": "Controlled connectors across business systems, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "f4eac0ce7cc69f258caab99e8200d8e7d6f066d8a95fd4ecb620382a3628b9a3",
+      "image": "/images/blog/approved/article-ai-connectors-workflow-layer-smes-control-30c0044db0af.webp",
+      "mobile": "/images/blog/approved/article-ai-connectors-workflow-layer-smes-control-720-055ff0ab4f98.webp"
+    },
+    {
+      "slug": "dashboard-agents-business-professionals",
+      "sourceId": "article-dashboard-agents-smes-decision-workflows",
+      "style": "analytics",
+      "alt": "Analytics becoming a decision workflow, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "b15bee0b3de547d69d2031265725603718700a24971ac8dd5b1dae302d314c4b",
+      "image": "/images/blog/approved/article-dashboard-agents-smes-decision-workflows-b47ba4c7f932.webp",
+      "mobile": "/images/blog/approved/article-dashboard-agents-smes-decision-workflows-720-440a27bcb02e.webp"
+    },
+    {
+      "slug": "always-on-agents-work-iq-business-professionals",
+      "sourceId": "article-always-on-agents-work-iq-smes-operating-control",
+      "style": "digital-workforce",
+      "alt": "Persistent work with visible operating control, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "5a98c98fd9dddd0a96033f02b49173d20dee63e9caf22b98726a5d938ed49208",
+      "image": "/images/blog/approved/article-always-on-agents-work-iq-smes-operating-control-7ae17e73e38c.webp",
+      "mobile": "/images/blog/approved/article-always-on-agents-work-iq-smes-operating-control-720-be76d925c9d8.webp"
+    },
+    {
+      "slug": "computer-using-agents-business-professionals",
+      "sourceId": "article-agentic-ai-execution-layer-smes-operating-control",
+      "style": "data-fields",
+      "alt": "Agents as the business execution layer, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "c5085fb2624453e9b7b36c722994103596da09d76ae8403d0bccde578521387e",
+      "image": "/images/blog/approved/article-agentic-ai-execution-layer-smes-operating-control-f19d74b5b5a1.webp",
+      "mobile": "/images/blog/approved/article-agentic-ai-execution-layer-smes-operating-control-720-ad7912efe47e.webp"
+    },
+    {
+      "slug": "beyond-chatgpt-ai-powered-company",
+      "sourceId": "what-must-change",
+      "style": "intelligence-portraits",
+      "alt": "From fragmented tools to coherent operations, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "4f4a1094d7a07eb1e03f06b838d36e4a7222972dcd74d5fb1dd8450bae673ddb",
+      "image": "/images/blog/approved/what-must-change-572bae41b7e2.webp",
+      "mobile": "/images/blog/approved/what-must-change-720-5b3f1f7ed91f.webp"
+    },
+    {
+      "slug": "enterprise-ai-insights",
+      "sourceId": "client-results",
+      "style": "analytics",
+      "alt": "Traceable outcomes, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "034d60fc79e1f7c7ae326b56db08a0635bda6b13c8143289a4e574b0065a1ad4",
+      "image": "/images/blog/approved/client-results-da0a09cac6d5.webp",
+      "mobile": "/images/blog/approved/client-results-720-24a02ae21d56.webp"
+    },
+    {
+      "slug": "anthropic-ai-skills",
+      "sourceId": "guide-work-loops",
+      "style": "agent-interfaces",
+      "alt": "A non-technical human-led agent work loop, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "9a46ec7cad1e7ab13d88aba472ffd56e2f3a6c58dcf4a62f5b19801de9a6f588",
+      "image": "/images/blog/approved/guide-work-loops-7c1564772ffe.webp",
+      "mobile": "/images/blog/approved/guide-work-loops-720-1f44704298ee.webp"
+    },
+    {
+      "slug": "what-is-agentic-ai-guide",
+      "sourceId": "article-the-rise-of-ai-agents-and-their-impact-on-business-automation",
+      "style": "digital-workforce",
+      "alt": "A growing network of autonomous business work, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "4cb6bdec02b9ca7868b4ef6bec179ece91ff4d3d89633c2ee080f321ae70c039",
+      "image": "/images/blog/approved/article-the-rise-of-ai-agents-and-their-impact-on-business-automation-f88529f92ded.webp",
+      "mobile": "/images/blog/approved/article-the-rise-of-ai-agents-and-their-impact-on-business-automation-720-9d4cdd70f9f0.webp"
+    },
+    {
+      "slug": "best-ai-courses-singapore-2026",
+      "sourceId": "career-learning",
+      "style": "digital-workforce",
+      "alt": "Human learning and career adaptability, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "6dc698675840982ab3442bbeb71042cfbe4c8125dcdc44e5b4b9c6efcc77e051",
+      "image": "/images/blog/approved/career-learning-dde6e55e0163.webp",
+      "mobile": "/images/blog/approved/career-learning-720-3ff27148f89a.webp"
+    },
+    {
+      "slug": "smes-no-code-ai-automation-singapore",
+      "sourceId": "automation",
+      "style": "agent-interfaces",
+      "alt": "Connected business work moving through stages, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "577ff5b415a9726f84e9e85c0104e1fb515b6bf1df08e93c1770b57afc8ffdd2",
+      "image": "/images/blog/approved/automation-7110f21b7398.webp",
+      "mobile": "/images/blog/approved/automation-720-77694a45f663.webp"
+    },
+    {
+      "slug": "ai-literacy-corporate-learning-2026",
+      "sourceId": "how-we-help",
+      "style": "human-information",
+      "alt": "Connecting capability to governed execution, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "f50624770693dfbe598eead6cd2b33b4a008d82f23c3bb28cc3041bc85d44e32",
+      "image": "/images/blog/approved/how-we-help-db0d0649108e.webp",
+      "mobile": "/images/blog/approved/how-we-help-720-a386efea0756.webp"
+    },
+    {
+      "slug": "ai-readiness-singapore-2026-agentic-ai",
+      "sourceId": "where-to-start",
+      "style": "analytics",
+      "alt": "Selecting the first useful workflow, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "8412c7090e1d8029bab4ada19e0d81a274875befd27a471aab87a456a8d898c1",
+      "image": "/images/blog/approved/where-to-start-2cf8d6a55be1.webp",
+      "mobile": "/images/blog/approved/where-to-start-720-b00e23ed45b9.webp"
+    },
+    {
+      "slug": "best-ai-for-coding-business-professionals",
+      "sourceId": "implementation",
+      "style": "agent-interfaces",
+      "alt": "A focused agent integrated into an existing workflow, represented in a cinematic graphite and silver composition",
+      "sourceMasterSha256": "e6ab8ff275111a038e9f64a34a3cfe0eb0410ab4638db099ce31a81d7b7534c9",
+      "image": "/images/blog/approved/implementation-769053f717e2.webp",
+      "mobile": "/images/blog/approved/implementation-720-7e0640e33f95.webp"
+    }
+  ]
+}
