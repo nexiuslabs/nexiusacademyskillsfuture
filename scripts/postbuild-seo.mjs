@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const DEFAULT_LASTMOD = '2026-09-28';
+const DEFAULT_LASTMOD = '2026-10-05';
 const ACADEMY_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const MELVERICK_ID = `${SITE_URL}/about/#melverick-ng`;
@@ -1403,6 +1403,22 @@ const routes = [
     ogImageAlt: 'Singapore business professionals practising an AI agent incident response drill',
     schemas: [],
     articleDate: '2026-09-28',
+  },
+  {
+    path: '/blog/ai-supervision-skills-business-professionals',
+    priority: '0.8',
+    changefreq: 'monthly',
+    includeInSitemap: true,
+    title: 'AI Supervision Skills: Validate and Override AI Agents | Nexius Academy',
+    description:
+      'Learn a practical supervision loop for checking evidence, challenging assumptions, approving bounded actions, and overriding AI agents.',
+    ogType: 'article',
+    ogImage: 'https://academy.nexiuslabs.com/images/blog/ai-supervision-skills-business-professionals.png',
+    ogImageAlt: 'Business professionals learning to inspect, challenge, approve, and override AI work',
+    ogImageWidth: 1672,
+    ogImageHeight: 941,
+    schemas: [],
+    articleDate: '2026-10-05',
   },
   {
     path: '/admin',

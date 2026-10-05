@@ -207,6 +207,19 @@ export const WEBSITE_IMAGES = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: 28,
+    slug: 'ai-supervision-skills-business-professionals',
+    title: 'AI Supervision Skills: What Business Professionals Must Learn to Validate and Override AI',
+    date: '05 Oct 2026',
+    views: 0,
+    image: '/images/blog/ai-supervision-skills-business-professionals.png',
+    imageAlt: 'Business professionals learning to inspect, challenge, approve, and override AI work',
+    excerpt: 'Human-in-the-loop is a job design, not a button. Learn a practical loop for inspecting evidence, challenging assumptions, approving bounded actions, and overriding AI.',
+    category: 'Beginner Guides',
+    bestFor: 'Business professionals, SME owners, operations managers, team leaders, L&D teams',
+    featured: true,
+  },
+  {
     id: 27,
     slug: 'ai-agent-incident-response-business-professionals',
     title: 'AI Agent Incident Response: What Business Professionals Must Learn Before Digital Coworkers Go Wrong',
