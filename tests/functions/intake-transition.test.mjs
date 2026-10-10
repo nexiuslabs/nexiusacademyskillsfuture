@@ -24,7 +24,7 @@ test('November Foundation is confirmed for 6 and 13 November across booking and 
  assert.match(november, /interestOnly: false/);
  assert.match(november, /registrationClosed: false/);
  assert.match(november, /cohortCode: '2026-11-06'/);
- assert.match(november, /venue: 'Lifelong Learning Institute \(Paya Lebar\), 11 Eunos Road 8, Singapore 408601'/);
+ assert.match(november, /venue: 'Bugis Area'/);
  assert.match(november, /registrationCloses: '30 Oct 2026'/);
  assert.doesNotMatch(november, /Venue to be confirmed|registrationCloses: 'TBC'/);
  assert.doesNotMatch(constants, /2026-11-13-interest|Proposed: 13 Nov/);
@@ -32,9 +32,8 @@ test('November Foundation is confirmed for 6 and 13 November across booking and 
  assert.match(seo, /2026-11-06T09:00:00/);
  assert.match(seo, /2026-11-13T17:00:00/);
  const novInstance=seo.slice(seo.indexOf("startDate: '2026-11-06T09:00:00+08:00'"), seo.indexOf("startDate: '2026-10-09T09:00:00+08:00'"));
- assert.match(novInstance, /name: 'Lifelong Learning Institute \(Paya Lebar\)'/);
- assert.match(novInstance, /streetAddress: '11 Eunos Road 8'/);
- assert.match(novInstance, /postalCode: '408601'/);
+ assert.match(novInstance, /name: 'Bugis Area'/);
+ assert.doesNotMatch(novInstance, /streetAddress:|postalCode:|Lifelong Learning Institute/);
  assert.doesNotMatch(seo, /Venue to be confirmed/);
  const schedule=readFileSync(new URL('../../components/courses/Schedule.tsx',import.meta.url),'utf8');
  assert.doesNotMatch(schedule, /November dates are proposed/);

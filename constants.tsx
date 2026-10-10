@@ -55,7 +55,7 @@ export const SCHEDULES: ScheduleItem[] = [
     dates: '06 Nov 2026 & 13 Nov 2026',
     time: '9:00am - 5:00pm',
     format: 'In-Person',
-    venue: 'Lifelong Learning Institute (Paya Lebar), 11 Eunos Road 8, Singapore 408601',
+    venue: 'Bugis Area',
     month: 'Nov 2026',
     registrationCloses: '30 Oct 2026',
     interestOnly: false,
