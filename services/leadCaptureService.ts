@@ -31,6 +31,11 @@ export interface LeadCapturePayload {
   deviceType?: 'mobile' | 'tablet' | 'desktop';
 }
 
+export interface LeadCaptureResult {
+  reference: string;
+  expiresAt: string;
+}
+
 export const submitLeadCapture = async (payload: LeadCapturePayload) => {
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -60,7 +65,11 @@ export const submitLeadCapture = async (payload: LeadCapturePayload) => {
       throw new Error(message);
     }
 
-    return;
+    const result = (await response.json()) as Partial<LeadCaptureResult>;
+    if (!result.reference || !result.expiresAt) {
+      throw new Error('Lead reference was not returned');
+    }
+    return result as LeadCaptureResult;
   }
 
   throw new Error('No lead capture endpoint configured');
