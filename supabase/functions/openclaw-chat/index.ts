@@ -63,7 +63,7 @@ const needsHumanHelp = (message: string) => {
 const simpleGreetingReply = (message: string) => {
   const text = message.trim().toLowerCase();
   if (['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'].includes(text)) {
-    return 'Hi! I'm Cariah 👋 I can help with course details, SkillsFuture subsidies, company-sponsored training, and absentee payroll claims. What would you like to know?';
+    return 'Hi, I’m Cariah, Nexius Academy’s AI course assistant. I can help with course details, fees, funding and registration. You may ask to speak with the Nexius team at any time.';
   }
   return null;
 };
