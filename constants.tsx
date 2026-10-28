@@ -59,7 +59,7 @@ export const ADVANCED_COURSE_SCHEDULES = [
     dates: '11 Nov 2026 (Wed), 12 Nov 2026 (Thu) & 18 Nov 2026 (Wed)',
     time: '9:00am - 6:00pm',
     venue: 'Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601',
-    registrationCloses: '28 Oct 2026',
+    registrationCloses: '4 Nov 2026',
     registrationClosed: false,
     cohortCode: '2026-11-11',
   },
