@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import TrainerAuthority from '../components/trainers/TrainerAuthority';
 import Footer from '../components/home/Footer';
 import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
 import ResponsiveImage from '../components/ResponsiveImage';
@@ -152,6 +153,11 @@ const faqs = [
     question: 'What if we have fewer than 15 participants?',
     answer:
       'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
+  },
+  {
+    question: 'Does Nexius Academy offer corporate Agentic AI training for company teams in Singapore?',
+    answer:
+      'Yes. Nexius Academy delivers dedicated private company classes in Singapore for teams of 15 or more participants (https://academy.nexiuslabs.com/private-class/), led by Master Trainer Melverick Ng and Darryl Wong. Corporate cohorts can be tailored to your company’s actual ERP, CRM, finance, HR, or operations workflows and delivered at your office or an external venue. Organisations that have run dedicated or partner sessions with Nexius include Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM. For groups smaller than 15, employees can enrol in scheduled public cohorts with SME-sponsored SkillsFuture funding support.',
   },
 ];
 
@@ -781,8 +787,8 @@ const PrivateClassPage: React.FC = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
       <SEO
-        title="Dedicated Company AI Class | Nexius Academy"
-        description="Private agentic AI training for teams of 15 or more. Tailor the workshop to real workflows and align staff on practical AI adoption."
+        title="Corporate Agentic AI Training Singapore | Dedicated Company Class | Nexius Academy"
+        description="Corporate agentic AI training in Singapore for teams of 15 or more, led by Master Trainer Melverick Ng. Tailor hands-on no-code AI workflows to your company operations."
         canonical={PAGE_PATH}
         ogType="website"
       />
@@ -795,6 +801,7 @@ const PrivateClassPage: React.FC = () => {
         <PrivateClassAbout />
         <PrivateClassTeams />
         <PrivateClassPlanning />
+        <TrainerAuthority />
         <PrivateClassFaq />
       </main>
       <Footer />

@@ -35,13 +35,25 @@
 # Course slug redirects
 [[redirects]]
   from = "/courses/tp-agentic-ai-driven-business-innovation/*"
-  to = "/courses/agentic-ai-business-innovation/:splat"
+  to = "/courses/advanced-agentic-ai/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/courses/tp-agentic-ai-driven-business-innovation"
-  to = "/courses/agentic-ai-business-innovation"
+  to = "/courses/advanced-agentic-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/agentic-ai-business-innovation/*"
+  to = "/courses/advanced-agentic-ai/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/agentic-ai-business-innovation"
+  to = "/courses/advanced-agentic-ai"
   status = 301
   force = true
 

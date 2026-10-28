@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCircle, Mail, MessageCircle } from 'lucide-react';
 import Testimonials from '../components/home/Testimonials';
 import SEO from '../components/SEO';
+import TrainerAuthority from '../components/trainers/TrainerAuthority';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import { fetchBucketImages, getRandomImages } from '../services/imageService';
@@ -87,8 +88,8 @@ const AboutPage: React.FC = () => {
   return (
     <div className="font-body text-charcoal bg-white min-h-screen flex flex-col">
       <SEO
-        title="About Nexius Academy | AI Training Experts Singapore"
-        description="Meet Nexius Academy, a Singapore AI training provider helping business teams apply agentic AI and no-code automation at work."
+        title="About Nexius Academy & Master Trainer Melverick Ng | Agentic AI Training Singapore"
+        description="Meet Nexius Academy Master Trainer Melverick Ng and co-trainer Darryl Wong — Singapore practitioners teaching SkillsFuture-supported Agentic AI courses for business teams."
         canonical="/about"
       />
       <Navbar />
@@ -108,6 +109,8 @@ const AboutPage: React.FC = () => {
           </div>
           <div className="academy-container academy-about-opening-note"><span>Hands-on learning</span><span>No coding background required</span><span>Built around business application</span></div>
         </section>
+
+        <TrainerAuthority showFaqs />
 
         {/* Combined Tabbed Section */}
         <section id="about-story" className="py-24 bg-white">

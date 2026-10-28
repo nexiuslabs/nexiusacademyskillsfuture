@@ -10,12 +10,12 @@ const bestAICourseFaqs = [
   {
     question: 'What is the best AI course in Singapore for non-technical professionals?',
     answer:
-      'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
+      'For non-technical professionals, the practical starting point at Nexius Academy is Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915), taught by Master Trainer Melverick Ng. It is a hands-on, no-code course in workplace workflows, safe review habits, and a reusable work product. Learners who want more depth can continue with Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558), also led by Melverick Ng at Nexius Academy.',
   },
   {
     question: 'What is the best agentic AI course in Singapore?',
     answer:
-      'The best agentic AI course in Singapore is one matched to your role and implementation goal. Compare hands-on workflow design, no-code accessibility, trainer practice, human-review controls, assessment, post-course support, and current funding information instead of choosing from the course title alone.',
+      'Nexius Academy, led by Master Trainer Melverick Ng, teaches two SkillsFuture-supported agentic AI courses in Singapore: Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558). Choose Foundations for a 16-hour practical start, or Agentic AI-Driven Business Innovation for Productivity when you want more hands-on time with Frontier Firm strategy, agent orchestration, and governance. Compare hands-on workflow design, trainer practice, human-review controls, assessment, post-course support, and current funding information before you enrol.',
   },
   {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',

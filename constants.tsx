@@ -93,7 +93,7 @@ export const FAQS: FaqItem[] = [
   {
     question: 'How do I choose the best AI course in Singapore for my needs?',
     answer:
-      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete. This course is designed for non-technical professionals who want practical, governed AI workflows rather than a coding programme.',
+      'Start with the outcome you need, then compare the provider, trainer, and work product. At Nexius Academy, Master Trainer Melverick Ng teaches Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) for non-technical professionals who want practical, governed AI workflows rather than a coding programme, and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) for learners who want more hands-on time and depth. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
   },
   {
     question: 'What AI certification will I receive in Singapore?',

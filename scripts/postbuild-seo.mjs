@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-c
 const HOME_IMAGE = `${SITE_URL}/images/homepage-hero.jpg`;
 const COURSE_IMAGE = `${SITE_URL}/images/og/agentic-ai-course-og.jpg`;
 const PRIVATE_CLASS_IMAGE = `${SITE_URL}/images/private-class/hall-room.jpg`;
-const DEFAULT_LASTMOD = '2026-10-05';
+const DEFAULT_LASTMOD = '2026-10-28';
 const ACADEMY_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const MELVERICK_ID = `${SITE_URL}/about/#melverick-ng`;
@@ -15,32 +15,59 @@ const DARRYL_ID = `${SITE_URL}/about/#darryl-wong`;
 const ACADEMY_LOGO = 'https://tueprsmyrebrfwrdlagk.supabase.co/storage/v1/object/public/website-images/nexius_logo_no_text_transparent_bg.png';
 
 const melverickPerson = {
+  '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': MELVERICK_ID,
   name: 'Melverick Ng',
-  url: 'https://academy.nexiuslabs.com/about/',
+  url: 'https://academy.nexiuslabs.com/about/#melverick-ng',
   image: `${SITE_URL}/images/authors/melverick-ng-selected.jpg`,
-  jobTitle: 'Founder of Nexius Labs and Master Trainer at Nexius Academy',
+  jobTitle: 'Co-Founder & Master Trainer, Nexius Academy; Co-Founder & Director, Nexius Labs',
+  description:
+    'Singapore-based Agentic AI Master Trainer and Co-Founder of Nexius Labs & Nexius Academy with 30+ years of business and enterprise workflow experience, including former SAP consulting across ERP, CRM, supply chain, and operations. Lead trainer for SkillsFuture-eligible Agentic AI courses in Singapore for non-technical professionals, SMEs, and corporate teams.',
   worksFor: {
     '@type': 'Organization',
     '@id': 'https://nexiuslabs.com/#organization',
     name: 'Nexius Labs',
-    url: 'https://nexiuslabs.com',
+    url: 'https://nexiuslabs.com/',
   },
-  affiliation: {
-    '@type': 'EducationalOrganization',
-    '@id': ACADEMY_ID,
-    name: 'Nexius Academy',
-    url: SITE_URL,
-  },
-  sameAs: ['https://www.linkedin.com/in/melverick'],
+  affiliation: [
+    {
+      '@type': 'EducationalOrganization',
+      '@id': ACADEMY_ID,
+      name: 'Nexius Academy',
+      url: `${SITE_URL}/`,
+    },
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Temasek Polytechnic',
+      url: 'https://www.tp.edu.sg/',
+    },
+  ],
+  knowsAbout: [
+    'Agentic AI training in Singapore',
+    'No-code AI workflow automation',
+    'Agentic AI for non-technical professionals',
+    'Frontier Firm strategy and Agent Boss operating models',
+    'DUO Framework for human-agent workflows',
+    'AI governance and human-in-the-loop controls',
+    'ERP, CRM, and enterprise business process redesign',
+    'SkillsFuture AI courses in Singapore',
+  ],
+  sameAs: [
+    'https://melverick.com/',
+    'https://melverick.com/#person',
+    'https://nexiuslabs.com/authors/melverick-ng',
+    'https://nexiuslabs.com/authors/melverick-ng#person',
+    'https://www.linkedin.com/in/melverick',
+    'https://github.com/melkizac',
+  ],
 };
 
 const darrylPerson = {
   '@type': 'Person',
   '@id': DARRYL_ID,
   name: 'Darryl Wong',
-  url: 'https://academy.nexiuslabs.com/about/',
+  url: 'https://academy.nexiuslabs.com/about/#darryl-wong',
   image: `${SITE_URL}/images/authors/darryl-wong-selected.jpeg`,
   jobTitle: 'Master Sifu and AI Trainer at Nexius Academy',
   worksFor: {
@@ -79,7 +106,11 @@ const organizationSchema = {
     '@type': 'PostalAddress',
     addressCountry: 'SG',
   },
-  sameAs: ['https://www.linkedin.com/company/105886234/'],
+  sameAs: [
+    'https://www.linkedin.com/company/nexius-academy/',
+    'https://www.linkedin.com/company/109310332/',
+    'https://www.linkedin.com/company/105886234/',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+65 8900 2130',
@@ -135,11 +166,12 @@ const breadcrumbSchema = (routePath, title) => {
   };
 };
 
-const courseSchema = ({ name, description, url, image, audienceType, courseInstance, offers, instructors, courseCode, identifier, sameAs, contributor }) => ({
+const courseSchema = ({ name, description, url, image, audienceType, courseInstance, offers, instructors, courseCode, identifier, sameAs, contributor, coursePrerequisites }) => ({
   '@context': 'https://schema.org',
   '@type': 'Course',
   name,
   description,
+  coursePrerequisites,
   url,
   image,
   courseCode,
@@ -251,7 +283,7 @@ const mainCourseFaqs = [
   {
     question: 'How do I choose the best AI course in Singapore for my needs?',
     answer:
-      'Start with the outcome you need: general AI literacy, practical workflow automation, technical model building, or leadership and governance. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete. This course is designed for non-technical professionals who want practical, governed AI workflows rather than a coding programme.',
+      'Start with the outcome you need, then compare the provider, trainer, and work product. At Nexius Academy, Master Trainer Melverick Ng teaches Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) for non-technical professionals who want practical, governed AI workflows rather than a coding programme, and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) for learners who want more hands-on time and depth. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
   },
   {
     question: 'What AI certification will I receive in Singapore?',
@@ -274,12 +306,12 @@ const bestAICourseFaqs = [
   {
     question: 'What is the best AI course in Singapore for non-technical professionals?',
     answer:
-      'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
+      'For non-technical professionals, the practical starting point at Nexius Academy is Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915), taught by Master Trainer Melverick Ng. It is a hands-on, no-code course in workplace workflows, safe review habits, and a reusable work product. Learners who want more depth can continue with Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558), also led by Melverick Ng at Nexius Academy.',
   },
   {
     question: 'What is the best agentic AI course in Singapore?',
     answer:
-      'The best agentic AI course in Singapore is one matched to your role and implementation goal. Compare hands-on workflow design, no-code accessibility, trainer practice, human-review controls, assessment, post-course support, and current funding information instead of choosing from the course title alone.',
+      'Nexius Academy, led by Master Trainer Melverick Ng, teaches two SkillsFuture-supported agentic AI courses in Singapore: Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558). Choose Foundations for a 16-hour practical start, or Agentic AI-Driven Business Innovation for Productivity when you want more hands-on time with Frontier Firm strategy, agent orchestration, and governance. Compare hands-on workflow design, trainer practice, human-review controls, assessment, post-course support, and current funding information before you enrol.',
   },
   {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',
@@ -306,17 +338,55 @@ const privateClassFaqs = [
   },
   {
     question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 12 pax for a dedicated company run.',
+    answer: 'The minimum class size is 15 participants for a dedicated company run.',
   },
   {
     question: 'Can the workshop focus on our real internal workflows?',
     answer:
-      'Yes. The company-run format is specifically designed to make the workshop more relevant to your team use cases, recurring tasks, and process pain points.',
+      "Yes. The company-run format is specifically designed to make the workshop more relevant to your team's actual use cases, recurring tasks, and process pain points.",
   },
   {
     question: 'Can you run the training at our office?',
     answer:
-      'Yes. Delivery can be discussed for your office or an external venue depending on privacy, convenience, and room setup.',
+      'Yes. We can discuss delivery at your own office or at an external venue depending on privacy, convenience, and room setup.',
+  },
+  {
+    question: 'Is this suitable for non-technical teams?',
+    answer:
+      'Yes. The course is designed for non-technical professionals and focuses on practical workflow use, not coding.',
+  },
+  {
+    question: 'How is pricing handled for a company class?',
+    answer:
+      'Private three-day classes follow the Agentic AI-Driven Business Innovation for Productivity pricing table shown on this page. Fees include 9% GST and depend on learner eligibility and funding approval.',
+  },
+  {
+    question: 'Can leaders and frontline staff attend together?',
+    answer:
+      'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
+  },
+  {
+    question: 'What if we have fewer than 15 participants?',
+    answer:
+      'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
+  },
+  {
+    question: 'Does Nexius Academy offer corporate Agentic AI training for company teams in Singapore?',
+    answer:
+      'Yes. Nexius Academy delivers dedicated private company classes in Singapore for teams of 15 or more participants (https://academy.nexiuslabs.com/private-class/), led by Master Trainer Melverick Ng and Darryl Wong. Corporate cohorts can be tailored to your company’s actual ERP, CRM, finance, HR, or operations workflows and delivered at your office or an external venue. Organisations that have run dedicated or partner sessions with Nexius include Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM. For groups smaller than 15, employees can enrol in scheduled public cohorts with SME-sponsored SkillsFuture funding support.',
+  },
+];
+
+const aboutFaqs = [
+  {
+    question: 'Who is the Master Trainer at Nexius Academy?',
+    answer:
+      'Melverick Ng is Co-Founder and Master Trainer at Nexius Academy, and Co-Founder and Director of Nexius Labs. He has 30+ years of business and enterprise workflow experience, including former SAP consulting across ERP, CRM, logistics, supply chain, and finance operations, and he operates a live production AI agent workforce. He leads public SkillsFuture-supported cohorts with Temasek Polytechnic — Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) — and corporate or institutional classes for organisations including Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM.',
+  },
+  {
+    question: 'Who is Darryl Wong at Nexius Academy?',
+    answer:
+      'Darryl Wong is Co-Founder and AI Workflow Trainer at Nexius Academy. He is a CPA Australia and an ISCA Associate with 20+ years of accounting, finance, and enterprise systems experience. He co-trains hands-on workflow automation, agent orchestration, and finance and professional-services AI adoption alongside Melverick Ng.',
   },
 ];
 
@@ -382,7 +452,7 @@ const agenticBusinessInnovationFaqs = [
 const routes = [
   {
     path: '/',
-    lastmod: '2026-07-16',
+    lastmod: '2026-10-28',
     priority: '1.0',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -395,20 +465,32 @@ const routes = [
   },
   {
     path: '/about',
-    lastmod: '2026-07-16',
+    lastmod: '2026-10-28',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
-    title: 'About Nexius Academy | AI Training Experts Singapore',
+    title: 'About Nexius Academy & Master Trainer Melverick Ng | Agentic AI Training Singapore',
     description:
-      'Meet Nexius Academy, a Singapore AI training provider helping business teams apply agentic AI and no-code automation at work.',
+      'Meet Nexius Academy Master Trainer Melverick Ng and co-trainer Darryl Wong — Singapore practitioners teaching SkillsFuture-supported Agentic AI courses for business teams.',
     ogType: 'website',
     ogImage: HOME_IMAGE,
-    schemas: [],
+    schemas: [
+      pageSchema({
+        name: 'About Nexius Academy & Master Trainer Melverick Ng',
+        description:
+          'Meet Nexius Academy Master Trainer Melverick Ng and co-trainer Darryl Wong — Singapore practitioners teaching SkillsFuture-supported Agentic AI courses for business teams.',
+        url: `${SITE_URL}/about/`,
+        image: HOME_IMAGE,
+        type: 'AboutPage',
+      }),
+      melverickPerson,
+      darrylPerson,
+      faqSchema(aboutFaqs),
+    ],
   },
   {
     path: '/skillsfuture-funding-guide',
-    lastmod: '2026-07-16',
+    lastmod: '2026-10-28',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -544,7 +626,7 @@ const routes = [
   },
   {
     path: '/courses/agentic-ai',
-    lastmod: '2026-07-26',
+    lastmod: '2026-10-28',
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -639,12 +721,13 @@ const routes = [
   },
   {
     path: '/private-class',
+    lastmod: '2026-10-28',
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
-    title: 'Dedicated Company AI Class | Nexius Academy',
+    title: 'Corporate Agentic AI Training Singapore | Dedicated Company Class | Nexius Academy',
     description:
-      'Private agentic AI training for teams of 15 or more. Tailor the workshop to real workflows and align staff on practical AI adoption.',
+      'Corporate agentic AI training in Singapore for teams of 15 or more, led by Master Trainer Melverick Ng. Tailor hands-on no-code AI workflows to your company operations.',
     ogType: 'website',
     ogImage: PRIVATE_CLASS_IMAGE,
     schemas: [
@@ -652,7 +735,7 @@ const routes = [
         name: 'Dedicated Company AI Class',
         description:
           'Private company-run agentic AI training for teams that want aligned adoption, practical workflow relevance, and a safer internal learning setting.',
-        url: `${SITE_URL}/private-class`,
+        url: `${SITE_URL}/private-class/`,
         image: PRIVATE_CLASS_IMAGE,
         audienceType: 'Company teams, department heads, and business operations leaders',
         instructors: [melverickPerson, darrylPerson],
@@ -795,6 +878,7 @@ const routes = [
   },
   {
     path: '/courses/advanced-agentic-ai',
+    lastmod: '2026-10-28',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -810,6 +894,15 @@ const routes = [
           'An accessible 3-day Agentic AI programme on Frontier Firm strategy, cross-functional orchestration, Agent Boss operating models, and practical governance. No coding or prior AI course is required.',
         url: `${SITE_URL}/courses/advanced-agentic-ai/`,
         image: HOME_IMAGE,
+        courseCode: 'TGS-2026063558',
+        identifier: [
+          {
+            '@type': 'PropertyValue',
+            propertyID: 'SkillsFuture Training Grant System course reference',
+            value: 'TGS-2026063558',
+          },
+        ],
+        coursePrerequisites: 'No coding or prior AI course required.',
         audienceType: 'Professionals, builders, managers, business owners, educators, consultants, and learners who want more hands-on time and depth',
         instructors: [melverickPerson, darrylPerson],
         offers: [
@@ -845,10 +938,11 @@ const routes = [
             courseWorkload: 'P3D',
             startDate: '2026-11-11T09:00:00+08:00',
             endDate: '2026-11-18T18:00:00+08:00',
-            description: '11, 12 & 18 November 2026, 9am to 6pm Singapore time each day. Registration closes 4 November 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
+            description: 'Confirmed class on 11, 12 & 18 November 2026, 9am to 6pm Singapore time each day (Room R7-Skydome, Level 4). Registration closes 4 November 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
+            instructor: [{ '@id': MELVERICK_ID }, { '@id': DARRYL_ID }],
             location: {
               '@type': 'Place',
-              name: 'Lifelong Learning Institute (Paya Lebar)',
+              name: 'Lifelong Learning Institute (Paya Lebar), Room R7-Skydome (Level 4)',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '11 Eunos Rd 8',
@@ -1080,7 +1174,7 @@ const routes = [
   },
   {
     path: '/blog/best-ai-courses-singapore-2026',
-    lastmod: '2026-07-26',
+    lastmod: '2026-10-28',
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
