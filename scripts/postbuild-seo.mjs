@@ -845,7 +845,7 @@ const routes = [
             courseWorkload: 'P3D',
             startDate: '2026-11-11T09:00:00+08:00',
             endDate: '2026-11-18T18:00:00+08:00',
-            description: '11, 12 & 18 November 2026, 9am to 6pm Singapore time each day. Registration closes 28 October 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
+            description: '11, 12 & 18 November 2026, 9am to 6pm Singapore time each day. Registration closes 4 November 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
             location: {
               '@type': 'Place',
               name: 'Lifelong Learning Institute (Paya Lebar)',
