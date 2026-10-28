@@ -1,21 +1,26 @@
 import { Instructor, Review, ScheduleItem, FaqItem, CurriculumModule, BlogPost } from './types';
+import answerFirstFaqs from './lib/answer-first-faqs.json';
+
+const { q1, q2, q3, q4, q5 } = answerFirstFaqs;
 
 export const INSTRUCTORS: Instructor[] = [
   {
+    id: 'melverick-ng',
     name: 'Melverick Ng',
-    role: 'Co-founder & Lead Trainer, Nexius Academy',
+    role: 'Co-Founder & Master Trainer, Nexius Academy · Co-Founder & Director, Nexius Labs',
     image: '/images/authors/melverick-ng-selected.jpg',
-    bio: 'Melverick Ng is the co-founder and director of Nexius Labs and a Nexius Academy trainer. He helps business leaders, SMEs, and professional teams move from AI chat to practical, governed execution with agentic AI workflows, human review, and auditability built in.',
-    credentials: ['Nexius Labs Co-founder / Director', 'Nexius Academy trainer', '30+ years professional experience'],
+    bio: 'Melverick Ng is Co-Founder and Director of Nexius Labs (UEN 202521622K) and Co-Founder and Master Trainer at Nexius Academy. He has 30+ years of enterprise operations experience, including former SAP ERP/CRM consulting, and he runs a live multi-agent AI workforce in daily business operations. He is the lead trainer for Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915, 2 days / 16 hours) and Agentic AI-Driven Business Innovation for Productivity (TP-NC-T0028-F / TGS-2026063558, 3 days / 24 hours). Corporate and institutional deliveries include Forvis Mazars (2 cohorts, 47 learners), Glomar (15 learners), Temasek Polytechnic (27 learners), NTUC e2i, and Singapore Institute of Management (SIM).',
+    credentials: ['30+ years enterprise experience', 'Former SAP ERP/CRM consultant', '89+ learners trained across 5 cohorts'],
     focusAreas: ['Agentic AI adoption', 'AI workforce governance', 'Business workflow redesign', 'Human-in-the-loop operating models'],
   },
   {
+    id: 'darryl-wong',
     name: 'Darryl Wong',
-    role: 'AI Workflow Trainer',
+    role: 'AI Workflow Trainer, Nexius Academy · CPA (Aust.) · ISCA Associate',
     image: '/images/authors/darryl-wong-selected.jpeg',
-    bio: 'Darryl Wong brings a CPA background and more than 20 years of professional experience to practical AI adoption for business and professional-services teams.',
-    credentials: ['CPA background', '20+ years professional experience'],
-    focusAreas: ['Accounting and finance workflows', 'Professional-services productivity', 'Practical AI use cases'],
+    bio: 'Darryl Wong is AI Workflow Trainer at Nexius Academy. He is a CPA (Aust.) and an ISCA Associate with 20+ years in accounting, financial management, and enterprise business systems, including internal controls. He co-trains public SkillsFuture cohorts and corporate workshops alongside Melverick Ng, including deliveries for Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and Singapore Institute of Management (SIM).',
+    credentials: ['CPA (Australia)', 'ISCA Associate', '20+ years finance & enterprise systems'],
+    focusAreas: ['Accounting and finance workflows', 'Professional-services productivity', 'Practical AI use cases', 'Internal controls'],
   },
 ];
 
@@ -91,9 +96,7 @@ export const FAQS: FaqItem[] = [
     answer: 'There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques.',
   },
   {
-    question: 'How do I choose the best AI course in Singapore for my needs?',
-    answer:
-      'Start with the outcome you need, then compare the provider, trainer, and work product. At Nexius Academy, Master Trainer Melverick Ng teaches Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) for non-technical professionals who want practical, governed AI workflows rather than a coding programme, and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) for learners who want more hands-on time and depth. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
+    ...q2,
   },
   {
     question: 'What AI certification will I receive in Singapore?',
@@ -125,6 +128,10 @@ export const FAQS: FaqItem[] = [
     answer:
       'Learners practise turning common business tasks into structured AI-assisted workflows. They learn to write better instructions, review AI output, protect sensitive information, and identify which tasks are suitable for automation, drafting, synthesis, and internal process support.',
   },
+  q1,
+  q3,
+  q4,
+  q5,
 ];
 
 export const MODULES: CurriculumModule[] = [

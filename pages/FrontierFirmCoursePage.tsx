@@ -10,6 +10,7 @@ import CourseTestimonials from '../components/courses/CourseTestimonials';
 import CourseScheduleSection from '../components/courses/CourseScheduleSection';
 import { openLeadModal } from '../services/leadModal';
 import AIAnswerBlocks from '../components/courses/AIAnswerBlocks';
+import answerFirstFaqs from '../lib/answer-first-faqs.json';
 
 const learningObjectives = [
   'Go deeper on Agentic AI using the Frontier Firm model and a structured 3-phase roadmap toward an Agentic Company.',
@@ -60,6 +61,11 @@ const transformationModules = [
 
 
 const faqs = [
+  answerFirstFaqs.q1,
+  answerFirstFaqs.q2,
+  answerFirstFaqs.q3,
+  answerFirstFaqs.q4,
+  answerFirstFaqs.q5,
   {
     question: 'Who should attend this course?',
     answer: 'This accessible 3-day programme is for anyone who wants more hands-on time and depth beyond the 2-day Foundation basics, including professionals, builders, managers, business owners, educators, consultants, and transformation teams. No coding or prior AI course is required.',

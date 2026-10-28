@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface Instructor {
+  id?: string;
   name: string;
   role: string;
   image: string;

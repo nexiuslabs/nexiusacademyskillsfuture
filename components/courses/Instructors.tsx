@@ -18,7 +18,7 @@ const Instructors: React.FC = () => {
 
         <div className="grid items-stretch gap-8 lg:grid-cols-2">
             {INSTRUCTORS.map((instructor) => (
-                <article key={instructor.name} className="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <article id={instructor.id} key={instructor.id ?? instructor.name} className="group flex h-full scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <div className="grid grid-cols-[112px,1fr] items-center gap-5 border-b border-blue-100 bg-gradient-to-br from-blue-50 to-white p-6 sm:grid-cols-[144px,1fr] lg:min-h-[244px]">
                     <div className="relative aspect-square overflow-hidden rounded-2xl bg-[#f0f0f0] shadow-sm">
                         <ResponsiveImage

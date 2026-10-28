@@ -4,9 +4,10 @@ import { MessageCircle } from 'lucide-react';
 
 // Keep every published answer unchanged; grouping is presentation only.
 const groups = [
-  { title: 'Course fit', indices: [3, 4, 5, 7, 9, 10, 11] },
-  { title: 'Fees and funding', indices: [0, 8] },
-  { title: 'Registration and support', indices: [1, 2, 6] },
+  { title: 'Choosing your course', indices: [12, 5, 13, 14, 15], open: true },
+  { title: 'Course fit', indices: [3, 4, 7, 9, 10, 11], open: false },
+  { title: 'Fees and funding', indices: [0, 8], open: false },
+  { title: 'Registration and support', indices: [1, 2, 6], open: false },
 ];
 
 const FAQ: React.FC = () => (
@@ -17,7 +18,7 @@ const FAQ: React.FC = () => (
         {groups.map((group) => <section key={group.title} aria-label={group.title}>
           <h3 className="mb-4 text-xl font-bold text-primary">{group.title}</h3>
           <div className="divide-y divide-gray-200 border-y border-gray-200">
-            {group.indices.map((index) => <details key={FAQS[index].question} className="group py-1">
+            {group.indices.map((index) => <details key={FAQS[index].question} open={group.open} className="group py-1">
               <summary className="cursor-pointer py-4 pr-3 font-semibold leading-relaxed text-primary">{FAQS[index].question}</summary>
               <div className="pb-5 pr-4 leading-relaxed text-gray-600">{FAQS[index].answer}</div>
             </details>)}

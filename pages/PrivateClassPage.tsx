@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import TrainerAuthority from '../components/trainers/TrainerAuthority';
+import answerFirstFaqs from '../lib/answer-first-faqs.json';
 import Footer from '../components/home/Footer';
 import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
 import ResponsiveImage from '../components/ResponsiveImage';
@@ -115,6 +116,10 @@ const proposalChecklist = [
 ];
 
 const faqs = [
+  answerFirstFaqs.q1,
+  answerFirstFaqs.q3,
+  answerFirstFaqs.q4,
+  answerFirstFaqs.q5,
   {
     question: 'Who is this private class for?',
     answer:

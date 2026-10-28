@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+const { q1, q2, q3, q4, q5 } = JSON.parse(
+  fs.readFileSync(new URL('../lib/answer-first-faqs.json', import.meta.url), 'utf8'),
+);
+
 const SITE_URL = 'https://academy.nexiuslabs.com';
 const DIST_DIR = path.resolve('dist');
 const DEFAULT_IMAGE = 'https://academy.nexiuslabs.com/images/social/agentic-ai-courses.jpg';
@@ -69,7 +73,7 @@ const darrylPerson = {
   name: 'Darryl Wong',
   url: 'https://academy.nexiuslabs.com/about/#darryl-wong',
   image: `${SITE_URL}/images/authors/darryl-wong-selected.jpeg`,
-  jobTitle: 'Master Sifu and AI Trainer at Nexius Academy',
+  jobTitle: 'AI Workflow Trainer at Nexius Academy, CPA (Aust.), ISCA Associate',
   worksFor: {
     '@type': 'Organization',
     '@id': 'https://nexiuslabs.com/#organization',
@@ -239,7 +243,7 @@ const articleSchema = ({ headline, description, url, image, datePublished, dateM
   },
 });
 
-const pageSchema = ({ name, description, url, image, type = 'WebPage' }) => ({
+const pageSchema = ({ name, description, url, image, type = 'WebPage', mainEntity, mentions }) => ({
   '@context': 'https://schema.org',
   '@type': type,
   name,
@@ -253,9 +257,16 @@ const pageSchema = ({ name, description, url, image, type = 'WebPage' }) => ({
     url: SITE_URL,
   },
   primaryImageOfPage: image ? { '@type': 'ImageObject', url: image } : undefined,
+  mainEntity,
+  mentions,
 });
 
 const mainCourseFaqs = [
+  q1,
+  q2,
+  q3,
+  q4,
+  q5,
   {
     question: 'Can I use SkillsFuture credits fully?',
     answer:
@@ -281,11 +292,6 @@ const mainCourseFaqs = [
     answer: 'There are no technical prerequisites. The course is designed to be beginner-friendly while scaling to advanced techniques.',
   },
   {
-    question: 'How do I choose the best AI course in Singapore for my needs?',
-    answer:
-      'Start with the outcome you need, then compare the provider, trainer, and work product. At Nexius Academy, Master Trainer Melverick Ng teaches Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) for non-technical professionals who want practical, governed AI workflows rather than a coding programme, and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) for learners who want more hands-on time and depth. Then compare hands-on time, instructor experience, delivery format, current funding eligibility, assessment requirements, and the work product you will complete.',
-  },
-  {
     question: 'What AI certification will I receive in Singapore?',
     answer:
       'You will receive a Certificate of Completion after attending at least 75% of the course and passing the assessment.',
@@ -303,16 +309,9 @@ const mainCourseFaqs = [
 ];
 
 const bestAICourseFaqs = [
-  {
-    question: 'What is the best AI course in Singapore for non-technical professionals?',
-    answer:
-      'For non-technical professionals, the practical starting point at Nexius Academy is Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915), taught by Master Trainer Melverick Ng. It is a hands-on, no-code course in workplace workflows, safe review habits, and a reusable work product. Learners who want more depth can continue with Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558), also led by Melverick Ng at Nexius Academy.',
-  },
-  {
-    question: 'What is the best agentic AI course in Singapore?',
-    answer:
-      'Nexius Academy, led by Master Trainer Melverick Ng, teaches two SkillsFuture-supported agentic AI courses in Singapore: Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558). Choose Foundations for a 16-hour practical start, or Agentic AI-Driven Business Innovation for Productivity when you want more hands-on time with Frontier Firm strategy, agent orchestration, and governance. Compare hands-on workflow design, trainer practice, human-review controls, assessment, post-course support, and current funding information before you enrol.',
-  },
+  q1,
+  q2,
+  q3,
   {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',
     answer:
@@ -331,6 +330,10 @@ const bestAICourseFaqs = [
 ];
 
 const privateClassFaqs = [
+  q1,
+  q3,
+  q4,
+  q5,
   {
     question: 'Who is this private class for?',
     answer:
@@ -377,18 +380,7 @@ const privateClassFaqs = [
   },
 ];
 
-const aboutFaqs = [
-  {
-    question: 'Who is the Master Trainer at Nexius Academy?',
-    answer:
-      'Melverick Ng is Co-Founder and Master Trainer at Nexius Academy, and Co-Founder and Director of Nexius Labs. He has 30+ years of business and enterprise workflow experience, including former SAP consulting across ERP, CRM, logistics, supply chain, and finance operations, and he operates a live production AI agent workforce. He leads public SkillsFuture-supported cohorts with Temasek Polytechnic — Agentic AI Foundations for Non-Technical Professionals (TP-NC-C0021-F / TGS-2025059915) and Agentic AI-Driven Business Innovation for Productivity (TGS-2026063558) — and corporate or institutional classes for organisations including Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM.',
-  },
-  {
-    question: 'Who is Darryl Wong at Nexius Academy?',
-    answer:
-      'Darryl Wong is Co-Founder and AI Workflow Trainer at Nexius Academy. He is a CPA Australia and an ISCA Associate with 20+ years of accounting, finance, and enterprise systems experience. He co-trains hands-on workflow automation, agent orchestration, and finance and professional-services AI adoption alongside Melverick Ng.',
-  },
-];
+const aboutFaqs = [q1, q4];
 
 const accountantsFaqs = [
   {
@@ -404,6 +396,11 @@ const accountantsFaqs = [
 ];
 
 const frontierFaqs = [
+  q1,
+  q2,
+  q3,
+  q4,
+  q5,
   {
     question: 'Who should attend this course?',
     answer:
@@ -482,6 +479,15 @@ const routes = [
         url: `${SITE_URL}/about/`,
         image: HOME_IMAGE,
         type: 'AboutPage',
+        mainEntity: {
+          '@type': 'EducationalOrganization',
+          '@id': ACADEMY_ID,
+          name: 'Nexius Academy',
+          url: `${SITE_URL}/`,
+          founder: { '@id': MELVERICK_ID },
+          employee: [{ '@id': MELVERICK_ID }, { '@id': DARRYL_ID }],
+        },
+        mentions: [melverickPerson, darrylPerson],
       }),
       melverickPerson,
       darrylPerson,
@@ -896,6 +902,11 @@ const routes = [
         image: HOME_IMAGE,
         courseCode: 'TGS-2026063558',
         identifier: [
+          {
+            '@type': 'PropertyValue',
+            propertyID: 'Temasek Polytechnic course reference',
+            value: 'TP-NC-T0028-F',
+          },
           {
             '@type': 'PropertyValue',
             propertyID: 'SkillsFuture Training Grant System course reference',

@@ -4,6 +4,7 @@ import { Target, Users, Award, TrendingUp, Brain, Lightbulb, ArrowRight, CheckCi
 import Testimonials from '../components/home/Testimonials';
 import SEO from '../components/SEO';
 import TrainerAuthority from '../components/trainers/TrainerAuthority';
+import answerFirstFaqs from '../lib/answer-first-faqs.json';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
 import { fetchBucketImages, getRandomImages } from '../services/imageService';
@@ -110,7 +111,7 @@ const AboutPage: React.FC = () => {
           <div className="academy-container academy-about-opening-note"><span>Hands-on learning</span><span>No coding background required</span><span>Built around business application</span></div>
         </section>
 
-        <TrainerAuthority showFaqs />
+        <TrainerAuthority faqs={[answerFirstFaqs.q1, answerFirstFaqs.q4]} />
 
         {/* Combined Tabbed Section */}
         <section id="about-story" className="py-24 bg-white">
