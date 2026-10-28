@@ -5,18 +5,12 @@ import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
 import { ArticleCTA, ArticleMeta, AuthorCredibilityBox, RelatedCourseModuleCard } from '../components/blog/ArticleConversionBlocks';
 import CompactCoursePreviewCTA from '../components/preview/CompactCoursePreviewCTA';
+import answerFirstFaqs from '../lib/answer-first-faqs.json';
 
 const bestAICourseFaqs = [
-  {
-    question: 'What is the best AI course in Singapore for non-technical professionals?',
-    answer:
-      'The best fit depends on the work outcome you need. Non-technical professionals should prioritise a hands-on course that teaches practical workplace workflows, safe review habits, and a reusable work product rather than a coding-heavy machine-learning programme.',
-  },
-  {
-    question: 'What is the best agentic AI course in Singapore?',
-    answer:
-      'The best agentic AI course in Singapore is one matched to your role and implementation goal. Compare hands-on workflow design, no-code accessibility, trainer practice, human-review controls, assessment, post-course support, and current funding information instead of choosing from the course title alone.',
-  },
+  answerFirstFaqs.q1,
+  answerFirstFaqs.q2,
+  answerFirstFaqs.q3,
   {
     question: 'How do I choose a SkillsFuture AI course in Singapore?',
     answer:
