@@ -358,7 +358,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  to="/courses/agentic-ai?lead=join-next-cohort&lead_source=about_cta"
+                  to="/courses/agentic-ai/?lead=join-next-cohort&lead_source=about_cta"
                   className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all"
                 >
                   See Upcoming Cohorts
@@ -465,7 +465,7 @@ const AboutPage: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to="/courses/agentic-ai"
+                  to="/courses/agentic-ai/"
                   className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-opacity-90 transition-all"
                 >
                   Explore Our Courses

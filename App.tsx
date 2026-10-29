@@ -96,7 +96,7 @@ export const AppShell: React.FC = () => {
       referrer: document.referrer || undefined,
     });
 
-    const articleMatch = location.pathname.match(/^\/blog\/([^/]+)$/);
+    const articleMatch = location.pathname.match(/^\/blog\/([^/]+)\/?$/);
     if (articleMatch) {
       void recordBlogArticleView(articleMatch[1]).catch(() => undefined);
     }
@@ -144,8 +144,8 @@ export const AppShell: React.FC = () => {
         <Route path="/courses/agentic-ai-company-class" element={<CorporateClassLandingPage />} />
         <Route path="/courses/advanced-agentic-ai" element={<FrontierFirmCoursePage />} />
         <Route path="/courses/agentic-ai-business-innovation" element={<AgenticAIBusinessInnovationPage />} />
-        <Route path="/courses/tp-agentic-ai-driven-business-innovation" element={<Navigate to="/courses/agentic-ai-business-innovation" replace />} />
-        <Route path="/courses/frontier-firm-agent-boss" element={<Navigate to="/courses/advanced-agentic-ai" replace />} />
+        <Route path="/courses/tp-agentic-ai-driven-business-innovation" element={<Navigate to="/courses/agentic-ai-business-innovation/" replace />} />
+        <Route path="/courses/frontier-firm-agent-boss" element={<Navigate to="/courses/advanced-agentic-ai/" replace />} />
         <Route path="/courses/agentic-ai-accountants" element={<AccountantCspLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/beyond-chatgpt-ai-powered-company" element={<BlogPostPage />} />

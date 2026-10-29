@@ -138,8 +138,8 @@ const AgenticAIBusinessInnovationPage: React.FC = () => (
               <ChevronDown size={16} aria-hidden="true" />
             </summary>
             <div className="absolute right-0 top-full z-50 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-lg">
-              <Link to="/courses/agentic-ai" className="block rounded px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
-              <Link to="/courses/advanced-agentic-ai" aria-label="Agentic AI-Driven Business Innovation for Productivity" className="block rounded px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50">Business Innovation (3-Day)</Link>
+              <Link to="/courses/agentic-ai/" className="block rounded px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
+              <Link to="/courses/advanced-agentic-ai/" aria-label="Agentic AI-Driven Business Innovation for Productivity" className="block rounded px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50">Business Innovation (3-Day)</Link>
             </div>
           </details>
           <nav className="hidden items-center gap-6 text-sm font-medium text-gray-700 md:flex">

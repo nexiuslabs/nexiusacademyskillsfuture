@@ -251,14 +251,14 @@ const SkillsFutureFundingGuidePage: React.FC = () => {
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 <Link
-                  to="/blog/best-ai-courses-singapore-2026"
+                  to="/blog/best-ai-courses-singapore-2026/"
                   className="inline-flex items-center justify-between gap-3 rounded-xl bg-white px-5 py-4 font-semibold text-primary transition-colors hover:text-accent"
                 >
                   <span>Compare the best AI course and SkillsFuture options in Singapore</span>
                   <ArrowRight size={18} className="shrink-0" />
                 </Link>
                 <Link
-                  to="/courses/agentic-ai"
+                  to="/courses/agentic-ai/"
                   className="inline-flex items-center justify-between gap-3 rounded-xl bg-white px-5 py-4 font-semibold text-primary transition-colors hover:text-accent"
                 >
                   <span>View the Agentic AI and AI agent course in Singapore</span>

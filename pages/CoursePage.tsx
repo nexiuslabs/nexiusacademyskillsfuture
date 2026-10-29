@@ -138,7 +138,7 @@ const CoursePage: React.FC = () => {
                 The right programme depends on your role, desired outcome, technical level, delivery format, funding eligibility, and the evidence you expect to leave with. If you are comparing an AI agent course in Singapore with SkillsFuture support, review the published subsidy tiers as well as the practical work product. Use our transparent comparison guide to assess those factors before choosing.
               </p>
               <Link
-                to="/blog/best-ai-courses-singapore-2026"
+                to="/blog/best-ai-courses-singapore-2026/"
                 className="inline-flex items-center font-bold text-accent hover:text-primary hover:underline"
               >
                 Compare AI courses in Singapore and SkillsFuture support →

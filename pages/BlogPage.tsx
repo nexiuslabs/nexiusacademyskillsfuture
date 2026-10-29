@@ -63,7 +63,7 @@ const BlogPage: React.FC = () => {
               </Link>
             </article>}
           </div>
-          <div className="academy-container academy-blog-opening-note">Want to implement this in 2 days? <Link to="/courses/agentic-ai" onClick={() => trackBlogToCourseClick({sourceArea:'blog_top_banner',pagePath:'/blog',targetPath:'/courses/agentic-ai'})}>Join our next cohort <ArrowRight size={16} aria-hidden="true" /></Link></div>
+          <div className="academy-container academy-blog-opening-note">Want to implement this in 2 days? <Link to="/courses/agentic-ai/" onClick={() => trackBlogToCourseClick({sourceArea:'blog_top_banner',pagePath:'/blog',targetPath:'/courses/agentic-ai'})}>Join our next cohort <ArrowRight size={16} aria-hidden="true" /></Link></div>
         </section>
 
         <section id="blog-topics" className="py-14 bg-neutral border-b border-gray-200">
@@ -214,7 +214,7 @@ const BlogPage: React.FC = () => {
                     Join our next cohort to build one real AI workflow in class with trainer guidance.
                   </p>
                   <Link
-                    to="/courses/agentic-ai"
+                    to="/courses/agentic-ai/"
                     onClick={() =>
                       trackBlogToCourseClick({
                         sourceArea: 'blog_right_rail_support_card',

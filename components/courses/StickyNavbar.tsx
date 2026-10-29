@@ -24,8 +24,8 @@ const StickyNavbar: React.FC = () => {
                 <ChevronDown size={16} aria-hidden="true" />
               </summary>
               <div className="absolute left-0 top-full z-50 mt-2 w-80 rounded-lg border border-gray-200 bg-white p-2 shadow-lg">
-                <Link to="/courses/agentic-ai" className="block rounded px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
-                <Link to="/courses/advanced-agentic-ai" aria-label="Agentic AI-Driven Business Innovation for Productivity" className="block rounded px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">Business Innovation (3-Day)</Link>
+                <Link to="/courses/agentic-ai/" className="block rounded px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
+                <Link to="/courses/advanced-agentic-ai/" aria-label="Agentic AI-Driven Business Innovation for Productivity" className="block rounded px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">Business Innovation (3-Day)</Link>
               </div>
             </details>
             <a href="#overview" className="text-textDark hover:text-accent font-medium transition-colors">Overview</a>
@@ -61,8 +61,8 @@ const StickyNavbar: React.FC = () => {
       {isOpen && (
         <div className="xl:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
-            <Link to="/courses/agentic-ai" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
-            <Link to="/courses/advanced-agentic-ai" aria-label="Agentic AI-Driven Business Innovation for Productivity" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Business Innovation (3-Day)</Link>
+            <Link to="/courses/agentic-ai/" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Agentic AI Foundations (2-Day)</Link>
+            <Link to="/courses/advanced-agentic-ai/" aria-label="Agentic AI-Driven Business Innovation for Productivity" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Business Innovation (3-Day)</Link>
             <a href="#overview" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Overview</a>
             <a href="#curriculum" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Curriculum</a>
             <a href="#pricing" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50">Fees</a>

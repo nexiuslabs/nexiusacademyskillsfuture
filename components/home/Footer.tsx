@@ -67,20 +67,20 @@ const Footer: React.FC = () => {
           <div>
             <h2 className="font-bold text-lg mb-5">Courses</h2>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li><Link to="/courses/agentic-ai" className="hover:text-accent">Agentic AI Foundations (2-Day)</Link></li>
-              <li><Link to="/courses/advanced-agentic-ai" className="hover:text-accent">Agentic AI-Driven Business Innovation for Productivity</Link></li>
-              <li><Link to="/courses/agentic-ai-company-class" className="hover:text-accent">Dedicated Company Class</Link></li>
-              <li><Link to="/skillsfuture-funding-guide" className="hover:text-accent">SkillsFuture Funding Guide</Link></li>
-              <li><Link to="/courses/agentic-ai" className="hover:text-accent">Upcoming Cohort</Link></li>
+              <li><Link to="/courses/agentic-ai/" className="hover:text-accent">Agentic AI Foundations (2-Day)</Link></li>
+              <li><Link to="/courses/advanced-agentic-ai/" className="hover:text-accent">Agentic AI-Driven Business Innovation for Productivity</Link></li>
+              <li><Link to="/private-class/" className="hover:text-accent">Dedicated Company Class</Link></li>
+              <li><Link to="/skillsfuture-funding-guide/" className="hover:text-accent">SkillsFuture Funding Guide</Link></li>
+              <li><Link to="/courses/agentic-ai/" className="hover:text-accent">Upcoming Cohort</Link></li>
             </ul>
           </div>
 
           <div>
             <h2 className="font-bold text-lg mb-5">Company</h2>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li><Link to="/about" className="hover:text-accent">About</Link></li>
-              <li><Link to="/blog" className="hover:text-accent">Blog</Link></li>
-              <li><Link to="/reports/singapore-ai-training-readiness-2026" className="hover:text-accent">AI Training Report</Link></li>
+              <li><Link to="/about/" className="hover:text-accent">About</Link></li>
+              <li><Link to="/blog/" className="hover:text-accent">Blog</Link></li>
+              <li><Link to="/reports/singapore-ai-training-readiness-2026/" className="hover:text-accent">AI Training Report</Link></li>
               <li><a href="mailto:hello@nexiuslabs.com" className="hover:text-accent">Contact</a></li>
               <li><a href="https://wa.me/6596615284?text=Hi%20Cariah%2C%20I%20need%20help%20from%20a%20course%20advisor." target="_blank" rel="noopener noreferrer" onClick={() => trackOutboundClick({ channel: 'whatsapp', pagePath: location.pathname, position: 'footer_whatsapp_advisor' })} className="hover:text-accent">WhatsApp Advisor</a></li>
             </ul>
