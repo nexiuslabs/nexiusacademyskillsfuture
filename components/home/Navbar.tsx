@@ -5,9 +5,9 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { openLeadModal } from '../../services/leadModal';
 
 const COURSE_MENU_LINKS = [
-  { to: '/courses/agentic-ai', label: 'Agentic AI Foundations (2-Day)' },
+  { to: '/courses/agentic-ai/', label: 'Agentic AI Foundations (2-Day)' },
   {
-    to: '/courses/advanced-agentic-ai',
+    to: '/courses/advanced-agentic-ai/',
     label: 'Business Innovation (3-Day)',
     ariaLabel: 'Agentic AI-Driven Business Innovation for Productivity',
   },

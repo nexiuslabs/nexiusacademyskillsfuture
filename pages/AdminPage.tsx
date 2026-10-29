@@ -56,13 +56,13 @@ const AdminPage: React.FC = () => {
       {
         label: 'Agentic AI Course',
         description: 'Core AI course page',
-        href: '/courses/agentic-ai',
+        href: '/courses/agentic-ai/',
         icon: Brain,
       },
       {
         label: 'Accountants Course',
         description: 'Accounting course page',
-        href: '/courses/agentic-ai-accountants',
+        href: '/courses/agentic-ai-accountants/',
         icon: Calculator,
       },
       {

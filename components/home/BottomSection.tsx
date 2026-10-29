@@ -122,7 +122,7 @@ const BottomSection: React.FC = () => {
 
           <div className="text-center mt-12">
             <Link
-              to="/blog"
+              to="/blog/"
               className="academy-articles-button"
             >
               View All Articles

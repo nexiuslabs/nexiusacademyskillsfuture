@@ -799,7 +799,7 @@ const LeadCaptureModal: React.FC = () => {
                           <p className="text-gray-600">
                             Not sure who should handle the approval? It is usually your HR manager, finance contact, or an admin lead with Corppass access.
                           </p>
-                          <a href="/skillsfuture-funding-guide" className="mt-3 inline-flex items-center gap-2 font-semibold text-accent hover:underline">
+                          <a href="/skillsfuture-funding-guide/" className="mt-3 inline-flex items-center gap-2 font-semibold text-accent hover:underline">
                             View the SkillsFuture funding guide <ArrowRight size={14} />
                           </a>
                         </div>

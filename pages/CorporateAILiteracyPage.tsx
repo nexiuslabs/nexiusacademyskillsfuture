@@ -21,7 +21,7 @@ const CorporateAILiteracyPage: React.FC = () => {
       <ScrollToTop />
       <div className="academy-article-body min-h-screen bg-[#f4f7f9] py-10">
         <div className="max-w-[760px] mx-auto bg-white px-8 py-10 shadow-lg my-10 rounded-lg">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors mb-8 font-semibold">
+          <Link to="/blog/" className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors mb-8 font-semibold">
             <ArrowLeft size={20} />
             Back to Blog
           </Link>
@@ -159,13 +159,13 @@ const CorporateAILiteracyPage: React.FC = () => {
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             <strong className="font-semibold text-[#1a1a1a]">Explore our SkillsFuture-eligible programme:</strong>{' '}
-            <Link to="/courses/agentic-ai" className="text-[#007bff] font-semibold hover:underline">
+            <Link to="/courses/agentic-ai/" className="text-[#007bff] font-semibold hover:underline">
               Agentic AI training for non-technical business professionals →
             </Link>
           </p>
           <p className="mb-6 text-lg leading-relaxed text-[#333]">
             Choosing between programmes?{' '}
-            <Link to="/blog/best-ai-courses-singapore-2026" className="text-[#007bff] font-semibold hover:underline">
+            <Link to="/blog/best-ai-courses-singapore-2026/" className="text-[#007bff] font-semibold hover:underline">
               Compare the best AI course and SkillsFuture options in Singapore →
             </Link>
           </p>

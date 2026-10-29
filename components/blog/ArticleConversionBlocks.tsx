@@ -22,19 +22,19 @@ const CTA_CONTENT: Record<CtaType, { title: string; description: string; cta: st
     title: 'Download the SME Workflow Checklist',
     description: 'Get the exact checklist we use to spot high-ROI automation opportunities in under 15 minutes.',
     cta: 'Get the Checklist',
-    href: '/courses/agentic-ai?lead=workflow-checklist&lead_source=blog_inline',
+    href: '/courses/agentic-ai/?lead=workflow-checklist&lead_source=blog_inline',
   },
   subsidy_check: {
     title: 'Check Your SkillsFuture Subsidy',
     description: 'See your estimated net payable fee and eligibility path in under 60 seconds.',
     cta: 'Check My Subsidy',
-    href: '/courses/agentic-ai?lead=subsidy-check&lead_source=blog_inline',
+    href: '/courses/agentic-ai/?lead=subsidy-check&lead_source=blog_inline',
   },
   join_next_cohort: {
     title: 'Join the Next Cohort',
     description: 'Get hands-on guidance and leave class with a deployable AI workflow for your business.',
     cta: 'Reserve My Seat',
-    href: '/courses/agentic-ai?lead=join-next-cohort&lead_source=blog_inline',
+    href: '/courses/agentic-ai/?lead=join-next-cohort&lead_source=blog_inline',
   },
 };
 
@@ -136,7 +136,7 @@ export const RelatedCourseModuleCard: React.FC<RelatedCourseModuleCardProps> = (
       Learn how to map, automate, and test one real workflow from your own business during class.
     </p>
     <Link
-      to="/courses/agentic-ai?module=workflow-blueprint"
+      to="/courses/agentic-ai/?module=workflow-blueprint"
       onClick={() => {
         trackArticleEvent(articleSlug, 'join_next_cohort', '70_percent');
         trackBlogToCourseClick({

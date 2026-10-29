@@ -528,7 +528,7 @@ const AccountantCspLandingPage: React.FC = () => {
                   </p>
                 </div>
                 <Link
-                  to="/private-class"
+                  to="/private-class/"
                   className="inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-base font-bold text-white transition-colors hover:bg-blue-900"
                 >
                   View Private Class
