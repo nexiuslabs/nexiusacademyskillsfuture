@@ -970,10 +970,9 @@ const routes = [
   },
   {
     path: '/courses/agentic-ai-business-innovation',
-    lastmod: '2026-10-29',
     priority: '0.6',
     changefreq: 'monthly',
-    includeInSitemap: true,
+    includeInSitemap: false,
     title: 'Agentic AI-Driven Business Innovation for Productivity | Nexius Academy',
     description:
       'An accessible 3-day course, Agentic AI-Driven Business Innovation for Productivity, for anyone who wants more hands-on time and depth. This summary covers audience, outcomes, certification, fees, and how to enquire. No coding or prior AI course is required.',
