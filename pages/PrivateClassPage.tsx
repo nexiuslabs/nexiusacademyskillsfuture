@@ -18,6 +18,7 @@ import answerFirstFaqs from '../lib/answer-first-faqs.json';
 import privateClassCopy from '../lib/private-class-answers.json';
 import Footer from '../components/home/Footer';
 import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
+import FaqAccordion from '../components/courses/FaqAccordion';
 import ResponsiveImage from '../components/ResponsiveImage';
 import { openLeadModal } from '../services/leadModal';
 import { trackOutboundClick } from '../services/analytics';
@@ -827,14 +828,7 @@ const PrivateClassFaq: React.FC = () => (
           Answers to common questions about dedicated company runs.
         </p>
       </div>
-      <div className="space-y-4">
-        {faqs.map((faq) => (
-          <div key={faq.question} className="rounded-3xl border border-primary/10 bg-white p-6 shadow-soft transition-colors hover:border-primary/20">
-            <h3 className="text-lg font-bold text-primary">{faq.question}</h3>
-            <p className="mt-3 leading-relaxed text-gray-600">{faq.answer}</p>
-          </div>
-        ))}
-      </div>
+      <FaqAccordion items={faqs} openFirst />
     </div>
   </section>
 );

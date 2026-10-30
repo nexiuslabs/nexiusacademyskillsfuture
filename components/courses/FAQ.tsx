@@ -1,6 +1,7 @@
 import React from 'react';
 import { FAQS } from '../../constants';
 import { MessageCircle } from 'lucide-react';
+import FaqAccordion from './FaqAccordion';
 
 // Keep every published answer unchanged; grouping is presentation only.
 const groups = [
@@ -17,12 +18,7 @@ const FAQ: React.FC = () => (
       <div className="space-y-10">
         {groups.map((group) => <section key={group.title} aria-label={group.title}>
           <h3 className="mb-4 text-xl font-bold text-primary">{group.title}</h3>
-          <div className="divide-y divide-gray-200 border-y border-gray-200">
-            {group.indices.map((index) => <details key={FAQS[index].question} open={group.open} className="group py-1">
-              <summary className="cursor-pointer py-4 pr-3 font-semibold leading-relaxed text-primary">{FAQS[index].question}</summary>
-              <div className="pb-5 pr-4 leading-relaxed text-gray-600">{FAQS[index].answer}</div>
-            </details>)}
-          </div>
+          <FaqAccordion items={group.indices.map((index) => FAQS[index])} open={group.open} />
         </section>)}
       </div>
       <div className="mt-12 border-t border-gray-200 pt-8">
