@@ -15,6 +15,7 @@ import {
 import SEO from '../components/SEO';
 import TrainerAuthority from '../components/trainers/TrainerAuthority';
 import answerFirstFaqs from '../lib/answer-first-faqs.json';
+import privateClassCopy from '../lib/private-class-answers.json';
 import Footer from '../components/home/Footer';
 import AdvancedCoursePricing from '../components/courses/AdvancedCoursePricing';
 import ResponsiveImage from '../components/ResponsiveImage';
@@ -116,55 +117,45 @@ const proposalChecklist = [
 ];
 
 const faqs = [
+  ...privateClassCopy.answers.map(({ question, answer }) => ({ question, answer })),
   answerFirstFaqs.q1,
   answerFirstFaqs.q3,
-  answerFirstFaqs.q4,
-  answerFirstFaqs.q5,
   {
-    question: 'Who is this private class for?',
-    answer:
-      'It is for companies that want to train one internal team or multiple departments together in a dedicated cohort instead of joining a public class.',
+    question: answerFirstFaqs.q5.question,
+    answer: privateClassCopy.enquiryAnswer,
   },
-  {
-    question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 15 participants for a dedicated company run.',
-  },
-  {
-    question: 'Can the workshop focus on our real internal workflows?',
-    answer:
-      "Yes. The company-run format is specifically designed to make the workshop more relevant to your team's actual use cases, recurring tasks, and process pain points.",
-  },
-  {
-    question: 'Can you run the training at our office?',
-    answer:
-      'Yes. We can discuss delivery at your own office or at an external venue depending on privacy, convenience, and room setup.',
-  },
-  {
-    question: 'Is this suitable for non-technical teams?',
-    answer:
-      'Yes. The course is designed for non-technical professionals and focuses on practical workflow use, not coding.',
-  },
-  {
-    question: 'How is pricing handled for a company class?',
-    answer:
-      'Private three-day classes follow the Agentic AI-Driven Business Innovation for Productivity pricing table shown on this page. Fees include 9% GST and depend on learner eligibility and funding approval.',
-  },
-  {
-    question: 'Can leaders and frontline staff attend together?',
-    answer:
-      'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
-  },
-  {
-    question: 'What if we have fewer than 15 participants?',
-    answer:
-      'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
-  },
-  {
-    question: 'Does Nexius Academy offer corporate Agentic AI training for company teams in Singapore?',
-    answer:
-      'Yes. Nexius Academy delivers dedicated private company classes in Singapore for teams of 15 or more participants (https://academy.nexiuslabs.com/private-class/), led by Master Trainer Melverick Ng and Darryl Wong. Corporate cohorts can be tailored to your company’s actual ERP, CRM, finance, HR, or operations workflows and delivered at your office or an external venue. Organisations that have run dedicated or partner sessions with Nexius include Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM. For groups smaller than 15, employees can enrol in scheduled public cohorts with SME-sponsored SkillsFuture funding support.',
-  },
+  ...privateClassCopy.remaining,
 ];
+
+const linkedAnswer = (id: string, text: string) => {
+  if (id === 'what-is-corporate-ai-training') {
+    const course = 'Agentic AI-Driven Business Innovation for Productivity';
+    const trainer = 'Melverick Ng';
+    const [beforeCourse, afterCourse] = text.split(course);
+    const [beforeTrainer, afterTrainer] = afterCourse.split(trainer);
+    return (
+      <>
+        {beforeCourse}
+        <a href="/courses/advanced-agentic-ai/">{course}</a>
+        {beforeTrainer}
+        <a href="/about/#melverick-ng">{trainer}</a>
+        {afterTrainer}
+      </>
+    );
+  }
+  if (id === 'how-to-enquire') {
+    const email = 'hello@nexiuslabs.com';
+    const [beforeEmail, afterEmail] = text.split(email);
+    return (
+      <>
+        {beforeEmail}
+        <a href="mailto:hello@nexiuslabs.com?subject=Dedicated%20Company%20Class%20Enquiry">{email}</a>
+        {afterEmail}
+      </>
+    );
+  }
+  return text;
+};
 
 const fitSignals = [
   {
@@ -361,8 +352,11 @@ const PrivateClassHero: React.FC = () => {
               transition={{ duration: 0.7 }}
               className="text-balance text-4xl font-bold leading-[1.1] text-primary sm:text-5xl xl:text-6xl"
             >
-              Train your team on AI in a format built for real company work
+              Corporate Agentic AI Training for Your Team in Singapore
             </motion.h1>
+            <p className="mt-4 text-balance text-2xl font-semibold leading-tight text-primary sm:text-3xl">
+              Train your team on AI in a format built for real company work
+            </p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -380,7 +374,7 @@ const PrivateClassHero: React.FC = () => {
               className="mt-8 flex flex-col items-start gap-5"
             >
               <div className="flex flex-wrap items-center gap-2 text-left text-lg text-gray-600 sm:text-xl">
-                <span className="font-semibold text-primary">3 days · 15 participants minimum</span>
+                <span className="font-semibold text-primary">3 days · 15–20 participants per class</span>
                 <span className="text-gray-300">|</span>
                 <span>Minimum for a dedicated company class</span>
               </div>
@@ -436,6 +430,69 @@ const PrivateClassHero: React.FC = () => {
     </section>
   );
 };
+
+const CorporateTrainingAnswers: React.FC = () => (
+  <section id="corporate-training-answers" className="bg-white py-16" aria-labelledby="corporate-answers-heading">
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <h2 id="corporate-answers-heading" className="mb-8 font-heading text-3xl font-bold text-primary">
+        Corporate agentic AI training for your team: the short answers
+      </h2>
+      {privateClassCopy.answers.map((item) => (
+        <React.Fragment key={item.id}>
+          <article id={item.id} className="mb-8">
+            <h3 className="mb-2 text-xl font-bold text-primary">{item.question}</h3>
+            <p>{linkedAnswer(item.id, item.answer)}</p>
+          </article>
+          {item.id === 'funding' && (
+            <>
+              <table className="mt-4 w-full text-sm">
+                <caption className="mb-2 text-left font-semibold">SkillsFuture-subsidised fees per learner (incl. 9% GST)</caption>
+                <thead>
+                  <tr>
+                    <th className="text-left">Learner category</th>
+                    <th className="text-left">Fee payable</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Singapore Citizen aged 40 and above, or eligible SME-sponsored</td>
+                    <td>S$190.50</td>
+                  </tr>
+                  <tr>
+                    <td>Singapore Citizen below 40, Singapore PR or LTVP+</td>
+                    <td>S$490.50</td>
+                  </tr>
+                  <tr>
+                    <td>Full course fee before SkillsFuture funding</td>
+                    <td>S$1,635.00</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="mb-8 text-sm text-gray-600">
+                The overall price for your company cohort is quoted on request. See the <a href="/skillsfuture-funding-guide/">SkillsFuture funding guide</a>.
+              </p>
+            </>
+          )}
+          {item.id === 'how-to-enquire' && (
+            <div className="mb-8">
+              <h4 className="mb-2 font-semibold">What happens next</h4>
+              <ol className="list-decimal space-y-1 pl-6">
+                <li>Send your details: team size and functions attending, three preferred dates (back to back or split), your office or an external venue, and the workflows or governance concerns you want covered.</li>
+                <li>Advisory call: we clarify your team mix and where AI should help first, and confirm each learner&apos;s Temasek Polytechnic registration and funding pathway.</li>
+                <li>Proposal: a recommended class structure, schedule, venue and tailoring, with pricing.</li>
+                <li>Delivery: your team learns together in a company-only setting, using your workflows as examples.</li>
+                <li>Next steps: the course ends with a team action plan so adoption does not stall.</li>
+              </ol>
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+      <p className="text-sm text-gray-600">
+        Led by <a href="/about/#melverick-ng">Melverick Ng</a>, Co-Founder and Master Trainer of Nexius Academy and Co-Founder of Nexius Labs, with 30+ years of enterprise operations experience including former SAP ERP/CRM consulting. He co-trains with <a href="/about/#darryl-wong">Darryl Wong</a>, AI Workflow Trainer, CPA (Aust.) and ISCA Associate.
+      </p>
+    </div>
+  </section>
+);
 
 const PrivateClassPrograms: React.FC = () => (
   <section id="formats" className="py-20 md:py-28">
@@ -793,16 +850,22 @@ const PrivateClassPage: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden bg-white">
       <SEO
         title="Corporate Agentic AI Training Singapore | Dedicated Company Class | Nexius Academy"
-        description="Corporate agentic AI training in Singapore for teams of 15 or more, led by Master Trainer Melverick Ng. Tailor hands-on no-code AI workflows to your company operations."
+        description={privateClassCopy.metaDescription}
         canonical={PAGE_PATH}
         ogType="website"
       />
       <PrivateClassNavbar />
       <main>
         <PrivateClassHero />
+        <CorporateTrainingAnswers />
         <PrivateClassPrograms />
         <PrivateClassComparison />
-        <AdvancedCoursePricing actionLabel="Request Proposal" onApply={() => openProposalModal('private_class_pricing_request_proposal')} />
+        <AdvancedCoursePricing
+          actionLabel="Request Proposal"
+          heading="SkillsFuture-subsidised fees per learner, including GST"
+          afterPlansNote="Every company cohort is run with Temasek Polytechnic with SkillsFuture funding. The overall price for your company cohort is quoted on request."
+          onApply={() => openProposalModal('private_class_pricing_request_proposal')}
+        />
         <PrivateClassAbout />
         <PrivateClassTeams />
         <PrivateClassPlanning />

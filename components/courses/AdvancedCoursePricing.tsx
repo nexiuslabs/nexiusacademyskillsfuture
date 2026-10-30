@@ -27,11 +27,11 @@ const pricingPlans = [
 ];
 const frontierAcceptedPayments = ['SkillsFuture Credits (where applicable)', 'Credit card', 'Debit card', 'PayNow'];
 
-const AdvancedCoursePricing: React.FC<{ onApply: () => void; actionLabel?: string }> = ({onApply, actionLabel = 'Apply Now'}) => (
+const AdvancedCoursePricing: React.FC<{ onApply: () => void; actionLabel?: string; heading?: string; afterPlansNote?: string }> = ({onApply, actionLabel = 'Apply Now', heading = 'Course fees, including GST', afterPlansNote}) => (
         <section id="pricing" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Course fees, including GST</h2>
+              <h2 className="text-3xl font-heading font-bold text-primary mb-4">{heading}</h2>
               <p className="text-gray-600 mb-2">
                 This is a <span className="font-bold text-primary">3-day Agentic AI course</span> with a full course fee of{' '}
                 <span className="font-bold text-primary">S$1,635.00 incl. GST</span>.
@@ -58,6 +58,7 @@ const AdvancedCoursePricing: React.FC<{ onApply: () => void; actionLabel?: strin
               ))}
             </div>
 
+            {afterPlansNote ? <p className="mb-4 text-sm leading-relaxed text-gray-700">{afterPlansNote}</p> : null}
             <p className="mb-8 text-sm leading-relaxed text-gray-600">Amounts include 9% GST and are subject to final learner eligibility, funding approval and registration confirmation. S$190.50 is the lowest published payable amount for the eligible category shown above.</p>
             <div className="space-y-4 mb-12">
               <details className="group rounded-2xl border border-gray-200 bg-white p-6">

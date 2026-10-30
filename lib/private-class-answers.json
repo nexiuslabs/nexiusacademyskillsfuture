@@ -1,0 +1,64 @@
+{
+  "metaDescription": "Private corporate agentic AI training in Singapore for teams of 15 to 20. Three days on your workflows, SkillsFuture-funded with Temasek Polytechnic.",
+  "answers": [
+    {
+      "id": "what-is-corporate-ai-training",
+      "question": "What is Nexius Academy's corporate AI training?",
+      "answer": "Nexius Academy runs private, company-only cohorts of its 3-day Agentic AI-Driven Business Innovation for Productivity course (TGS-2026063558) with Temasek Polytechnic, for Singapore teams of 15 to 20 per class. Master Trainer Melverick Ng and co-trainer Darryl Wong build the examples and exercises around your own workflows, so your team practises on the work it already does. No coding or prior AI course is needed."
+    },
+    {
+      "id": "who-is-it-for",
+      "question": "Who is it for?",
+      "answer": "Companies that want to train one team or several departments together, instead of sending individuals to a public class. It suits operations, finance, HR, compliance, sales, service and support teams with repetitive or review-heavy work. Managers, team leads and frontline staff can learn in the same cohort, so everyone leaves with one shared standard for using AI. It is built for non-technical teams."
+    },
+    {
+      "id": "what-teams-leave-with",
+      "question": "What will our team leave with?",
+      "answer": "After three days, your team leaves with: a phased agentic AI roadmap; a map of where agents can help across HR, Finance, Operations and Customer Support, using your own workflows; human-agent workflow designs with clear roles and review points; practical governance controls for use, data and review; and an executable action plan with one shared review standard. Participants with at least 75% attendance who attempt the assessment receive a Certificate of Completion."
+    },
+    {
+      "id": "group-size",
+      "question": "How many people can attend a company class?",
+      "answer": "A dedicated company class takes a minimum of 15 and a maximum of 20 participants per class. If you have fewer than 15 people, they can join a public intake of the same 3-day course instead."
+    },
+    {
+      "id": "format-and-venue",
+      "question": "How long is it, what format, and where?",
+      "answer": "Three full days, 9am to 6pm, in person and hands-on (24 hours in total). You choose the dates: the three days can run back to back or be split, for example two days, a practice gap, then day three. We deliver at your office, or at an external training venue such as Lifelong Learning Institute, Paya Lebar."
+    },
+    {
+      "id": "funding",
+      "question": "Can company training be funded through SkillsFuture?",
+      "answer": "Yes. Every private company cohort is run with Temasek Polytechnic and goes through SkillsFuture funding (course code TGS-2026063558). The SkillsFuture-subsidised fee per learner is S$190.50 for Singapore Citizens aged 40 and above or eligible SME-sponsored learners, and S$490.50 for Singapore Citizens below 40, Singapore PRs and LTVP+ holders. The full course fee before funding is S$1,635.00. Fees per learner include 9% GST and are subject to final learner eligibility, funding approval and registration confirmation."
+    },
+    {
+      "id": "pricing",
+      "question": "How much does corporate AI training cost?",
+      "answer": "The overall price for a company cohort is quoted on request, by arrangement with Melverick Ng. It depends on your team size, preferred dates, venue and how much tailoring you need. Per-learner fees follow the SkillsFuture-subsidised fee rows on this page. Request a proposal, and after a short advisory call we send you a recommended structure with pricing."
+    },
+    {
+      "id": "how-to-enquire",
+      "question": "How do we enquire, and what happens next?",
+      "answer": "Click Request Proposal, or email hello@nexiuslabs.com with the subject \"Dedicated Company Class Enquiry\". An enquiry does not reserve a place."
+    }
+  ],
+  "enquiryAnswer": "Submitting an enquiry or subsidy check on the Nexius Academy website does not reserve a class seat or confirm admission; your seat is confirmed only after completing the official Temasek Polytechnic STEP registration before the intake deadline (6 November 2026 for the 3-day course). Self-sponsored learners register directly via the official individual STEP link using Singpass, complete payment, and submit any SkillsFuture Credit claim via MySkillsFuture. Company-sponsored learners must first have their company's authorised Corppass administrator sign in via the official Company Corppass Admin link, declare SME or non-SME status, generate a unique company-sponsored registration link for the employee, and approve the employee's submitted application under Pending verification before the link expires. Learners who complete the programme receive a Certificate of Completion (requiring at least 75% attendance and passing the assessment for the 2-day Foundations course, or at least 75% attendance and attempting the assessment for the 3-day Business Innovation course).",
+  "remaining": [
+    {
+      "question": "Can the workshop focus on our real internal workflows?",
+      "answer": "Yes. The company-run format is specifically designed to make the workshop more relevant to your team's actual use cases, recurring tasks, and process pain points."
+    },
+    {
+      "question": "Can you run the training at our office?",
+      "answer": "Yes. We deliver at your office, or at an external training venue such as Lifelong Learning Institute, Paya Lebar."
+    },
+    {
+      "question": "Is this suitable for non-technical teams?",
+      "answer": "Yes. The course is designed for non-technical professionals and focuses on practical workflow use, not coding."
+    },
+    {
+      "question": "Can leaders and frontline staff attend together?",
+      "answer": "Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps."
+    }
+  ]
+}

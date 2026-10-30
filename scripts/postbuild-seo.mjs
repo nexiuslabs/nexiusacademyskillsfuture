@@ -4,6 +4,9 @@ import path from 'node:path';
 const { q1, q2, q3, q4, q5 } = JSON.parse(
   fs.readFileSync(new URL('../lib/answer-first-faqs.json', import.meta.url), 'utf8'),
 );
+const privateClassCopy = JSON.parse(
+  fs.readFileSync(new URL('../lib/private-class-answers.json', import.meta.url), 'utf8'),
+);
 
 const SITE_URL = 'https://academy.nexiuslabs.com';
 const DIST_DIR = path.resolve('dist');
@@ -330,54 +333,14 @@ const bestAICourseFaqs = [
 ];
 
 const privateClassFaqs = [
+  ...privateClassCopy.answers.map(({ question, answer }) => ({ question, answer })),
   q1,
   q3,
-  q4,
-  q5,
   {
-    question: 'Who is this private class for?',
-    answer:
-      'It is for companies that want to train one internal team or multiple departments together in a dedicated cohort instead of joining a public class.',
+    question: q5.question,
+    answer: privateClassCopy.enquiryAnswer,
   },
-  {
-    question: 'What is the minimum class size?',
-    answer: 'The minimum class size is 15 participants for a dedicated company run.',
-  },
-  {
-    question: 'Can the workshop focus on our real internal workflows?',
-    answer:
-      "Yes. The company-run format is specifically designed to make the workshop more relevant to your team's actual use cases, recurring tasks, and process pain points.",
-  },
-  {
-    question: 'Can you run the training at our office?',
-    answer:
-      'Yes. We can discuss delivery at your own office or at an external venue depending on privacy, convenience, and room setup.',
-  },
-  {
-    question: 'Is this suitable for non-technical teams?',
-    answer:
-      'Yes. The course is designed for non-technical professionals and focuses on practical workflow use, not coding.',
-  },
-  {
-    question: 'How is pricing handled for a company class?',
-    answer:
-      'Private three-day classes follow the Agentic AI-Driven Business Innovation for Productivity pricing table shown on this page. Fees include 9% GST and depend on learner eligibility and funding approval.',
-  },
-  {
-    question: 'Can leaders and frontline staff attend together?',
-    answer:
-      'Yes. In many cases that works well because it helps the organisation align on use cases, governance, and realistic implementation steps.',
-  },
-  {
-    question: 'What if we have fewer than 15 participants?',
-    answer:
-      'You can still contact us. We can advise whether a public intake, a later internal run, or a combined team option makes more sense.',
-  },
-  {
-    question: 'Does Nexius Academy offer corporate Agentic AI training for company teams in Singapore?',
-    answer:
-      'Yes. Nexius Academy delivers dedicated private company classes in Singapore for teams of 15 or more participants (https://academy.nexiuslabs.com/private-class/), led by Master Trainer Melverick Ng and Darryl Wong. Corporate cohorts can be tailored to your company’s actual ERP, CRM, finance, HR, or operations workflows and delivered at your office or an external venue. Organisations that have run dedicated or partner sessions with Nexius include Forvis Mazars, Glomar, Temasek Polytechnic, NTUC e2i, and SIM. For groups smaller than 15, employees can enrol in scheduled public cohorts with SME-sponsored SkillsFuture funding support.',
-  },
+  ...privateClassCopy.remaining,
 ];
 
 const aboutFaqs = [q1, q4];
@@ -732,20 +695,86 @@ const routes = [
     changefreq: 'weekly',
     includeInSitemap: true,
     title: 'Corporate Agentic AI Training Singapore | Dedicated Company Class | Nexius Academy',
-    description:
-      'Corporate agentic AI training in Singapore for teams of 15 or more, led by Master Trainer Melverick Ng. Tailor hands-on no-code AI workflows to your company operations.',
+    description: privateClassCopy.metaDescription,
     ogType: 'website',
     ogImage: PRIVATE_CLASS_IMAGE,
     schemas: [
-      courseSchema({
-        name: 'Dedicated Company AI Class',
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Course',
+        name: 'Agentic AI-Driven Business Innovation for Productivity (Dedicated Company Class)',
         description:
-          'Private company-run agentic AI training for teams that want aligned adoption, practical workflow relevance, and a safer internal learning setting.',
+          'A private, company-only cohort of the 3-day Agentic AI-Driven Business Innovation for Productivity course, run with Temasek Polytechnic with SkillsFuture funding, for Singapore teams of 15 to 20 per class, with examples and exercises built around the company\'s own workflows. No coding or prior AI course required.',
+        courseCode: 'TGS-2026063558',
+        isBasedOn: `${SITE_URL}/courses/advanced-agentic-ai/`,
         url: `${SITE_URL}/private-class/`,
-        image: PRIVATE_CLASS_IMAGE,
-        audienceType: 'Company teams, department heads, and business operations leaders',
-        instructors: [melverickPerson, darrylPerson],
-      }),
+        timeRequired: 'PT24H',
+        provider: {
+          '@type': 'EducationalOrganization',
+          '@id': ACADEMY_ID,
+          name: 'Nexius Academy',
+          url: `${SITE_URL}/`,
+        },
+        instructor: [
+          {
+            '@type': 'Person',
+            '@id': MELVERICK_ID,
+            name: 'Melverick Ng',
+          },
+          {
+            '@type': 'Person',
+            '@id': DARRYL_ID,
+            name: 'Darryl Wong',
+            jobTitle: 'AI Workflow Trainer, Nexius Academy · CPA (Aust.) · ISCA Associate',
+          },
+        ],
+        audience: {
+          '@type': 'Audience',
+          audienceType:
+            'Company teams of 15 to 20 per class: operations, finance, HR, compliance, sales and service teams, team leads and managers',
+        },
+        offers: [
+          {
+            '@type': 'Offer',
+            name: 'Company cohort',
+            category: 'Company cohort',
+            description: 'Overall price quoted on request per company cohort; 15 to 20 participants per class',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Singapore Citizen aged 40 and above or eligible SME-sponsored fee after SkillsFuture funding',
+            price: '190.50',
+            priceCurrency: 'SGD',
+            description:
+              'Per learner, including 9% GST; subject to final learner eligibility, funding approval and registration confirmation',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Singapore Citizen below 40, Permanent Resident, or LTVP+ fee after SkillsFuture funding',
+            price: '490.50',
+            priceCurrency: 'SGD',
+            description:
+              'Per learner, including 9% GST; subject to final learner eligibility, funding approval and registration confirmation',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Full course fee before SkillsFuture funding',
+            price: '1635.00',
+            priceCurrency: 'SGD',
+            description:
+              'Per learner, including 9% GST; subject to final learner eligibility, funding approval and registration confirmation',
+          },
+        ],
+        hasCourseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'Onsite',
+          courseWorkload: 'PT24H',
+          location: {
+            '@type': 'Place',
+            name: 'Your office in Singapore, or an external training venue such as Lifelong Learning Institute, Paya Lebar',
+          },
+        },
+      },
       faqSchema(privateClassFaqs),
     ],
   },
