@@ -32,13 +32,10 @@
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=3600"
 
-# Course slug redirects
-[[redirects]]
-  from = "/courses/tp-agentic-ai-driven-business-innovation/*"
-  to = "/courses/advanced-agentic-ai/:splat/"
-  status = 301
-  force = true
-
+# Course slug redirects.
+# Exact paths come before splats so the page root is not captured as an empty splat.
+# Do not put a slash after :splat: the slash already before :splat, plus an empty
+# capture or a capture that ends in /, becomes a double slash in Location.
 [[redirects]]
   from = "/courses/tp-agentic-ai-driven-business-innovation"
   to = "/courses/advanced-agentic-ai/"
@@ -46,8 +43,14 @@
   force = true
 
 [[redirects]]
-  from = "/courses/agentic-ai-business-innovation/*"
-  to = "/courses/advanced-agentic-ai/:splat/"
+  from = "/courses/tp-agentic-ai-driven-business-innovation/"
+  to = "/courses/advanced-agentic-ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/tp-agentic-ai-driven-business-innovation/*"
+  to = "/courses/advanced-agentic-ai/:splat"
   status = 301
   force = true
 
@@ -58,14 +61,32 @@
   force = true
 
 [[redirects]]
-  from = "/courses/frontier-firm-agent-boss/*"
-  to = "/courses/advanced-agentic-ai/:splat/"
+  from = "/courses/agentic-ai-business-innovation/"
+  to = "/courses/advanced-agentic-ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/agentic-ai-business-innovation/*"
+  to = "/courses/advanced-agentic-ai/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/courses/frontier-firm-agent-boss"
   to = "/courses/advanced-agentic-ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/frontier-firm-agent-boss/"
+  to = "/courses/advanced-agentic-ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/courses/frontier-firm-agent-boss/*"
+  to = "/courses/advanced-agentic-ai/:splat"
   status = 301
   force = true
 

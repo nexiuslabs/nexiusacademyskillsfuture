@@ -632,7 +632,7 @@ const routes = [
   },
   {
     path: '/courses/agentic-ai',
-    lastmod: '2026-10-28',
+    lastmod: '2026-10-29',
     priority: '0.9',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -727,7 +727,7 @@ const routes = [
   },
   {
     path: '/private-class',
-    lastmod: '2026-10-28',
+    lastmod: '2026-10-29',
     priority: '0.8',
     changefreq: 'weekly',
     includeInSitemap: true,
@@ -884,7 +884,7 @@ const routes = [
   },
   {
     path: '/courses/advanced-agentic-ai',
-    lastmod: '2026-10-28',
+    lastmod: '2026-10-29',
     priority: '0.7',
     changefreq: 'monthly',
     includeInSitemap: true,
@@ -949,7 +949,7 @@ const routes = [
             courseWorkload: 'P3D',
             startDate: '2026-11-11T09:00:00+08:00',
             endDate: '2026-11-18T18:00:00+08:00',
-            description: 'Confirmed class on 11, 12 & 18 November 2026, 9am to 6pm Singapore time each day (Room R7-Skydome, Level 4). Registration closes 4 November 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
+            description: 'Confirmed class on 11, 12 & 18 November 2026, 9am to 6pm Singapore time each day (Room R7-Skydome, Level 4). Registration closes 6 November 2026. Lifelong Learning Institute (Paya Lebar), 11 Eunos Rd 8, Singapore 408601.',
             instructor: [{ '@id': MELVERICK_ID }, { '@id': DARRYL_ID }],
             location: {
               '@type': 'Place',
@@ -972,7 +972,7 @@ const routes = [
     path: '/courses/agentic-ai-business-innovation',
     priority: '0.6',
     changefreq: 'monthly',
-    includeInSitemap: true,
+    includeInSitemap: false,
     title: 'Agentic AI-Driven Business Innovation for Productivity | Nexius Academy',
     description:
       'An accessible 3-day course, Agentic AI-Driven Business Innovation for Productivity, for anyone who wants more hands-on time and depth. This summary covers audience, outcomes, certification, fees, and how to enquire. No coding or prior AI course is required.',
@@ -1185,7 +1185,7 @@ const routes = [
   },
   {
     path: '/blog/best-ai-courses-singapore-2026',
-    lastmod: '2026-10-28',
+    lastmod: '2026-10-29',
     priority: '0.8',
     changefreq: 'monthly',
     includeInSitemap: true,
