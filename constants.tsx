@@ -53,7 +53,7 @@ export const SCHEDULES: ScheduleItem[] = [
     month: 'Nov 2026',
     registrationCloses: '30 Oct 2026',
     interestOnly: false,
-    registrationClosed: false,
+    registrationClosed: true,
     cohortCode: '2026-11-06',
   },
 ];
