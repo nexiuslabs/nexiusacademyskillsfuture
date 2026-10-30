@@ -23,7 +23,7 @@ test('November Foundation is confirmed for 6 and 13 November across booking and 
  const constants=readFileSync(new URL('../../constants.tsx',import.meta.url),'utf8');
  const november=constants.slice(constants.indexOf("dates: '06 Nov 2026 & 13 Nov 2026'"), constants.indexOf('export const ADVANCED_COURSE_SCHEDULES'));
  assert.match(november, /interestOnly: false/);
- assert.match(november, /registrationClosed: false/);
+ assert.match(november, /registrationClosed: true/);
  assert.match(november, /cohortCode: '2026-11-06'/);
  assert.match(november, /venue: '116 Middle Road, ICB Enterprise House, S\(188972\)'/);
  assert.match(november, /registrationCloses: '30 Oct 2026'/);
